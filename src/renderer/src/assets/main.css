@@ -1,10 +1,15 @@
-.media-server-connections {
-  /* this can make emoji appear as icons */
-  background: -webkit-linear-gradient(315deg, #52b54b 45%, #6d7bc6);
+.emoji {
+  /*TODO */
+  background: rgb(179, 185, 197);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  /* this can make emoji appear as icons */
+  /* background: -webkit-linear-gradient(90deg, rgb(179, 185, 197) 10%, rgba(0, 0, 0, 0));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700; */
 }
 
 /* @import './base.css';

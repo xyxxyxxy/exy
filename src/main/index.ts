@@ -77,8 +77,20 @@ import './core'
 import contextMenu from 'electron-context-menu'
 import log from 'electron-log/main'
 import { startMainToRendererIpc } from './ipc'
+import { config$ } from './core/stores/config'
+import { distinctUntilChanged, map } from 'rxjs'
 
 const logMain = log.scope('main')
+
+config$
+  .pipe(
+    map((config) => config.isStartupEnabled),
+    distinctUntilChanged()
+  )
+  .subscribe((isStartupEnabled) => {
+    logMain.info(`Startup ${isStartupEnabled ? 'enabled' : 'disabled'}.`)
+    app.setLoginItemSettings({ openAtLogin: isStartupEnabled })
+  })
 
 contextMenu({
   showLookUpSelection: false,

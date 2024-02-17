@@ -1,10 +1,10 @@
 import Store from 'electron-store'
 import { ConfigStore, MediaServerConfig, MediaServerConnectionIdentifiers } from './config.types'
 import { BehaviorSubject, Observable, distinctUntilChanged, map } from 'rxjs'
-import log from 'electron-log/node'
+import log from 'electron-log'
 import { randomUUID } from 'crypto'
 
-const logConfig = log.scope('discord')
+const logConfig = log.scope('config')
 
 const configStore = new Store<ConfigStore>({
   name: 'config',
@@ -15,9 +15,9 @@ const configStore = new Store<ConfigStore>({
       type: 'string',
       default: randomUUID()
     },
-    isDebugLoggingEnabled: {
+    isStartupEnabled: {
       type: 'boolean',
-      default: false
+      default: true
     },
     mediaServers: {
       type: 'array',
@@ -48,23 +48,29 @@ const configStore = new Store<ConfigStore>({
     imgurClientId: {
       type: ['string', 'null'],
       default: null
+    },
+    isDebugLoggingEnabled: {
+      type: 'boolean',
+      default: false
     }
   }
 })
 
 export enum Selector {
   deviceId = 'deviceId',
-  IsDebugLoggingEnabled = 'isDebugLoggingEnabled',
+  IsStartupEnabled = 'isStartupEnabled',
   MediaServers = 'mediaServers',
-  ImgurClientId = 'imgurClientId'
+  ImgurClientId = 'imgurClientId',
+  IsDebugLoggingEnabled = 'isDebugLoggingEnabled'
 }
 const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject<
   Readonly<ConfigStore>
 >({
   deviceId: configStore.get(Selector.deviceId),
-  isDebugLoggingEnabled: configStore.get(Selector.IsDebugLoggingEnabled),
+  isStartupEnabled: configStore.get(Selector.IsStartupEnabled),
   mediaServers: configStore.get(Selector.MediaServers),
-  imgurClientId: configStore.get(Selector.ImgurClientId)
+  imgurClientId: configStore.get(Selector.ImgurClientId),
+  isDebugLoggingEnabled: configStore.get(Selector.IsDebugLoggingEnabled)
 })
 
 configStore.onDidAnyChange((config) => {
@@ -100,6 +106,10 @@ export function deleteMediaServerConfig(id: string): void {
     .get(Selector.MediaServers)
     .filter((server) => server.serverId !== id)
   configStore.set({ mediaServers })
+}
+
+export function toggleStartup(): void {
+  configStore.set(Selector.IsStartupEnabled, !configStore.get(Selector.IsStartupEnabled))
 }
 
 export function toggleDebugLogging(): void {

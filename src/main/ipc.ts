@@ -1,14 +1,10 @@
 import { BrowserWindow, ipcMain } from 'electron'
 import { fromEvent, switchMap } from 'rxjs'
-import { config$, toggleDebugLogging } from './core/stores/config'
+import { config$, toggleDebugLogging, toggleStartup } from './core/stores/config'
 import log from 'electron-log/main'
+import { IpcChannel } from './ipc-channels'
 
 const logIpc = log.scope('ipc')
-
-export enum IpcChannel {
-  Config = 'Config',
-  ToggleDebugLogging = 'ToggleDebugLogging'
-}
 
 export function startMainToRendererIpc(mainWindow: BrowserWindow): void {
   // Send config updates to renderer.
@@ -21,3 +17,4 @@ export function startMainToRendererIpc(mainWindow: BrowserWindow): void {
 }
 
 ipcMain.on(IpcChannel.ToggleDebugLogging, toggleDebugLogging)
+ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)

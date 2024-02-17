@@ -1,8 +1,9 @@
 export type ConfigStore = {
   deviceId: string
-  isDebugLoggingEnabled: boolean
+  isStartupEnabled: boolean
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
+  isDebugLoggingEnabled: boolean
 }
 
 export type MediaServerConfig = {

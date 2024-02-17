@@ -49,7 +49,8 @@ config$
   )
   .subscribe((isEnabled) => {
     log.transports.file.level = isEnabled ? 'debug' : 'info'
-    logCore.info(`Debug logging is ${isEnabled ? 'on' : 'off'}.`)
+    log.transports.console.level = isEnabled ? 'debug' : 'info'
+    logCore.info(`Debug logging ${isEnabled ? 'enabled' : 'disabled'}.`)
   })
 
 //
