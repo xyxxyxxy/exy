@@ -6,7 +6,7 @@ import { Observable, catchError, map, of, withLatestFrom } from 'rxjs'
 import { getPublicImageLink$ } from './image'
 import { getAlbumImageUrl, getPrimaryImageUrl } from './media-server'
 
-const logActivity = log.scope('discord')
+const logActivity = log.scope('activity')
 
 function getPrimaryImageLink$(
   server: MediaServerConfig,

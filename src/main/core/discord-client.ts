@@ -4,26 +4,22 @@ import {
   BehaviorSubject,
   Observable,
   Subject,
+  Subscription,
   catchError,
   filter,
-  from,
   fromEvent,
   map,
-  of,
-  pairwise,
   retry,
-  startWith,
   switchMap,
   tap,
-  throttleTime,
-  withLatestFrom
+  throttleTime
 } from 'rxjs'
 
 const logDiscord = log.scope('discord')
 
 // Discord application ID.
 const discordApplicationId = '1203674508733714492'
-const retryDelayInSeconds = 10
+const retryDelayInSeconds = 3 // TODO Change to 30
 
 enum ConnectionStatus {
   Disconnected = 'disconnected',
@@ -36,56 +32,79 @@ const connectionStatus: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<
   ConnectionStatus.Disconnected
 )
 
-export const discordConnectedAndReady$: Observable<void> = connectionStatus.pipe(
-  filter((status) => status === 'ready'),
-  tap(() => logDiscord.info('Connected and ready.')),
+let eventSubscriptions: Array<Subscription> = []
+
+connectionStatus.subscribe((status) => logDiscord.info(`Client ${status}.`))
+
+export const discordReady$: Observable<void> = connectionStatus.pipe(
+  filter((status) => status === ConnectionStatus.Ready),
   map(() => void 0)
 )
 
 export const discordDisconnected$: Observable<void> = connectionStatus.pipe(
-  filter((status) => status === 'disconnected'),
-  tap(() => logDiscord.warn('Disconnected.')),
+  filter((status) => status === ConnectionStatus.Disconnected),
   map(() => void 0)
 )
 
-const discordClient$: BehaviorSubject<Client> = new BehaviorSubject<Client>(
-  new Client({ transport: 'ipc' })
-)
+let discordClient: Client | null = null
 
-discordClient$
+// Auto (re)connect.
+discordDisconnected$
   .pipe(
-    startWith(null),
-    pairwise(),
-    // Remove old client properly.
-    switchMap(([previous, current]) => {
-      previous?.removeAllListeners()
+    // Remove old.
+    tap(() => {
+      if (discordClient) {
+        logDiscord.debug(`Removing old client.`)
+        discordClient.removeAllListeners()
+        discordClient.destroy()
+      }
+    }),
+    // Create new clinet. Necessary to reconnect.
+    map(() => {
+      logDiscord.debug(`Creating new client.`)
+      const newClient = new Client({ transport: 'ipc' })
 
-      if (previous) return from(previous.destroy()).pipe(map(() => current))
-      return of(current)
-    }),
-    filter((client): client is Client => !!client),
-    // Register new listeners.
-    tap((newClient) => {
-      ;[ConnectionStatus.Disconnected, ConnectionStatus.Ready].forEach((status) =>
-        fromEvent(newClient, status).subscribe(() => connectionStatus.next(status))
+      // Add event listeners.
+      eventSubscriptions.forEach((subscription) => subscription.unsubscribe())
+      eventSubscriptions = []
+      ;[ConnectionStatus.Ready].forEach((status) =>
+        eventSubscriptions.push(
+          fromEvent(newClient, status).subscribe(() => connectionStatus.next(status))
+        )
       )
+
+      return newClient
     }),
-    // Attempt to connect.
-    switchMap((client) => from(client.login({ clientId: discordApplicationId }))),
+    // Login.
+    switchMap((newClient) => {
+      logDiscord.debug(`Logging into new client.`)
+      return newClient.login({ clientId: discordApplicationId })
+    }),
     catchError((error) => {
-      logDiscord.debug(`Login failed. Retrying in ${retryDelayInSeconds} seconds.`)
+      logDiscord.info(
+        `Failed to connect to new client. Retrying in ${retryDelayInSeconds} seconds.`
+      )
       logDiscord.debug(error)
-      // TODO sometimes getting error RPC_CONNECTION_TIMEOUT form Discord. A Discord restart resolves this.
-      // Probably too many connections opened during development.
-      // See: https://github.com/leonardssh/vscord/issues/194#issuecomment-1496267241
+
+      // if (error.message === 'RPC_CONNECTION_TIMEOUT') // TODO Add additional delay?
       throw error
     }),
     retry({ delay: retryDelayInSeconds * 1000 })
   )
-  .subscribe(() => logDiscord.info('Monitoring connection.'))
+  .subscribe((newClient) => {
+    logDiscord.debug(`Set new client.`)
+
+    // Start listening for disconnect.
+    ;[ConnectionStatus.Disconnected].forEach((status) =>
+      eventSubscriptions.push(
+        fromEvent(newClient, status).subscribe(() => connectionStatus.next(status))
+      )
+    )
+    discordClient = newClient
+  })
 
 export function setActivity(activity: Presence): void {
-  logDiscord.debug(`Schaduling next activity "${activity.details}".`)
+  logDiscord.debug(`Scheduling  next activity "${activity.details}".`)
   activitySource.next(activity)
 }
 
@@ -101,26 +120,27 @@ const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
 const rateLimitThrottleTimeInSeconds = 20 / 5 // 5 Updates per 20 seconds allowed.
 
 // Send activity updates to Discord client.
-activitySource.subscribe((activity) => logDiscord.info(activity))
 activitySource
   .pipe(
     throttleTime(rateLimitThrottleTimeInSeconds * 1000, undefined, {
       leading: true,
       trailing: true
     })
-    // tap((x) => logDiscord.info('x')),
-    // withLatestFrom(discordClient$),
-    // tap(([x, y]) => logDiscord.info('x'))
   )
-  .subscribe((activity) => {
-    if (activity) {
-      // TODO Fix
-      discordClient$.getValue().setActivity(activity)
-      // discordClient.setActivity(activity)
-      logDiscord.debug(`Activity set to "${activity.details}".`)
-    } else {
-      // discordClient.clearActivity()
-      discordClient$.getValue().clearActivity()
-      logDiscord.debug(`Activity cleared.`)
+  .subscribe({
+    next: (activity) => {
+      if (discordClient)
+        if (activity) {
+          logDiscord.debug(`Set activity to "${activity.details}".`)
+          discordClient.setActivity(activity)
+          // TODO Test error handling
+          // throw new Error('TEST')
+        } else {
+          logDiscord.debug(`Clear activity.`)
+          discordClient.clearActivity()
+        }
+    },
+    error: (error) => {
+      logDiscord.error(`Failed to set activity.`, error)
     }
   })

@@ -170,7 +170,6 @@ function getBaseUrl(server: ConnectionDetails): string {
 }
 
 function getAuthenticatedClient$(server: MediaServerConfig): Observable<EmbyClient> {
-  logMediaServer.debug('Creting new Emby client.') // TODO Implement client cache
   return of(
     new EmbyClient({
       BASE: getBaseUrl(server),
