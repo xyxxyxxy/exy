@@ -38,6 +38,12 @@ function getSecondaryImageLink$(
   return of(null)
 }
 
+enum MediaType {
+  Audio = 'Audio',
+  Video = 'Video' // Home video
+  // TODO movies, shows, live TV, pictures, musiVideos, books
+}
+
 export function getActivity$(
   server: MediaServerConfig,
   session: Session_SessionInfo & {
@@ -71,17 +77,20 @@ export function getActivity$(
 
       const isPaused = !!session.PlayState.IsPaused
 
+      // Defaults.
+      // activity.details = item.Name
+      // activity.state = 'test'
+
+      // Set pause state or end time.
       if (isPaused) {
         activity.smallImageKey = `${server.type}-pause`
         activity.smallImageText = 'Paused'
-      }
+      } else activity.endTimestamp = getEndTimestamp(session)
 
-      switch (
-        item.MediaType // TODO movies, shows, live TV, pictures, musiVideos, books
-      ) {
-        case 'Audio': {
-          logActivity.debug('Music activity detected.')
+      logActivity.debug(`Media of type '${item.MediaType}'.`)
 
+      switch (item.MediaType) {
+        case MediaType.Audio: {
           // Collecting.
 
           const song: string = item.Name || ''
@@ -90,10 +99,6 @@ export function getActivity$(
           const artists: Array<string> = item.Artists || []
           const premiereDateString: string = item.PremiereDate || ''
           const album: string = item.Album || ''
-
-          const nowInSeconds = Math.round(Date.now() / 1000)
-          const runtimeTicks: number = item.RunTimeTicks || 0
-          const playPositionTicks: number = session.PlayState.PositionTicks || 0
 
           const musicBrainzAlbumId: string = item.ProviderIds?.MusicBrainzAlbum || ''
 
@@ -132,13 +137,16 @@ export function getActivity$(
           //     nowInSeconds - Math.round(playPositionTicks / 10000 / 1000)
           //   );
 
-          // Set time remaining, if item is not paused.
-          if (!isPaused && runtimeTicks && playPositionTicks)
-            activity.endTimestamp = Math.round(
-              nowInSeconds + Math.round((runtimeTicks - playPositionTicks) / 10000 / 1000)
-            )
-
           activity.buttons = buttons
+          break
+        }
+        case MediaType.Video: {
+          activity.state = `Watching ${item.Name}`
+          // Add creation date.
+          if (item.DateCreated) {
+            const creationDate = new Date(item.DateCreated)
+            activity.largeImageText = `Created ${creationDate.toDateString()}`
+          }
           break
         }
         default: {
@@ -149,6 +157,23 @@ export function getActivity$(
       return sanitize(activity)
     })
   )
+}
+
+function getEndTimestamp(
+  session: Session_SessionInfo & {
+    NowPlayingItem: BaseItemDto
+    PlayState: PlayerStateInfo
+  }
+): number {
+  if (!session.NowPlayingItem.RunTimeTicks)
+    logActivity.warn(`Now playing item has no 'RunTimeTicks'.`)
+  if (!session.PlayState.PositionTicks) logActivity.warn(`Play state has no 'PositionTicks'.`)
+
+  const runtimeTicks: number = session.NowPlayingItem.RunTimeTicks || 0
+  const playPositionTicks: number = session.PlayState.PositionTicks || 0
+
+  const nowInSeconds = Math.round(Date.now() / 1000)
+  return Math.round(nowInSeconds + Math.round((runtimeTicks - playPositionTicks) / 10000 / 1000))
 }
 
 // Ensure compatibility with discord-rpc/Discord.
