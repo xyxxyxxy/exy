@@ -5,7 +5,7 @@ import { ImgurClient } from 'imgur'
 import { createHash } from 'crypto'
 import { cacheImageLink, getCachedImageLink } from './stores/cache'
 
-const logImage = log.scope('image')
+const logImage = log.scope('imgur')
 
 // Image upload to an external service has two main purposes:
 // - Avoid exposing the media-server address through image URLs.
@@ -19,7 +19,7 @@ const logImage = log.scope('image')
 // For example the songs in an album. Each song has the same primary image, but a different item ID in the URL.
 
 // Returns null Imgur client ID is not configured and there was no cache hit.
-export function getPublicImageLink$(sourceUrl: string): Observable<string | null> {
+export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {
   return from(fetch(sourceUrl)).pipe(
     tap((response) => {
       if (response.ok) logImage.debug(`Downloaded image from source "${sourceUrl}".`)
@@ -50,7 +50,7 @@ export function getPublicImageLink$(sourceUrl: string): Observable<string | null
       // Without Imgur client ID no upload is possible.
       if (!config.imgurClientId) {
         logImage.debug('No Imgur client ID configured. Skipping image upload.')
-        return of(null)
+        return of(undefined)
       }
 
       // Upload image to Imgur.

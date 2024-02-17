@@ -2,28 +2,86 @@ import { Presence } from 'discord-rpc'
 import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from './emby-client'
 import log from 'electron-log'
 import { MediaServerConfig } from './stores/config.types'
-import { Observable, catchError, map, of, withLatestFrom } from 'rxjs'
-import { getPublicImageLink$ } from './image'
+import { Observable, catchError, from, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
+import { getImgurLink$ } from './imgur'
 import { getAlbumImageUrl, getPrimaryImageUrl } from './media-server'
 
 const logActivity = log.scope('activity')
 
+enum MediaType {
+  Audio = 'Audio',
+  Video = 'Video' // Home video
+  // TODO movies, shows, live TV, pictures, musiVideos, books
+}
+
+// Enhanced type with some defaults for easier handling.
+type Activity = Presence & { buttons: Array<Button>; largeImageKey: string }
+type Button = { label: string; url: string }
+
+// Merges additional properties into activity.
+function mergeActivity(activity: Activity, addition: Presence): Activity {
+  if (addition.buttons?.length) {
+    activity.buttons.push(...addition.buttons)
+    delete addition.buttons
+  }
+  return { ...activity, ...addition }
+}
+
+// Looks for public images and links for the item.
+// Returns an activity with the available values set.
+const getPubliContent$ = (item: BaseItemDto): Observable<Presence> => {
+  // RegExp detecting if the path includes 'youtube' with a YouTube video ID inside brackets [].
+  // A capture group is used to get the video ID.
+  const youtubeMatch = item.Path?.match(/youtube.*\[([^"&?/\s]{11})\]/i)
+  // TODO Bitchute
+  // TODO Odysee
+
+  if (!youtubeMatch || !youtubeMatch[1]) return of({})
+
+  const youtubeId = youtubeMatch[1]
+
+  const youtubeLink = `https://youtube.com/watch?v=${youtubeId}`
+  const youtubeThumbnailLink = `https://img.youtube.com/vi/${youtubeId}/0.jpg`
+  logActivity.debug(`Got a YouTube match:`, youtubeLink)
+  // Downloading the thumbnail image to confirm the video is still available.
+  return from(fetch(youtubeThumbnailLink)).pipe(
+    tap((response) => {
+      if (!response.ok)
+        throw new Error(
+          `Failed to download image "${youtubeThumbnailLink}". Status: ${response.status} ${response.statusText}`
+        )
+    }),
+    map(() => {
+      return {
+        largeImageKey: youtubeThumbnailLink,
+        buttons: [
+          {
+            label: 'Watch on YouTube',
+            url: youtubeLink
+          }
+        ]
+      }
+    }),
+    catchError(() => of({}))
+  )
+}
+
 function getPrimaryImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
-): Observable<string | null> {
-  return getPublicImageLink$(getPrimaryImageUrl(server, item)).pipe(
+): Observable<string | undefined> {
+  return getImgurLink$(getPrimaryImageUrl(server, item)).pipe(
     catchError((error) => {
       logActivity.warn(`Failed to get primary image link. Trying album image next.`)
       logActivity.debug(error)
 
       // Emby responds with 500 error for primary images of some songs.
       // Fallback to album image.
-      return getPublicImageLink$(getAlbumImageUrl(server, item)).pipe(
+      return getImgurLink$(getAlbumImageUrl(server, item)).pipe(
         catchError((error) => {
           logActivity.warn(`Failed to get album image link. Continueing without primary image.`)
           logActivity.debug(error)
-          return of(null)
+          return of(undefined)
         })
       )
     })
@@ -34,14 +92,8 @@ function getPrimaryImageLink$(
 function getSecondaryImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
-): Observable<string | null> {
-  return of(null)
-}
-
-enum MediaType {
-  Audio = 'Audio',
-  Video = 'Video' // Home video
-  // TODO movies, shows, live TV, pictures, musiVideos, books
+): Observable<string | undefined> {
+  return of(undefined)
 }
 
 export function getActivity$(
@@ -50,29 +102,37 @@ export function getActivity$(
     NowPlayingItem: BaseItemDto
     PlayState: PlayerStateInfo
   }
-  // itemImageUrl: string | null
 ): Observable<Presence> {
   const item = session.NowPlayingItem
 
-  return getPrimaryImageLink$(server, item).pipe(
-    withLatestFrom(getSecondaryImageLink$(server, item)),
-    map(([primaryImageLink, secondaryImageLink]) => {
-      const activity: Presence = {}
-
-      // Set image URLs.
-      if (primaryImageLink) {
-        // Apply item image and media-server image as small image.
-        activity.largeImageKey = primaryImageLink
+  return of<Activity>({
+    // Start with some sensible default values.
+    buttons: [],
+    largeImageKey: server.type
+  }).pipe(
+    switchMap((activity) => {
+      return getPubliContent$(item).pipe(
+        map((publicContent): Activity => mergeActivity(activity, publicContent))
+      )
+    }),
+    switchMap((activity) => {
+      if (activity.largeImageKey !== server.type) return of(activity)
+      else
+        return getPrimaryImageLink$(server, item).pipe(
+          withLatestFrom(getSecondaryImageLink$(server, item)),
+          map(([primaryImageLink, secondaryImageLink]) => {
+            return { largeImageKey: primaryImageLink, smallImageKey: secondaryImageLink }
+          }),
+          map((publicContent) => mergeActivity(activity, publicContent))
+        )
+    }),
+    map((activity) => {
+      // If the large image changed to something else than the server type,
+      // the server type is added as small image.
+      if (activity.largeImageKey !== server.type) {
         activity.smallImageKey = `${server.type}-small`
         activity.smallImageText =
           'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
-      } else {
-        // Apply media-server image as large image.
-        activity.largeImageKey = server.type
-      }
-
-      if (secondaryImageLink) {
-        // TODO
       }
 
       const isPaused = !!session.PlayState.IsPaused
@@ -94,7 +154,7 @@ export function getActivity$(
           // Collecting.
 
           const song: string = item.Name || ''
-          const genres: Array<string> = item.Genres || []
+          // const genres: Array<string> = item.Genres || []
 
           const artists: Array<string> = item.Artists || []
           const premiereDateString: string = item.PremiereDate || ''
@@ -105,26 +165,20 @@ export function getActivity$(
           // Preparing.
           const detailsFields: Array<string> = []
           if (song) detailsFields.push(`Listening to ${song}`)
-          // TODO Put genre somewhere. Probably on large image.
+          // TODO Use to change small image for selected genres.
           // if (genres.length)
           //   detailsFields.push(`[${genres.slice(0, 3).join("|")}]`);
 
           const stateFields: Array<string> = []
           if (artists.length) stateFields.push(`by ${artists.join(', ')}`)
-          // TODO Include release year?
-          // if (premiereDateString)
-          //   stateFields.push(new Date(premiereDateString).getFullYear().toString());
-          // TODO Include album name
-          // if (album) stateFields.push(album);
           if (album) activity.largeImageText = album
           if (premiereDateString)
             activity.largeImageText +=
               ' (' + new Date(premiereDateString).getFullYear().toString() + ')'
 
-          const buttons: Array<{ label: string; url: string }> = []
           if (musicBrainzAlbumId)
-            buttons.push({
-              label: 'Checkout this Album!',
+            activity.buttons.push({
+              label: 'Checkout this Album',
               url: `https://musicbrainz.org/release/${musicBrainzAlbumId}`
             })
 
@@ -136,12 +190,11 @@ export function getActivity$(
           //   activity.startTimestamp = Math.round(
           //     nowInSeconds - Math.round(playPositionTicks / 10000 / 1000)
           //   );
-
-          activity.buttons = buttons
           break
         }
         case MediaType.Video: {
           activity.state = `Watching ${item.Name}`
+
           // Add creation date.
           if (item.DateCreated) {
             const creationDate = new Date(item.DateCreated)
@@ -154,7 +207,11 @@ export function getActivity$(
         }
       }
 
-      return sanitize(activity)
+      const sanitizedActivity: Presence = sanitize(activity)
+
+      logActivity.debug(`Generated activity:`, sanitizedActivity)
+
+      return sanitizedActivity
     })
   )
 }
@@ -177,18 +234,24 @@ function getEndTimestamp(
 }
 
 // Ensure compatibility with discord-rpc/Discord.
-function sanitize(activity: Presence): Presence {
+function sanitize(activity: Activity): Presence {
+  // Shallow copy. Keeping original activity untouched.
+  const result: Presence = { ...activity }
+
   // Empty array leads to error.
-  if (!activity.buttons?.length) delete activity.buttons
+  if (!result.buttons?.length) delete result.buttons
+  if (result.buttons)
+    result.buttons.forEach((button) => (button.label = limitLength(button.label, 32)))
   // String length must be limited.
-  if (activity.details) activity.details = limitLength(activity.details)
-  if (activity.state) activity.state = limitLength(activity.state)
-  return activity
+  if (result.details) result.details = limitLength(result.details)
+  if (result.state) result.state = limitLength(result.state)
+
+  return result
 }
 
 function limitLength(value: string, maxLength = 128): string {
   if (value.length <= maxLength) return value
-  return value.substring(0, maxLength - 3) + '...'
+  return value.substring(0, maxLength - 1) + '…'
 }
 
 //       switch (NPItem.Type) {
