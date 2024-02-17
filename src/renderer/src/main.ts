@@ -1,4 +1,5 @@
-import './assets/main.css'
+// import './assets/main.css' TODO
+import '../../../node_modules/@picocss/pico/css/pico.min.css'
 
 import App from './App.svelte'
 

@@ -11,6 +11,7 @@ function createWindow(): void {
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
+    // icon, // TODO Set icon
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -18,6 +19,7 @@ function createWindow(): void {
   })
 
   mainWindow.on('ready-to-show', () => {
+    // TODO Only if no media-server configured.
     mainWindow.show()
   })
 
@@ -33,6 +35,8 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  startMainToRendererIpc(mainWindow)
 }
 
 // This method will be called when Electron has finished
@@ -49,9 +53,6 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
-
   createWindow()
 
   app.on('activate', function () {
@@ -66,10 +67,21 @@ app.whenReady().then(() => {
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit() // TODO Don't quit. Move to tray instead.
   }
 })
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
 import './core'
+import contextMenu from 'electron-context-menu'
+import log from 'electron-log/main'
+import { startMainToRendererIpc } from './ipc'
+
+const logMain = log.scope('main')
+
+contextMenu({
+  showLookUpSelection: false,
+  showSearchWithGoogle: false,
+  showCopyImage: false
+})

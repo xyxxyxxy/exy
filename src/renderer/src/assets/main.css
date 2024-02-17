@@ -1,4 +1,13 @@
-@import './base.css';
+.media-server-connections {
+  /* this can make emoji appear as icons */
+  background: -webkit-linear-gradient(315deg, #52b54b 45%, #6d7bc6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* @import './base.css';
 
 body {
   display: flex;
@@ -81,7 +90,7 @@ code {
 }
 
 .ts {
-  background: -webkit-linear-gradient(315deg, #3178c6 45%, #f0dc4e);
+  background: -webkit-linear-gradient(315deg, #52b54b, #6d7bc6);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -168,4 +177,4 @@ code {
   .actions {
     display: none;
   }
-}
+} */
