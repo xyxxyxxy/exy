@@ -87,15 +87,6 @@ export const activeMediaServers$: Observable<Array<MediaServerConfig>> = config$
   distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current))
 )
 
-// TODO Move into add form renderer.
-// Compare identifying properties of a media-server.
-function isSameConnection(
-  a: MediaServerConnectionIdentifiers,
-  b: MediaServerConnectionIdentifiers
-): boolean {
-  return a.address === b.address && a.port === b.port && a.username === b.username
-}
-
 export function addMediaServerConfig(newServer: MediaServerConfig): void {
   const mediaServers = [...configStore.get(Selector.MediaServers), newServer]
   configStore.set({ mediaServers })

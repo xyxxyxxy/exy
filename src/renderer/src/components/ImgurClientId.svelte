@@ -37,8 +37,6 @@
     isBusy = false
     isInvalid = !!error
     helperText = error?.message || 'Saved!'
-    // Reset on error.
-    if (error) clientId = config.imgurClientId
   })
 </script>
 
@@ -47,7 +45,7 @@
     Client ID
     <input
       type="text"
-      name="clientId"
+      id="clientId"
       placeholder="none"
       bind:value={clientId}
       disabled={isBusy}
