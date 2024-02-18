@@ -4,8 +4,25 @@ import { config$ } from './stores/config'
 import { ImgurClient } from 'imgur'
 import { createHash } from 'crypto'
 import { cacheImageLink, getCachedImageLink } from './stores/cache'
+import icon from '../../../resources/icon.png?asset'
+import { readFileSync } from 'fs'
 
 const logImage = log.scope('imgur')
+
+export function testImgurClientId$(clientId: string): Observable<unknown> {
+  const client = new ImgurClient({ clientId })
+
+  return from(client.upload({ image: readFileSync(icon) })).pipe(
+    tap((response) => {
+      logImage.debug(response)
+      if (!response.success) throw new Error(`Response status ${response.status}: ${response.data}`)
+    }),
+    // Delete test image.
+    tap((response) => {
+      if (response.data.deletehash) client.deleteImage(response.data.deletehash)
+    })
+  )
+}
 
 // Image upload to an external service has two main purposes:
 // - Avoid exposing the media-server address through image URLs.
@@ -71,7 +88,7 @@ function uploadToImgur$(image: Buffer, clientId: string): Observable<string> {
   return of(new ImgurClient({ clientId })).pipe(
     tap(() => logImage.debug('Uploading Imgur.')),
     // tap(client => client.searchGallery)
-    switchMap((client) => from(client.upload({ image: image }))),
+    switchMap((client) => from(client.upload({ image }))),
     map((response) => response.data.link),
     // While testing the link returned here was a function in case the image download failed.
     // The download issue was fixed and this check is an addition, to throw in such a case.

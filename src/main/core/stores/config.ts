@@ -115,3 +115,7 @@ export function toggleStartup(): void {
 export function toggleDebugLogging(): void {
   configStore.set(Selector.IsDebugLoggingEnabled, !configStore.get(Selector.IsDebugLoggingEnabled))
 }
+
+export function setImgurClientId(clientId: string | null): void {
+  configStore.set(Selector.ImgurClientId, clientId)
+}

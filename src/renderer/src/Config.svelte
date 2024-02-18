@@ -1,20 +1,15 @@
 <script lang="ts">
   import Versions from './components/Versions.svelte'
+  import ImgurClientId, { configUpdate } from './components/ImgurClientId.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import { IpcChannel } from '../../main/ipc.types'
 
   let config: ConfigStore
 
-  let imgurClientId: string
-  let isInvalidImgurClientId: boolean | null = null
-  let isBusyImgurClientId = false
-
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
-    if (config.imgurClientId) {
-      imgurClientId = config.imgurClientId
-    }
+    configUpdate(config)
   })
 
   function toggleStartup(): void {
@@ -24,26 +19,15 @@
   function toggleDebugLogging(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleDebugLogging)
   }
-
-  function changeImgurClientId(): void {
-    isInvalidImgurClientId = null
-  }
-
-  function saveImgurClientId(): void {
-    isInvalidImgurClientId = null
-    isBusyImgurClientId = true
-    window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, imgurClientId)
-
-    // TODO Listen for reply.
-    // TODO Reset on invalid.
-  }
 </script>
 
 {#if config}
   <div class="container">
     <section></section>
+    <h1>⚙️ Configuration</h1>
+
     <section>
-      <h1>⚙️ Configuration</h1>
+      <h4>🌠 General</h4>
 
       <label>
         <input
@@ -56,26 +40,47 @@
 
         Run at startup
       </label>
+    </section>
+    <section>
       <h4>📡 Media-Server Connections</h4>
+    </section>
+    <section>
       <h4>🖼️ Imgur</h4>
-      <p>TODO</p>
-      <form role="group">
-        <input
-          type="text"
-          name="imgurClientId"
-          placeholder="Imgur Client ID"
-          bind:value={imgurClientId}
-          disabled={isBusyImgurClientId}
-          aria-invalid={isInvalidImgurClientId}
-          on:change={changeImgurClientId}
-        />
-        <button
-          type="submit"
-          on:click={saveImgurClientId}
-          aria-busy={isBusyImgurClientId}
-          disabled={isBusyImgurClientId}>Save</button
-        >
-      </form>
+      <div class="grid">
+        <div>
+          <p>
+            Used to make images publicly available while keeping the media-server address private.
+          </p>
+          <details>
+            <summary>❔ How do I get a Client ID</summary>
+            <p>
+              An Imgur account is required. You can create one
+              <a href="https://imgur.com/register" target="_blank">here</a>.
+            </p>
+            <ol>
+              <li>
+                Go to <a href="https://api.imgur.com/oauth2/addclient" target="_blank"
+                  >Register an Application</a
+                >
+              </li>
+              <li>Enter any application name</li>
+              <li>
+                Select authorization type
+                <abbr title="OAuth 2 authorization without a callback URL">without callback</abbr>
+              </li>
+              <li>Enter your email</li>
+              <li>Submit</li>
+            </ol>
+            <p>Your client ID should now be displayed.</p>
+          </details>
+        </div>
+        <div>
+          <ImgurClientId></ImgurClientId>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h4>🪠 Debug</h4>
 
       <label>
         <input

@@ -11,7 +11,7 @@ const logActivity = log.scope('activity')
 enum MediaType {
   Audio = 'Audio',
   Video = 'Video' // Home video
-  // TODO movies, shows, live TV, pictures, musiVideos, books
+  // TODO movies, shows, live TV, pictures, musiVideos
 }
 
 // Enhanced type with some defaults for easier handling.
