@@ -36,7 +36,7 @@
   window.electron.ipcRenderer.on(IpcChannel.SaveImgurClientId, (_, error?: Error) => {
     isBusy = false
     isInvalid = !!error
-    helperText = error?.message || 'Saved!'
+    helperText = error?.message || ''
   })
 </script>
 

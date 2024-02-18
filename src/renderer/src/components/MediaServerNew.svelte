@@ -44,55 +44,53 @@
     ✨ New
   </summary>
   <article>
-    <form on:submit|preventDefault={submit}>
-      <fieldset>
-        <legend>Type</legend>
-        <label for="emby">
-          <input type="radio" id="emby" bind:group={config.type} value="emby" checked />
-          <MediaServerIcon type="emby" /> Emby
-        </label>
-        <label for="jellyfin">
-          <input type="radio" id="jellyfin" bind:group={config.type} value="jellyfin" />
-          <MediaServerIcon type="jellyfin" /> Jellyfin
-        </label>
-      </fieldset>
+    <fieldset>
+      <legend>Type</legend>
+      <label for="emby">
+        <input type="radio" id="emby" bind:group={config.type} value="emby" checked />
+        <MediaServerIcon type="emby" /> Emby
+      </label>
+      <label for="jellyfin">
+        <input type="radio" id="jellyfin" bind:group={config.type} value="jellyfin" />
+        <MediaServerIcon type="jellyfin" /> Jellyfin
+      </label>
+    </fieldset>
 
-      <div class="grid">
-        <label for="protocol"
-          >Protocol
-          <select id="protocol" bind:value={config.protocol} on:change={onProtocolChange}>
-            <option value="http" selected>🔓 HTTP</option>
-            <option value="https">🔒 HTTPS</option>
-          </select>
-        </label>
-        <label for="address"
-          >Address<input type="text" id="address" bind:value={config.address} required />
-        </label>
-        <label for="port"
-          >Port<input type="number" id="port" min="1" bind:value={config.port} required />
-        </label>
-      </div>
+    <div class="grid">
+      <label for="protocol"
+        >Protocol
+        <select id="protocol" bind:value={config.protocol} on:change={onProtocolChange}>
+          <option value="http" selected>🔓 HTTP</option>
+          <option value="https">🔒 HTTPS</option>
+        </select>
+      </label>
+      <label for="address"
+        >Address<input type="text" id="address" bind:value={config.address} required />
+      </label>
+      <label for="port"
+        >Port<input type="number" id="port" min="1" bind:value={config.port} required />
+      </label>
+    </div>
 
-      <div class="grid">
-        <label for="username"
-          >Username<input
-            type="text"
-            id="username"
-            placeholder="Username"
-            bind:value={config.username}
-            required
-          />
-        </label>
-        <label for="password"
-          >Password<input
-            type="password"
-            id="password"
-            placeholder="Password"
-            bind:value={config.password}
-          />
-        </label>
-      </div>
-      <button id="connect-media-server" type="submit">Connect</button>
-    </form>
+    <div class="grid">
+      <label for="username"
+        >Username<input
+          type="text"
+          id="username"
+          placeholder="Username"
+          bind:value={config.username}
+          required
+        />
+      </label>
+      <label for="password"
+        >Password<input
+          type="password"
+          id="password"
+          placeholder="Password"
+          bind:value={config.password}
+        />
+      </label>
+    </div>
+    <button id="connect-media-server" type="submit">Connect</button>
   </article>
 </details>

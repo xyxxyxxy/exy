@@ -2,7 +2,7 @@
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
 
-  export let serverConfig: MediaServerConfig
+  export let config: MediaServerConfig
 
   function toggleActive(): void {
     // TODO
@@ -11,30 +11,30 @@
 
 <details>
   <!-- svelte-ignore a11y-no-redundant-roles -->
-  <summary role="button">
-    <!-- TODO open automatically if there are no servers configured -->
-    <MediaServerIcon type={serverConfig.type} />
+  <summary role="button" class:secondary={!config.isActive} class:outline={!config.isActive}>
+    <MediaServerIcon type={config.type} />
     <span class="title">
-      {serverConfig.protocol}://{serverConfig.address}:{serverConfig.port} ({serverConfig.username})</span
+      {config.protocol}://{config.address}:{config.port} ({config.username})</span
     >
   </summary>
-  <!-- TODO Put into card -->
-  <section>
-    <label for="isActive">
-      <input
-        id="isActive"
-        type="checkbox"
-        role="switch"
-        checked={serverConfig.isActive}
-        on:click|preventDefault={toggleActive}
-      />
-      Active
-    </label>
+  <article>
+    <section>
+      <label for="isActive">
+        <input
+          id="isActive"
+          type="checkbox"
+          role="switch"
+          checked={config.isActive}
+          on:click|preventDefault={toggleActive}
+        />
+        Active
+      </label>
+    </section>
     <div class="grid">
       <button class="outline secondary">Disconnect</button>
       <button class="secondary">Test Connection</button>
     </div>
-  </section>
+  </article>
 
   TODO list libraries. TODO allow ignored words
 </details>
