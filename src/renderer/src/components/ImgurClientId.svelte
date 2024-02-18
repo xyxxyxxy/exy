@@ -42,20 +42,20 @@
   })
 </script>
 
-<!-- <form role="group"> -->
-<label for="clientId">
-  Client ID
-  <input
-    type="text"
-    name="clientId"
-    placeholder="none"
-    bind:value={clientId}
-    disabled={isBusy}
-    aria-invalid={isInvalid}
-    aria-describedby="helper"
-    on:input={onInput}
-  />
-  <small id="helper">{helperText}</small></label
->
-<button type="submit" on:click={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
-<!-- </form> -->
+<form>
+  <label for="clientId">
+    Client ID
+    <input
+      type="text"
+      name="clientId"
+      placeholder="none"
+      bind:value={clientId}
+      disabled={isBusy}
+      aria-invalid={isInvalid}
+      aria-describedby="helper"
+      on:input={onInput}
+    />
+    <small id="helper">{helperText}</small></label
+  >
+  <button type="submit" on:click={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
+</form>
