@@ -10,7 +10,6 @@
   let connectionHelperText = ''
   let authenticationHelperText = ''
 
-  // TODO Set to default
   let config: NewMediaServerConfig = {
     type: 'emby',
     protocol: 'http',
@@ -20,9 +19,19 @@
     password: ''
   }
 
+  function resetValidation(): void {
+    isInvalidConnection = null
+    isInvalidAuthentication = null
+    connectionHelperText = ''
+    authenticationHelperText = ''
+  }
+
   function submit(): void {
+    isBusy = true
+    resetValidation()
     console.log(config)
-    // TODO
+    // TODO Remove invalid state on input.
+    // TODO submit
   }
 
   // TODO
@@ -61,6 +70,7 @@
           bind:group={config.type}
           value="emby"
           disabled={isBusy}
+          on:input={resetValidation}
           checked
         />
         <MediaServerIcon type="emby" /> Emby
@@ -72,6 +82,7 @@
           bind:group={config.type}
           value="jellyfin"
           disabled={isBusy}
+          on:input={resetValidation}
         />
         <MediaServerIcon type="jellyfin" /> Jellyfin
       </label>
@@ -84,6 +95,7 @@
             bind:value={config.protocol}
             on:change={onProtocolChange}
             disabled={isBusy}
+            on:input={resetValidation}
             aria-invalid={isInvalidConnection}
           >
             <option value="http" selected>🔓 HTTP</option>
@@ -97,6 +109,7 @@
             bind:value={config.address}
             required
             disabled={isBusy}
+            on:input={resetValidation}
             aria-invalid={isInvalidConnection}
           />
         </label>
@@ -108,6 +121,7 @@
             bind:value={config.port}
             required
             disabled={isBusy}
+            on:input={resetValidation}
             aria-invalid={isInvalidConnection}
           />
         </label>
@@ -130,6 +144,7 @@
             bind:value={config.username}
             required
             disabled={isBusy}
+            on:input={resetValidation}
             aria-invalid={isInvalidAuthentication}
           />
         </label>
@@ -140,6 +155,7 @@
             placeholder="Password"
             bind:value={config.password}
             disabled={isBusy}
+            on:input={resetValidation}
             aria-invalid={isInvalidAuthentication}
           />
         </label>

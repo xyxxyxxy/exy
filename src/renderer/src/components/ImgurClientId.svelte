@@ -19,18 +19,14 @@
   let isInvalid: boolean | null = null
   let helperText: string = ''
 
-  function errorReset(): void {
+  function resetValidation(): void {
     isInvalid = null
     helperText = ''
   }
 
-  function onInput(): void {
-    errorReset()
-  }
-
   function save(): void {
     isBusy = true
-    errorReset()
+    resetValidation()
     window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, clientId)
   }
   window.electron.ipcRenderer.on(IpcChannel.SaveImgurClientId, (_, error?: Error) => {
@@ -51,7 +47,7 @@
       disabled={isBusy}
       aria-invalid={isInvalid}
       aria-describedby="helper"
-      on:input={onInput}
+      on:input={resetValidation}
     />
     <small id="helper">{helperText}</small></label
   >
