@@ -4,7 +4,7 @@
 /* eslint-disable */
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
 import type { OpenAPIConfig } from './core/OpenAPI';
-import { FetchHttpRequest } from './core/FetchHttpRequest';
+import { AxiosHttpRequest } from './core/AxiosHttpRequest';
 import { ActivityLogServiceService } from './services/ActivityLogServiceService';
 import { ArtistsServiceService } from './services/ArtistsServiceService';
 import { AudioServiceService } from './services/AudioServiceService';
@@ -142,7 +142,7 @@ export class EmbyClient {
     public readonly videoService: VideoServiceService;
     public readonly videosService: VideosServiceService;
     public readonly request: BaseHttpRequest;
-    constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = FetchHttpRequest) {
+    constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = AxiosHttpRequest) {
         this.request = new HttpRequest({
             BASE: config?.BASE ?? 'https://home.ourflix.de:32865/emby',
             VERSION: config?.VERSION ?? '4.1.1.0',
