@@ -2,6 +2,14 @@
   import type { NewMediaServerConfig } from '../../../main/ipc.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
 
+  let isBusy = false
+
+  let isInvalidConnection: boolean | null = null
+  let isInvalidAuthentication: boolean | null = null
+
+  let connectionHelperText = ''
+  let authenticationHelperText = ''
+
   // TODO Set to default
   let config: NewMediaServerConfig = {
     type: 'emby',
@@ -44,53 +52,107 @@
     ✨ New
   </summary>
   <article>
-    <fieldset>
+    <form on:submit|preventDefault={submit}>
       <legend>Type</legend>
       <label for="emby">
-        <input type="radio" id="emby" bind:group={config.type} value="emby" checked />
+        <input
+          type="radio"
+          id="emby"
+          bind:group={config.type}
+          value="emby"
+          disabled={isBusy}
+          checked
+        />
         <MediaServerIcon type="emby" /> Emby
       </label>
       <label for="jellyfin">
-        <input type="radio" id="jellyfin" bind:group={config.type} value="jellyfin" />
+        <input
+          type="radio"
+          id="jellyfin"
+          bind:group={config.type}
+          value="jellyfin"
+          disabled={isBusy}
+        />
         <MediaServerIcon type="jellyfin" /> Jellyfin
       </label>
-    </fieldset>
 
-    <div class="grid">
-      <label for="protocol"
-        >Protocol
-        <select id="protocol" bind:value={config.protocol} on:change={onProtocolChange}>
-          <option value="http" selected>🔓 HTTP</option>
-          <option value="https">🔒 HTTPS</option>
-        </select>
-      </label>
-      <label for="address"
-        >Address<input type="text" id="address" bind:value={config.address} required />
-      </label>
-      <label for="port"
-        >Port<input type="number" id="port" min="1" bind:value={config.port} required />
-      </label>
-    </div>
+      <div class="grid">
+        <label for="protocol"
+          >Protocol
+          <select
+            id="protocol"
+            bind:value={config.protocol}
+            on:change={onProtocolChange}
+            disabled={isBusy}
+            aria-invalid={isInvalidConnection}
+          >
+            <option value="http" selected>🔓 HTTP</option>
+            <option value="https">🔒 HTTPS</option>
+          </select>
+        </label>
+        <label for="address"
+          >Address<input
+            type="text"
+            id="address"
+            bind:value={config.address}
+            required
+            disabled={isBusy}
+            aria-invalid={isInvalidConnection}
+          />
+        </label>
+        <label for="port"
+          >Port<input
+            type="number"
+            id="port"
+            min="1"
+            bind:value={config.port}
+            required
+            disabled={isBusy}
+            aria-invalid={isInvalidConnection}
+          />
+        </label>
+      </div>
 
-    <div class="grid">
-      <label for="username"
-        >Username<input
-          type="text"
-          id="username"
-          placeholder="Username"
-          bind:value={config.username}
-          required
-        />
-      </label>
-      <label for="password"
-        >Password<input
-          type="password"
-          id="password"
-          placeholder="Password"
-          bind:value={config.password}
-        />
-      </label>
-    </div>
-    <button id="connect-media-server" type="submit">Connect</button>
+      <!-- Helper input to display the helper text independent of the inputs above. -->
+      <input
+        style="display: none;"
+        aria-invalid={isInvalidConnection}
+        aria-describedby="connection-helper"
+      />
+      <small id="connection-helper">{connectionHelperText}</small>
+
+      <div class="grid">
+        <label for="username"
+          >Username<input
+            type="text"
+            id="username"
+            placeholder="Username"
+            bind:value={config.username}
+            required
+            disabled={isBusy}
+            aria-invalid={isInvalidAuthentication}
+          />
+        </label>
+        <label for="password"
+          >Password<input
+            type="password"
+            id="password"
+            placeholder="Password"
+            bind:value={config.password}
+            disabled={isBusy}
+            aria-invalid={isInvalidAuthentication}
+          />
+        </label>
+      </div>
+      <!-- Helper input to display the helper text independent of the inputs above. -->
+      <input
+        style="display: none;"
+        aria-invalid={isInvalidAuthentication}
+        aria-describedby="authentication-helper"
+      />
+      <small id="authentication-helper">{authenticationHelperText}</small>
+
+      <button id="connect-media-server" type="submit">Connect</button>
+    </form>
   </article>
 </details>
