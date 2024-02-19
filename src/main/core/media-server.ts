@@ -26,7 +26,7 @@ import {
 
 const logMediaServer = log.scope('media-server')
 
-export function testNewconnection$(
+export function authenticate$(
   connectionDetails: Pick<MediaServerConfig, 'protocol' | 'address' | 'port' | 'username'> & {
     username: string
     password: string
@@ -48,7 +48,7 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
   return getAuthenticatedClient$(server).pipe(
     switchMap(
       // Testing system info endpoint, since it requires authentication.
-      (client) => from(client.systemService.getSystemInfo())
+      (client) => client.systemService.getSystemInfo()
     )
   )
 }
@@ -56,14 +56,14 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
 // TODO Logout on config removal.
 export function logout$(server: MediaServerConfig): Observable<void> {
   return getAuthenticatedClient$(server).pipe(
-    switchMap((client) => from(client.sessionsService.postSessionsLogout()))
+    switchMap((client) => client.sessionsService.postSessionsLogout())
   )
 }
 
 // Returns the first now playing session of a media-server.
 function getNowPlayingSessions$(server: MediaServerConfig): Observable<Array<Session_SessionInfo>> {
   return getAuthenticatedClient$(server).pipe(
-    switchMap((client) => from(client.sessionsService.getSessions(server.userId))),
+    switchMap((client) => client.sessionsService.getSessions(server.userId)),
     // Get all sessions with now playing items.
     map((sessions) => sessions.filter((session) => session.NowPlayingItem))
   )

@@ -1,11 +1,16 @@
 <script lang="ts">
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
+  import { IpcChannel } from '../../../main/ipc.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
 
   export let config: MediaServerConfig
 
   function toggleActive(): void {
     // TODO
+  }
+
+  function disconnect(): void {
+    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, config)
   }
 </script>
 
@@ -31,7 +36,7 @@
       </label>
     </section>
     <div class="grid">
-      <button class="outline secondary">Disconnect</button>
+      <button class="outline secondary" on:click={disconnect}>Disconnect</button>
       <button class="secondary">Test Connection</button>
     </div>
   </article>

@@ -198,6 +198,7 @@ export function getActivity$(
           // Add creation date.
           if (item.DateCreated) {
             const creationDate = new Date(item.DateCreated)
+            // TODO Wrong on shows.
             activity.largeImageText = `Created ${creationDate.toDateString()}`
           }
           break

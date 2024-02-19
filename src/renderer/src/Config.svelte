@@ -7,10 +7,12 @@
   import MediaServerNew from './components/MediaServerNew.svelte'
 
   let config: ConfigStore
+  let hasMediaServers: boolean
 
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
+    hasMediaServers = !!config.mediaServers.length
     configUpdate(config)
   })
 
@@ -49,7 +51,7 @@
       {#each config.mediaServers as serverConfig}
         <MediaServer config={serverConfig} />
       {/each}
-      <MediaServerNew />
+      <MediaServerNew open={!hasMediaServers} />
     </section>
     <section>
       <h4>🖼️ Imgur</h4>

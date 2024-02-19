@@ -87,15 +87,24 @@ export const activeMediaServers$: Observable<Array<MediaServerConfig>> = config$
   distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current))
 )
 
+export function isConnectionConfigured(connection: MediaServerConnectionIdentifiers): boolean {
+  return configStore
+    .get(Selector.MediaServers)
+    .some(
+      (server) =>
+        server.address === connection.address &&
+        server.port === connection.port &&
+        server.username === connection.username
+    )
+}
+
 export function addMediaServerConfig(newServer: MediaServerConfig): void {
   const mediaServers = [...configStore.get(Selector.MediaServers), newServer]
   configStore.set({ mediaServers })
 }
 
 export function deleteMediaServerConfig(id: string): void {
-  const mediaServers = configStore
-    .get(Selector.MediaServers)
-    .filter((server) => server.serverId !== id)
+  const mediaServers = configStore.get(Selector.MediaServers).filter((server) => server.id !== id)
   configStore.set({ mediaServers })
 }
 

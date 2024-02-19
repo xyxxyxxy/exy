@@ -1,14 +1,15 @@
 <script lang="ts">
-  import type { NewMediaServerConfig } from '../../../main/ipc.types'
+  import type { NewMediaServerConfig, ConnectionErrorInfo } from '../../../main/ipc.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
+  import { IpcChannel } from '../../../main/ipc.types'
 
+  export let open
   let isBusy = false
 
   let isInvalidConnection: boolean | null = null
   let isInvalidAuthentication: boolean | null = null
 
-  let connectionHelperText = ''
-  let authenticationHelperText = ''
+  let helperText = ''
 
   let config: NewMediaServerConfig = {
     type: 'emby',
@@ -22,26 +23,39 @@
   function resetValidation(): void {
     isInvalidConnection = null
     isInvalidAuthentication = null
-    connectionHelperText = ''
-    authenticationHelperText = ''
+    helperText = ''
   }
 
   function submit(): void {
     isBusy = true
     resetValidation()
-    console.log(config)
-    // TODO Remove invalid state on input.
-    // TODO submit
+    window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, config)
   }
+  window.electron.ipcRenderer.on(IpcChannel.ConnectMediaServer, (_, error: ConnectionErrorInfo) => {
+    isBusy = false
+    if (error) {
+      console.log(error)
 
-  // TODO
-  // Compare identifying properties of a media-server.
-  // function isSameConnection(
-  //   a: MediaServerConnectionIdentifiers,
-  //   b: MediaServerConnectionIdentifiers
-  // ): boolean {
-  //   return a.address === b.address && a.port === b.port && a.username === b.username
-  // }
+      // Default feedback.
+      isInvalidConnection = true
+      isInvalidAuthentication = true
+      helperText = error.message
+
+      // Specify feedback.
+      if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT'].includes(error.code)) {
+        isInvalidAuthentication = null
+
+        // Provide some friendlier error messages.
+        if (error.code === 'ENOTFOUND') helperText = 'Unable to connect. Address not found.'
+        if (error.code === 'ECONNREFUSED') helperText = 'Unable to connect. Connection refused.'
+        if (error.code === 'ETIMEDOUT') helperText = 'Unable to connect. Timeout.'
+      }
+      if (error.status === 401) {
+        isInvalidConnection = null
+      }
+    } else open = false
+    // TODO make sure new added server is opened
+  })
 
   function onProtocolChange(): void {
     const defaultPort = config.protocol === 'https' ? 443 : 8096
@@ -54,7 +68,7 @@
   }
 </script>
 
-<details>
+<details {open}>
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="outline">
     <!-- TODO open automatically if there are no servers configured -->
@@ -127,14 +141,6 @@
         </label>
       </div>
 
-      <!-- Helper input to display the helper text independent of the inputs above. -->
-      <input
-        style="display: none;"
-        aria-invalid={isInvalidConnection}
-        aria-describedby="connection-helper"
-      />
-      <small id="connection-helper">{connectionHelperText}</small>
-
       <div class="grid">
         <label for="username"
           >Username<input
@@ -160,15 +166,16 @@
           />
         </label>
       </div>
+
       <!-- Helper input to display the helper text independent of the inputs above. -->
       <input
         style="display: none;"
-        aria-invalid={isInvalidAuthentication}
-        aria-describedby="authentication-helper"
+        aria-invalid={isInvalidConnection || isInvalidAuthentication}
+        aria-describedby="helper"
       />
-      <small id="authentication-helper">{authenticationHelperText}</small>
+      <small id="helper">{helperText}</small>
 
-      <button id="connect-media-server" type="submit">Connect</button>
+      <button id="connect-media-server" type="submit" aria-busy={isBusy}>Connect</button>
     </form>
   </article>
 </details>
