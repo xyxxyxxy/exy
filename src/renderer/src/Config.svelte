@@ -47,7 +47,7 @@
     <section>
       <h4>📡 Media-Server Connections</h4>
 
-      {#each config.mediaServers as serverConfig}
+      {#each config.mediaServers as serverConfig (serverConfig.id)}
         <MediaServer config={serverConfig} />
       {/each}
       <MediaServerNew open={!hasMediaServers} />

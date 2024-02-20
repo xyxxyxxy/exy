@@ -63,6 +63,7 @@ export enum Selector {
   ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'
 }
+
 const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject<
   Readonly<ConfigStore>
 >({
@@ -86,16 +87,12 @@ export const activeMediaServers$: Observable<Array<MediaServerConfig>> = config$
   map((config) => config.mediaServers.filter((server) => server.isActive)),
   distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current))
 )
-
+// Checks if a connection with matching protocol, address and port is already configured.
+// Username is ignored, since a new connection from the same client with a different username will invalidate the previous session.
 export function isConnectionConfigured(connection: MediaServerConnectionIdentifiers): boolean {
   return configStore
     .get(Selector.MediaServers)
-    .some(
-      (server) =>
-        server.address === connection.address &&
-        server.port === connection.port &&
-        server.username === connection.username
-    )
+    .some((server) => server.address === connection.address && server.port === connection.port)
 }
 
 export function addMediaServerConfig(newServer: MediaServerConfig): void {

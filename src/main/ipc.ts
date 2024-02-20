@@ -1,5 +1,5 @@
 import { BrowserWindow, ipcMain } from 'electron'
-import { fromEvent, switchMap } from 'rxjs'
+import { finalize, fromEvent, switchMap } from 'rxjs'
 import {
   addMediaServerConfig,
   config$,
@@ -35,14 +35,12 @@ export function startMainToRendererIpc(mainWindow: BrowserWindow): void {
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
-  // Deactivate.
-  deavtivateMediaServer(config.id)
-  // Logout and delete config.
-  logout$(config).subscribe({
-    next: () => logIpc.debug(`Successfully logged out.`),
-    error: (error) => logIpc.warn(`Error while trying to logout.`, error),
-    complete: () => deleteMediaServerConfig(config.id)
-  })
+  logout$(config)
+    .pipe(finalize(() => deleteMediaServerConfig(config.id)))
+    .subscribe({
+      next: () => logIpc.debug(`Successfully logged out.`),
+      error: (error) => logIpc.warn(`Error while trying to logout.`, error)
+    })
 })
 ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
   logIpc.debug(`Testing media-server connection to '${config.address}'.`)

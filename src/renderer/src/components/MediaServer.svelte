@@ -54,9 +54,7 @@
       isBusyTesting = false
       isTested = true
       testSuccessText = getRandomSuccessText()
-      console.log(error)
       testError = error
-      // TODO
     }
   )
 
@@ -107,7 +105,6 @@
         <span aria-busy={isBusyTesting}>Testing...</span>
       {/if}
     </div>
-    <hr />
     <div class="grid">
       <button
         type="button"
