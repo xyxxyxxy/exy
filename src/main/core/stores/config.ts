@@ -103,9 +103,27 @@ export function addMediaServerConfig(newServer: MediaServerConfig): void {
   configStore.set({ mediaServers })
 }
 
+export function deavtivateMediaServer(id: string): void {
+  const mediaServers = configStore.get(Selector.MediaServers)
+  mediaServers.forEach((server) => {
+    if (server.id === id) server.isActive = false
+  })
+
+  configStore.set(Selector.MediaServers, mediaServers)
+}
+
+export function toggleMediaServerActive(id: string): void {
+  const mediaServers = configStore.get(Selector.MediaServers)
+  mediaServers.forEach((server) => {
+    if (server.id === id) server.isActive = !server.isActive
+  })
+
+  configStore.set(Selector.MediaServers, mediaServers)
+}
+
 export function deleteMediaServerConfig(id: string): void {
   const mediaServers = configStore.get(Selector.MediaServers).filter((server) => server.id !== id)
-  configStore.set({ mediaServers })
+  configStore.set(Selector.MediaServers, mediaServers)
 }
 
 export function toggleStartup(): void {

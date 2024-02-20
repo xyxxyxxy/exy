@@ -3,14 +3,16 @@ import { fromEvent, switchMap } from 'rxjs'
 import {
   addMediaServerConfig,
   config$,
+  deavtivateMediaServer,
   deleteMediaServerConfig,
   isConnectionConfigured,
   setImgurClientId,
   toggleDebugLogging,
+  toggleMediaServerActive,
   toggleStartup
 } from './core/stores/config'
 import log from 'electron-log/main'
-import { IpcChannel, NewMediaServerConfig, ConnectionError } from './ipc.types'
+import { IpcChannel, NewMediaServerConfig } from './ipc.types'
 import { testImgurClientId$ } from './core/imgur'
 import { authenticate$, logout$ } from './core/media-server'
 import { randomUUID } from 'crypto'
@@ -31,12 +33,19 @@ export function startMainToRendererIpc(mainWindow: BrowserWindow): void {
 }
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
+ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
-  deleteMediaServerConfig(config.id)
+  // Deactivate.
+  deavtivateMediaServer(config.id)
+  // Logout and delete config.
   logout$(config).subscribe({
     next: () => logIpc.debug(`Successfully logged out.`),
-    error: (error) => logIpc.warn(`Error while trying to logout.`, error)
+    error: (error) => logIpc.warn(`Error while trying to logout.`, error),
+    complete: () => deleteMediaServerConfig(config.id)
   })
+})
+ipcMain.on(IpcChannel.TestMediaServer, (_, config: MediaServerConfig) => {
+  // TODO
 })
 
 ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) => {
@@ -52,14 +61,15 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
   authenticate$(config).subscribe({
     next: (result: Authentication_AuthenticationResult) => {
       logIpc.info(`New media-server config is valid.`)
-      event.sender.send(IpcChannel.ConnectMediaServer)
 
       const serverId = result.ServerId
       const userId = result.User?.Id
       const accessToken = result.AccessToken
 
       if (!serverId || !userId || !accessToken)
-        throw new Error(`Connected successfully, but response does not include expected data.`)
+        return event.sender.send(IpcChannel.ConnectMediaServer, {
+          message: 'Error. Media-server response does not include expected data.'
+        })
 
       addMediaServerConfig({
         id: randomUUID(),
@@ -74,6 +84,8 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
         username: config.username,
         ignoredLibraryIds: []
       })
+
+      event.sender.send(IpcChannel.ConnectMediaServer)
     },
     error: (error: AxiosError<Authentication_AuthenticationResult>) => {
       logIpc.info(`New media-server config is invalid.`, error)

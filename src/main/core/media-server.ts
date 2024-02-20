@@ -3,7 +3,6 @@ import {
   catchError,
   distinctUntilChanged,
   forkJoin,
-  from,
   iif,
   map,
   of,
@@ -53,7 +52,6 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
   )
 }
 
-// TODO Logout on config removal.
 export function logout$(server: MediaServerConfig): Observable<void> {
   return getAuthenticatedClient$(server).pipe(
     switchMap((client) => client.sessionsService.postSessionsLogout())
@@ -79,10 +77,11 @@ export function getNowPlaying$(servers: Array<MediaServerConfig>): Observable<{
   return forkJoin(
     servers.map((server) =>
       getNowPlayingSessions$(server).pipe(
-        // Pass error to outer observable to not block the forkJoin.
         catchError((error) => {
-          // TODO Handle
-          logMediaServer.error('ERR1', error)
+          logMediaServer.warn(
+            'Failed to get now playing sessions of server with ID `${server.id}`.',
+            error
+          )
           return of([])
         })
       )
@@ -132,7 +131,7 @@ export function getNowPlaying$(servers: Array<MediaServerConfig>): Observable<{
     ),
 
     catchError((error) => {
-      logMediaServer.error('ERR2', error)
+      logMediaServer.error('Error while getting now playing sessions.', error)
       return of({})
     })
   )

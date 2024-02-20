@@ -1,29 +1,38 @@
 <script lang="ts">
-  import type { NewMediaServerConfig, ConnectionErrorInfo } from '../../../main/ipc.types'
+  import type { NewMediaServerConfig, ConnectMediaServerError } from '../../../main/ipc.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
   import { IpcChannel } from '../../../main/ipc.types'
+  import MediaServerError from './MediaServerError.svelte'
 
-  export let open
+  export let open: boolean
   let isBusy = false
 
   let isInvalidConnection: boolean | null = null
   let isInvalidAuthentication: boolean | null = null
 
-  let helperText = ''
+  let config: NewMediaServerConfig
+  let connectionError: ConnectMediaServerError
 
-  let config: NewMediaServerConfig = {
-    type: 'emby',
-    protocol: 'http',
-    address: 'localhost',
-    port: 8096,
-    username: '',
-    password: ''
+  reset()
+
+  function reset(): void {
+    config = getDefault()
+  }
+
+  function getDefault(): NewMediaServerConfig {
+    return {
+      type: 'emby',
+      protocol: 'http',
+      address: 'localhost',
+      port: 8096,
+      username: '',
+      password: ''
+    }
   }
 
   function resetValidation(): void {
     isInvalidConnection = null
     isInvalidAuthentication = null
-    helperText = ''
   }
 
   function submit(): void {
@@ -31,31 +40,31 @@
     resetValidation()
     window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, config)
   }
-  window.electron.ipcRenderer.on(IpcChannel.ConnectMediaServer, (_, error: ConnectionErrorInfo) => {
-    isBusy = false
-    if (error) {
-      console.log(error)
+  window.electron.ipcRenderer.on(
+    IpcChannel.ConnectMediaServer,
+    (_, error?: ConnectMediaServerError) => {
+      isBusy = false
+      connectionError = error
 
-      // Default feedback.
-      isInvalidConnection = true
-      isInvalidAuthentication = true
-      helperText = error.message
+      // On error.
+      if (error) {
+        // Default feedback.
+        isInvalidConnection = true
+        isInvalidAuthentication = true
 
-      // Specify feedback.
-      if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT'].includes(error.code)) {
-        isInvalidAuthentication = null
-
-        // Provide some friendlier error messages.
-        if (error.code === 'ENOTFOUND') helperText = 'Unable to connect. Address not found.'
-        if (error.code === 'ECONNREFUSED') helperText = 'Unable to connect. Connection refused.'
-        if (error.code === 'ETIMEDOUT') helperText = 'Unable to connect. Timeout.'
+        // Specify feedback.
+        if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT'].includes(error.code)) {
+          isInvalidAuthentication = null
+        }
+        if (error.status === 401) {
+          isInvalidConnection = null
+        }
+      } else {
+        open = null
+        reset()
       }
-      if (error.status === 401) {
-        isInvalidConnection = null
-      }
-    } else open = false
-    // TODO make sure new added server is opened
-  })
+    }
+  )
 
   function onProtocolChange(): void {
     const defaultPort = config.protocol === 'https' ? 443 : 8096
@@ -166,14 +175,7 @@
           />
         </label>
       </div>
-
-      <!-- Helper input to display the helper text independent of the inputs above. -->
-      <input
-        style="display: none;"
-        aria-invalid={isInvalidConnection || isInvalidAuthentication}
-        aria-describedby="helper"
-      />
-      <small id="helper">{helperText}</small>
+      <MediaServerError error={connectionError} />
 
       <button id="connect-media-server" type="submit" aria-busy={isBusy}>Connect</button>
     </form>

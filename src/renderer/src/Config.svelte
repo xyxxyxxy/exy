@@ -12,8 +12,8 @@
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
-    hasMediaServers = !!config.mediaServers.length
     configUpdate(config)
+    hasMediaServers = !!newConfig.mediaServers.length
   })
 
   function toggleStartup(): void {

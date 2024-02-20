@@ -1,17 +1,32 @@
 <script lang="ts">
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
-  import { IpcChannel } from '../../../main/ipc.types'
+  import { IpcChannel, type ConnectMediaServerError } from '../../../main/ipc.types'
   import MediaServerIcon from './MediaServerIcon.svelte'
 
   export let config: MediaServerConfig
+  let isBusy = false
 
   function toggleActive(): void {
-    // TODO
+    window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, config.id)
   }
 
   function disconnect(): void {
+    isBusy = true
     window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, config)
   }
+
+  function test(): void {
+    // TODO Automatically test all on config open?
+    isBusy = true
+    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, config)
+  }
+  window.electron.ipcRenderer.on(
+    IpcChannel.TestMediaServer,
+    (_, error: ConnectMediaServerError) => {
+      console.log(error)
+      // TODO
+    }
+  )
 </script>
 
 <details>
@@ -31,13 +46,14 @@
           role="switch"
           checked={config.isActive}
           on:click|preventDefault={toggleActive}
+          disabled={isBusy}
         />
         Active
       </label>
     </section>
     <div class="grid">
-      <button class="outline secondary" on:click={disconnect}>Disconnect</button>
-      <button class="secondary">Test Connection</button>
+      <button class="outline secondary" on:click={disconnect} aria-busy={isBusy}>Disconnect</button>
+      <button class="secondary" on:click={test} aria-busy={isBusy}>Test Connection</button>
     </div>
   </article>
 

@@ -6,7 +6,10 @@ export enum IpcChannel {
   ToggleDebugLogging = 'ToggleDebugLogging',
   SaveImgurClientId = 'SaveImgurClientId',
   ConnectMediaServer = 'ConnectMediaServer',
-  DisconnectMediaServer = 'DisconnectMediaServer'
+  NewMediaServerId = 'NewMediaServerId',
+  ToggleMediaServerActive = 'ToggleMediaServerActive',
+  DisconnectMediaServer = 'DisconnectMediaServer',
+  TestMediaServer = 'TestMediaServer'
 }
 
 // Initial configuration used to generate a new media-server config.
@@ -15,7 +18,7 @@ export type NewMediaServerConfig = Pick<
   'type' | 'protocol' | 'address' | 'port' | 'username'
 > & { password: string } // Password can be empty string, since it is optional.
 
-export type ConnectionErrorInfo = {
+export type ConnectMediaServerError = {
   message: string
   code?: string
   status?: number
