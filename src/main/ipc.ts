@@ -14,7 +14,7 @@ import {
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
 import { testImgurClientId$ } from './core/imgur'
-import { authenticate$, logout$ } from './core/media-server'
+import { authenticate$, logout$, testConnection$ } from './core/media-server'
 import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
@@ -44,8 +44,24 @@ ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
     complete: () => deleteMediaServerConfig(config.id)
   })
 })
-ipcMain.on(IpcChannel.TestMediaServer, (_, config: MediaServerConfig) => {
-  // TODO
+ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
+  logIpc.debug(`Testing media-server connection to '${config.address}'.`)
+  const responseChannel = IpcChannel.TestMediaServer + config.id
+
+  testConnection$(config).subscribe({
+    next: () => {
+      logIpc.debug(`Test successful.`)
+      event.sender.send(responseChannel)
+    },
+    error: (error: AxiosError<Authentication_AuthenticationResult>) => {
+      logIpc.debug(`Test failed.`, error)
+      event.sender.send(responseChannel, {
+        code: error.code,
+        status: error.status,
+        message: error.toString()
+      })
+    }
+  })
 })
 
 ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) => {
@@ -105,6 +121,7 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
     return
   }
 
+  // TODO Even with invalid client ID the upload seems to work. Not sure what is going on here.
   logIpc.info(`Testing Imgur client ID.`, clientId)
   testImgurClientId$(clientId).subscribe({
     next: () => {

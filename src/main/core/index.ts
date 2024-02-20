@@ -69,7 +69,6 @@ discordReady$
     switchMap((config) =>
       // Get now playing session.
       timer(0, pollingIntervalInSeconds * 1000).pipe(
-        // take(1), // TODO Debug
         tap(() => logCore.debug('Polling media-servers for sessions.')),
         switchMap(() => getNowPlaying$(config.mediaServers)),
         takeUntil(discordDisconnected$)

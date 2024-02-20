@@ -73,19 +73,21 @@ export function getNowPlaying$(servers: Array<MediaServerConfig>): Observable<{
   session?: Session_SessionInfo
   server?: MediaServerConfig
 }> {
-  // Get now playing sessiosn for all servers.
+  // Get now playing sessiosn for all active servers.
   return forkJoin(
-    servers.map((server) =>
-      getNowPlayingSessions$(server).pipe(
-        catchError((error) => {
-          logMediaServer.warn(
-            'Failed to get now playing sessions of server with ID `${server.id}`.',
-            error
-          )
-          return of([])
-        })
+    servers
+      .filter((server) => server.isActive)
+      .map((server) =>
+        getNowPlayingSessions$(server).pipe(
+          catchError((error) => {
+            logMediaServer.warn(
+              'Failed to get now playing sessions of server with ID `${server.id}`.',
+              error
+            )
+            return of([])
+          })
+        )
       )
-    )
   ).pipe(
     // Flatten the array of arrays first.
     map((sessions) => sessions.flat()),

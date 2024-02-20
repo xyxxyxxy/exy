@@ -175,7 +175,9 @@
           />
         </label>
       </div>
-      <MediaServerError error={connectionError} />
+      <!-- Helper input to display the helper text independent. -->
+      <input style="display: none;" aria-invalid={!!connectionError} aria-describedby="helper" />
+      <small id="helper"><MediaServerError error={connectionError} /></small>
 
       <button id="connect-media-server" type="submit" aria-busy={isBusy}>Connect</button>
     </form>

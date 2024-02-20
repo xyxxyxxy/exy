@@ -1,6 +1,6 @@
 <script lang="ts">
   import Versions from './components/Versions.svelte'
-  import ImgurClientId, { configUpdate } from './components/ImgurClientId.svelte'
+  import ImgurClientId from './components/ImgurClientId.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import { IpcChannel } from '../../main/ipc.types'
   import MediaServer from './components/MediaServer.svelte'
@@ -12,7 +12,6 @@
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
-    configUpdate(config)
     hasMediaServers = !!newConfig.mediaServers.length
   })
 
@@ -87,7 +86,7 @@
           </details>
         </div>
         <div>
-          <ImgurClientId />
+          <ImgurClientId clientId={config.imgurClientId} />
         </div>
       </div>
     </section>

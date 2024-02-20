@@ -3,25 +3,21 @@
   import { beforeUpdate } from 'svelte'
 
   export let error: ConnectMediaServerError | undefined
-  let helperText: string
+  let text: string
 
   beforeUpdate(() => {
-    console.log('the component is about to update')
-
     if (!error) {
-      helperText = ''
+      text = ''
       return
     }
 
-    helperText = error.message
+    text = error.message
 
     // Provide some friendlier error messages.
-    if (error.code === 'ENOTFOUND') helperText = 'Unable to connect. Address not found.'
-    if (error.code === 'ECONNREFUSED') helperText = 'Unable to connect. Connection refused.'
-    if (error.code === 'ETIMEDOUT') helperText = 'Unable to connect. Timeout.'
+    if (error.code === 'ENOTFOUND') text = 'Unable to connect. Address not found.'
+    if (error.code === 'ECONNREFUSED') text = 'Unable to connect. Connection refused.'
+    if (error.code === 'ETIMEDOUT') text = 'Unable to connect. Timeout.'
   })
 </script>
 
-<!-- Helper input to display the helper text independent. -->
-<input style="display: none;" aria-invalid={!!error} aria-describedby="helper" />
-<small id="helper">{helperText}</small>
+{text}

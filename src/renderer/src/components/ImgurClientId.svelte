@@ -1,19 +1,7 @@
-<script lang="ts" context="module">
-  import type { ConfigStore } from '../../../main/core/stores/config.types'
-
-  let config: ConfigStore
-  let clientId: string
-
-  export function configUpdate(newConfig: ConfigStore): void {
-    config = newConfig
-    if (!clientId && config.imgurClientId) {
-      clientId = config.imgurClientId
-    }
-  }
-</script>
-
 <script lang="ts">
   import { IpcChannel } from '../../../main/ipc.types'
+
+  export let clientId: string
 
   let isBusy = false
   let isInvalid: boolean | null = null
@@ -31,9 +19,9 @@
   }
   window.electron.ipcRenderer.on(IpcChannel.SaveImgurClientId, (_, error?: Error) => {
     isBusy = false
+    isInvalid = !!error
     if (error) {
       console.error(error)
-      isInvalid = true
       helperText = error.message
     }
   })
