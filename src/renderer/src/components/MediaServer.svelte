@@ -98,9 +98,11 @@
       >
 
       {#if !!testError}
-        <span class="pico-color-red-500"><MediaServerError error={testError} /></span>
+        <span style="color: var(--pico-del-color);"><MediaServerError error={testError} /></span>
       {:else if isTested}
-        <span class="pico-color-green-500" aria-busy={isBusyDisconnecting}>{testSuccessText}</span>
+        <span style="color: var(--pico-ins-color);" aria-busy={isBusyDisconnecting}
+          >{testSuccessText}</span
+        >
       {:else}
         <span aria-busy={isBusyTesting}>Testing...</span>
       {/if}
