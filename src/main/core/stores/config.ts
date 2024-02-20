@@ -100,7 +100,7 @@ export function addMediaServerConfig(newServer: MediaServerConfig): void {
   configStore.set({ mediaServers })
 }
 
-export function deavtivateMediaServer(id: string): void {
+export function deactivateMediaServer(id: string): void {
   const mediaServers = configStore.get(Selector.MediaServers)
   mediaServers.forEach((server) => {
     if (server.id === id) server.isActive = false

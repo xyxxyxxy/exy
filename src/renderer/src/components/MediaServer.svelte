@@ -14,9 +14,13 @@
   let textSuccessTextOptions = [
     'Success!',
     'Working!',
+    'Works!',
     'Functioning!',
     'Looking good!',
-    'Connected and ready!'
+    'Everything fine!',
+    'Connected and ready!',
+    'Test passed!',
+    'Test successful!'
   ]
   let testSuccessText: string
 

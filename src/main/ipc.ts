@@ -3,7 +3,6 @@ import { finalize, fromEvent, switchMap } from 'rxjs'
 import {
   addMediaServerConfig,
   config$,
-  deavtivateMediaServer,
   deleteMediaServerConfig,
   isConnectionConfigured,
   setImgurClientId,
@@ -119,7 +118,6 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
     return
   }
 
-  // TODO Even with invalid client ID the upload seems to work. Not sure what is going on here.
   logIpc.info(`Testing Imgur client ID.`, clientId)
   testImgurClientId$(clientId).subscribe({
     next: () => {

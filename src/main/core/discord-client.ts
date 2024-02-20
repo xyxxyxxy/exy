@@ -6,6 +6,7 @@ import {
   Subject,
   Subscription,
   catchError,
+  distinctUntilChanged,
   filter,
   fromEvent,
   map,
@@ -14,18 +15,31 @@ import {
   tap,
   throttleTime
 } from 'rxjs'
+import { config$ } from './stores/config'
 
 const logDiscord = log.scope('discord')
 
 // Discord application ID.
 const discordApplicationId = '1203674508733714492'
-const retryDelayInSeconds = 3 // TODO Change to 30
+const retryDelayInSeconds = 30
 
 enum ConnectionStatus {
   Disconnected = 'disconnected',
   Connected = 'connected',
   Ready = 'ready'
 }
+
+// Clear activity if last media-server is removed.
+config$
+  .pipe(
+    map((config) => config.mediaServers.length),
+    distinctUntilChanged(),
+    filter((count) => count === 0)
+  )
+  .subscribe(() => {
+    logDiscord.debug(`No more media-servers configured. Clearing activity.`)
+    clearActivity()
+  })
 
 // Connection status.
 const connectionStatus: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<ConnectionStatus>(
