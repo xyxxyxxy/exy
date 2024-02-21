@@ -2,20 +2,26 @@ import { Presence } from 'discord-rpc'
 import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from './emby-client'
 import log from 'electron-log'
 import { MediaServerConfig } from './stores/config.types'
-import { Observable, catchError, from, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
+import { Observable, catchError, forkJoin, from, map, of, switchMap, tap } from 'rxjs'
 import { getImgurLink$ } from './imgur'
 import { getAlbumImageUrl, getPrimaryImageUrl } from './media-server'
 
 const logActivity = log.scope('activity')
 
-enum MediaType {
+enum ItemMediaType {
   Audio = 'Audio',
-  Video = 'Video' // Home video
-  // TODO movies, shows, live TV, pictures, musiVideos
+  Video = 'Video'
+}
+
+enum ItemType {
+  // Music has no type, only media type.
+  Episode = 'Episode'
+  // Home video
+  // TODO movies, shows, live TV, musiVideos
 }
 
 // Enhanced type with some defaults for easier handling.
-type Activity = Presence & { buttons: Array<Button>; largeImageKey: string }
+type Activity = Presence & { buttons: Array<Button> }
 type Button = { label: string; url: string }
 
 // Merges additional properties into activity.
@@ -27,14 +33,11 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
   return { ...activity, ...addition }
 }
 
-// Looks for public images and links for the item.
-// Returns an activity with the available values set.
-const getPubliContent$ = (item: BaseItemDto): Observable<Presence> => {
+const getYouTubeContent$ = (item: BaseItemDto): Observable<Presence> => {
   // RegExp detecting if the path includes 'youtube' with a YouTube video ID inside brackets [].
   // A capture group is used to get the video ID.
+  // bDOjYsu_-j0
   const youtubeMatch = item.Path?.match(/youtube.*\[([^"&?/\s]{11})\]/i)
-  // TODO Bitchute
-  // TODO Odysee
 
   if (!youtubeMatch || !youtubeMatch[1]) return of({})
 
@@ -54,15 +57,79 @@ const getPubliContent$ = (item: BaseItemDto): Observable<Presence> => {
     map(() => {
       return {
         largeImageKey: youtubeThumbnailLink,
-        buttons: [
-          {
-            label: 'Watch on YouTube',
-            url: youtubeLink
-          }
-        ]
+        buttons: [{ label: 'Watch on YouTube', url: youtubeLink }]
       }
     }),
     catchError(() => of({}))
+  )
+}
+
+function getBitChuteContent$(item: BaseItemDto): Observable<Presence> {
+  return of({}) // TODO
+}
+
+function getOdyseeContent$(item: BaseItemDto): Observable<Presence> {
+  return of({}) // TODO
+}
+
+function getTheTVDBContent$(item: BaseItemDto): Observable<Presence> {
+  const url: string | undefined =
+    item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'TheTVDB')?.Url
+
+  if (!url) return of({})
+
+  // TODO Get preview image and secondary show image.
+  // TODO Prefer Imgur uploads, since TVDB images are sometimes different?
+
+  return of({ buttons: [{ label: 'Checkout this Episode', url }] })
+}
+
+// Looks for public images and links for the item.
+// Returns an activity with the available values set.
+const addPubliContent$ = (activity: Activity, item: BaseItemDto): Observable<Activity> => {
+  return forkJoin([
+    getBitChuteContent$(item),
+    getOdyseeContent$(item),
+    getYouTubeContent$(item),
+    getTheTVDBContent$(item)
+  ]).pipe(
+    map((results) => {
+      // Merge all results into the provided activity object.
+      results.forEach((result) => mergeActivity(activity, result))
+
+      return activity
+    }),
+    tap(() => logActivity.debug(`Merged public content into activity.`, activity))
+  )
+}
+
+function addLargeImage$(
+  activity: Activity,
+  server: MediaServerConfig,
+  item: BaseItemDto
+): Observable<Activity> {
+  if (activity.largeImageKey) return of(activity)
+
+  return getPrimaryImageLink$(server, item).pipe(
+    map((link) => {
+      if (link) activity.largeImageKey = link
+      return activity
+    })
+  )
+}
+
+function addSmallImage$(
+  activity: Activity,
+  server: MediaServerConfig,
+  item: BaseItemDto
+): Observable<Activity> {
+  if (activity.smallImageKey) return of(activity)
+
+  return getSecondaryImageLink$(server, item).pipe(
+    map((link) => {
+      if (link) activity.smallImageKey = link
+      return activity
+    })
   )
 }
 
@@ -107,41 +174,23 @@ export function getActivity$(
 
   return of<Activity>({
     // Start with some sensible default values.
-    buttons: [],
-    largeImageKey: server.type
+    buttons: []
   }).pipe(
-    switchMap((activity) => {
-      return getPubliContent$(item).pipe(
-        map((publicContent): Activity => mergeActivity(activity, publicContent))
-      )
-    }),
-    switchMap((activity) => {
-      if (activity.largeImageKey !== server.type) return of(activity)
-      else
-        return getPrimaryImageLink$(server, item).pipe(
-          withLatestFrom(getSecondaryImageLink$(server, item)),
-          map(([primaryImageLink, secondaryImageLink]) => {
-            return { largeImageKey: primaryImageLink, smallImageKey: secondaryImageLink }
-          }),
-          map((publicContent) => mergeActivity(activity, publicContent))
-        )
-    }),
+    switchMap((activity) => addPubliContent$(activity, item)),
+    switchMap((activity) => addLargeImage$(activity, server, item)),
+    switchMap((activity) => addSmallImage$(activity, server, item)),
     map((activity) => {
-      // If the large image changed to something else than the server type,
-      // the server type is added as small image.
-      if (activity.largeImageKey !== server.type) {
+      // If large image was set before the server type image is added.
+      // Else the server image is the large image.
+      if (activity.largeImageKey) {
         activity.smallImageKey = `${server.type}-small`
         activity.smallImageText =
           'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
-      }
+      } else activity.largeImageKey = server.type
 
       const isPaused = !!session.PlayState.IsPaused
 
-      // Defaults.
-      // activity.details = item.Name
-      // activity.state = 'test'
-
-      // Set pause state or end time.
+      // Set pause image or end time.
       if (isPaused) {
         activity.smallImageKey = `${server.type}-pause`
         activity.smallImageText = 'Paused'
@@ -149,64 +198,92 @@ export function getActivity$(
 
       logActivity.debug(`Media of type '${item.MediaType}'.`)
 
+      let detailsVerb: string = 'Playing'
+      let detailsName: string = item.Name || ''
+
+      const date: Date | null = getDate(item)
+
+      // General information based on media type.
       switch (item.MediaType) {
-        case MediaType.Audio: {
-          // Collecting.
+        case ItemMediaType.Audio: {
+          // Music has no type, only media type 'Audio'.
 
-          const song: string = item.Name || ''
-          // const genres: Array<string> = item.Genres || []
+          detailsVerb = 'Listening to'
 
+          // Set state.
           const artists: Array<string> = item.Artists || []
-          const premiereDateString: string = item.PremiereDate || ''
-          const album: string = item.Album || ''
+          if (artists.length) activity.state = `by ${artists.join(', ')}`
 
+          const album: string = item.Album || ''
           const musicBrainzAlbumId: string = item.ProviderIds?.MusicBrainzAlbum || ''
 
           // Preparing.
-          const detailsFields: Array<string> = []
-          if (song) detailsFields.push(`Listening to ${song}`)
           // TODO Use to change small image for selected genres.
           // if (genres.length)
           //   detailsFields.push(`[${genres.slice(0, 3).join("|")}]`);
 
-          const stateFields: Array<string> = []
-          if (artists.length) stateFields.push(`by ${artists.join(', ')}`)
+          // TODO Special for music.
           if (album) activity.largeImageText = album
-          if (premiereDateString)
-            activity.largeImageText +=
-              ' (' + new Date(premiereDateString).getFullYear().toString() + ')'
 
+          // TODO THere is also ProductionYear
+          if (date) activity.largeImageText += ' (' + new Date(date).getFullYear().toString() + ')'
+
+          // TODO Move to public part with image download
           if (musicBrainzAlbumId)
             activity.buttons.push({
               label: 'Checkout this Album',
               url: `https://musicbrainz.org/release/${musicBrainzAlbumId}`
             })
 
-          // Applying.
-          // TODO Set Album and year in large image text.
-          activity.details = detailsFields.join(' ')
-          activity.state = stateFields.join(' - ')
           // TODO Not sure if this should be supported at all.
           //   activity.startTimestamp = Math.round(
           //     nowInSeconds - Math.round(playPositionTicks / 10000 / 1000)
           //   );
           break
         }
-        case MediaType.Video: {
-          activity.state = `Watching ${item.Name}`
+        // Episodes, Home video // TODO
+        case ItemMediaType.Video: {
+          detailsVerb = 'Watching'
 
-          // Add creation date.
-          if (item.DateCreated) {
-            const creationDate = new Date(item.DateCreated)
-            // TODO Wrong on shows.
-            activity.largeImageText = `Created ${creationDate.toDateString()}`
-          }
           break
         }
         default: {
-          logActivity.warn('Could not determine activity type.')
+          logActivity.debug('No item media type set.', item)
         }
       }
+
+      //Episode
+      switch (
+        item.Type // TODO Implement other types
+      ) {
+        case ItemType.Episode: {
+          const series = item.SeriesName
+          const season = item.SeasonName
+          const episode = item.EpisodeTitle
+
+          if (series) detailsName = series
+          if (season) activity.details = season
+          if (episode) activity.details += ` - ${episode}`
+
+          // TODO Wrong on shows.
+          // Add creation date.
+          // if (item.DateCreated) {
+          //   const creationDate = new Date(item.DateCreated)
+          //   activity.largeImageText = `Created ${creationDate.toDateString()}`
+          // }
+          if (item.PremiereDate) {
+            const premiereDate = new Date(item.PremiereDate)
+            activity.largeImageText = `Created ${premiereDate.toDateString()}`
+          }
+
+          break
+        }
+        default: {
+          logActivity.warn('No item type set.', item)
+        }
+      }
+
+      activity.details = detailsName ? `${detailsVerb} ${detailsName}` : `${detailsVerb}...`
 
       const sanitizedActivity: Presence = sanitize(activity)
 
@@ -215,6 +292,13 @@ export function getActivity$(
       return sanitizedActivity
     })
   )
+}
+
+function getDate(item: BaseItemDto): Date | null {
+  let date: Date | null = null
+  if (item.DateCreated) date = new Date(item.DateCreated)
+  if (item.PremiereDate) date = new Date(item.PremiereDate)
+  return date
 }
 
 function getEndTimestamp(
@@ -241,6 +325,9 @@ function sanitize(activity: Activity): Presence {
 
   // Empty array leads to error.
   if (!result.buttons?.length) delete result.buttons
+  // Maximum two buttons allowed.
+  else result.buttons = result.buttons.slice(0, 2)
+
   if (result.buttons)
     result.buttons.forEach((button) => (button.label = limitLength(button.label, 32)))
   // String length must be limited.
