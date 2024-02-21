@@ -1,5 +1,6 @@
 <script lang="ts">
   import Versions from './components/Versions.svelte'
+  import ImgurInfo from './components/ImgurInfo.svelte'
   import ImgurClientId from './components/ImgurClientId.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import { IpcChannel } from '../../main/ipc.types'
@@ -26,11 +27,8 @@
 
 {#if config}
   <div class="container">
-    <section></section>
-    <h1>⚙️ Configuration</h1>
-
     <section>
-      <h4>🌠 General</h4>
+      <h4>⚙️ General</h4>
 
       <label>
         <input
@@ -45,53 +43,24 @@
       </label>
     </section>
     <section>
-      <h4>📡 Media-Server Connections</h4>
+      <h4>🪄 Media-Server Connections</h4>
 
       {#each config.mediaServers as serverConfig (serverConfig.id)}
         <MediaServer config={serverConfig} />
       {/each}
-      <MediaServerNew open={!hasMediaServers} />
+      <MediaServerNew {hasMediaServers} />
     </section>
     <section>
       <h4>🖼️ Imgur</h4>
       <div class="grid">
         <div>
-          <p>
-            Used to make images publicly available while keeping the media-server address private.
-          </p>
-          <details>
-            <summary>❔ How do I get a Client ID</summary>
-            <article>
-              <header>
-                An Imgur account is required. You can create one
-                <a href="https://imgur.com/register" target="_blank">here</a>.
-              </header>
-
-              <ol>
-                <li>
-                  Go to <a href="https://api.imgur.com/oauth2/addclient" target="_blank"
-                    >Register an Application</a
-                  >
-                </li>
-                <li>Enter any application name</li>
-                <li>
-                  Select authorization type
-                  <abbr title="OAuth 2 authorization without a callback URL">without callback</abbr>
-                </li>
-                <li>Enter your email</li>
-                <li>Submit</li>
-              </ol>
-              <footer>Your client ID should now be displayed.</footer>
-            </article>
-          </details>
+          <ImgurInfo />
         </div>
-        <div>
-          <ImgurClientId clientId={config.imgurClientId} />
-        </div>
+        <ImgurClientId clientId={config.imgurClientId} />
       </div>
     </section>
     <section>
-      <h4>🪠 Debug</h4>
+      <h4>🩻 Debug</h4>
 
       <label>
         <input

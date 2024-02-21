@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -18,11 +18,6 @@ function createWindow(): void {
     }
   })
 
-  mainWindow.on('ready-to-show', () => {
-    // TODO Only if no media-server configured.
-    mainWindow.show()
-  })
-
   mainWindow.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url)
     return { action: 'deny' }
@@ -37,6 +32,21 @@ function createWindow(): void {
   }
 
   startMainToRendererIpc(mainWindow)
+  initTray(mainWindow)
+
+  // Open if no media-servers are configured.
+  fromEvent(mainWindow, 'ready-to-show')
+    .pipe(withLatestFrom(config$))
+    .subscribe(([_, config]) => {
+      if (!config.mediaServers.length) mainWindow.show()
+      // TODO Notification on first move to tray?
+    })
+
+  // Hide on close.
+  fromEvent(mainWindow, 'close').subscribe((event) => {
+    ;(event as Event).preventDefault()
+    mainWindow.hide()
+  })
 }
 
 // This method will be called when Electron has finished
@@ -78,7 +88,9 @@ import contextMenu from 'electron-context-menu'
 import log from 'electron-log/main'
 import { startMainToRendererIpc } from './ipc'
 import { config$ } from './core/stores/config'
-import { distinctUntilChanged, map } from 'rxjs'
+import { distinctUntilChanged, fromEvent, map, withLatestFrom } from 'rxjs'
+import { initTray } from './tray'
+import { name } from '../../package.json'
 
 const logMain = log.scope('main')
 

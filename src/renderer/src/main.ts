@@ -1,10 +1,11 @@
-// import './assets/main.css' TODO
+import './assets/main.css'
 import '../../../node_modules/@picocss/pico/css/pico.min.css'
+import '../../../node_modules/@picocss/pico/css/pico.colors.min.css'
 
-import App from './App.svelte'
+import Config from './Config.svelte'
 
-const app = new App({
-  target: document.getElementById('app')
+const config = new Config({
+  target: document.getElementById('main')
 })
 
-export default app
+export default config

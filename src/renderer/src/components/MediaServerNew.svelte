@@ -4,7 +4,8 @@
   import { IpcChannel } from '../../../main/ipc.types'
   import MediaServerError from './MediaServerError.svelte'
 
-  export let open: boolean
+  export let hasMediaServers: boolean
+  let open: boolean
   let isBusy = false
 
   let isInvalidConnection: boolean | null = null
@@ -60,6 +61,7 @@
           isInvalidConnection = null
         }
       } else {
+        // Close and reset form on success.
         open = null
         reset()
       }
@@ -80,8 +82,7 @@
 <details {open}>
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="outline">
-    <!-- TODO open automatically if there are no servers configured -->
-    ✨ New
+    ✨ {hasMediaServers ? 'Add connection' : 'Get started by connecting to your media-server'}
   </summary>
   <article>
     <form on:submit|preventDefault={submit}>

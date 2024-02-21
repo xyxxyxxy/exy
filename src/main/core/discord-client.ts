@@ -29,18 +29,6 @@ enum ConnectionStatus {
   Ready = 'ready'
 }
 
-// Clear activity if last media-server is removed.
-config$
-  .pipe(
-    map((config) => config.mediaServers.length),
-    distinctUntilChanged(),
-    filter((count) => count === 0)
-  )
-  .subscribe(() => {
-    logDiscord.debug(`No more media-servers configured. Clearing activity.`)
-    clearActivity()
-  })
-
 // Connection status.
 const connectionStatus: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<ConnectionStatus>(
   ConnectionStatus.Disconnected
@@ -117,6 +105,8 @@ discordDisconnected$
     discordClient = newClient
   })
 
+const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
+
 export function setActivity(activity: Presence): void {
   logDiscord.debug(`Scheduling  next activity "${activity.details}".`)
   activitySource.next(activity)
@@ -127,7 +117,17 @@ export function clearActivity(): void {
   activitySource.next(null)
 }
 
-const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
+// Clear activity if last media-server is removed.
+config$
+  .pipe(
+    map((config) => config.mediaServers.length),
+    distinctUntilChanged(),
+    filter((count) => count === 0)
+  )
+  .subscribe(() => {
+    logDiscord.debug(`No more media-servers configured. Clearing activity.`)
+    clearActivity()
+  })
 
 // Rate limit communication to Discord client.
 // See: https://discord.com/developers/docs/game-sdk/activities#updateactivity
