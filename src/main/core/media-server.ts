@@ -156,9 +156,9 @@ export function getPrimaryImageUrl(server: ConnectionDetails, item: BaseItemDto)
   return getImageUrl(server, item.Id)
 }
 
-export function getAlbumImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
-  if (!item.AlbumId) throw new Error('Failed to get album image URL. No album ID set.')
-  return getImageUrl(server, item.AlbumId)
+export function getParentImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
+  if (!item.ParentId) throw new Error('Failed to get album image URL. No album ID set.')
+  return getImageUrl(server, item.ParentId)
 }
 
 function getImageUrl(server: ConnectionDetails, id: string): string {

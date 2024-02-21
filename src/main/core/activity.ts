@@ -4,7 +4,7 @@ import log from 'electron-log'
 import { MediaServerConfig } from './stores/config.types'
 import { Observable, catchError, forkJoin, from, map, of, switchMap, tap } from 'rxjs'
 import { getImgurLink$ } from './imgur'
-import { getAlbumImageUrl, getPrimaryImageUrl } from './media-server'
+import { getParentImageUrl, getPrimaryImageUrl } from './media-server'
 
 const logActivity = log.scope('activity')
 
@@ -21,7 +21,9 @@ enum ItemType {
 }
 
 // Enhanced type with some defaults for easier handling.
-type Activity = Presence & { buttons: Array<Button> }
+type Activity = Presence & {
+  buttons: Array<Button>
+}
 type Button = { label: string; url: string }
 
 // Merges additional properties into activity.
@@ -36,7 +38,6 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
 const getYouTubeContent$ = (item: BaseItemDto): Observable<Presence> => {
   // RegExp detecting if the path includes 'youtube' with a YouTube video ID inside brackets [].
   // A capture group is used to get the video ID.
-  // bDOjYsu_-j0
   const youtubeMatch = item.Path?.match(/youtube.*\[([^"&?/\s]{11})\]/i)
 
   if (!youtubeMatch || !youtubeMatch[1]) return of({})
@@ -118,21 +119,6 @@ function addLargeImage$(
   )
 }
 
-function addSmallImage$(
-  activity: Activity,
-  server: MediaServerConfig,
-  item: BaseItemDto
-): Observable<Activity> {
-  if (activity.smallImageKey) return of(activity)
-
-  return getSecondaryImageLink$(server, item).pipe(
-    map((link) => {
-      if (link) activity.smallImageKey = link
-      return activity
-    })
-  )
-}
-
 function getPrimaryImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
@@ -142,9 +128,14 @@ function getPrimaryImageLink$(
       logActivity.warn(`Failed to get primary image link. Trying album image next.`)
       logActivity.debug(error)
 
+      // TODO Fallback to series image if episode has no image?
+
+      if (!item.ParentId) return of(undefined)
+
       // Emby responds with 500 error for primary images of some songs.
-      // Fallback to album image.
-      return getImgurLink$(getAlbumImageUrl(server, item)).pipe(
+      // Also some episodes don't have images, like specials/extras not present in TVDB.
+      // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
+      return getImgurLink$(getParentImageUrl(server, item)).pipe(
         catchError((error) => {
           logActivity.warn(`Failed to get album image link. Continueing without primary image.`)
           logActivity.debug(error)
@@ -153,14 +144,6 @@ function getPrimaryImageLink$(
       )
     })
   )
-}
-
-// TODO For shows.
-function getSecondaryImageLink$(
-  server: MediaServerConfig,
-  item: BaseItemDto
-): Observable<string | undefined> {
-  return of(undefined)
 }
 
 export function getActivity$(
@@ -178,28 +161,15 @@ export function getActivity$(
   }).pipe(
     switchMap((activity) => addPubliContent$(activity, item)),
     switchMap((activity) => addLargeImage$(activity, server, item)),
-    switchMap((activity) => addSmallImage$(activity, server, item)),
     map((activity) => {
-      // If large image was set before the server type image is added.
-      // Else the server image is the large image.
-      if (activity.largeImageKey) {
-        activity.smallImageKey = `${server.type}-small`
-        activity.smallImageText =
-          'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
-      } else activity.largeImageKey = server.type
-
-      const isPaused = !!session.PlayState.IsPaused
-
-      // Set pause image or end time.
-      if (isPaused) {
-        activity.smallImageKey = `${server.type}-pause`
-        activity.smallImageText = 'Paused'
-      } else activity.endTimestamp = getEndTimestamp(session)
-
-      logActivity.debug(`Media of type '${item.MediaType}'.`)
+      setDefaultImageAndPauseState(activity, server, session)
 
       let detailsVerb: string = 'Playing'
       let detailsName: string = item.Name || ''
+
+      // Start with empty string, so += does not cause 'undefined'.
+      activity.state = ''
+      activity.largeImageText = ''
 
       const date: Date | null = getDate(item)
 
@@ -212,7 +182,7 @@ export function getActivity$(
 
           // Set state.
           const artists: Array<string> = item.Artists || []
-          if (artists.length) activity.state = `by ${artists.join(', ')}`
+          if (artists.length) activity.state += `by ${artists.join(', ')}`
 
           const album: string = item.Album || ''
           const musicBrainzAlbumId: string = item.ProviderIds?.MusicBrainzAlbum || ''
@@ -259,22 +229,19 @@ export function getActivity$(
         case ItemType.Episode: {
           const series = item.SeriesName
           const season = item.SeasonName
-          const episode = item.EpisodeTitle
+          // const seasonNumber = item.ParentIndexNumber
+          const episode = item.Name
+          const episodeNumber = item.IndexNumber
 
           if (series) detailsName = series
-          if (season) activity.details = season
-          if (episode) activity.details += ` - ${episode}`
 
-          // TODO Wrong on shows.
-          // Add creation date.
-          // if (item.DateCreated) {
-          //   const creationDate = new Date(item.DateCreated)
-          //   activity.largeImageText = `Created ${creationDate.toDateString()}`
-          // }
-          if (item.PremiereDate) {
-            const premiereDate = new Date(item.PremiereDate)
-            activity.largeImageText = `Created ${premiereDate.toDateString()}`
-          }
+          if (season) activity.state = season
+          // Add year after season, if the season itself does not include four digits.
+          // Assuming that is already a year.
+          if (date && !season?.match(/\d{4}/)) activity.state += ` (${date.getFullYear()})`
+
+          if (episodeNumber) activity.largeImageText += `Episode ${episodeNumber} `
+          if (episode) activity.largeImageText += episode
 
           break
         }
@@ -292,6 +259,30 @@ export function getActivity$(
       return sanitizedActivity
     })
   )
+}
+
+function setDefaultImageAndPauseState(
+  activity: Activity,
+  server: MediaServerConfig,
+  session: Session_SessionInfo & {
+    NowPlayingItem: BaseItemDto
+    PlayState: PlayerStateInfo
+  }
+): void {
+  // If large image was set before the server type image is added.
+  // Else the server image is the large image.
+  if (activity.largeImageKey) {
+    activity.smallImageKey = `${server.type}-small`
+    activity.smallImageText = 'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
+  } else activity.largeImageKey = server.type
+
+  const isPaused = !!session.PlayState.IsPaused
+
+  // Set pause image or end time.
+  if (isPaused) {
+    activity.smallImageKey = `${server.type}-pause`
+    activity.smallImageText = 'Paused'
+  } else activity.endTimestamp = getEndTimestamp(session)
 }
 
 function getDate(item: BaseItemDto): Date | null {
