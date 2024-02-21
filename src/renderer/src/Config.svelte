@@ -59,21 +59,25 @@
         <ImgurClientId clientId={config.imgurClientId} />
       </div>
     </section>
-    <section>
-      <h4>🩻 Debug</h4>
+    <div class="grid">
+      <section>
+        <h4>🩻 Debug</h4>
 
-      <label>
-        <input
-          name="isDebugLoggingEnabled"
-          type="checkbox"
-          role="switch"
-          checked={config.isDebugLoggingEnabled}
-          on:click|preventDefault={toggleDebugLogging}
-        />
-        Debug logging
-      </label>
-    </section>
-
-    <Versions />
+        <label>
+          <input
+            name="isDebugLoggingEnabled"
+            type="checkbox"
+            role="switch"
+            checked={config.isDebugLoggingEnabled}
+            on:click|preventDefault={toggleDebugLogging}
+          />
+          Debug logging
+        </label>
+      </section>
+      <section>
+        <h4>About</h4>
+        <Versions />
+      </section>
+    </div>
   </div>
 {/if}

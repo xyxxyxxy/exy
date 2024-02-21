@@ -15,7 +15,8 @@ enum ItemMediaType {
 
 enum ItemType {
   // Music has no type, only media type.
-  Episode = 'Episode'
+  Episode = 'Episode',
+  Movie = 'Movie'
   // Home video
   // TODO movies, shows, live TV, musiVideos
 }
@@ -73,26 +74,13 @@ function getOdyseeContent$(item: BaseItemDto): Observable<Presence> {
   return of({}) // TODO
 }
 
-function getTheTVDBContent$(item: BaseItemDto): Observable<Presence> {
-  const url: string | undefined =
-    item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'TheTVDB')?.Url
-
-  if (!url) return of({})
-
-  // TODO Get preview image and secondary show image.
-  // TODO Prefer Imgur uploads, since TVDB images are sometimes different?
-
-  return of({ buttons: [{ label: 'Checkout this Episode', url }] })
-}
-
 // Looks for public images and links for the item.
 // Returns an activity with the available values set.
 const addPubliContent$ = (activity: Activity, item: BaseItemDto): Observable<Activity> => {
   return forkJoin([
     getBitChuteContent$(item),
     getOdyseeContent$(item),
-    getYouTubeContent$(item),
-    getTheTVDBContent$(item)
+    getYouTubeContent$(item)
   ]).pipe(
     map((results) => {
       // Merge all results into the provided activity object.
@@ -165,7 +153,7 @@ export function getActivity$(
       setDefaultImageAndPauseState(activity, server, session)
 
       let detailsVerb: string = 'Playing'
-      let detailsName: string = item.Name || ''
+      let detailsName: string = item.Name || '' // TODO Prefer original title? Relevant for movies
 
       // Start with empty string, so += does not cause 'undefined'.
       activity.state = ''
@@ -184,31 +172,20 @@ export function getActivity$(
           const artists: Array<string> = item.Artists || []
           if (artists.length) activity.state += `by ${artists.join(', ')}`
 
-          const album: string = item.Album || ''
-          const musicBrainzAlbumId: string = item.ProviderIds?.MusicBrainzAlbum || ''
-
           // Preparing.
           // TODO Use to change small image for selected genres.
           // if (genres.length)
           //   detailsFields.push(`[${genres.slice(0, 3).join("|")}]`);
 
-          // TODO Special for music.
-          if (album) activity.largeImageText = album
+          // TODO Special for music, what happens on podcast?
+          if (item.Album) activity.largeImageText += item.Album
+          if (item.Album && date) activity.largeImageText += ` (${date.getFullYear()})`
 
-          // TODO THere is also ProductionYear
-          if (date) activity.largeImageText += ' (' + new Date(date).getFullYear().toString() + ')'
+          const url =
+            item.ExternalUrls &&
+            item.ExternalUrls.find((externalUrl) => externalUrl.Url?.includes(`/release/`))?.Url
+          if (url) activity.buttons.push({ label: 'Checkout this Release', url: url })
 
-          // TODO Move to public part with image download
-          if (musicBrainzAlbumId)
-            activity.buttons.push({
-              label: 'Checkout this Album',
-              url: `https://musicbrainz.org/release/${musicBrainzAlbumId}`
-            })
-
-          // TODO Not sure if this should be supported at all.
-          //   activity.startTimestamp = Math.round(
-          //     nowInSeconds - Math.round(playPositionTicks / 10000 / 1000)
-          //   );
           break
         }
         // Episodes, Home video // TODO
@@ -243,10 +220,24 @@ export function getActivity$(
           if (episodeNumber) activity.largeImageText += `Episode ${episodeNumber} `
           if (episode) activity.largeImageText += episode
 
+          // Linking to TVDB, since episodes do not link to IMDb.
+          const url =
+            item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'TheTVDB')?.Url
+          if (url) activity.buttons.push({ label: 'Checkout this Episode', url })
+
+          break
+        }
+        case ItemType.Movie: {
+          if (date) detailsName += ` (${date.getFullYear()})`
+          if (item?.Genres?.length) activity.largeImageText = item.Genres?.slice(0, 3).join('/')
+
+          const url = item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'IMDb')?.Url
+          if (url) activity.buttons.push({ label: 'Checkout this Movie', url })
+
           break
         }
         default: {
-          logActivity.warn('No item type set.', item)
+          logActivity.debug('No item type set.', item)
         }
       }
 
@@ -312,18 +303,27 @@ function getEndTimestamp(
 // Ensure compatibility with discord-rpc/Discord.
 function sanitize(activity: Activity): Presence {
   // Shallow copy. Keeping original activity untouched.
-  const result: Presence = { ...activity }
+  const result: Presence = activity
 
-  // Empty array leads to error.
-  if (!result.buttons?.length) delete result.buttons
-  // Maximum two buttons allowed.
-  else result.buttons = result.buttons.slice(0, 2)
+  // Delete empty fields and apply limitations.
+
+  if (result.state) limitLength(result.state)
+  else delete result.state
+
+  if (result.details) result.details = limitLength(result.details)
+  else delete result.details
+
+  if (result.largeImageText) limitLength(result.largeImageText)
+  else delete result.largeImageText
+
+  if (result.smallImageText) limitLength(result.smallImageText)
+  else delete result.smallImageText
+
+  if (result.buttons?.length) result.buttons = result.buttons.slice(0, 2)
+  else delete result.buttons
 
   if (result.buttons)
     result.buttons.forEach((button) => (button.label = limitLength(button.label, 32)))
-  // String length must be limited.
-  if (result.details) result.details = limitLength(result.details)
-  if (result.state) result.state = limitLength(result.state)
 
   return result
 }
@@ -332,34 +332,3 @@ function limitLength(value: string, maxLength = 128): string {
   if (value.length <= maxLength) return value
   return value.substring(0, maxLength - 1) + '…'
 }
-
-//       switch (NPItem.Type) {
-//         case "Episode": {
-//           const seasonNum = NPItem.ParentIndexNumber;
-//           const episodeNum = NPItem.IndexNumber;
-//           (properties.details = `Watching ${NPItem.SeriesName} ${
-//             NPItem.ProductionYear ? `(${NPItem.ProductionYear})` : ""
-//           }`),
-//             (properties.state = `${
-//               seasonNum ? `S${seasonNum.toString().padStart(2, "0")}` : ""
-//             }${
-//               episodeNum ? `E${episodeNum.toString().padStart(2, "0")}: ` : ""
-//             }${limitString(Name)}`);
-//           break;
-//         }
-//         case "Movie": {
-//           properties.details = "Watching a Movie";
-//           properties.state = `${limitString(Name)} ${
-//             NPItem.ProductionYear ? `(${NPItem.ProductionYear})` : ""
-//           }`;
-//           break;
-//         }
-//         case "MusicVideo": {
-//           const artists = NPItem.Artists.splice(0, 3); // Limit to 3
-//           properties.details = `Watching ${limitString(Name)} ${
-//             NPItem.ProductionYear ? `(${NPItem.ProductionYear})` : ""
-//           }`;
-//           properties.state = `By ${
-//             artists.length ? artists.join(", ") : "Unknown Artist"
-//           }`;
-//           break;
