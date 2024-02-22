@@ -6,7 +6,8 @@ import {
   map,
   of,
   shareReplay,
-  switchMap
+  switchMap,
+  tap
 } from 'rxjs'
 import { MediaServerConfig } from './stores/config.types'
 import { hostname } from 'os'
@@ -58,10 +59,14 @@ export function logout$(server: MediaServerConfig): Observable<void> {
 
 // Returns the first now playing session of a media-server.
 function getNowPlayingSessions$(server: MediaServerConfig): Observable<Array<Session_SessionInfo>> {
+  logMediaServer.debug(`Getting now playing sessions of '${server.address}'.`)
   return getAuthenticatedClient$(server).pipe(
     switchMap((client) => client.sessionsService.getSessions(server.userId)),
     // Get all sessions with now playing items.
-    map((sessions) => sessions.filter((session) => session.NowPlayingItem))
+    map((sessions) => sessions.filter((session) => session.NowPlayingItem)),
+    tap((sessions) =>
+      logMediaServer.debug(`Got ${sessions.length} now playing sessions for '${server.address}'.`)
+    )
   )
 }
 
@@ -114,7 +119,7 @@ function pickNowPlaying(sessions: Array<Session_SessionInfo>): Session_SessionIn
 
   // Remove paused sessions if there are also playing sessions.
   const isPausedCount = sessions.filter((session) => session.PlayState?.IsPaused).length
-  if (isPausedCount === 0 || isPausedCount === sessions.length)
+  if (isPausedCount > 0 && isPausedCount < sessions.length)
     sessions = sessions.filter((session) => !session.PlayState?.IsPaused)
 
   if (sessions.length > 1)

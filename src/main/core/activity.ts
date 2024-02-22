@@ -16,9 +16,9 @@ enum ItemMediaType {
 enum ItemType {
   // Music has no type, only media type.
   Episode = 'Episode',
-  Movie = 'Movie'
-  // Home video
-  // TODO movies, shows, live TV, musiVideos
+  Movie = 'Movie',
+  TvChannel = 'TvChannel',
+  MusicVideo = 'MusicVideo'
 }
 
 // Enhanced type with some defaults for easier handling.
@@ -161,16 +161,19 @@ export function getActivity$(
 
       const date: Date | null = getDate(item)
 
+      const setArtists = (): void => {
+        const artists: Array<string> = item.Artists || []
+        if (artists.length) activity.state += `by ${artists.join(', ')}`
+      }
+
       // General information based on media type.
       switch (item.MediaType) {
         case ItemMediaType.Audio: {
-          // Music has no type, only media type 'Audio'.
+          // Music has no 'Type', only 'MediaType' set to 'Audio'.
 
           detailsVerb = 'Listening to'
 
-          // Set state.
-          const artists: Array<string> = item.Artists || []
-          if (artists.length) activity.state += `by ${artists.join(', ')}`
+          setArtists()
 
           // Preparing.
           // TODO Use to change small image for selected genres.
@@ -200,10 +203,14 @@ export function getActivity$(
       }
 
       //Episode
-      switch (
-        item.Type // TODO Implement other types
-      ) {
+      switch (item.Type) {
         case ItemType.Episode: {
+          // Live TV recordings are also considered episodes.
+
+          // Episodes without 'IndexNumber' are considered live TV recordings.
+          // TODO Not sure if this is accurate.
+          const isLiveTvRecording: boolean = !item.IndexNumber
+
           const series = item.SeriesName
           const season = item.SeasonName
           // const seasonNumber = item.ParentIndexNumber
@@ -212,13 +219,19 @@ export function getActivity$(
 
           if (series) detailsName = series
 
-          if (season) activity.state = season
-          // Add year after season, if the season itself does not include four digits.
-          // Assuming that is already a year.
-          if (date && !season?.match(/\d{4}/)) activity.state += ` (${date.getFullYear()})`
+          // For live TV recordings the season/episode info is often random,
+          // so those fields are avoided.
+          if (isLiveTvRecording) {
+            activity.state = item.Overview
+          } else {
+            if (season) activity.state = season
+            // Add year after season, if the season itself does not include four digits.
+            // Assuming that is already a year.
+            if (date && !season?.match(/\d{4}/)) activity.state += ` (${date.getFullYear()})`
 
-          if (episodeNumber) activity.largeImageText += `Episode ${episodeNumber} `
-          if (episode) activity.largeImageText += episode
+            if (episodeNumber) activity.largeImageText += `Episode ${episodeNumber} `
+            if (episode) activity.largeImageText += episode
+          }
 
           // Linking to TVDB, since episodes do not link to IMDb.
           const url =
@@ -233,6 +246,18 @@ export function getActivity$(
 
           const url = item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'IMDb')?.Url
           if (url) activity.buttons.push({ label: 'Checkout this Movie', url })
+
+          break
+        }
+        case ItemType.MusicVideo: {
+          setArtists()
+          break
+        }
+        case ItemType.TvChannel: {
+          detailsVerb = 'Watching live'
+          if (item.CurrentProgram?.Overview) activity.state = item.CurrentProgram?.Overview
+          if (item.CurrentProgram?.StartDate)
+            activity.startTimestamp = new Date(item.CurrentProgram?.StartDate)
 
           break
         }
@@ -273,7 +298,7 @@ function setDefaultImageAndPauseState(
   if (isPaused) {
     activity.smallImageKey = `${server.type}-pause`
     activity.smallImageText = 'Paused'
-  } else activity.endTimestamp = getEndTimestamp(session)
+  } else activity.endTimestamp = getEndTime(session)
 }
 
 function getDate(item: BaseItemDto): Date | null {
@@ -283,21 +308,21 @@ function getDate(item: BaseItemDto): Date | null {
   return date
 }
 
-function getEndTimestamp(
+function getEndTime(
   session: Session_SessionInfo & {
     NowPlayingItem: BaseItemDto
     PlayState: PlayerStateInfo
   }
-): number {
-  if (!session.NowPlayingItem.RunTimeTicks)
-    logActivity.warn(`Now playing item has no 'RunTimeTicks'.`)
-  if (!session.PlayState.PositionTicks) logActivity.warn(`Play state has no 'PositionTicks'.`)
+): Date | undefined {
+  if (!session.NowPlayingItem.RunTimeTicks || !session.PlayState.PositionTicks) return undefined
 
-  const runtimeTicks: number = session.NowPlayingItem.RunTimeTicks || 0
-  const playPositionTicks: number = session.PlayState.PositionTicks || 0
+  const runtimeMs: number = session.NowPlayingItem.RunTimeTicks / 10000
+  const playPositionMs: number = session.PlayState.PositionTicks / 10000
+  // Now, plus runtime, minus play position.
+  return new Date(Date.now().valueOf() + runtimeMs - playPositionMs)
 
-  const nowInSeconds = Math.round(Date.now() / 1000)
-  return Math.round(nowInSeconds + Math.round((runtimeTicks - playPositionTicks) / 10000 / 1000))
+  // const nowInSeconds = Math.round(Date.now() / 1000)
+  // return Math.round(nowInSeconds + Math.round((runtimeTicks - playPositionTicks) / 10000 / 1000))
 }
 
 // Ensure compatibility with discord-rpc/Discord.
@@ -306,8 +331,7 @@ function sanitize(activity: Activity): Presence {
   const result: Presence = activity
 
   // Delete empty fields and apply limitations.
-
-  if (result.state) limitLength(result.state)
+  if (result.state) result.state = limitLength(result.state)
   else delete result.state
 
   if (result.details) result.details = limitLength(result.details)

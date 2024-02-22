@@ -26,7 +26,6 @@
   ]
   let testSuccessText: string
 
-  // Run inita
   onMount(test)
 
   function getRandomSuccessText(): string {
