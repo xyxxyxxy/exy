@@ -6,8 +6,8 @@ import icon from '../../resources/icon.png?asset'
 function createWindow(): void {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1200,
+    height: 900,
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
@@ -31,7 +31,7 @@ function createWindow(): void {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
 
-  startMainToRendererIpc(mainWindow)
+  startMainToRendererIpc()
   initTray(mainWindow)
 
   // Open if no media-servers are configured.
@@ -90,7 +90,6 @@ import { startMainToRendererIpc } from './ipc'
 import { config$ } from './core/stores/config'
 import { distinctUntilChanged, fromEvent, map, withLatestFrom } from 'rxjs'
 import { initTray } from './tray'
-import { name } from '../../package.json'
 
 const logMain = log.scope('main')
 
@@ -109,3 +108,10 @@ contextMenu({
   showSearchWithGoogle: false,
   showCopyImage: false
 })
+
+// TODO
+// // Singelton process lock.
+// if (!app.requestSingleInstanceLock()) {
+//   logCore.error(`${productName} is already running.`)
+//   app.quit()
+// }

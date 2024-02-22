@@ -3,12 +3,10 @@ import {
   catchError,
   distinctUntilChanged,
   forkJoin,
-  iif,
   map,
   of,
   shareReplay,
-  switchMap,
-  tap
+  switchMap
 } from 'rxjs'
 import { MediaServerConfig } from './stores/config.types'
 import { hostname } from 'os'
@@ -70,73 +68,81 @@ function getNowPlayingSessions$(server: MediaServerConfig): Observable<Array<Ses
 // Gets all now playing sessions and filters them down to one.
 // Returns now playing session and source server.
 export function getNowPlaying$(servers: Array<MediaServerConfig>): Observable<{
-  session?: Session_SessionInfo
-  server?: MediaServerConfig
-}> {
+  server: MediaServerConfig
+  session: Session_SessionInfo
+} | null> {
   // Get now playing sessiosn for all active servers.
   return forkJoin(
     servers
       .filter((server) => server.isActive)
       .map((server) =>
         getNowPlayingSessions$(server).pipe(
+          // Pick one now playing session on a server level.
+          map((sessions) => {
+            return { server, session: pickNowPlaying(sessions) }
+          }),
           catchError((error) => {
             logMediaServer.warn(
               'Failed to get now playing sessions of server with ID `${server.id}`.',
               error
             )
-            return of([])
+            return of({ server, session: null })
           })
         )
       )
   ).pipe(
-    // Flatten the array of arrays first.
-    map((sessions) => sessions.flat()),
-    tap((sessions) =>
-      logMediaServer.debug(`${sessions.length} session${sessions.length > 1 ? 's' : ''} found.`)
-    ),
-    // Determine the one sessions to use,
-    // since we can have multiple playing sessions at once.
-    switchMap((sessions) =>
-      iif(
-        () => !sessions.length,
-        // There are no now playing sessions.
-        of({}),
-        of(sessions).pipe(
-          // Remove paused sessions, if we also have playing sessios.
-          map((sessions) => {
-            const isPausedCount = sessions.filter((session) => session.PlayState?.IsPaused).length
-
-            // All or none sessions are paused, nothing to do.
-            if (isPausedCount === 0 || isPausedCount === sessions.length) return sessions
-
-            // Remove paused sessions.
-            return sessions.filter((session) => !session.PlayState?.IsPaused)
-          }),
-          tap((s) =>
-            logMediaServer.debug(
-              `${s.length} session${s.length > 1 ? 's' : ''} remaining after filtering.${s.length > 1 ? ' Picking the first one.' : ''}`
-            )
-          ),
-          // Pick the first session.
-          map((sessions) => sessions[0]),
-          // Add media-server config back.
-          map((session) => {
-            const server = servers.find((server) => server.serverId === session.ServerId)
-
-            if (!server)
-              logMediaServer.warn('Failed to add media-server config to now playing result.')
-
-            return { session, server }
-          })
-        )
+    // Filter out empty results.
+    map((results) =>
+      results.filter(
+        (result): result is { server: MediaServerConfig; session: Session_SessionInfo } =>
+          !!result.session
       )
     ),
+    // Pick one now playing session on a server level.
+    map((results) => pickNowPlayingBetweenServers(results)),
 
     catchError((error) => {
       logMediaServer.error('Error while getting now playing sessions.', error)
-      return of({})
+      return of(null)
     })
   )
+}
+
+// Pick one session of multiple.
+function pickNowPlaying(sessions: Array<Session_SessionInfo>): Session_SessionInfo | null {
+  if (!sessions.length) return null
+
+  // Remove paused sessions if there are also playing sessions.
+  const isPausedCount = sessions.filter((session) => session.PlayState?.IsPaused).length
+  if (isPausedCount === 0 || isPausedCount === sessions.length)
+    sessions = sessions.filter((session) => !session.PlayState?.IsPaused)
+
+  if (sessions.length > 1)
+    logMediaServer.debug(`More than one session playing. Returning first session.`)
+
+  return sessions[0]
+}
+
+function pickNowPlayingBetweenServers(
+  sessions: Array<{
+    server: MediaServerConfig
+    session: Session_SessionInfo
+  }>
+): {
+  server: MediaServerConfig
+  session: Session_SessionInfo
+} | null {
+  if (!sessions.length) return null
+
+  // TODO
+  // Remove paused sessions if there are also playing sessions.
+  // const isPausedCount = playing.filter((session) => session.PlayState?.IsPaused).length
+  // if (isPausedCount === 0 || isPausedCount === playing.length)
+  //   playing = playing.filter((session) => !session.PlayState?.IsPaused)
+  if (sessions.length > 1)
+    logMediaServer.debug(`More than one server playing. Returning first one.`)
+
+  return sessions[0]
 }
 
 const xEmbyAuthorization$ = config$.pipe(

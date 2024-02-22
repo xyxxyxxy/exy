@@ -19,28 +19,6 @@ import log from 'electron-log/main'
 const logCore = log.scope('core')
 logCore.info(`Startig.`)
 
-// export const iconPath = path.join(__dirname, '../icons', 'tray.png') // TODO
-
-// // When app is ready.
-// from(app.whenReady()).subscribe(() => {
-//   logCore.debug('App is ready.')
-//   app.setAppUserModelId(productName)
-//   initTray()
-// })
-
-// // Singelton process lock.
-// if (!app.requestSingleInstanceLock()) {
-//   logCore.error(`${productName} is already running.`)
-//   app.quit()
-// }
-
-// // Catch and display errors.
-// logCore.errorHandler.startCatching()
-// unhandled({
-//   logger: (error) => logCore.error(error),
-//   showDialog: true
-// })
-
 // Apply log-level.
 config$
   .pipe(
@@ -74,24 +52,19 @@ discordReady$
         takeUntil(discordDisconnected$)
       )
     ),
-    // Avoid setting the same activity twice.
-    // Checking item ID and pause state.
-    distinctUntilChanged(
-      (previous, current) =>
-        previous.session?.NowPlayingItem?.Id === current.session?.NowPlayingItem?.Id &&
-        previous.session?.PlayState?.IsPaused === current.session?.PlayState?.IsPaused
-    ),
     // Clear activity if nothing is playing.
     tap((nowPlaying) => {
-      if (!nowPlaying.session) {
-        logCore.info(`Now playing nothing.`)
-
-        return clearActivity()
-      }
+      if (!nowPlaying) clearActivity()
     }),
-    // This filter acts as an early exit, in case nothing is being played and
-    // also a type guard to ensure the expected properties are set.
+    // Early exit and type guard.
     filter(isNowPlaying),
+    // Avoid setting the same activity twice.
+    distinctUntilChanged(
+      (previous, current) =>
+        // Checking item ID and pause state.
+        previous.session.NowPlayingItem.Id === current.session.NowPlayingItem.Id &&
+        previous.session.PlayState.IsPaused === current.session.PlayState.IsPaused
+    ),
     tap((nowPlaying) =>
       logCore.info(`Now playing item changed to ${nowPlaying.session.NowPlayingItem?.Name}.`)
     ),
@@ -102,20 +75,23 @@ discordReady$
     setActivity(activity)
   })
 
-function isNowPlaying(nowPlaying: {
-  session?: Session_SessionInfo
-  server?: MediaServerConfig
-}): nowPlaying is {
+function isNowPlaying(
+  nowPlaying: {
+    server: MediaServerConfig
+    session: Session_SessionInfo
+  } | null
+): nowPlaying is {
+  server: MediaServerConfig
   session: Session_SessionInfo & {
     NowPlayingItem: BaseItemDto
     PlayState: PlayerStateInfo
   }
-  server: MediaServerConfig
 } {
   return (
+    !!nowPlaying &&
+    !!nowPlaying.server &&
     !!nowPlaying.session &&
     !!nowPlaying.session.NowPlayingItem &&
-    !!nowPlaying.session.PlayState &&
-    !!nowPlaying.server
+    !!nowPlaying.session.PlayState
   )
 }
