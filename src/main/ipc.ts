@@ -1,4 +1,4 @@
-import { ipcMain } from 'electron'
+import { ipcMain, shell } from 'electron'
 import { finalize } from 'rxjs'
 import {
   addMediaServerConfig,
@@ -132,3 +132,4 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
   })
 })
 ipcMain.on(IpcChannel.ToggleDebugLogging, toggleDebugLogging)
+ipcMain.on(IpcChannel.OpenLogFile, () => shell.openExternal(log.transports.file.getFile().path))

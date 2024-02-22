@@ -11,9 +11,9 @@
     isBusy = newStatus !== 'ready'
     style = isBusy ? 'color: var(--pico-del-color);' : 'color: var(--pico-ins-color);'
 
-    if (newStatus === ConnectionStatus.Disconnected) status = `Discord disconnected.`
+    if (newStatus === ConnectionStatus.Disconnected) status = `Discord is disconnected.`
     else if (newStatus === ConnectionStatus.Connected) status = `Discord connected.`
-    else if (newStatus === ConnectionStatus.Ready) status = `✅ Discord connected and ready.`
+    else if (newStatus === ConnectionStatus.Ready) status = `✅ Discord is connected and ready.`
     else status = `Unknown Discord status. See logs for details.`
   })
 </script>

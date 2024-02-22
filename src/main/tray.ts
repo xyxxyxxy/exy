@@ -17,8 +17,8 @@ export function initTray(mainWindow: BrowserWindow): void {
 
     config.mediaServers.forEach((server) =>
       template.push({
-        label: server.address,
         type: 'checkbox',
+        label: server.address,
         checked: server.isActive,
         click: () => toggleMediaServerActive(server.id)
       })

@@ -4,13 +4,13 @@ export enum IpcChannel {
   Config = 'Config',
   DiscordStatus = 'DiscordStatus',
   ToggleStartup = 'ToggleStartup',
-  ToggleDebugLogging = 'ToggleDebugLogging',
-  SaveImgurClientId = 'SaveImgurClientId',
-  ConnectMediaServer = 'ConnectMediaServer',
-  NewMediaServerId = 'NewMediaServerId',
   ToggleMediaServerActive = 'ToggleMediaServerActive',
   DisconnectMediaServer = 'DisconnectMediaServer',
-  TestMediaServer = 'TestMediaServer'
+  TestMediaServer = 'TestMediaServer',
+  ConnectMediaServer = 'ConnectMediaServer',
+  SaveImgurClientId = 'SaveImgurClientId',
+  ToggleDebugLogging = 'ToggleDebugLogging',
+  OpenLogFile = 'OpenLogFile'
 }
 
 // Initial configuration used to generate a new media-server config.

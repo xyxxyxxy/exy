@@ -37,11 +37,6 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, config.id)
   }
 
-  function disconnect(): void {
-    isBusyDisconnecting = true
-    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, config)
-  }
-
   function testClick(): void {
     resetTest()
     isBusyTesting = true
@@ -67,6 +62,11 @@
   function resetTest(): void {
     isTested = false
     testError = null
+  }
+
+  function disconnect(): void {
+    isBusyDisconnecting = true
+    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, config)
   }
 </script>
 
@@ -112,6 +112,13 @@
     <div class="grid">
       <button
         type="button"
+        class="outline secondary"
+        on:click={disconnect}
+        disabled={isBusyTesting}
+        aria-busy={isBusyDisconnecting}>Disconnect</button
+      >
+      <button
+        type="button"
         id="test"
         on:click={testClick}
         disabled={isBusyDisconnecting || isBusyTesting}
@@ -119,7 +126,7 @@
         Test Connection
       </button>
     </div>
-    <div class="grid" style="text-align: center;">
+    <div style="text-align: center;">
       {#if !!testError}
         <span style="color: var(--pico-del-color);"><MediaServerError error={testError} /></span>
       {:else if isTested}
@@ -129,18 +136,7 @@
       {:else}
         <span aria-busy={isBusyTesting}>Testing...</span>
       {/if}
+      <!-- <footer>TODO list libraries. TODO allow ignored words</footer> -->
     </div>
-    <hr />
-    <div class="grid">
-      <button
-        type="button"
-        class="outline secondary"
-        on:click={disconnect}
-        disabled={isBusyTesting}
-        aria-busy={isBusyDisconnecting}>Disconnect</button
-      >
-      <div></div>
-    </div>
-    <!-- <footer>TODO list libraries. TODO allow ignored words</footer> -->
   </article>
 </details>
