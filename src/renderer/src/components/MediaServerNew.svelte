@@ -87,10 +87,9 @@
   <article>
     <form on:submit|preventDefault={submit}>
       <legend>Type</legend>
-      <label for="emby">
+      <label>
         <input
           type="radio"
-          id="emby"
           bind:group={config.type}
           value="emby"
           disabled={isBusy}
@@ -99,10 +98,9 @@
         />
         <MediaServerIcon type="emby" /> Emby
       </label>
-      <label for="jellyfin">
+      <label>
         <input
           type="radio"
-          id="jellyfin"
           bind:group={config.type}
           value="jellyfin"
           disabled={isBusy}
@@ -112,10 +110,9 @@
       </label>
 
       <div class="grid">
-        <label for="protocol"
+        <label
           >Protocol
           <select
-            id="protocol"
             bind:value={config.protocol}
             on:change={onProtocolChange}
             disabled={isBusy}
@@ -126,10 +123,10 @@
             <option value="https">🔒 HTTPS</option>
           </select>
         </label>
-        <label for="address"
+        <label
           >Address<input
             type="text"
-            id="address"
+            placeholder="Address"
             bind:value={config.address}
             required
             disabled={isBusy}
@@ -137,10 +134,10 @@
             aria-invalid={isInvalidConnection}
           />
         </label>
-        <label for="port"
+        <label
           >Port<input
             type="number"
-            id="port"
+            placeholder="Port"
             min="1"
             bind:value={config.port}
             required
@@ -152,10 +149,9 @@
       </div>
 
       <div class="grid">
-        <label for="username"
+        <label
           >Username<input
             type="text"
-            id="username"
             placeholder="Username"
             bind:value={config.username}
             required
@@ -164,10 +160,9 @@
             aria-invalid={isInvalidAuthentication}
           />
         </label>
-        <label for="password"
+        <label
           >Password<input
             type="password"
-            id="password"
             placeholder="Password"
             bind:value={config.password}
             disabled={isBusy}

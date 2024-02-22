@@ -6,6 +6,7 @@
   import { IpcChannel } from '../../main/ipc.types'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
+  import DiscordStatus from './components/DiscordStatus.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -29,18 +30,20 @@
   <div class="container">
     <section>
       <h4>⚙️ General</h4>
+      <div class="grid">
+        <label>
+          <input
+            name="isStartupEnabled"
+            type="checkbox"
+            role="switch"
+            checked={config.isStartupEnabled}
+            on:click|preventDefault={toggleStartup}
+          />
 
-      <label>
-        <input
-          name="isStartupEnabled"
-          type="checkbox"
-          role="switch"
-          checked={config.isStartupEnabled}
-          on:click|preventDefault={toggleStartup}
-        />
-
-        Run at startup
-      </label>
+          Run at startup
+        </label>
+        <DiscordStatus />
+      </div>
     </section>
     <section>
       <h4>🪄 Media-Server Connections</h4>
@@ -61,6 +64,10 @@
     </section>
     <div class="grid">
       <section>
+        <h4>ℹ️ About</h4>
+        <Versions />
+      </section>
+      <section>
         <h4>🩻 Debug</h4>
 
         <label>
@@ -73,10 +80,6 @@
           />
           Debug logging
         </label>
-      </section>
-      <section>
-        <h4>About</h4>
-        <Versions />
       </section>
     </div>
   </div>

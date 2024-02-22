@@ -1,5 +1,5 @@
-import { BrowserWindow, ipcMain } from 'electron'
-import { finalize, fromEvent, switchMap } from 'rxjs'
+import { ipcMain } from 'electron'
+import { finalize } from 'rxjs'
 import {
   addMediaServerConfig,
   config$,
@@ -18,17 +18,18 @@ import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
 import { MediaServerConfig } from './core/stores/config.types'
+import { connectionStatus$ } from './core/discord-client'
 
 const logIpc = log.scope('ipc')
 
-export function startMainToRendererIpc(mainWindow: BrowserWindow): void {
-  // Send config updates to renderer.
-  fromEvent(ipcMain, IpcChannel.Config)
-    .pipe(switchMap(() => config$))
-    .subscribe((config) => {
-      logIpc.debug('Sending config update.')
-      mainWindow.webContents.send(IpcChannel.Config, config)
-    })
+export function startMainToRendererIpc(): void {
+  // Init events. Subscribing to updates.
+  ipcMain.on(IpcChannel.Config, (event) => {
+    config$.subscribe((config) => event.sender.send(IpcChannel.Config, config))
+  })
+  ipcMain.on(IpcChannel.DiscordStatus, (event) => {
+    connectionStatus$.subscribe((status) => event.sender.send(IpcChannel.DiscordStatus, status))
+  })
 }
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
@@ -60,7 +61,6 @@ ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
     }
   })
 })
-
 ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) => {
   logIpc.info(`Received new media-server config.`, config)
 

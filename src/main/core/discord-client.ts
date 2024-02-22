@@ -16,6 +16,7 @@ import {
   throttleTime
 } from 'rxjs'
 import { config$ } from './stores/config'
+import { ConnectionStatus } from './discord-client.types'
 
 const logDiscord = log.scope('discord')
 
@@ -23,16 +24,12 @@ const logDiscord = log.scope('discord')
 const discordApplicationId = '1203674508733714492'
 const retryDelayInSeconds = 30
 
-enum ConnectionStatus {
-  Disconnected = 'disconnected',
-  Connected = 'connected',
-  Ready = 'ready'
-}
-
 // Connection status.
 const connectionStatus: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<ConnectionStatus>(
   ConnectionStatus.Disconnected
 )
+
+export const connectionStatus$: Observable<ConnectionStatus> = connectionStatus.asObservable()
 
 let eventSubscriptions: Array<Subscription> = []
 

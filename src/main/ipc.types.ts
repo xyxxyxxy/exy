@@ -2,6 +2,7 @@ import { MediaServerConfig } from './core/stores/config.types'
 
 export enum IpcChannel {
   Config = 'Config',
+  DiscordStatus = 'DiscordStatus',
   ToggleStartup = 'ToggleStartup',
   ToggleDebugLogging = 'ToggleDebugLogging',
   SaveImgurClientId = 'SaveImgurClientId',

@@ -2,6 +2,7 @@ import { BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions, Tray, app } 
 import icon from '../../resources/icon.png?asset'
 import { fromEvent } from 'rxjs'
 import { name } from '../../package.json'
+import { config$, toggleMediaServerActive } from './core/stores/config'
 
 export function initTray(mainWindow: BrowserWindow): void {
   const tray = new Tray(icon)
@@ -11,26 +12,32 @@ export function initTray(mainWindow: BrowserWindow): void {
   // Show window on tray click.
   fromEvent(tray, 'click').subscribe(() => mainWindow.show())
 
-  const template: Array<MenuItemConstructorOptions | MenuItem> = [
-    { type: 'separator' },
-    // {
-    //   label:
-    //     "🪤 TODO List connections here with checkbos to indicate active",
-    //   type: "checkbox",
-    //   checked: true,
-    // },
-    { type: 'separator' },
-    {
-      label: '⚙️ Configuration',
-      click: () => mainWindow.show()
-    },
-    { type: 'separator' },
-    {
-      label: '🧻 Exit',
-      click: () => app.exit()
-    }
-  ]
+  config$.subscribe((config) => {
+    const template: Array<MenuItemConstructorOptions | MenuItem> = []
 
-  const menu = Menu.buildFromTemplate(template)
-  tray.setContextMenu(menu)
+    config.mediaServers.forEach((server) =>
+      template.push({
+        label: server.address,
+        type: 'checkbox',
+        checked: server.isActive,
+        click: () => toggleMediaServerActive(server.id)
+      })
+    )
+
+    template.push(
+      { type: 'separator' },
+      {
+        label: '⚙️ Configuration',
+        click: () => mainWindow.show()
+      },
+      { type: 'separator' },
+      {
+        label: '🧻 Exit',
+        click: () => app.exit()
+      }
+    )
+
+    const menu = Menu.buildFromTemplate(template)
+    tray.setContextMenu(menu)
+  })
 }

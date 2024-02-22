@@ -6,6 +6,7 @@
   import MediaServerIcon from './MediaServerIcon.svelte'
 
   export let config: MediaServerConfig
+
   let isBusyDisconnecting = false
 
   let isBusyTesting = false
@@ -20,7 +21,8 @@
     'Everything fine!',
     'Connected and ready!',
     'Test passed!',
-    'Test successful!'
+    'Test successful!',
+    'All systems operational!'
   ]
   let testSuccessText: string
 
@@ -70,35 +72,54 @@
 
 <details>
   <!-- svelte-ignore a11y-no-redundant-roles -->
-  <summary role="button" class:secondary={!config.isActive}>
-    <MediaServerIcon type={config.type} />
-    <span class="title">
-      {config.protocol}://{config.address}:{config.port} ({config.username})</span
-    >
+  <summary role="button" class="secondary">
+    <input
+      id={'isActive' + config.id}
+      type="checkbox"
+      role="switch"
+      checked={config.isActive}
+      on:click|preventDefault={toggleActive}
+      disabled={isBusyDisconnecting || isBusyTesting}
+    />
+    {config.address}
     {#if !!testError}❗{/if}
   </summary>
   <article>
-    <section>
-      <label for={'isActive' + config.id}>
-        <input
-          id={'isActive' + config.id}
-          type="checkbox"
-          role="switch"
-          checked={config.isActive}
-          on:click|preventDefault={toggleActive}
-          disabled={isBusyDisconnecting || isBusyTesting}
-        />
-        Active
+    <legend>Type</legend>
+    <label>
+      <input type="radio" disabled checked />
+      <MediaServerIcon type={config.type} />
+      {config.type === 'emby' ? 'Emby' : 'Jellyfin'}
+    </label>
+    <div class="grid">
+      <label
+        >Protocol
+        <select bind:value={config.protocol} disabled>
+          <option value="http" selected>🔓 HTTP</option>
+          <option value="https">🔒 HTTPS</option>
+        </select>
       </label>
-    </section>
+      <label>Address<input type="text" bind:value={config.address} required disabled /> </label>
+      <label>Port<input type="number" min="1" bind:value={config.port} required disabled /> </label>
+    </div>
+    <div class="grid">
+      <label>Username<input type="text" bind:value={config.username} required disabled /> </label>
+
+      <label
+        >Password<input type="password" placeholder="Password" value="12345678" disabled />
+      </label>
+    </div>
     <div class="grid">
       <button
         type="button"
-        class="secondary"
+        id="test"
         on:click={testClick}
-        disabled={isBusyDisconnecting || isBusyTesting}>Test Connection</button
+        disabled={isBusyDisconnecting || isBusyTesting}
       >
-
+        Test Connection
+      </button>
+    </div>
+    <div class="grid" style="text-align: center;">
       {#if !!testError}
         <span style="color: var(--pico-del-color);"><MediaServerError error={testError} /></span>
       {:else if isTested}
@@ -109,6 +130,7 @@
         <span aria-busy={isBusyTesting}>Testing...</span>
       {/if}
     </div>
+    <hr />
     <div class="grid">
       <button
         type="button"
@@ -122,9 +144,3 @@
     <!-- <footer>TODO list libraries. TODO allow ignored words</footer> -->
   </article>
 </details>
-
-<style>
-  .title {
-    margin-left: 7px;
-  }
-</style>

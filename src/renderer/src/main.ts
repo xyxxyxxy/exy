@@ -1,6 +1,5 @@
 import './assets/main.css'
 import '../../../node_modules/@picocss/pico/css/pico.min.css'
-import '../../../node_modules/@picocss/pico/css/pico.colors.min.css'
 
 import Config from './Config.svelte'
 
