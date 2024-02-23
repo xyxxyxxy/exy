@@ -105,7 +105,7 @@ discordDisconnected$
 const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
 
 export function setActivity(activity: Presence): void {
-  logDiscord.debug(`Scheduling  next activity "${activity.details}".`)
+  logDiscord.debug(`Scheduling next activity "${activity.details}".`)
   activitySource.next(activity)
 }
 
@@ -142,7 +142,7 @@ activitySource
     next: (activity) => {
       if (discordClient)
         if (activity) {
-          logDiscord.debug(`Set activity to "${activity.details}".`)
+          logDiscord.debug(`Set activity.`, activity)
           discordClient.setActivity(activity)
           // TODO Test error handling
           // throw new Error('TEST')

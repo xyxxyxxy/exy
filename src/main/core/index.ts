@@ -58,20 +58,22 @@ discordReady$
     }),
     // Early exit and type guard.
     filter(isNowPlaying),
+    // Generating Discord activity.
+    switchMap((nowPlaying) => getActivity$(nowPlaying.server, nowPlaying.session)),
     // Avoid unnecessary updates.
     distinctUntilChanged(
       (previous, current) =>
-        previous.session.NowPlayingItem.Id === current.session.NowPlayingItem.Id &&
-        previous.session.PlayState.IsPaused === current.session.PlayState.IsPaused &&
-        previous.session.PlayState.IsMuted === current.session.PlayState.IsMuted
-    ),
-    tap((nowPlaying) =>
-      logCore.info(`Now playing item changed to ${nowPlaying.session.NowPlayingItem?.Name}.`)
-    ),
-    // Generating Discord activity.
-    switchMap((nowPlaying) => getActivity$(nowPlaying.server, nowPlaying.session))
+        previous.details === current.details &&
+        previous.state === current.state &&
+        previous.largeImageKey === current.largeImageKey &&
+        previous.largeImageText === current.largeImageText &&
+        previous.smallImageKey === current.smallImageKey &&
+        previous.smallImageText === current.smallImageText
+      // End timestamp fluxuates due to API response time and rounding.
+    )
   )
   .subscribe((activity) => {
+    logCore.debug(`New activity "${activity.details}".`)
     setActivity(activity)
   })
 

@@ -1,5 +1,5 @@
 import { Presence } from 'discord-rpc'
-import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from './emby-client'
+import { BaseItemDto, ChapterInfo, PlayerStateInfo, Session_SessionInfo } from './emby-client'
 import log from 'electron-log'
 import { MediaServerConfig } from './stores/config.types'
 import {
@@ -16,27 +16,9 @@ import {
 import { getImgurLink$ } from './imgur'
 import { getParentImageUrl, getPrimaryImageUrl } from './media-server'
 import { config$ } from './stores/config'
+import { Activity, Button, ItemMediaType, ItemType } from './activity.types'
 
 const logActivity = log.scope('activity')
-
-enum ItemMediaType {
-  Audio = 'Audio',
-  Video = 'Video'
-}
-
-enum ItemType {
-  // Music has no type, only media type.
-  Episode = 'Episode',
-  Movie = 'Movie',
-  TvChannel = 'TvChannel',
-  MusicVideo = 'MusicVideo'
-}
-
-// Enhanced type with some defaults for easier handling.
-type Activity = Presence & {
-  buttons: Array<Button>
-}
-type Button = { label: string; url: string }
 
 // Merges additional properties into activity.
 function mergeActivity(activity: Activity, addition: Presence): Activity {
@@ -46,6 +28,14 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
   }
   return { ...activity, ...addition }
 }
+
+// This cache avoids repeated calls to public sites while the app is running.
+const publicContentCache: {
+  [watchLink: string]: {
+    largeImageKey?: string
+    buttons: Array<Button>
+  }
+} = {}
 
 function getPublicContent$(
   item: BaseItemDto,
@@ -61,6 +51,13 @@ function getPublicContent$(
   logActivity.debug(`Found a ${siteName} match with ID:`, id)
   const watchLink = watchLinkConstructor(id)
 
+  // TODO Cache not needed if changed into observable pipe
+  // Check cache.
+  if (publicContentCache[watchLink]) {
+    logActivity.debug(`Returning public content from cache.`)
+    return of(publicContentCache[watchLink])
+  }
+
   return from(fetch(watchLink)).pipe(
     tap((response) => {
       if (!response.ok) {
@@ -73,6 +70,8 @@ function getPublicContent$(
         buttons: [{ label: `Watch on ${siteName}`, url: watchLink }]
       }
     }),
+    // Set cache.
+    tap((result) => (publicContentCache[watchLink] = result)),
     catchError((error) => {
       logActivity.warn(`Failed to ${siteName} content.`, error)
       return of({})
@@ -173,16 +172,38 @@ export function getActivity$(
     withLatestFrom(config$),
     map(([activity, config]) => {
       const type = config.isMediaServerTypeShown ? server.type : 'neutral'
-      setDefaultImageAndPauseState(activity, type, session)
+      const playState = session.PlayState
+
+      // Small image and play state info.
+      activity.smallImageKey = `${type}-small`
+      activity.smallImageText = 'Playing'
+      if (type !== 'neutral')
+        activity.smallImageText += 'on' + type[0].toUpperCase() + type.slice(1) // Capitalize.
+
+      // Set muted image. Overwritten by paused state.
+      if (playState.IsMuted) {
+        activity.smallImageKey = `${type}-mute`
+        activity.smallImageText = 'Muted'
+      }
+
+      // Set pause image or end time.
+      if (playState.IsPaused) {
+        activity.smallImageKey = `${type}-pause`
+        activity.smallImageText = 'Paused'
+      } else activity.endTimestamp = getEndTime(item, playState)
 
       let detailsVerb: string = 'Playing'
-      let detailsName: string = item.Name || '' // TODO Prefer original title? Relevant for movies
+      let detailsName: string = item.Name || item.OriginalTitle || '' // TODO Prefer original title? Relevant for movies
 
       // Start with empty string, so += does not cause 'undefined'.
       activity.state = ''
       activity.largeImageText = ''
 
       const date: Date | null = getDate(item)
+
+      // Set chapter as state. Might be overwritten later.
+      const chapter = getChapter(item, playState)
+      if (chapter) activity.state = chapter.Name
 
       const setArtists = (): void => {
         const artists: Array<string> = item.Artists || []
@@ -300,35 +321,22 @@ export function getActivity$(
   )
 }
 
-function setDefaultImageAndPauseState(
-  activity: Activity,
-  type: 'neutral' | MediaServerConfig['type'],
-  session: Session_SessionInfo & {
-    NowPlayingItem: BaseItemDto
-    PlayState: PlayerStateInfo
-  }
-): void {
-  // TODO server type and name
+function getChapter(item: BaseItemDto, playState: PlayerStateInfo): ChapterInfo | undefined {
+  if (!item.Chapters?.length) return undefined
+  let currentChapter: ChapterInfo = item.Chapters[0]
+  item.Chapters.find((chapter) => {
+    const chapterStartPosition = chapter.StartPositionTicks || 0
+    const playPosition = playState.PositionTicks || 0
+    // Going through chapters until the chapter start position is after the current play position.
+    if (chapterStartPosition < playPosition) {
+      currentChapter = chapter
+      return false
+    }
 
-  // If large image was set before the server type image is added.
-  // Else the server image is the large image.
-  if (activity.largeImageKey) {
-    activity.smallImageKey = `${type}-small`
-    activity.smallImageText = 'Playing'
-    if (type !== 'neutral') activity.smallImageText += 'on' + type[0].toUpperCase() + type.slice(1) // Capitalize.
-  } else activity.largeImageKey = type
+    return true
+  })
 
-  // Set muted image. Overwritten by paused state.
-  if (session.PlayState.IsMuted) {
-    activity.smallImageKey = `${type}-mute`
-    activity.smallImageText = 'Muted'
-  }
-
-  // Set pause image or end time.
-  if (session.PlayState.IsPaused) {
-    activity.smallImageKey = `${type}-pause`
-    activity.smallImageText = 'Paused'
-  } else activity.endTimestamp = getEndTime(session)
+  return currentChapter
 }
 
 function getDate(item: BaseItemDto): Date | null {
@@ -338,16 +346,11 @@ function getDate(item: BaseItemDto): Date | null {
   return date
 }
 
-function getEndTime(
-  session: Session_SessionInfo & {
-    NowPlayingItem: BaseItemDto
-    PlayState: PlayerStateInfo
-  }
-): Date | undefined {
-  if (!session.NowPlayingItem.RunTimeTicks || !session.PlayState.PositionTicks) return undefined
+function getEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | undefined {
+  if (!item.RunTimeTicks || !playState.PositionTicks) return undefined
 
-  const runtimeMs: number = session.NowPlayingItem.RunTimeTicks / 10000
-  const playPositionMs: number = session.PlayState.PositionTicks / 10000
+  const runtimeMs: number = item.RunTimeTicks / 10000
+  const playPositionMs: number = playState.PositionTicks / 10000
   // Now, plus runtime, minus play position.
   return new Date(Date.now().valueOf() + runtimeMs - playPositionMs)
 
