@@ -29,7 +29,7 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
   return { ...activity, ...addition }
 }
 
-// This cache avoids repeated calls to public sites while the app is running.
+// Local cache to avoid repeating the same API calls.
 const publicContentCache: {
   [watchLink: string]: {
     largeImageKey?: string

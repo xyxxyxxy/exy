@@ -1,4 +1,4 @@
-import { Observable, from, map, of, switchMap, tap, withLatestFrom } from 'rxjs'
+import { Observable, from, map, of, switchMap, tap } from 'rxjs'
 import log from 'electron-log'
 import { config$ } from './stores/config'
 import { ImgurClient } from 'imgur'
@@ -31,53 +31,62 @@ export function testImgurClientId$(clientId: string): Observable<unknown> {
 // We upload images to Imgur, so the media-server URL is not exposed through Discord.
 // A cache is implemented to upload each image only once.
 //
-// Caching is done using the image content hash.
-// The source URL is no good cache key, since the same image can be available via differnet URLs.
-// For example the songs in an album. Each song has the same primary image, but a different item ID in the URL.
+// Two cache instances are involved here. One runtime cache for the image hash and one file cache for Imgur upload URLs.
+//
+// The runtime hash cache is to avoid downloading the source image again to generate a hash.
+// If the image behind a URL changes, the app needs to be restarted to clear this cache and download the new image.
+// This is accepted, since images on the media-server do not change often.
+//
+// Imgur upload cache is stored in a file and used to upload each image only once.
+// This is important, since one image can have multiple URLs. For example the image of songs in an music album.
+
+const hashCach: { [url: string]: string } = {}
 
 // Returns null Imgur client ID is not configured and there was no cache hit.
 export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {
-  return from(fetch(sourceUrl)).pipe(
-    tap((response) => {
-      if (response.ok) logImage.debug(`Downloaded image from source "${sourceUrl}".`)
-      else
-        throw new Error(
-          `Failed to download from source "${sourceUrl}". Status: ${response.status} ${response.statusText}`
-        )
-    }),
-    switchMap((response) => from(response.arrayBuffer())),
-    // See: https://stackoverflow.com/questions/33926399/fetch-resource-compute-hash-return-promise
-    map((arrayBuffer) => {
-      const buffer: Buffer = Buffer.from(arrayBuffer)
-      const hash: string = createHash('md5').update(buffer).digest('hex')
+  const cachedHash = hashCach[sourceUrl]
+  if (cachedHash) return of(getCachedImageLink(cachedHash))
 
-      return { buffer, hash }
-    }),
-    tap(({ hash }) => logImage.debug(`Generated image hash:`, hash)),
-    withLatestFrom(config$),
-    switchMap(([image, config]) => {
-      const cachedLink: string | undefined = getCachedImageLink(image.hash)
+  return config$.pipe(
+    map((config) => config.imgurClientId),
+    switchMap((imgurClientId) => {
+      if (!imgurClientId) return of(undefined)
+      return from(fetch(sourceUrl)).pipe(
+        tap((response) => {
+          if (response.ok) logImage.debug(`Downloaded image from source "${sourceUrl}".`)
+          else
+            throw new Error(
+              `Failed to download from source "${sourceUrl}". Status: ${response.status} ${response.statusText}`
+            )
+        }),
+        switchMap((response) => response.arrayBuffer()),
+        // See: https://stackoverflow.com/questions/33926399/fetch-resource-compute-hash-return-promise
+        map((arrayBuffer) => {
+          const buffer: Buffer = Buffer.from(arrayBuffer)
+          const hash: string = createHash('md5').update(buffer).digest('hex')
 
-      // Cache hit.
-      if (cachedLink) {
-        logImage.debug(`Cache hit for "${sourceUrl}" (${image.hash}). Cached link:`, cachedLink)
-        return of(cachedLink)
-      }
+          return { sourceUrl, buffer, hash }
+        }),
+        tap(({ hash }) => logImage.debug(`Generated image hash:`, hash)),
+        // Set hash cash.
+        tap(({ sourceUrl, hash }) => (hashCach[sourceUrl] = hash)),
+        switchMap((image) => {
+          // Check Imgur upload cache.
+          const cachedLink: string | undefined = getCachedImageLink(image.hash)
 
-      // Without Imgur client ID no upload is possible.
-      if (!config.imgurClientId) {
-        logImage.debug('No Imgur client ID configured. Skipping image upload.')
-        return of(undefined)
-      }
+          // Cache hit.
+          if (cachedLink) return of(cachedLink)
 
-      // Upload image to Imgur.
-      return uploadToImgur$(image.buffer, config.imgurClientId).pipe(
-        tap((link) => cacheImageLink(image.hash, link)),
-        tap((link) =>
-          logImage.debug(
-            `Link "${link}" of source image "${sourceUrl}" (${image.hash}) is now cached.`
+          // Upload image to Imgur.
+          return uploadToImgur$(image.buffer, imgurClientId).pipe(
+            tap((link) => cacheImageLink(image.hash, link)),
+            tap((link) =>
+              logImage.debug(
+                `Link "${link}" of source image "${sourceUrl}" (${image.hash}) is now cached.`
+              )
+            )
           )
-        )
+        })
       )
     })
   )

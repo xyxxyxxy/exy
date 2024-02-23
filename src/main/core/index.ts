@@ -35,7 +35,7 @@ config$
 // Main pipe to handle now playing item.
 //
 
-const pillingIntervalSec = 5
+const pollingIntervalSec = 5
 discordReady$
   .pipe(
     switchMap(() => config$),
@@ -46,7 +46,7 @@ discordReady$
     }),
     switchMap((config) =>
       // Get now playing session.
-      timer(0, pillingIntervalSec * 1000).pipe(
+      timer(0, pollingIntervalSec * 1000).pipe(
         tap(() => logCore.debug('Polling media-servers.')),
         switchMap(() => getNowPlaying$(config.mediaServers)),
         takeUntil(discordDisconnected$)
