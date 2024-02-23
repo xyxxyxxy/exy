@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg fill="#000000" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<polygon points="176,368 137.6,432 374.4,432 336,368 	"/>
+	<path d="M480,80H32C14.328,80,0,94.326,0,112v288c0,17.672,14.328,32,32,32h68.561l57.322-96h196.234l57.322,96H480
+		c17.674,0,32-14.328,32-32V112C512,94.326,497.674,80,480,80z M96,272c-17.672,0-32-14.328-32-32c0-17.674,14.328-32,32-32
+		c17.674,0,32,14.326,32,32C128,257.672,113.674,272,96,272z M336,272H176v-64h160V272z M416,272c-17.672,0-32-14.328-32-32
+		c0-17.674,14.328-32,32-32c17.674,0,32,14.326,32,32C448,257.672,433.674,272,416,272z"/>
+</g>
+</svg>
