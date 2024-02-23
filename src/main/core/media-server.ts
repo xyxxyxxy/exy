@@ -139,6 +139,7 @@ function pickNowPlayingBetweenServers(
 } | null {
   if (!sessions.length) return null
 
+  // TODO Filter muted, if multiple
   // TODO
   // Remove paused sessions if there are also playing sessions.
   // const isPausedCount = playing.filter((session) => session.PlayState?.IsPaused).length

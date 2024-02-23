@@ -36,52 +36,64 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
   return { ...activity, ...addition }
 }
 
-const getYouTubeContent$ = (item: BaseItemDto): Observable<Presence> => {
-  // RegExp detecting if the path includes 'youtube' with a YouTube video ID inside brackets [].
-  // A capture group is used to get the video ID.
-  const youtubeMatch = item.Path?.match(/youtube.*\[([^"&?/\s]{11})\]/i)
+function getPublicContent$(
+  item: BaseItemDto,
+  siteName: string,
+  idMatcher: RegExp,
+  watchLinkConstructor: (videoId: string) => string,
+  imageUrlConstructor?: (videoId: string) => string
+): Observable<Presence> {
+  // Relying on file path for public content detection.
+  const match = item.Path?.match(idMatcher)
+  if (!match || !match[1]) return of({})
+  const id = match[1]
+  logActivity.debug(`Found a ${siteName} match with ID:`, id)
+  const watchLink = watchLinkConstructor(id)
 
-  if (!youtubeMatch || !youtubeMatch[1]) return of({})
-
-  const youtubeId = youtubeMatch[1]
-
-  const youtubeLink = `https://youtube.com/watch?v=${youtubeId}`
-  const youtubeThumbnailLink = `https://img.youtube.com/vi/${youtubeId}/0.jpg`
-  logActivity.debug(`Got a YouTube match:`, youtubeLink)
-  // Downloading the thumbnail image to confirm the video is still available.
-  return from(fetch(youtubeThumbnailLink)).pipe(
+  return from(fetch(watchLink)).pipe(
     tap((response) => {
-      if (!response.ok)
-        throw new Error(
-          `Failed to download image "${youtubeThumbnailLink}". Status: ${response.status} ${response.statusText}`
-        )
+      if (!response.ok) {
+        throw new Error(`Public watch link '${watchLink}' failed confirmation request.`)
+      }
     }),
     map(() => {
       return {
-        largeImageKey: youtubeThumbnailLink,
-        buttons: [{ label: 'Watch on YouTube', url: youtubeLink }]
+        largeImageKey: imageUrlConstructor ? imageUrlConstructor(id) : undefined,
+        buttons: [{ label: `Watch on ${siteName}`, url: watchLink }]
       }
     }),
-    catchError(() => of({}))
+    catchError((error) => {
+      logActivity.warn(`Failed to ${siteName} content.`, error)
+      return of({})
+    })
+  )
+}
+
+const getYouTubeContent$ = (item: BaseItemDto): Observable<Presence> => {
+  // Item path must contain 'youtube', followed by a YouTube video ID inside brackets '[]'.
+  return getPublicContent$(
+    item,
+    'YouTube',
+    /youtube.*\[([^"&?/\s]{11})\]/i,
+    (id) => `https://youtube.com/watch?v=${id}`,
+    (id) => `https://img.youtube.com/vi/${id}/0.jpg`
   )
 }
 
 function getBitChuteContent$(item: BaseItemDto): Observable<Presence> {
-  return of({}) // TODO
-}
-
-function getOdyseeContent$(item: BaseItemDto): Observable<Presence> {
-  return of({}) // TODO
+  // Item path must contain 'bitchute', followed by a BitChute video ID inside brackets '[]'.
+  return getPublicContent$(
+    item,
+    'BitChute',
+    /bitchute.*\[([^"&?/\s]*)\]/i,
+    (id) => `https://www.bitchute.com/video/${id}/`
+  )
 }
 
 // Looks for public images and links for the item.
 // Returns an activity with the available values set.
 const addPubliContent$ = (activity: Activity, item: BaseItemDto): Observable<Activity> => {
-  return forkJoin([
-    getBitChuteContent$(item),
-    getOdyseeContent$(item),
-    getYouTubeContent$(item)
-  ]).pipe(
+  return forkJoin([getBitChuteContent$(item), getYouTubeContent$(item)]).pipe(
     map((results) => {
       // Merge all results into the provided activity object.
       results.forEach((result) => mergeActivity(activity, result))
@@ -175,6 +187,8 @@ export function getActivity$(
 
           setArtists()
 
+          // Audio books are identified by having the 'Audiobook' genre.
+          // const isAudioBook: boolean = !!item.Genres?.includes('Audiobook')
           // Preparing.
           // TODO Use to change small image for selected genres.
           // if (genres.length)
@@ -191,7 +205,6 @@ export function getActivity$(
 
           break
         }
-        // Episodes, Home video // TODO
         case ItemMediaType.Video: {
           detailsVerb = 'Watching'
 
@@ -254,7 +267,6 @@ export function getActivity$(
           break
         }
         case ItemType.TvChannel: {
-          detailsVerb = 'Watching live'
           if (item.CurrentProgram?.Overview) activity.state = item.CurrentProgram?.Overview
           if (item.CurrentProgram?.StartDate)
             activity.startTimestamp = new Date(item.CurrentProgram?.StartDate)
@@ -292,10 +304,14 @@ function setDefaultImageAndPauseState(
     activity.smallImageText = 'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
   } else activity.largeImageKey = server.type
 
-  const isPaused = !!session.PlayState.IsPaused
+  // Set muted image. Overwritten by paused state.
+  if (session.PlayState.IsMuted) {
+    activity.smallImageKey = `${server.type}-mute`
+    activity.smallImageText = 'Muted'
+  }
 
   // Set pause image or end time.
-  if (isPaused) {
+  if (session.PlayState.IsPaused) {
     activity.smallImageKey = `${server.type}-pause`
     activity.smallImageText = 'Paused'
   } else activity.endTimestamp = getEndTime(session)

@@ -47,7 +47,7 @@ discordReady$
     switchMap((config) =>
       // Get now playing session.
       timer(0, pillingIntervalSec * 1000).pipe(
-        tap(() => logCore.debug('Polling media-servers for sessions.')),
+        tap(() => logCore.debug('Polling media-servers.')),
         switchMap(() => getNowPlaying$(config.mediaServers)),
         takeUntil(discordDisconnected$)
       )
@@ -58,12 +58,12 @@ discordReady$
     }),
     // Early exit and type guard.
     filter(isNowPlaying),
-    // Avoid setting the same activity twice.
+    // Avoid unnecessary updates.
     distinctUntilChanged(
       (previous, current) =>
-        // Checking item ID and pause state.
         previous.session.NowPlayingItem.Id === current.session.NowPlayingItem.Id &&
-        previous.session.PlayState.IsPaused === current.session.PlayState.IsPaused
+        previous.session.PlayState.IsPaused === current.session.PlayState.IsPaused &&
+        previous.session.PlayState.IsMuted === current.session.PlayState.IsMuted
     ),
     tap((nowPlaying) =>
       logCore.info(`Now playing item changed to ${nowPlaying.session.NowPlayingItem?.Name}.`)
