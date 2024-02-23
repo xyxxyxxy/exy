@@ -19,6 +19,10 @@ const configStore = new Store<ConfigStore>({
       type: 'boolean',
       default: true
     },
+    isMediaServerTypeShown: {
+      type: 'boolean',
+      default: false
+    },
     mediaServers: {
       type: 'array',
       default: [],
@@ -59,6 +63,7 @@ const configStore = new Store<ConfigStore>({
 export enum Selector {
   deviceId = 'deviceId',
   IsStartupEnabled = 'isStartupEnabled',
+  IsMediaServerTypeShown = 'isMediaServerTypeShown',
   MediaServers = 'mediaServers',
   ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'
@@ -68,6 +73,7 @@ const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject
   Readonly<ConfigStore>
 >({
   deviceId: configStore.get(Selector.deviceId),
+  isMediaServerTypeShown: configStore.get(Selector.IsMediaServerTypeShown),
   isStartupEnabled: configStore.get(Selector.IsStartupEnabled),
   mediaServers: configStore.get(Selector.MediaServers),
   imgurClientId: configStore.get(Selector.ImgurClientId),
@@ -125,6 +131,13 @@ export function deleteMediaServerConfig(id: string): void {
 
 export function toggleStartup(): void {
   configStore.set(Selector.IsStartupEnabled, !configStore.get(Selector.IsStartupEnabled))
+}
+
+export function toggleMediaServerTypeShown(): void {
+  configStore.set(
+    Selector.IsMediaServerTypeShown,
+    !configStore.get(Selector.IsMediaServerTypeShown)
+  )
 }
 
 export function toggleDebugLogging(): void {

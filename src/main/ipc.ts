@@ -8,6 +8,7 @@ import {
   setImgurClientId,
   toggleDebugLogging,
   toggleMediaServerActive,
+  toggleMediaServerTypeShown,
   toggleStartup
 } from './core/stores/config'
 import log from 'electron-log/main'
@@ -33,6 +34,7 @@ export function startMainToRendererIpc(): void {
 }
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
+ipcMain.on(IpcChannel.ToggleIsMediaServerTypeShown, toggleMediaServerTypeShown)
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
   logout$(config)

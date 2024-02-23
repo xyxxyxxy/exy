@@ -21,6 +21,10 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 
+  function toggleMediaServerTypeShown(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsMediaServerTypeShown)
+  }
+
   function toggleDebugLogging(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleDebugLogging)
   }
@@ -35,17 +39,28 @@
     <section>
       <h4>⚙️ General</h4>
       <div class="grid">
-        <label>
-          <input
-            name="isStartupEnabled"
-            type="checkbox"
-            role="switch"
-            checked={config.isStartupEnabled}
-            on:click|preventDefault={toggleStartup}
-          />
-
-          Run at startup
-        </label>
+        <div>
+          <label>
+            <input
+              name="isStartupEnabled"
+              type="checkbox"
+              role="switch"
+              checked={config.isStartupEnabled}
+              on:click|preventDefault={toggleStartup}
+            />
+            Run at startup
+          </label>
+          <label>
+            <input
+              name="isMediaServerTypeShown"
+              type="checkbox"
+              role="switch"
+              checked={config.isMediaServerTypeShown}
+              on:click|preventDefault={toggleMediaServerTypeShown}
+            />
+            <span data-tooltip="Tooltip">Show media-server type</span>
+          </label>
+        </div>
         <DiscordStatus />
       </div>
     </section>

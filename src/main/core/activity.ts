@@ -2,9 +2,20 @@ import { Presence } from 'discord-rpc'
 import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from './emby-client'
 import log from 'electron-log'
 import { MediaServerConfig } from './stores/config.types'
-import { Observable, catchError, forkJoin, from, map, of, switchMap, tap } from 'rxjs'
+import {
+  Observable,
+  catchError,
+  forkJoin,
+  from,
+  map,
+  of,
+  switchMap,
+  tap,
+  withLatestFrom
+} from 'rxjs'
 import { getImgurLink$ } from './imgur'
 import { getParentImageUrl, getPrimaryImageUrl } from './media-server'
+import { config$ } from './stores/config'
 
 const logActivity = log.scope('activity')
 
@@ -125,10 +136,8 @@ function getPrimaryImageLink$(
 ): Observable<string | undefined> {
   return getImgurLink$(getPrimaryImageUrl(server, item)).pipe(
     catchError((error) => {
-      logActivity.warn(`Failed to get primary image link. Trying album image next.`)
+      logActivity.warn(`Failed to get primary image link. Trying parent image next.`)
       logActivity.debug(error)
-
-      // TODO Fallback to series image if episode has no image?
 
       if (!item.ParentId) return of(undefined)
 
@@ -161,8 +170,10 @@ export function getActivity$(
   }).pipe(
     switchMap((activity) => addPubliContent$(activity, item)),
     switchMap((activity) => addLargeImage$(activity, server, item)),
-    map((activity) => {
-      setDefaultImageAndPauseState(activity, server, session)
+    withLatestFrom(config$),
+    map(([activity, config]) => {
+      const type = config.isMediaServerTypeShown ? server.type : 'neutral'
+      setDefaultImageAndPauseState(activity, type, session)
 
       let detailsVerb: string = 'Playing'
       let detailsName: string = item.Name || '' // TODO Prefer original title? Relevant for movies
@@ -291,28 +302,31 @@ export function getActivity$(
 
 function setDefaultImageAndPauseState(
   activity: Activity,
-  server: MediaServerConfig,
+  type: 'neutral' | MediaServerConfig['type'],
   session: Session_SessionInfo & {
     NowPlayingItem: BaseItemDto
     PlayState: PlayerStateInfo
   }
 ): void {
+  // TODO server type and name
+
   // If large image was set before the server type image is added.
   // Else the server image is the large image.
   if (activity.largeImageKey) {
-    activity.smallImageKey = `${server.type}-small`
-    activity.smallImageText = 'Playing on ' + server.type[0].toUpperCase() + server.type.slice(1) // Capitalize.
-  } else activity.largeImageKey = server.type
+    activity.smallImageKey = `${type}-small`
+    activity.smallImageText = 'Playing'
+    if (type !== 'neutral') activity.smallImageText += 'on' + type[0].toUpperCase() + type.slice(1) // Capitalize.
+  } else activity.largeImageKey = type
 
   // Set muted image. Overwritten by paused state.
   if (session.PlayState.IsMuted) {
-    activity.smallImageKey = `${server.type}-mute`
+    activity.smallImageKey = `${type}-mute`
     activity.smallImageText = 'Muted'
   }
 
   // Set pause image or end time.
   if (session.PlayState.IsPaused) {
-    activity.smallImageKey = `${server.type}-pause`
+    activity.smallImageKey = `${type}-pause`
     activity.smallImageText = 'Paused'
   } else activity.endTimestamp = getEndTime(session)
 }
