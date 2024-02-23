@@ -32,6 +32,7 @@ function createWindow(): void {
   }
 
   startMainToRendererIpc()
+  lockSingleInstance(mainWindow)
   initTray(mainWindow)
 
   // Open if no media-servers are configured.
@@ -90,6 +91,7 @@ import { startMainToRendererIpc } from './ipc'
 import { config$ } from './core/stores/config'
 import { distinctUntilChanged, fromEvent, map, withLatestFrom } from 'rxjs'
 import { initTray } from './tray'
+import { name } from '../../package.json'
 
 const logMain = log.scope('main')
 
@@ -109,9 +111,21 @@ contextMenu({
   showCopyImage: false
 })
 
-// TODO
-// // Singelton process lock.
-// if (!app.requestSingleInstanceLock()) {
-//   logCore.error(`${productName} is already running.`)
-//   app.quit()
-// }
+// Single process lock.
+// See: https://www.electronjs.org/docs/latest/api/app#apprequestsingleinstancelockadditionaldata
+function lockSingleInstance(mainWindow: BrowserWindow): void {
+  const additionalData = { myKey: name }
+  const gotTheLock = app.requestSingleInstanceLock(additionalData)
+
+  if (!gotTheLock) {
+    app.exit()
+  } else {
+    app.on('second-instance', (event, commandLine, workingDirectory, additionalData) => {
+      // Print out data received from the second instance.
+      logMain.warn(additionalData)
+
+      // Someone tried to run a second instance, we should focus our window.
+      mainWindow.show()
+    })
+  }
+}
