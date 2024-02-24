@@ -44,6 +44,7 @@ const hashCach: { [url: string]: string } = {}
 
 // Returns null Imgur client ID is not configured and there was no cache hit.
 export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {
+  // Check hash cache and get cached Imgur link on hit.
   const cachedHash = hashCach[sourceUrl]
   if (cachedHash) return of(getCachedImageLink(cachedHash))
 

@@ -3,7 +3,7 @@
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
   import { IpcChannel, type ConnectMediaServerError } from '../../../main/ipc.types'
   import MediaServerError from './MediaServerError.svelte'
-  import MediaServerIcon from './MediaServerIcon.svelte'
+  import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
 
   export let config: MediaServerConfig
 
@@ -84,12 +84,7 @@
     {#if !!testError}❗{/if}
   </summary>
   <article>
-    <legend>Type</legend>
-    <label>
-      <input type="radio" disabled checked />
-      <MediaServerIcon type={config.type} />
-      {config.type === 'emby' ? 'Emby' : 'Jellyfin'}
-    </label>
+    <MediaServerTypeSelect {config} disabled></MediaServerTypeSelect>
     <div class="grid">
       <label
         >Protocol

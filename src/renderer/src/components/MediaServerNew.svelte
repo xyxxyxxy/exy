@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { NewMediaServerConfig, ConnectMediaServerError } from '../../../main/ipc.types'
-  import MediaServerIcon from './MediaServerIcon.svelte'
   import { IpcChannel } from '../../../main/ipc.types'
   import MediaServerError from './MediaServerError.svelte'
+  import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
 
   export let hasMediaServers: boolean
   let open: boolean
@@ -86,28 +86,7 @@
   </summary>
   <article>
     <form on:submit|preventDefault={submit}>
-      <legend>Type</legend>
-      <label>
-        <input
-          type="radio"
-          bind:group={config.type}
-          value="emby"
-          disabled={isBusy}
-          on:input={resetValidation}
-          checked
-        />
-        <MediaServerIcon type="emby" /> Emby
-      </label>
-      <label>
-        <input
-          type="radio"
-          bind:group={config.type}
-          value="jellyfin"
-          disabled={isBusy}
-          on:input={resetValidation}
-        />
-        <MediaServerIcon type="jellyfin" /> Jellyfin
-      </label>
+      <MediaServerTypeSelect {config} disabled={isBusy}></MediaServerTypeSelect>
 
       <div class="grid">
         <label
