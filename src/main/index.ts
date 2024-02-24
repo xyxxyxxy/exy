@@ -1,7 +1,10 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow, nativeTheme } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.png?asset'
+import iconLight from '../../resources/icon-light.png?asset'
+import iconDark from '../../resources/icon-dark.png?asset'
+
+export const appIcon = nativeTheme.shouldUseDarkColors ? iconLight : iconDark
 
 function createWindow(): void {
   // Create the browser window.
@@ -10,8 +13,7 @@ function createWindow(): void {
     height: 900,
     show: false,
     autoHideMenuBar: true,
-    ...(process.platform === 'linux' ? { icon } : {}),
-    // icon, // TODO Set icon
+    icon: appIcon,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -66,11 +68,12 @@ app.whenReady().then(() => {
 
   createWindow()
 
-  app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
-    if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  })
+  // TODO Handle macOS dock
+  // app.on('activate', function () {
+  //   // On macOS it's common to re-create a window in the app when the
+  //   // dock icon is clicked and there are no other windows open.
+  //   if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  // })
 })
 
 // Quit when all windows are closed, except on macOS. There, it's common

@@ -14,7 +14,7 @@ import {
   withLatestFrom
 } from 'rxjs'
 import { getImgurLink$ } from './imgur'
-import { getParentImageUrl, getPrimaryImageUrl } from './media-server'
+import { getParentImageUrl, getItemImageUrl } from './media-server'
 import { config$ } from './stores/config'
 import { Activity, Button, ItemMediaType, ItemType } from './activity.types'
 
@@ -133,7 +133,7 @@ function getPrimaryImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
 ): Observable<string | undefined> {
-  return getImgurLink$(getPrimaryImageUrl(server, item)).pipe(
+  return getImgurLink$(getItemImageUrl(server, item)).pipe(
     catchError((error) => {
       logActivity.warn(`Failed to get primary image link. Trying parent image next.`)
       logActivity.debug(error)

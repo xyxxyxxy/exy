@@ -1,11 +1,11 @@
 import { BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions, Tray, app } from 'electron'
-import icon from '../../resources/icon.png?asset'
 import { fromEvent } from 'rxjs'
 import { name } from '../../package.json'
 import { config$, toggleMediaServerActive } from './core/stores/config'
+import { appIcon } from '.'
 
 export function initTray(mainWindow: BrowserWindow): void {
-  const tray = new Tray(icon)
+  const tray = new Tray(appIcon)
 
   tray.setToolTip(name)
 
@@ -27,12 +27,12 @@ export function initTray(mainWindow: BrowserWindow): void {
     template.push(
       { type: 'separator' },
       {
-        label: '⚙️ Configuration',
+        label: 'Configuration',
         click: () => mainWindow.show()
       },
       { type: 'separator' },
       {
-        label: '🧻 Exit',
+        label: 'Exit',
         click: () => app.exit()
       }
     )

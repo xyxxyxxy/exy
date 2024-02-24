@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { NewMediaServerConfig } from '../../../main/ipc.types'
-  import MediaServerIcon from './MediaServerIcon.svelte'
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
 
   import embyLogo from '../assets/emby.svg'

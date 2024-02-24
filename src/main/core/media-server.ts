@@ -24,6 +24,8 @@ import {
 
 const logMediaServer = log.scope('media-server')
 
+export type ConnectionDetails = Pick<MediaServerConfig, 'protocol' | 'address' | 'port'>
+
 export function authenticate$(
   connectionDetails: Pick<MediaServerConfig, 'protocol' | 'address' | 'port' | 'username'> & {
     username: string
@@ -54,19 +56,6 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
 export function logout$(server: MediaServerConfig): Observable<void> {
   return getAuthenticatedClient$(server).pipe(
     switchMap((client) => client.sessionsService.postSessionsLogout())
-  )
-}
-
-// Returns the first now playing session of a media-server.
-function getNowPlayingSessions$(server: MediaServerConfig): Observable<Array<Session_SessionInfo>> {
-  logMediaServer.debug(`Getting now playing sessions of '${server.address}'.`)
-  return getAuthenticatedClient$(server).pipe(
-    switchMap((client) => client.sessionsService.getSessions(server.userId)),
-    // Get all sessions with now playing items.
-    map((sessions) => sessions.filter((session) => session.NowPlayingItem)),
-    tap((sessions) =>
-      logMediaServer.debug(`Got ${sessions.length} now playing sessions for '${server.address}'.`)
-    )
   )
 }
 
@@ -113,7 +102,20 @@ export function getNowPlaying$(servers: Array<MediaServerConfig>): Observable<{
   )
 }
 
-// Pick one session of multiple.
+// Returns the first now playing session of a media-server.
+function getNowPlayingSessions$(server: MediaServerConfig): Observable<Array<Session_SessionInfo>> {
+  logMediaServer.debug(`Getting now playing sessions of '${server.address}'.`)
+  return getAuthenticatedClient$(server).pipe(
+    switchMap((client) => client.sessionsService.getSessions(server.userId)),
+    // Get all sessions with now playing items.
+    map((sessions) => sessions.filter((session) => session.NowPlayingItem)),
+    tap((sessions) =>
+      logMediaServer.debug(`Got ${sessions.length} now playing sessions for '${server.address}'.`)
+    )
+  )
+}
+
+// Pick one now playing session from an array of sessions.
 function pickNowPlaying(sessions: Array<Session_SessionInfo>): Session_SessionInfo | null {
   if (!sessions.length) return null
 
@@ -128,6 +130,7 @@ function pickNowPlaying(sessions: Array<Session_SessionInfo>): Session_SessionIn
   return sessions[0]
 }
 
+// Pick one now playing sessions from an array of servers and their session.
 function pickNowPlayingBetweenServers(
   sessions: Array<{
     server: MediaServerConfig
@@ -151,6 +154,15 @@ function pickNowPlayingBetweenServers(
   return sessions[0]
 }
 
+function getAuthenticatedClient$(server: MediaServerConfig): Observable<EmbyClient> {
+  return of(
+    new EmbyClient({
+      BASE: getBaseUrl(server),
+      HEADERS: { 'X-Emby-Token': server.accessToken }
+    })
+  )
+}
+
 const xEmbyAuthorization$ = config$.pipe(
   map((config) => config.deviceId),
   distinctUntilChanged(),
@@ -161,9 +173,7 @@ const xEmbyAuthorization$ = config$.pipe(
   shareReplay(1)
 )
 
-export type ConnectionDetails = Pick<MediaServerConfig, 'protocol' | 'address' | 'port'>
-
-export function getPrimaryImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
+export function getItemImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
   if (!item.Id) throw new Error('Failed to get primary image. No ID set.')
   return getImageUrl(server, item.Id)
 }
@@ -180,13 +190,4 @@ function getImageUrl(server: ConnectionDetails, id: string): string {
 
 function getBaseUrl(server: ConnectionDetails): string {
   return `${server.protocol}://${server.address}:${server.port}`
-}
-
-function getAuthenticatedClient$(server: MediaServerConfig): Observable<EmbyClient> {
-  return of(
-    new EmbyClient({
-      BASE: getBaseUrl(server),
-      HEADERS: { 'X-Emby-Token': server.accessToken }
-    })
-  )
 }
