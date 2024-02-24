@@ -178,7 +178,7 @@ export function getActivity$(
       activity.smallImageKey = `${type}-small`
       activity.smallImageText = 'Playing'
       if (type !== 'neutral')
-        activity.smallImageText += 'on' + type[0].toUpperCase() + type.slice(1) // Capitalize.
+        activity.smallImageText += ' on ' + type[0].toUpperCase() + type.slice(1) // Capitalize.
 
       // Set muted image. Overwritten by paused state.
       if (playState.IsMuted) {
