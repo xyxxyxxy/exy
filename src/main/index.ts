@@ -13,7 +13,7 @@ function createWindow(): void {
     height: 900,
     show: false,
     autoHideMenuBar: true,
-    icon: appIcon,
+    icon: iconLight, // TODO
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
