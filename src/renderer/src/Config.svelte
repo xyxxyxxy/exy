@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Versions from './components/Versions.svelte'
   import ImgurInfo from './components/ImgurInfo.svelte'
   import ImgurClientId from './components/ImgurClientId.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
@@ -7,6 +6,7 @@
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
   import DiscordStatus from './components/DiscordStatus.svelte'
+  import { version } from '../../../package.json'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -58,7 +58,7 @@
               checked={config.isMediaServerTypeShown}
               on:click|preventDefault={toggleMediaServerTypeShown}
             />
-            <span data-tooltip="Tooltip">Show media-server type</span>
+            Show media-server type
           </label>
         </div>
         <DiscordStatus />
@@ -84,7 +84,7 @@
     <div class="grid">
       <section>
         <h4>ℹ️ About</h4>
-        <Versions />
+        exy v{version}
       </section>
       <section>
         <h4>🩻 Debug</h4>

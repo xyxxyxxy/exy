@@ -30,7 +30,6 @@ export function initTray(mainWindow: BrowserWindow): void {
         label: 'Configuration',
         click: () => mainWindow.show()
       },
-      { type: 'separator' },
       {
         label: 'Exit',
         click: () => app.exit()
