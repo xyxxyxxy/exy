@@ -50,7 +50,10 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
   return config$.pipe(
     map((config) => config.imgurClientId),
     switchMap((imgurClientId) => {
+      // Without Imgur client ID, no further action possible.
       if (!imgurClientId) return of(undefined)
+
+      // Download source image.
       return from(fetch(sourceUrl)).pipe(
         tap((response) => {
           if (response.ok) logImage.debug(`Downloaded image from source "${sourceUrl}".`)
@@ -60,6 +63,7 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
             )
         }),
         switchMap((response) => response.arrayBuffer()),
+        // Generate image hash.
         // See: https://stackoverflow.com/questions/33926399/fetch-resource-compute-hash-return-promise
         map((arrayBuffer) => {
           const buffer: Buffer = Buffer.from(arrayBuffer)
@@ -70,21 +74,16 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
         tap(({ hash }) => logImage.debug(`Generated image hash:`, hash)),
         // Set hash cash.
         tap(({ sourceUrl, hash }) => (hashCach[sourceUrl] = hash)),
+        // Get Imgur link.
         switchMap((image) => {
-          // Check Imgur upload cache.
+          // Check Imgur cache.
           const cachedLink: string | undefined = getCachedImageLink(image.hash)
-
-          // Cache hit.
           if (cachedLink) return of(cachedLink)
 
-          // Upload image to Imgur.
+          // Upload to Imgur.
           return uploadToImgur$(image.buffer, imgurClientId).pipe(
-            tap((link) => cacheImageLink(image.hash, link)),
-            tap((link) =>
-              logImage.debug(
-                `Link "${link}" of source image "${sourceUrl}" (${image.hash}) is now cached.`
-              )
-            )
+            // Set Imgur cache.
+            tap((link) => cacheImageLink(image.hash, link))
           )
         })
       )
@@ -95,8 +94,6 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
 // Returns Imgur URL of image.
 function uploadToImgur$(image: Buffer, clientId: string): Observable<string> {
   return of(new ImgurClient({ clientId })).pipe(
-    tap(() => logImage.debug('Uploading Imgur.')),
-    // tap(client => client.searchGallery)
     switchMap((client) => from(client.upload({ image }))),
     map((response) => response.data.link),
     // While testing the link returned here was a function in case the image download failed.
