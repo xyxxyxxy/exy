@@ -82,7 +82,7 @@
 <details {open}>
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="outline">
-    ✨ {hasMediaServers ? 'Add connection' : 'Get started by connecting to your media-server'}
+    ✨ {hasMediaServers ? 'Add connection' : 'Get started by connecting your first media-server'}
   </summary>
   <article>
     <form on:submit|preventDefault={submit}>

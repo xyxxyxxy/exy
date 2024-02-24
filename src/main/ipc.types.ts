@@ -1,4 +1,4 @@
-import { MediaServerConfig } from './core/stores/config.types'
+import { type MediaServerConfig } from './core/stores/config.types'
 
 export enum IpcChannel {
   Config = 'Config',

@@ -10,7 +10,7 @@ TODO Images
 - Show pause/mute state.
 - Upload preview images to Imgur.
 - Add multiple media-servers.
-- Keeps your media-server address private.
+- Keeps the media-server address private.
 - Option to hide media-server type in Discord.
 
 ## Public content

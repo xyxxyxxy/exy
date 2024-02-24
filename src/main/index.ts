@@ -123,7 +123,7 @@ function lockSingleInstance(mainWindow: BrowserWindow): void {
   if (!gotTheLock) {
     app.exit()
   } else {
-    app.on('second-instance', (event, commandLine, workingDirectory, additionalData) => {
+    app.on('second-instance', (_, _1, _2, additionalData) => {
       // Print out data received from the second instance.
       logMain.warn(additionalData)
 

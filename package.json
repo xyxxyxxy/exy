@@ -1,10 +1,13 @@
 {
   "name": "exy",
-  "version": "1.0.0",
-  "description": "An Electron application with Svelte and TypeScript",
+  "version": "0.1.0",
+  "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "example.com",
   "homepage": "https://electron-vite.org",
+  "engines": {
+    "node": ">=20.11.0"
+  },
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --write .",
     "lint": "eslint . --ext .js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
