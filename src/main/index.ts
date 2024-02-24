@@ -13,7 +13,7 @@ function createWindow(): void {
     height: 900,
     show: false,
     autoHideMenuBar: true,
-    icon: iconLight, // TODO
+    icon: iconLight, // TODO cannot be determined at runtime on linux
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -45,8 +45,8 @@ function createWindow(): void {
       // TODO Notification on first move to tray?
     })
 
-  // Hide on close.
-  fromEvent(mainWindow, 'close').subscribe((event) => {
+  // Hide on minimize and close.
+  merge(fromEvent(mainWindow, 'close'), fromEvent(mainWindow, 'minimize')).subscribe((event) => {
     ;(event as Event).preventDefault()
     mainWindow.hide()
   })
@@ -92,7 +92,7 @@ import contextMenu from 'electron-context-menu'
 import log from 'electron-log/main'
 import { startMainToRendererIpc } from './ipc'
 import { config$ } from './core/stores/config'
-import { distinctUntilChanged, fromEvent, map, withLatestFrom } from 'rxjs'
+import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
 import { initTray } from './tray'
 import { name } from '../../package.json'
 
