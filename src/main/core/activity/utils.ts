@@ -27,10 +27,9 @@ export function getPrimaryText(activity: Activity): string {
       ? activity.showTitle
       : activity.title
 
-  // For movies and shows the premier year is added in brackets.
+  // For shows the premier year is added in brackets.
 
-  return activity.premierDate &&
-    (activity.itemType === ActivityItemType.Episode || activity.itemType === ActivityItemType.Movie)
+  return activity.premierDate && activity.itemType === ActivityItemType.Movie
     ? withReleaseYear(activity, text)
     : text
 }

@@ -40,7 +40,6 @@ export function testImgurClientId$(clientId: string): Observable<unknown> {
 // Imgur upload cache is stored in a file and used to upload each image only once.
 // This is important, since one image can have multiple URLs. For example the image of songs in an music album.
 
-// TODO only keep one previous result?
 const hashCach: { [url: string]: string } = {}
 
 export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {

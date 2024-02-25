@@ -106,7 +106,7 @@ export const mainActivity$: Observable<Activity | null> = polling$.pipe(
 
     return { pollingResult: result, activityBase: buildActivityBase(result.nowPlayingSession) }
   }),
-  // Check if there are relevant changes to do a full activity build.
+  // Check if there are relevant changes before a full activity object is built.
   distinctUntilChanged(
     (previous, current) =>
       JSON.stringify(previous?.activityBase) === JSON.stringify(current?.activityBase)

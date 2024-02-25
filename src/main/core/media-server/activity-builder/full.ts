@@ -112,15 +112,14 @@ function getPrimaryImageLink$(
   item: BaseItemDto
 ): Observable<string | undefined> {
   return getImgurLink$(getItemImageUrl(server, item)).pipe(
-    catchError((error) => {
-      logger.warn(`Failed to get primary image link. Trying parent image next.`)
-      logger.debug(error)
-
-      if (!item.ParentId) return of(undefined)
-
+    catchError(() => {
       // Emby responds with 500 error for primary images of some songs.
       // Also some episodes don't have images, like specials/extras not present in TVDB.
       // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
+      logger.debug(`Failed to get primary image link. Trying parent image next.`)
+
+      if (!item.ParentId) return of(undefined)
+
       return getImgurLink$(getParentImageUrl(server, item)).pipe(
         catchError((error) => {
           logger.warn(`Failed to get album image link. Continueing without primary image.`)

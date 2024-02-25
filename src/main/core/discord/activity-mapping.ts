@@ -1,7 +1,7 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
 import { ConfigStore } from '../stores/config.types'
-import { Activity } from '../activity/types'
+import { Activity, ActivityPlayState } from '../activity/types'
 import {
   getImageText,
   getPrimaryText,
@@ -17,13 +17,14 @@ export function toDiscord(activity: Activity, config: ConfigStore): Presence {
   const presence: Presence = {
     smallImageKey: getStateImage(activity, config.isMediaServerTypeShown),
     smallImageText: getStateText(activity, config.isMediaServerTypeShown),
-    endTimestamp: activity.endTime, // TODO is end time shown if paused?
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl,
     largeImageText: getImageText(activity),
     buttons: activity.externalLinks
   }
+
+  if (activity.playState !== ActivityPlayState.Paused) presence.endTimestamp = activity.endTime
 
   return sanitizeForDiscord(presence)
 }
