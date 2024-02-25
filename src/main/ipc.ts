@@ -19,7 +19,7 @@ import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
 import { MediaServerConfig } from './core/stores/config.types'
-import { connectionStatus$, setTestActivity } from './core/discord-client'
+import { connectionStatus$, setTestActivity } from './core/discord'
 
 const logIpc = log.scope('ipc')
 

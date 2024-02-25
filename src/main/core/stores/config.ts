@@ -89,10 +89,6 @@ configStore.onDidAnyChange((config) => {
 
 export const config$ = configSource.asObservable()
 
-export const activeMediaServers$: Observable<Array<MediaServerConfig>> = config$.pipe(
-  map((config) => config.mediaServers.filter((server) => server.isActive)),
-  distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current))
-)
 // Checks if a connection with matching protocol, address and port is already configured.
 // Username is ignored, since a new connection from the same client with a different username will invalidate the previous session.
 export function isConnectionConfigured(connection: MediaServerConnectionIdentifiers): boolean {

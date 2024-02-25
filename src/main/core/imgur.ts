@@ -1,4 +1,14 @@
-import { Observable, from, map, of, switchMap, tap } from 'rxjs'
+import {
+  Observable,
+  combineLatest,
+  from,
+  map,
+  of,
+  switchMap,
+  take,
+  tap,
+  withLatestFrom
+} from 'rxjs'
 import log from 'electron-log'
 import { config$ } from './stores/config'
 import { ImgurClient } from 'imgur'
@@ -40,18 +50,19 @@ export function testImgurClientId$(clientId: string): Observable<unknown> {
 // Imgur upload cache is stored in a file and used to upload each image only once.
 // This is important, since one image can have multiple URLs. For example the image of songs in an music album.
 
+// TODO only keep one previous result?
 const hashCach: { [url: string]: string } = {}
 
-// Returns null Imgur client ID is not configured and there was no cache hit.
 export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {
   // Check hash cache and get cached Imgur link on hit.
   const cachedHash = hashCach[sourceUrl]
   if (cachedHash) return of(getCachedImageLink(cachedHash))
 
   return config$.pipe(
+    take(1),
+    // Avoid image download if no Imgur client ID is configured.
     map((config) => config.imgurClientId),
     switchMap((imgurClientId) => {
-      // Without Imgur client ID, no further action possible.
       if (!imgurClientId) return of(undefined)
 
       // Download source image.

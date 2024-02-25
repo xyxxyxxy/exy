@@ -1,22 +1,23 @@
-import { Client, Presence } from 'discord-rpc'
+import { Client } from 'discord-rpc'
 import log from 'electron-log'
 import {
   BehaviorSubject,
   Observable,
-  Subject,
   Subscription,
   catchError,
-  distinctUntilChanged,
   filter,
   fromEvent,
   map,
   retry,
   switchMap,
   tap,
-  throttleTime
+  throttleTime,
+  withLatestFrom
 } from 'rxjs'
-import { config$ } from './stores/config'
-import { ConnectionStatus } from './discord-client.types'
+import { ConnectionStatus } from './types'
+import { activity$ } from '../activity'
+import { toDiscord } from './activity-mapping'
+import { config$ } from '../stores/config'
 
 const logDiscord = log.scope('discord')
 
@@ -105,51 +106,28 @@ discordDisconnected$
   })
 
 export function setTestActivity(content: string = 'Test'): void {
-  if (discordClient) setActivity({ details: content })
+  if (discordClient) discordClient.setActivity({ details: content })
 }
-
-const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
-
-export function setActivity(activity: Presence): void {
-  logDiscord.debug(`Scheduling next activity "${activity.details}".`)
-  activitySource.next(activity)
-}
-
-export function clearActivity(): void {
-  logDiscord.debug('Scheduling activity clearing.')
-  activitySource.next(null)
-}
-
-// Clear activity if last media-server is removed.
-config$
-  .pipe(
-    map((config) => config.mediaServers.length),
-    distinctUntilChanged(),
-    filter((count) => count === 0)
-  )
-  .subscribe(() => {
-    logDiscord.debug(`No more media-servers configured. Clearing activity.`)
-    clearActivity()
-  })
 
 // Rate limit communication to Discord client.
 // See: https://discord.com/developers/docs/game-sdk/activities#updateactivity
 const rateLimitThrottleTimeInSeconds = 20 / 5 // 5 Updates per 20 seconds allowed.
 
 // Send activity updates to Discord client.
-activitySource
+activity$
   .pipe(
     throttleTime(rateLimitThrottleTimeInSeconds * 1000, undefined, {
       leading: true,
       trailing: true
-    })
+    }),
+    withLatestFrom(config$)
   )
   .subscribe({
-    next: (activity) => {
+    next: ([activity, config]) => {
       if (discordClient)
         if (activity) {
-          logDiscord.debug(`Set activity.`, activity)
-          discordClient.setActivity(activity)
+          logDiscord.debug(`Updating activity.`)
+          discordClient.setActivity(toDiscord(activity, config))
           // TODO Test error handling
           // throw new Error('TEST')
         } else {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ConnectionStatus } from '../../../main/core/discord-client.types'
+  import { ConnectionStatus } from '../../../main/core/discord/types'
   import { IpcChannel } from '../../../main/ipc.types'
   import discordLogo from '../assets/discord.svg'
 
