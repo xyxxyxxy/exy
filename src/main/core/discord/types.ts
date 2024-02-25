@@ -1,4 +1,4 @@
-import { Presence } from 'discord-rpc'
+import { type Presence } from 'discord-rpc'
 
 export enum ConnectionStatus {
   Disconnected = 'disconnected',

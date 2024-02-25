@@ -36,3 +36,4 @@ config$
   })
 
 // TODO Set activity in behavior subject and re-apply on discord re-connect.
+// TODO Re-apply also on relevant config changes.
