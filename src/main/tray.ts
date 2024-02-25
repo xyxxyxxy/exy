@@ -2,10 +2,10 @@ import { BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions, Tray, app } 
 import { fromEvent } from 'rxjs'
 import { name } from '../../package.json'
 import { config$, toggleMediaServerActive } from './core/stores/config'
-import { appIcon } from '.'
+import icon from '../../resources/icon.png?asset'
 
 export function initTray(mainWindow: BrowserWindow): void {
-  const tray = new Tray(appIcon)
+  const tray = new Tray(icon)
 
   tray.setToolTip(name)
 

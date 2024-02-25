@@ -1,10 +1,7 @@
-import { app, shell, BrowserWindow, nativeTheme } from 'electron'
+import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import iconLight from '../../resources/icon-light.png?asset'
-import iconDark from '../../resources/icon-dark.png?asset'
-
-export const appIcon = nativeTheme.shouldUseDarkColors ? iconLight : iconDark
+import icon from '../../resources/icon.png?asset'
 
 function createWindow(): void {
   // Create the browser window.
@@ -13,7 +10,7 @@ function createWindow(): void {
     height: 900,
     show: false,
     autoHideMenuBar: true,
-    icon: iconLight, // TODO cannot be determined at runtime on linux
+    icon: icon,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -95,8 +92,12 @@ import { config$ } from './core/stores/config'
 import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
 import { initTray } from './tray'
 import { name } from '../../package.json'
+import { autoUpdater } from 'electron-updater'
 
 const logMain = log.scope('main')
+
+logMain.info(`Checking for updates.`)
+autoUpdater.checkForUpdatesAndNotify()
 
 config$
   .pipe(

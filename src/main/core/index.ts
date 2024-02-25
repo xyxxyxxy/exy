@@ -52,6 +52,7 @@ discordReady$
         takeUntil(discordDisconnected$)
       )
     ),
+    distinctUntilChanged(),
     // Clear activity if nothing is playing.
     tap((nowPlaying) => {
       if (!nowPlaying) clearActivity()

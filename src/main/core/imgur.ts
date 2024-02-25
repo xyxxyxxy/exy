@@ -5,14 +5,14 @@ import { ImgurClient } from 'imgur'
 import { createHash } from 'crypto'
 import { cacheImageLink, getCachedImageLink } from './stores/cache'
 import { readFileSync } from 'fs'
-import { appIcon } from '..'
+import icon from '../../../resources/icon.png?asset'
 
 const logImage = log.scope('imgur')
 
 export function testImgurClientId$(clientId: string): Observable<unknown> {
   const client = new ImgurClient({ clientId })
 
-  return from(client.upload({ image: readFileSync(appIcon) })).pipe(
+  return from(client.upload({ image: readFileSync(icon) })).pipe(
     tap((response) => {
       logImage.debug(response)
       if (!response.success) throw new Error(`Response status ${response.status}: ${response.data}`)
