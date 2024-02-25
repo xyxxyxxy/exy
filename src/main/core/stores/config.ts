@@ -1,10 +1,10 @@
 import Store from 'electron-store'
 import { ConfigStore, MediaServerConfig, MediaServerConnectionIdentifiers } from './config.types'
-import { BehaviorSubject, Observable, distinctUntilChanged, map } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import log from 'electron-log'
 import { randomUUID } from 'crypto'
 
-const logConfig = log.scope('config')
+const logger = log.scope('config')
 
 const configStore = new Store<ConfigStore>({
   name: 'config',
@@ -82,7 +82,7 @@ const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject
 
 configStore.onDidAnyChange((config) => {
   if (config) {
-    logConfig.debug('Updated.')
+    logger.debug('Updated.')
     configSource.next(config)
   }
 })

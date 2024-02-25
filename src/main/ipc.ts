@@ -21,7 +21,7 @@ import { AxiosError } from 'axios'
 import { MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
 
-const logIpc = log.scope('ipc')
+const logger = log.scope('ipc')
 
 export function startMainToRendererIpc(): void {
   // Init events. Subscribing to updates.
@@ -41,21 +41,21 @@ ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
   logout$(config)
     .pipe(finalize(() => deleteMediaServerConfig(config.id)))
     .subscribe({
-      next: () => logIpc.debug(`Successfully logged out.`),
-      error: (error) => logIpc.warn(`Error while trying to logout.`, error)
+      next: () => logger.debug(`Successfully logged out.`),
+      error: (error) => logger.warn(`Error while trying to logout.`, error)
     })
 })
 ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
-  logIpc.debug(`Testing media-server connection to '${config.address}'.`)
+  logger.debug(`Testing media-server connection to '${config.address}'.`)
   const responseChannel = IpcChannel.TestMediaServer + config.id
 
   testConnection$(config).subscribe({
     next: () => {
-      logIpc.debug(`Test successful.`)
+      logger.debug(`Test successful.`)
       event.sender.send(responseChannel)
     },
     error: (error: AxiosError<Authentication_AuthenticationResult>) => {
-      logIpc.debug(`Test failed.`, error)
+      logger.debug(`Test failed.`, error)
       event.sender.send(responseChannel, {
         code: error.code,
         status: error.status,
@@ -65,7 +65,7 @@ ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
   })
 })
 ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) => {
-  logIpc.info(`Received new media-server config.`, config)
+  logger.info(`Received new media-server config.`, config)
 
   // Check if this media-server is already configured.
   if (isConnectionConfigured(config))
@@ -76,7 +76,7 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
 
   authenticate$(config).subscribe({
     next: (result: Authentication_AuthenticationResult) => {
-      logIpc.info(`New media-server config is valid.`)
+      logger.info(`New media-server config is valid.`)
 
       const serverId = result.ServerId
       const userId = result.User?.Id
@@ -104,7 +104,7 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
       event.sender.send(IpcChannel.ConnectMediaServer)
     },
     error: (error: AxiosError<Authentication_AuthenticationResult>) => {
-      logIpc.info(`New media-server config is invalid.`, error)
+      logger.info(`New media-server config is invalid.`, error)
       event.sender.send(IpcChannel.ConnectMediaServer, {
         code: error.code,
         status: error.status,
@@ -121,15 +121,15 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
     return
   }
 
-  logIpc.info(`Testing Imgur client ID.`, clientId)
+  logger.info(`Testing Imgur client ID.`, clientId)
   testImgurClientId$(clientId).subscribe({
     next: () => {
-      logIpc.info(`Imgur client ID is valid.`, clientId)
+      logger.info(`Imgur client ID is valid.`, clientId)
       setImgurClientId(clientId)
       event.sender.send(IpcChannel.SaveImgurClientId)
     },
     error: (error) => {
-      logIpc.info(`Imgur client ID is invalid.`, error)
+      logger.info(`Imgur client ID is invalid.`, error)
       event.sender.send(IpcChannel.SaveImgurClientId, error)
     }
   })

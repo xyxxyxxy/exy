@@ -1,91 +1,14 @@
-import { Observable, catchError, map, of, tap } from 'rxjs'
-import {
-  Activity,
-  ActivityBase,
-  ActivityExternalLinks,
-  ActivityItemType,
-  ActivityMediaType,
-  ActivityPlayState
-} from '../activity/types'
-import { BaseItemDto, ChapterInfo, PlayerStateInfo } from '../emby-client'
-import { MediaServerConfig } from '../stores/config.types'
-import { getItemImageUrl, getParentImageUrl } from '.'
+import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
+import { MediaServerConfig } from '../../stores/config.types'
+import { getItemImageUrl, getParentImageUrl } from '..'
+import { getImgurLink$ } from '../../imgur'
+import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/types'
+import { ItemMediaType, ItemType, ValidSession } from '../types'
+import { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
-import { getImgurLink$ } from '../imgur'
-import { ItemMediaType, ItemType, ValidSession } from './types'
+import { addPubliContent$ } from './public'
 
-const logMediaServerActivityBuilder = log.scope('media-server activity-builder')
-
-export function buildActivityBase(session: ValidSession): ActivityBase {
-  const item = session.NowPlayingItem
-  const playState = session.PlayState
-
-  const activity: ActivityBase = {
-    title: item?.Name || item?.OriginalTitle || 'something',
-    mediaType: getActivityMediaType(item),
-    itemType: getActivityItemType(item),
-    playState: getActivityPlayState(playState),
-    chapterTitle: getChapterName(item, playState),
-    path: item.Path
-  }
-
-  return activity
-}
-
-function getActivityMediaType(item?: BaseItemDto): ActivityMediaType {
-  if (item?.MediaType === ItemMediaType.Audio) return ActivityMediaType.Audio
-  if (item?.MediaType === ItemMediaType.Video) return ActivityMediaType.Video
-  logMediaServerActivityBuilder.warn(`Unexpected media type '${item?.MediaType}'.`)
-  return ActivityMediaType.Video
-}
-
-function getActivityItemType(item?: BaseItemDto): ActivityItemType {
-  // Straight forward types.
-  if (item?.Type === ItemType.Movie) return ActivityItemType.Movie
-  if (item?.Type === ItemType.MusicVideo) return ActivityItemType.MusicVideo
-  if (item?.Type === ItemType.TvChannel) return ActivityItemType.LiveTv
-
-  // Music has type 'Audio' for item and media type.
-  if (item?.MediaType === ItemMediaType.Audio && item.Type === ItemMediaType.Audio)
-    return ActivityItemType.Song
-
-  // Episodes can be episodes of a show or a live recording.
-  if (item?.Type === ItemType.Episode) {
-    // Live TV recordings did not have any index number in my tests.
-    return item.IndexNumber ? ActivityItemType.Episode : ActivityItemType.LiveTvRecording
-  }
-
-  logMediaServerActivityBuilder.warn(
-    `Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`
-  )
-
-  return ActivityItemType.Song
-}
-
-function getActivityPlayState(playStateInfo: PlayerStateInfo): ActivityPlayState {
-  if (playStateInfo.IsPaused) return ActivityPlayState.Paused
-  if (playStateInfo.IsMuted) return ActivityPlayState.Muted
-  return ActivityPlayState.Playing
-}
-
-function getChapterName(item: BaseItemDto, playState: PlayerStateInfo): string | undefined {
-  if (!item.Chapters?.length) return undefined
-
-  let currentChapter: ChapterInfo = item.Chapters[0]
-  item.Chapters.find((chapter) => {
-    const chapterStartPosition = chapter.StartPositionTicks || 0
-    const playPosition = playState.PositionTicks || 0
-    // Going through chapters until the chapter start position is after the current play position.
-    if (chapterStartPosition < playPosition) {
-      currentChapter = chapter
-      return false
-    }
-
-    return true
-  })
-
-  return currentChapter.Name
-}
+const logger = log.scope('builder-full')
 
 // Builds an activiti incliding all the informations that does not require async operations.
 export function buildFullActivity$(
@@ -112,7 +35,13 @@ export function buildFullActivity$(
     endTime: parseEndTime(item, playState)
   }
 
-  return addImage$(activity, server, session)
+  return addPubliContent$(activity).pipe(
+    switchMap((activity) => {
+      // Adding the image can be avoided if the public content already added a URL.
+      if (activity.imageUrl) return of(activity)
+      else return addImage$(activity, server, session)
+    })
+  )
 }
 
 function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
@@ -184,10 +113,8 @@ function getPrimaryImageLink$(
 ): Observable<string | undefined> {
   return getImgurLink$(getItemImageUrl(server, item)).pipe(
     catchError((error) => {
-      logMediaServerActivityBuilder.warn(
-        `Failed to get primary image link. Trying parent image next.`
-      )
-      logMediaServerActivityBuilder.debug(error)
+      logger.warn(`Failed to get primary image link. Trying parent image next.`)
+      logger.debug(error)
 
       if (!item.ParentId) return of(undefined)
 
@@ -196,10 +123,8 @@ function getPrimaryImageLink$(
       // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
       return getImgurLink$(getParentImageUrl(server, item)).pipe(
         catchError((error) => {
-          logMediaServerActivityBuilder.warn(
-            `Failed to get album image link. Continueing without primary image.`
-          )
-          logMediaServerActivityBuilder.debug(error)
+          logger.warn(`Failed to get album image link. Continueing without primary image.`)
+          logger.debug(error)
           return of(undefined)
         })
       )

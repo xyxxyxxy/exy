@@ -1,14 +1,4 @@
-import {
-  Observable,
-  combineLatest,
-  from,
-  map,
-  of,
-  switchMap,
-  take,
-  tap,
-  withLatestFrom
-} from 'rxjs'
+import { Observable, from, map, of, switchMap, take, tap } from 'rxjs'
 import log from 'electron-log'
 import { config$ } from './stores/config'
 import { ImgurClient } from 'imgur'
@@ -17,14 +7,14 @@ import { cacheImageLink, getCachedImageLink } from './stores/cache'
 import { readFileSync } from 'fs'
 import icon from '../../../resources/icon.png?asset'
 
-const logImage = log.scope('imgur')
+const logger = log.scope('imgur')
 
 export function testImgurClientId$(clientId: string): Observable<unknown> {
   const client = new ImgurClient({ clientId })
 
   return from(client.upload({ image: readFileSync(icon) })).pipe(
     tap((response) => {
-      logImage.debug(response)
+      logger.debug(response)
       if (!response.success) throw new Error(`Response status ${response.status}: ${response.data}`)
     }),
     // Delete test image.
@@ -68,7 +58,7 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
       // Download source image.
       return from(fetch(sourceUrl)).pipe(
         tap((response) => {
-          if (response.ok) logImage.debug(`Downloaded image from source "${sourceUrl}".`)
+          if (response.ok) logger.debug(`Downloaded image from source "${sourceUrl}".`)
           else
             throw new Error(
               `Failed to download from source "${sourceUrl}". Status: ${response.status} ${response.statusText}`
@@ -83,7 +73,7 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
 
           return { sourceUrl, buffer, hash }
         }),
-        tap(({ hash }) => logImage.debug(`Generated image hash:`, hash)),
+        tap(({ hash }) => logger.debug(`Generated image hash:`, hash)),
         // Set hash cash.
         tap(({ sourceUrl, hash }) => (hashCach[sourceUrl] = hash)),
         // Get Imgur link.
@@ -114,6 +104,6 @@ function uploadToImgur$(image: Buffer, clientId: string): Observable<string> {
       if (typeof link !== 'string')
         throw new Error('Failed to upload to Imgur. Returned value is not a string.')
     }),
-    tap((link) => logImage.debug(`Upload done. Imgur Link:`, link))
+    tap((link) => logger.debug(`Upload done. Imgur Link:`, link))
   )
 }

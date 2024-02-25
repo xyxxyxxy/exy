@@ -24,9 +24,10 @@ import {
 } from '../emby-client'
 import { Activity, ActivityBase } from '../activity/types'
 import { PollingResult, PollingResultPlaying, ValidSession } from './types'
-import { buildActivityBase, buildFullActivity$ } from './activity-builder'
+import { buildActivityBase } from './activity-builder/base'
+import { buildFullActivity$ } from './activity-builder/full'
 
-const logMediaServer = log.scope('media-server')
+const logger = log.scope('media-server')
 
 export type ConnectionDetails = Pick<MediaServerConfig, 'protocol' | 'address' | 'port'>
 
@@ -74,10 +75,10 @@ export function isPollingResultPlaying(result: PollingResult): result is Polling
 const polling$: Observable<Array<PollingResult>> = config$.pipe(
   // Map to active media-servers.
   map((config) => config.mediaServers.filter((server) => server.isActive)),
-  tap(() => logMediaServer.debug('Start polling.')),
+  tap(() => logger.debug('Start polling.')),
   switchMap((servers) =>
     timer(0, 5 * 1000).pipe(
-      tap(() => logMediaServer.debug(`Polling ${servers.length} servers.`)),
+      tap(() => logger.debug(`Polling ${servers.length} servers.`)),
       mergeMap(() => forkJoin(servers.map((server) => poll$(server))))
     )
   )
@@ -105,12 +106,11 @@ export const mainActivity$: Observable<Activity | null> = polling$.pipe(
 
     return { pollingResult: result, activityBase: buildActivityBase(result.nowPlayingSession) }
   }),
-  // Check if there are relevant changes to do a full build.
+  // Check if there are relevant changes to do a full activity build.
   distinctUntilChanged(
     (previous, current) =>
       JSON.stringify(previous?.activityBase) === JSON.stringify(current?.activityBase)
   ),
-  // TODO Before this the public content should be added, so actions can be skipped.
   switchMap((data) => {
     if (!data) return of(null)
     return buildFullActivity$(

@@ -21,7 +21,8 @@ export enum ActivityPlayState {
   Muted = 'Muted'
 }
 
-export type ActivityExternalLinks = Array<{ label: string; url: string }>
+export type ExternalLink = { label: string; url: string }
+export type ActivityExternalLinks = Array<ExternalLink>
 
 // These properties are used to determine if an activity changed.
 export type ActivityBase = {

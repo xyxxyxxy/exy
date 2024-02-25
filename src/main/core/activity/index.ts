@@ -3,13 +3,13 @@ import { Activity } from './types'
 import { BehaviorSubject, Observable, distinctUntilChanged, filter, map } from 'rxjs'
 import { config$ } from '../stores/config'
 
-const logActivity = log.scope('activity')
+const logger = log.scope('activity')
 
 const activity: BehaviorSubject<Activity | null> = new BehaviorSubject<Activity | null>(null)
 
 // Logging of activity.
 activity.subscribe((activity) => {
-  logActivity.debug(`New activity:`, activity)
+  logger.debug(`New activity:`, activity)
 })
 
 export const activity$: Observable<Activity | null> = activity.asObservable()
@@ -31,7 +31,7 @@ config$
     filter((count) => count === 0)
   )
   .subscribe(() => {
-    logActivity.debug(`No more media-servers configured. Clearing activity.`)
+    logger.debug(`No more media-servers configured. Clearing activity.`)
     clearActivity()
   })
 

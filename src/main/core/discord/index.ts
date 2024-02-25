@@ -19,7 +19,7 @@ import { activity$ } from '../activity'
 import { toDiscord } from './activity-mapping'
 import { config$ } from '../stores/config'
 
-const logDiscord = log.scope('discord')
+const logger = log.scope('discord')
 
 // Discord application ID.
 const discordApplicationId = '1203674508733714492'
@@ -34,7 +34,7 @@ export const connectionStatus$: Observable<ConnectionStatus> = connectionStatus.
 
 let eventSubscriptions: Array<Subscription> = []
 
-connectionStatus.subscribe((status) => logDiscord.info(`Client ${status}.`))
+connectionStatus.subscribe((status) => logger.info(`Client ${status}.`))
 
 export const discordReady$: Observable<void> = connectionStatus.pipe(
   filter((status) => status === ConnectionStatus.Ready),
@@ -56,14 +56,14 @@ discordDisconnected$
     // Remove old.
     tap(() => {
       if (discordClient) {
-        logDiscord.debug(`Removing old client.`)
+        logger.debug(`Removing old client.`)
         discordClient.removeAllListeners()
         discordClient.destroy()
       }
     }),
     // Create new clinet. Necessary to reconnect.
     map(() => {
-      logDiscord.debug(`Creating new client.`)
+      logger.debug(`Creating new client.`)
       const newClient = new Client({ transport: 'ipc' })
 
       // Add event listeners.
@@ -79,14 +79,12 @@ discordDisconnected$
     }),
     // Login.
     switchMap((newClient) => {
-      logDiscord.debug(`Logging into new client.`)
+      logger.debug(`Logging into new client.`)
       return newClient.login({ clientId: discordApplicationId })
     }),
     catchError((error) => {
-      logDiscord.info(
-        `Failed to connect to new client. Retrying in ${retryDelayInSeconds} seconds.`
-      )
-      logDiscord.debug(error)
+      logger.info(`Failed to connect to new client. Retrying in ${retryDelayInSeconds} seconds.`)
+      logger.debug(error)
 
       // if (error.message === 'RPC_CONNECTION_TIMEOUT') // TODO Add additional delay?
       throw error
@@ -94,7 +92,7 @@ discordDisconnected$
     retry({ delay: retryDelayInSeconds * 1000 })
   )
   .subscribe((newClient) => {
-    logDiscord.debug(`Set new client.`)
+    logger.debug(`Set new client.`)
 
     // Start listening for disconnect.
     ;[ConnectionStatus.Disconnected].forEach((status) =>
@@ -126,16 +124,16 @@ activity$
     next: ([activity, config]) => {
       if (discordClient)
         if (activity) {
-          logDiscord.debug(`Updating activity.`)
+          logger.debug(`Updating activity.`)
           discordClient.setActivity(toDiscord(activity, config))
           // TODO Test error handling
           // throw new Error('TEST')
         } else {
-          logDiscord.debug(`Clear activity.`)
+          logger.debug(`Clear activity.`)
           discordClient.clearActivity()
         }
     },
     error: (error) => {
-      logDiscord.error(`Failed to set activity.`, error)
+      logger.error(`Failed to set activity.`, error)
     }
   })
