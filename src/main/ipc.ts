@@ -19,7 +19,7 @@ import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
 import { MediaServerConfig } from './core/stores/config.types'
-import { connectionStatus$ } from './core/discord-client'
+import { connectionStatus$, setTestActivity } from './core/discord-client'
 
 const logIpc = log.scope('ipc')
 
@@ -35,6 +35,7 @@ export function startMainToRendererIpc(): void {
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
 ipcMain.on(IpcChannel.ToggleIsMediaServerTypeShown, toggleMediaServerTypeShown)
+ipcMain.on(IpcChannel.TestDiscordActivity, (_, content) => setTestActivity(content))
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
   logout$(config)

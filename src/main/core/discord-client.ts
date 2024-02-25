@@ -47,6 +47,8 @@ export const discordDisconnected$: Observable<void> = connectionStatus.pipe(
 
 let discordClient: Client | null = null
 
+// TODO Reconnect not working always
+
 // Auto (re)connect.
 discordDisconnected$
   .pipe(
@@ -101,6 +103,10 @@ discordDisconnected$
     )
     discordClient = newClient
   })
+
+export function setTestActivity(content: string = 'Test'): void {
+  if (discordClient) setActivity({ details: content })
+}
 
 const activitySource: Subject<Presence | null> = new Subject<Presence | null>()
 
