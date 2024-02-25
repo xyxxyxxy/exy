@@ -29,6 +29,8 @@ function mergeActivity(activity: Activity, addition: Presence): Activity {
   return { ...activity, ...addition }
 }
 
+// TODO Set activity in behavior subject and re-apply on discord re-connect.
+
 // Local cache to avoid repeating the same API calls.
 const publicContentCache: {
   [watchLink: string]: {
@@ -199,7 +201,7 @@ export function getActivity$(
       activity.state = ''
       activity.largeImageText = ''
 
-      const date: Date | null = getDate(item)
+      const premierDate: Date | null = getPremierDate(item)
 
       // Set chapter as state. Might be overwritten later.
       const chapter = getChapter(item, playState)
@@ -226,9 +228,9 @@ export function getActivity$(
           // if (genres.length)
           //   detailsFields.push(`[${genres.slice(0, 3).join("|")}]`);
 
-          // TODO Special for music, what happens on podcast?
           if (item.Album) activity.largeImageText += item.Album
-          if (item.Album && date) activity.largeImageText += ` (${date.getFullYear()})`
+          if (item.Album && premierDate)
+            activity.largeImageText += ` (${premierDate.getFullYear()})`
 
           const url =
             item.ExternalUrls &&
@@ -272,7 +274,8 @@ export function getActivity$(
             if (season) activity.state = season
             // Add year after season, if the season itself does not include four digits.
             // Assuming that is already a year.
-            if (date && !season?.match(/\d{4}/)) activity.state += ` (${date.getFullYear()})`
+            if (premierDate && !season?.match(/\d{4}/))
+              activity.state += ` (${premierDate.getFullYear()})`
 
             if (episodeNumber) activity.largeImageText += `Episode ${episodeNumber} `
             if (episode) activity.largeImageText += episode
@@ -286,7 +289,7 @@ export function getActivity$(
           break
         }
         case ItemType.Movie: {
-          if (date) detailsName += ` (${date.getFullYear()})`
+          if (premierDate) detailsName += ` (${premierDate.getFullYear()})`
           if (item?.Genres?.length) activity.largeImageText = item.Genres?.slice(0, 3).join('/')
 
           const url = item.ExternalUrls && item.ExternalUrls.find((url) => url.Name === 'IMDb')?.Url
@@ -339,11 +342,13 @@ function getChapter(item: BaseItemDto, playState: PlayerStateInfo): ChapterInfo 
   return currentChapter
 }
 
-function getDate(item: BaseItemDto): Date | null {
-  let date: Date | null = null
-  if (item.DateCreated) date = new Date(item.DateCreated)
-  if (item.PremiereDate) date = new Date(item.PremiereDate)
-  return date
+function getPremierDate(item: BaseItemDto): Date | null {
+  let premierDate: Date | null = item.PremiereDate ? new Date(item.PremiereDate) : null
+
+  // Avoid invalid dates. Faced this issue once with MusicBrainz tagged data.
+  if (premierDate && premierDate.getFullYear() < 1000) premierDate = null
+
+  return premierDate
 }
 
 function getEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | undefined {
