@@ -1,4 +1,7 @@
-<p>Used to make images publicly available while keeping the media-server address private.</p>
+<p>
+  By providing an Imgur client ID your activity will include a preview image of the playing media
+  item.
+</p>
 <details>
   <summary>❔ How do I get a Client ID</summary>
   <article>

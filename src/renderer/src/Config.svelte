@@ -8,6 +8,7 @@
   import MediaServerNew from './components/MediaServerNew.svelte'
   import DiscordStatus from './components/DiscordStatus.svelte'
   import About from './components/About.svelte'
+  import { name } from '../../../package.json'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -33,6 +34,10 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleIsMediaServerTypeShown)
   }
 
+  function toggleHomepageLinked(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsHomepageLinked)
+  }
+
   function toggleDebugLogging(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleDebugLogging)
   }
@@ -44,8 +49,12 @@
 
 {#if config}
   <div class="container">
+    <section></section>
     <section>
-      <h4>🔮 General</h4>
+      <hgroup>
+        <h1>General 🔮</h1>
+        <p>Settings to modify the behavior of {name}.</p>
+      </hgroup>
       <div class="grid">
         <div>
           <label>
@@ -58,6 +67,10 @@
             />
             Run at startup
           </label>
+          <hgroup>
+            <h4>Activity</h4>
+            <p>Play something and watch the Discord activity change.</p>
+          </hgroup>
           <label>
             <input
               name="isMediaServerTypeShown"
@@ -68,12 +81,25 @@
             />
             Show media-server type
           </label>
+          <label>
+            <input
+              name="isHomepageLinked"
+              type="checkbox"
+              role="switch"
+              checked={config.isHomepageLinked}
+              on:click|preventDefault={toggleHomepageLinked}
+            />
+            Add link to {name} homepage
+          </label>
         </div>
         <DiscordStatus />
       </div>
     </section>
     <section>
-      <h4>🪄 Connections</h4>
+      <hgroup>
+        <h1>Connections 🪄</h1>
+        <p>Connect to one or multiple media-servers of your choice.</p>
+      </hgroup>
 
       {#each config.mediaServers as server (server.id)}
         <MediaServer {server} activity={activities[server.id]} />
@@ -81,7 +107,10 @@
       <MediaServerNew {hasMediaServers} />
     </section>
     <section>
-      <h4>🌠Imgur</h4>
+      <hgroup>
+        <h1>Imgur 🌠</h1>
+        <p>Making images publicly available while keeping server addresses private.</p>
+      </hgroup>
       <div class="grid">
         <div>
           <ImgurInfo />
@@ -94,7 +123,10 @@
         <About />
       </section>
       <section>
-        <h4>🩻 Debug</h4>
+        <hgroup>
+          <h3>Debug 🩻</h3>
+          <p>Options for advanced troubleshooting.</p>
+        </hgroup>
         <section>
           <label>
             <input

@@ -1,17 +1,3 @@
-h4 {
+hgroup {
   margin-top: 2rem !important;
-}
-
-.emoji {
-  /*TODO */
-  background: rgb(179, 185, 197);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* this can make emoji appear as icons */
-  /* background: -webkit-linear-gradient(90deg, rgb(179, 185, 197) 10%, rgba(0, 0, 0, 0));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700; */
 }

@@ -2,6 +2,7 @@ export type ConfigStore = {
   deviceId: string
   isStartupEnabled: boolean
   isMediaServerTypeShown: boolean
+  isHomepageLinked: boolean
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   isDebugLoggingEnabled: boolean

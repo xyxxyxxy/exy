@@ -114,10 +114,14 @@ export function setTestActivity(content: string = 'Test'): void {
 const rateLimitThrottleTimeInSeconds = 20 / 5 // 5 Updates per 20 seconds allowed.
 
 // Send activity updates to Discord client.
+//
 // Including discord ready event for reconnects.
 // Adding a small delay to the Discord ready event,
 // since setting the activity right away did not work.
-combineLatest([activity$, discordReady$.pipe(delay(1000))])
+//
+// Also re-send (re-build) Discord activity on any config change,
+// to make changes visible immediately.
+combineLatest([activity$, discordReady$.pipe(delay(1000)), config$])
   .pipe(
     map(([activity]) => activity),
     throttleTime(rateLimitThrottleTimeInSeconds * 1000, undefined, {
@@ -130,8 +134,9 @@ combineLatest([activity$, discordReady$.pipe(delay(1000))])
     next: ([activity, config]) => {
       if (discordClient)
         if (activity) {
-          logger.debug(`Updating activity.`)
-          discordClient.setActivity(toDiscord(activity, config))
+          const discordPresence = toDiscord(activity, config)
+          logger.debug(`Updating with:`, discordPresence)
+          discordClient.setActivity(discordPresence)
           // TODO Test error handling
           // throw new Error('TEST')
         } else {

@@ -23,6 +23,10 @@ const configStore = new Store<ConfigStore>({
       type: 'boolean',
       default: false
     },
+    isHomepageLinked: {
+      type: 'boolean',
+      default: false
+    },
     mediaServers: {
       type: 'array',
       default: [],
@@ -64,6 +68,7 @@ export enum Selector {
   deviceId = 'deviceId',
   IsStartupEnabled = 'isStartupEnabled',
   IsMediaServerTypeShown = 'isMediaServerTypeShown',
+  isHomepageLinked = 'isHomepageLinked',
   MediaServers = 'mediaServers',
   ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'
@@ -74,6 +79,7 @@ const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject
 >({
   deviceId: configStore.get(Selector.deviceId),
   isMediaServerTypeShown: configStore.get(Selector.IsMediaServerTypeShown),
+  isHomepageLinked: configStore.get(Selector.isHomepageLinked),
   isStartupEnabled: configStore.get(Selector.IsStartupEnabled),
   mediaServers: configStore.get(Selector.MediaServers),
   imgurClientId: configStore.get(Selector.ImgurClientId),
@@ -134,6 +140,10 @@ export function toggleMediaServerTypeShown(): void {
     Selector.IsMediaServerTypeShown,
     !configStore.get(Selector.IsMediaServerTypeShown)
   )
+}
+
+export function toggleIshomepageLinked(): void {
+  configStore.set(Selector.isHomepageLinked, !configStore.get(Selector.isHomepageLinked))
 }
 
 export function toggleDebugLogging(): void {

@@ -14,7 +14,6 @@ export function testImgurClientId$(clientId: string): Observable<unknown> {
 
   return from(client.upload({ image: readFileSync(icon) })).pipe(
     tap((response) => {
-      logger.debug(response)
       if (!response.success) throw new Error(`Response status ${response.status}: ${response.data}`)
     }),
     // Delete test image.

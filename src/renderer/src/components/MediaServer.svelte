@@ -80,7 +80,7 @@
       disabled={isBusyDisconnecting || isBusyTesting}
     />
     {server.address}
-    {#if server.isActive && !testError && activity}▶️ ${activity.title}{/if}
+    {#if server.isActive && !testError && activity}▶️ {activity.title}{/if}
     {#if !!testError}❗{/if}
   </summary>
   <article>

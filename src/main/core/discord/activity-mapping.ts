@@ -9,6 +9,7 @@ import {
   getStateImage,
   getStateText
 } from '../activity/utils'
+import { name, homepage } from '../../../../package.json'
 
 const logger = log.scope('discord-mapper')
 
@@ -21,10 +22,17 @@ export function toDiscord(activity: Activity, config: ConfigStore): Presence {
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl,
     largeImageText: getImageText(activity),
-    buttons: activity.externalLinks
+    // Make sure we create a new array, so the original activity is not motified.
+    // TODO Freeze original activity on creation.
+    buttons: [...activity.externalLinks]
   }
 
   if (activity.playState !== ActivityPlayState.Paused) presence.endTimestamp = activity.endTime
+
+  // Don't know why this line is needed. TypeScript does not recognize the value set above.
+  if (!presence.buttons) presence.buttons = []
+  // Inject info.
+  if (config.isHomepageLinked) presence.buttons.push({ label: `${name}?`, url: homepage })
 
   return sanitizeForDiscord(presence)
 }

@@ -91,8 +91,6 @@ const polling$: Observable<Array<PollingResult>> = config$.pipe(
   shareReplay(1)
 )
 
-polling$.subscribe((result) => logger.debug(result))
-
 // Known limitation: This observable does not reset if a media-server is removed/disabled.
 export const mediaServerActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
   // Map data, generate activity.
@@ -107,7 +105,7 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
   })
 )
 
-export const mainActivity$: Observable<Activity | null> = polling$.pipe(
+export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
   map((results) => pickPollingResultBetweenServers(results)),
   // Build base activity first.
   map((result) => {
