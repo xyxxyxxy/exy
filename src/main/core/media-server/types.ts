@@ -11,7 +11,9 @@ export enum ItemType {
   Episode = 'Episode',
   Movie = 'Movie',
   TvChannel = 'TvChannel',
-  MusicVideo = 'MusicVideo'
+  MusicVideo = 'MusicVideo',
+  // Used for "Home videos & photos" library.
+  Video = 'Video'
 }
 
 export type ValidSession = Session_SessionInfo & {

@@ -49,6 +49,10 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
     return item.IndexNumber ? ActivityItemType.Episode : ActivityItemType.LiveTvRecording
   }
 
+  if (item?.Type === ItemType.Video) {
+    return ActivityItemType.HomeVideo
+  }
+
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)
 
   return ActivityItemType.Song

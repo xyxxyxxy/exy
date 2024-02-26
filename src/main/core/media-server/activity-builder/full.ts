@@ -30,7 +30,7 @@ export function buildFullActivity$(
     seasonTitle: item.SeasonName,
     startTime: parseStartTime(item),
     episodeNumber: item.IndexNumber ? item.IndexNumber : undefined,
-    premierDate: item.PremiereDate ? parsePremierDate(item.PremiereDate) : undefined,
+    releaseDate: parsePremierDate(item),
     externalLinks: item.ExternalUrls ? mapExternalLinks(item) : [],
     endTime: parseEndTime(item, playState)
   }
@@ -70,8 +70,12 @@ function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
   return []
 }
 
-function parsePremierDate(rawPremiereDate: string): Date | undefined {
-  const date: Date = new Date(rawPremiereDate)
+function parsePremierDate(item: BaseItemDto): Date | undefined {
+  // For home video, the date created is returned.
+  if (item.Type === ItemType.Video && item.DateCreated) return new Date(item.DateCreated)
+
+  if (!item.PremiereDate) return undefined
+  const date: Date = new Date(item.PremiereDate)
 
   // Avoid invalid dates. Faced the issue of a premier date set to '1' once.
   if (date && date.getFullYear() < 1000) return undefined

@@ -12,7 +12,8 @@ export enum ActivityItemType {
   Episode = 'Episode',
   LiveTv = 'LiveTV',
   LiveTvRecording = 'LiveTvRecording',
-  MusicVideo = 'MusicVideo'
+  MusicVideo = 'MusicVideo',
+  HomeVideo = 'HomeVideo'
 }
 
 export enum ActivityPlayState {
@@ -52,7 +53,7 @@ export type Activity = ActivityBase & {
   // Keep privacy in mind, do not set to URL containing media-server address.
   imageUrl?: string
   // Time when this media item was released.
-  premierDate?: Date
+  releaseDate?: Date
   // Set for live media.
   startTime?: Date
   // Set for media with a fixed end time.

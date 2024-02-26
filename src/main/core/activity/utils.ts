@@ -29,7 +29,7 @@ export function getPrimaryText(activity: Activity): string {
 
   // For shows the premier year is added in brackets.
 
-  return activity.premierDate && activity.itemType === ActivityItemType.Movie
+  return activity.releaseDate && activity.itemType === ActivityItemType.Movie
     ? withReleaseYear(activity, text)
     : text
 }
@@ -43,11 +43,14 @@ export function getSecondaryText(activity: Activity): string {
     let text = activity.seasonTitle
 
     // Add year after season, if the season itself does not include four digits for a year.
-    if (activity.premierDate && !activity.seasonTitle?.match(/\d{4}/))
+    if (activity.releaseDate && !activity.seasonTitle?.match(/\d{4}/))
       text = withReleaseYear(activity, text)
 
     return text
   }
+
+  if (activity.itemType === ActivityItemType.HomeVideo && activity.chapterTitle)
+    return activity.chapterTitle
 
   return activity.description || ''
 }
@@ -60,6 +63,9 @@ export function getImageText(activity: Activity): string {
     return `Episode ${activity.episodeNumber} ${activity.title}`
 
   if (activity.itemType === ActivityItemType.Movie) return getGenreText(activity)
+
+  if (activity.itemType === ActivityItemType.HomeVideo && activity.releaseDate)
+    return activity.releaseDate.toDateString()
 
   return ''
 }
@@ -75,5 +81,5 @@ function getGenreText(activity: Activity): string {
 }
 
 function withReleaseYear(activity: Activity, str: string): string {
-  return activity.premierDate ? str + ` (${activity.premierDate.getFullYear()})` : str
+  return activity.releaseDate ? str + ` (${activity.releaseDate.getFullYear()})` : str
 }
