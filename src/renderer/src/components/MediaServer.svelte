@@ -1,11 +1,12 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import type { MediaServerConfig } from '../../../main/core/stores/config.types'
   import { IpcChannel, type ConnectMediaServerError } from '../../../main/ipc.types'
   import MediaServerError from './MediaServerError.svelte'
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
+  import type { ActivityBase } from '../../../main/core/activity/types'
 
-  export let config: MediaServerConfig
+  export let server: MediaServerConfig
+  export let activity: ActivityBase | null | undefined
 
   let isBusyDisconnecting = false
 
@@ -26,14 +27,12 @@
   ]
   let testSuccessText: string
 
-  onMount(test)
-
   function getRandomSuccessText(): string {
     return textSuccessTextOptions[Math.floor(Math.random() * textSuccessTextOptions.length)]
   }
 
   function toggleActive(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, config.id)
+    window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, server.id)
   }
 
   function testClick(): void {
@@ -46,10 +45,10 @@
   function test(): void {
     resetTest()
     isBusyTesting = true
-    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, config)
+    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, server)
   }
   window.electron.ipcRenderer.on(
-    IpcChannel.TestMediaServer + config.id,
+    IpcChannel.TestMediaServer + server.id,
     (_, error: ConnectMediaServerError) => {
       isBusyTesting = false
       isTested = true
@@ -65,7 +64,7 @@
 
   function disconnect(): void {
     isBusyDisconnecting = true
-    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, config)
+    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, server)
   }
 </script>
 
@@ -73,31 +72,32 @@
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="secondary">
     <input
-      id={'isActive' + config.id}
+      id={'isActive' + server.id}
       type="checkbox"
       role="switch"
-      checked={config.isActive}
+      checked={server.isActive}
       on:click|preventDefault={toggleActive}
       disabled={isBusyDisconnecting || isBusyTesting}
     />
-    {config.address}
+    {server.address}
+    {#if server.isActive && !testError && activity}▶️ ${activity.title}{/if}
     {#if !!testError}❗{/if}
   </summary>
   <article>
-    <MediaServerTypeSelect {config} disabled></MediaServerTypeSelect>
+    <MediaServerTypeSelect config={server} disabled></MediaServerTypeSelect>
     <div class="grid">
       <label
         >Protocol
-        <select bind:value={config.protocol} disabled>
+        <select bind:value={server.protocol} disabled>
           <option value="http" selected>🔓 HTTP</option>
           <option value="https">🔒 HTTPS</option>
         </select>
       </label>
-      <label>Address<input type="text" bind:value={config.address} required disabled /> </label>
-      <label>Port<input type="number" min="1" bind:value={config.port} required disabled /> </label>
+      <label>Address<input type="text" bind:value={server.address} required disabled /> </label>
+      <label>Port<input type="number" min="1" bind:value={server.port} required disabled /> </label>
     </div>
     <div class="grid">
-      <label>Username<input type="text" bind:value={config.username} required disabled /> </label>
+      <label>Username<input type="text" bind:value={server.username} required disabled /> </label>
 
       <label
         >Password<input type="password" placeholder="Password" value="12345678" disabled />
@@ -127,10 +127,18 @@
         <span style="color: var(--pico-ins-color);" aria-busy={isBusyDisconnecting}
           >{testSuccessText}</span
         >
-      {:else}
-        <span aria-busy={isBusyTesting}>Testing...</span>
+      {:else if isBusyTesting}
+        <span aria-busy="true">Testing...</span>
       {/if}
       <!-- <footer>TODO list libraries. TODO allow ignored words</footer> -->
     </div>
   </article>
 </details>
+
+<style>
+  summary {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+</style>

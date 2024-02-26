@@ -23,8 +23,13 @@ import {
   Session_SessionInfo,
   SystemInfo
 } from '../emby-client'
-import { Activity, ActivityBase } from '../activity/types'
-import { PollingResult, PollingResultPlaying, ValidSession } from './types'
+import { Activity } from '../activity/types'
+import {
+  PollingResult,
+  PollingResultPlaying,
+  MediaServerActivityMapping,
+  ValidSession
+} from './types'
 import { buildActivityBase } from './activity-builder/base'
 import { buildFullActivity$ } from './activity-builder/full'
 
@@ -82,20 +87,23 @@ const polling$: Observable<Array<PollingResult>> = config$.pipe(
       tap(() => logger.debug(`Polling ${servers.length} servers.`)),
       mergeMap(() => forkJoin(servers.map((server) => poll$(server))))
     )
-  )
+  ),
+  shareReplay(1)
 )
 
-// TODO Use to display base activity of each server in config.
-export const mediaServerActivities$: Observable<
-  Array<{ server: MediaServerConfig; activity: ActivityBase | null }>
-> = polling$.pipe(
+polling$.subscribe((result) => logger.debug(result))
+
+// Known limitation: This observable does not reset if a media-server is removed/disabled.
+export const mediaServerActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
+  // Map data, generate activity.
   map((results) => {
-    return results.map((result) => {
-      return {
-        server: result.server,
-        activity: result.nowPlayingSession ? buildActivityBase(result.nowPlayingSession) : null
-      }
+    const result: MediaServerActivityMapping = {}
+    results.forEach((playing) => {
+      result[playing.server.id] = playing.nowPlayingSession
+        ? buildActivityBase(playing.nowPlayingSession)
+        : null
     })
+    return result
   })
 )
 

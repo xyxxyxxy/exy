@@ -1,5 +1,5 @@
-import { ipcMain, shell } from 'electron'
-import { finalize } from 'rxjs'
+import { IpcMainEvent, ipcMain, shell } from 'electron'
+import { combineLatest, filter, finalize, fromEvent, pipe } from 'rxjs'
 import {
   addMediaServerConfig,
   config$,
@@ -14,7 +14,12 @@ import {
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
 import { testImgurClientId$ } from './core/imgur'
-import { authenticate$, logout$, testConnection$ } from './core/media-server'
+import {
+  authenticate$,
+  logout$,
+  mediaServerActivities$,
+  testConnection$
+} from './core/media-server'
 import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
@@ -24,14 +29,32 @@ import { connectionStatus$, setTestActivity } from './core/discord'
 const logger = log.scope('ipc')
 
 export function startMainToRendererIpc(): void {
-  // Init events. Subscribing to updates.
-  ipcMain.on(IpcChannel.Config, (event) => {
-    config$.subscribe((config) => event.sender.send(IpcChannel.Config, config))
-  })
-  ipcMain.on(IpcChannel.DiscordStatus, (event) => {
-    connectionStatus$.subscribe((status) => event.sender.send(IpcChannel.DiscordStatus, status))
-  })
+  logger.debug(`Start IPC.`)
 }
+
+// A type guard is used to provide typing for 'event'.
+const isEvent = pipe(filter((event): event is IpcMainEvent => !!event))
+
+// Send on updates and on request.
+combineLatest([config$, fromEvent(ipcMain, IpcChannel.Config).pipe(isEvent)]).subscribe(
+  ([config, event]) => {
+    event.sender.send(IpcChannel.Config, config)
+  }
+)
+
+combineLatest([
+  connectionStatus$,
+  fromEvent(ipcMain, IpcChannel.DiscordStatus).pipe(isEvent)
+]).subscribe(([data, event]) => {
+  event.sender.send(IpcChannel.DiscordStatus, data)
+})
+
+combineLatest([
+  mediaServerActivities$,
+  fromEvent(ipcMain, IpcChannel.MediaServerActivities).pipe(isEvent)
+]).subscribe(([activities, event]) => {
+  event.sender.send(IpcChannel.MediaServerActivities, activities)
+})
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
 ipcMain.on(IpcChannel.ToggleIsMediaServerTypeShown, toggleMediaServerTypeShown)

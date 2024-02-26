@@ -54,7 +54,7 @@
         isInvalidAuthentication = true
 
         // Specify feedback.
-        if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT'].includes(error.code)) {
+        if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT', 'ERR_INVALID_URL'].includes(error.code)) {
           isInvalidAuthentication = null
         }
         if (error.status === 401) {
@@ -82,7 +82,9 @@
 <details {open}>
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="outline">
-    ✨ {hasMediaServers ? 'Add connection' : 'Get started by connecting your first media-server'}
+    ✨ {hasMediaServers
+      ? 'Add connection'
+      : 'Click here to get started by connecting your first media-server'}
   </summary>
   <article>
     <form on:submit|preventDefault={submit}>

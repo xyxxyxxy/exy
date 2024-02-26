@@ -1,3 +1,4 @@
+import { ActivityBase } from '../activity/types'
 import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from '../emby-client'
 import { MediaServerConfig } from '../stores/config.types'
 
@@ -21,9 +22,16 @@ export type ValidSession = Session_SessionInfo & {
   PlayState: PlayerStateInfo
 }
 
+export type PollingBaseResult = {
+  server: MediaServerConfig
+  nowPlayingSession: ActivityBase
+}
+
 export type PollingResult = {
   server: MediaServerConfig
   nowPlayingSession: ValidSession | null
 }
 
 export type PollingResultPlaying = PollingResult & { nowPlayingSession: ValidSession }
+
+export type MediaServerActivityMapping = { [serverId: string]: ActivityBase | null }

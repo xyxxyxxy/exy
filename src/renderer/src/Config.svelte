@@ -2,6 +2,7 @@
   import ImgurInfo from './components/ImgurInfo.svelte'
   import ImgurClientId from './components/ImgurClientId.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
+  import type { MediaServerActivityMapping } from '../../main/core/media-server/types'
   import { IpcChannel } from '../../main/ipc.types'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
@@ -10,11 +11,18 @@
 
   let config: ConfigStore
   let hasMediaServers: boolean
+  let activities: MediaServerActivityMapping = {}
 
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
     hasMediaServers = !!newConfig.mediaServers.length
+  })
+
+  window.electron.ipcRenderer.send(IpcChannel.MediaServerActivities) // Get initial value.
+  window.electron.ipcRenderer.on(IpcChannel.MediaServerActivities, (_, newActivities) => {
+    console.log(newActivities)
+    activities = newActivities
   })
 
   function toggleStartup(): void {
@@ -37,7 +45,7 @@
 {#if config}
   <div class="container">
     <section>
-      <h4>⚙️ General</h4>
+      <h4>🔮 General</h4>
       <div class="grid">
         <div>
           <label>
@@ -65,15 +73,15 @@
       </div>
     </section>
     <section>
-      <h4>🪄 Media-Server Connections</h4>
+      <h4>🪄 Connections</h4>
 
-      {#each config.mediaServers as serverConfig (serverConfig.id)}
-        <MediaServer config={serverConfig} />
+      {#each config.mediaServers as server (server.id)}
+        <MediaServer {server} activity={activities[server.id]} />
       {/each}
       <MediaServerNew {hasMediaServers} />
     </section>
     <section>
-      <h4>🖼️ Imgur</h4>
+      <h4>🌠Imgur</h4>
       <div class="grid">
         <div>
           <ImgurInfo />
@@ -83,7 +91,7 @@
     </section>
     <div class="grid">
       <section>
-        <h4>ℹ️ About</h4>
+        <h4>🎏 About</h4>
         exy v{version}
       </section>
       <section>

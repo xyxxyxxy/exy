@@ -6,6 +6,7 @@ export enum IpcChannel {
   ToggleStartup = 'ToggleStartup',
   ToggleIsMediaServerTypeShown = 'ToggleIsMediaServerTypeShown',
   TestDiscordActivity = 'TestDiscordActivity',
+  MediaServerActivities = 'MediaServerActivities',
   ToggleMediaServerActive = 'ToggleMediaServerActive',
   DisconnectMediaServer = 'DisconnectMediaServer',
   TestMediaServer = 'TestMediaServer',
