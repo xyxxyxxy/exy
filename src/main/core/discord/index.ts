@@ -5,6 +5,8 @@ import {
   Observable,
   Subscription,
   catchError,
+  combineLatest,
+  delay,
   filter,
   fromEvent,
   map,
@@ -23,7 +25,7 @@ const logger = log.scope('discord')
 
 // Discord application ID.
 const discordApplicationId = '1203674508733714492'
-const retryDelayInSeconds = 30
+const retryDelayInSeconds = 10
 
 // Connection status.
 const connectionStatus: BehaviorSubject<ConnectionStatus> = new BehaviorSubject<ConnectionStatus>(
@@ -112,8 +114,12 @@ export function setTestActivity(content: string = 'Test'): void {
 const rateLimitThrottleTimeInSeconds = 20 / 5 // 5 Updates per 20 seconds allowed.
 
 // Send activity updates to Discord client.
-activity$
+// Including discord ready event for reconnects.
+// Adding a small delay to the Discord ready event,
+// since setting the activity right away did not work.
+combineLatest([activity$, discordReady$.pipe(delay(1000))])
   .pipe(
+    map(([activity]) => activity),
     throttleTime(rateLimitThrottleTimeInSeconds * 1000, undefined, {
       leading: true,
       trailing: true
