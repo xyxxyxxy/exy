@@ -1,5 +1,6 @@
 import {
   Observable,
+  catchError,
   distinctUntilChanged,
   forkJoin,
   map,
@@ -128,6 +129,10 @@ function poll$(server: MediaServerConfig): Observable<PollingResult> {
     // Get all sessions with now playing items.
     map((sessions) => {
       return { server, nowPlayingSession: pickSession(sessions) }
+    }),
+    catchError((error) => {
+      logger.warn(`Encountered error while polling server ${server.address}.`, error)
+      return of({ server, nowPlayingSession: null })
     })
   )
 }
