@@ -7,7 +7,7 @@
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
   import DiscordStatus from './components/DiscordStatus.svelte'
-  import { version } from '../../../package.json'
+  import About from './components/About.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -91,8 +91,7 @@
     </section>
     <div class="grid">
       <section>
-        <h4>🎏 About</h4>
-        exy v{version}
+        <About />
       </section>
       <section>
         <h4>🩻 Debug</h4>
