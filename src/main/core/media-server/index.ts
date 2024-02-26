@@ -188,17 +188,7 @@ const xEmbyAuthorization$ = config$.pipe(
   shareReplay(1)
 )
 
-export function getItemImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
-  if (!item.Id) throw new Error('Failed to get primary image. No ID set.')
-  return getImageUrl(server, item.Id)
-}
-
-export function getParentImageUrl(server: ConnectionDetails, item: BaseItemDto): string {
-  if (!item.ParentId) throw new Error('Failed to get album image URL. No album ID set.')
-  return getImageUrl(server, item.ParentId)
-}
-
-function getImageUrl(server: ConnectionDetails, id: string): string {
+export function getImageUrl(server: ConnectionDetails, id: string): string {
   const dimensionLimit = 512
   return `${getBaseUrl(server)}/Items/${id}/Images/Primary?maxHeight=${dimensionLimit}&maxWidth=${dimensionLimit}`
 }

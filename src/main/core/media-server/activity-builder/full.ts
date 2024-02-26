@@ -1,6 +1,6 @@
 import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
-import { getItemImageUrl, getParentImageUrl } from '..'
+import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
 import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
@@ -105,32 +105,40 @@ function addImage$(
 ): Observable<Activity> {
   if (activity.imageUrl) return of(activity)
 
-  return getPrimaryImageLink$(server, session.NowPlayingItem).pipe(
+  return getImageLink$(server, session.NowPlayingItem).pipe(
     tap((url) => (activity.imageUrl = url)),
     map(() => activity)
   )
 }
 
-function getPrimaryImageLink$(
+function getImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
 ): Observable<string | undefined> {
-  return getImgurLink$(getItemImageUrl(server, item)).pipe(
-    catchError(() => {
-      // Emby responds with 500 error for primary images of some songs.
-      // Also some episodes don't have images, like specials/extras not present in TVDB.
-      // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
-      logger.debug(`Failed to get primary image link. Trying parent image next.`)
+  // Different image IDs to try from lowest to highest priority.
+  const imageIds: Array<string> = [
+    // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
+    item.ParentBackdropItemId,
+    item.SeriesId,
+    // Emby responds with 500 error for primary images of some songs.
+    // Also some episodes don't have images, like specials/extras not present in TVDB.
+    // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
+    item.ParentId,
+    // Try the item image first.
+    item.Id
+  ].filter((id): id is string => typeof id === 'string')
 
-      if (!item.ParentId) return of(undefined)
+  const tryNextImage = (): Observable<string | undefined> => {
+    const id = imageIds.pop()
 
-      return getImgurLink$(getParentImageUrl(server, item)).pipe(
-        catchError((error) => {
-          logger.warn(`Failed to get album image link. Continueing without primary image.`)
-          logger.debug(error)
-          return of(undefined)
-        })
-      )
-    })
-  )
+    if (!id) {
+      logger.info(`Failed to get any image for item:`, item)
+      return of(undefined)
+    }
+
+    const url = getImageUrl(server, id)
+    return getImgurLink$(url).pipe(catchError(() => tryNextImage()))
+  }
+
+  return tryNextImage()
 }

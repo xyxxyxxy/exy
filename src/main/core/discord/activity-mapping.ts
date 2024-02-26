@@ -20,7 +20,7 @@ export function toDiscord(activity: Activity, config: ConfigStore): Presence {
     smallImageText: getStateText(activity, config.isMediaServerTypeShown),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
-    largeImageKey: activity.imageUrl,
+    largeImageKey: activity.imageUrl || 'neutral',
     largeImageText: getImageText(activity),
     // Make sure we create a new array, so the original activity is not motified.
     // TODO Freeze original activity on creation.
