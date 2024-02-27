@@ -1,5 +1,5 @@
 import { BrowserWindow, Menu, MenuItem, MenuItemConstructorOptions, Tray, app } from 'electron'
-import { combineLatest, fromEvent, map } from 'rxjs'
+import { combineLatest, fromEvent } from 'rxjs'
 import { name } from '../../package.json'
 import { config$, toggleMediaServerActive } from './core/stores/config'
 import icon from '../../resources/icon.png?asset'

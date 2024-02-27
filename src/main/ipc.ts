@@ -7,7 +7,7 @@ import {
   isConnectionConfigured,
   setImgurClientId,
   toggleDebugLogging,
-  toggleIshomepageLinked,
+  toggleIsHomepageLinked,
   toggleMediaServerActive,
   toggleMediaServerTypeShown,
   toggleStartup
@@ -59,7 +59,7 @@ combineLatest([
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
 ipcMain.on(IpcChannel.ToggleIsMediaServerTypeShown, toggleMediaServerTypeShown)
-ipcMain.on(IpcChannel.ToggleIsHomepageLinked, toggleIshomepageLinked)
+ipcMain.on(IpcChannel.ToggleIsHomepageLinked, toggleIsHomepageLinked)
 ipcMain.on(IpcChannel.TestDiscordActivity, (_, content) => setTestActivity(content))
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {

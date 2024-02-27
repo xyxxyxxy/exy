@@ -4,7 +4,7 @@ import log from 'electron-log/main'
 
 const logger = log.scope('core')
 
-logger.info(`Startig.`)
+logger.info(`Starting.`)
 
 // Apply log-level.
 config$

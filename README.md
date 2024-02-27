@@ -1,18 +1,15 @@
 # exy
 
-<p align="center">
 ![exy-icon](resources/icon.png)
 
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
 
-</p>
-
 TODO Images
 
-# State
+# State of this application
 
 As of 2024, me and some friends are using exy on Windows.
-MacOS and Linux builds are created, but not tested.
+MacOS and Linux builds are created, but untested. Feedback appreciated.
 
 ## Features
 
@@ -36,10 +33,12 @@ This is done using the file path of the playing item.
 
 The file path must meet two conditions for this feature to work:
 
-1. Contains site name (case insensitive).
-2. Followed by video ID in brackets `[]`.
+1. Contains site name `YouTube` or `BitChute` (case insensitive).
+2. Followed by a video ID in brackets `[]`.
 
-Working examples:
+If a video is detected, a link will be generated and checked. This avoids adding links to deleted or otherwise unavailable videos.
+
+Examples:
 
 - `/media/YouTube/Me at the zoo [jNQXAC9IVRw].mp4`
 - `/media/youtube/[jNQXAC9IVRw] Me at the zoo.mp4`

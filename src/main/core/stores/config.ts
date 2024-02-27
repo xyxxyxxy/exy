@@ -142,7 +142,7 @@ export function toggleMediaServerTypeShown(): void {
   )
 }
 
-export function toggleIshomepageLinked(): void {
+export function toggleIsHomepageLinked(): void {
   configStore.set(Selector.isHomepageLinked, !configStore.get(Selector.isHomepageLinked))
 }
 

@@ -62,7 +62,7 @@ discordDisconnected$
         discordClient.destroy()
       }
     }),
-    // Create new clinet. Necessary to reconnect.
+    // Create new client. Necessary to reconnect.
     map(() => {
       logger.debug(`Creating new client.`)
       const newClient = new Client({ transport: 'ipc' })

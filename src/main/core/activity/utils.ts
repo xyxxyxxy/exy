@@ -56,8 +56,8 @@ export function getSecondaryText(activity: Activity): string {
 }
 
 export function getImageText(activity: Activity): string {
-  if (activity.itemType === ActivityItemType.Song && activity.albumtitle)
-    return withReleaseYear(activity, activity.albumtitle)
+  if (activity.itemType === ActivityItemType.Song && activity.albumTitle)
+    return withReleaseYear(activity, activity.albumTitle)
 
   if (activity.itemType === ActivityItemType.Episode && activity.episodeNumber)
     return `Episode ${activity.episodeNumber} ${activity.title}`

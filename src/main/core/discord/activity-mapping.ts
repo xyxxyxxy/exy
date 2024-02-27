@@ -22,7 +22,7 @@ export function toDiscord(activity: Activity, config: ConfigStore): Presence {
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
     largeImageText: getImageText(activity),
-    // Make sure we create a new array, so the original activity is not motified.
+    // Make sure we create a new array, so the original activity is not modified.
     // TODO Freeze original activity on creation.
     buttons: [...activity.externalLinks]
   }

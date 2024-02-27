@@ -39,11 +39,11 @@ export function testImgurClientId$(clientId: string): Observable<unknown> {
 // Imgur upload cache is stored in a file and used to upload each image only once.
 // This is important, since one image can have multiple URLs. For example the image of songs in an music album.
 
-const hashCach: { [url: string]: string } = {}
+const hashCache: { [url: string]: string } = {}
 
 export function getImgurLink$(sourceUrl: string): Observable<string | undefined> {
   // Check hash cache and get cached Imgur link on hit.
-  const cachedHash = hashCach[sourceUrl]
+  const cachedHash = hashCache[sourceUrl]
   if (cachedHash) return of(getCachedImageLink(cachedHash))
 
   return config$.pipe(
@@ -73,7 +73,7 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
         }),
         tap(({ hash }) => logger.debug(`Generated image hash:`, hash)),
         // Set hash cash.
-        tap(({ sourceUrl, hash }) => (hashCach[sourceUrl] = hash)),
+        tap(({ sourceUrl, hash }) => (hashCache[sourceUrl] = hash)),
         // Get Imgur link.
         switchMap((image) => {
           // Check Imgur cache.

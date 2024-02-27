@@ -60,7 +60,7 @@ export type Activity = ActivityBase & {
   endTime?: Date
 
   // Mostly used for music.
-  albumtitle?: string
+  albumTitle?: string
 
   // Mostly used for shows
   showTitle?: string

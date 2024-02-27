@@ -25,7 +25,7 @@ export function buildFullActivity$(
     artists: item.Artists || [],
     genres: item.Genres || [],
     description: item.Type === ItemType.TvChannel ? item.CurrentProgram?.Overview : item.Overview,
-    albumtitle: item.Album,
+    albumTitle: item.Album,
     showTitle: item.SeriesName,
     seasonTitle: item.SeasonName,
     startTime: parseStartTime(item),
