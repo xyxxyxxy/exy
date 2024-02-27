@@ -48,27 +48,26 @@
   }
 </script>
 
-<section>
+<section class="flex">
   <!-- TODO Make test UI pretty -->
   <!-- TODO Make icon reflect connection status (grey while not ready) -->
   <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
 
-  <p>
-    <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
-    <br />
-    {#if isReady}
-      <a class="outline secondary" on:click|preventDefault={testClick}> Send test activity </a>
-      <span aria-busy={isTesting}>
-        {#if testContent}
-          Sent {testContent}.
-        {/if}</span
-      >
-    {/if}
-  </p>
+  <section>
+    <p>
+      <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
+    </p>
+    <button on:click={testClick} disabled={!isReady || isTesting}> Send test activity </button>
+    <span aria-busy={isTesting}>
+      {#if testContent}
+        Sent {testContent}.
+      {/if}
+    </span>
+  </section>
 </section>
 
 <style>
-  section {
+  .flex {
     display: flex;
     gap: var(--pico-grid-row-gap);
   }
