@@ -20,11 +20,10 @@ import { ConnectionStatus } from './types'
 import { activity$ } from '../activity'
 import { toDiscord } from './activity-mapping'
 import { config$ } from '../stores/config'
+import { discordApplicationId } from '../../../environment.json'
 
 const logger = log.scope('discord')
 
-// Discord application ID.
-const discordApplicationId = '1203674508733714492'
 const retryDelayInSeconds = 10
 
 // Connection status.

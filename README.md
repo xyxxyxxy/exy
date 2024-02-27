@@ -1,33 +1,58 @@
 # exy
 
-Connecting your Emby/Jellyfin with Discord to provide rich presence.
+<p align="center">
+![exy-icon](resources/icon.png)
+
+[Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
+
+</p>
 
 TODO Images
+
+# State
+
+As of 2024, me and some friends are using exy on Windows.
+MacOS and Linux builds are created, but not tested.
 
 ## Features
 
 - Supports all media types.
-- Show pause/mute state.
-- Upload preview images to Imgur.
+- Show playing/paused/muted state.
 - Add multiple media-servers.
-- Keeps the media-server address private.
 - Option to hide media-server type in Discord.
+- Preview images using Imgur.
+- Detect [public content](#public-content) from [YouTube](https://www.youtube.com) and [BitChute](https://www.bitchute.com) and provide link in activity.
+
+## Requirements
+
+Discord setting "Display current activity as a status message." needs to be enabled.
+![discord-settings](resources/docs/discord-setting.png)
+This setting can be found in "Discord settings" -> "Activity Privacy".
 
 ## Public content
 
-### YouTube support
+In case you watch local copies of YouTube or BitChute content, exy can detect the original video and link it in your activity.
+This is done using the file path of the playing item.
 
-If the file path of the playing video includes 'youtube' and a YouTube ID in brackets `[]`, a link to the video will be included.
+The file path must meet two conditions for this feature to work:
 
-Example path: TODO
+1. Contains site name (case insensitive).
+2. Followed by video ID in brackets `[]`.
 
-### BitChute
+Working examples:
 
-TODO
+- `/media/YouTube/Me at the zoo [jNQXAC9IVRw].mp4`
+- `/media/youtube/[jNQXAC9IVRw] Me at the zoo.mp4`
+- `/media/youtube.com/Me at the zoo [jNQXAC9IVRw].mp4`
+- `/media/YouTube Me at the zoo [jNQXAC9IVRw].mp4`
+- `/media/BitChute/Me at the zoo [0aG6W5lcsJG3].mp4`
 
-# How to get custom application name
+Try your path with RegEx101:
 
-TODO
+- [YouTube](https://regex101.com/r/6J9dr9/1)
+- [BitChute](https://regex101.com/r/cpVE7k/1)
+
+# Development
 
 ## Recommended IDE Setup
 
@@ -59,3 +84,19 @@ $ npm run build:mac
 # For Linux
 $ npm run build:linux
 ```
+
+## Discord application
+
+A Discord application for exy is already setup. Changing the application is only required if you want to change the "game played" displayed in Discord or some art assets. Running exy locally and/or a custom build is necessary to apply another application ID.
+
+### Using another Discord application
+
+A new application can be created in the [Discord developer portal](https://discord.com/developers/applications).
+The application ID used by exy can be changed in the [environment.json](src/environment.json) file.
+
+### Art assets
+
+All art assets are stored in [resources/discord-art-assets/](resources/discord-art-assets/).
+
+Assets need to be uploaded in the application settings -> "Rich Presence" -> "Art Assets":
+![discord-art-assets](/resources/docs/discord-art-assets.png)

@@ -1,3 +1,7 @@
+<script lang="ts">
+  import { name } from '../../../../package.json'
+</script>
+
 <p>
   By providing an Imgur client ID your activity will include a preview image of the playing media
   item.
@@ -16,7 +20,7 @@
           >Register an Application</a
         >
       </li>
-      <li>Enter any application name</li>
+      <li>Enter application name '{name}'</li>
       <li>
         Select authorization type
         <abbr title="OAuth 2 authorization without a callback URL">without callback</abbr>
