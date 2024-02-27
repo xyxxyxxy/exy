@@ -106,7 +106,7 @@ discordDisconnected$
   })
 
 export function setTestActivity(content: string = 'Test'): void {
-  if (discordClient) discordClient.setActivity({ details: content })
+  if (discordClient) discordClient.setActivity({ details: content, largeImageKey: 'neutral' })
 }
 
 // Rate limit communication to Discord client.
