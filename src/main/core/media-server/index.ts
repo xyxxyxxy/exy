@@ -1,6 +1,7 @@
 import {
   Observable,
   catchError,
+  defaultIfEmpty,
   distinctUntilChanged,
   forkJoin,
   map,
@@ -18,7 +19,6 @@ import { config$ } from '../stores/config'
 import log from 'electron-log'
 import {
   Authentication_AuthenticationResult,
-  BaseItemDto,
   EmbyClient,
   Session_SessionInfo,
   SystemInfo
@@ -85,13 +85,17 @@ const polling$: Observable<Array<PollingResult>> = config$.pipe(
   switchMap((servers) =>
     timer(0, 5 * 1000).pipe(
       tap(() => logger.debug(`Polling ${servers.length} servers.`)),
-      mergeMap(() => forkJoin(servers.map((server) => poll$(server))))
+      mergeMap(() =>
+        forkJoin(servers.map((server) => poll$(server)))
+          // Default to empty, so the activity is properly reset in case
+          // the last server is deactivated/disconnected while playing.
+          .pipe(defaultIfEmpty([]))
+      )
     )
   ),
   shareReplay(1)
 )
 
-// Known limitation: This observable does not reset if a media-server is removed/disabled.
 export const mediaServerActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
   // Map data, generate activity.
   map((results) => {
@@ -105,6 +109,7 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
   })
 )
 
+// TODO Does not reset if media-server activity is toggled
 export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
   map((results) => pickPollingResultBetweenServers(results)),
   // Build base activity first.
