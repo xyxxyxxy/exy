@@ -67,10 +67,6 @@
             />
             Run at startup
           </label>
-          <hgroup>
-            <h4>Activity</h4>
-            <p>Play something and watch the Discord activity change.</p>
-          </hgroup>
           <label>
             <input
               name="isMediaServerTypeShown"
@@ -92,7 +88,9 @@
             Add link to {name} homepage
           </label>
         </div>
-        <DiscordStatus />
+        <div>
+          <DiscordStatus />
+        </div>
       </div>
     </section>
     <section>

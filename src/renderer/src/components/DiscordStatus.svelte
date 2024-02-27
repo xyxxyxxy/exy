@@ -33,6 +33,7 @@
 
   function testClick(): void {
     isTesting = true
+    testContent = ''
     // Small delay for better experience and to prevent spam.
     setTimeout(test, 500)
   }
@@ -50,17 +51,33 @@
 <section>
   <!-- TODO Make test UI pretty -->
   <!-- TODO Make icon reflect connection status (grey while not ready) -->
-  <img alt="discord-logo" class="icon" src={discordLogo} style="height: 3rem;" />
+  <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
 
-  <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
-
-  {#if isReady}
-    <!-- svelte-ignore a11y-no-redundant-roles -->
-    <button role="button" class="outline secondary" on:click={testClick} aria-busy={isTesting}>
-      Send test activity
-    </button>
-    {#if testContent}
-      <p>Sent {testContent}.</p>
+  <p>
+    <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
+    <br />
+    {#if isReady}
+      <a class="outline secondary" on:click|preventDefault={testClick}> Send test activity </a>
+      <span aria-busy={isTesting}>
+        {#if testContent}
+          Sent {testContent}.
+        {/if}</span
+      >
     {/if}
-  {/if}
+  </p>
 </section>
+
+<style>
+  section {
+    display: flex;
+    gap: var(--pico-grid-row-gap);
+  }
+
+  img {
+    transition: all 0.2s linear;
+  }
+
+  .greyscale {
+    filter: grayscale(1);
+  }
+</style>

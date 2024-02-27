@@ -10,11 +10,7 @@
 </script>
 
 <div class="flex">
-  <img
-    alt="{config.type}-logo"
-    class="icon"
-    src={config.type === 'emby' ? embyLogo : jellyfinLogo}
-  />
+  <img alt="{config.type}-logo" src={config.type === 'emby' ? embyLogo : jellyfinLogo} />
   <select bind:value={config.type} {disabled}>
     {#each ['emby', 'jellyfin'] as type}
       <option value={type}>
