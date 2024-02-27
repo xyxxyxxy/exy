@@ -13,7 +13,7 @@ import { name, homepage } from '../../../../package.json'
 
 const logger = log.scope('discord-mapper')
 
-export function toDiscord(activity: Activity, config: ConfigStore): Presence {
+export function toDiscordPresence(activity: Activity, config: ConfigStore): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
     smallImageKey: getStateImage(activity, config.isMediaServerTypeShown),

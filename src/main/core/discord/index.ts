@@ -18,7 +18,7 @@ import {
 } from 'rxjs'
 import { ConnectionStatus } from './types'
 import { activity$ } from '../activity'
-import { toDiscord } from './activity-mapping'
+import { toDiscordPresence } from './activity-mapping'
 import { config$ } from '../stores/config'
 import { discordApplicationId } from '../../../environment.json'
 
@@ -48,8 +48,6 @@ export const discordDisconnected$: Observable<void> = connectionStatus.pipe(
 )
 
 let discordClient: Client | null = null
-
-// TODO Reconnect not working always
 
 // Auto (re)connect.
 discordDisconnected$
@@ -86,8 +84,6 @@ discordDisconnected$
     catchError((error) => {
       logger.info(`Failed to connect to new client. Retrying in ${retryDelayInSeconds} seconds.`)
       logger.debug(error)
-
-      // if (error.message === 'RPC_CONNECTION_TIMEOUT') // TODO Add additional delay?
       throw error
     }),
     retry({ delay: retryDelayInSeconds * 1000 })
@@ -127,23 +123,24 @@ combineLatest([activity$, discordReady$.pipe(delay(1000)), config$])
       leading: true,
       trailing: true
     }),
-    withLatestFrom(config$)
+    withLatestFrom(config$, connectionStatus$),
+    // Make sure Discord is still connected.
+    filter(([, , connectionStatus]) => connectionStatus === ConnectionStatus.Ready)
   )
-  .subscribe({
-    next: ([activity, config]) => {
-      if (discordClient)
-        if (activity) {
-          const discordPresence = toDiscord(activity, config)
-          logger.debug(`Updating with:`, discordPresence)
-          discordClient.setActivity(discordPresence)
-          // TODO Test error handling
-          // throw new Error('TEST')
-        } else {
-          logger.debug(`Clear activity.`)
-          discordClient.clearActivity()
-        }
-    },
-    error: (error) => {
-      logger.error(`Failed to set activity.`, error)
+  .subscribe(([activity, config]) => {
+    if (!discordClient) return logger.warn(`Failed to set presence. No client available.`)
+    try {
+      if (activity) {
+        const presence = toDiscordPresence(activity, config)
+        logger.debug(`Setting Discord presence:`, presence)
+        discordClient.setActivity(presence)
+      } else {
+        logger.debug(`Clearing Discord presence.`)
+        discordClient.clearActivity()
+      }
+    } catch (error) {
+      // Catch error to make sure any error of the Discord client
+      // cannot cause this subscription to end.
+      logger.error(`Failed to set presence.`, error)
     }
   })
