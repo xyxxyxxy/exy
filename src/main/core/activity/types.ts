@@ -2,7 +2,8 @@ import { MediaServerConfig } from '../stores/config.types'
 
 export enum ActivityMediaType {
   Audio = 'Audio',
-  Video = 'Video'
+  Video = 'Video',
+  Book = 'Book'
 }
 
 export enum ActivityItemType {
@@ -13,7 +14,8 @@ export enum ActivityItemType {
   LiveTv = 'LiveTV',
   LiveTvRecording = 'LiveTvRecording',
   MusicVideo = 'MusicVideo',
-  HomeVideo = 'HomeVideo'
+  HomeVideo = 'HomeVideo',
+  Book = 'Book'
 }
 
 export enum ActivityPlayState {

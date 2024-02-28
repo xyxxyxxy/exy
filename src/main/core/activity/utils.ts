@@ -11,6 +11,8 @@ export function getStateText(activity: Activity, config: ActivityConfig): string
 }
 
 export function getStateImage(activity: Activity, config: ActivityConfig): string {
+  if (activity.mediaType === ActivityMediaType.Book) return ''
+
   let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
   theme += '-'
   if (activity.playState === ActivityPlayState.Paused) return theme + `pause`
@@ -42,7 +44,9 @@ function getGenreImage(activity: Activity): null | 'casette' | 'acoustic-guitar'
 }
 
 export function getPrimaryText(activity: Activity): string {
-  let text = activity.mediaType === ActivityMediaType.Audio ? 'Listening to' : 'Watching'
+  let text = 'Watching'
+  if (activity.mediaType === ActivityMediaType.Audio) text = 'Listening to'
+  if (activity.mediaType === ActivityMediaType.Book) text = 'Reading'
   text += ' '
   // For shows the main text is the title of the show.
   text +=

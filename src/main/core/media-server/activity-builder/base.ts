@@ -29,6 +29,7 @@ export function buildActivityBase(session: ValidSession): ActivityBase {
 function getActivityMediaType(item?: BaseItemDto): ActivityMediaType {
   if (item?.MediaType === ItemMediaType.Audio) return ActivityMediaType.Audio
   if (item?.MediaType === ItemMediaType.Video) return ActivityMediaType.Video
+  if (item?.MediaType === ItemMediaType.Book) return ActivityMediaType.Book
   logger.warn(`Unexpected media type '${item?.MediaType}'.`)
   return ActivityMediaType.Video
 }
@@ -51,6 +52,10 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
 
   if (item?.Type === ItemType.Video) {
     return ActivityItemType.HomeVideo
+  }
+
+  if (item?.Type === ItemType.Book) {
+    return ActivityItemType.Book
   }
 
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)

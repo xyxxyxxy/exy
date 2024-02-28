@@ -5,7 +5,8 @@ import { MediaServerConfig } from '../stores/config.types'
 // Some additional types, not provided by the API.
 export enum ItemMediaType {
   Audio = 'Audio',
-  Video = 'Video'
+  Video = 'Video',
+  Book = 'Book'
 }
 
 export enum ItemType {
@@ -14,7 +15,8 @@ export enum ItemType {
   TvChannel = 'TvChannel',
   MusicVideo = 'MusicVideo',
   // Used for "Home videos & photos" library.
-  Video = 'Video'
+  Video = 'Video',
+  Book = 'Book'
 }
 
 export type ValidSession = Session_SessionInfo & {

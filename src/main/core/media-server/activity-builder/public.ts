@@ -6,7 +6,7 @@ const logger = log.scope('builder-public')
 
 // Looks for public images and links for the item.
 // Returns an activity with the available values set.
-export const addPubliContent$ = (activity: Activity): Observable<Activity> => {
+export const addPublicContent$ = (activity: Activity): Observable<Activity> => {
   if (!activity.path) return of(activity)
 
   const youTubeId = getId(activity.path, /youtube.*\[([^"&?/\s]{11})\]/i)

@@ -1,6 +1,7 @@
 import Store from 'electron-store'
 import {
   ActivityConfig,
+  ConfigSelector,
   ConfigStore,
   MediaServerConfig,
   MediaServerConnectionIdentifiers
@@ -22,7 +23,7 @@ const configStore = new Store<ConfigStore>({
 const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject<
   Readonly<ConfigStore>
 >({
-  deviceId: configStore.get(configStore.deviceId),
+  deviceId: configStore.get(ConfigSelector.deviceId),
   isStartupEnabled: configStore.get(ConfigSelector.IsStartupEnabled),
   activity: configStore.get(ConfigSelector.Activity),
   mediaServers: configStore.get(ConfigSelector.MediaServers),

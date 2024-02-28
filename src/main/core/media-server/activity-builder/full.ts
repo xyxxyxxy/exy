@@ -6,11 +6,11 @@ import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/ty
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
-import { addPubliContent$ } from './public'
+import { addPublicContent$ } from './public'
 
 const logger = log.scope('builder-full')
 
-// Builds an activiti incliding all the informations that does not require async operations.
+// Builds a basic activity without expensive async operations.
 export function buildFullActivity$(
   baseActivity: ActivityBase,
   server: MediaServerConfig,
@@ -35,7 +35,7 @@ export function buildFullActivity$(
     endTime: parseEndTime(item, playState)
   }
 
-  return addPubliContent$(activity).pipe(
+  return addPublicContent$(activity).pipe(
     switchMap((activity) => {
       // Adding the image can be avoided if the public content already added a URL.
       if (activity.imageUrl) return of(activity)
@@ -49,10 +49,10 @@ function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
   if (!urls) return []
   // Select specific links to include.
 
-  // Musicbrainz for audio.
+  // MusicBrainz for audio.
   if (item.MediaType === ItemMediaType.Audio) {
-    const musicMrainz = urls.find((externalUrl) => externalUrl.Url?.includes(`/release/`))?.Url
-    if (musicMrainz) return [{ label: `Checkout this Release`, url: musicMrainz }]
+    const musicBrainz = urls.find((externalUrl) => externalUrl.Url?.includes(`/release/`))?.Url
+    if (musicBrainz) return [{ label: `Checkout this Release`, url: musicBrainz }]
   }
 
   // IMDb for movies.
@@ -90,7 +90,8 @@ function parseStartTime(item: BaseItemDto): Date | undefined {
 }
 
 function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | undefined {
-  if (!item.RunTimeTicks || !playState.PositionTicks) return undefined
+  if (item.MediaType === ItemMediaType.Book || !item.RunTimeTicks || !playState.PositionTicks)
+    return undefined
 
   const runtimeMs: number = item.RunTimeTicks / 10000
   const playPositionMs: number = playState.PositionTicks / 10000

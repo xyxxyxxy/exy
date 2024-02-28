@@ -1,6 +1,6 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
-import { ActivityConfig, ConfigStore } from '../stores/config.types'
+import { ActivityConfig } from '../stores/config.types'
 import { Activity, ActivityPlayState } from '../activity/types'
 import {
   getImageText,
@@ -53,6 +53,8 @@ export function sanitizeForDiscord(activity: Presence): Presence {
 
   if (result.largeImageText) limitLength(result.largeImageText)
   else delete result.largeImageText
+
+  if (!result.smallImageKey) delete result.smallImageKey
 
   if (result.smallImageText) limitLength(result.smallImageText)
   else delete result.smallImageText
