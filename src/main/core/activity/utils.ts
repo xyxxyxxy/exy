@@ -1,7 +1,8 @@
+import { ActivityConfig } from '../stores/config.types'
 import { Activity, ActivityItemType, ActivityMediaType, ActivityPlayState } from './types'
 
-export function getStateText(activity: Activity, isMediaServerTypeShown: boolean): string {
-  if (isMediaServerTypeShown && activity.playState === ActivityPlayState.Playing) {
+export function getStateText(activity: Activity, config: ActivityConfig): string {
+  if (config.isThemeColorUsed && activity.playState === ActivityPlayState.Playing) {
     const sourceCapitalized = activity.sourceType[0].toUpperCase() + activity.sourceType.slice(1)
     return `${activity.playState} on ${sourceCapitalized}`
   }
@@ -9,13 +10,35 @@ export function getStateText(activity: Activity, isMediaServerTypeShown: boolean
   return activity.playState
 }
 
-export function getStateImage(activity: Activity, isMediaServerTypeShown: boolean): string {
-  // Return special icons for songs, depending on genre.
-  let prefix = isMediaServerTypeShown ? activity.sourceType : 'neutral'
-  prefix += '-'
-  if (activity.playState === ActivityPlayState.Paused) return prefix + `pause`
-  if (activity.playState === ActivityPlayState.Muted) return prefix + `mute`
-  return prefix + `small`
+export function getStateImage(activity: Activity, config: ActivityConfig): string {
+  let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
+  theme += '-'
+  if (activity.playState === ActivityPlayState.Paused) return theme + `pause`
+  if (activity.playState === ActivityPlayState.Muted) return theme + `mute`
+  // TODO Return special icons for songs, depending on genre.
+  const genreImage = getGenreImage(activity)
+  if (genreImage) return theme + genreImage
+
+  const playIcon = config.isLogoShown ? 'small' : 'play'
+
+  return theme + playIcon
+}
+
+function getGenreImage(activity: Activity): null | 'casette' | 'acoustic-guitar' {
+  // Check case insensitive if a genre identifier is included in any of the genres.
+  const isGenre = (identifier: string): boolean =>
+    activity.genres.some((genre) => genre.match(new RegExp(identifier, 'i')))
+
+  // if (isGenre('indie')) return 'casette'
+  // if (isGenre('rock')) return 'acoustic-guitar'
+  // pop
+  // rock
+  // metal
+  // classical?
+  // electro?
+  // jazz?
+
+  return null
 }
 
 export function getPrimaryText(activity: Activity): string {

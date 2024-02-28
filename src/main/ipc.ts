@@ -7,10 +7,11 @@ import {
   isConnectionConfigured,
   setImgurClientId,
   toggleDebugLogging,
-  toggleIsHomepageLinked,
+  toggleActivityHomepageLinked,
   toggleMediaServerActive,
-  toggleMediaServerTypeShown,
-  toggleStartup
+  toggleActivityThemeColorUsed,
+  toggleStartup,
+  toggleActivityLogoShown
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -58,8 +59,9 @@ combineLatest([
 })
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
-ipcMain.on(IpcChannel.ToggleIsMediaServerTypeShown, toggleMediaServerTypeShown)
-ipcMain.on(IpcChannel.ToggleIsHomepageLinked, toggleIsHomepageLinked)
+ipcMain.on(IpcChannel.ToggleActivityLogoShown, toggleActivityLogoShown)
+ipcMain.on(IpcChannel.ToggleActivityThemeColorUsed, toggleActivityThemeColorUsed)
+ipcMain.on(IpcChannel.ToggleActivityHomepageLinked, toggleActivityHomepageLinked)
 ipcMain.on(IpcChannel.TestDiscordActivity, (_, content) => setTestActivity(content))
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {

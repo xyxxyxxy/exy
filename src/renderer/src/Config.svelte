@@ -30,12 +30,16 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 
-  function toggleMediaServerTypeShown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIsMediaServerTypeShown)
+  function toggleLogoShown(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityLogoShown)
+  }
+
+  function toggleThemeColorUsed(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityThemeColorUsed)
   }
 
   function toggleHomepageLinked(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIsHomepageLinked)
+    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityHomepageLinked)
   }
 
   function toggleDebugLogging(): void {
@@ -72,17 +76,28 @@
               name="isMediaServerTypeShown"
               type="checkbox"
               role="switch"
-              checked={config.isMediaServerTypeShown}
-              on:click|preventDefault={toggleMediaServerTypeShown}
+              checked={config.activity.isLogoShown}
+              on:click|preventDefault={toggleLogoShown}
             />
-            Show media-server type
+            Show logo
+          </label>
+          <label>
+            <input
+              name="isMediaServerTypeShown"
+              type="checkbox"
+              role="switch"
+              checked={config.activity.isThemeColorUsed}
+              on:click|preventDefault={toggleThemeColorUsed}
+              disabled={config.activity.isLogoShown}
+            />
+            Use server themed colors
           </label>
           <label>
             <input
               name="isHomepageLinked"
               type="checkbox"
               role="switch"
-              checked={config.isHomepageLinked}
+              checked={config.activity.isHomepageLinked}
               on:click|preventDefault={toggleHomepageLinked}
             />
             Add link to {name} homepage

@@ -1,6 +1,6 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
-import { ConfigStore } from '../stores/config.types'
+import { ActivityConfig, ConfigStore } from '../stores/config.types'
 import { Activity, ActivityPlayState } from '../activity/types'
 import {
   getImageText,
@@ -13,11 +13,11 @@ import { name, homepage } from '../../../../package.json'
 
 const logger = log.scope('discord-mapper')
 
-export function toDiscordPresence(activity: Activity, config: ConfigStore): Presence {
+export function toDiscordPresence(activity: Activity, config: ActivityConfig): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
-    smallImageKey: getStateImage(activity, config.isMediaServerTypeShown),
-    smallImageText: getStateText(activity, config.isMediaServerTypeShown),
+    smallImageKey: getStateImage(activity, config),
+    smallImageText: getStateText(activity, config),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
