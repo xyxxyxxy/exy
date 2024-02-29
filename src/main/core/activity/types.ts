@@ -1,4 +1,4 @@
-import { MediaServerConfig } from '../stores/config.types'
+import type { MediaServerConfig } from '../stores/config.types'
 
 export enum ActivityMediaType {
   Audio = 'Audio',

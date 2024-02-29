@@ -1,6 +1,6 @@
-import { ActivityBase } from '../activity/types'
-import { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from '../emby-client'
-import { MediaServerConfig } from '../stores/config.types'
+import type { ActivityBase } from '../activity/types'
+import type { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from '../emby-client'
+import type { MediaServerConfig } from '../stores/config.types'
 
 // Some additional types, not provided by the API.
 export enum ItemMediaType {

@@ -4,7 +4,7 @@ import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
 import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
-import { BaseItemDto, PlayerStateInfo } from '../../emby-client'
+import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
 import { addPublicContent$ } from './public'
 

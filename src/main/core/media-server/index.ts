@@ -12,7 +12,7 @@ import {
   tap,
   timer
 } from 'rxjs'
-import { MediaServerConfig } from '../stores/config.types'
+import type { MediaServerConfig } from '../stores/config.types'
 import { hostname } from 'os'
 import { version, name } from '../../../../package.json'
 import { config$ } from '../stores/config'
