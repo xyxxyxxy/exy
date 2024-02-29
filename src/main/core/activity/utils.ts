@@ -31,8 +31,8 @@ function getGenreImage(activity: Activity): null | 'casette' | 'acoustic-guitar'
   const isGenre = (identifier: string): boolean =>
     activity.genres.some((genre) => genre.match(new RegExp(identifier, 'i')))
 
-  // if (isGenre('indie')) return 'casette'
-  // if (isGenre('rock')) return 'acoustic-guitar'
+  if (isGenre('indie')) return 'casette'
+  if (isGenre('rock')) return 'acoustic-guitar'
   // pop
   // rock
   // metal

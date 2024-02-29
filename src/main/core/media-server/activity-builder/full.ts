@@ -116,18 +116,21 @@ function getImageLink$(
   server: MediaServerConfig,
   item: BaseItemDto
 ): Observable<string | undefined> {
-  // Different image IDs to try from lowest to highest priority.
   const imageIds: Array<string> = [
-    // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
-    item.ParentBackdropItemId,
-    item.SeriesId,
+    // Try the item image first.
+    item.Id,
     // Emby responds with 500 error for primary images of some songs.
     // Also some episodes don't have images, like specials/extras not present in TVDB.
     // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
     item.ParentId,
-    // Try the item image first.
-    item.Id
-  ].filter((id): id is string => typeof id === 'string')
+    // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
+    item.SeriesId,
+    item.ParentBackdropItemId
+  ]
+    // Remove undefined entries.
+    .filter((id): id is string => typeof id === 'string')
+    // Reverse to process in the right order.
+    .reverse()
 
   const tryNextImage = (): Observable<string | undefined> => {
     const id = imageIds.pop()
