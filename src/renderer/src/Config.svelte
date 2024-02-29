@@ -9,6 +9,7 @@
   import DiscordStatus from './components/DiscordStatus.svelte'
   import About from './components/About.svelte'
   import { name } from '../../../package.json'
+  import Activity from './components/Activity.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -28,18 +29,6 @@
 
   function toggleStartup(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
-  }
-
-  function toggleLogoShown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityLogoShown)
-  }
-
-  function toggleThemeColorUsed(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityThemeColorUsed)
-  }
-
-  function toggleHomepageLinked(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityHomepageLinked)
   }
 
   function toggleDebugLogging(): void {
@@ -71,37 +60,6 @@
             />
             Run at startup
           </label>
-          <label>
-            <input
-              name="isMediaServerTypeShown"
-              type="checkbox"
-              role="switch"
-              checked={config.activity.isLogoShown}
-              on:click|preventDefault={toggleLogoShown}
-            />
-            Show logo
-          </label>
-          <label>
-            <input
-              name="isMediaServerTypeShown"
-              type="checkbox"
-              role="switch"
-              checked={config.activity.isThemeColorUsed}
-              on:click|preventDefault={toggleThemeColorUsed}
-              disabled={config.activity.isLogoShown}
-            />
-            Use server themed colors
-          </label>
-          <label>
-            <input
-              name="isHomepageLinked"
-              type="checkbox"
-              role="switch"
-              checked={config.activity.isHomepageLinked}
-              on:click|preventDefault={toggleHomepageLinked}
-            />
-            Add link to {name} homepage
-          </label>
         </div>
         <div>
           <DiscordStatus />
@@ -119,18 +77,24 @@
       {/each}
       <MediaServerNew {hasMediaServers} />
     </section>
-    <section>
-      <hgroup>
-        <h1>Imgur 🌠</h1>
-        <p>Making images publicly available while keeping server addresses private.</p>
-      </hgroup>
-      <div class="grid">
-        <div>
-          <ImgurInfo />
-        </div>
+
+    <div class="grid">
+      <div>
+        <hgroup>
+          <h1>Imgur 🌠</h1>
+          <p>Making images publicly available while keeping server addresses private.</p>
+        </hgroup>
+        <ImgurInfo />
         <ImgurClientId clientId={config.imgurClientId} />
       </div>
-    </section>
+      <div>
+        <hgroup>
+          <h1>Activity 🎇</h1>
+          <p>Customize the activity.</p>
+        </hgroup>
+        <Activity {config} />
+      </div>
+    </div>
     <div class="grid">
       <section>
         <About />
