@@ -1,18 +1,20 @@
 import { ActivityConfig } from '../stores/config.types'
-import { Activity, ActivityItemType, ActivityMediaType, ActivityPlayState } from './types'
+import { Activity, ActivityItemType, ActivityMediaType } from './types'
 
 export function getStateText(activity: Activity, config: ActivityConfig): string {
+  if (activity.isPaused) return `Paused`
+
   // Genres for music.
   if (activity.itemType === ActivityItemType.Song && hasGenres(activity)) {
     return getGenreText(activity)
   }
 
-  if (config.isThemeColorUsed && activity.playState === ActivityPlayState.Playing) {
+  if (config.isThemeColorUsed) {
     const sourceCapitalized = activity.sourceType[0].toUpperCase() + activity.sourceType.slice(1)
-    return `${activity.playState} on ${sourceCapitalized}`
+    return `Playing on ${sourceCapitalized}`
   }
 
-  return activity.playState
+  return `Playing`
 }
 
 export function getStateImage(activity: Activity, config: ActivityConfig): string {
@@ -20,8 +22,7 @@ export function getStateImage(activity: Activity, config: ActivityConfig): strin
 
   let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
   theme += '-'
-  if (activity.playState === ActivityPlayState.Paused) return theme + `pause`
-  if (activity.playState === ActivityPlayState.Muted) return theme + `mute`
+  if (activity.isPaused) return theme + `pause`
 
   let playIcon = config.isLogoShown ? 'small' : 'play'
 
@@ -100,7 +101,8 @@ function hasGenres(activity: Activity): boolean {
 
 function getGenreText(activity: Activity): string {
   if (!activity.genres.length) return ''
-  return activity.genres.slice(0, 3).join(`/`)
+  // Limit to first genre.
+  return activity.genres[1]
 }
 
 function withReleaseYear(activity: Activity, str: string): string {

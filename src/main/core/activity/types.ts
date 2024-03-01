@@ -18,12 +18,6 @@ export enum ActivityItemType {
   Book = 'Book'
 }
 
-export enum ActivityPlayState {
-  Playing = 'Playing',
-  Paused = 'Paused',
-  Muted = 'Muted'
-}
-
 export type ExternalLink = { label: string; url: string }
 export type ActivityExternalLinks = Array<ExternalLink>
 
@@ -32,7 +26,7 @@ export type ActivityBase = {
   title: string
   mediaType: ActivityMediaType
   itemType: ActivityItemType
-  playState: ActivityPlayState
+  isPaused: boolean
   // Currently playing chapter.
   chapterTitle?: string
   // Path to file that is being played.

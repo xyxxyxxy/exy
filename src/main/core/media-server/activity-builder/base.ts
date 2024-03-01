@@ -1,9 +1,4 @@
-import {
-  ActivityBase,
-  ActivityItemType,
-  ActivityMediaType,
-  ActivityPlayState
-} from '../../activity/types'
+import { ActivityBase, ActivityItemType, ActivityMediaType } from '../../activity/types'
 import { BaseItemDto, ChapterInfo, PlayerStateInfo } from '../../emby-client'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import log from 'electron-log'
@@ -18,7 +13,7 @@ export function buildActivityBase(session: ValidSession): ActivityBase {
     title: item?.Name || item?.OriginalTitle || 'something',
     mediaType: getActivityMediaType(item),
     itemType: getActivityItemType(item),
-    playState: getActivityPlayState(playState),
+    isPaused: !!playState.IsPaused,
     chapterTitle: getChapterName(item, playState),
     path: item.Path
   }
@@ -61,12 +56,6 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)
 
   return ActivityItemType.Song
-}
-
-function getActivityPlayState(playStateInfo: PlayerStateInfo): ActivityPlayState {
-  if (playStateInfo.IsPaused) return ActivityPlayState.Paused
-  if (playStateInfo.IsMuted) return ActivityPlayState.Muted
-  return ActivityPlayState.Playing
 }
 
 function getChapterName(item: BaseItemDto, playState: PlayerStateInfo): string | undefined {

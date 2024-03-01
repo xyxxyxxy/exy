@@ -1,7 +1,7 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
 import { ActivityConfig } from '../stores/config.types'
-import { Activity, ActivityItemType, ActivityPlayState } from '../activity/types'
+import { Activity, ActivityItemType } from '../activity/types'
 import {
   getImageText,
   getPrimaryText,
@@ -28,7 +28,7 @@ export function toDiscordPresence(activity: Activity, config: ActivityConfig): P
   }
 
   if (
-    activity.playState !== ActivityPlayState.Paused &&
+    !activity.isPaused &&
     // No time for songs, not really relevant.
     activity.itemType !== ActivityItemType.Song
   )
