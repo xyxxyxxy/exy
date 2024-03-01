@@ -90,7 +90,7 @@
       <div>
         <hgroup>
           <h1>Activity 🎇</h1>
-          <p>Customize the activity.</p>
+          <p>Customize how the activity is generated.</p>
         </hgroup>
         <Activity {config} />
       </div>
