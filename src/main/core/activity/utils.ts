@@ -26,12 +26,12 @@ export function getStateImage(activity: Activity, config: ActivityConfig): strin
   return theme + playIcon
 }
 
-function getGenreImage(activity: Activity): null | 'casette' | 'acoustic-guitar' {
+function getGenreImage(activity: Activity): null | 'cassette' | 'acoustic-guitar' {
   // Check case insensitive if a genre identifier is included in any of the genres.
   const isGenre = (identifier: string): boolean =>
     activity.genres.some((genre) => genre.match(new RegExp(identifier, 'i')))
 
-  if (isGenre('indie')) return 'casette'
+  if (isGenre('indie')) return 'cassette'
   if (isGenre('rock')) return 'acoustic-guitar'
   // pop
   // rock
