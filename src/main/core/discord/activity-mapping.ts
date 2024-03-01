@@ -1,7 +1,7 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
 import { ActivityConfig } from '../stores/config.types'
-import { Activity, ActivityPlayState } from '../activity/types'
+import { Activity, ActivityItemType, ActivityPlayState } from '../activity/types'
 import {
   getImageText,
   getPrimaryText,
@@ -27,7 +27,12 @@ export function toDiscordPresence(activity: Activity, config: ActivityConfig): P
     buttons: [...activity.externalLinks]
   }
 
-  if (activity.playState !== ActivityPlayState.Paused) presence.endTimestamp = activity.endTime
+  if (
+    activity.playState !== ActivityPlayState.Paused &&
+    // No time for songs, not really relevant.
+    activity.itemType !== ActivityItemType.Song
+  )
+    presence.endTimestamp = activity.endTime
 
   // Don't know why this line is needed. TypeScript does not recognize the value set above.
   if (!presence.buttons) presence.buttons = []
