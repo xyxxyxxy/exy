@@ -1,15 +1,21 @@
-export type ConfigStore = {
+// v0.1.0
+export type ConfigStore1 = {
   deviceId: string
   isStartupEnabled: boolean
-  activity: ActivityConfig
+  isMediaServerTypeShown: boolean
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   isDebugLoggingEnabled: boolean
 }
 
+// v0.2.0
+export type ConfigStore = Omit<ConfigStore1, 'isMediaServerTypeShown'> & {
+  activity: ActivityConfig
+}
+
 export type ActivityConfig = {
   isLogoShown: boolean
-  isThemeColorUsed: boolean // TODO isThemeColorUsed
+  isThemeColorUsed: boolean
   isHomepageLinked: boolean
 }
 
