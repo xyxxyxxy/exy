@@ -17,11 +17,11 @@ export const configSchema: Schema<ConfigStore> = {
     properties: {
       isLogoShown: {
         type: 'boolean',
-        default: false
+        default: true
       },
       isThemeColorUsed: {
         type: 'boolean',
-        default: false
+        default: true
       },
       isHomepageLinked: {
         type: 'boolean',
