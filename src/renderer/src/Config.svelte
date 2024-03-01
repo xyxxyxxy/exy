@@ -23,7 +23,6 @@
 
   window.electron.ipcRenderer.send(IpcChannel.MediaServerActivities) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.MediaServerActivities, (_, newActivities) => {
-    console.log(newActivities)
     activities = newActivities
   })
 
