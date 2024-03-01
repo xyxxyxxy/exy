@@ -3,7 +3,7 @@ import { Activity, ActivityItemType, ActivityMediaType, ActivityPlayState } from
 
 export function getStateText(activity: Activity, config: ActivityConfig): string {
   // Genres for music.
-  if (activity.itemType === ActivityItemType.Song && activity.genres.length) {
+  if (activity.itemType === ActivityItemType.Song && hasGenres(activity)) {
     return getGenreText(activity)
   }
 
@@ -23,7 +23,14 @@ export function getStateImage(activity: Activity, config: ActivityConfig): strin
   if (activity.playState === ActivityPlayState.Paused) return theme + `pause`
   if (activity.playState === ActivityPlayState.Muted) return theme + `mute`
 
-  const playIcon = config.isLogoShown ? 'small' : 'play'
+  let playIcon = config.isLogoShown ? 'small' : 'play'
+
+  // Special case for music with genre information.
+  // Since the genres are added as state text on this image,
+  // the information is indicated via the different image.
+  if (activity.itemType === ActivityItemType.Song && hasGenres(activity)) {
+    playIcon = 'vinyl'
+  }
 
   return theme + playIcon
 }
@@ -85,6 +92,10 @@ export function getImageText(activity: Activity): string {
 function getArtistText(activity: Activity): string {
   if (!activity.artists.length) return ''
   return `by ` + activity.artists.slice(0, 3).join(`, `)
+}
+
+function hasGenres(activity: Activity): boolean {
+  return !!activity.genres.length
 }
 
 function getGenreText(activity: Activity): string {
