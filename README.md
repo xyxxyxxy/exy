@@ -1,6 +1,6 @@
 # exy
 
-![exy-icon](resources/icon.png)
+| ![exy-icon](resources/icon.png | width=100) | Download [here](https://github.com/xyxxyxxy/exy/releases/latest). |
 
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
 
