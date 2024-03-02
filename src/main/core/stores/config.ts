@@ -22,14 +22,7 @@ const configStore = new Store<ConfigStore>({
 
 const configSource: BehaviorSubject<Readonly<ConfigStore>> = new BehaviorSubject<
   Readonly<ConfigStore>
->({
-  deviceId: configStore.get(ConfigSelector.deviceId),
-  isStartupEnabled: configStore.get(ConfigSelector.IsStartupEnabled),
-  activity: configStore.get(ConfigSelector.Activity),
-  mediaServers: configStore.get(ConfigSelector.MediaServers),
-  imgurClientId: configStore.get(ConfigSelector.ImgurClientId),
-  isDebugLoggingEnabled: configStore.get(ConfigSelector.IsDebugLoggingEnabled)
-})
+>(configStore.store)
 
 configStore.onDidAnyChange((config) => {
   if (config) {
