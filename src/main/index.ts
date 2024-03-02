@@ -2,6 +2,16 @@ import { app, shell, BrowserWindow } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
+import './core'
+import contextMenu from 'electron-context-menu'
+import log from 'electron-log/main'
+import { startMainToRendererIpc } from './ipc'
+import { config$ } from './core/stores/config'
+import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
+import { initTray } from './tray'
+import { name } from '../../package.json'
+import { autoUpdater } from 'electron-updater'
+import Store from 'electron-store'
 
 function createWindow(): void {
   // Create the browser window.
@@ -37,7 +47,7 @@ function createWindow(): void {
   // Open if no media-servers are configured.
   fromEvent(mainWindow, 'ready-to-show')
     .pipe(withLatestFrom(config$))
-    .subscribe(([_, config]) => {
+    .subscribe(([, config]) => {
       if (!config.mediaServers.length) mainWindow.show()
       // TODO Notification on first move to tray?
     })
@@ -54,7 +64,7 @@ function createWindow(): void {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
   // Set app user model id for windows
-  electronApp.setAppUserModelId('com.electron')
+  electronApp.setAppUserModelId(name)
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
@@ -75,20 +85,15 @@ app.whenReady().then(() => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-import './core'
-import contextMenu from 'electron-context-menu'
-import log from 'electron-log/main'
-import { startMainToRendererIpc } from './ipc'
-import { config$ } from './core/stores/config'
-import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
-import { initTray } from './tray'
-import { name } from '../../package.json'
-import { autoUpdater } from 'electron-updater'
 
 const logMain = log.scope('main')
 
 logMain.info(`Checking for updates.`)
 autoUpdater.checkForUpdatesAndNotify()
+
+// TODO Use in renderer process to update data directly. Avoiding IPC.
+// See: https://www.npmjs.com/package/electron-store#initrenderer
+Store.initRenderer()
 
 config$
   .pipe(
