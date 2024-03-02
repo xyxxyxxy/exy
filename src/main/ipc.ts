@@ -19,7 +19,7 @@ import { testImgurClientId$ } from './core/imgur'
 import {
   authenticate$,
   logout$,
-  mediaServerActivities$,
+  mediaServerAllActivities$,
   testConnection$
 } from './core/media-server'
 import { randomUUID } from 'crypto'
@@ -52,7 +52,7 @@ combineLatest([
 })
 
 combineLatest([
-  mediaServerActivities$,
+  mediaServerAllActivities$,
   fromEvent(ipcMain, IpcChannel.MediaServerActivities).pipe(isEvent)
 ]).subscribe(([activities, event]) => {
   event.sender.send(IpcChannel.MediaServerActivities, activities)

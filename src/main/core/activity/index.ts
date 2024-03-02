@@ -2,7 +2,7 @@ import log from 'electron-log'
 import { Activity } from './types'
 import { BehaviorSubject, Observable, combineLatest, map, tap } from 'rxjs'
 import { configActivity$ } from '../stores/config'
-import { mediaServerActivity$ } from '../media-server'
+import { mediaServerMainActivity$ } from '../media-server'
 import { addConfigExtras } from './utils'
 
 const logger = log.scope('activity')
@@ -14,7 +14,7 @@ export const activity$: Observable<Activity | null> = activitySubject.asObservab
 combineLatest([
   // Get config and trigger re-build activity on config change.
   configActivity$.pipe(tap(() => logger.debug(`Re-building activity after config change.`))),
-  mediaServerActivity$
+  mediaServerMainActivity$
 ])
   .pipe(
     // Add configured extras.

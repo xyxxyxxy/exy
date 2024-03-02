@@ -12,7 +12,8 @@ import {
   switchMap,
   take,
   tap,
-  timer
+  timer,
+  withLatestFrom
 } from 'rxjs'
 import type { MediaServerConfig } from '../stores/config.types'
 import { hostname } from 'os'
@@ -29,7 +30,7 @@ import { Activity, ActivityBase } from '../activity/types'
 import { PollingResult, MediaServerActivityMapping, ValidSession } from './types'
 import { buildActivityBase } from './activity-builder/base'
 import { buildFullActivity$ } from './activity-builder/full'
-import { pickActivity } from '../activity/utils'
+import { isIgnoredActivity, pickActivity } from '../activity/utils'
 
 const logger = log.scope('media-server')
 
@@ -90,7 +91,7 @@ const polling$: Observable<Array<PollingResult>> = configMediaServers$.pipe(
   shareReplay(1)
 )
 
-export const mediaServerActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
+export const mediaServerAllActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
   // Map data, generate activity.
   map((results) => {
     const result: MediaServerActivityMapping = {}
@@ -101,14 +102,19 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
   })
 )
 
-export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
+export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pipe(
   switchMap((results) => pickBetweenPollingResults$(results)),
   // Check if there are relevant changes before a full activity object is built.
   distinctUntilChanged(
     (previous, current) => JSON.stringify(previous?.activity) === JSON.stringify(current?.activity)
   ),
-  switchMap((result) => {
-    if (!result.activity) return of(null)
+  withLatestFrom(configIgnoredItemTypes$),
+  switchMap(([result, ignoredActivityTypes]) => {
+    // Enforce the ignored activity types here.
+    // Before it was only used to prioritize the picking between multiple activities.
+    if (!result.activity || isIgnoredActivity(result.activity, ignoredActivityTypes))
+      return of(null)
+
     return buildFullActivity$(result.server, result.session, result.activity)
   })
 )
@@ -144,7 +150,7 @@ function poll$(server: MediaServerConfig): Observable<PollingResult> {
 
 // It is possible that one user has multiple active play sessions.
 // Also admin users can see the play sessions of all users.
-
+//
 // Pick one now playing sessions from an array of servers and their session.
 function pickBetweenPollingResults$(results: Array<PollingResult>): Observable<PollingResult> {
   return configIgnoredItemTypes$.pipe(
