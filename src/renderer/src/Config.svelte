@@ -72,7 +72,11 @@
       </hgroup>
 
       {#each config.mediaServers as server (server.id)}
-        <MediaServer {server} activity={activities[server.id]} />
+        <MediaServer
+          {server}
+          activity={activities[server.id]}
+          ignoredActivityTypes={config.ignoredItemTypes}
+        />
       {/each}
       <MediaServerNew {hasMediaServers} />
     </section>

@@ -16,6 +16,7 @@ export function buildFullActivity$(
   session: ValidSession,
   baseActivity: ActivityBase
 ): Observable<Activity> {
+  logger.debug(`Building full activity.`)
   const item = session.NowPlayingItem
   const playState = session.PlayState
 

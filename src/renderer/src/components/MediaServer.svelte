@@ -4,9 +4,12 @@
   import MediaServerError from './MediaServerError.svelte'
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
   import type { ActivityBase } from '../../../main/core/activity/types'
+  import { isIgnoredActivity } from '../../../main/core/activity/utils'
+  import type { IgnoredItemTypes } from '../../../main/core/stores/config.types'
 
   export let server: MediaServerConfig
   export let activity: ActivityBase | null | undefined
+  export let ignoredActivityTypes: IgnoredItemTypes
 
   let isBusyDisconnecting = false
 
@@ -80,7 +83,8 @@
       disabled={isBusyDisconnecting || isBusyTesting}
     />
     {server.address}
-    {#if server.isActive && !testError && activity}▶️ {activity.title}{/if}
+    {#if server.isActive && !testError && activity}▶️ {activity.title}
+      {#if isIgnoredActivity(activity, ignoredActivityTypes)}(ignored){/if}{/if}
     {#if !!testError}❗{/if}
   </summary>
   <article>
