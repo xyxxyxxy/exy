@@ -7,8 +7,8 @@ import { name, homepage } from '../../../../package.json'
 
 const logger = log.scope('activity')
 
-const activity: BehaviorSubject<Activity | null> = new BehaviorSubject<Activity | null>(null)
-export const activity$: Observable<Activity | null> = activity.asObservable()
+const activitySubject: BehaviorSubject<Activity | null> = new BehaviorSubject<Activity | null>(null)
+export const activity$: Observable<Activity | null> = activitySubject.asObservable()
 
 // Subscribe to activity providers.
 combineLatest([
@@ -17,26 +17,27 @@ combineLatest([
   mediaServerActivity$
 ])
   .pipe(
-    map(([config, mediaServerActivity]) => {
+    map(([config, activity]) => {
+      if (!activity) return activity
+      // Clone activity before modifying, to
+      // avoid mutating the same object twice on config event.
+      const clone = Object.assign({}, activity)
+
       // Add additional data according to config.
-      if (config.isHomepageLinked)
-        mediaServerActivity?.externalLinks.push({ label: `${name}?`, url: homepage })
+      if (config.isHomepageLinked && activity?.externalLinks)
+        clone.externalLinks.push({ label: `${name}?`, url: homepage })
 
       // Freeze to prevent further modification.
-      Object.freeze(mediaServerActivity)
-      Object.freeze(mediaServerActivity?.artists)
-      Object.freeze(mediaServerActivity?.genres)
-      Object.freeze(mediaServerActivity?.externalLinks)
-      return mediaServerActivity
+      return clone
     })
   )
-  .subscribe((mediaServerActivity) => activity.next(mediaServerActivity))
+  .subscribe((mediaServerActivity) => activitySubject.next(mediaServerActivity))
 
 // Logging of activity.
-activity.subscribe((activity) => {
+activitySubject.subscribe((activity) => {
   logger.debug(`New activity:`, activity)
 })
 
 export function clearActivity(): void {
-  activity.next(null)
+  activitySubject.next(null)
 }
