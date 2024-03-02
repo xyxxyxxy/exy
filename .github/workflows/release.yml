@@ -1,9 +1,6 @@
 name: Build/release Electron app
 
-on:
-  push:
-    tags:
-      - v*.*.*
+on: push
 
 jobs:
   release:
@@ -27,7 +24,7 @@ jobs:
 
       - name: build-linux
         if: matrix.os == 'ubuntu-latest'
-        run: npm run build:linux
+        run: snap install snapcraft --classic && npm run build:linux
 
       - name: build-mac
         if: matrix.os == 'macos-latest'
