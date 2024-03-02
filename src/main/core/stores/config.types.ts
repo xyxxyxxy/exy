@@ -1,16 +1,10 @@
-// v0.1.0
-export type ConfigStore1 = {
+export type ConfigStore = {
   deviceId: string
   isStartupEnabled: boolean
-  isMediaServerTypeShown: boolean
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
-  isDebugLoggingEnabled: boolean
-}
-
-// v0.2.0
-export type ConfigStore = Omit<ConfigStore1, 'isMediaServerTypeShown'> & {
   activity: ActivityConfig
+  isDebugLoggingEnabled: boolean
 }
 
 export type ActivityConfig = {
@@ -30,7 +24,6 @@ export type MediaServerConfig = {
   address: string
   port: number
   username: string
-  ignoredLibraryIds: Array<string>
 }
 
 export enum ConfigSelector {

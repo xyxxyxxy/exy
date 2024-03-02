@@ -12,23 +12,6 @@ export const configSchema: Schema<ConfigStore> = {
     type: 'boolean',
     default: true
   },
-  activity: {
-    type: 'object',
-    properties: {
-      isLogoShown: {
-        type: 'boolean',
-        default: true
-      },
-      isThemeColorUsed: {
-        type: 'boolean',
-        default: true
-      },
-      isHomepageLinked: {
-        type: 'boolean',
-        default: false
-      }
-    }
-  },
   mediaServers: {
     type: 'array',
     default: [],
@@ -58,6 +41,23 @@ export const configSchema: Schema<ConfigStore> = {
   imgurClientId: {
     type: ['string', 'null'],
     default: null
+  },
+  activity: {
+    type: 'object',
+    properties: {
+      isLogoShown: {
+        type: 'boolean',
+        default: true
+      },
+      isThemeColorUsed: {
+        type: 'boolean',
+        default: true
+      },
+      isHomepageLinked: {
+        type: 'boolean',
+        default: false
+      }
+    }
   },
   isDebugLoggingEnabled: {
     type: 'boolean',
