@@ -35,9 +35,9 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
   if (item?.Type === ItemType.MusicVideo) return ActivityItemType.MusicVideo
   if (item?.Type === ItemType.TvChannel) return ActivityItemType.LiveTv
 
-  // Music has type 'Audio' for item and media type.
   if (item?.MediaType === ItemMediaType.Audio && item.Type === ItemMediaType.Audio)
-    return ActivityItemType.Song
+    // Music has type 'Audio' for item and media type.
+    return ActivityItemType.Music
 
   // Episodes can be episodes of a show or a live recording.
   if (item?.Type === ItemType.Episode) {
@@ -46,7 +46,7 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
   }
 
   if (item?.Type === ItemType.Video) {
-    return ActivityItemType.HomeVideo
+    return ActivityItemType.OtherVideo
   }
 
   if (item?.Type === ItemType.Book) {
@@ -55,7 +55,7 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
 
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)
 
-  return ActivityItemType.Song
+  return ActivityItemType.Music
 }
 
 function getChapterName(item: BaseItemDto, playState: PlayerStateInfo): string | undefined {

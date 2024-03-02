@@ -7,14 +7,14 @@ export enum ActivityMediaType {
 }
 
 export enum ActivityItemType {
-  Song = 'Song',
-  Podcast = 'Podcast', // TODO Needed?
+  // Note: Emby does not have a special identifier for audio books.
+  Music = 'Music',
   Movie = 'Movie',
   Episode = 'Episode',
-  LiveTv = 'LiveTV',
-  LiveTvRecording = 'LiveTvRecording',
-  MusicVideo = 'MusicVideo',
-  HomeVideo = 'HomeVideo',
+  LiveTv = 'Live TV',
+  LiveTvRecording = 'Live TV Recording',
+  MusicVideo = 'Music Video',
+  OtherVideo = 'Other Video',
   Book = 'Book'
 }
 

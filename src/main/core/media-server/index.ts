@@ -110,7 +110,7 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
 )
 
 export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
-  map((results) => pickPollingResultBetweenServers(results)),
+  map((results) => pickSessionBetweenServers(results)),
   // Build base activity first.
   map((result) => {
     if (!result) return null
@@ -165,9 +165,7 @@ function pickSession(sessions: Array<Session_SessionInfo>): ValidSession | null 
 }
 
 // Pick one now playing sessions from an array of servers and their session.
-function pickPollingResultBetweenServers(
-  results: Array<PollingResult>
-): PollingResultPlaying | null {
+function pickSessionBetweenServers(results: Array<PollingResult>): PollingResultPlaying | null {
   const playing = results.filter(isPollingResultPlaying)
   // TODO Filter muted, if multiple
   return playing.length ? playing[0] : null

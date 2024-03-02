@@ -6,7 +6,7 @@ export function getStateText(activity: Activity, config: ActivityConfig): string
   if (activity.isPaused) return `Paused`
 
   // Genres for music.
-  if (activity.itemType === ActivityItemType.Song && hasGenres(activity)) {
+  if (activity.itemType === ActivityItemType.Music && hasGenres(activity)) {
     return getGenreText(activity)
   }
 
@@ -38,7 +38,7 @@ export function getPrimaryText(activity: Activity): string {
 
 export function getSecondaryText(activity: Activity): string {
   // Artist list for songs and music videos.
-  if ([ActivityItemType.Song, ActivityItemType.MusicVideo].includes(activity.itemType))
+  if ([ActivityItemType.Music, ActivityItemType.MusicVideo].includes(activity.itemType))
     return getArtistText(activity)
 
   if (activity.itemType === ActivityItemType.Episode && activity.seasonTitle) {
@@ -51,14 +51,14 @@ export function getSecondaryText(activity: Activity): string {
     return text
   }
 
-  if (activity.itemType === ActivityItemType.HomeVideo && activity.chapterTitle)
+  if (activity.itemType === ActivityItemType.OtherVideo && activity.chapterTitle)
     return activity.chapterTitle
 
   return activity.description || ''
 }
 
 export function getImageText(activity: Activity): string {
-  if (activity.itemType === ActivityItemType.Song && activity.albumTitle)
+  if (activity.itemType === ActivityItemType.Music && activity.albumTitle)
     return withReleaseYear(activity, activity.albumTitle)
 
   if (activity.itemType === ActivityItemType.Episode && activity.episodeNumber)
@@ -66,7 +66,7 @@ export function getImageText(activity: Activity): string {
 
   if (activity.itemType === ActivityItemType.Movie) return getGenreText(activity)
 
-  if (activity.itemType === ActivityItemType.HomeVideo && activity.releaseDate)
+  if (activity.itemType === ActivityItemType.OtherVideo && activity.releaseDate)
     return activity.releaseDate.toDateString()
 
   return ''
@@ -76,7 +76,7 @@ export function getEndTime(activity: Activity): Date | undefined {
   if (
     !activity.isPaused &&
     // No time for songs and music videos, not really relevant.
-    activity.itemType !== ActivityItemType.Song &&
+    activity.itemType !== ActivityItemType.Music &&
     activity.itemType !== ActivityItemType.MusicVideo
   )
     return activity.endTime
@@ -91,7 +91,8 @@ function getArtistText(activity: Activity): string {
 
 export function isMusic(activity: Activity): boolean {
   return (
-    activity.itemType !== ActivityItemType.Song && activity.itemType !== ActivityItemType.MusicVideo
+    activity.itemType !== ActivityItemType.Music &&
+    activity.itemType !== ActivityItemType.MusicVideo
   )
 }
 
