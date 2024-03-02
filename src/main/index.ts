@@ -11,7 +11,6 @@ import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxj
 import { initTray } from './tray'
 import { name } from '../../package.json'
 import { autoUpdater } from 'electron-updater'
-import Store from 'electron-store'
 
 function createWindow(): void {
   // Create the browser window.
@@ -90,10 +89,6 @@ const logMain = log.scope('main')
 
 logMain.info(`Checking for updates.`)
 autoUpdater.checkForUpdatesAndNotify()
-
-// TODO Use in renderer process to update data directly. Avoiding IPC.
-// See: https://www.npmjs.com/package/electron-store#initrenderer
-Store.initRenderer()
 
 config$
   .pipe(
