@@ -1,45 +1,53 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
 import { ActivityConfig } from '../stores/config.types'
-import { Activity, ActivityItemType } from '../activity/types'
+import { Activity, ActivityMediaType } from '../activity/types'
 import {
+  getEndTime,
   getImageText,
   getPrimaryText,
   getSecondaryText,
-  getStateImage,
-  getStateText
+  getStateText,
+  hasGenres,
+  isMusic
 } from '../activity/utils'
-import { name, homepage } from '../../../../package.json'
 
 const logger = log.scope('discord-mapper')
 
 export function toDiscordPresence(activity: Activity, config: ActivityConfig): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
-    smallImageKey: getStateImage(activity, config),
+    smallImageKey: getSmallImageKey(activity, config),
     smallImageText: getStateText(activity, config),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
     largeImageText: getImageText(activity),
-    // Make sure we create a new array, so the original activity is not modified.
-    // TODO Freeze original activity on creation.
-    buttons: [...activity.externalLinks]
+    endTimestamp: getEndTime(activity),
+    buttons: activity.externalLinks
   }
 
-  if (
-    !activity.isPaused &&
-    // No time for songs, not really relevant.
-    activity.itemType !== ActivityItemType.Song
-  )
-    presence.endTimestamp = activity.endTime
-
-  // Don't know why this line is needed. TypeScript does not recognize the value set above.
-  if (!presence.buttons) presence.buttons = []
-  // Inject info.
-  if (config.isHomepageLinked) presence.buttons.push({ label: `${name}?`, url: homepage })
-
   return sanitizeForDiscord(presence)
+}
+
+// Highly related to Discord assets, so not located in utils.
+function getSmallImageKey(activity: Activity, config: ActivityConfig): string {
+  if (activity.mediaType === ActivityMediaType.Book) return ''
+
+  let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
+  theme += '-'
+  if (activity.isPaused) return theme + `pause`
+
+  let playIcon = config.isLogoShown ? 'small' : 'play'
+
+  // Special case for music with genre information.
+  // Since the genres are added as state text on this image,
+  // the information is indicated via the different image.
+  if (isMusic(activity) && hasGenres(activity)) {
+    playIcon = 'vinyl'
+  }
+
+  return theme + playIcon
 }
 
 // Ensure compatibility with discord-rpc/Discord.

@@ -19,7 +19,7 @@ import {
 import { ConnectionStatus } from './types'
 import { activity$ } from '../activity'
 import { toDiscordPresence } from './activity-mapping'
-import { config$ } from '../stores/config'
+import { configActivity$ } from '../stores/config'
 import { discordApplicationId } from '../../../environment.json'
 
 const logger = log.scope('discord')
@@ -113,17 +113,14 @@ const rateLimitThrottleTimeInSeconds = 20 / 5 // 5 Updates per 20 seconds allowe
 // Including discord ready event for reconnects.
 // Adding a small delay to the Discord ready event,
 // since setting the activity right away did not work.
-//
-// Also re-send (re-build) Discord activity on any config change,
-// to make changes visible immediately.
-combineLatest([activity$, discordReady$.pipe(delay(1000)), config$])
+combineLatest([activity$, discordReady$.pipe(delay(1000))])
   .pipe(
     map(([activity]) => activity),
     throttleTime(rateLimitThrottleTimeInSeconds * 1000, undefined, {
       leading: true,
       trailing: true
     }),
-    withLatestFrom(config$, connectionStatus$),
+    withLatestFrom(configActivity$, connectionStatus$),
     // Make sure Discord is still connected.
     filter(([, , connectionStatus]) => connectionStatus === ConnectionStatus.Ready)
   )
@@ -131,7 +128,7 @@ combineLatest([activity$, discordReady$.pipe(delay(1000)), config$])
     if (!discordClient) return logger.warn(`Failed to set presence. No client available.`)
     try {
       if (activity) {
-        const presence = toDiscordPresence(activity, config.activity)
+        const presence = toDiscordPresence(activity, config)
         logger.debug(`Setting Discord presence:`, presence)
         discordClient.setActivity(presence)
       } else {

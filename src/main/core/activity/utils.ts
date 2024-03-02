@@ -17,25 +17,6 @@ export function getStateText(activity: Activity, config: ActivityConfig): string
   return `Playing`
 }
 
-export function getStateImage(activity: Activity, config: ActivityConfig): string {
-  if (activity.mediaType === ActivityMediaType.Book) return ''
-
-  let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
-  theme += '-'
-  if (activity.isPaused) return theme + `pause`
-
-  let playIcon = config.isLogoShown ? 'small' : 'play'
-
-  // Special case for music with genre information.
-  // Since the genres are added as state text on this image,
-  // the information is indicated via the different image.
-  if (activity.itemType === ActivityItemType.Song && hasGenres(activity)) {
-    playIcon = 'vinyl'
-  }
-
-  return theme + playIcon
-}
-
 export function getPrimaryText(activity: Activity): string {
   let text = 'Watching'
   if (activity.mediaType === ActivityMediaType.Audio) text = 'Listening to'
@@ -90,16 +71,34 @@ export function getImageText(activity: Activity): string {
   return ''
 }
 
+export function getEndTime(activity: Activity): Date | undefined {
+  if (
+    !activity.isPaused &&
+    // No time for songs and music videos, not really relevant.
+    activity.itemType !== ActivityItemType.Song &&
+    activity.itemType !== ActivityItemType.MusicVideo
+  )
+    return activity.endTime
+
+  return undefined
+}
+
 function getArtistText(activity: Activity): string {
   if (!activity.artists.length) return ''
   return `by ` + activity.artists.slice(0, 3).join(`, `)
 }
 
-function hasGenres(activity: Activity): boolean {
+export function isMusic(activity: Activity): boolean {
+  return (
+    activity.itemType !== ActivityItemType.Song && activity.itemType !== ActivityItemType.MusicVideo
+  )
+}
+
+export function hasGenres(activity: Activity): boolean {
   return !!activity.genres.length
 }
 
-function getGenreText(activity: Activity): string {
+export function getGenreText(activity: Activity): string {
   if (!activity.genres.length) return ''
   // Limit to first genre.
   return activity.genres[1]

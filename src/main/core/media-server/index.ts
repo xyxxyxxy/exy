@@ -15,7 +15,7 @@ import {
 import type { MediaServerConfig } from '../stores/config.types'
 import { hostname } from 'os'
 import { version, name } from '../../../../package.json'
-import { config$ } from '../stores/config'
+import { config$, configMediaServers$ } from '../stores/config'
 import log from 'electron-log'
 import {
   Authentication_AuthenticationResult,
@@ -78,9 +78,9 @@ export function isPollingResultPlaying(result: PollingResult): result is Polling
   return !!result.nowPlayingSession
 }
 
-const polling$: Observable<Array<PollingResult>> = config$.pipe(
+const polling$: Observable<Array<PollingResult>> = configMediaServers$.pipe(
   // Map to active media-servers.
-  map((config) => config.mediaServers.filter((server) => server.isActive)),
+  map((config) => config.filter((server) => server.isActive)),
   tap(() => logger.debug('Start polling.')),
   switchMap((servers) =>
     timer(0, 5 * 1000).pipe(
@@ -109,7 +109,6 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
   })
 )
 
-// TODO Does not reset if media-server activity is toggled
 export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
   map((results) => pickPollingResultBetweenServers(results)),
   // Build base activity first.

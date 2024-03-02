@@ -8,6 +8,7 @@ import iconInactive from '../../resources/icon-inactive.png?asset'
 import { activity$ } from './core/activity'
 import { connectionStatus$ } from './core/discord'
 import { ConnectionStatus } from './core/discord/types'
+import { getPrimaryText } from './core/activity/utils'
 
 export function initTray(mainWindow: BrowserWindow): void {
   const tray = new Tray(icon)
@@ -31,7 +32,7 @@ export function initTray(mainWindow: BrowserWindow): void {
     // Discord ready and activity present.
     if (discordStatus === ConnectionStatus.Ready && activity) {
       image = iconActive
-      toolTip += ` - Playing ${activity.title}`
+      toolTip += getPrimaryText(activity)
     }
 
     tray.setImage(image)

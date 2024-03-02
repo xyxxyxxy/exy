@@ -4,7 +4,7 @@ import log from 'electron-log'
 
 const logger = log.scope('config-migration')
 
-export const migrationOptions: Options<ConfigStore> = {
+export const configMigrationOptions: Options<ConfigStore> = {
   beforeEachMigration: (store, context): void => {
     logger.info(`Migrate from ${context.fromVersion} → ${context.toVersion}`)
     logger.debug(store)
