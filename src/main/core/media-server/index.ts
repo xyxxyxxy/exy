@@ -1,5 +1,4 @@
 import {
-  EMPTY,
   Observable,
   catchError,
   defaultIfEmpty,
@@ -85,12 +84,21 @@ const polling$: Observable<Array<PollingResult>> = configMediaServers$.pipe(
           // Default to empty, so the activity is properly reset in case
           // the last server is deactivated/disconnected while playing.
           .pipe(defaultIfEmpty([]))
-      )
+      ),
+      // Remove 'null' results.
+      map((results) => {
+        const notNull: Array<PollingResult> = []
+        results.forEach((result) => {
+          if (result) notNull.push(result)
+        })
+        return notNull
+      })
     )
   ),
   shareReplay(1)
 )
 
+// Includes ignored activity types.
 export const mediaServerAllActivities$: Observable<MediaServerActivityMapping> = polling$.pipe(
   // Map data, generate activity.
   map((results) => {
@@ -102,6 +110,8 @@ export const mediaServerAllActivities$: Observable<MediaServerActivityMapping> =
   })
 )
 
+// Main activity for all media servers.
+// Respects the configured ignored activity types.
 export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pipe(
   switchMap((results) => pickBetweenPollingResults$(results)),
   // Check if there are relevant changes before a full activity object is built.
@@ -112,7 +122,7 @@ export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pi
   switchMap(([result, ignoredActivityTypes]) => {
     // Enforce the ignored activity types here.
     // Before it was only used to prioritize the picking between multiple activities.
-    if (!result.activity || isIgnoredActivity(result.activity, ignoredActivityTypes))
+    if (!result || !result.activity || isIgnoredActivity(result.activity, ignoredActivityTypes))
       return of(null)
 
     return buildFullActivity$(result.server, result.session, result.activity)
@@ -120,7 +130,7 @@ export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pi
 )
 
 // Returns the first now playing session of a media-server.
-function poll$(server: MediaServerConfig): Observable<PollingResult> {
+function poll$(server: MediaServerConfig): Observable<PollingResult | null> {
   return getAuthenticatedClient$(server).pipe(
     // Get all sessions with now playing items.
     switchMap((client) => client.sessionsService.getSessions(server.userId)),
@@ -137,13 +147,10 @@ function poll$(server: MediaServerConfig): Observable<PollingResult> {
       })
     ),
     // Pick one activity.
-    switchMap((results) => {
-      if (!results.length) return EMPTY
-      return pickBetweenPollingResults$(results)
-    }),
+    switchMap((results) => pickBetweenPollingResults$(results)),
     catchError((error) => {
       logger.warn(`Encountered error while polling server ${server.address}.`, error)
-      return EMPTY
+      return of(null)
     })
   )
 }
@@ -152,7 +159,11 @@ function poll$(server: MediaServerConfig): Observable<PollingResult> {
 // Also admin users can see the play sessions of all users.
 //
 // Pick one now playing sessions from an array of servers and their session.
-function pickBetweenPollingResults$(results: Array<PollingResult>): Observable<PollingResult> {
+function pickBetweenPollingResults$(
+  results: Array<PollingResult>
+): Observable<PollingResult | null> {
+  if (!results.length) return of(null)
+
   return configIgnoredItemTypes$.pipe(
     take(1),
     map((ignoredItemTypes) => {
