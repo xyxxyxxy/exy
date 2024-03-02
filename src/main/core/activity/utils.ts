@@ -22,10 +22,11 @@ export function pickActivity(
   return ignoreFiltered[0]
 }
 
-// Applies a filter if not all elements match the filter.
+// Applies a filter if not all, but some elements match the filter.
 function filterSome<T>(source: Array<T>, filter: (element: T) => boolean): Array<T> {
   const every = source.every(filter)
-  if (!every) return source.filter(filter)
+  const some = source.some(filter)
+  if (!every && some) return source.filter(filter)
   return source
 }
 
