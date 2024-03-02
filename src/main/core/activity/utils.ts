@@ -1,5 +1,6 @@
 import { ActivityConfig } from '../stores/config.types'
 import { Activity, ActivityItemType, ActivityMediaType } from './types'
+import { name, homepage } from '../../../../package.json'
 
 export function getStateText(activity: Activity, config: ActivityConfig): string {
   if (activity.isPaused) return `Paused`
@@ -106,4 +107,13 @@ export function getGenreText(activity: Activity): string {
 
 function withReleaseYear(activity: Activity, str: string): string {
   return activity.releaseDate ? str + ` (${activity.releaseDate.getFullYear()})` : str
+}
+
+export function addConfigExtras(activity: Activity, config: ActivityConfig): Activity {
+  // Add additional data according to config.
+  if (config.isHomepageLinked && activity?.externalLinks)
+    activity.externalLinks.push({ label: `${name}?`, url: homepage })
+
+  // Freeze to prevent further modification.
+  return activity
 }

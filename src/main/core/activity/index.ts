@@ -3,7 +3,7 @@ import { Activity } from './types'
 import { BehaviorSubject, Observable, combineLatest, map, tap } from 'rxjs'
 import { configActivity$ } from '../stores/config'
 import { mediaServerActivity$ } from '../media-server'
-import { name, homepage } from '../../../../package.json'
+import { addConfigExtras } from './utils'
 
 const logger = log.scope('activity')
 
@@ -17,18 +17,13 @@ combineLatest([
   mediaServerActivity$
 ])
   .pipe(
+    // Add configured extras.
     map(([config, activity]) => {
       if (!activity) return activity
       // Clone activity before modifying, to
       // avoid mutating the same object twice on config event.
       const clone = Object.assign({}, activity)
-
-      // Add additional data according to config.
-      if (config.isHomepageLinked && activity?.externalLinks)
-        clone.externalLinks.push({ label: `${name}?`, url: homepage })
-
-      // Freeze to prevent further modification.
-      return clone
+      return addConfigExtras(clone, config)
     })
   )
   .subscribe((mediaServerActivity) => activitySubject.next(mediaServerActivity))
