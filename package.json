@@ -1,6 +1,6 @@
 {
   "name": "exy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "xyxxyxxy",
