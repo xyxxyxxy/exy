@@ -3,12 +3,14 @@ import { ActivityItemType } from '../activity/types'
 export type ConfigStore = {
   deviceId: string
   isStartupEnabled: boolean
-  ignoredItemTypes: Array<ActivityItemType>
+  ignoredItemTypes: IgnoredItemTypes
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   activity: ActivityConfig
   isDebugLoggingEnabled: boolean
 }
+
+export type IgnoredItemTypes = Array<ActivityItemType>
 
 export type ActivityConfig = {
   isLogoShown: boolean

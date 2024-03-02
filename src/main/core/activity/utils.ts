@@ -1,6 +1,40 @@
-import { ActivityConfig } from '../stores/config.types'
-import { Activity, ActivityItemType, ActivityMediaType } from './types'
+import { ActivityConfig, IgnoredItemTypes } from '../stores/config.types'
+import { Activity, ActivityBase, ActivityItemType, ActivityMediaType } from './types'
 import { name, homepage } from '../../../../package.json'
+
+// Pick one activity from an array of activities.
+// Filtering out paused activities, if there are playing ones.
+// Might return ignored activity types. Prefers not ignored types.
+export function pickActivity(
+  activities: Array<ActivityBase>,
+  ignoredItemTypes: IgnoredItemTypes
+): ActivityBase | null {
+  if (!activities.length) return null
+
+  // Remove options if there are better alternatives.
+  const pauseFiltered = filterSome(activities, (activity) => !activity.isPaused)
+  const ignoreFiltered = filterSome(
+    pauseFiltered,
+    (activity) => !isIgnoredActivity(activity, ignoredItemTypes)
+  )
+
+  // If there are still multiple activities, pick the first.
+  return ignoreFiltered[0]
+}
+
+// Applies a filter if not all elements match the filter.
+function filterSome<T>(source: Array<T>, filter: (element: T) => boolean): Array<T> {
+  const every = source.every(filter)
+  if (!every) return source.filter(filter)
+  return source
+}
+
+export function isIgnoredActivity(
+  activity: ActivityBase,
+  ignoredItemTypes: IgnoredItemTypes
+): boolean {
+  return ignoredItemTypes.includes(activity.itemType)
+}
 
 export function getStateText(activity: Activity, config: ActivityConfig): string {
   if (activity.isPaused) return `Paused`

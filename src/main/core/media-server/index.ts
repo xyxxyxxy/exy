@@ -1,4 +1,5 @@
 import {
+  EMPTY,
   Observable,
   catchError,
   defaultIfEmpty,
@@ -9,13 +10,14 @@ import {
   of,
   shareReplay,
   switchMap,
+  take,
   tap,
   timer
 } from 'rxjs'
 import type { MediaServerConfig } from '../stores/config.types'
 import { hostname } from 'os'
 import { version, name } from '../../../../package.json'
-import { config$, configMediaServers$ } from '../stores/config'
+import { config$, configIgnoredItemTypes$, configMediaServers$ } from '../stores/config'
 import log from 'electron-log'
 import {
   Authentication_AuthenticationResult,
@@ -23,15 +25,11 @@ import {
   Session_SessionInfo,
   SystemInfo
 } from '../emby-client'
-import { Activity } from '../activity/types'
-import {
-  PollingResult,
-  PollingResultPlaying,
-  MediaServerActivityMapping,
-  ValidSession
-} from './types'
+import { Activity, ActivityBase } from '../activity/types'
+import { PollingResult, MediaServerActivityMapping, ValidSession } from './types'
 import { buildActivityBase } from './activity-builder/base'
 import { buildFullActivity$ } from './activity-builder/full'
+import { pickActivity } from '../activity/utils'
 
 const logger = log.scope('media-server')
 
@@ -74,10 +72,6 @@ export function isValidSession(session: Session_SessionInfo): session is ValidSe
   return !!session.NowPlayingItem && !!session.PlayState
 }
 
-export function isPollingResultPlaying(result: PollingResult): result is PollingResultPlaying {
-  return !!result.nowPlayingSession
-}
-
 const polling$: Observable<Array<PollingResult>> = configMediaServers$.pipe(
   // Map to active media-servers.
   map((config) => config.filter((server) => server.isActive)),
@@ -101,74 +95,71 @@ export const mediaServerActivities$: Observable<MediaServerActivityMapping> = po
   map((results) => {
     const result: MediaServerActivityMapping = {}
     results.forEach((playing) => {
-      result[playing.server.id] = playing.nowPlayingSession
-        ? buildActivityBase(playing.nowPlayingSession)
-        : null
+      result[playing.server.id] = playing.activity
     })
     return result
   })
 )
 
 export const mediaServerActivity$: Observable<Activity | null> = polling$.pipe(
-  map((results) => pickSessionBetweenServers(results)),
-  // Build base activity first.
-  map((result) => {
-    if (!result) return null
-
-    return { pollingResult: result, activityBase: buildActivityBase(result.nowPlayingSession) }
-  }),
+  switchMap((results) => pickBetweenPollingResults$(results)),
   // Check if there are relevant changes before a full activity object is built.
   distinctUntilChanged(
-    (previous, current) =>
-      JSON.stringify(previous?.activityBase) === JSON.stringify(current?.activityBase)
+    (previous, current) => JSON.stringify(previous?.activity) === JSON.stringify(current?.activity)
   ),
-  switchMap((data) => {
-    if (!data) return of(null)
-    return buildFullActivity$(
-      data.activityBase,
-      data.pollingResult.server,
-      data.pollingResult.nowPlayingSession
-    )
+  switchMap((result) => {
+    if (!result.activity) return of(null)
+    return buildFullActivity$(result.server, result.session, result.activity)
   })
 )
 
 // Returns the first now playing session of a media-server.
 function poll$(server: MediaServerConfig): Observable<PollingResult> {
   return getAuthenticatedClient$(server).pipe(
-    switchMap((client) => client.sessionsService.getSessions(server.userId)),
     // Get all sessions with now playing items.
-    map((sessions) => {
-      return { server, nowPlayingSession: pickSession(sessions) }
+    switchMap((client) => client.sessionsService.getSessions(server.userId)),
+    map((sessions) => sessions.filter(isValidSession)),
+    // Build base activity.
+    map((sessions) =>
+      sessions.map((session) => {
+        const result: PollingResult = {
+          server,
+          session,
+          activity: buildActivityBase(session)
+        }
+        return result
+      })
+    ),
+    // Pick one activity.
+    switchMap((results) => {
+      if (!results.length) return EMPTY
+      return pickBetweenPollingResults$(results)
     }),
     catchError((error) => {
       logger.warn(`Encountered error while polling server ${server.address}.`, error)
-      return of({ server, nowPlayingSession: null })
+      return EMPTY
     })
   )
 }
 
-// Pick one session from an array of sessions.
 // It is possible that one user has multiple active play sessions.
 // Also admin users can see the play sessions of all users.
-function pickSession(sessions: Array<Session_SessionInfo>): ValidSession | null {
-  if (!sessions.length) return null
-
-  const validSessions = sessions.filter(isValidSession)
-
-  // Remove paused sessions if there are also playing sessions.
-  const isPausedCount = validSessions.filter((session) => session.PlayState.IsPaused).length
-  if (isPausedCount > 0 && isPausedCount < validSessions.length)
-    return validSessions.filter((session) => !session.PlayState.IsPaused)[0]
-
-  // If multiple sessions are currently playing, the first one is returned.
-  return validSessions[0]
-}
 
 // Pick one now playing sessions from an array of servers and their session.
-function pickSessionBetweenServers(results: Array<PollingResult>): PollingResultPlaying | null {
-  const playing = results.filter(isPollingResultPlaying)
-  // TODO Filter muted, if multiple
-  return playing.length ? playing[0] : null
+function pickBetweenPollingResults$(results: Array<PollingResult>): Observable<PollingResult> {
+  return configIgnoredItemTypes$.pipe(
+    take(1),
+    map((ignoredItemTypes) => {
+      const activities = results
+        .map((result) => result.activity)
+        .filter((activity): activity is ActivityBase => !!activity)
+
+      const pick = pickActivity(activities, ignoredItemTypes)
+      const result = results.find((obj) => obj.activity === pick)
+      if (!result) throw new Error(`Failed to pick polling result.`)
+      return result
+    })
+  )
 }
 
 function getAuthenticatedClient$(server: MediaServerConfig): Observable<EmbyClient> {

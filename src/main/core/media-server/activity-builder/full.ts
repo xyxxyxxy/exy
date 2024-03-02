@@ -12,9 +12,9 @@ const logger = log.scope('builder-full')
 
 // Builds a basic activity without expensive async operations.
 export function buildFullActivity$(
-  baseActivity: ActivityBase,
   server: MediaServerConfig,
-  session: ValidSession
+  session: ValidSession,
+  baseActivity: ActivityBase
 ): Observable<Activity> {
   const item = session.NowPlayingItem
   const playState = session.PlayState

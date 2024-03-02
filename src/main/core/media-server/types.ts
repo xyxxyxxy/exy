@@ -24,16 +24,12 @@ export type ValidSession = Session_SessionInfo & {
   PlayState: PlayerStateInfo
 }
 
-export type PollingBaseResult = {
-  server: MediaServerConfig
-  nowPlayingSession: ActivityBase
-}
-
 export type PollingResult = {
   server: MediaServerConfig
-  nowPlayingSession: ValidSession | null
+  session: ValidSession
+  activity: ActivityBase | null
 }
 
-export type PollingResultPlaying = PollingResult & { nowPlayingSession: ValidSession }
+export type PollingResultPlaying = PollingResult & { activity: ValidSession }
 
 export type MediaServerActivityMapping = { [serverId: string]: ActivityBase | null }
