@@ -1,6 +1,9 @@
+import { ActivityItemType } from '../activity/types'
+
 export type ConfigStore = {
   deviceId: string
   isStartupEnabled: boolean
+  ignoredItemTypes: Array<ActivityItemType>
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   activity: ActivityConfig
@@ -28,6 +31,7 @@ export type MediaServerConfig = {
 
 export enum ConfigSelector {
   deviceId = 'deviceId',
+  IgnoredItemTypes = 'ignoredItemTypes',
   IsStartupEnabled = 'isStartupEnabled',
   Activity = 'activity',
   isHomepageLinked = 'isHomepageLinked',

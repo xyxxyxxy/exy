@@ -12,6 +12,10 @@ export const configSchema: Schema<ConfigStore> = {
     type: 'boolean',
     default: true
   },
+  ignoredItemTypes: {
+    type: 'array',
+    default: []
+  },
   mediaServers: {
     type: 'array',
     default: [],
