@@ -60,23 +60,23 @@ export function getPrimaryText(activity: Activity): string {
   text += ' '
   // For shows the main text is the title of the show.
   text +=
-    activity.showTitle && activity.itemType === ActivityItemType.Episode
+    activity.showTitle && activity.itemType === ActivityItemType.Shows
       ? activity.showTitle
       : activity.title
 
   // For shows the premier year is added in brackets.
 
-  return activity.releaseDate && activity.itemType === ActivityItemType.Movie
+  return activity.releaseDate && activity.itemType === ActivityItemType.Movies
     ? withReleaseYear(activity, text)
     : text
 }
 
 export function getSecondaryText(activity: Activity): string {
   // Artist list for songs and music videos.
-  if ([ActivityItemType.Music, ActivityItemType.MusicVideo].includes(activity.itemType))
+  if ([ActivityItemType.Music, ActivityItemType.MusicVideos].includes(activity.itemType))
     return getArtistText(activity)
 
-  if (activity.itemType === ActivityItemType.Episode && activity.seasonTitle) {
+  if (activity.itemType === ActivityItemType.Shows && activity.seasonTitle) {
     let text = activity.seasonTitle
 
     // Add year after season, if the season itself does not include four digits for a year.
@@ -86,7 +86,7 @@ export function getSecondaryText(activity: Activity): string {
     return text
   }
 
-  if (activity.itemType === ActivityItemType.OtherVideo && activity.chapterTitle)
+  if (activity.itemType === ActivityItemType.OtherVideos && activity.chapterTitle)
     return activity.chapterTitle
 
   return activity.description || ''
@@ -96,12 +96,12 @@ export function getImageText(activity: Activity): string {
   if (activity.itemType === ActivityItemType.Music && activity.albumTitle)
     return withReleaseYear(activity, activity.albumTitle)
 
-  if (activity.itemType === ActivityItemType.Episode && activity.episodeNumber)
+  if (activity.itemType === ActivityItemType.Shows && activity.episodeNumber)
     return `Episode ${activity.episodeNumber} ${activity.title}`
 
-  if (activity.itemType === ActivityItemType.Movie) return getGenreText(activity)
+  if (activity.itemType === ActivityItemType.Movies) return getGenreText(activity)
 
-  if (activity.itemType === ActivityItemType.OtherVideo && activity.releaseDate)
+  if (activity.itemType === ActivityItemType.OtherVideos && activity.releaseDate)
     return activity.releaseDate.toDateString()
 
   return ''
@@ -112,7 +112,7 @@ export function getEndTime(activity: Activity): Date | undefined {
     !activity.isPaused &&
     // No time for songs and music videos, not really relevant.
     activity.itemType !== ActivityItemType.Music &&
-    activity.itemType !== ActivityItemType.MusicVideo
+    activity.itemType !== ActivityItemType.MusicVideos
   )
     return activity.endTime
 
@@ -125,7 +125,7 @@ function getArtistText(activity: Activity): string {
 }
 
 export function isMusic(activity: Activity): boolean {
-  return [ActivityItemType.Music, ActivityItemType.MusicVideo].includes(activity.itemType)
+  return [ActivityItemType.Music, ActivityItemType.MusicVideos].includes(activity.itemType)
 }
 
 export function hasGenres(activity: Activity): boolean {

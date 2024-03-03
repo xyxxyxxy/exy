@@ -2,8 +2,8 @@ import type { MediaServerConfig } from '../stores/config.types'
 
 export enum ActivityMediaType {
   Audio = 'Audio',
-  Video = 'Video',
-  Book = 'Book'
+  Video = 'Video', // Visual content in general.
+  Book = 'Book' // Books are special (Jellyfin only).
 }
 
 // This enum is rendered in the 'ignore media type' UI.
@@ -11,13 +11,13 @@ export enum ActivityMediaType {
 export enum ActivityItemType {
   // Note: Emby does not have a special identifier for audio books.
   Music = 'Music',
-  MusicVideo = 'Music Video',
-  Movie = 'Movie',
-  Episode = 'Episode',
+  Shows = 'Shows',
+  Movies = 'Movies',
+  MusicVideos = 'Music Videos',
   LiveTv = 'Live TV',
-  LiveTvRecording = 'Live Recording',
-  OtherVideo = 'Other Video',
-  Book = 'Book'
+  LiveRecordings = 'Live Recordings',
+  OtherVideos = 'Other Videos',
+  Books = 'Books'
 }
 
 export type ExternalLink = { label: string; url: string }

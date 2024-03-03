@@ -31,8 +31,8 @@ function getActivityMediaType(item?: BaseItemDto): ActivityMediaType {
 
 function getActivityItemType(item?: BaseItemDto): ActivityItemType {
   // Straight forward types.
-  if (item?.Type === ItemType.Movie) return ActivityItemType.Movie
-  if (item?.Type === ItemType.MusicVideo) return ActivityItemType.MusicVideo
+  if (item?.Type === ItemType.Movie) return ActivityItemType.Movies
+  if (item?.Type === ItemType.MusicVideo) return ActivityItemType.MusicVideos
   if (item?.Type === ItemType.TvChannel) return ActivityItemType.LiveTv
 
   if (item?.MediaType === ItemMediaType.Audio && item.Type === ItemMediaType.Audio)
@@ -42,15 +42,15 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
   // Episodes can be episodes of a show or a live recording.
   if (item?.Type === ItemType.Episode) {
     // Live TV recordings did not have any index number in my tests.
-    return item.IndexNumber ? ActivityItemType.Episode : ActivityItemType.LiveTvRecording
+    return item.IndexNumber ? ActivityItemType.Shows : ActivityItemType.LiveRecordings
   }
 
   if (item?.Type === ItemType.Video) {
-    return ActivityItemType.OtherVideo
+    return ActivityItemType.OtherVideos
   }
 
   if (item?.Type === ItemType.Book) {
-    return ActivityItemType.Book
+    return ActivityItemType.Books
   }
 
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)

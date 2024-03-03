@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
+  import { name, homepage } from '../../../../package.json'
 
   export let config: ConfigStore
 
@@ -27,7 +28,9 @@
       on:click|preventDefault={toggleLogoShown}
     />
     Show logo
+    <span data-tooltip="Music will always show a vinyl icon if genres are available">ℹ️</span>
   </label>
+
   <label>
     <input
       name="isMediaServerTypeShown"
@@ -47,6 +50,7 @@
       checked={config.activity.isHomepageLinked}
       on:click|preventDefault={toggleHomepageLinked}
     />
-    Add link to {name} homepage
+    Add link to
+    <span data-tooltip={homepage}>{name} homepage</span>
   </label>
 </section>

@@ -34,9 +34,9 @@ See: https://github.com/sveltejs/svelte/issues/4701 -->
 
     <details>
       <!-- svelte-ignore a11y-no-redundant-roles -->
-      <summary role="button" class="secondary">Choose media types</summary>
+      <summary role="button" class="secondary">Choose active media types</summary>
       <article>
-        <header>You can ignore some media types by disabling them here.</header>
+        <header>You can ignore media types by disabling them.</header>
         <div class="grid">
           {#each Object.keys(ActivityItemType) as row, i}
             <!-- Create column. -->
