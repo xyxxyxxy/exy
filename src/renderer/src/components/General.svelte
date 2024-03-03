@@ -12,6 +12,10 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 
+  function isIgnoredKey(key: string): boolean {
+    return config.ignoredTypes.includes(key as ActivityItemType)
+  }
+
   function toggleIgnored(type: string): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, type)
   }
@@ -39,10 +43,9 @@
         <header>You can ignore media types by disabling them.</header>
         <div class="grid">
           <!-- TypeScript in template us currently not supported.
-          See: https://github.com/sveltejs/svelte/issues/4701
-          See: https://github.com/ccnmtl/3demos/pull/23/commits/54d5f5d5241d31d45aa0cd3b4f546b35b6787666 -->
-          <!-- eslint-disable @typescript-eslint/no-unused-vars @typescript-eslint/explicit-function-return-type -->
-          {#each Object.keys(ActivityItemType) as row, i}
+            Implementing some workarounds, since disabling the rules did not work here.
+          See: https://github.com/sveltejs/svelte/issues/4701 -->
+          {#each Object.keys(ActivityItemType).map((_, index) => index) as i}
             <!-- Create column. -->
             {#if !(i % columnItemCount)}
               <div>
@@ -52,7 +55,7 @@
                     <input
                       type="checkbox"
                       role="switch"
-                      checked={!config.ignoredTypes.includes(key)}
+                      checked={!isIgnoredKey}
                       on:click={() => toggleIgnored(key)}
                     />
                     {ActivityItemType[key]}
@@ -61,7 +64,6 @@
               </div>
             {/if}
           {/each}
-          <!-- eslint-enable -->
         </div>
       </article>
     </details>

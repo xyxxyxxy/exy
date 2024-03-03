@@ -7,6 +7,7 @@
   item.
 </p>
 <details>
+  <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="secondary outline">❔ How do I get a Client ID</summary>
   <article>
     <header>
