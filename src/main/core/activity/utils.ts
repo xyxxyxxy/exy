@@ -12,21 +12,29 @@ export function pickActivity(
   if (!activities.length) return null
 
   // Remove options if there are better alternatives.
-  const pauseFiltered = filterSome(activities, (activity) => !activity.isPaused)
-  const ignoreFiltered = filterSome(
-    pauseFiltered,
-    (activity) => !isIgnoredType(activity, ignoredTypes)
+  const filtered = filterSome(
+    activities,
+    // Prefer not ignored types.
+    (activity) => !isIgnoredType(activity, ignoredTypes),
+    // Prefer playing.
+    (activity) => !activity.isPaused,
+    // Prefer video over audio.
+    (activity) => activity.mediaType === ActivityMediaType.Video
   )
 
-  // If there are still multiple activities, pick the first.
-  return ignoreFiltered[0]
+  // In case we still have multiple activities, the first is picked by title alphabetically.
+  // This ensures no random switching.
+  return filtered.sort((a, b) => a.title.localeCompare(b.title))[0]
 }
 
 // Applies a filter if not all, but some elements match the filter.
-function filterSome<T>(source: Array<T>, filter: (element: T) => boolean): Array<T> {
-  const every = source.every(filter)
-  const some = source.some(filter)
-  if (!every && some) return source.filter(filter)
+function filterSome<T>(source: Array<T>, ...filters: Array<(element: T) => boolean>): Array<T> {
+  filters.forEach((filter) => {
+    const every = source.every(filter)
+    const some = source.some(filter)
+    if (!every && some) source = source.filter(filter)
+  })
+
   return source
 }
 
