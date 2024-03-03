@@ -11,7 +11,8 @@ import {
   toggleMediaServerActive,
   toggleActivityThemeColorUsed,
   toggleStartup,
-  toggleActivityLogoShown
+  toggleActivityLogoShown,
+  toggleIgnoredMediaType
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -59,6 +60,7 @@ combineLatest([
 })
 
 ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
+ipcMain.on(IpcChannel.ToggleIgnoredMediaType, (_, type) => toggleIgnoredMediaType(type))
 ipcMain.on(IpcChannel.ToggleActivityLogoShown, toggleActivityLogoShown)
 ipcMain.on(IpcChannel.ToggleActivityThemeColorUsed, toggleActivityThemeColorUsed)
 ipcMain.on(IpcChannel.ToggleActivityHomepageLinked, toggleActivityHomepageLinked)
@@ -124,8 +126,7 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
         protocol: config.protocol,
         address: config.address,
         port: config.port,
-        username: config.username,
-        ignoredLibraryIds: []
+        username: config.username
       })
 
       event.sender.send(IpcChannel.ConnectMediaServer)

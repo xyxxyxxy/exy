@@ -12,7 +12,7 @@ export const configSchema: Schema<ConfigStore> = {
     type: 'boolean',
     default: true
   },
-  ignoredItemTypes: {
+  ignoredTypes: {
     type: 'array',
     default: []
   },

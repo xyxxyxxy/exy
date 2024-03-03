@@ -1,4 +1,4 @@
-import { ActivityConfig, IgnoredItemTypes } from '../stores/config.types'
+import { ActivityConfig, IgnoredMediaItemTypes } from '../stores/config.types'
 import { Activity, ActivityBase, ActivityItemType, ActivityMediaType } from './types'
 import { name, homepage } from '../../../../package.json'
 
@@ -7,7 +7,7 @@ import { name, homepage } from '../../../../package.json'
 // Might return ignored activity types. Prefers not ignored types.
 export function pickActivity(
   activities: Array<ActivityBase>,
-  ignoredItemTypes: IgnoredItemTypes
+  ignoredTypes: IgnoredMediaItemTypes
 ): ActivityBase | null {
   if (!activities.length) return null
 
@@ -15,7 +15,7 @@ export function pickActivity(
   const pauseFiltered = filterSome(activities, (activity) => !activity.isPaused)
   const ignoreFiltered = filterSome(
     pauseFiltered,
-    (activity) => !isIgnoredActivity(activity, ignoredItemTypes)
+    (activity) => !isIgnoredType(activity, ignoredTypes)
   )
 
   // If there are still multiple activities, pick the first.
@@ -30,11 +30,11 @@ function filterSome<T>(source: Array<T>, filter: (element: T) => boolean): Array
   return source
 }
 
-export function isIgnoredActivity(
+export function isIgnoredType(
   activity: ActivityBase,
-  ignoredItemTypes: IgnoredItemTypes
+  ignoredTypes: IgnoredMediaItemTypes
 ): boolean {
-  return ignoredItemTypes.includes(activity.itemType)
+  return ignoredTypes.includes(activity.itemType)
 }
 
 export function getStateText(activity: Activity, config: ActivityConfig): string {
@@ -125,10 +125,7 @@ function getArtistText(activity: Activity): string {
 }
 
 export function isMusic(activity: Activity): boolean {
-  return (
-    activity.itemType !== ActivityItemType.Music &&
-    activity.itemType !== ActivityItemType.MusicVideo
-  )
+  return [ActivityItemType.Music, ActivityItemType.MusicVideo].includes(activity.itemType)
 }
 
 export function hasGenres(activity: Activity): boolean {

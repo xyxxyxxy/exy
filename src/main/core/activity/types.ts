@@ -6,14 +6,16 @@ export enum ActivityMediaType {
   Book = 'Book'
 }
 
+// This enum is rendered in the 'ignore media type' UI.
+// Order and values matter in that context.
 export enum ActivityItemType {
   // Note: Emby does not have a special identifier for audio books.
   Music = 'Music',
+  MusicVideo = 'Music Video',
   Movie = 'Movie',
   Episode = 'Episode',
   LiveTv = 'Live TV',
-  LiveTvRecording = 'Live TV Recording',
-  MusicVideo = 'Music Video',
+  LiveTvRecording = 'Live Recording',
   OtherVideo = 'Other Video',
   Book = 'Book'
 }

@@ -1,9 +1,9 @@
 import log from 'electron-log'
 import { Activity } from './types'
-import { BehaviorSubject, Observable, combineLatest, map, shareReplay, tap } from 'rxjs'
+import { BehaviorSubject, Observable, map, shareReplay, tap, withLatestFrom } from 'rxjs'
 import { config$ } from '../stores/config'
 import { mediaServerMainActivity$ } from '../media-server'
-import { addConfigExtras, isIgnoredActivity } from './utils'
+import { addConfigExtras, isIgnoredType } from './utils'
 
 const logger = log.scope('activity')
 
@@ -15,19 +15,16 @@ export const activity$: Observable<Activity | null> = activitySubject.asObservab
 )
 
 // Subscribe to activity providers.
-combineLatest([
-  // Get config and trigger re-build activity on config change.
-  config$.pipe(tap(() => logger.debug(`Re-building activity after config change.`))),
-  mediaServerMainActivity$
-])
+mediaServerMainActivity$
   .pipe(
+    withLatestFrom(config$),
     // Add configured extras.
-    map(([config, activity]) => {
+    map(([activity, config]) => {
       if (!activity) return activity
 
-      // Last guard against ignored activity types.
-      if (activity && isIgnoredActivity(activity, config.ignoredItemTypes)) {
-        logger.warn(`Ignored activity type emitted by source. Will be ignored.`)
+      // Guard against ignored activity types.
+      if (activity && isIgnoredType(activity, config.ignoredTypes)) {
+        logger.debug(`Ignored activity type emitted by source. Will be ignored.`)
         return null
       }
 

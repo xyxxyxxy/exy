@@ -4,6 +4,7 @@ export enum IpcChannel {
   Config = 'Config',
   DiscordStatus = 'DiscordStatus',
   ToggleStartup = 'ToggleStartup',
+  ToggleIgnoredMediaType = 'ToggleIgnoredMediaType',
   ToggleActivityLogoShown = 'ToggleActivityLogoShown',
   ToggleActivityThemeColorUsed = 'ToggleActivityThemeColorUsed',
   ToggleActivityHomepageLinked = 'ToggleActivityHomepageLinked',

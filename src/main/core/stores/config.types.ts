@@ -3,14 +3,14 @@ import { ActivityItemType } from '../activity/types'
 export type ConfigStore = {
   deviceId: string
   isStartupEnabled: boolean
-  ignoredItemTypes: IgnoredItemTypes
+  ignoredTypes: IgnoredMediaItemTypes
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   activity: ActivityConfig
   isDebugLoggingEnabled: boolean
 }
 
-export type IgnoredItemTypes = Array<ActivityItemType>
+export type IgnoredMediaItemTypes = Array<ActivityItemType>
 
 export type ActivityConfig = {
   isLogoShown: boolean
@@ -33,7 +33,7 @@ export type MediaServerConfig = {
 
 export enum ConfigSelector {
   deviceId = 'deviceId',
-  IgnoredItemTypes = 'ignoredItemTypes',
+  IgnoredTypes = 'ignoredTypes',
   IsStartupEnabled = 'isStartupEnabled',
   Activity = 'activity',
   isHomepageLinked = 'isHomepageLinked',

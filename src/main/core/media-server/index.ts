@@ -1,6 +1,7 @@
 import {
   Observable,
   catchError,
+  combineLatest,
   defaultIfEmpty,
   distinctUntilChanged,
   forkJoin,
@@ -29,7 +30,7 @@ import { Activity, ActivityBase } from '../activity/types'
 import { PollingResult, MediaServerActivityMapping, ValidSession } from './types'
 import { buildActivityBase } from './activity-builder/base'
 import { buildFullActivity$ } from './activity-builder/full'
-import { isIgnoredActivity, pickActivity } from '../activity/utils'
+import { isIgnoredType, pickActivity } from '../activity/utils'
 
 const logger = log.scope('media-server')
 
@@ -112,17 +113,22 @@ export const mediaServerAllActivities$: Observable<MediaServerActivityMapping> =
 
 // Main activity for all media servers.
 // Respects the configured ignored activity types.
-export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pipe(
-  switchMap((results) => pickBetweenPollingResults$(results)),
+export const mediaServerMainActivity$: Observable<Activity | null> = combineLatest([
+  polling$,
+  config$.pipe(tap(() => logger.debug(`Re-building main activity due to config change.`)))
+]).pipe(
+  switchMap(([results]) => pickBetweenPollingResults$(results)),
+  withLatestFrom(config$),
   // Check if there are relevant changes before a full activity object is built.
   distinctUntilChanged(
-    (previous, current) => JSON.stringify(previous?.activity) === JSON.stringify(current?.activity)
+    ([previousPolling, previousConfig], [currentPolling, currentConfig]) =>
+      JSON.stringify(previousConfig) === JSON.stringify(currentConfig) &&
+      JSON.stringify(previousPolling?.activity) === JSON.stringify(currentPolling?.activity)
   ),
-  withLatestFrom(config$),
   switchMap(([result, config]) => {
     // Enforce the ignored activity types here.
     // Before it was only used to prioritize the picking between multiple activities.
-    if (!result || !result.activity || isIgnoredActivity(result.activity, config.ignoredItemTypes))
+    if (!result || !result.activity || isIgnoredType(result.activity, config.ignoredTypes))
       return of(null)
 
     return buildFullActivity$(result.server, result.session, result.activity)
@@ -171,7 +177,7 @@ function pickBetweenPollingResults$(
         .map((result) => result.activity)
         .filter((activity): activity is ActivityBase => !!activity)
 
-      const pick = pickActivity(activities, config.ignoredItemTypes)
+      const pick = pickActivity(activities, config.ignoredTypes)
       const result = results.find((obj) => obj.activity === pick)
       if (!result) throw new Error(`Failed to pick polling result.`)
       return result

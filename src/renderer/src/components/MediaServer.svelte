@@ -4,13 +4,13 @@
   import MediaServerError from './MediaServerError.svelte'
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
   import type { ActivityBase } from '../../../main/core/activity/types'
-  import { isIgnoredActivity } from '../../../main/core/activity/utils'
-  import type { IgnoredItemTypes } from '../../../main/core/stores/config.types'
+  import { isIgnoredType } from '../../../main/core/activity/utils'
+  import type { IgnoredMediaItemTypes } from '../../../main/core/stores/config.types'
   import { beforeUpdate } from 'svelte'
 
   export let server: MediaServerConfig
   export let activity: ActivityBase | null | undefined
-  export let ignoredActivityTypes: IgnoredItemTypes
+  export let ignoredActivityTypes: IgnoredMediaItemTypes
 
   let isBusyDisconnecting = false
 
@@ -33,7 +33,7 @@
   let isIgnored: boolean
 
   beforeUpdate(() => {
-    if (activity) isIgnored = isIgnoredActivity(activity, ignoredActivityTypes)
+    if (activity) isIgnored = isIgnoredType(activity, ignoredActivityTypes)
   })
 
   function getRandomSuccessText(): string {

@@ -27,7 +27,7 @@ export const configMigrationOptions: Options<ConfigStore> = {
         (server) => delete (server as { ignoredLibraryIds?: Array<string> }).ignoredLibraryIds
       )
       store.set('mediaServers', servers)
-      store.set(ConfigSelector.IgnoredItemTypes, [])
+      store.set(ConfigSelector.IgnoredTypes, [])
     }
   }
 }

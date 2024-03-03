@@ -44,7 +44,7 @@
       <MediaServer
         {server}
         activity={activities[server.id]}
-        ignoredActivityTypes={config.ignoredItemTypes}
+        ignoredActivityTypes={config.ignoredTypes}
       />
     {/each}
     <MediaServerNew {hasMediaServers} />

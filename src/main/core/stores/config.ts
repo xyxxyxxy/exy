@@ -10,6 +10,7 @@ import { BehaviorSubject } from 'rxjs'
 import log from 'electron-log'
 import { configMigrationOptions } from './migrations'
 import { configSchema } from './schema'
+import { ActivityItemType } from '../activity/types'
 
 const logger = log.scope('config')
 
@@ -76,6 +77,16 @@ export function toggleStartup(): void {
     ConfigSelector.IsStartupEnabled,
     !configStore.get(ConfigSelector.IsStartupEnabled)
   )
+}
+
+export function toggleIgnoredMediaType(type: ActivityItemType): void {
+  let list = configStore.get(ConfigSelector.IgnoredTypes)
+  const isIncluded = list.includes(type)
+
+  if (isIncluded) list = list.filter((element) => element !== type)
+  else list.push(type)
+
+  configStore.set(ConfigSelector.IgnoredTypes, list)
 }
 
 export function toggleActivityLogoShown(): void {
