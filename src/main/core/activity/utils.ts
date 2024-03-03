@@ -1,5 +1,5 @@
-import { ActivityConfig, IgnoredMediaItemTypes } from '../stores/config.types'
-import { Activity, ActivityBase, ActivityItemType, ActivityMediaType } from './types'
+import type { ActivityConfig, IgnoredMediaItemTypes } from '../stores/config.types'
+import { type Activity, type ActivityBase, ActivityItemType, ActivityMediaType } from './types'
 import { name, homepage } from '../../../../package.json'
 
 // Pick one activity from an array of activities.

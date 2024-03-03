@@ -17,8 +17,6 @@
   }
 </script>
 
-<!-- TypeScript in template us currently not supported.
-See: https://github.com/sveltejs/svelte/issues/4701 -->
 <div class="grid">
   <div>
     <label>
@@ -38,6 +36,10 @@ See: https://github.com/sveltejs/svelte/issues/4701 -->
       <article>
         <header>You can ignore media types by disabling them.</header>
         <div class="grid">
+          <!-- TypeScript in template us currently not supported.
+          See: https://github.com/sveltejs/svelte/issues/4701
+          See: https://github.com/ccnmtl/3demos/pull/23/commits/54d5f5d5241d31d45aa0cd3b4f546b35b6787666 -->
+          <!-- eslint-disable @typescript-eslint/no-unused-vars @typescript-eslint/explicit-function-return-type -->
           {#each Object.keys(ActivityItemType) as row, i}
             <!-- Create column. -->
             {#if !(i % columnItemCount)}
@@ -57,6 +59,7 @@ See: https://github.com/sveltejs/svelte/issues/4701 -->
               </div>
             {/if}
           {/each}
+          <!-- eslint-enable -->
         </div>
       </article>
     </details>
