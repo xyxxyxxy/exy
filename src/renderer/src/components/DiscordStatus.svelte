@@ -49,8 +49,6 @@
 </script>
 
 <section class="flex">
-  <!-- TODO Make test UI pretty -->
-  <!-- TODO Make icon reflect connection status (grey while not ready) -->
   <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
 
   <section>

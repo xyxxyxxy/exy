@@ -17,34 +17,36 @@
   }
 </script>
 
-<label>
-  <input
-    name="isMediaServerTypeShown"
-    type="checkbox"
-    role="switch"
-    checked={config.activity.isLogoShown}
-    on:click|preventDefault={toggleLogoShown}
-  />
-  Show logo
-</label>
-<label>
-  <input
-    name="isMediaServerTypeShown"
-    type="checkbox"
-    role="switch"
-    checked={config.activity.isThemeColorUsed}
-    on:click|preventDefault={toggleThemeColorUsed}
-    disabled={config.activity.isLogoShown}
-  />
-  Use server themed colors
-</label>
-<label>
-  <input
-    name="isHomepageLinked"
-    type="checkbox"
-    role="switch"
-    checked={config.activity.isHomepageLinked}
-    on:click|preventDefault={toggleHomepageLinked}
-  />
-  Add link to {name} homepage
-</label>
+<section>
+  <label>
+    <input
+      name="isMediaServerTypeShown"
+      type="checkbox"
+      role="switch"
+      checked={config.activity.isLogoShown}
+      on:click|preventDefault={toggleLogoShown}
+    />
+    Show logo
+  </label>
+  <label>
+    <input
+      name="isMediaServerTypeShown"
+      type="checkbox"
+      role="switch"
+      checked={config.activity.isThemeColorUsed}
+      on:click|preventDefault={toggleThemeColorUsed}
+      disabled={config.activity.isLogoShown}
+    />
+    Use server themed colors
+  </label>
+  <label>
+    <input
+      name="isHomepageLinked"
+      type="checkbox"
+      role="switch"
+      checked={config.activity.isHomepageLinked}
+      on:click|preventDefault={toggleHomepageLinked}
+    />
+    Add link to {name} homepage
+  </label>
+</section>
