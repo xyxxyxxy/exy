@@ -79,7 +79,7 @@ const polling$: Observable<Array<PollingResult>> = config$.pipe(
   tap(() => logger.debug('Start polling.')),
   switchMap((servers) =>
     timer(0, 5 * 1000).pipe(
-      tap(() => logger.debug(`Polling ${servers.length} servers.`)),
+      tap(() => logger.debug(`Polling servers.`)),
       mergeMap(() =>
         forkJoin(servers.map((server) => poll$(server)))
           // Default to empty, so the activity is properly reset in case

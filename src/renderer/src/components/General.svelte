@@ -12,12 +12,12 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 
-  function isIgnoredKey(key: string): boolean {
-    return config.ignoredTypes.includes(key as ActivityItemType)
+  function isChecked(key: string): boolean {
+    return !config.ignoredTypes.includes(ActivityItemType[key])
   }
 
-  function toggleIgnored(type: string): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, type)
+  function toggleIgnored(key: string): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, ActivityItemType[key])
   }
 </script>
 
@@ -55,7 +55,7 @@
                     <input
                       type="checkbox"
                       role="switch"
-                      checked={!isIgnoredKey}
+                      checked={isChecked(key)}
                       on:click={() => toggleIgnored(key)}
                     />
                     {ActivityItemType[key]}
