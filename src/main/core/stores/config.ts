@@ -32,25 +32,6 @@ configStore.onDidAnyChange((config) => {
 })
 
 export const config$ = configSource.asObservable()
-// Observables for nested objects in the config.
-// Updating only on change of the nested object and replaying the latest data to new subscribers.
-export const configIgnoredItemTypes$ = config$.pipe(
-  map((config) => config.ignoredItemTypes),
-  distinctUntilChanged(),
-  shareReplay(1)
-)
-export const configMediaServers$ = config$.pipe(
-  map((config) => config.mediaServers),
-  distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current)),
-  tap(() => logger.debug(`Media-server config changed.`)),
-  shareReplay(1)
-)
-export const configActivity$ = config$.pipe(
-  map((config) => config.activity),
-  distinctUntilChanged((previous, current) => JSON.stringify(previous) === JSON.stringify(current)),
-  tap(() => logger.debug(`Activity config changed.`)),
-  shareReplay(1)
-)
 
 // Checks if a connection with matching protocol, address and port is already configured.
 // Username is ignored, since a new connection from the same client with a different username will invalidate the previous session.

@@ -17,7 +17,7 @@ import {
 import type { MediaServerConfig } from '../stores/config.types'
 import { hostname } from 'os'
 import { version, name } from '../../../../package.json'
-import { config$, configIgnoredItemTypes$, configMediaServers$ } from '../stores/config'
+import { config$ } from '../stores/config'
 import log from 'electron-log'
 import {
   Authentication_AuthenticationResult,
@@ -72,9 +72,9 @@ export function isValidSession(session: Session_SessionInfo): session is ValidSe
   return !!session.NowPlayingItem && !!session.PlayState
 }
 
-const polling$: Observable<Array<PollingResult>> = configMediaServers$.pipe(
+const polling$: Observable<Array<PollingResult>> = config$.pipe(
   // Map to active media-servers.
-  map((config) => config.filter((server) => server.isActive)),
+  map((config) => config.mediaServers.filter((server) => server.isActive)),
   tap(() => logger.debug('Start polling.')),
   switchMap((servers) =>
     timer(0, 5 * 1000).pipe(
@@ -118,11 +118,11 @@ export const mediaServerMainActivity$: Observable<Activity | null> = polling$.pi
   distinctUntilChanged(
     (previous, current) => JSON.stringify(previous?.activity) === JSON.stringify(current?.activity)
   ),
-  withLatestFrom(configIgnoredItemTypes$),
-  switchMap(([result, ignoredActivityTypes]) => {
+  withLatestFrom(config$),
+  switchMap(([result, config]) => {
     // Enforce the ignored activity types here.
     // Before it was only used to prioritize the picking between multiple activities.
-    if (!result || !result.activity || isIgnoredActivity(result.activity, ignoredActivityTypes))
+    if (!result || !result.activity || isIgnoredActivity(result.activity, config.ignoredItemTypes))
       return of(null)
 
     return buildFullActivity$(result.server, result.session, result.activity)
@@ -164,14 +164,14 @@ function pickBetweenPollingResults$(
 ): Observable<PollingResult | null> {
   if (!results.length) return of(null)
 
-  return configIgnoredItemTypes$.pipe(
+  return config$.pipe(
     take(1),
-    map((ignoredItemTypes) => {
+    map((config) => {
       const activities = results
         .map((result) => result.activity)
         .filter((activity): activity is ActivityBase => !!activity)
 
-      const pick = pickActivity(activities, ignoredItemTypes)
+      const pick = pickActivity(activities, config.ignoredItemTypes)
       const result = results.find((obj) => obj.activity === pick)
       if (!result) throw new Error(`Failed to pick polling result.`)
       return result

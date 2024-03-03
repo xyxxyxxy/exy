@@ -19,7 +19,7 @@ import {
 import { ConnectionStatus } from './types'
 import { activity$ } from '../activity'
 import { toDiscordPresence } from './activity-mapping'
-import { configActivity$ } from '../stores/config'
+import { config$ } from '../stores/config'
 import { discordApplicationId } from '../../../environment.json'
 
 const logger = log.scope('discord')
@@ -120,7 +120,7 @@ combineLatest([activity$, discordReady$.pipe(delay(1000))])
       leading: true,
       trailing: true
     }),
-    withLatestFrom(configActivity$, connectionStatus$),
+    withLatestFrom(config$, connectionStatus$),
     // Make sure Discord is still connected.
     filter(([, , connectionStatus]) => connectionStatus === ConnectionStatus.Ready)
   )
@@ -128,7 +128,7 @@ combineLatest([activity$, discordReady$.pipe(delay(1000))])
     if (!discordClient) return logger.warn(`Failed to set presence. No client available.`)
     try {
       if (activity) {
-        const presence = toDiscordPresence(activity, config)
+        const presence = toDiscordPresence(activity, config.activity)
         logger.debug(`Setting Discord presence:`, presence)
         discordClient.setActivity(presence)
       } else {
