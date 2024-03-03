@@ -7,7 +7,7 @@
   item.
 </p>
 <details>
-  <summary>❔ How do I get a Client ID</summary>
+  <summary role="button" class="secondary outline">❔ How do I get a Client ID</summary>
   <article>
     <header>
       An Imgur account is required. You can create one
