@@ -48,7 +48,7 @@
   }
 </script>
 
-<section class="flex">
+<article class="flex">
   <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
 
   <section>
@@ -62,7 +62,7 @@
       {/if}
     </span>
   </section>
-</section>
+</article>
 
 <style>
   .flex {

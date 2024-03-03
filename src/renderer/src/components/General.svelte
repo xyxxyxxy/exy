@@ -19,16 +19,18 @@
 
 <div class="grid">
   <div>
-    <label>
-      <input
-        name="isStartupEnabled"
-        type="checkbox"
-        role="switch"
-        checked={config.isStartupEnabled}
-        on:click={toggleStartup}
-      />
-      Run at startup
-    </label>
+    <article>
+      <label>
+        <input
+          name="isStartupEnabled"
+          type="checkbox"
+          role="switch"
+          checked={config.isStartupEnabled}
+          on:click={toggleStartup}
+        />
+        Run at startup
+      </label>
+    </article>
 
     <details>
       <!-- svelte-ignore a11y-no-redundant-roles -->

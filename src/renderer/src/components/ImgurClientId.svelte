@@ -27,20 +27,22 @@
   })
 </script>
 
-<form>
-  <label for="clientId">
-    Client ID
-    <input
-      type="text"
-      id="clientId"
-      placeholder="none"
-      bind:value={clientId}
-      disabled={isBusy}
-      aria-invalid={isInvalid}
-      aria-describedby="helper"
-      on:input={resetValidation}
-    />
-    <small id="helper">{helperText}</small></label
-  >
-  <button type="submit" on:click={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
-</form>
+<article>
+  <form>
+    <label for="clientId">
+      Client ID
+      <input
+        type="text"
+        id="clientId"
+        placeholder="none"
+        bind:value={clientId}
+        disabled={isBusy}
+        aria-invalid={isInvalid}
+        aria-describedby="helper"
+        on:input={resetValidation}
+      />
+      <small id="helper">{helperText}</small></label
+    >
+    <button type="submit" on:click={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
+  </form>
+</article>

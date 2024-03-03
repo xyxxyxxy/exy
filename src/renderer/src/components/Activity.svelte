@@ -18,7 +18,7 @@
   }
 </script>
 
-<section>
+<article>
   <label>
     <input
       name="isMediaServerTypeShown"
@@ -53,4 +53,4 @@
     Add link to
     <span data-tooltip={homepage}>{name} homepage</span>
   </label>
-</section>
+</article>
