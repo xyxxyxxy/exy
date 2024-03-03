@@ -6,6 +6,7 @@
   import type { ActivityBase } from '../../../main/core/activity/types'
   import { isIgnoredActivity } from '../../../main/core/activity/utils'
   import type { IgnoredItemTypes } from '../../../main/core/stores/config.types'
+  import { beforeUpdate } from 'svelte'
 
   export let server: MediaServerConfig
   export let activity: ActivityBase | null | undefined
@@ -29,6 +30,11 @@
     'All systems operational!'
   ]
   let testSuccessText: string
+  let isIgnored: boolean
+
+  beforeUpdate(() => {
+    if (activity) isIgnored = isIgnoredActivity(activity, ignoredActivityTypes)
+  })
 
   function getRandomSuccessText(): string {
     return textSuccessTextOptions[Math.floor(Math.random() * textSuccessTextOptions.length)]
@@ -82,10 +88,21 @@
       on:click|preventDefault={toggleActive}
       disabled={isBusyDisconnecting || isBusyTesting}
     />
-    {server.address}
-    {#if server.isActive && !testError && activity}▶️ {activity.title}
-      {#if isIgnoredActivity(activity, ignoredActivityTypes)}(ignored){/if}{/if}
-    {#if !!testError}❗{/if}
+    <span class="summary-text">
+      <span class="summary-flex">
+        {server.address}
+        {#if server.isActive && activity}
+          {#if isIgnored}
+            <span data-tooltip="Media type '{activity.itemType}' is ignored">⤵️</span>
+          {:else}
+            <span>▶️</span>
+          {/if}
+          <span class="summary-activity">
+            {activity.title}
+          </span>
+        {/if}
+      </span>
+    </span>
   </summary>
   <article>
     <MediaServerTypeSelect config={server} disabled></MediaServerTypeSelect>
@@ -134,13 +151,28 @@
       {:else if isBusyTesting}
         <span aria-busy="true">Testing...</span>
       {/if}
-      <!-- <footer>TODO list libraries. TODO allow ignored words</footer> -->
     </div>
   </article>
 </details>
 
 <style>
   summary {
+    position: relative;
+  }
+
+  .summary-text {
+    position: absolute;
+    right: 3rem;
+    left: 4rem;
+  }
+
+  .summary-flex {
+    display: flex;
+    gap: var(--pico-grid-row-gap);
+  }
+
+  .summary-activity {
+    flex-grow: 1;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

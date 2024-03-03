@@ -6,7 +6,7 @@ import {
   MediaServerConfig,
   MediaServerConnectionIdentifiers
 } from './config.types'
-import { BehaviorSubject, distinctUntilChanged, map, shareReplay, tap } from 'rxjs'
+import { BehaviorSubject } from 'rxjs'
 import log from 'electron-log'
 import { configMigrationOptions } from './migrations'
 import { configSchema } from './schema'
