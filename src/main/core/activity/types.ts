@@ -51,17 +51,15 @@ export enum ActivityMediaType {
   Book = 'Book' // Books are special (Jellyfin only).
 }
 
-// This enum is rendered in the 'ignore media type' UI.
-// Order and values matter in that context.
 export enum ActivityItemType {
   // Note: Emby does not have a special identifier for audio books.
   Music = 'Music',
   Shows = 'Shows',
   Movies = 'Movies',
-  MusicVideos = 'Music Videos',
-  LiveTv = 'Live TV',
-  LiveRecordings = 'Live Recordings',
-  OtherVideos = 'Other Videos',
+  MusicVideos = 'MusicVideos',
+  LiveTv = 'LiveTv',
+  LiveRecordings = 'LiveRecordings',
+  OtherVideos = 'OtherVideos',
   Books = 'Books'
 }
 
@@ -70,22 +68,25 @@ export type ExternalLink = { label: string; url: string } // TODO Remove
 export type ActivityExternalLinks = Array<ExternalLink> // TODO Remove
 
 export type ExternalData = {
-  id:
-    | string // Leave open for any string.
-    // Music
-    | 'MusicBrainzAlbum'
-    | 'MusicBrainzAlbumArtist'
-    | 'MusicBrainzArtist'
-    | 'MusicBrainzReleaseGroup'
-    | 'MusicBrainzTrack'
-    // Episodes
-    | 'TheTVDB'
-    // Movies
-    | 'IMDb'
-    | 'TheMovieDb'
-    | 'Trakt'
-    // Public
-    | 'YouTube'
-    | 'BitChute'
+  type: ExternalDataTypes
   url: string
+}
+
+export enum ExternalDataTypes {
+  Custom = 'Custom', // TODO needed or optional?
+  // Music
+  MusicBrainzAlbum = 'MusicBrainz Album',
+  MusicBrainzAlbumArtist = 'MusicBrainz Album Artist',
+  MusicBrainzArtist = 'MusicBrainz Artist',
+  MusicBrainzReleaseGroup = 'MusicBrainz Release Group',
+  MusicBrainzTrack = 'MusicBrainz Track',
+  // Episodes
+  TheTVDB = 'TheTVDB',
+  // Movies
+  IMDb = 'IMDb',
+  TheMovieDb = 'TheMovieDb',
+  Trakt = 'Trakt',
+  // Public
+  YouTube = 'YouTube',
+  BitChute = 'BitChute'
 }

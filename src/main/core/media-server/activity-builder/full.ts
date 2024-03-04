@@ -6,7 +6,8 @@ import {
   Activity,
   ActivityBase,
   ActivityExternalData,
-  ActivityExternalLinks
+  ActivityExternalLinks,
+  ExternalDataTypes
 } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
@@ -54,10 +55,18 @@ export function buildFullActivity$(
 function mapExternalData(item: BaseItemDto): ActivityExternalData {
   if (!item.ExternalUrls) return []
   return item.ExternalUrls.filter(
-    (external): external is { Name: string; Url: string } =>
-      typeof external.Name === 'string' && typeof external.Url === 'string'
-    // Remove white spaces.
-  ).map((external) => ({ id: external.Name.replace(/\s/g, ''), url: external.Url }))
+    (external): external is { Name: ExternalDataTypes; Url: string } => {
+      if (!external.Name) return false
+      const isType = Object.values(ExternalDataTypes).includes(external.Name as ExternalDataTypes)
+
+      if (!isType) {
+        logger.warn(`Encountered unexpected external data type '${external.Name}'. Ignoring.`)
+        return false
+      }
+
+      return external.Url === 'string'
+    }
+  ).map((external) => ({ type: external.Name, url: external.Url }))
 }
 
 function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {

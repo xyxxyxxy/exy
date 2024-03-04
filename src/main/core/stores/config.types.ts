@@ -1,4 +1,4 @@
-import type { ActivityItemType, ExternalLink } from '../activity/types'
+import type { ActivityItemType, ExternalDataTypes, ExternalLink } from '../activity/types'
 
 export type ConfigStore = {
   deviceId: string
@@ -11,15 +11,18 @@ export type ConfigStore = {
 }
 
 export type IgnoredMediaItemTypes = Array<ActivityItemType>
-export type ExternalLinkConfig = ExternalLink & {
-  appliesTo?: ActivityItemType
+export type ExternalLinkConfig = {
+  isActive: boolean
+  label: string
+  type: ExternalDataTypes
+  for?: ActivityItemType // All if unset.
+  customUrl?: string
 }
 // Examples:
 // { isActive: true, appliesTo: 'Shows', label: 'Watch on YouTube', url: '{YouTube}' }
-// TODO Will only be set if data field is set.
-// Data field case insensitive?
+// TODO
+// TODO Order is important.
 // Save button needed
-// Label/URL both required
 // Hint that only first two buttons will be displayed
 
 export type ActivityConfig = {
