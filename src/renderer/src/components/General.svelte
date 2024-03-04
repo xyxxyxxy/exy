@@ -3,6 +3,7 @@
   import { IpcChannel } from '../../../main/ipc.types'
   import DiscordStatus from './DiscordStatus.svelte'
   import { ActivityItemType } from '../../../main/core/activity/types'
+  import { getItemTypeText } from './utils'
 
   export let config: ConfigStore
 
@@ -12,12 +13,12 @@
     window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 
-  function isChecked(key: string): boolean {
-    return !config.ignoredTypes.includes(ActivityItemType[key])
+  function isChecked(value: ActivityItemType): boolean {
+    return !config.ignoredTypes.includes(value)
   }
 
-  function toggleIgnored(key: string): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, ActivityItemType[key])
+  function toggleIgnored(value: ActivityItemType): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, value)
   }
 </script>
 
@@ -50,15 +51,15 @@
             {#if !(i % columnItemCount)}
               <div>
                 <!-- Render the items in a column. -->
-                {#each Object.keys(ActivityItemType).slice(i, i + columnItemCount) as key}
+                {#each Object.values(ActivityItemType).slice(i, i + columnItemCount) as value}
                   <label>
                     <input
                       type="checkbox"
                       role="switch"
-                      checked={isChecked(key)}
-                      on:click={() => toggleIgnored(key)}
+                      checked={isChecked(value)}
+                      on:click={() => toggleIgnored(value)}
                     />
-                    {ActivityItemType[key]}
+                    {getItemTypeText(value)}
                   </label>
                 {/each}
               </div>

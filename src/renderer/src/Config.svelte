@@ -11,6 +11,7 @@
   import Activity from './components/Activity.svelte'
   import General from './components/General.svelte'
   import Debug from './components/Debug.svelte'
+  import ActivityButtons from './components/ActivityButtons.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -66,6 +67,11 @@
         <Activity {config} />
       </div>
     </div>
+    <hgroup>
+      <h2>Activity Buttons 🎆</h2>
+      <p>Customize the buttons on the activity.</p>
+    </hgroup>
+    <ActivityButtons {config} />
     <div class="grid">
       <About />
       <div>
