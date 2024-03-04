@@ -15,7 +15,7 @@
   function save(): void {
     isBusy = true
     resetValidation()
-    window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, clientId)
+    window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, clientId.trim())
   }
   window.electron.ipcRenderer.on(IpcChannel.SaveImgurClientId, (_, error?: Error) => {
     isBusy = false
