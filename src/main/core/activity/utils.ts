@@ -147,7 +147,7 @@ export function hasGenres(activity: Activity): boolean {
 export function getGenreText(activity: Activity): string {
   if (!activity.genres.length) return ''
   // Limit to first genre.
-  return activity.genres[1]
+  return activity.genres[0]
 }
 
 function withReleaseYear(activity: Activity, str: string): string {
