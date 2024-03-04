@@ -94,6 +94,10 @@ export function getSecondaryText(activity: Activity): string {
     return text
   }
 
+  if (activity.itemType === ActivityItemType.Movies) {
+    if (activity.tagline) return activity.tagline
+  }
+
   if (activity.itemType === ActivityItemType.OtherVideos && activity.chapterTitle)
     return activity.chapterTitle
 

@@ -2,7 +2,12 @@ import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
 import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
-import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/types'
+import {
+  Activity,
+  ActivityBase,
+  ActivityExternalData,
+  ActivityExternalLinks
+} from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
@@ -26,13 +31,15 @@ export function buildFullActivity$(
     artists: item.Artists || [],
     genres: item.Genres || [],
     description: item.Type === ItemType.TvChannel ? item.CurrentProgram?.Overview : item.Overview,
+    tagline: item.Taglines?.length ? item.Taglines[0] : undefined,
     albumTitle: item.Album,
     showTitle: item.SeriesName,
     seasonTitle: item.SeasonName,
     startTime: parseStartTime(item),
     episodeNumber: item.IndexNumber ? item.IndexNumber : undefined,
     releaseDate: parsePremierDate(item),
-    externalLinks: item.ExternalUrls ? mapExternalLinks(item) : [],
+    externalLinks: item.ExternalUrls ? mapExternalLinks(item) : [], // TODO Remove
+    externalData: item.ExternalUrls ? mapExternalData(item) : [],
     endTime: parseEndTime(item, playState)
   }
 
@@ -43,6 +50,14 @@ export function buildFullActivity$(
       else return addImage$(activity, server, session)
     })
   )
+}
+function mapExternalData(item: BaseItemDto): ActivityExternalData {
+  if (!item.ExternalUrls) return []
+  return item.ExternalUrls.filter(
+    (external): external is { Name: string; Url: string } =>
+      typeof external.Name === 'string' && typeof external.Url === 'string'
+    // Remove white spaces.
+  ).map((external) => ({ id: external.Name.replace(/\s/g, ''), url: external.Url }))
 }
 
 function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
