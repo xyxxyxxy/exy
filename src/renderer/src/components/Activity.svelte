@@ -1,7 +1,6 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
-  import { name, homepage } from '../../../../package.json'
 
   export let config: ConfigStore
 
@@ -11,10 +10,6 @@
 
   function toggleThemeColorUsed(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleActivityThemeColorUsed)
-  }
-
-  function toggleHomepageLinked(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityHomepageLinked)
   }
 </script>
 
@@ -41,16 +36,5 @@
       disabled={config.activity.isLogoShown}
     />
     Use server themed colors
-  </label>
-  <label>
-    <input
-      name="isHomepageLinked"
-      type="checkbox"
-      role="switch"
-      checked={config.activity.isHomepageLinked}
-      on:click|preventDefault={toggleHomepageLinked}
-    />
-    Add link to
-    <span data-tooltip={homepage}>{name} homepage</span>
   </label>
 </article>

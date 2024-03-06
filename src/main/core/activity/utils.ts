@@ -1,6 +1,5 @@
 import type { ActivityConfig, IgnoredMediaItemTypes } from '../stores/config.types'
 import { type Activity, type ActivityBase, ActivityItemType, ActivityMediaType } from './types'
-import { name, homepage } from '../../../../package.json'
 
 // Pick one activity from an array of activities.
 // Filtering out paused activities, if there are playing ones.
@@ -49,7 +48,7 @@ export function getStateText(activity: Activity, config: ActivityConfig): string
   if (activity.isPaused) return `Paused`
 
   // Genres for music.
-  if (activity.itemType === ActivityItemType.Music && hasGenres(activity)) {
+  if (activity.itemType === ActivityItemType.Songs && hasGenres(activity)) {
     return getGenreText(activity)
   }
 
@@ -68,7 +67,7 @@ export function getPrimaryText(activity: Activity): string {
   text += ' '
   // For shows the main text is the title of the show.
   text +=
-    activity.showTitle && activity.itemType === ActivityItemType.Shows
+    activity.showTitle && activity.itemType === ActivityItemType.Episodes
       ? activity.showTitle
       : activity.title
 
@@ -81,10 +80,10 @@ export function getPrimaryText(activity: Activity): string {
 
 export function getSecondaryText(activity: Activity): string {
   // Artist list for songs and music videos.
-  if ([ActivityItemType.Music, ActivityItemType.MusicVideos].includes(activity.itemType))
+  if ([ActivityItemType.Songs, ActivityItemType.MusicVideos].includes(activity.itemType))
     return getArtistText(activity)
 
-  if (activity.itemType === ActivityItemType.Shows && activity.seasonTitle) {
+  if (activity.itemType === ActivityItemType.Episodes && activity.seasonTitle) {
     let text = activity.seasonTitle
 
     // Add year after season, if the season itself does not include four digits for a year.
@@ -105,10 +104,10 @@ export function getSecondaryText(activity: Activity): string {
 }
 
 export function getImageText(activity: Activity): string {
-  if (activity.itemType === ActivityItemType.Music && activity.albumTitle)
+  if (activity.itemType === ActivityItemType.Songs && activity.albumTitle)
     return withReleaseYear(activity, activity.albumTitle)
 
-  if (activity.itemType === ActivityItemType.Shows && activity.episodeNumber)
+  if (activity.itemType === ActivityItemType.Episodes && activity.episodeNumber)
     return `Episode ${activity.episodeNumber} ${activity.title}`
 
   if (activity.itemType === ActivityItemType.Movies) return getGenreText(activity)
@@ -123,7 +122,7 @@ export function getEndTime(activity: Activity): Date | undefined {
   if (
     !activity.isPaused &&
     // No time for songs and music videos, not really relevant.
-    activity.itemType !== ActivityItemType.Music &&
+    activity.itemType !== ActivityItemType.Songs &&
     activity.itemType !== ActivityItemType.MusicVideos
   )
     return activity.endTime
@@ -137,7 +136,7 @@ function getArtistText(activity: Activity): string {
 }
 
 export function isMusic(activity: Activity): boolean {
-  return [ActivityItemType.Music, ActivityItemType.MusicVideos].includes(activity.itemType)
+  return [ActivityItemType.Songs, ActivityItemType.MusicVideos].includes(activity.itemType)
 }
 
 export function hasGenres(activity: Activity): boolean {
@@ -152,13 +151,4 @@ export function getGenreText(activity: Activity): string {
 
 function withReleaseYear(activity: Activity, str: string): string {
   return activity.releaseDate ? str + ` (${activity.releaseDate.getFullYear()})` : str
-}
-
-export function addConfigExtras(activity: Activity, config: ActivityConfig): Activity {
-  // Add additional data according to config.
-  if (config.isHomepageLinked && activity?.externalLinks)
-    activity.externalLinks.push({ label: `${name}?`, url: homepage })
-
-  // Freeze to prevent further modification.
-  return activity
 }

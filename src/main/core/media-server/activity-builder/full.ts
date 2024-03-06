@@ -2,13 +2,7 @@ import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
 import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
-import {
-  Activity,
-  ActivityBase,
-  ActivityExternalData,
-  ActivityExternalLinks,
-  ExternalDataTypes
-} from '../../activity/types'
+import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
@@ -39,8 +33,7 @@ export function buildFullActivity$(
     startTime: parseStartTime(item),
     episodeNumber: item.IndexNumber ? item.IndexNumber : undefined,
     releaseDate: parsePremierDate(item),
-    externalLinks: item.ExternalUrls ? mapExternalLinks(item) : [], // TODO Remove
-    externalData: item.ExternalUrls ? mapExternalData(item) : [],
+    externalData: mapExternalData(item),
     endTime: parseEndTime(item, playState)
   }
 
@@ -52,47 +45,21 @@ export function buildFullActivity$(
     })
   )
 }
-function mapExternalData(item: BaseItemDto): ActivityExternalData {
+function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   if (!item.ExternalUrls) return []
   return item.ExternalUrls.filter(
-    (external): external is { Name: ExternalDataTypes; Url: string } => {
+    (external): external is { Name: ExternalDataType; Url: string } => {
       if (!external.Name) return false
-      const isType = Object.values(ExternalDataTypes).includes(external.Name as ExternalDataTypes)
+      const isType = Object.values(ExternalDataType).includes(external.Name as ExternalDataType)
 
       if (!isType) {
         logger.warn(`Encountered unexpected external data type '${external.Name}'. Ignoring.`)
         return false
       }
 
-      return external.Url === 'string'
+      return !!external.Url
     }
   ).map((external) => ({ type: external.Name, url: external.Url }))
-}
-
-function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
-  const urls = item.ExternalUrls
-  if (!urls) return []
-  // Select specific links to include.
-
-  // MusicBrainz for audio.
-  if (item.MediaType === ItemMediaType.Audio) {
-    const musicBrainz = urls.find((externalUrl) => externalUrl.Url?.includes(`/release/`))?.Url
-    if (musicBrainz) return [{ label: `Checkout this Release`, url: musicBrainz }]
-  }
-
-  // IMDb for movies.
-  if (item.Type === ItemType.Movie) {
-    const IMDb = urls.find((externalUrl) => externalUrl.Name === 'IMDb')?.Url
-    if (IMDb) return [{ label: `Checkout this Movie`, url: IMDb }]
-  }
-
-  // TheTVDB for episodes.
-  if (item.Type === ItemType.Movie) {
-    const theTVDB = urls.find((externalUrl) => externalUrl.Name === 'TheTVDB')?.Url
-    if (theTVDB) return [{ label: `Checkout this Episode`, url: theTVDB }]
-  }
-
-  return []
 }
 
 function parsePremierDate(item: BaseItemDto): Date | undefined {

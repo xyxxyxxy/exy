@@ -18,8 +18,7 @@ export type Activity = ActivityBase & {
   // Arrays.
   artists: Array<string>
   genres: Array<string>
-  externalLinks: ActivityExternalLinks // TODO Remove
-  externalData: ActivityExternalData
+  externalData: Array<ExternalData>
 
   // Optionals.
 
@@ -53,8 +52,8 @@ export enum ActivityMediaType {
 
 export enum ActivityItemType {
   // Note: Emby does not have a special identifier for audio books.
-  Music = 'Music',
-  Shows = 'Shows',
+  Songs = 'Songs',
+  Episodes = 'Episodes',
   Movies = 'Movies',
   MusicVideos = 'MusicVideos',
   LiveTv = 'LiveTv',
@@ -63,17 +62,12 @@ export enum ActivityItemType {
   Books = 'Books'
 }
 
-export type ActivityExternalData = Array<ExternalData>
-export type ExternalLink = { label: string; url: string } // TODO Remove
-export type ActivityExternalLinks = Array<ExternalLink> // TODO Remove
-
 export type ExternalData = {
-  type: ExternalDataTypes
+  type: ExternalDataType
   url: string
 }
 
-export enum ExternalDataTypes {
-  Custom = 'Custom', // TODO needed or optional?
+export enum ExternalDataType {
   // Music
   MusicBrainzAlbum = 'MusicBrainz Album',
   MusicBrainzAlbumArtist = 'MusicBrainz Album Artist',

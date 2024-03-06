@@ -1,6 +1,7 @@
 import { randomUUID } from 'crypto'
 import { ConfigStore } from './config.types'
 import { Schema } from 'electron-store'
+import { name, homepage } from '../../../../package.json'
 
 export const configSchema: Schema<ConfigStore> = {
   deviceId: {
@@ -22,10 +23,7 @@ export const configSchema: Schema<ConfigStore> = {
     items: {
       type: 'object',
       properties: {
-        id: {
-          type: 'string',
-          default: randomUUID()
-        },
+        id: { type: 'string' },
         isActive: { type: 'boolean' },
         serverId: { type: 'string' },
         userId: { type: 'string' },
@@ -34,11 +32,7 @@ export const configSchema: Schema<ConfigStore> = {
         protocol: { enum: ['http', 'https'] },
         address: { type: 'string' },
         port: { type: 'number' },
-        username: { type: 'string' },
-        ignoredLibraryIds: {
-          type: 'array',
-          items: { type: 'number' }
-        }
+        username: { type: 'string' }
       }
     }
   },
@@ -56,10 +50,65 @@ export const configSchema: Schema<ConfigStore> = {
       isThemeColorUsed: {
         type: 'boolean',
         default: true
+      }
+    }
+  },
+  externalLinks: {
+    type: 'array',
+    default: [
+      {
+        id: randomUUID(),
+        isActive: true,
+        label: 'Checkout this Release',
+        forItemType: 'Songs',
+        target: 'MusicBrainz Release Group'
       },
-      isHomepageLinked: {
-        type: 'boolean',
-        default: false
+      {
+        id: randomUUID(),
+        isActive: true,
+        label: 'Checkout this Episode',
+        forItemType: 'Episodes',
+        target: 'TheTVDB'
+      },
+      {
+        id: randomUUID(),
+        isActive: true,
+        label: 'Checkout this Movie',
+        forItemType: 'Movies',
+        target: 'IMDb'
+      },
+      {
+        id: randomUUID(),
+        isActive: true,
+        label: 'Watch on YouTube',
+        forItemType: 'OtherVideos',
+        target: 'YouTube'
+      },
+      {
+        id: randomUUID(),
+        isActive: true,
+        label: 'Watch on BitChute',
+        forItemType: 'OtherVideos',
+        target: 'BitChute'
+      },
+      {
+        id: randomUUID(),
+        isActive: false,
+        label: `${name}?`,
+        forItemType: 'All',
+        target: 'CustomUrl',
+        customUrl: homepage
+      }
+    ],
+    items: {
+      type: 'object',
+      properties: {
+        id: { type: 'string' },
+        isActive: { type: 'boolean' },
+        label: { type: 'string' },
+        limitedToItemType: { type: 'string' },
+        target: { type: 'string' },
+        customUrl: { type: 'string' }
       }
     }
   },

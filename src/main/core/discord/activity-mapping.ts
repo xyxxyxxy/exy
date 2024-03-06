@@ -1,6 +1,6 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
-import { ActivityConfig } from '../stores/config.types'
+import { ActivityConfig, ConfigStore, ExternalLinkConfig } from '../stores/config.types'
 import { Activity, ActivityMediaType } from '../activity/types'
 import {
   getEndTime,
@@ -11,20 +11,21 @@ import {
   hasGenres,
   isMusic
 } from '../activity/utils'
+import { Button } from './types'
 
 const logger = log.scope('discord-mapper')
 
-export function toDiscordPresence(activity: Activity, config: ActivityConfig): Presence {
+export function toDiscordPresence(activity: Activity, config: ConfigStore): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
-    smallImageKey: getSmallImageKey(activity, config),
-    smallImageText: getStateText(activity, config),
+    smallImageKey: getSmallImageKey(activity, config.activity),
+    smallImageText: getStateText(activity, config.activity),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
     largeImageText: getImageText(activity),
     endTimestamp: getEndTime(activity),
-    buttons: activity.externalLinks
+    buttons: getButtons(activity, config.externalLinks)
   }
 
   return sanitizeForDiscord(presence)
@@ -48,6 +49,23 @@ function getSmallImageKey(activity: Activity, config: ActivityConfig): string {
   }
 
   return theme + playIcon
+}
+
+function getButtons(activity: Activity, externalLinks: Array<ExternalLinkConfig>): Array<Button> {
+  return externalLinks
+    .filter((link) => link.isActive)
+    .filter((link) => link.forItemType === 'All' || link.forItemType === activity.itemType)
+    .map((link) => {
+      const url =
+        link.target === 'CustomUrl'
+          ? link.customUrl
+          : activity.externalData.find((data) => data.type === link.target)?.url
+      return {
+        label: link.label,
+        url
+      }
+    })
+    .filter((button): button is Button => !!button.url)
 }
 
 // Ensure compatibility with discord-rpc/Discord.

@@ -7,7 +7,6 @@ export enum IpcChannel {
   ToggleIgnoredMediaType = 'ToggleIgnoredMediaType',
   ToggleActivityLogoShown = 'ToggleActivityLogoShown',
   ToggleActivityThemeColorUsed = 'ToggleActivityThemeColorUsed',
-  ToggleActivityHomepageLinked = 'ToggleActivityHomepageLinked',
   TestDiscordActivity = 'TestDiscordActivity',
   MediaServerActivities = 'MediaServerActivities',
   ToggleMediaServerActive = 'ToggleMediaServerActive',
@@ -15,6 +14,10 @@ export enum IpcChannel {
   TestMediaServer = 'TestMediaServer',
   ConnectMediaServer = 'ConnectMediaServer',
   SaveImgurClientId = 'SaveImgurClientId',
+  SaveExternalLink = 'SaveExternalLink',
+  ToggleExternalLinkActive = 'ToggleExternalLinkActive',
+  DeleteExternalLink = 'DeleteExternalLink',
+  ResetExternalLinks = 'ResetExternalLinks',
   ToggleDebugLogging = 'ToggleDebugLogging',
   OpenLogFile = 'OpenLogFile'
 }

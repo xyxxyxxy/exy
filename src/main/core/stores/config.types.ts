@@ -1,4 +1,4 @@
-import type { ActivityItemType, ExternalDataTypes, ExternalLink } from '../activity/types'
+import type { ActivityItemType, ExternalDataType } from '../activity/types'
 
 export type ConfigStore = {
   deviceId: string
@@ -7,29 +7,8 @@ export type ConfigStore = {
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
   activity: ActivityConfig
-  isDebugLoggingEnabled: boolean
-}
-
-export type IgnoredMediaItemTypes = Array<ActivityItemType>
-export type ExternalLinkConfig = {
-  isActive: boolean
-  label: string
-  type: ExternalDataTypes
-  for?: ActivityItemType // All if unset.
-  customUrl?: string
-}
-// Examples:
-// { isActive: true, appliesTo: 'Shows', label: 'Watch on YouTube', url: '{YouTube}' }
-// TODO
-// TODO Order is important.
-// Save button needed
-// Hint that only first two buttons will be displayed
-
-export type ActivityConfig = {
-  isLogoShown: boolean
-  isThemeColorUsed: boolean
-  isHomepageLinked: boolean
   externalLinks: Array<ExternalLinkConfig>
+  isDebugLoggingEnabled: boolean
 }
 
 export type MediaServerConfig = {
@@ -45,12 +24,28 @@ export type MediaServerConfig = {
   username: string
 }
 
+export type ActivityConfig = {
+  isLogoShown: boolean
+  isThemeColorUsed: boolean
+}
+
+export type IgnoredMediaItemTypes = Array<ActivityItemType>
+
+export type ExternalLinkConfig = {
+  id: string
+  isActive: boolean
+  label: string
+  forItemType: ActivityItemType | 'All'
+  target: ExternalDataType | 'CustomUrl'
+  customUrl: string | null
+}
+
 export enum ConfigSelector {
   deviceId = 'deviceId',
   IgnoredTypes = 'ignoredTypes',
   IsStartupEnabled = 'isStartupEnabled',
   Activity = 'activity',
-  isHomepageLinked = 'isHomepageLinked',
+  ExternalLinks = 'externalLinks',
   MediaServers = 'mediaServers',
   ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'

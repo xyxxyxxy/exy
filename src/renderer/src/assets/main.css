@@ -1,3 +1,7 @@
 hgroup {
   margin-top: 2rem !important;
 }
+
+body {
+  padding-bottom: 12rem;
+}

@@ -1,5 +1,5 @@
 import log from 'electron-log'
-import { Activity, ExternalDataTypes } from '../../activity/types'
+import { Activity, ExternalDataType } from '../../activity/types'
 import { Observable, catchError, from, map, of, tap } from 'rxjs'
 
 const logger = log.scope('builder-public')
@@ -18,14 +18,14 @@ export const addPublicContent$ = (activity: Activity): Observable<Activity> => {
   if (youTubeId)
     return confirmAndAdd$(
       activity,
-      ExternalDataTypes.YouTube,
+      ExternalDataType.YouTube,
       `https://youtube.com/watch?v=${youTubeId}`,
       `https://img.youtube.com/vi/${youTubeId}/0.jpg`
     )
   if (bitChuteId)
     return confirmAndAdd$(
       activity,
-      ExternalDataTypes.BitChute,
+      ExternalDataType.BitChute,
       `https://www.bitchute.com/video/${bitChuteId}/`
     )
 
@@ -40,7 +40,7 @@ function getId(path: string, idMatcher: RegExp): string | null {
 
 function confirmAndAdd$(
   activity: Activity,
-  dataType: ExternalDataTypes.YouTube | ExternalDataTypes.BitChute,
+  dataType: ExternalDataType.YouTube | ExternalDataType.BitChute,
   watchUrl: string,
   imageUrl?: string
 ): Observable<Activity> {
@@ -54,7 +54,6 @@ function confirmAndAdd$(
     map(() => {
       // URL is valid.
       if (imageUrl) activity.imageUrl = imageUrl
-      activity.externalLinks.push({ label: `Watch on ${dataType}`, url: watchUrl }) // TODO Remove
       activity.externalData.push({ type: dataType, url: watchUrl })
       return activity
     }),
