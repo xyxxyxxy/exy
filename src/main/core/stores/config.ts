@@ -143,6 +143,27 @@ export function toggleExternalLinkActive(id: string): void {
   configStore.set(ConfigSelector.ExternalLinks, externalLinks)
 }
 
+export function moveExternalLinkUp(id: string): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+  const index = externalLinks.findIndex((element) => element.id === id)
+  moveInArray(externalLinks, index, index - 1)
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+export function moveExternalLinkDown(id: string): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+  const index = externalLinks.findIndex((element) => element.id === id)
+  moveInArray(externalLinks, index, index + 1)
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+function moveInArray<T>(data: Array<T>, from: number, to: number): void {
+  // Remove 'from' element and store it.
+  const element = data.splice(from, 1)[0]
+  // Insert stored element into position 'to'.
+  data.splice(to, 0, element)
+}
+
 export function deleteExternalLink(id: string): void {
   configStore.set(
     ConfigSelector.ExternalLinks,

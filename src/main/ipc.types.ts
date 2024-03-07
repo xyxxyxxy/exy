@@ -16,6 +16,8 @@ export enum IpcChannel {
   SaveImgurClientId = 'SaveImgurClientId',
   SaveExternalLink = 'SaveExternalLink',
   ToggleExternalLinkActive = 'ToggleExternalLinkActive',
+  MoveExternalLinkUp = 'MoveExternalLinkUp',
+  MoveExternalLinkDown = 'MoveExternalLinkDown',
   DeleteExternalLink = 'DeleteExternalLink',
   ResetExternalLinks = 'ResetExternalLinks',
   ToggleDebugLogging = 'ToggleDebugLogging',

@@ -16,8 +16,12 @@
     media type and the availability of the target data for the playing item.
   </p>
   <p>You can use this to link to your personal listening or watch history.</p>
-  {#each config.externalLinks as externalLink (externalLink.id)}
-    <ActivityButton {externalLink} />
+  {#each config.externalLinks as externalLink, index}
+    <ActivityButton
+      {externalLink}
+      isFirst={index === 0}
+      isLast={index === config.externalLinks.length - 1}
+    />
   {/each}
   <ActivityButton />
   <button type="button" class="secondary" on:click={reset}>Reset buttons to default</button>

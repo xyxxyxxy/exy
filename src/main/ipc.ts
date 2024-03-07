@@ -15,7 +15,9 @@ import {
   resetExternalLinks,
   saveExternalLink,
   deleteExternalLink,
-  toggleExternalLinkActive
+  toggleExternalLinkActive,
+  moveExternalLinkUp,
+  moveExternalLinkDown
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -170,6 +172,8 @@ ipcMain.on(IpcChannel.SaveExternalLink, (_, data) => {
   saveExternalLink(data)
 })
 ipcMain.on(IpcChannel.ToggleExternalLinkActive, (_, id) => toggleExternalLinkActive(id))
+ipcMain.on(IpcChannel.MoveExternalLinkUp, (_, id) => moveExternalLinkUp(id))
+ipcMain.on(IpcChannel.MoveExternalLinkDown, (_, id) => moveExternalLinkDown(id))
 ipcMain.on(IpcChannel.DeleteExternalLink, (_, id) => deleteExternalLink(id))
 ipcMain.on(IpcChannel.ResetExternalLinks, resetExternalLinks)
 ipcMain.on(IpcChannel.OpenLogFile, () => shell.openExternal(log.transports.file.getFile().path))
