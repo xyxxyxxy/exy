@@ -14,6 +14,7 @@
 </script>
 
 <article>
+  <header>Style</header>
   <label>
     <input
       name="isMediaServerTypeShown"
@@ -36,5 +37,18 @@
       disabled={config.activity.isLogoShown}
     />
     Use server themed colors
+  </label>
+
+  <label>
+    <input
+      name="isMediaServerTypeShown"
+      type="checkbox"
+      role="switch"
+      checked={config.activity.isThemeColorUsed}
+      on:click|preventDefault={toggleThemeColorUsed}
+      disabled={config.activity.isLogoShown}
+    />
+    <!-- TODO Move avtivity config one level up? -->
+    TODO Show remaining time
   </label>
 </article>

@@ -13,12 +13,14 @@ MacOS and Linux builds are created, but untested. Feedback appreciated.
 
 ## Features
 
-- Supports all media types.
-- Show playing/paused/muted state.
-- Add multiple media-servers.
-- Option to hide media-server type in Discord.
+- Easy to setup.
+- All media types supported.
 - Preview images using Imgur.
-- Detect [public content](#public-content) from [YouTube](https://www.youtube.com) and [BitChute](https://www.bitchute.com) and provide link in activity.
+- Showing paused state.
+- Ignore media types.
+- Customize buttons.
+- Add multiple media-servers.
+- Detect [public content](#public-content) from [YouTube](https://www.youtube.com) / [BitChute](https://www.bitchute.com) and link to video.
 
 ## Requirements
 

@@ -57,6 +57,7 @@
   </p>
   <button on:click={testClick} disabled={!isReady || isTesting}> Send test activity </button>
   {#if isTesting || testContent}
+    <!-- TODO Move into button -->
     <p>
       <span aria-busy={isTesting}>
         {isTesting ? `Sending ${testContent}` : `Sent ${testContent} successfully`}.

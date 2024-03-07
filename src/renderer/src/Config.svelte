@@ -11,6 +11,7 @@
   import General from './components/General.svelte'
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
+  import MediaTypes from './components/MediaTypes.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -31,13 +32,13 @@
 {#if config}
   <div class="container">
     <hgroup>
-      <h1>General 🔮</h1>
-      <p>Settings to modify the behavior of {name}.</p>
+      <h1>Configuration 🔮</h1>
+      <p>Setup and change the behavior of {name}.</p>
     </hgroup>
     <General {config} />
     <hgroup>
-      <h1>Connections 🪄</h1>
-      <p>Connect to one or multiple media-servers of your choice.</p>
+      <h2>Connections 🪄</h2>
+      <p>Connect to your media-servers.</p>
     </hgroup>
 
     {#each config.mediaServers as server (server.id)}
@@ -49,36 +50,35 @@
     {/each}
     <MediaServerNew {hasMediaServers} />
 
+    <hgroup>
+      <h2>Activity 🎇</h2>
+      <p>Customize how the activity is generated.</p>
+    </hgroup>
     <div class="grid">
       <div>
-        <hgroup>
-          <h1>Imgur 🌠</h1>
-          <p>Making images publicly available while keeping server addresses private.</p>
-        </hgroup>
-        <ImgurInfo {config} />
+        <MediaTypes {config} />
       </div>
       <div>
-        <hgroup>
-          <h1>Activity 🎇</h1>
-          <p>Customize how the activity is generated.</p>
-        </hgroup>
         <Activity {config} />
       </div>
     </div>
+
     <hgroup>
-      <h2>Activity Buttons 🎆</h2>
+      <h3>Activity Buttons 🎆</h3>
       <p>Customize the buttons on the activity.</p>
     </hgroup>
     <ActivityButtons {config} />
-    <div class="grid">
-      <About />
-      <div>
-        <hgroup>
-          <h3>Debug & Reset 🩻</h3>
-          <p>Advanced troubleshooting and reset options.</p>
-        </hgroup>
-        <DebugAndReset {config} />
-      </div>
-    </div>
+
+    <hgroup>
+      <h3>Imgur 🌠</h3>
+      <p>Making images publicly available while keeping media-server addresses private.</p>
+    </hgroup>
+    <ImgurInfo {config} />
+
+    <hgroup>
+      <h2>Debug & Reset 🩻</h2>
+      <p>Advanced troubleshooting and reset options.</p>
+    </hgroup>
+    <DebugAndReset {config} />
   </div>
 {/if}

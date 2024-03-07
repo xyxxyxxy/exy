@@ -15,7 +15,7 @@
 <style>
   section {
     display: flex;
-    margin: 4rem;
+    margin: 1.41rem 4rem;
   }
 
   li {
