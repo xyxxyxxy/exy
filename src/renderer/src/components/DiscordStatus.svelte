@@ -17,10 +17,10 @@
     isReady = newStatus === 'ready'
     statusStyle = isReady ? successStyle : errorStyle
 
-    if (newStatus === ConnectionStatus.Disconnected) statusText = `Discord disconnected...`
-    else if (newStatus === ConnectionStatus.Connected) statusText = `Discord connected...`
-    else if (newStatus === ConnectionStatus.Ready) statusText = `Discord is connected and ready.`
-    else statusText = `Unknown Discord status. See logs for details.`
+    if (newStatus === ConnectionStatus.Disconnected) statusText = `Disconnected...`
+    else if (newStatus === ConnectionStatus.Connected) statusText = `Connected...`
+    else if (newStatus === ConnectionStatus.Ready) statusText = `Connected and ready.`
+    else statusText = `Unknown status. See logs for details.`
   })
 
   let testTextOptions = ['test', 'test activity', 'data', 'something', 'some data']
@@ -33,14 +33,13 @@
 
   function testClick(): void {
     isTesting = true
-    testContent = ''
+    testContent = getRandomTestText()
     // Small delay for better experience and to prevent spam.
     setTimeout(test, 500)
   }
 
   function test(): void {
     if (testResetTimer) clearTimeout(testResetTimer)
-    testContent = getRandomTestText()
     window.electron.ipcRenderer.send(IpcChannel.TestDiscordActivity, testContent)
     isTesting = false
     // Reset test state after some time.
@@ -48,30 +47,38 @@
   }
 </script>
 
-<article class="flex">
-  <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
+<article>
+  <header>
+    <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
+  </header>
 
-  <section>
+  <p>
+    <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
+  </p>
+  <button on:click={testClick} disabled={!isReady || isTesting}> Send test activity </button>
+  {#if isTesting || testContent}
     <p>
-      <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
+      <span aria-busy={isTesting}>
+        {isTesting ? `Sending ${testContent}` : `Sent ${testContent} successfully`}.
+      </span>
     </p>
-    <button on:click={testClick} disabled={!isReady || isTesting}> Send test activity </button>
-    <span aria-busy={isTesting}>
-      {#if testContent}
-        Sent {testContent}.
-      {/if}
-    </span>
-  </section>
+  {/if}
 </article>
 
 <style>
-  .flex {
-    display: flex;
-    gap: var(--pico-grid-row-gap);
-  }
-
   img {
     transition: all 0.2s linear;
+    display: block;
+    margin: auto;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: var(--pico-spacing);
   }
 
   .greyscale {
