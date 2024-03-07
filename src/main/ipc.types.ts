@@ -19,7 +19,9 @@ export enum IpcChannel {
   MoveExternalLinkUp = 'MoveExternalLinkUp',
   MoveExternalLinkDown = 'MoveExternalLinkDown',
   DeleteExternalLink = 'DeleteExternalLink',
+  ClearCache = 'ResetCache',
   ResetExternalLinks = 'ResetExternalLinks',
+  ClearConfig = 'ResetConfig',
   ToggleDebugLogging = 'ToggleDebugLogging',
   OpenLogFile = 'OpenLogFile'
 }

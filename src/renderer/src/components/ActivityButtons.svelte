@@ -4,10 +4,6 @@
   import { IpcChannel } from '../../../main/ipc.types'
 
   export let config: ConfigStore
-
-  function reset(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ResetExternalLinks)
-  }
 </script>
 
 <section>
@@ -24,5 +20,4 @@
     />
   {/each}
   <ActivityButton />
-  <button type="button" class="secondary" on:click={reset}>Reset buttons to default</button>
 </section>

@@ -42,6 +42,10 @@ export const configSchema: Schema<ConfigStore> = {
   },
   activity: {
     type: 'object',
+    default: {
+      isLogoShown: true,
+      isThemeColorUsed: true
+    },
     properties: {
       isLogoShown: {
         type: 'boolean',

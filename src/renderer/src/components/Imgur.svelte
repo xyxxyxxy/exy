@@ -1,5 +1,9 @@
 <script lang="ts">
   import { name } from '../../../../package.json'
+  import type { ConfigStore } from '../../../main/core/stores/config.types'
+  import ImgurClientId from './ImgurForm.svelte'
+
+  export let config: ConfigStore
 </script>
 
 <p>
@@ -32,3 +36,4 @@
     <footer>Your client ID should now be displayed.</footer>
   </article>
 </details>
+<ImgurClientId {config} />

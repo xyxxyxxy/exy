@@ -1,11 +1,18 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
+  import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
 
-  export let clientId: string
+  export let config: ConfigStore
 
+  let clientId: string
   let isBusy = false
   let isInvalid: boolean | null = null
   let helperText: string = ''
+
+  onMount(() => {
+    clientId = config.imgurClientId
+  })
 
   function resetValidation(): void {
     isInvalid = null

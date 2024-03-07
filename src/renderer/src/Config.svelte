@@ -1,6 +1,5 @@
 <script lang="ts">
-  import ImgurInfo from './components/ImgurInfo.svelte'
-  import ImgurClientId from './components/ImgurClientId.svelte'
+  import ImgurInfo from './components/Imgur.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import type { MediaServerActivityMapping } from '../../main/core/media-server/types'
   import { IpcChannel } from '../../main/ipc.types'
@@ -10,7 +9,7 @@
   import { name } from '../../../package.json'
   import Activity from './components/Activity.svelte'
   import General from './components/General.svelte'
-  import Debug from './components/Debug.svelte'
+  import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
 
   let config: ConfigStore
@@ -56,8 +55,7 @@
           <h1>Imgur 🌠</h1>
           <p>Making images publicly available while keeping server addresses private.</p>
         </hgroup>
-        <ImgurInfo />
-        <ImgurClientId clientId={config.imgurClientId} />
+        <ImgurInfo {config} />
       </div>
       <div>
         <hgroup>
@@ -76,10 +74,10 @@
       <About />
       <div>
         <hgroup>
-          <h3>Debug 🩻</h3>
-          <p>Options for advanced troubleshooting.</p>
+          <h3>Debug & Reset 🩻</h3>
+          <p>Advanced troubleshooting and reset options.</p>
         </hgroup>
-        <Debug {config} />
+        <DebugAndReset {config} />
       </div>
     </div>
   </div>

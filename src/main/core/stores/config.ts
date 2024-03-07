@@ -178,3 +178,7 @@ export function deleteExternalLink(id: string): void {
 export function resetExternalLinks(): void {
   configStore.reset(ConfigSelector.ExternalLinks)
 }
+
+export function clearConfig(): void {
+  configStore.clear()
+}

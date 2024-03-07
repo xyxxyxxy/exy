@@ -141,6 +141,8 @@
   </details>
   {#if externalLink.id}
     <Move {isFirst} {isLast} {moveUp} {moveDown} />
+  {:else}
+    <div style="width: 3rem;"></div>
   {/if}
 </div>
 

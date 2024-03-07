@@ -17,7 +17,8 @@ import {
   deleteExternalLink,
   toggleExternalLinkActive,
   moveExternalLinkUp,
-  moveExternalLinkDown
+  moveExternalLinkDown,
+  clearConfig
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -33,6 +34,7 @@ import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
 import { MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
+import { clearCache } from './core/stores/cache'
 
 const logger = log.scope('ipc')
 
@@ -176,4 +178,6 @@ ipcMain.on(IpcChannel.MoveExternalLinkUp, (_, id) => moveExternalLinkUp(id))
 ipcMain.on(IpcChannel.MoveExternalLinkDown, (_, id) => moveExternalLinkDown(id))
 ipcMain.on(IpcChannel.DeleteExternalLink, (_, id) => deleteExternalLink(id))
 ipcMain.on(IpcChannel.ResetExternalLinks, resetExternalLinks)
+ipcMain.on(IpcChannel.ClearCache, clearCache)
+ipcMain.on(IpcChannel.ClearConfig, clearConfig)
 ipcMain.on(IpcChannel.OpenLogFile, () => shell.openExternal(log.transports.file.getFile().path))
