@@ -122,6 +122,10 @@ export function setImgurClientId(clientId: string | null): void {
 
 export function saveExternalLink(newOrUpdated: ExternalLinkConfig): void {
   const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+
+  // Remove custom URL if target is different.
+  if (newOrUpdated.target !== 'CustomUrl') delete newOrUpdated.customUrl
+
   const index = externalLinks.findIndex((element) => element.id === newOrUpdated.id)
   if (index !== -1) {
     // Update.

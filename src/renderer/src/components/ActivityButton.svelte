@@ -10,8 +10,7 @@
     isActive: true,
     label: 'New Button',
     forItemType: 'All',
-    target: 'CustomUrl',
-    customUrl: null
+    target: 'CustomUrl'
   }
 
   export let isFirst = false

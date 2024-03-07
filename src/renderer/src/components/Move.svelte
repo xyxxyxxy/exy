@@ -7,14 +7,8 @@
 </script>
 
 <div>
-  {#if !isFirst}<button class="up" class:merge={!isLast} on:click|preventDefault={moveUp}>↑</button
-    >{/if}
-  {#if !isLast}<button
-      class="down"
-      class:merge={!isFirst}
-      class:isFirstAlone={isFirst}
-      on:click|preventDefault={moveDown}>↓</button
-    >{/if}
+  <button class="up" disabled={isFirst} on:click|preventDefault={moveUp}>↑</button>
+  <button class="down" disabled={isLast} on:click|preventDefault={moveDown}>↓</button>
 </div>
 
 <style>
@@ -25,17 +19,13 @@
     height: 1.54rem;
   }
 
-  .up.merge {
+  .up {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 
-  .down.merge {
+  .down {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-  }
-
-  .isFirstAlone {
-    margin-top: 1.54rem;
   }
 </style>

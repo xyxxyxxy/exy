@@ -37,7 +37,7 @@ export type ExternalLinkConfig = {
   label: string
   forItemType: ActivityItemType | 'All'
   target: ExternalDataType | 'CustomUrl'
-  customUrl: string | null
+  customUrl?: string
 }
 
 export enum ConfigSelector {
