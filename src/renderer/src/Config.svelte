@@ -64,14 +64,14 @@
     </div>
 
     <hgroup>
-      <h3>Activity Buttons 🎆</h3>
+      <h3>Buttons 🎆</h3>
       <p>Customize the buttons on the activity.</p>
     </hgroup>
     <ActivityButtons {config} />
 
     <hgroup>
       <h3>Imgur 🌠</h3>
-      <p>Making images publicly available while keeping media-server addresses private.</p>
+      <p>Making images publicly available while keeping media-servers private.</p>
     </hgroup>
     <ImgurInfo {config} />
 

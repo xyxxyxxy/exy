@@ -9,8 +9,7 @@
 <div class="grid">
   <div>
     <p>
-      Providing an Imgur client ID will enable {name} to display a preview image of the playing media
-      item.
+      Providing an Imgur client ID will enable {name} to display a preview image of the playing media.
     </p>
     <details>
       <!-- svelte-ignore a11y-no-redundant-roles -->
