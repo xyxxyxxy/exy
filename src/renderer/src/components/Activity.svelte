@@ -1,65 +1,51 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
+  import { name } from '../../../../package.json'
 
   export let config: ConfigStore
 
-  function toggleLogoShown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityLogoShown)
+  function toggleIsPlayStateShown(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsPlayStateShown)
   }
 
-  function toggleThemeColorUsed(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityThemeColorUsed)
+  function toggleIsLogoUsed(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsLogoUsed)
+  }
+
+  function toggleIsThemeUsed(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsThemeUsed)
   }
 </script>
 
 <article>
-  <header>Style</header>
+  <header>Customize the look & feel of the activity.</header>
 
   <label>
     <input
-      name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.isThemeColorUsed}
-      on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.isLogoShown}
+      checked={config.isPlayStateShown}
+      on:click={toggleIsPlayStateShown}
     />
-    TODO Show time remaining
+    Show <em data-tooltip="Time remaining and pause state">play state</em>
   </label>
 
   <label>
     <input
-      name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.isThemeColorUsed}
-      on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.isLogoShown}
+      checked={config.isThemeUsed}
+      on:click={toggleIsThemeUsed}
     />
-    TODO Show pause state
+    Use <em data-tooltip="Emby or Jellyfin accent colors depending on media source">theme color</em>
+    for icons
   </label>
 
   <label>
-    <input
-      name="isMediaServerTypeShown"
-      type="checkbox"
-      role="switch"
-      checked={config.isLogoShown}
-      on:click|preventDefault={toggleLogoShown}
-    />
-    Use media-server logo as play icon
-  </label>
-
-  <label>
-    <input
-      name="isMediaServerTypeShown"
-      type="checkbox"
-      role="switch"
-      checked={config.isThemeColorUsed}
-      on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.isLogoShown}
-    />
-    Use media-server accent color icons
+    <input type="checkbox" role="switch" checked={config.isLogoUsed} on:click={toggleIsLogoUsed} />
+    Use
+    <em data-tooltip="Emby, Jellyfin or {name} logo depending on theme color setting">logo</em> instead
+    of play icon
   </label>
 </article>

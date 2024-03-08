@@ -74,10 +74,6 @@ export function deleteMediaServer(id: string): void {
   )
 }
 
-export function toggleStartup(): void {
-  toggle(ConfigSelector.IsStartupEnabled)
-}
-
 export function toggleIgnoredMediaType(type: ActivityItemType): void {
   let list = configStore.get(ConfigSelector.IgnoredTypes)
   const isIncluded = list.includes(type)
@@ -88,20 +84,8 @@ export function toggleIgnoredMediaType(type: ActivityItemType): void {
   configStore.set(ConfigSelector.IgnoredTypes, list)
 }
 
-export function toggleActivityLogoShown(): void {
-  toggle(ConfigSelector.IsLogoShown)
-}
-
-export function toggleActivityThemeColorUsed(): void {
-  toggle(ConfigSelector.IsThemeColorUsed)
-}
-
-function toggle(selector: ConfigSelector): void {
+export function toggleConfigFlag(selector: ConfigSelector): void {
   configStore.set(selector, !configStore.get(selector.toString()))
-}
-
-export function toggleDebugLogging(): void {
-  toggle(ConfigSelector.IsDebugLoggingEnabled)
 }
 
 export function setImgurClientId(clientId: string | null): void {

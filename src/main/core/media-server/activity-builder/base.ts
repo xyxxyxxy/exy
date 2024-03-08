@@ -45,13 +45,10 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
     return item.IndexNumber ? ActivityItemType.Episodes : ActivityItemType.LiveRecordings
   }
 
-  if (item?.Type === ItemType.Video) {
-    return ActivityItemType.OtherVideos
-  }
-
-  if (item?.Type === ItemType.Book) {
-    return ActivityItemType.Books
-  }
+  if (item?.Type === ItemType.Video) return ActivityItemType.OtherVideos
+  if (item?.Type === ItemType.Book) return ActivityItemType.Books
+  // No special treatment for trailers.
+  if (item?.Type === ItemType.Trailer) return ActivityItemType.OtherVideos
 
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)
 

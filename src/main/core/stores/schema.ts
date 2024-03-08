@@ -13,11 +13,15 @@ export const configSchema: Schema<ConfigStore> = {
     type: 'boolean',
     default: true
   },
-  isLogoShown: {
+  isPlayStateShown: {
     type: 'boolean',
     default: true
   },
-  isThemeColorUsed: {
+  isLogoUsed: {
+    type: 'boolean',
+    default: true
+  },
+  isThemeUsed: {
     type: 'boolean',
     default: true
   },

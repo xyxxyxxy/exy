@@ -12,14 +12,14 @@ export const configMigrationOptions: Options<ConfigStore> = {
   migrations: {
     '0.4.0': (store): void => {
       const activity = store.get('activity')
-      if (activity) {
-        store.delete('activity' as keyof ConfigStore)
-        store.set('isThemeColorUsed', !!activity['isThemeColorUsed'])
-        store.set('isLogoShown', !!activity['isLogoShown'])
-      } else {
-        store.set('isThemeColorUsed', true)
-        store.set('isLogoShown', true)
-      }
+
+      if (activity) store.delete('activity' as keyof ConfigStore)
+
+      store.set('isThemeUsed', activity ? !!activity['isThemeColorUsed'] : true)
+      store.set('isLogoUsed', activity ? !!activity['isLogoShown'] : true)
+
+      // New value.
+      store.set('isPlayStateShown', true)
 
       // Reset activity to introduce default buttons.
       store.reset('externalLinks')

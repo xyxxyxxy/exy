@@ -44,8 +44,12 @@ export function isIgnoredType(
   return ignoredTypes.includes(activity.itemType)
 }
 
-export function getStateText(activity: Activity, isThemeColorUsed: boolean): string {
-  if (activity.isPaused) return `Paused`
+export function getStateText(
+  activity: Activity,
+  IsPauseShown: boolean,
+  isThemeColorUsed: boolean
+): string {
+  if (IsPauseShown && activity.isPaused) return `Paused`
 
   // Genres for music.
   if (activity.itemType === ActivityItemType.Songs && hasGenres(activity)) {
@@ -118,8 +122,9 @@ export function getImageText(activity: Activity): string {
   return ''
 }
 
-export function getEndTime(activity: Activity): Date | undefined {
+export function getEndTime(activity: Activity, isPlayStateShown: boolean): Date | undefined {
   if (
+    isPlayStateShown &&
     !activity.isPaused &&
     // No time for songs and music videos, not really relevant.
     activity.itemType !== ActivityItemType.Songs &&

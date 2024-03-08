@@ -18,13 +18,18 @@ const logger = log.scope('discord-mapper')
 export function toDiscordPresence(activity: Activity, config: ConfigStore): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
-    smallImageKey: getSmallImageKey(activity, config.isThemeColorUsed, config.isLogoShown),
-    smallImageText: getStateText(activity, config.isThemeColorUsed),
+    smallImageKey: getSmallImageKey(
+      activity,
+      config.isPlayStateShown,
+      config.isThemeUsed,
+      config.isLogoUsed
+    ),
+    smallImageText: getStateText(activity, config.isPlayStateShown, config.isThemeUsed),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
     largeImageText: getImageText(activity),
-    endTimestamp: getEndTime(activity),
+    endTimestamp: getEndTime(activity, config.isPlayStateShown),
     buttons: getButtons(activity, config.externalLinks)
   }
 
@@ -34,6 +39,7 @@ export function toDiscordPresence(activity: Activity, config: ConfigStore): Pres
 // Highly related to Discord assets, so not located in utils.
 function getSmallImageKey(
   activity: Activity,
+  isPlayStateShown: boolean,
   isThemeColorUsed: boolean,
   isLogoShown: boolean
 ): string {
@@ -41,7 +47,7 @@ function getSmallImageKey(
 
   let theme = isThemeColorUsed ? activity.sourceType : 'neutral'
   theme += '-'
-  if (activity.isPaused) return theme + `pause`
+  if (isPlayStateShown && activity.isPaused) return theme + `pause`
 
   let playIcon = isLogoShown ? 'small' : 'play'
 

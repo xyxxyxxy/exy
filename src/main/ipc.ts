@@ -6,11 +6,7 @@ import {
   deleteMediaServer,
   isConnectionConfigured,
   setImgurClientId,
-  toggleDebugLogging,
   toggleMediaServerActive,
-  toggleActivityThemeColorUsed,
-  toggleStartup,
-  toggleActivityLogoShown,
   toggleIgnoredMediaType,
   resetExternalLinks,
   saveExternalLink,
@@ -18,7 +14,8 @@ import {
   toggleExternalLinkActive,
   moveExternalLinkUp,
   moveExternalLinkDown,
-  clearConfig
+  clearConfig,
+  toggleConfigFlag
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -32,7 +29,7 @@ import {
 import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
-import { MediaServerConfig } from './core/stores/config.types'
+import { ConfigSelector, MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
 import { clearCache } from './core/stores/cache'
 
@@ -66,10 +63,13 @@ combineLatest([
   event.sender.send(IpcChannel.MediaServerActivities, activities)
 })
 
-ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
+ipcMain.on(IpcChannel.ToggleStartup, () => toggleConfigFlag(ConfigSelector.IsStartupEnabled))
 ipcMain.on(IpcChannel.ToggleIgnoredMediaType, (_, type) => toggleIgnoredMediaType(type))
-ipcMain.on(IpcChannel.ToggleActivityLogoShown, toggleActivityLogoShown)
-ipcMain.on(IpcChannel.ToggleActivityThemeColorUsed, toggleActivityThemeColorUsed)
+ipcMain.on(IpcChannel.ToggleIsPlayStateShown, () =>
+  toggleConfigFlag(ConfigSelector.IsPlayStateShown)
+)
+ipcMain.on(IpcChannel.ToggleIsLogoUsed, () => toggleConfigFlag(ConfigSelector.IsLogoUsed))
+ipcMain.on(IpcChannel.ToggleIsThemeUsed, () => toggleConfigFlag(ConfigSelector.IsThemeUsed))
 ipcMain.on(IpcChannel.TestDiscordActivity, (_, content) => setTestActivity(content))
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
@@ -168,7 +168,9 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
     }
   })
 })
-ipcMain.on(IpcChannel.ToggleDebugLogging, toggleDebugLogging)
+ipcMain.on(IpcChannel.ToggleDebugLogging, () =>
+  toggleConfigFlag(ConfigSelector.IsDebugLoggingEnabled)
+)
 ipcMain.on(IpcChannel.SaveExternalLink, (_, data) => {
   if (!data.id) data = { ...data, id: randomUUID() }
   saveExternalLink(data)
