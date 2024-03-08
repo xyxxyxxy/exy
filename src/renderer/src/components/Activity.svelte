@@ -15,16 +15,40 @@
 
 <article>
   <header>Style</header>
+
   <label>
     <input
       name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.activity.isLogoShown}
+      checked={config.isThemeColorUsed}
+      on:click|preventDefault={toggleThemeColorUsed}
+      disabled={config.isLogoShown}
+    />
+    TODO Show time remaining
+  </label>
+
+  <label>
+    <input
+      name="isMediaServerTypeShown"
+      type="checkbox"
+      role="switch"
+      checked={config.isThemeColorUsed}
+      on:click|preventDefault={toggleThemeColorUsed}
+      disabled={config.isLogoShown}
+    />
+    TODO Show pause state
+  </label>
+
+  <label>
+    <input
+      name="isMediaServerTypeShown"
+      type="checkbox"
+      role="switch"
+      checked={config.isLogoShown}
       on:click|preventDefault={toggleLogoShown}
     />
-    Show logo
-    <span data-tooltip="Music will always show a vinyl icon if genres are available">ℹ️</span>
+    Use media-server logo as play icon
   </label>
 
   <label>
@@ -32,23 +56,10 @@
       name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.activity.isThemeColorUsed}
+      checked={config.isThemeColorUsed}
       on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.activity.isLogoShown}
+      disabled={config.isLogoShown}
     />
-    Use server themed colors
-  </label>
-
-  <label>
-    <input
-      name="isMediaServerTypeShown"
-      type="checkbox"
-      role="switch"
-      checked={config.activity.isThemeColorUsed}
-      on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.activity.isLogoShown}
-    />
-    <!-- TODO Move avtivity config one level up? -->
-    TODO Show remaining time
+    Use media-server accent color icons
   </label>
 </article>

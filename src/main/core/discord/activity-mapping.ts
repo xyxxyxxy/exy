@@ -1,6 +1,6 @@
 import { Presence } from 'discord-rpc'
 import log from 'electron-log'
-import { ActivityConfig, ConfigStore, ExternalLinkConfig } from '../stores/config.types'
+import { ConfigStore, ExternalLinkConfig } from '../stores/config.types'
 import { Activity, ActivityMediaType } from '../activity/types'
 import {
   getEndTime,
@@ -18,8 +18,8 @@ const logger = log.scope('discord-mapper')
 export function toDiscordPresence(activity: Activity, config: ConfigStore): Presence {
   logger.debug(`Converting activity into Discord format.`)
   const presence: Presence = {
-    smallImageKey: getSmallImageKey(activity, config.activity),
-    smallImageText: getStateText(activity, config.activity),
+    smallImageKey: getSmallImageKey(activity, config.isThemeColorUsed, config.isLogoShown),
+    smallImageText: getStateText(activity, config.isThemeColorUsed),
     details: getPrimaryText(activity),
     state: getSecondaryText(activity),
     largeImageKey: activity.imageUrl || 'neutral',
@@ -32,14 +32,18 @@ export function toDiscordPresence(activity: Activity, config: ConfigStore): Pres
 }
 
 // Highly related to Discord assets, so not located in utils.
-function getSmallImageKey(activity: Activity, config: ActivityConfig): string {
+function getSmallImageKey(
+  activity: Activity,
+  isThemeColorUsed: boolean,
+  isLogoShown: boolean
+): string {
   if (activity.mediaType === ActivityMediaType.Book) return ''
 
-  let theme = config.isThemeColorUsed ? activity.sourceType : 'neutral'
+  let theme = isThemeColorUsed ? activity.sourceType : 'neutral'
   theme += '-'
   if (activity.isPaused) return theme + `pause`
 
-  let playIcon = config.isLogoShown ? 'small' : 'play'
+  let playIcon = isLogoShown ? 'small' : 'play'
 
   // Special case for music with genre information.
   // Since the genres are added as state text on this image,

@@ -6,7 +6,8 @@ export type ConfigStore = {
   ignoredTypes: IgnoredMediaItemTypes
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
-  activity: ActivityConfig
+  isLogoShown: boolean
+  isThemeColorUsed: boolean
   externalLinks: Array<ExternalLinkConfig>
   isDebugLoggingEnabled: boolean
 }
@@ -24,11 +25,6 @@ export type MediaServerConfig = {
   username: string
 }
 
-export type ActivityConfig = {
-  isLogoShown: boolean
-  isThemeColorUsed: boolean
-}
-
 export type IgnoredMediaItemTypes = Array<ActivityItemType>
 
 export type ExternalLinkConfig = {
@@ -44,7 +40,8 @@ export enum ConfigSelector {
   deviceId = 'deviceId',
   IgnoredTypes = 'ignoredTypes',
   IsStartupEnabled = 'isStartupEnabled',
-  Activity = 'activity',
+  IsLogoShown = 'IsLogoShown',
+  IsThemeColorUsed = 'IsThemeColorUsed',
   ExternalLinks = 'externalLinks',
   MediaServers = 'mediaServers',
   ImgurClientId = 'imgurClientId',

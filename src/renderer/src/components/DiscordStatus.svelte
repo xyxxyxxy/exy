@@ -18,8 +18,8 @@
 
     if (newStatus === ConnectionStatus.Disconnected) statusText = `Discord disconnected...`
     else if (newStatus === ConnectionStatus.Connected) statusText = `Discord connected...`
-    else if (newStatus === ConnectionStatus.Ready) statusText = `Discord connected and ready.`
-    else statusText = `Discord status unknown. See logs for details.`
+    else if (newStatus === ConnectionStatus.Ready) statusText = `Discord connected and ready`
+    else statusText = `Discord status unknown. See logs for details`
   })
 
   let testTextOptions = ['test', 'test activity', 'data', 'something', 'some data']

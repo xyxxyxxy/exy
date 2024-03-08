@@ -11,6 +11,16 @@ export const configMigrationOptions: Options<ConfigStore> = {
   },
   migrations: {
     '0.4.0': (store): void => {
+      const activity = store.get('activity')
+      if (activity) {
+        store.delete('activity' as keyof ConfigStore)
+        store.set('isThemeColorUsed', !!activity['isThemeColorUsed'])
+        store.set('isLogoShown', !!activity['isLogoShown'])
+      } else {
+        store.set('isThemeColorUsed', true)
+        store.set('isLogoShown', true)
+      }
+
       // Reset activity to introduce default buttons.
       store.reset('externalLinks')
     },
@@ -25,9 +35,9 @@ export const configMigrationOptions: Options<ConfigStore> = {
     },
     '0.2.0': (store): void => {
       // Move media server type shown into new activity section of config.
-      const isThemeColorUsed = store.get('isMediaServerTypeShown' as keyof ConfigStore)
-      store.delete('isMediaServerTypeShown' as keyof ConfigStore)
-      store.set(ConfigSelector.Activity, {
+      const isThemeColorUsed = store.get('isMediaServerTypeShown')
+      if (isThemeColorUsed) store.delete('isMediaServerTypeShown' as keyof ConfigStore)
+      store.set('activity', {
         isLogoShown: isThemeColorUsed,
         isThemeColorUsed: isThemeColorUsed,
         isHomepageLinked: false

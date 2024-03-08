@@ -13,6 +13,14 @@ export const configSchema: Schema<ConfigStore> = {
     type: 'boolean',
     default: true
   },
+  isLogoShown: {
+    type: 'boolean',
+    default: true
+  },
+  isThemeColorUsed: {
+    type: 'boolean',
+    default: true
+  },
   ignoredTypes: {
     type: 'array',
     default: []
@@ -39,23 +47,6 @@ export const configSchema: Schema<ConfigStore> = {
   imgurClientId: {
     type: ['string', 'null'],
     default: null
-  },
-  activity: {
-    type: 'object',
-    default: {
-      isLogoShown: true,
-      isThemeColorUsed: true
-    },
-    properties: {
-      isLogoShown: {
-        type: 'boolean',
-        default: true
-      },
-      isThemeColorUsed: {
-        type: 'boolean',
-        default: true
-      }
-    }
   },
   externalLinks: {
     type: 'array',

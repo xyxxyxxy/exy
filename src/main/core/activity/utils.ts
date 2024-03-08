@@ -1,4 +1,4 @@
-import type { ActivityConfig, IgnoredMediaItemTypes } from '../stores/config.types'
+import type { IgnoredMediaItemTypes } from '../stores/config.types'
 import { type Activity, type ActivityBase, ActivityItemType, ActivityMediaType } from './types'
 
 // Pick one activity from an array of activities.
@@ -44,7 +44,7 @@ export function isIgnoredType(
   return ignoredTypes.includes(activity.itemType)
 }
 
-export function getStateText(activity: Activity, config: ActivityConfig): string {
+export function getStateText(activity: Activity, isThemeColorUsed: boolean): string {
   if (activity.isPaused) return `Paused`
 
   // Genres for music.
@@ -52,7 +52,7 @@ export function getStateText(activity: Activity, config: ActivityConfig): string
     return getGenreText(activity)
   }
 
-  if (config.isThemeColorUsed) {
+  if (isThemeColorUsed) {
     const sourceCapitalized = activity.sourceType[0].toUpperCase() + activity.sourceType.slice(1)
     return `Playing on ${sourceCapitalized}`
   }

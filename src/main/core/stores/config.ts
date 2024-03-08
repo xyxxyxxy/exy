@@ -1,6 +1,5 @@
 import Store from 'electron-store'
 import {
-  ActivityConfig,
   ConfigSelector,
   ConfigStore,
   ExternalLinkConfig,
@@ -76,10 +75,7 @@ export function deleteMediaServer(id: string): void {
 }
 
 export function toggleStartup(): void {
-  configStore.set(
-    ConfigSelector.IsStartupEnabled,
-    !configStore.get(ConfigSelector.IsStartupEnabled)
-  )
+  toggle(ConfigSelector.IsStartupEnabled)
 }
 
 export function toggleIgnoredMediaType(type: ActivityItemType): void {
@@ -93,27 +89,19 @@ export function toggleIgnoredMediaType(type: ActivityItemType): void {
 }
 
 export function toggleActivityLogoShown(): void {
-  updateActivity((config) => {
-    config.isLogoShown = !config.isLogoShown
-    config.isThemeColorUsed = true
-  })
+  toggle(ConfigSelector.IsLogoShown)
 }
 
 export function toggleActivityThemeColorUsed(): void {
-  updateActivity((config) => (config.isThemeColorUsed = !config.isThemeColorUsed))
+  toggle(ConfigSelector.IsThemeColorUsed)
 }
 
-function updateActivity(update: (activityConfig: ActivityConfig) => void): void {
-  const config = configStore.get(ConfigSelector.Activity)
-  update(config)
-  configStore.set(ConfigSelector.Activity, config)
+function toggle(selector: ConfigSelector): void {
+  configStore.set(selector, !configStore.get(selector.toString()))
 }
 
 export function toggleDebugLogging(): void {
-  configStore.set(
-    ConfigSelector.IsDebugLoggingEnabled,
-    !configStore.get(ConfigSelector.IsDebugLoggingEnabled)
-  )
+  toggle(ConfigSelector.IsDebugLoggingEnabled)
 }
 
 export function setImgurClientId(clientId: string | null): void {
