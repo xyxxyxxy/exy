@@ -1,7 +1,6 @@
 <script lang="ts">
   import { ConnectionStatus } from '../../../main/core/discord/types'
   import { IpcChannel } from '../../../main/ipc.types'
-  import discordLogo from '../assets/discord.svg'
 
   let isReady: boolean
   let statusText: string
@@ -14,13 +13,13 @@
 
   window.electron.ipcRenderer.send(IpcChannel.DiscordStatus) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.DiscordStatus, (_, newStatus: ConnectionStatus) => {
-    isReady = newStatus === 'ready'
+    isReady = newStatus === ConnectionStatus.Ready
     statusStyle = isReady ? successStyle : errorStyle
 
-    if (newStatus === ConnectionStatus.Disconnected) statusText = `Disconnected...`
-    else if (newStatus === ConnectionStatus.Connected) statusText = `Connected...`
-    else if (newStatus === ConnectionStatus.Ready) statusText = `Connected and ready.`
-    else statusText = `Unknown status. See logs for details.`
+    if (newStatus === ConnectionStatus.Disconnected) statusText = `Discord disconnected...`
+    else if (newStatus === ConnectionStatus.Connected) statusText = `Discord connected...`
+    else if (newStatus === ConnectionStatus.Ready) statusText = `Discord connected and ready.`
+    else statusText = `Discord status unknown. See logs for details.`
   })
 
   let testTextOptions = ['test', 'test activity', 'data', 'something', 'some data']
@@ -49,40 +48,20 @@
 
 <article>
   <header>
-    <img alt="discord-logo" src={discordLogo} style="height: 3rem;" class:greyscale={!isReady} />
+    {#if isReady}🟢{/if} <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
   </header>
-
-  <p>
-    <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
-  </p>
-  <button on:click={testClick} disabled={!isReady || isTesting}> Send test activity </button>
-  {#if isTesting || testContent}
-    <!-- TODO Move into button -->
-    <p>
-      <span aria-busy={isTesting}>
-        {isTesting ? `Sending ${testContent}` : `Sent ${testContent} successfully`}.
-      </span>
-    </p>
-  {/if}
+  <button on:click={testClick} disabled={!isReady || isTesting} aria-busy={isTesting}>
+    {isTesting
+      ? `Sending ${testContent}`
+      : testContent
+        ? `Sent ${testContent} successfully`
+        : 'Send test activity'}
+  </button>
 </article>
 
 <style>
-  img {
-    transition: all 0.2s linear;
-    display: block;
-    margin: auto;
-  }
-
-  p {
-    text-align: center;
-  }
-
   button {
     width: 100%;
     margin-bottom: var(--pico-spacing);
-  }
-
-  .greyscale {
-    filter: grayscale(1);
   }
 </style>

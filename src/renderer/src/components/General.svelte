@@ -3,6 +3,7 @@
   import { IpcChannel } from '../../../main/ipc.types'
   import About from './About.svelte'
   import DiscordStatus from './DiscordStatus.svelte'
+  import { name } from '../../../../package.json'
 
   export let config: ConfigStore
 
@@ -14,6 +15,9 @@
 <div class="grid">
   <div>
     <About />
+  </div>
+  <div>
+    <DiscordStatus />
     <article>
       <label>
         <input
@@ -23,11 +27,8 @@
           checked={config.isStartupEnabled}
           on:click={toggleStartup}
         />
-        Run at startup
+        Run {name} at startup
       </label>
     </article>
-  </div>
-  <div>
-    <DiscordStatus />
   </div>
 </div>

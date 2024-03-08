@@ -31,10 +31,10 @@
 
 {#if config}
   <div class="container">
-    <hgroup>
+    <!-- <hgroup>
       <h1>Configuration 🔮</h1>
       <p>Setup and change the behavior of {name}.</p>
-    </hgroup>
+    </hgroup> -->
     <General {config} />
     <hgroup>
       <h2>Connections 🪄</h2>
