@@ -1,6 +1,6 @@
 {
   "name": "exy",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "xyxxyxxy",
@@ -37,7 +37,6 @@
     "@types/discord-rpc": "^4.0.8",
     "@types/node": "^20.11.25",
     "axios": "^1.6.7",
-    "bufferutil": "^4.0.8",
     "discord-rpc": "^4.0.1",
     "electron": "^29.1.1",
     "electron-builder": "^24.13.3",
