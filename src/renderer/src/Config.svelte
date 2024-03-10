@@ -32,7 +32,7 @@
     <General {config} />
     <hgroup>
       <h2>Connections 🔮</h2>
-      <p>Connect to your media-servers.</p>
+      <p>Source for now playing media.</p>
     </hgroup>
 
     {#each config.mediaServers as server (server.id)}
@@ -46,7 +46,7 @@
 
     <hgroup>
       <h2>Activity 🪄</h2>
-      <p>Customize how the activity is generated.</p>
+      <p>Change what is shown and how it is shown.</p>
     </hgroup>
     <div class="grid">
       <div>
@@ -59,7 +59,7 @@
 
     <hgroup>
       <h3>Buttons 🎇</h3>
-      <p>Customize the buttons on the activity.</p>
+      <p>Personalize the linked content.</p>
     </hgroup>
     <ActivityButtons {config} />
 
