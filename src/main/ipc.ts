@@ -32,6 +32,7 @@ import { AxiosError } from 'axios'
 import { ConfigSelector, MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
 import { clearCache } from './core/stores/cache'
+import { updateAvailable$ } from './core/updater/updater'
 
 const logger = log.scope('ipc')
 
@@ -42,12 +43,19 @@ export function startMainToRendererIpc(): void {
 // A type guard is used to provide typing for 'event'.
 const isEvent = pipe(filter((event): event is IpcMainEvent => !!event))
 
-// Send on updates and on request.
+// Send on config updates and on request.
 combineLatest([config$, fromEvent(ipcMain, IpcChannel.Config).pipe(isEvent)]).subscribe(
   ([config, event]) => {
     event.sender.send(IpcChannel.Config, config)
   }
 )
+
+combineLatest([
+  updateAvailable$,
+  fromEvent(ipcMain, IpcChannel.UpdateAvailable).pipe(isEvent)
+]).subscribe(([update, event]) => {
+  event.sender.send(IpcChannel.UpdateAvailable, update)
+})
 
 combineLatest([
   connectionStatus$,
