@@ -1,6 +1,7 @@
 import log from 'electron-log'
 import { Activity, ExternalDataType } from '../../activity/types'
-import { Observable, catchError, from, map, of, tap } from 'rxjs'
+import { Observable, catchError, from, map, of } from 'rxjs'
+import axios from 'axios'
 
 const logger = log.scope('builder-public')
 
@@ -15,19 +16,27 @@ export const addPublicContent$ = (activity: Activity): Observable<Activity> => {
   if (youTubeId && bitChuteId)
     logger.warn(`Multiple matches for activity with path:`, activity.path)
 
-  if (youTubeId)
-    return confirmAndAdd$(
-      activity,
-      ExternalDataType.YouTube,
-      `https://youtube.com/watch?v=${youTubeId}`,
-      `https://img.youtube.com/vi/${youTubeId}/0.jpg`
+  if (youTubeId) {
+    const watchUrl = `https://youtube.com/watch?v=${youTubeId}`
+    const imageUrl = `https://www.bitchute.com/video/j0D6XtdyJasd/`
+    // Using image URL for YouTube, since the video 404 page is responding with status 200.
+    return confirm$(imageUrl).pipe(
+      map((isValid) => {
+        if (isValid) add(activity, ExternalDataType.YouTube, watchUrl, imageUrl)
+        return activity
+      })
     )
-  if (bitChuteId)
-    return confirmAndAdd$(
-      activity,
-      ExternalDataType.BitChute,
-      `https://www.bitchute.com/video/${bitChuteId}/`
+  }
+
+  if (bitChuteId) {
+    const watchUrl = `https://www.bitchute.com/video/${bitChuteId}/`
+    return confirm$(watchUrl).pipe(
+      map((isValid) => {
+        if (isValid) add(activity, ExternalDataType.BitChute, watchUrl)
+        return activity
+      })
     )
+  }
 
   return of(activity)
 }
@@ -38,28 +47,22 @@ function getId(path: string, idMatcher: RegExp): string | null {
   return match[1]
 }
 
-function confirmAndAdd$(
+function confirm$(url: string): Observable<boolean> {
+  return from(axios.get(url)).pipe(
+    map((response) => response.status === 200),
+    catchError((error) => {
+      logger.warn(`Public URL failed confirmation.`, error)
+      return of(false)
+    })
+  )
+}
+
+function add(
   activity: Activity,
   dataType: ExternalDataType.YouTube | ExternalDataType.BitChute,
   watchUrl: string,
   imageUrl?: string
-): Observable<Activity> {
-  logger.debug(`Checking watch link  for ${dataType}.`)
-  return from(fetch(watchUrl)).pipe(
-    tap((response) => {
-      if (!response.ok) {
-        throw new Error(`Watch link '${watchUrl}' failed confirmation request.`)
-      }
-    }),
-    map(() => {
-      // URL is valid.
-      if (imageUrl) activity.imageUrl = imageUrl
-      activity.externalData.push({ type: dataType, url: watchUrl })
-      return activity
-    }),
-    catchError((error) => {
-      logger.warn(`Failed to get ${dataType} content.`, error)
-      return of(activity)
-    })
-  )
+): void {
+  if (imageUrl) activity.imageUrl = imageUrl
+  activity.externalData.push({ type: dataType, url: watchUrl })
 }
