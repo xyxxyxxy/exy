@@ -1,17 +1,17 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
+  import { name } from '../../../../package.json'
   import ActivityButton from './ActivityButton.svelte'
-  import { IpcChannel } from '../../../main/ipc.types'
 
   export let config: ConfigStore
 </script>
 
 <section>
   <p>
-    Up to two buttons can be shown on the activity. Which buttons to show depends on the buttons
-    media type and the availability of the target data for the playing item.
+    Discord can show up to two buttons on an activity. A button can be limited to a specific type of
+    media and some media types come with predefined targets, provided by the media-server. In case a
+    predefined target is unavailable, the button will be ignored by {name}.
   </p>
-  <p>You can use this to link to your personal listening or watch history.</p>
   {#each config.externalLinks as externalLink, index}
     <ActivityButton
       {externalLink}

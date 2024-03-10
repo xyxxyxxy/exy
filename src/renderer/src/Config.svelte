@@ -5,8 +5,6 @@
   import { IpcChannel } from '../../main/ipc.types'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
-  import About from './components/About.svelte'
-  import { name } from '../../../package.json'
   import Activity from './components/Activity.svelte'
   import General from './components/General.svelte'
   import DebugAndReset from './components/DebugAndReset.svelte'
@@ -31,13 +29,9 @@
 
 {#if config}
   <div class="container">
-    <!-- <hgroup>
-      <h1>Configuration 🔮</h1>
-      <p>Setup and change the behavior of {name}.</p>
-    </hgroup> -->
     <General {config} />
     <hgroup>
-      <h2>Connections 🪄</h2>
+      <h2>Connections 🔮</h2>
       <p>Connect to your media-servers.</p>
     </hgroup>
 
@@ -51,7 +45,7 @@
     <MediaServerNew {hasMediaServers} />
 
     <hgroup>
-      <h2>Activity 🎇</h2>
+      <h2>Activity 🪄</h2>
       <p>Customize how the activity is generated.</p>
     </hgroup>
     <div class="grid">
@@ -64,7 +58,7 @@
     </div>
 
     <hgroup>
-      <h3>Buttons 🎆</h3>
+      <h3>Buttons 🎇</h3>
       <p>Customize the buttons on the activity.</p>
     </hgroup>
     <ActivityButtons {config} />

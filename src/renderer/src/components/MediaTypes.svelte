@@ -18,7 +18,7 @@
 </script>
 
 <article>
-  <header>You can ignore media types by disabling them.</header>
+  <header>Ignore media types by disabling them.</header>
   <div class="grid">
     <!-- TypeScript in template us currently not supported.
             Implementing some workarounds, since disabling the rules did not work here.

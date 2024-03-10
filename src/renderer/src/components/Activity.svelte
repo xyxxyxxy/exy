@@ -19,7 +19,7 @@
 </script>
 
 <article>
-  <header>Customize the look & feel of the activity.</header>
+  <header>Customize look & feel.</header>
 
   <label>
     <input
