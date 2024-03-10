@@ -51,7 +51,7 @@ function confirm$(url: string): Observable<boolean> {
   return from(axios.get(url)).pipe(
     map((response) => response.status === 200),
     catchError((error) => {
-      logger.warn(`Public URL failed confirmation.`, error)
+      logger.warn(`Public URL "${url}" failed confirmation.`, error)
       return of(false)
     })
   )

@@ -6,6 +6,7 @@ import { createHash } from 'crypto'
 import { cacheImageLink, getCachedImageLink } from './stores/cache'
 import { readFileSync } from 'fs'
 import icon from '../../../resources/icon.png?asset'
+import axios from 'axios'
 
 const logger = log.scope('imgur')
 
@@ -54,19 +55,13 @@ export function getImgurLink$(sourceUrl: string): Observable<string | undefined>
       if (!imgurClientId) return of(undefined)
 
       // Download source image.
-      return from(fetch(sourceUrl)).pipe(
-        tap((response) => {
-          if (response.ok) logger.debug(`Downloaded image from source "${sourceUrl}".`)
-          else
-            throw new Error(
-              `Failed to download from source "${sourceUrl}". Status: ${response.status} ${response.statusText}`
-            )
-        }),
-        switchMap((response) => response.arrayBuffer()),
-        // Generate image hash.
-        // See: https://stackoverflow.com/questions/33926399/fetch-resource-compute-hash-return-promise
-        map((arrayBuffer) => {
-          const buffer: Buffer = Buffer.from(arrayBuffer)
+      return from(
+        axios.get(sourceUrl, {
+          responseType: 'arraybuffer'
+        })
+      ).pipe(
+        map((response) => {
+          const buffer: Buffer = Buffer.from(response.data, 'binary')
           const hash: string = createHash('md5').update(buffer).digest('hex')
 
           return { sourceUrl, buffer, hash }
