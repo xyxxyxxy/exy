@@ -1,6 +1,7 @@
 import { type MediaServerConfig } from './core/stores/config.types'
 
 export enum IpcChannel {
+  UpdateAvailable = 'UpdateAvailable',
   Config = 'Config',
   DiscordStatus = 'DiscordStatus',
   ToggleStartup = 'ToggleStartup',

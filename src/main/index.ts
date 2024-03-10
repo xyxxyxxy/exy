@@ -10,7 +10,8 @@ import { config$ } from './core/stores/config'
 import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
 import { initTray } from './tray'
 import { name } from '../../package.json'
-import { autoUpdater } from 'electron-updater'
+
+const logger = log.scope('main')
 
 function createWindow(): void {
   // Create the browser window.
@@ -84,21 +85,13 @@ app.whenReady().then(() => {
   // })
 })
 
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.
-
-const logMain = log.scope('main')
-
-logMain.info(`Checking for updates.`)
-autoUpdater.checkForUpdatesAndNotify()
-
 config$
   .pipe(
     map((config) => config.isStartupEnabled),
     distinctUntilChanged()
   )
   .subscribe((isStartupEnabled) => {
-    logMain.info(`Startup ${isStartupEnabled ? 'enabled' : 'disabled'}.`)
+    logger.info(`Startup ${isStartupEnabled ? 'enabled' : 'disabled'}.`)
     app.setLoginItemSettings({ openAtLogin: isStartupEnabled })
   })
 
@@ -119,7 +112,7 @@ function lockSingleInstance(mainWindow: BrowserWindow): void {
   } else {
     app.on('second-instance', (_, _1, _2, additionalData) => {
       // Print out data received from the second instance.
-      logMain.warn(additionalData)
+      logger.warn(additionalData)
 
       // Someone tried to run a second instance, we should focus our window.
       mainWindow.show()
