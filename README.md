@@ -13,15 +13,13 @@ MacOS and Linux builds are created, but untested. Feedback appreciated.
 
 ## Features
 
-- Easy to setup.
-- All media types supported.
-- Preview images using Imgur.
-- Showing paused state.
-- Choose which media types are shared and what the activity contains.
-- Add multiple media-server sources.
-- Login with your regular user. No Emby/Jellyfin API key required.
-- Personalize the buttons.
-- Detect YouTube/BitChute content and add watch link to activity.
+- Easy to setup
+- Preview images using Imgur
+- All media types supported
+- Showing play state (pause, time remaining, current chapter)
+- Ignore media types and customize what is shared
+- Login with your regular user. No Emby/Jellyfin API key required
+- Detect YouTube/BitChute content and link to original video
 
 ## Requirements
 
