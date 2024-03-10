@@ -13,7 +13,7 @@
     </p>
     <details>
       <!-- svelte-ignore a11y-no-redundant-roles -->
-      <summary role="button" class="secondary outline">❔ How do I get a Client ID</summary>
+      <summary role="button" class="secondary outline">❔ How do I get a client ID</summary>
       <article>
         <header>
           An Imgur account is required. You can create one
