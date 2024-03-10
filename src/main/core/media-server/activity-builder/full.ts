@@ -2,7 +2,7 @@ import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
 import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
-import { Activity, ActivityBase, ActivityExternalLinks } from '../../activity/types'
+import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
@@ -26,13 +26,14 @@ export function buildFullActivity$(
     artists: item.Artists || [],
     genres: item.Genres || [],
     description: item.Type === ItemType.TvChannel ? item.CurrentProgram?.Overview : item.Overview,
+    tagline: item.Taglines?.length ? item.Taglines[0] : undefined,
     albumTitle: item.Album,
     showTitle: item.SeriesName,
     seasonTitle: item.SeasonName,
     startTime: parseStartTime(item),
     episodeNumber: item.IndexNumber ? item.IndexNumber : undefined,
     releaseDate: parsePremierDate(item),
-    externalLinks: item.ExternalUrls ? mapExternalLinks(item) : [],
+    externalData: mapExternalData(item),
     endTime: parseEndTime(item, playState)
   }
 
@@ -44,31 +45,21 @@ export function buildFullActivity$(
     })
   )
 }
+function mapExternalData(item: BaseItemDto): Array<ExternalData> {
+  if (!item.ExternalUrls) return []
+  return item.ExternalUrls.filter(
+    (external): external is { Name: ExternalDataType; Url: string } => {
+      if (!external.Name) return false
+      const isType = Object.values(ExternalDataType).includes(external.Name as ExternalDataType)
 
-function mapExternalLinks(item: BaseItemDto): ActivityExternalLinks {
-  const urls = item.ExternalUrls
-  if (!urls) return []
-  // Select specific links to include.
+      if (!isType) {
+        logger.warn(`Encountered unexpected external data type '${external.Name}'. Ignoring.`)
+        return false
+      }
 
-  // MusicBrainz for audio.
-  if (item.MediaType === ItemMediaType.Audio) {
-    const musicBrainz = urls.find((externalUrl) => externalUrl.Url?.includes(`/release/`))?.Url
-    if (musicBrainz) return [{ label: `Checkout this Release`, url: musicBrainz }]
-  }
-
-  // IMDb for movies.
-  if (item.Type === ItemType.Movie) {
-    const IMDb = urls.find((externalUrl) => externalUrl.Name === 'IMDb')?.Url
-    if (IMDb) return [{ label: `Checkout this Movie`, url: IMDb }]
-  }
-
-  // TheTVDB for episodes.
-  if (item.Type === ItemType.Movie) {
-    const theTVDB = urls.find((externalUrl) => externalUrl.Name === 'TheTVDB')?.Url
-    if (theTVDB) return [{ label: `Checkout this Episode`, url: theTVDB }]
-  }
-
-  return []
+      return !!external.Url
+    }
+  ).map((external) => ({ type: external.Name, url: external.Url }))
 }
 
 function parsePremierDate(item: BaseItemDto): Date | undefined {

@@ -14,6 +14,7 @@ export enum ItemType {
   Movie = 'Movie',
   TvChannel = 'TvChannel',
   MusicVideo = 'MusicVideo',
+  Trailer = 'Trailer',
   // Used for "Home videos & photos" library.
   Video = 'Video',
   Book = 'Book'

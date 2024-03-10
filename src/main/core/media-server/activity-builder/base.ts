@@ -37,25 +37,22 @@ function getActivityItemType(item?: BaseItemDto): ActivityItemType {
 
   if (item?.MediaType === ItemMediaType.Audio && item.Type === ItemMediaType.Audio)
     // Music has type 'Audio' for item and media type.
-    return ActivityItemType.Music
+    return ActivityItemType.Songs
 
   // Episodes can be episodes of a show or a live recording.
   if (item?.Type === ItemType.Episode) {
     // Live TV recordings did not have any index number in my tests.
-    return item.IndexNumber ? ActivityItemType.Shows : ActivityItemType.LiveRecordings
+    return item.IndexNumber ? ActivityItemType.Episodes : ActivityItemType.LiveRecordings
   }
 
-  if (item?.Type === ItemType.Video) {
-    return ActivityItemType.OtherVideos
-  }
-
-  if (item?.Type === ItemType.Book) {
-    return ActivityItemType.Books
-  }
+  if (item?.Type === ItemType.Video) return ActivityItemType.OtherVideos
+  if (item?.Type === ItemType.Book) return ActivityItemType.Books
+  // No special treatment for trailers.
+  if (item?.Type === ItemType.Trailer) return ActivityItemType.OtherVideos
 
   logger.warn(`Unexpected item type '${item?.Type}' for media of type '${item?.MediaType}'.`)
 
-  return ActivityItemType.Music
+  return ActivityItemType.Songs
 }
 
 function getChapterName(item: BaseItemDto, playState: PlayerStateInfo): string | undefined {

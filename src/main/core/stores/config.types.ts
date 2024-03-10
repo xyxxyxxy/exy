@@ -1,4 +1,4 @@
-import { ActivityItemType } from '../activity/types'
+import type { ActivityItemType, ExternalDataType } from '../activity/types'
 
 export type ConfigStore = {
   deviceId: string
@@ -6,16 +6,11 @@ export type ConfigStore = {
   ignoredTypes: IgnoredMediaItemTypes
   mediaServers: Array<MediaServerConfig>
   imgurClientId: string | null
-  activity: ActivityConfig
+  isPlayStateShown: boolean
+  isLogoUsed: boolean
+  isThemeUsed: boolean
+  externalLinks: Array<ExternalLinkConfig>
   isDebugLoggingEnabled: boolean
-}
-
-export type IgnoredMediaItemTypes = Array<ActivityItemType>
-
-export type ActivityConfig = {
-  isLogoShown: boolean
-  isThemeColorUsed: boolean
-  isHomepageLinked: boolean
 }
 
 export type MediaServerConfig = {
@@ -31,12 +26,25 @@ export type MediaServerConfig = {
   username: string
 }
 
+export type IgnoredMediaItemTypes = Array<ActivityItemType>
+
+export type ExternalLinkConfig = {
+  id: string
+  isActive: boolean
+  label: string
+  forItemType: ActivityItemType | 'All'
+  target: ExternalDataType | 'CustomUrl'
+  customUrl?: string
+}
+
 export enum ConfigSelector {
-  deviceId = 'deviceId',
+  DeviceId = 'deviceId',
   IgnoredTypes = 'ignoredTypes',
   IsStartupEnabled = 'isStartupEnabled',
-  Activity = 'activity',
-  isHomepageLinked = 'isHomepageLinked',
+  IsPlayStateShown = 'isPlayStateShown',
+  IsLogoUsed = 'isLogoUsed',
+  IsThemeUsed = 'isThemeUsed',
+  ExternalLinks = 'externalLinks',
   MediaServers = 'mediaServers',
   ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'

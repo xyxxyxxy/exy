@@ -1,28 +1,5 @@
 import type { MediaServerConfig } from '../stores/config.types'
 
-export enum ActivityMediaType {
-  Audio = 'Audio',
-  Video = 'Video', // Visual content in general.
-  Book = 'Book' // Books are special (Jellyfin only).
-}
-
-// This enum is rendered in the 'ignore media type' UI.
-// Order and values matter in that context.
-export enum ActivityItemType {
-  // Note: Emby does not have a special identifier for audio books.
-  Music = 'Music',
-  Shows = 'Shows',
-  Movies = 'Movies',
-  MusicVideos = 'Music Videos',
-  LiveTv = 'Live TV',
-  LiveRecordings = 'Live Recordings',
-  OtherVideos = 'Other Videos',
-  Books = 'Books'
-}
-
-export type ExternalLink = { label: string; url: string }
-export type ActivityExternalLinks = Array<ExternalLink>
-
 // These properties are used to determine if an activity changed.
 export type ActivityBase = {
   title: string
@@ -41,12 +18,13 @@ export type Activity = ActivityBase & {
   // Arrays.
   artists: Array<string>
   genres: Array<string>
-  externalLinks: ActivityExternalLinks
+  externalData: Array<ExternalData>
 
   // Optionals.
 
   // Used as fallback in case no more detailed information is available.
   description?: string
+  tagline?: string
   // Publicly available preview image URL.
   // Keep privacy in mind, do not set to URL containing media-server address.
   imageUrl?: string
@@ -64,4 +42,45 @@ export type Activity = ActivityBase & {
   showTitle?: string
   seasonTitle?: string
   episodeNumber?: number
+}
+
+export enum ActivityMediaType {
+  Audio = 'Audio',
+  Video = 'Video', // Visual content in general.
+  Book = 'Book' // Books are special (Jellyfin only).
+}
+
+export enum ActivityItemType {
+  // Note: Emby does not have a special identifier for audio books.
+  Songs = 'Songs',
+  Episodes = 'Episodes',
+  Movies = 'Movies',
+  MusicVideos = 'MusicVideos',
+  LiveTv = 'LiveTv',
+  LiveRecordings = 'LiveRecordings',
+  OtherVideos = 'OtherVideos',
+  Books = 'Books'
+}
+
+export type ExternalData = {
+  type: ExternalDataType
+  url: string
+}
+
+export enum ExternalDataType {
+  // Music
+  MusicBrainzAlbum = 'MusicBrainz Album',
+  MusicBrainzAlbumArtist = 'MusicBrainz Album Artist',
+  MusicBrainzArtist = 'MusicBrainz Artist',
+  MusicBrainzReleaseGroup = 'MusicBrainz Release Group',
+  MusicBrainzTrack = 'MusicBrainz Track',
+  // Episodes
+  TheTVDB = 'TheTVDB',
+  // Movies
+  IMDb = 'IMDb',
+  TheMovieDb = 'TheMovieDb',
+  Trakt = 'Trakt',
+  // Public
+  YouTube = 'YouTube',
+  BitChute = 'BitChute'
 }

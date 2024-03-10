@@ -1,5 +1,5 @@
 import log from 'electron-log'
-import { Activity } from '../../activity/types'
+import { Activity, ExternalDataType } from '../../activity/types'
 import { Observable, catchError, from, map, of, tap } from 'rxjs'
 
 const logger = log.scope('builder-public')
@@ -18,12 +18,16 @@ export const addPublicContent$ = (activity: Activity): Observable<Activity> => {
   if (youTubeId)
     return confirmAndAdd$(
       activity,
-      'YouTube',
+      ExternalDataType.YouTube,
       `https://youtube.com/watch?v=${youTubeId}`,
       `https://img.youtube.com/vi/${youTubeId}/0.jpg`
     )
   if (bitChuteId)
-    return confirmAndAdd$(activity, 'BitChute', `https://www.bitchute.com/video/${bitChuteId}/`)
+    return confirmAndAdd$(
+      activity,
+      ExternalDataType.BitChute,
+      `https://www.bitchute.com/video/${bitChuteId}/`
+    )
 
   return of(activity)
 }
@@ -36,11 +40,11 @@ function getId(path: string, idMatcher: RegExp): string | null {
 
 function confirmAndAdd$(
   activity: Activity,
-  siteName: string,
+  dataType: ExternalDataType.YouTube | ExternalDataType.BitChute,
   watchUrl: string,
   imageUrl?: string
 ): Observable<Activity> {
-  logger.debug(`Checking watch link  for ${siteName}.`)
+  logger.debug(`Checking watch link  for ${dataType}.`)
   return from(fetch(watchUrl)).pipe(
     tap((response) => {
       if (!response.ok) {
@@ -50,11 +54,11 @@ function confirmAndAdd$(
     map(() => {
       // URL is valid.
       if (imageUrl) activity.imageUrl = imageUrl
-      activity.externalLinks.push({ label: `Watch on ${siteName}`, url: watchUrl })
+      activity.externalData.push({ type: dataType, url: watchUrl })
       return activity
     }),
     catchError((error) => {
-      logger.warn(`Failed to get ${siteName} content.`, error)
+      logger.warn(`Failed to get ${dataType} content.`, error)
       return of(activity)
     })
   )

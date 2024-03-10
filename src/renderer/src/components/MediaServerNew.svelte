@@ -5,7 +5,7 @@
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
 
   export let hasMediaServers: boolean
-  let open: boolean
+  let isOpen: boolean = !hasMediaServers
   let isBusy = false
 
   let isInvalidConnection: boolean | null = null
@@ -62,7 +62,7 @@
         }
       } else {
         // Close and reset form on success.
-        open = null
+        isOpen = false
         reset()
       }
     }
@@ -79,12 +79,10 @@
   }
 </script>
 
-<details {open}>
+<details bind:open={isOpen}>
   <!-- svelte-ignore a11y-no-redundant-roles -->
   <summary role="button" class="outline">
-    ✨ {hasMediaServers
-      ? 'Add connection'
-      : 'Click here to get started by connecting your first media-server'}
+    ✨ {hasMediaServers ? 'Add connection' : 'Connect your first media-server'}
   </summary>
   <article>
     <form on:submit|preventDefault={submit}>

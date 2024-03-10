@@ -10,15 +10,19 @@ export const configMigrationOptions: Options<ConfigStore> = {
     logger.debug(store)
   },
   migrations: {
-    '0.2.0': (store): void => {
-      // Move media server type shown into new activity section of config.
-      const isThemeColorUsed = store.get('isMediaServerTypeShown' as keyof ConfigStore)
-      store.delete('isMediaServerTypeShown' as keyof ConfigStore)
-      store.set(ConfigSelector.Activity, {
-        isLogoShown: isThemeColorUsed,
-        isThemeColorUsed: isThemeColorUsed,
-        isHomepageLinked: false
-      })
+    '0.4.0': (store): void => {
+      const activity = store.get('activity')
+
+      if (activity) store.delete('activity' as keyof ConfigStore)
+
+      store.set('isThemeUsed', activity ? !!activity['isThemeColorUsed'] : true)
+      store.set('isLogoUsed', activity ? !!activity['isLogoShown'] : true)
+
+      // New value.
+      store.set('isPlayStateShown', true)
+
+      // Reset activity to introduce default buttons.
+      store.reset('externalLinks')
     },
     '0.3.0': (store): void => {
       // Remove unused field 'ignoredLibraryIds' of all media-servers.
@@ -28,6 +32,16 @@ export const configMigrationOptions: Options<ConfigStore> = {
       )
       store.set('mediaServers', servers)
       store.set(ConfigSelector.IgnoredTypes, [])
+    },
+    '0.2.0': (store): void => {
+      // Move media server type shown into new activity section of config.
+      const isThemeColorUsed = store.get('isMediaServerTypeShown')
+      if (isThemeColorUsed) store.delete('isMediaServerTypeShown' as keyof ConfigStore)
+      store.set('activity', {
+        isLogoShown: isThemeColorUsed,
+        isThemeColorUsed: isThemeColorUsed,
+        isHomepageLinked: false
+      })
     }
   }
 }

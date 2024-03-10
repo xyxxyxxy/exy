@@ -2,7 +2,6 @@
   import { IpcChannel } from '../../../main/ipc.types'
 
   export let clientId: string
-
   let isBusy = false
   let isInvalid: boolean | null = null
   let helperText: string = ''
@@ -15,7 +14,7 @@
   function save(): void {
     isBusy = true
     resetValidation()
-    window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, clientId)
+    window.electron.ipcRenderer.send(IpcChannel.SaveImgurClientId, clientId?.trim())
   }
   window.electron.ipcRenderer.on(IpcChannel.SaveImgurClientId, (_, error?: Error) => {
     isBusy = false
@@ -34,7 +33,7 @@
       <input
         type="text"
         id="clientId"
-        placeholder="none"
+        placeholder="ID"
         bind:value={clientId}
         disabled={isBusy}
         aria-invalid={isInvalid}

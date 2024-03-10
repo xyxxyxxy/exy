@@ -1,18 +1,21 @@
 import { IpcMainEvent, ipcMain, shell } from 'electron'
 import { combineLatest, filter, finalize, fromEvent, pipe } from 'rxjs'
 import {
-  addMediaServerConfig,
+  addMediaServer,
   config$,
-  deleteMediaServerConfig,
+  deleteMediaServer,
   isConnectionConfigured,
   setImgurClientId,
-  toggleDebugLogging,
-  toggleActivityHomepageLinked,
   toggleMediaServerActive,
-  toggleActivityThemeColorUsed,
-  toggleStartup,
-  toggleActivityLogoShown,
-  toggleIgnoredMediaType
+  toggleIgnoredMediaType,
+  resetExternalLinks,
+  saveExternalLink,
+  deleteExternalLink,
+  toggleExternalLinkActive,
+  moveExternalLinkUp,
+  moveExternalLinkDown,
+  clearConfig,
+  toggleConfigFlag
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
@@ -26,8 +29,9 @@ import {
 import { randomUUID } from 'crypto'
 import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
-import { MediaServerConfig } from './core/stores/config.types'
+import { ConfigSelector, MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
+import { clearCache } from './core/stores/cache'
 
 const logger = log.scope('ipc')
 
@@ -59,16 +63,18 @@ combineLatest([
   event.sender.send(IpcChannel.MediaServerActivities, activities)
 })
 
-ipcMain.on(IpcChannel.ToggleStartup, toggleStartup)
+ipcMain.on(IpcChannel.ToggleStartup, () => toggleConfigFlag(ConfigSelector.IsStartupEnabled))
 ipcMain.on(IpcChannel.ToggleIgnoredMediaType, (_, type) => toggleIgnoredMediaType(type))
-ipcMain.on(IpcChannel.ToggleActivityLogoShown, toggleActivityLogoShown)
-ipcMain.on(IpcChannel.ToggleActivityThemeColorUsed, toggleActivityThemeColorUsed)
-ipcMain.on(IpcChannel.ToggleActivityHomepageLinked, toggleActivityHomepageLinked)
+ipcMain.on(IpcChannel.ToggleIsPlayStateShown, () =>
+  toggleConfigFlag(ConfigSelector.IsPlayStateShown)
+)
+ipcMain.on(IpcChannel.ToggleIsLogoUsed, () => toggleConfigFlag(ConfigSelector.IsLogoUsed))
+ipcMain.on(IpcChannel.ToggleIsThemeUsed, () => toggleConfigFlag(ConfigSelector.IsThemeUsed))
 ipcMain.on(IpcChannel.TestDiscordActivity, (_, content) => setTestActivity(content))
 ipcMain.on(IpcChannel.ToggleMediaServerActive, (_, id) => toggleMediaServerActive(id))
 ipcMain.on(IpcChannel.DisconnectMediaServer, (_, config: MediaServerConfig) => {
   logout$(config)
-    .pipe(finalize(() => deleteMediaServerConfig(config.id)))
+    .pipe(finalize(() => deleteMediaServer(config.id)))
     .subscribe({
       next: () => logger.debug(`Successfully logged out.`),
       error: (error) => logger.warn(`Error while trying to logout.`, error)
@@ -116,7 +122,7 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
           message: 'Error. Media-server response does not include expected data.'
         })
 
-      addMediaServerConfig({
+      addMediaServer({
         id: randomUUID(),
         isActive: true,
         serverId,
@@ -162,5 +168,18 @@ ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
     }
   })
 })
-ipcMain.on(IpcChannel.ToggleDebugLogging, toggleDebugLogging)
+ipcMain.on(IpcChannel.ToggleDebugLogging, () =>
+  toggleConfigFlag(ConfigSelector.IsDebugLoggingEnabled)
+)
+ipcMain.on(IpcChannel.SaveExternalLink, (_, data) => {
+  if (!data.id) data = { ...data, id: randomUUID() }
+  saveExternalLink(data)
+})
+ipcMain.on(IpcChannel.ToggleExternalLinkActive, (_, id) => toggleExternalLinkActive(id))
+ipcMain.on(IpcChannel.MoveExternalLinkUp, (_, id) => moveExternalLinkUp(id))
+ipcMain.on(IpcChannel.MoveExternalLinkDown, (_, id) => moveExternalLinkDown(id))
+ipcMain.on(IpcChannel.DeleteExternalLink, (_, id) => deleteExternalLink(id))
+ipcMain.on(IpcChannel.ResetExternalLinks, resetExternalLinks)
+ipcMain.on(IpcChannel.ClearCache, clearCache)
+ipcMain.on(IpcChannel.ClearConfig, clearConfig)
 ipcMain.on(IpcChannel.OpenLogFile, () => shell.openExternal(log.transports.file.getFile().path))

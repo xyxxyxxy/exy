@@ -8,48 +8,26 @@ TODO Images
 
 # State of this application
 
-As of 2024, me and some friends are using exy on Windows.
+As of March 2024, me and some friends use exy on Windows.
 MacOS and Linux builds are created, but untested. Feedback appreciated.
 
 ## Features
 
-- Supports all media types.
-- Show playing/paused/muted state.
-- Add multiple media-servers.
-- Option to hide media-server type in Discord.
+- Easy to setup.
+- All media types supported.
 - Preview images using Imgur.
-- Detect [public content](#public-content) from [YouTube](https://www.youtube.com) and [BitChute](https://www.bitchute.com) and provide link in activity.
+- Showing paused state.
+- Choose which media types are shared and what the activity contains.
+- Add multiple media-server sources.
+- Login with your regular user. No Emby/Jellyfin API key required.
+- Personalize the buttons.
+- Detect YouTube/BitChute content and add watch link to activity.
 
 ## Requirements
 
 Discord setting "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
 This setting can be found in "Discord settings" -> "Activity Privacy".
-
-## Public content
-
-In case you watch local copies of YouTube or BitChute content, exy can detect the original video and link it in your activity.
-This is done using the file path of the playing item.
-
-The file path must meet two conditions for this feature to work:
-
-1. Contains site name `YouTube` or `BitChute` (case insensitive).
-2. Followed by a video ID in brackets `[]`.
-
-If a video is detected, a link will be generated and checked. This avoids adding links to deleted or otherwise unavailable videos.
-
-Examples:
-
-- `/media/YouTube/Me at the zoo [jNQXAC9IVRw].mp4`
-- `/media/youtube/[jNQXAC9IVRw] Me at the zoo.mp4`
-- `/media/youtube.com/Me at the zoo [jNQXAC9IVRw].mp4`
-- `/media/YouTube Me at the zoo [jNQXAC9IVRw].mp4`
-- `/media/BitChute/Me at the zoo [0aG6W5lcsJG3].mp4`
-
-Try your path with RegEx101:
-
-- [YouTube](https://regex101.com/r/6J9dr9/1)
-- [BitChute](https://regex101.com/r/cpVE7k/1)
 
 # Development
 

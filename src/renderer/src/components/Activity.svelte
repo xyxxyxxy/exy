@@ -1,56 +1,51 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
-  import { name, homepage } from '../../../../package.json'
+  import { name } from '../../../../package.json'
 
   export let config: ConfigStore
 
-  function toggleLogoShown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityLogoShown)
+  function toggleIsPlayStateShown(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsPlayStateShown)
   }
 
-  function toggleThemeColorUsed(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityThemeColorUsed)
+  function toggleIsLogoUsed(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsLogoUsed)
   }
 
-  function toggleHomepageLinked(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleActivityHomepageLinked)
+  function toggleIsThemeUsed(): void {
+    window.electron.ipcRenderer.send(IpcChannel.ToggleIsThemeUsed)
   }
 </script>
 
 <article>
+  <header>Customize look & feel.</header>
+
   <label>
     <input
-      name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.activity.isLogoShown}
-      on:click|preventDefault={toggleLogoShown}
+      checked={config.isPlayStateShown}
+      on:click={toggleIsPlayStateShown}
     />
-    Show logo
-    <span data-tooltip="Music will always show a vinyl icon if genres are available">ℹ️</span>
+    Show <em data-tooltip="Time remaining and pause state">play state</em>
   </label>
 
   <label>
     <input
-      name="isMediaServerTypeShown"
       type="checkbox"
       role="switch"
-      checked={config.activity.isThemeColorUsed}
-      on:click|preventDefault={toggleThemeColorUsed}
-      disabled={config.activity.isLogoShown}
+      checked={config.isThemeUsed}
+      on:click={toggleIsThemeUsed}
     />
-    Use server themed colors
+    Use <em data-tooltip="Emby or Jellyfin accent colors depending on media source">theme color</em>
+    for icons
   </label>
+
   <label>
-    <input
-      name="isHomepageLinked"
-      type="checkbox"
-      role="switch"
-      checked={config.activity.isHomepageLinked}
-      on:click|preventDefault={toggleHomepageLinked}
-    />
-    Add link to
-    <span data-tooltip={homepage}>{name} homepage</span>
+    <input type="checkbox" role="switch" checked={config.isLogoUsed} on:click={toggleIsLogoUsed} />
+    Use
+    <em data-tooltip="Emby, Jellyfin or {name} logo depending on theme color setting">logo</em> instead
+    of play icon
   </label>
 </article>

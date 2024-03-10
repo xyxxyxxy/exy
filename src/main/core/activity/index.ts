@@ -3,7 +3,7 @@ import { Activity } from './types'
 import { BehaviorSubject, Observable, map, shareReplay, tap, withLatestFrom } from 'rxjs'
 import { config$ } from '../stores/config'
 import { mediaServerMainActivity$ } from '../media-server'
-import { addConfigExtras, isIgnoredType } from './utils'
+import { isIgnoredType } from './utils'
 
 const logger = log.scope('activity')
 
@@ -28,11 +28,7 @@ mediaServerMainActivity$
         return null
       }
 
-      // Clone activity before modifying, to
-      // avoid mutating the same object twice on config event.
-      const clone = Object.assign({}, activity)
-
-      return addConfigExtras(clone, config.activity)
+      return activity
     })
   )
 

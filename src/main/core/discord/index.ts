@@ -128,7 +128,7 @@ combineLatest([activity$, discordReady$.pipe(delay(1000))])
     if (!discordClient) return logger.warn(`Failed to set presence. No client available.`)
     try {
       if (activity) {
-        const presence = toDiscordPresence(activity, config.activity)
+        const presence = toDiscordPresence(activity, config)
         logger.debug(`Setting Discord presence:`, presence)
         discordClient.setActivity(presence)
       } else {

@@ -1,16 +1,15 @@
 <script lang="ts">
-  import ImgurInfo from './components/ImgurInfo.svelte'
-  import ImgurClientId from './components/ImgurClientId.svelte'
+  import ImgurInfo from './components/Imgur.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import type { MediaServerActivityMapping } from '../../main/core/media-server/types'
   import { IpcChannel } from '../../main/ipc.types'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
-  import About from './components/About.svelte'
-  import { name } from '../../../package.json'
   import Activity from './components/Activity.svelte'
   import General from './components/General.svelte'
-  import Debug from './components/Debug.svelte'
+  import DebugAndReset from './components/DebugAndReset.svelte'
+  import ActivityButtons from './components/ActivityButtons.svelte'
+  import MediaTypes from './components/MediaTypes.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -30,14 +29,10 @@
 
 {#if config}
   <div class="container">
-    <hgroup>
-      <h1>General 🔮</h1>
-      <p>Settings to modify the behavior of {name}.</p>
-    </hgroup>
     <General {config} />
     <hgroup>
-      <h1>Connections 🪄</h1>
-      <p>Connect to one or multiple media-servers of your choice.</p>
+      <h2>Connections 🔮</h2>
+      <p>Source for now playing media.</p>
     </hgroup>
 
     {#each config.mediaServers as server (server.id)}
@@ -49,32 +44,35 @@
     {/each}
     <MediaServerNew {hasMediaServers} />
 
+    <hgroup>
+      <h2>Activity 🪄</h2>
+      <p>Change what is shown and how it is shown.</p>
+    </hgroup>
     <div class="grid">
       <div>
-        <hgroup>
-          <h1>Imgur 🌠</h1>
-          <p>Making images publicly available while keeping server addresses private.</p>
-        </hgroup>
-        <ImgurInfo />
-        <ImgurClientId clientId={config.imgurClientId} />
+        <MediaTypes {config} />
       </div>
       <div>
-        <hgroup>
-          <h1>Activity 🎇</h1>
-          <p>Customize how the activity is generated.</p>
-        </hgroup>
         <Activity {config} />
       </div>
     </div>
-    <div class="grid">
-      <About />
-      <div>
-        <hgroup>
-          <h3>Debug 🩻</h3>
-          <p>Options for advanced troubleshooting.</p>
-        </hgroup>
-        <Debug {config} />
-      </div>
-    </div>
+
+    <hgroup>
+      <h3>Buttons 🎇</h3>
+      <p>Personalize the linked content.</p>
+    </hgroup>
+    <ActivityButtons {config} />
+
+    <hgroup>
+      <h3>Imgur 🌠</h3>
+      <p>Making images publicly available while keeping media-servers private.</p>
+    </hgroup>
+    <ImgurInfo {config} />
+
+    <hgroup>
+      <h2>Debug & Reset 🩻</h2>
+      <p>Advanced troubleshooting and reset options.</p>
+    </hgroup>
+    <DebugAndReset {config} />
   </div>
 {/if}

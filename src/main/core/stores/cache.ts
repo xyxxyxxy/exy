@@ -15,7 +15,8 @@ const schema: Schema<CacheStore> = {
 
 const cacheStore = new Store<CacheStore>({
   name: 'cache',
-  schema
+  schema,
+  clearInvalidConfig: true
 })
 
 export function getCachedImageLink(imageHash: string): string | undefined {
@@ -24,6 +25,10 @@ export function getCachedImageLink(imageHash: string): string | undefined {
 
 export function cacheImageLink(imageHash: string, link: string): void {
   cacheStore.set(getImageCacheKey(imageHash), link)
+}
+
+export function clearCache(): void {
+  cacheStore.clear()
 }
 
 const getImageCacheKey = (imageHash: string): string => `image.${imageHash}`

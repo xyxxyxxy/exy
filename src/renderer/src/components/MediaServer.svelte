@@ -127,7 +127,7 @@
     <div class="grid">
       <button
         type="button"
-        class="outline secondary"
+        class="secondary"
         on:click={disconnect}
         disabled={isBusyTesting}
         aria-busy={isBusyDisconnecting}>Disconnect</button

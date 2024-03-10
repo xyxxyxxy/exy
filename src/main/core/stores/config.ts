@@ -1,8 +1,8 @@
 import Store from 'electron-store'
 import {
-  ActivityConfig,
   ConfigSelector,
   ConfigStore,
+  ExternalLinkConfig,
   MediaServerConfig,
   MediaServerConnectionIdentifiers
 } from './config.types'
@@ -42,9 +42,11 @@ export function isConnectionConfigured(connection: MediaServerConnectionIdentifi
     .some((server) => server.address === connection.address && server.port === connection.port)
 }
 
-export function addMediaServerConfig(newServer: MediaServerConfig): void {
-  const mediaServers = [...configStore.get(ConfigSelector.MediaServers), newServer]
-  configStore.set({ mediaServers })
+export function addMediaServer(newServer: MediaServerConfig): void {
+  configStore.set(ConfigSelector.MediaServers, [
+    ...configStore.get(ConfigSelector.MediaServers),
+    newServer
+  ])
 }
 
 export function deactivateMediaServer(id: string): void {
@@ -65,17 +67,10 @@ export function toggleMediaServerActive(id: string): void {
   configStore.set(ConfigSelector.MediaServers, mediaServers)
 }
 
-export function deleteMediaServerConfig(id: string): void {
-  const mediaServers = configStore
-    .get(ConfigSelector.MediaServers)
-    .filter((server) => server.id !== id)
-  configStore.set(ConfigSelector.MediaServers, mediaServers)
-}
-
-export function toggleStartup(): void {
+export function deleteMediaServer(id: string): void {
   configStore.set(
-    ConfigSelector.IsStartupEnabled,
-    !configStore.get(ConfigSelector.IsStartupEnabled)
+    ConfigSelector.MediaServers,
+    configStore.get(ConfigSelector.MediaServers).filter((element) => element.id !== id)
   )
 }
 
@@ -89,34 +84,73 @@ export function toggleIgnoredMediaType(type: ActivityItemType): void {
   configStore.set(ConfigSelector.IgnoredTypes, list)
 }
 
-export function toggleActivityLogoShown(): void {
-  updateActivity((config) => {
-    config.isLogoShown = !config.isLogoShown
-    config.isThemeColorUsed = true
-  })
-}
-
-export function toggleActivityThemeColorUsed(): void {
-  updateActivity((config) => (config.isThemeColorUsed = !config.isThemeColorUsed))
-}
-
-export function toggleActivityHomepageLinked(): void {
-  updateActivity((config) => (config.isHomepageLinked = !config.isHomepageLinked))
-}
-
-function updateActivity(update: (activityConfig: ActivityConfig) => void): void {
-  const config = configStore.get(ConfigSelector.Activity)
-  update(config)
-  configStore.set(ConfigSelector.Activity, config)
-}
-
-export function toggleDebugLogging(): void {
-  configStore.set(
-    ConfigSelector.IsDebugLoggingEnabled,
-    !configStore.get(ConfigSelector.IsDebugLoggingEnabled)
-  )
+export function toggleConfigFlag(selector: ConfigSelector): void {
+  configStore.set(selector, !configStore.get(selector.toString()))
 }
 
 export function setImgurClientId(clientId: string | null): void {
   configStore.set(ConfigSelector.ImgurClientId, clientId)
+}
+
+export function saveExternalLink(newOrUpdated: ExternalLinkConfig): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+
+  // Remove custom URL if target is different.
+  if (newOrUpdated.target !== 'CustomUrl') delete newOrUpdated.customUrl
+
+  const index = externalLinks.findIndex((element) => element.id === newOrUpdated.id)
+  if (index !== -1) {
+    // Update.
+    externalLinks[index] = newOrUpdated
+  } else {
+    // Add new.
+    externalLinks.push(newOrUpdated)
+  }
+
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+export function toggleExternalLinkActive(id: string): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+  externalLinks.forEach((element) => {
+    if (element.id === id) element.isActive = !element.isActive
+  })
+
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+export function moveExternalLinkUp(id: string): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+  const index = externalLinks.findIndex((element) => element.id === id)
+  moveInArray(externalLinks, index, index - 1)
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+export function moveExternalLinkDown(id: string): void {
+  const externalLinks = configStore.get(ConfigSelector.ExternalLinks)
+  const index = externalLinks.findIndex((element) => element.id === id)
+  moveInArray(externalLinks, index, index + 1)
+  configStore.set(ConfigSelector.ExternalLinks, externalLinks)
+}
+
+function moveInArray<T>(data: Array<T>, from: number, to: number): void {
+  // Remove 'from' element and store it.
+  const element = data.splice(from, 1)[0]
+  // Insert stored element into position 'to'.
+  data.splice(to, 0, element)
+}
+
+export function deleteExternalLink(id: string): void {
+  configStore.set(
+    ConfigSelector.ExternalLinks,
+    configStore.get(ConfigSelector.ExternalLinks).filter((element) => element.id !== id)
+  )
+}
+
+export function resetExternalLinks(): void {
+  configStore.reset(ConfigSelector.ExternalLinks)
+}
+
+export function clearConfig(): void {
+  configStore.clear()
 }
