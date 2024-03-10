@@ -18,7 +18,7 @@ export const addPublicContent$ = (activity: Activity): Observable<Activity> => {
 
   if (youTubeId) {
     const watchUrl = `https://youtube.com/watch?v=${youTubeId}`
-    const imageUrl = `https://www.bitchute.com/video/j0D6XtdyJasd/`
+    const imageUrl = `https://img.youtube.com/vi/${youTubeId}/0.jpg`
     // Using image URL for YouTube, since the video 404 page is responding with status 200.
     return confirm$(imageUrl).pipe(
       map((isValid) => {
