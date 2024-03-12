@@ -6,19 +6,14 @@
 
 TODO Images
 
-# State of this application
-
-As of March 2024, me and some friends use exy on Windows.
-MacOS and Linux builds are created, but untested. Feedback appreciated.
-
 ## Features
 
-- Easy to setup
+- Easy to setup via UI
 - Preview images using Imgur
 - All media types supported
 - Showing play state (pause, time remaining, current chapter)
 - Ignore media types and customize what is shared
-- Login with your regular user. No Emby/Jellyfin API key required
+- Login with your regular user, no Emby/Jellyfin API key required
 - Detect YouTube/BitChute content and link to original video
 
 ## Requirements
@@ -26,6 +21,10 @@ MacOS and Linux builds are created, but untested. Feedback appreciated.
 Discord setting "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
 This setting can be found in "Discord settings" -> "Activity Privacy".
+
+## Download
+
+Installers can be downloaded from the [latest release](https://github.com/xyxxyxxy/exy/releases/latest) page.
 
 # Development
 
