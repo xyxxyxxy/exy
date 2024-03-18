@@ -1,11 +1,8 @@
 # exy
 
-![intro](resources/docs/intro.png)
-![intro-music](resources/docs/intro-music.png)
-![intro-movies](resources/docs/intro-movies.png)
-![intro-shows](resources/docs/intro-shows.png)
-
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
+
+![intro](resources/docs/intro.png)
 
 ## Features
 
@@ -17,15 +14,15 @@
 - Login with your regular user, no Emby/Jellyfin API key required
 - Detect YouTube/BitChute content and link to original video
 
+## Download
+
+Installers can be downloaded from the [latest release](https://github.com/xyxxyxxy/exy/releases/latest) page.
+
 ## Requirements
 
 Discord setting "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
 This setting can be found in "Discord settings" -> "Activity Privacy".
-
-## Download
-
-Installers can be downloaded from the [latest release](https://github.com/xyxxyxxy/exy/releases/latest) page.
 
 # Development
 
