@@ -32,7 +32,7 @@ export function initTray(mainWindow: BrowserWindow): void {
     // Discord ready and activity present.
     if (discordStatus === ConnectionStatus.Ready && activity) {
       image = iconActive
-      toolTip += getPrimaryText(activity)
+      toolTip += ` - ${getPrimaryText(activity)}`
     }
 
     tray.setImage(image)
