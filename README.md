@@ -1,10 +1,11 @@
 # exy
 
-| ![exy-icon](resources/icon.png | width=100) | Download [here](https://github.com/xyxxyxxy/exy/releases/latest). |
+![intro](resources/docs/intro.png)
+![intro-music](resources/docs/intro-music.png)
+![intro-movies](resources/docs/intro-movies.png)
+![intro-shows](resources/docs/intro-shows.png)
 
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
-
-TODO Images
 
 ## Features
 
