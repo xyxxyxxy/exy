@@ -1,10 +1,6 @@
-# exy
-
-[Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
-
 ![intro](resources/docs/intro.png)
 
-## Features
+[Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
 
 - Easy to setup via UI
 - Preview images using Imgur
@@ -20,13 +16,13 @@ Installers can be downloaded from the [release page](https://github.com/xyxxyxxy
 
 ## Requirements
 
-Discord client must run on the same machine as exy.
+Discord client must run on the same machine.
 
 ### Discord settings
 
-Discord setting "Display current activity as a status message." needs to be enabled.
+"Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
-This setting can be found in "Discord settings" -> "Activity Privacy".
+Can be found in "Discord settings" -> "Activity Privacy".
 
 # Development
 
