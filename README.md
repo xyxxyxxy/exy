@@ -16,9 +16,13 @@
 
 ## Download
 
-Installers can be downloaded from the [latest release](https://github.com/xyxxyxxy/exy/releases/latest) page.
+Installers can be downloaded from the [release page](https://github.com/xyxxyxxy/exy/releases/latest).
 
 ## Requirements
+
+Discord client must run on the same machine as exy.
+
+### Discord settings
 
 Discord setting "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)

@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { name } from '../../../../package.json'
-
   export let isConnected: boolean
   export let isImgurSet: boolean
 
