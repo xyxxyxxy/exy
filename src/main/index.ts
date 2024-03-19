@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow } from 'electron'
+import { app, shell, BrowserWindow, Notification } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -7,7 +7,17 @@ import contextMenu from 'electron-context-menu'
 import log from 'electron-log/main'
 import { startMainToRendererIpc } from './ipc'
 import { config$ } from './core/stores/config'
-import { distinctUntilChanged, fromEvent, map, merge, withLatestFrom } from 'rxjs'
+import {
+  distinctUntilChanged,
+  filter,
+  first,
+  fromEvent,
+  map,
+  merge,
+  switchMap,
+  tap,
+  withLatestFrom
+} from 'rxjs'
 import { initTray } from './tray'
 import { name } from '../../package.json'
 
@@ -46,16 +56,33 @@ function createWindow(): void {
   lockSingleInstance(mainWindow)
   initTray(mainWindow)
 
-  // Open if no media-servers are configured.
+  // "Getting started" behavior.
   fromEvent(mainWindow, 'ready-to-show')
-    .pipe(withLatestFrom(config$))
-    .subscribe(([, config]) => {
-      if (!config.mediaServers.length) mainWindow.show()
-      // TODO Notification on first move to tray?
+    .pipe(
+      withLatestFrom(config$),
+      // No media-servers configured is considered a fresh installation.
+      map(([, config]) => !config.mediaServers.length),
+      // Nothing to do if already configured.
+      filter((isGettingStarted) => isGettingStarted),
+      // Show configuration window.
+      tap(() => mainWindow.show()),
+      // Display tray info on first close/minimize.
+      switchMap(() => closeOrMinimize$),
+      first()
+    )
+    .subscribe(() => {
+      new Notification({
+        title: `${name} running in background`,
+        // body: 'You can access it in the tray menu',
+        silent: true,
+        icon
+      }).show()
     })
 
+  const closeOrMinimize$ = merge(fromEvent(mainWindow, 'close'), fromEvent(mainWindow, 'minimize'))
+
   // Hide on minimize and close.
-  merge(fromEvent(mainWindow, 'close'), fromEvent(mainWindow, 'minimize')).subscribe((event) => {
+  closeOrMinimize$.subscribe((event) => {
     ;(event as Event).preventDefault()
     mainWindow.hide()
   })
@@ -76,13 +103,6 @@ app.whenReady().then(() => {
   })
 
   createWindow()
-
-  // TODO Handle macOS dock
-  // app.on('activate', function () {
-  //   // On macOS it's common to re-create a window in the app when the
-  //   // dock icon is clicked and there are no other windows open.
-  //   if (BrowserWindow.getAllWindows().length === 0) createWindow()
-  // })
 })
 
 config$

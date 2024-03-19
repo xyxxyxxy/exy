@@ -10,6 +10,7 @@
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
+  import GettingStarted from './components/GettingStarted.svelte'
 
   let config: ConfigStore
   let hasMediaServers: boolean
@@ -29,9 +30,13 @@
 
 {#if config}
   <div class="container">
+    <GettingStarted
+      isConnected={!!config.mediaServers.length}
+      isImgurSet={!!config.imgurClientId}
+    />
     <General {config} />
     <hgroup>
-      <h2>Connections 🔮</h2>
+      <h2 id="connections">Connections 🔮</h2>
       <p>Source for now playing media.</p>
     </hgroup>
 
@@ -64,7 +69,7 @@
     <ActivityButtons {config} />
 
     <hgroup>
-      <h3>Imgur 🌠</h3>
+      <h3 id="imgur">Imgur 🌠</h3>
       <p>Making images publicly available while keeping media-servers private.</p>
     </hgroup>
     <ImgurInfo {config} />

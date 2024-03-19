@@ -30,9 +30,8 @@ export function buildFullActivity$(
     albumTitle: item.Album,
     showTitle: item.SeriesName,
     seasonTitle: item.SeasonName,
-    startTime: parseStartTime(item),
     episodeNumber: item.IndexNumber ? item.IndexNumber : undefined,
-    releaseDate: parsePremierDate(item),
+    releaseDate: getReleaseDate(item),
     externalData: mapExternalData(item),
     endTime: parseEndTime(item, playState)
   }
@@ -62,7 +61,7 @@ function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   ).map((external) => ({ type: external.Name, url: external.Url }))
 }
 
-function parsePremierDate(item: BaseItemDto): Date | undefined {
+function getReleaseDate(item: BaseItemDto): Date | undefined {
   // For home video, the date created is returned.
   if (item.Type === ItemType.Video && item.DateCreated) return new Date(item.DateCreated)
 
@@ -73,12 +72,6 @@ function parsePremierDate(item: BaseItemDto): Date | undefined {
   if (date && date.getFullYear() < 1000) return undefined
 
   return date
-}
-
-function parseStartTime(item: BaseItemDto): Date | undefined {
-  // TODO This is not the time watching started.
-  if (item.Type !== ItemType.TvChannel || !item.CurrentProgram?.StartDate) return undefined
-  return new Date(item.CurrentProgram.StartDate)
 }
 
 function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | undefined {

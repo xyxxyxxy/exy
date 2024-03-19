@@ -1,33 +1,28 @@
-# exy
-
-| ![exy-icon](resources/icon.png | width=100) | Download [here](https://github.com/xyxxyxxy/exy/releases/latest). |
+![intro](resources/docs/intro.png)
 
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
 
-TODO Images
+- Easy to setup via UI
+- Preview images using Imgur
+- All media types supported
+- Showing play state (pause, time remaining, current chapter)
+- Ignore media types and customize what is shared
+- Login with your regular user, no Emby/Jellyfin API key required
+- Detect YouTube/BitChute content and link to original video
 
-# State of this application
+## Download
 
-As of March 2024, me and some friends use exy on Windows.
-MacOS and Linux builds are created, but untested. Feedback appreciated.
-
-## Features
-
-- Easy to setup.
-- All media types supported.
-- Preview images using Imgur.
-- Showing paused state.
-- Choose which media types are shared and what the activity contains.
-- Add multiple media-server sources.
-- Login with your regular user. No Emby/Jellyfin API key required.
-- Personalize the buttons.
-- Detect YouTube/BitChute content and add watch link to activity.
+Installers can be downloaded from the [release page](https://github.com/xyxxyxxy/exy/releases/latest).
 
 ## Requirements
 
-Discord setting "Display current activity as a status message." needs to be enabled.
+Discord client must run on the same machine.
+
+### Discord settings
+
+"Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
-This setting can be found in "Discord settings" -> "Activity Privacy".
+Can be found in "Discord settings" -> "Activity Privacy".
 
 # Development
 
