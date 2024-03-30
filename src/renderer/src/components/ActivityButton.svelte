@@ -86,7 +86,6 @@
         {`〔 ${externalLink.label} 〕` ||
           'New Button'}{#if externalLink.forItemType !== 'All'}{` for ${getItemTypeText(externalLink.forItemType)}`}{/if}
       {/if}
-      <!-- TODO Move buttons up and down -->
     </summary>
 
     <article>
@@ -136,7 +135,6 @@
             />
           </label>
         {/if}
-        <!-- TODO Hint for youtube/bitchute and other automatic types -->
         <div class="grid">
           {#if externalLink.id}
             <button type="button" class="secondary" on:click={deleteExternalLink}>Delete</button>
