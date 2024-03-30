@@ -37,6 +37,7 @@
     "@types/discord-rpc": "^4.0.8",
     "@types/node": "^20.11.26",
     "axios": "^1.6.7",
+    "bufferutil": "^4.0.8",
     "discord-rpc": "^4.0.1",
     "electron": "^29.1.1",
     "electron-builder": "^24.13.3",
@@ -54,6 +55,7 @@
     "svelte": "^4.2.9",
     "svelte-check": "^3.6.7",
     "typescript": "^5.4.2",
+    "utf-8-validate": "^5.0.10",
     "vite": "^5.1.6"
   }
 }
