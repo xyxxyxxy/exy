@@ -6,18 +6,15 @@
   import Move from './Move.svelte'
 
   // ID is optional, because it's unset for new buttons.
-  export let externalLink: Omit<ExternalLinkConfig, 'id'> & { id?: string } = {
-    isActive: true,
-    label: 'New Button',
-    forItemType: 'All',
-    target: 'CustomUrl'
-  }
+  export let externalLink: Omit<ExternalLinkConfig, 'id'> & { id?: string }
 
   export let isFirst = false
   export let isLast = false
 
   let isOpen
-  let hasChanges = false
+  let hasChanges
+
+  if (!externalLink) reset()
 
   function toggleActive(): void {
     window.electron.ipcRenderer.send(IpcChannel.ToggleExternalLinkActive, externalLink.id)
@@ -41,8 +38,18 @@
 
   function save(): void {
     window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, externalLink)
+    reset()
+  }
+
+  function reset(): void {
     hasChanges = false
     isOpen = false
+    externalLink = {
+      isActive: true,
+      label: 'New Button',
+      forItemType: 'All',
+      target: 'CustomUrl'
+    }
   }
 </script>
 
