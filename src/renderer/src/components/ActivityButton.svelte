@@ -6,7 +6,7 @@
   import Move from './Move.svelte'
 
   // ID is optional, because it's unset for new buttons.
-  export let externalLink: Omit<ExternalLinkConfig, 'id'> & { id?: string }
+  export let externalLink: null | (Omit<ExternalLinkConfig, 'id'> & { id?: string }) = null
 
   export let isFirst = false
   export let isLast = false
