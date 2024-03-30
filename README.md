@@ -10,6 +10,12 @@
 - Login with your regular user, no Emby/Jellyfin API key required
 - Detect YouTube/BitChute content and link to original video
 
+# Setup
+
+https://github.com/xyxxyxxy/exy/assets/7705456/8dff2e70-5a59-41c2-ae0d-bad2e1a5c113
+
+Follow the instructions in the UI to connect your media-server and add an Imgur client ID. Play something in Emby/Jellyfin and exy will update your Discord status.
+
 ## Download
 
 Installers can be downloaded from the [release page](https://github.com/xyxxyxxy/exy/releases/latest).
