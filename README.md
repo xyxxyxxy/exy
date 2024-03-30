@@ -10,6 +10,10 @@
 - Login with your regular user, no Emby/Jellyfin API key required
 - Detect YouTube/BitChute content and link to original video
 
+# Setup
+
+https://github.com/xyxxyxxy/exy/assets/7705456/8dff2e70-5a59-41c2-ae0d-bad2e1a5c113
+
 ## Download
 
 Installers can be downloaded from the [release page](https://github.com/xyxxyxxy/exy/releases/latest).
