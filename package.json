@@ -22,7 +22,7 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "generate-emby-client": "openapi-ts --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
   },
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.0",
@@ -32,6 +32,7 @@
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
     "@electron-toolkit/eslint-config-ts": "^1.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
+    "@hey-api/openapi-ts": "^0.42.1",
     "@picocss/pico": "^2.0.6",
     "@sveltejs/vite-plugin-svelte": "^3.0.1",
     "@types/discord-rpc": "^4.0.8",
@@ -48,7 +49,6 @@
     "eslint": "^8.56.0",
     "eslint-plugin-svelte": "^2.35.1",
     "imgur": "^2.4.2",
-    "openapi-typescript-codegen": "^0.28.0",
     "prettier": "^3.2.4",
     "prettier-plugin-svelte": "^3.1.2",
     "rxjs": "^7.8.1",
