@@ -46,9 +46,12 @@ export function authenticate$(
     switchMap((xEmbyAuthorization) =>
       new EmbyClient({
         BASE: getBaseUrl(connectionDetails)
-      }).userService.postUsersAuthenticatebyname(xEmbyAuthorization, {
-        Username: connectionDetails.username,
-        Pw: connectionDetails.password
+      }).userService.postUsersAuthenticatebyname({
+        xEmbyAuthorization,
+        requestBody: {
+          Username: connectionDetails.username,
+          Pw: connectionDetails.password
+        }
       })
     )
   )
@@ -63,7 +66,7 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
   )
 }
 
-export function logout$(server: MediaServerConfig): Observable<void> {
+export function logout$(server: MediaServerConfig): Observable<unknown> {
   return getAuthenticatedClient$(server).pipe(
     switchMap((client) => client.sessionsService.postSessionsLogout())
   )
@@ -139,7 +142,9 @@ export const mediaServerMainActivity$: Observable<Activity | null> = combineLate
 function poll$(server: MediaServerConfig): Observable<PollingResult | null> {
   return getAuthenticatedClient$(server).pipe(
     // Get all sessions with now playing items.
-    switchMap((client) => client.sessionsService.getSessions(server.userId)),
+    switchMap((client) =>
+      client.sessionsService.getSessions({ controllableByUserId: server.userId })
+    ),
     map((sessions) => sessions.filter(isValidSession)),
     // Build base activity.
     map((sessions) =>

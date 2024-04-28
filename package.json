@@ -1,6 +1,6 @@
 {
   "name": "exy",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "xyxxyxxy",
@@ -22,40 +22,40 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "generate-emby-client": "openapi-ts --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
   },
   "dependencies": {
-    "@electron-toolkit/preload": "^3.0.0",
     "@electron-toolkit/utils": "^3.0.0"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",
-    "@electron-toolkit/eslint-config-ts": "^1.0.1",
+    "@electron-toolkit/eslint-config-ts": "^2.0.0",
+    "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
+    "@hey-api/openapi-ts": "^0.42.1",
     "@picocss/pico": "^2.0.6",
-    "@sveltejs/vite-plugin-svelte": "^3.0.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.0",
     "@types/discord-rpc": "^4.0.8",
-    "@types/node": "^20.11.26",
+    "@types/node": "^20.12.7",
     "axios": "^1.6.7",
     "bufferutil": "^4.0.8",
     "discord-rpc": "^4.0.1",
-    "electron": "^29.1.1",
+    "electron": "^30.0.1",
     "electron-builder": "^24.13.3",
     "electron-context-menu": "^3.6.1",
     "electron-log": "^5.1.2",
     "electron-store": "^8.2.0",
-    "electron-vite": "^2.1.0",
-    "eslint": "^8.56.0",
-    "eslint-plugin-svelte": "^2.35.1",
+    "electron-vite": "^2.2.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-svelte": "^2.38.0",
     "imgur": "^2.4.2",
-    "openapi-typescript-codegen": "^0.28.0",
     "prettier": "^3.2.4",
-    "prettier-plugin-svelte": "^3.1.2",
+    "prettier-plugin-svelte": "^3.2.3",
     "rxjs": "^7.8.1",
-    "svelte": "^4.2.9",
-    "svelte-check": "^3.6.7",
-    "typescript": "^5.4.2",
+    "svelte": "^4.2.15",
+    "svelte-check": "^3.7.0",
+    "typescript": "^5.4.5",
     "utf-8-validate": "^5.0.10",
-    "vite": "^5.1.6"
+    "vite": "^5.2.10"
   }
 }
