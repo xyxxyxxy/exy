@@ -79,6 +79,14 @@ All art assets are stored in [resources/discord-art-assets/](resources/discord-a
 Assets need to be uploaded in the application settings -> "Rich Presence" -> "Art Assets":
 ![discord-art-assets](/resources/docs/discord-art-assets.png)
 
+## Emby API client
+
+The Emby API client is generated using `npm run generate-emby-client`.
+
+A local copy of the Emby OpenAPI configuration is used, so builds are reproducible.
+To get the latest version of the OpenAPI JSON see:
+https://dev.emby.media/doc/restapi/index.html#emby-api-browser
+
 # Code Dependency Upgrade Notes
 
 To upgrade `electron-store` to [version 9](https://github.com/sindresorhus/electron-store/releases/tag/v9.0.0) or higher the following config is required in `tsconfig.node.json`, because `electron-store` was converted into an ESM:
