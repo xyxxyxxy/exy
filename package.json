@@ -22,7 +22,7 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi-ts --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "generate-emby-client": "openapi-ts --input ./src/main/core/emby-client/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
   },
   "dependencies": {
     "@electron-toolkit/utils": "^3.0.0"
