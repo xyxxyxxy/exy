@@ -2,7 +2,7 @@
 
 import type { CancelablePromise } from './core/CancelablePromise';
 import type { BaseHttpRequest } from './core/BaseHttpRequest';
-import type { GetArtistsData, GetArtistsResponse, GetArtistsByNameData, GetArtistsByNameResponse, GetArtistsAlbumartistsData, GetArtistsAlbumartistsResponse, GetAudiocodecsData, GetAudiocodecsResponse, GetContainersData, GetContainersResponse, GetSubtitlecodecsData, GetSubtitlecodecsResponse, GetTagsData, GetTagsResponse, GetVideocodecsData, GetVideocodecsResponse, GetYearsData, GetYearsResponse, GetArtistsPrefixesData, GetArtistsPrefixesResponse, GetItemsPrefixesData, GetItemsPrefixesResponse, GetChannelsData, GetChannelsResponse, GetChannelsByIdItemsResponse, GetChannelsItemsLatestResponse, PostCollectionsData, PostCollectionsResponse, PostCollectionsByIdItemsData, PostCollectionsByIdItemsResponse, DeleteCollectionsByIdItemsData, DeleteCollectionsByIdItemsResponse, GetDevicesResponse, DeleteDevicesData, DeleteDevicesResponse, PostDevicesOptionsData, PostDevicesOptionsResponse, GetDevicesOptionsData, GetDevicesOptionsResponse, GetDevicesInfoData, GetDevicesInfoResponse, GetDevicesCamerauploadsData, GetDevicesCamerauploadsResponse, PostDevicesCamerauploadsData, PostDevicesCamerauploadsResponse, GetGamegenresData, GetGamegenresResponse, GetGamegenresByNameData, GetGamegenresByNameResponse, GetGenresData, GetGenresResponse, GetGenresByNameData, GetGenresByNameResponse, GetItemsData, GetItemsResponse, GetUsersByUseridItemsData, GetUsersByUseridItemsResponse, GetUsersByUseridItemsResumeData, GetUsersByUseridItemsResumeResponse, DeleteItemsData, DeleteItemsResponse, GetItemsCountsData, GetItemsCountsResponse, DeleteItemsByIdData, DeleteItemsByIdResponse, GetLibrariesAvailableoptionsResponse, GetLibrarySelectablemediafoldersResponse, GetLibraryMediafoldersData, GetLibraryMediafoldersResponse, GetLibraryPhysicalpathsResponse, PostLibraryRefreshResponse, GetAlbumsByIdSimilarData, GetAlbumsByIdSimilarResponse, GetArtistsByIdSimilarData, GetArtistsByIdSimilarResponse, GetGamesByIdSimilarData, GetGamesByIdSimilarResponse, GetItemsByIdDeleteinfoData, GetItemsByIdDeleteinfoResponse, GetItemsByIdSimilarData, GetItemsByIdSimilarResponse, GetItemsByIdDownloadData, GetItemsByIdDownloadResponse, GetItemsByIdFileData, GetItemsByIdFileResponse, GetItemsByIdAncestorsData, GetItemsByIdAncestorsResponse, GetItemsByIdCriticreviewsData, GetItemsByIdCriticreviewsResponse, GetItemsByIdThememediaData, GetItemsByIdThememediaResponse, GetItemsByIdThemesongsData, GetItemsByIdThemesongsResponse, GetItemsByIdThemevideosData, GetItemsByIdThemevideosResponse, PostLibrarySeriesAddedResponse, PostLibrarySeriesUpdatedResponse, PostLibraryMediaUpdatedData, PostLibraryMediaUpdatedResponse, PostLibraryMoviesAddedResponse, PostLibraryMoviesUpdatedResponse, GetMoviesByIdSimilarData, GetMoviesByIdSimilarResponse, GetShowsByIdSimilarData, GetShowsByIdSimilarResponse, GetTrailersByIdSimilarData, GetTrailersByIdSimilarResponse, GetMusicgenresData, GetMusicgenresResponse, GetMusicgenresByNameData, GetMusicgenresByNameResponse, GetOfficialratingsData, GetOfficialratingsResponse, GetOpenapiResponse, GetOpenapiJsonResponse, GetSwaggerResponse, GetSwaggerJsonResponse, GetPackagesData, GetPackagesResponse, GetPackagesUpdatesData, GetPackagesUpdatesResponse, GetPackagesByNameData, GetPackagesByNameResponse, PostPackagesInstalledByNameData, PostPackagesInstalledByNameResponse, DeletePackagesInstallingByIdData, DeletePackagesInstallingByIdResponse, GetPersonsData, GetPersonsResponse, GetPersonsByNameData, GetPersonsByNameResponse, PostPlaylistsData, PostPlaylistsResponse, PostPlaylistsByIdItemsData, PostPlaylistsByIdItemsResponse, DeletePlaylistsByIdItemsData, DeletePlaylistsByIdItemsResponse, GetPlaylistsByIdItemsData, GetPlaylistsByIdItemsResponse, PostPlaylistsByIdItemsByItemidMoveByNewindexData, PostPlaylistsByIdItemsByItemidMoveByNewindexResponse, GetPluginsResponse, DeletePluginsByIdData, DeletePluginsByIdResponse, GetPluginsByIdThumbData, GetPluginsByIdThumbResponse, GetPluginsByIdConfigurationData, GetPluginsByIdConfigurationResponse, PostPluginsByIdConfigurationData, PostPluginsByIdConfigurationResponse, GetScheduledtasksData, GetScheduledtasksResponse, GetScheduledtasksByIdData, GetScheduledtasksByIdResponse, PostScheduledtasksRunningByIdData, PostScheduledtasksRunningByIdResponse, DeleteScheduledtasksRunningByIdData, DeleteScheduledtasksRunningByIdResponse, PostScheduledtasksByIdTriggersData, PostScheduledtasksByIdTriggersResponse, GetSessionsData, GetSessionsResponse, GetAuthProvidersResponse, PostAuthKeysData, PostAuthKeysResponse, GetAuthKeysResponse, PostSessionsLogoutResponse, PostSessionsCapabilitiesData, PostSessionsCapabilitiesResponse, DeleteAuthKeysByKeyData, DeleteAuthKeysByKeyResponse, PostSessionsByIdViewingData, PostSessionsByIdViewingResponse, PostSessionsByIdMessageData, PostSessionsByIdMessageResponse, PostSessionsByIdPlayingData, PostSessionsByIdPlayingResponse, PostSessionsByIdCommandData, PostSessionsByIdCommandResponse, PostSessionsCapabilitiesFullData, PostSessionsCapabilitiesFullResponse, PostSessionsByIdPlayingByCommandData, PostSessionsByIdPlayingByCommandResponse, PostSessionsByIdSystemByCommandData, PostSessionsByIdSystemByCommandResponse, PostSessionsByIdCommandByCommandData, PostSessionsByIdCommandByCommandResponse, PostSessionsByIdUsersByUseridData, PostSessionsByIdUsersByUseridResponse, DeleteSessionsByIdUsersByUseridData, DeleteSessionsByIdUsersByUseridResponse, GetStudiosData, GetStudiosResponse, GetStudiosByNameData, GetStudiosByNameResponse, GetTrailersData, GetTrailersResponse, GetUsersData, GetUsersResponse, GetUsersPublicResponse, GetUsersByIdData, GetUsersByIdResponse, DeleteUsersByIdData, DeleteUsersByIdResponse, PostUsersByIdData, PostUsersByIdResponse, PostUsersAuthenticatebynameData, PostUsersAuthenticatebynameResponse, PostUsersNewData, PostUsersNewResponse, PostUsersForgotpasswordData, PostUsersForgotpasswordResponse, PostUsersByIdAuthenticateData, PostUsersByIdAuthenticateResponse, PostUsersByIdPasswordData, PostUsersByIdPasswordResponse, PostUsersByIdEasypasswordData, PostUsersByIdEasypasswordResponse, PostUsersForgotpasswordPinData, PostUsersForgotpasswordPinResponse, PostUsersByIdConfigurationData, PostUsersByIdConfigurationResponse, PostUsersByIdPolicyData, PostUsersByIdPolicyResponse, GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountData, GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountResponse, HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountData, HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountResponse, GetItemsByIdImagesData, GetItemsByIdImagesResponse, GetArtistsByNameImagesByTypeData, GetArtistsByNameImagesByTypeResponse, HeadArtistsByNameImagesByTypeData, HeadArtistsByNameImagesByTypeResponse, GetGamegenresByNameImagesByTypeData, GetGamegenresByNameImagesByTypeResponse, HeadGamegenresByNameImagesByTypeData, HeadGamegenresByNameImagesByTypeResponse, GetGenresByNameImagesByTypeData, GetGenresByNameImagesByTypeResponse, HeadGenresByNameImagesByTypeData, HeadGenresByNameImagesByTypeResponse, GetItemsByIdImagesByTypeData, GetItemsByIdImagesByTypeResponse, HeadItemsByIdImagesByTypeData, HeadItemsByIdImagesByTypeResponse, PostItemsByIdImagesByTypeData, PostItemsByIdImagesByTypeResponse, DeleteItemsByIdImagesByTypeData, DeleteItemsByIdImagesByTypeResponse, GetMusicgenresByNameImagesByTypeData, GetMusicgenresByNameImagesByTypeResponse, HeadMusicgenresByNameImagesByTypeData, HeadMusicgenresByNameImagesByTypeResponse, GetPersonsByNameImagesByTypeData, GetPersonsByNameImagesByTypeResponse, HeadPersonsByNameImagesByTypeData, HeadPersonsByNameImagesByTypeResponse, GetStudiosByNameImagesByTypeData, GetStudiosByNameImagesByTypeResponse, HeadStudiosByNameImagesByTypeData, HeadStudiosByNameImagesByTypeResponse, GetUsersByIdImagesByTypeData, GetUsersByIdImagesByTypeResponse, HeadUsersByIdImagesByTypeData, HeadUsersByIdImagesByTypeResponse, PostUsersByIdImagesByTypeData, PostUsersByIdImagesByTypeResponse, DeleteUsersByIdImagesByTypeData, DeleteUsersByIdImagesByTypeResponse, GetArtistsByNameImagesByTypeByIndexData, GetArtistsByNameImagesByTypeByIndexResponse, HeadArtistsByNameImagesByTypeByIndexData, HeadArtistsByNameImagesByTypeByIndexResponse, GetGamegenresByNameImagesByTypeByIndexData, GetGamegenresByNameImagesByTypeByIndexResponse, HeadGamegenresByNameImagesByTypeByIndexData, HeadGamegenresByNameImagesByTypeByIndexResponse, GetGenresByNameImagesByTypeByIndexData, GetGenresByNameImagesByTypeByIndexResponse, HeadGenresByNameImagesByTypeByIndexData, HeadGenresByNameImagesByTypeByIndexResponse, GetItemsByIdImagesByTypeByIndexData, GetItemsByIdImagesByTypeByIndexResponse, HeadItemsByIdImagesByTypeByIndexData, HeadItemsByIdImagesByTypeByIndexResponse, PostItemsByIdImagesByTypeByIndexData, PostItemsByIdImagesByTypeByIndexResponse, DeleteItemsByIdImagesByTypeByIndexData, DeleteItemsByIdImagesByTypeByIndexResponse, GetMusicgenresByNameImagesByTypeByIndexData, GetMusicgenresByNameImagesByTypeByIndexResponse, HeadMusicgenresByNameImagesByTypeByIndexData, HeadMusicgenresByNameImagesByTypeByIndexResponse, GetPersonsByNameImagesByTypeByIndexData, GetPersonsByNameImagesByTypeByIndexResponse, HeadPersonsByNameImagesByTypeByIndexData, HeadPersonsByNameImagesByTypeByIndexResponse, GetStudiosByNameImagesByTypeByIndexData, GetStudiosByNameImagesByTypeByIndexResponse, HeadStudiosByNameImagesByTypeByIndexData, HeadStudiosByNameImagesByTypeByIndexResponse, GetUsersByIdImagesByTypeByIndexData, GetUsersByIdImagesByTypeByIndexResponse, HeadUsersByIdImagesByTypeByIndexData, HeadUsersByIdImagesByTypeByIndexResponse, PostUsersByIdImagesByTypeByIndexData, PostUsersByIdImagesByTypeByIndexResponse, DeleteUsersByIdImagesByTypeByIndexData, DeleteUsersByIdImagesByTypeByIndexResponse, PostItemsByIdImagesByTypeByIndexIndexData, PostItemsByIdImagesByTypeByIndexIndexResponse, GetArtistsInstantmixData, GetArtistsInstantmixResponse, GetMusicgenresInstantmixData, GetMusicgenresInstantmixResponse, GetAlbumsByIdInstantmixData, GetAlbumsByIdInstantmixResponse, GetItemsByIdInstantmixData, GetItemsByIdInstantmixResponse, GetMusicgenresByNameInstantmixData, GetMusicgenresByNameInstantmixResponse, GetPlaylistsByIdInstantmixData, GetPlaylistsByIdInstantmixResponse, GetSongsByIdInstantmixData, GetSongsByIdInstantmixResponse, GetBrandingConfigurationResponse, GetBrandingCssResponse, GetBrandingCssCssResponse, GetConnectPendingResponse, GetConnectExchangeData, GetConnectExchangeResponse, PostUsersByIdConnectLinkData, PostUsersByIdConnectLinkResponse, DeleteUsersByIdConnectLinkData, DeleteUsersByIdConnectLinkResponse, GetDisplaypreferencesByIdData, GetDisplaypreferencesByIdResponse, PostDisplaypreferencesByDisplaypreferencesidData, PostDisplaypreferencesByDisplaypreferencesidResponse, GetDlnaProfileinfosResponse, PostDlnaProfilesData, PostDlnaProfilesResponse, GetDlnaProfilesByIdData, GetDlnaProfilesByIdResponse, DeleteDlnaProfilesByIdData, DeleteDlnaProfilesByIdResponse, PostDlnaProfilesByIdData, PostDlnaProfilesByIdResponse, GetDlnaProfilesDefaultResponse, PostEnvironmentValidatepathData, PostEnvironmentValidatepathResponse, GetEnvironmentDefaultdirectorybrowserResponse, GetEnvironmentDirectorycontentsData, GetEnvironmentDirectorycontentsResponse, GetEnvironmentNetworksharesData, GetEnvironmentNetworksharesResponse, GetEnvironmentDrivesResponse, GetEnvironmentNetworkdevicesResponse, GetEnvironmentParentpathData, GetEnvironmentParentpathResponse, GetGamesSystemsummariesData, GetGamesSystemsummariesResponse, GetImagesMediainfoResponse, GetImagesRatingsResponse, GetImagesGeneralResponse, GetImagesGeneralByNameByTypeData, GetImagesGeneralByNameByTypeResponse, GetImagesRatingsByThemeByNameData, GetImagesRatingsByThemeByNameResponse, GetImagesMediainfoByThemeByNameData, GetImagesMediainfoByThemeByNameResponse, GetImagesRemoteData, GetImagesRemoteResponse, GetItemsByIdRemoteimagesData, GetItemsByIdRemoteimagesResponse, GetItemsByIdRemoteimagesProvidersData, GetItemsByIdRemoteimagesProvidersResponse, PostItemsByIdRemoteimagesDownloadData, PostItemsByIdRemoteimagesDownloadResponse, GetItemsFilters2Data, GetItemsFilters2Response, GetItemsFiltersData, GetItemsFiltersResponse, PostItemsByItemidData, PostItemsByItemidResponse, GetItemsByItemidMetadataeditorData, GetItemsByItemidMetadataeditorResponse, GetItemsFileResponse, GetVideosByIdByContainerData, GetVideosByIdByContainerResponse, HeadVideosByIdByContainerData, HeadVideosByIdByContainerResponse, GetVideosByIdStreamData, GetVideosByIdStreamResponse, HeadVideosByIdStreamData, HeadVideosByIdStreamResponse, GetLibraryVirtualfoldersResponse, PostLibraryVirtualfoldersData, PostLibraryVirtualfoldersResponse, DeleteLibraryVirtualfoldersResponse, PostLibraryVirtualfoldersLibraryoptionsData, PostLibraryVirtualfoldersLibraryoptionsResponse, PostLibraryVirtualfoldersNameData, PostLibraryVirtualfoldersNameResponse, PostLibraryVirtualfoldersPathsData, PostLibraryVirtualfoldersPathsResponse, DeleteLibraryVirtualfoldersPathsResponse, PostLibraryVirtualfoldersPathsUpdateData, PostLibraryVirtualfoldersPathsUpdateResponse, PostLivestreamsOpenData, PostLivestreamsOpenResponse, PostLivestreamsCloseData, PostLivestreamsCloseResponse, PostLivestreamsMediainfoData, PostLivestreamsMediainfoResponse, GetPlaybackBitratetestData, GetPlaybackBitratetestResponse, GetItemsByIdPlaybackinfoData, GetItemsByIdPlaybackinfoResponse, PostItemsByIdPlaybackinfoData, PostItemsByIdPlaybackinfoResponse, OptionsLivetvChannelmappingsData, OptionsLivetvChannelmappingsResponse, GetLivetvChannelmappingsData, GetLivetvChannelmappingsResponse, HeadLivetvChannelmappingsData, HeadLivetvChannelmappingsResponse, PostLivetvChannelmappingsData, PostLivetvChannelmappingsResponse, PutLivetvChannelmappingsData, PutLivetvChannelmappingsResponse, DeleteLivetvChannelmappingsData, DeleteLivetvChannelmappingsResponse, TraceLivetvChannelmappingsData, TraceLivetvChannelmappingsResponse, PatchLivetvChannelmappingsData, PatchLivetvChannelmappingsResponse, OptionsLivetvChannelmappingoptionsData, OptionsLivetvChannelmappingoptionsResponse, GetLivetvChannelmappingoptionsData, GetLivetvChannelmappingoptionsResponse, HeadLivetvChannelmappingoptionsData, HeadLivetvChannelmappingoptionsResponse, PostLivetvChannelmappingoptionsData, PostLivetvChannelmappingoptionsResponse, PutLivetvChannelmappingoptionsData, PutLivetvChannelmappingoptionsResponse, DeleteLivetvChannelmappingoptionsData, DeleteLivetvChannelmappingoptionsResponse, TraceLivetvChannelmappingoptionsData, TraceLivetvChannelmappingoptionsResponse, PatchLivetvChannelmappingoptionsData, PatchLivetvChannelmappingoptionsResponse, PostLivetvListingprovidersData, PostLivetvListingprovidersResponse, DeleteLivetvListingprovidersData, DeleteLivetvListingprovidersResponse, GetLivetvListingprovidersResponse, GetLivetvTunerhostsResponse, PostLivetvTunerhostsData, PostLivetvTunerhostsResponse, DeleteLivetvTunerhostsData, DeleteLivetvTunerhostsResponse, GetLivetvInfoResponse, GetLivetvChannelsData, GetLivetvChannelsResponse, GetLivetvProgramsData, GetLivetvProgramsResponse, PostLivetvProgramsData, PostLivetvProgramsResponse, GetLivetvRecordingsData, GetLivetvRecordingsResponse, GetLivetvTimersData, GetLivetvTimersResponse, PostLivetvTimersData, PostLivetvTimersResponse, GetLivetvSeriestimersData, GetLivetvSeriestimersResponse, PostLivetvSeriestimersData, PostLivetvSeriestimersResponse, GetLivetvGuideinfoResponse, GetLivetvTunerhostsTypesResponse, GetLivetvRecordingsFoldersData, GetLivetvRecordingsFoldersResponse, GetLivetvTunersDiscvoverResponse, GetLivetvListingprovidersDefaultResponse, GetLivetvListingprovidersLineupsData, GetLivetvListingprovidersLineupsResponse, GetLivetvChannelsByIdData, GetLivetvChannelsByIdResponse, GetLivetvProgramsRecommendedData, GetLivetvProgramsRecommendedResponse, GetLivetvRecordingsSeriesData, GetLivetvRecordingsSeriesResponse, GetLivetvRecordingsByIdData, GetLivetvRecordingsByIdResponse, DeleteLivetvRecordingsByIdData, DeleteLivetvRecordingsByIdResponse, GetLivetvTimersByIdData, GetLivetvTimersByIdResponse, DeleteLivetvTimersByIdData, DeleteLivetvTimersByIdResponse, PostLivetvTimersByIdData, PostLivetvTimersByIdResponse, GetLivetvSeriestimersByIdData, GetLivetvSeriestimersByIdResponse, DeleteLivetvSeriestimersByIdData, DeleteLivetvSeriestimersByIdResponse, PostLivetvSeriestimersByIdData, PostLivetvSeriestimersByIdResponse, GetLivetvTimersDefaultsData, GetLivetvTimersDefaultsResponse, GetLivetvRecordingsGroupsData, GetLivetvRecordingsGroupsResponse, GetLivetvListingprovidersAvailableResponse, GetLivetvLiverecordingsByIdStreamData, GetLivetvLiverecordingsByIdStreamResponse, GetLivetvLivestreamfilesByIdByContainerData, GetLivetvLivestreamfilesByIdByContainerResponse, GetLivetvListingprovidersSchedulesdirectCountriesResponse, GetLivetvRecordingsGroupsByIdData, GetLivetvRecordingsGroupsByIdResponse, PostLivetvTunersByIdResetData, PostLivetvTunersByIdResetResponse, GetLocalizationParentalratingsResponse, GetLocalizationOptionsResponse, GetLocalizationCountriesResponse, GetLocalizationCulturesResponse, GetMoviesRecommendationsData, GetMoviesRecommendationsResponse, GetNewsProductData, GetNewsProductResponse, GetNotificationsTypesResponse, GetNotificationsServicesResponse, PostNotificationsAdminData, PostNotificationsAdminResponse, GetNotificationsByUseridData, GetNotificationsByUseridResponse, GetNotificationsByUseridSummaryData, GetNotificationsByUseridSummaryResponse, PostNotificationsByUseridReadData, PostNotificationsByUseridReadResponse, PostNotificationsByUseridUnreadData, PostNotificationsByUseridUnreadResponse, GetReportsActivitiesData, GetReportsActivitiesResponse, GetReportsHeadersData, GetReportsHeadersResponse, GetReportsItemsData, GetReportsItemsResponse, GetReportsItemsDownloadData, GetReportsItemsDownloadResponse, GetSearchHintsData, GetSearchHintsResponse, PostSessionsPlayingData, PostSessionsPlayingResponse, PostSessionsPlayingProgressData, PostSessionsPlayingProgressResponse, PostSessionsPlayingPingData, PostSessionsPlayingPingResponse, PostSessionsPlayingStoppedData, PostSessionsPlayingStoppedResponse, PostUsersByUseridPlayeditemsByIdData, PostUsersByUseridPlayeditemsByIdResponse, DeleteUsersByUseridPlayeditemsByIdData, DeleteUsersByUseridPlayeditemsByIdResponse, PostUsersByUseridPlayingitemsByIdData, PostUsersByUseridPlayingitemsByIdResponse, DeleteUsersByUseridPlayingitemsByIdData, DeleteUsersByUseridPlayingitemsByIdResponse, PostUsersByUseridPlayingitemsByIdProgressData, PostUsersByUseridPlayingitemsByIdProgressResponse, GetShowsUpcomingData, GetShowsUpcomingResponse, GetShowsNextupData, GetShowsNextupResponse, GetShowsByIdSeasonsData, GetShowsByIdSeasonsResponse, GetShowsByIdEpisodesData, GetShowsByIdEpisodesResponse, GetSyncTargetsData, GetSyncTargetsResponse, GetSyncJobsResponse, PostSyncJobsData, PostSyncJobsResponse, GetSyncJobitemsResponse, GetSyncOptionsData, GetSyncOptionsResponse, PostSyncOfflineactionsData, PostSyncOfflineactionsResponse, PostSyncDataData, PostSyncDataResponse, PostSyncByItemidStatusData, PostSyncByItemidStatusResponse, GetSyncJobsByIdData, GetSyncJobsByIdResponse, DeleteSyncJobsByIdData, DeleteSyncJobsByIdResponse, PostSyncJobsByIdData, PostSyncJobsByIdResponse, PostSyncItemsCancelData, PostSyncItemsCancelResponse, DeleteSyncByTargetidItemsData, DeleteSyncByTargetidItemsResponse, GetSyncItemsReadyData, GetSyncItemsReadyResponse, DeleteSyncJobitemsByIdData, DeleteSyncJobitemsByIdResponse, PostSyncJobitemsByIdTransferredData, PostSyncJobitemsByIdTransferredResponse, GetSyncJobitemsByIdFileData, GetSyncJobitemsByIdFileResponse, GetSyncJobitemsByIdAdditionalfilesData, GetSyncJobitemsByIdAdditionalfilesResponse, PostSyncJobitemsByIdEnableData, PostSyncJobitemsByIdEnableResponse, PostSyncJobitemsByIdMarkforremovalData, PostSyncJobitemsByIdMarkforremovalResponse, PostSyncJobitemsByIdUnmarkforremovalData, PostSyncJobitemsByIdUnmarkforremovalResponse, GetSystemConfigurationResponse, PostSystemConfigurationData, PostSystemConfigurationResponse, GetSystemConfigurationByKeyData, GetSystemConfigurationByKeyResponse, PostSystemConfigurationByKeyData, PostSystemConfigurationByKeyResponse, PostSystemPingResponse, GetSystemPingResponse, GetSystemWakeonlaninfoResponse, GetSystemLogsResponse, GetSystemInfoResponse, PostSystemRestartResponse, PostSystemShutdownResponse, GetSystemEndpointResponse, GetSystemLogsLogData, GetSystemLogsLogResponse, GetSystemInfoPublicResponse, GetUserUsageStatsTypeFilterListResponse, GetUserUsageStatsUserActivityData, GetUserUsageStatsUserActivityResponse, GetUserUsageStatsUserListResponse, PostUserUsageStatsImportBackupData, PostUserUsageStatsImportBackupResponse, GetUserUsageStatsLoadBackupData, GetUserUsageStatsLoadBackupResponse, GetUserUsageStatsSaveBackupResponse, GetUserUsageStatsPlayactivityData, GetUserUsageStatsPlayactivityResponse, GetUserUsageStatsHourlyreportData, GetUserUsageStatsHourlyreportResponse, GetUserUsageStatsDurationhistogramreportData, GetUserUsageStatsDurationhistogramreportResponse, GetUserUsageStatsTvshowsreportData, GetUserUsageStatsTvshowsreportResponse, GetUserUsageStatsMoviesreportData, GetUserUsageStatsMoviesreportResponse, PostUserUsageStatsSubmitCustomQueryData, PostUserUsageStatsSubmitCustomQueryResponse, GetUserUsageStatsUserplaylistData, GetUserUsageStatsUserplaylistResponse, GetUserUsageStatsSessionListResponse, GetUserUsageStatsResourceUsageData, GetUserUsageStatsResourceUsageResponse, GetUserUsageStatsProcessListResponse, GetUserUsageStatsByBreakdowntypeBreakdownreportData, GetUserUsageStatsByBreakdowntypeBreakdownreportResponse, GetUserUsageStatsUserManageByActionByIdData, GetUserUsageStatsUserManageByActionByIdResponse, GetUserUsageStatsByUseridByDateGetitemsData, GetUserUsageStatsByUseridByDateGetitemsResponse, PostVideosMergeversionsData, PostVideosMergeversionsResponse, GetVideosByIdAdditionalpartsData, GetVideosByIdAdditionalpartsResponse, DeleteVideosByIdAlternatesourcesData, DeleteVideosByIdAlternatesourcesResponse, DeleteVideosActiveencodingsData, DeleteVideosActiveencodingsResponse, GetVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainerData, GetVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainerResponse, GetWebConfigurationpageResponse, GetWebConfigurationpagesResponse, GetAudioByIdByContainerData, GetAudioByIdByContainerResponse, HeadAudioByIdByContainerData, HeadAudioByIdByContainerResponse, GetAudioByIdUniversalData, GetAudioByIdUniversalResponse, HeadAudioByIdUniversalData, HeadAudioByIdUniversalResponse, GetAudioByIdStreamData, GetAudioByIdStreamResponse, HeadAudioByIdStreamData, HeadAudioByIdStreamResponse, GetAudioByIdMasterM3U8Data, GetAudioByIdMasterM3U8Response, HeadAudioByIdMasterM3U8Data, HeadAudioByIdMasterM3U8Response, GetAudioByIdMainM3U8Data, GetAudioByIdMainM3U8Response, GetVideosByIdMasterM3U8Data, GetVideosByIdMasterM3U8Response, HeadVideosByIdMasterM3U8Data, HeadVideosByIdMasterM3U8Response, GetVideosByIdMainM3U8Data, GetVideosByIdMainM3U8Response, GetVideosByIdSubtitlesM3U8Data, GetVideosByIdSubtitlesM3U8Response, GetAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData, GetAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse, HeadAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData, HeadAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse, GetVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData, GetVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse, HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData, HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse, GetDlnaByUuidDescriptionXmlData, GetDlnaByUuidDescriptionXmlResponse, GetDlnaByUuidDescriptionData, GetDlnaByUuidDescriptionResponse, GetDlnaIconsByFilenameData, GetDlnaIconsByFilenameResponse, GetDlnaByUuidContentdirectoryContentdirectoryXmlData, GetDlnaByUuidContentdirectoryContentdirectoryXmlResponse, GetDlnaByUuidContentdirectoryContentdirectoryData, GetDlnaByUuidContentdirectoryContentdirectoryResponse, GetDlnaByUuidConnectionmanagerConnectionmanagerXmlData, GetDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse, GetDlnaByUuidConnectionmanagerConnectionmanagerData, GetDlnaByUuidConnectionmanagerConnectionmanagerResponse, PostDlnaByUuidContentdirectoryControlData, PostDlnaByUuidContentdirectoryControlResponse, PostDlnaByUuidConnectionmanagerControlData, PostDlnaByUuidConnectionmanagerControlResponse, GetDlnaByUuidIconsByFilenameData, GetDlnaByUuidIconsByFilenameResponse, GetEncodingCodecinformationVideoResponse, GetEncodingCodecconfigurationDefaultsResponse, GetItemsByIdExternalidinfosData, GetItemsByIdExternalidinfosResponse, PostItemsRemotesearchTrailerData, PostItemsRemotesearchTrailerResponse, PostItemsRemotesearchBookData, PostItemsRemotesearchBookResponse, PostItemsRemotesearchMovieData, PostItemsRemotesearchMovieResponse, PostItemsRemotesearchSeriesData, PostItemsRemotesearchSeriesResponse, PostItemsRemotesearchGameData, PostItemsRemotesearchGameResponse, PostItemsRemotesearchBoxsetData, PostItemsRemotesearchBoxsetResponse, PostItemsRemotesearchMusicvideoData, PostItemsRemotesearchMusicvideoResponse, PostItemsRemotesearchPersonData, PostItemsRemotesearchPersonResponse, PostItemsRemotesearchMusicalbumData, PostItemsRemotesearchMusicalbumResponse, PostItemsRemotesearchMusicartistData, PostItemsRemotesearchMusicartistResponse, GetItemsRemotesearchImageData, GetItemsRemotesearchImageResponse, PostItemsRemotesearchApplyByIdData, PostItemsRemotesearchApplyByIdResponse, PostItemsByIdRefreshData, PostItemsByIdRefreshResponse, GetItemsByIdThumbnailsetData, GetItemsByIdThumbnailsetResponse, GetVideosByIdIndexBifData, GetVideosByIdIndexBifResponse, GetLivetvProgramsByIdData, GetLivetvProgramsByIdResponse, GetUsersByUseridItemsLatestData, GetUsersByUseridItemsLatestResponse, GetUsersByUseridItemsByIdData, GetUsersByUseridItemsByIdResponse, GetUsersByUseridItemsRootData, GetUsersByUseridItemsRootResponse, PostUsersByUseridFavoriteitemsByIdData, PostUsersByUseridFavoriteitemsByIdResponse, DeleteUsersByUseridFavoriteitemsByIdData, DeleteUsersByUseridFavoriteitemsByIdResponse, GetUsersByUseridItemsByIdSpecialfeaturesData, GetUsersByUseridItemsByIdSpecialfeaturesResponse, GetUsersByUseridItemsByIdLocaltrailersData, GetUsersByUseridItemsByIdLocaltrailersResponse, GetUsersByUseridItemsByIdIntrosData, GetUsersByUseridItemsByIdIntrosResponse, DeleteUsersByUseridItemsByIdRatingData, DeleteUsersByUseridItemsByIdRatingResponse, PostUsersByUseridItemsByIdRatingData, PostUsersByUseridItemsByIdRatingResponse, GetSystemActivitylogEntriesData, GetSystemActivitylogEntriesResponse, GetUsersByUseridSuggestionsData, GetUsersByUseridSuggestionsResponse, GetUsersByUseridViewsData, GetUsersByUseridViewsResponse, GetUsersByUseridGroupingoptionsData, GetUsersByUseridGroupingoptionsResponse, GetVideosByIdLiveM3U8Data, GetVideosByIdLiveM3U8Response, PostNotificationSmtpTestByUseridData, PostNotificationSmtpTestByUseridResponse, GetProvidersSubtitlesSubtitlesByIdData, GetProvidersSubtitlesSubtitlesByIdResponse, DeleteVideosByIdSubtitlesByIndexData, DeleteVideosByIdSubtitlesByIndexResponse, GetItemsByIdRemotesearchSubtitlesByLanguageData, GetItemsByIdRemotesearchSubtitlesByLanguageResponse, PostItemsByIdRemotesearchSubtitlesBySubtitleidData, PostItemsByIdRemotesearchSubtitlesBySubtitleidResponse, GetVideosByIdByMediasourceidSubtitlesByIndexByFormatData, GetVideosByIdByMediasourceidSubtitlesByIndexByFormatResponse, GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormatData, GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormatResponse } from './types.gen';
+import type { $OpenApiTs } from './types.gen';
 
 export class ArtistsServiceService {
     constructor(public readonly httpRequest: BaseHttpRequest) { }
@@ -98,7 +98,7 @@ export class ArtistsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getArtists(data: GetArtistsData = {}): CancelablePromise<GetArtistsResponse> {
+    public getArtists(data: $OpenApiTs['/Artists']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Artists']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists',
@@ -192,8 +192,7 @@ export class ArtistsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -207,7 +206,7 @@ export class ArtistsServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getArtistsByName(data: GetArtistsByNameData): CancelablePromise<GetArtistsByNameResponse> {
+    public getArtistsByName(data: $OpenApiTs['/Artists/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Artists/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/{Name}',
@@ -221,8 +220,7 @@ export class ArtistsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -318,7 +316,7 @@ export class ArtistsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getArtistsAlbumartists(data: GetArtistsAlbumartistsData = {}): CancelablePromise<GetArtistsAlbumartistsResponse> {
+    public getArtistsAlbumartists(data: $OpenApiTs['/Artists/AlbumArtists']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Artists/AlbumArtists']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/AlbumArtists',
@@ -412,8 +410,7 @@ export class ArtistsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -514,7 +511,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getAudiocodecs(data: GetAudiocodecsData = {}): CancelablePromise<GetAudiocodecsResponse> {
+    public getAudiocodecs(data: $OpenApiTs['/AudioCodecs']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/AudioCodecs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/AudioCodecs',
@@ -606,8 +603,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -703,7 +699,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getContainers(data: GetContainersData = {}): CancelablePromise<GetContainersResponse> {
+    public getContainers(data: $OpenApiTs['/Containers']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Containers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Containers',
@@ -795,8 +791,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -892,7 +887,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getSubtitlecodecs(data: GetSubtitlecodecsData = {}): CancelablePromise<GetSubtitlecodecsResponse> {
+    public getSubtitlecodecs(data: $OpenApiTs['/SubtitleCodecs']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/SubtitleCodecs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/SubtitleCodecs',
@@ -984,8 +979,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1081,7 +1075,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getTags(data: GetTagsData = {}): CancelablePromise<GetTagsResponse> {
+    public getTags(data: $OpenApiTs['/Tags']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Tags']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Tags',
@@ -1173,8 +1167,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1270,7 +1263,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getVideocodecs(data: GetVideocodecsData = {}): CancelablePromise<GetVideocodecsResponse> {
+    public getVideocodecs(data: $OpenApiTs['/VideoCodecs']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/VideoCodecs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/VideoCodecs',
@@ -1362,8 +1355,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1459,7 +1451,7 @@ export class TagServiceService {
      * @returns QueryResult_UserLibrary_TagItem Operation successful. Returning a QueryResult<TagItem> object.
      * @throws ApiError
      */
-    public getYears(data: GetYearsData = {}): CancelablePromise<GetYearsResponse> {
+    public getYears(data: $OpenApiTs['/Years']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Years']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Years',
@@ -1551,8 +1543,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1648,7 +1639,7 @@ export class TagServiceService {
      * @returns NameValuePair Operation successful. Returning a NameValuePair[] object.
      * @throws ApiError
      */
-    public getArtistsPrefixes(data: GetArtistsPrefixesData = {}): CancelablePromise<GetArtistsPrefixesResponse> {
+    public getArtistsPrefixes(data: $OpenApiTs['/Artists/Prefixes']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Artists/Prefixes']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/Prefixes',
@@ -1740,8 +1731,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1837,7 +1827,7 @@ export class TagServiceService {
      * @returns NameValuePair Operation successful. Returning a NameValuePair[] object.
      * @throws ApiError
      */
-    public getItemsPrefixes(data: GetItemsPrefixesData = {}): CancelablePromise<GetItemsPrefixesResponse> {
+    public getItemsPrefixes(data: $OpenApiTs['/Items/Prefixes']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Items/Prefixes']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/Prefixes',
@@ -1929,8 +1919,7 @@ export class TagServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1950,7 +1939,7 @@ export class ChannelServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getChannels(data: GetChannelsData = {}): CancelablePromise<GetChannelsResponse> {
+    public getChannels(data: $OpenApiTs['/Channels']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Channels']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Channels',
@@ -1963,8 +1952,7 @@ export class ChannelServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1975,7 +1963,7 @@ export class ChannelServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getChannelsByIdItems(): CancelablePromise<GetChannelsByIdItemsResponse> {
+    public getChannelsByIdItems(): CancelablePromise<$OpenApiTs['/Channels/{Id}/Items']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Channels/{Id}/Items',
@@ -1983,8 +1971,7 @@ export class ChannelServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -1995,7 +1982,7 @@ export class ChannelServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getChannelsItemsLatest(): CancelablePromise<GetChannelsItemsLatestResponse> {
+    public getChannelsItemsLatest(): CancelablePromise<$OpenApiTs['/Channels/Items/Latest']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Channels/Items/Latest',
@@ -2003,8 +1990,7 @@ export class ChannelServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2025,7 +2011,7 @@ export class CollectionServiceService {
      * @returns Collections_CollectionCreationResult Operation successful. Returning a CollectionCreationResult object.
      * @throws ApiError
      */
-    public postCollections(data: PostCollectionsData = {}): CancelablePromise<PostCollectionsResponse> {
+    public postCollections(data: $OpenApiTs['/Collections']['post']['req'] = {}): CancelablePromise<$OpenApiTs['/Collections']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Collections',
@@ -2039,8 +2025,7 @@ export class CollectionServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2054,7 +2039,7 @@ export class CollectionServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postCollectionsByIdItems(data: PostCollectionsByIdItemsData): CancelablePromise<PostCollectionsByIdItemsResponse> {
+    public postCollectionsByIdItems(data: $OpenApiTs['/Collections/{Id}/Items']['post']['req']): CancelablePromise<$OpenApiTs['/Collections/{Id}/Items']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Collections/{Id}/Items',
@@ -2068,8 +2053,7 @@ export class CollectionServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2083,7 +2067,7 @@ export class CollectionServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteCollectionsByIdItems(data: DeleteCollectionsByIdItemsData): CancelablePromise<DeleteCollectionsByIdItemsResponse> {
+    public deleteCollectionsByIdItems(data: $OpenApiTs['/Collections/{Id}/Items']['delete']['req']): CancelablePromise<$OpenApiTs['/Collections/{Id}/Items']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Collections/{Id}/Items',
@@ -2097,8 +2081,7 @@ export class CollectionServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2114,7 +2097,7 @@ export class DeviceServiceService {
      * @returns QueryResult_Devices_DeviceInfo Operation successful. Returning a QueryResult<DeviceInfo> object.
      * @throws ApiError
      */
-    public getDevices(): CancelablePromise<GetDevicesResponse> {
+    public getDevices(): CancelablePromise<$OpenApiTs['/Devices']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Devices',
@@ -2122,8 +2105,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2136,7 +2118,7 @@ export class DeviceServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteDevices(data: DeleteDevicesData): CancelablePromise<DeleteDevicesResponse> {
+    public deleteDevices(data: $OpenApiTs['/Devices']['delete']['req']): CancelablePromise<$OpenApiTs['/Devices']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Devices',
@@ -2145,8 +2127,7 @@ export class DeviceServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2159,7 +2140,7 @@ export class DeviceServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postDevicesOptions(data: PostDevicesOptionsData): CancelablePromise<PostDevicesOptionsResponse> {
+    public postDevicesOptions(data: $OpenApiTs['/Devices/Options']['post']['req']): CancelablePromise<$OpenApiTs['/Devices/Options']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Devices/Options',
@@ -2169,8 +2150,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2183,7 +2163,7 @@ export class DeviceServiceService {
      * @returns Devices_DeviceOptions Operation successful. Returning a DeviceOptions object.
      * @throws ApiError
      */
-    public getDevicesOptions(data: GetDevicesOptionsData): CancelablePromise<GetDevicesOptionsResponse> {
+    public getDevicesOptions(data: $OpenApiTs['/Devices/Options']['get']['req']): CancelablePromise<$OpenApiTs['/Devices/Options']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Devices/Options',
@@ -2194,8 +2174,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2208,7 +2187,7 @@ export class DeviceServiceService {
      * @returns Devices_DeviceInfo Operation successful. Returning a DeviceInfo object.
      * @throws ApiError
      */
-    public getDevicesInfo(data: GetDevicesInfoData): CancelablePromise<GetDevicesInfoResponse> {
+    public getDevicesInfo(data: $OpenApiTs['/Devices/Info']['get']['req']): CancelablePromise<$OpenApiTs['/Devices/Info']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Devices/Info',
@@ -2219,8 +2198,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2233,7 +2211,7 @@ export class DeviceServiceService {
      * @returns Devices_ContentUploadHistory Operation successful. Returning a ContentUploadHistory object.
      * @throws ApiError
      */
-    public getDevicesCamerauploads(data: GetDevicesCamerauploadsData): CancelablePromise<GetDevicesCamerauploadsResponse> {
+    public getDevicesCamerauploads(data: $OpenApiTs['/Devices/CameraUploads']['get']['req']): CancelablePromise<$OpenApiTs['/Devices/CameraUploads']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Devices/CameraUploads',
@@ -2244,8 +2222,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2262,7 +2239,7 @@ export class DeviceServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postDevicesCamerauploads(data: PostDevicesCamerauploadsData): CancelablePromise<PostDevicesCamerauploadsResponse> {
+    public postDevicesCamerauploads(data: $OpenApiTs['/Devices/CameraUploads']['post']['req']): CancelablePromise<$OpenApiTs['/Devices/CameraUploads']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Devices/CameraUploads',
@@ -2278,8 +2255,7 @@ export class DeviceServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2380,7 +2356,7 @@ export class GameGenresServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getGamegenres(data: GetGamegenresData = {}): CancelablePromise<GetGamegenresResponse> {
+    public getGamegenres(data: $OpenApiTs['/GameGenres']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/GameGenres']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/GameGenres',
@@ -2474,8 +2450,7 @@ export class GameGenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2489,7 +2464,7 @@ export class GameGenresServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getGamegenresByName(data: GetGamegenresByNameData): CancelablePromise<GetGamegenresByNameResponse> {
+    public getGamegenresByName(data: $OpenApiTs['/GameGenres/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/GameGenres/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/GameGenres/{Name}',
@@ -2503,8 +2478,7 @@ export class GameGenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2605,7 +2579,7 @@ export class GenresServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getGenres(data: GetGenresData = {}): CancelablePromise<GetGenresResponse> {
+    public getGenres(data: $OpenApiTs['/Genres']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Genres']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Genres',
@@ -2699,8 +2673,7 @@ export class GenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2714,7 +2687,7 @@ export class GenresServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getGenresByName(data: GetGenresByNameData): CancelablePromise<GetGenresByNameResponse> {
+    public getGenresByName(data: $OpenApiTs['/Genres/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Genres/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Genres/{Name}',
@@ -2728,8 +2701,7 @@ export class GenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -2830,7 +2802,7 @@ export class ItemsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getItems(data: GetItemsData = {}): CancelablePromise<GetItemsResponse> {
+    public getItems(data: $OpenApiTs['/Items']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Items']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items',
@@ -2924,8 +2896,7 @@ export class ItemsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3021,7 +2992,7 @@ export class ItemsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getUsersByUseridItems(data: GetUsersByUseridItemsData): CancelablePromise<GetUsersByUseridItemsResponse> {
+    public getUsersByUseridItems(data: $OpenApiTs['/Users/{UserId}/Items']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items',
@@ -3117,8 +3088,7 @@ export class ItemsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3214,7 +3184,7 @@ export class ItemsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsResume(data: GetUsersByUseridItemsResumeData): CancelablePromise<GetUsersByUseridItemsResumeResponse> {
+    public getUsersByUseridItemsResume(data: $OpenApiTs['/Users/{UserId}/Items/Resume']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/Resume']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/Resume',
@@ -3310,8 +3280,7 @@ export class ItemsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3329,7 +3298,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteItems(data: DeleteItemsData): CancelablePromise<DeleteItemsResponse> {
+    public deleteItems(data: $OpenApiTs['/Items']['delete']['req']): CancelablePromise<$OpenApiTs['/Items']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Items',
@@ -3340,8 +3309,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3354,7 +3322,7 @@ export class LibraryServiceService {
      * @returns ItemCounts Operation successful. Returning a ItemCounts object.
      * @throws ApiError
      */
-    public getItemsCounts(data: GetItemsCountsData = {}): CancelablePromise<GetItemsCountsResponse> {
+    public getItemsCounts(data: $OpenApiTs['/Items/Counts']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Items/Counts']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/Counts',
@@ -3366,8 +3334,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3380,7 +3347,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteItemsById(data: DeleteItemsByIdData): CancelablePromise<DeleteItemsByIdResponse> {
+    public deleteItemsById(data: $OpenApiTs['/Items/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Items/{Id}',
@@ -3391,8 +3358,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3402,7 +3368,7 @@ export class LibraryServiceService {
      * @returns Library_LibraryOptionsResult Operation successful. Returning a LibraryOptionsResult object.
      * @throws ApiError
      */
-    public getLibrariesAvailableoptions(): CancelablePromise<GetLibrariesAvailableoptionsResponse> {
+    public getLibrariesAvailableoptions(): CancelablePromise<$OpenApiTs['/Libraries/AvailableOptions']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Libraries/AvailableOptions',
@@ -3410,8 +3376,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3422,7 +3387,7 @@ export class LibraryServiceService {
      * @returns Library_MediaFolder Operation successful. Returning a MediaFolder[] object.
      * @throws ApiError
      */
-    public getLibrarySelectablemediafolders(): CancelablePromise<GetLibrarySelectablemediafoldersResponse> {
+    public getLibrarySelectablemediafolders(): CancelablePromise<$OpenApiTs['/Library/SelectableMediaFolders']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Library/SelectableMediaFolders',
@@ -3430,8 +3395,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3444,7 +3408,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLibraryMediafolders(data: GetLibraryMediafoldersData = {}): CancelablePromise<GetLibraryMediafoldersResponse> {
+    public getLibraryMediafolders(data: $OpenApiTs['/Library/MediaFolders']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Library/MediaFolders']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Library/MediaFolders',
@@ -3455,8 +3419,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3467,7 +3430,7 @@ export class LibraryServiceService {
      * @returns string Operation successful. Returning a List<String> object.
      * @throws ApiError
      */
-    public getLibraryPhysicalpaths(): CancelablePromise<GetLibraryPhysicalpathsResponse> {
+    public getLibraryPhysicalpaths(): CancelablePromise<$OpenApiTs['/Library/PhysicalPaths']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Library/PhysicalPaths',
@@ -3475,8 +3438,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3487,7 +3449,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryRefresh(): CancelablePromise<PostLibraryRefreshResponse> {
+    public postLibraryRefresh(): CancelablePromise<$OpenApiTs['/Library/Refresh']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Refresh',
@@ -3495,8 +3457,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3517,7 +3478,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getAlbumsByIdSimilar(data: GetAlbumsByIdSimilarData): CancelablePromise<GetAlbumsByIdSimilarResponse> {
+    public getAlbumsByIdSimilar(data: $OpenApiTs['/Albums/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Albums/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Albums/{Id}/Similar',
@@ -3538,8 +3499,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3560,7 +3520,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getArtistsByIdSimilar(data: GetArtistsByIdSimilarData): CancelablePromise<GetArtistsByIdSimilarResponse> {
+    public getArtistsByIdSimilar(data: $OpenApiTs['/Artists/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Artists/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/{Id}/Similar',
@@ -3581,8 +3541,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3603,7 +3562,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getGamesByIdSimilar(data: GetGamesByIdSimilarData): CancelablePromise<GetGamesByIdSimilarResponse> {
+    public getGamesByIdSimilar(data: $OpenApiTs['/Games/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Games/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Games/{Id}/Similar',
@@ -3624,8 +3583,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3638,7 +3596,7 @@ export class LibraryServiceService {
      * @returns Library_DeleteInfo Operation successful. Returning a DeleteInfo object.
      * @throws ApiError
      */
-    public getItemsByIdDeleteinfo(data: GetItemsByIdDeleteinfoData): CancelablePromise<GetItemsByIdDeleteinfoResponse> {
+    public getItemsByIdDeleteinfo(data: $OpenApiTs['/Items/{Id}/DeleteInfo']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/DeleteInfo']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/DeleteInfo',
@@ -3649,8 +3607,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3671,7 +3628,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getItemsByIdSimilar(data: GetItemsByIdSimilarData): CancelablePromise<GetItemsByIdSimilarResponse> {
+    public getItemsByIdSimilar(data: $OpenApiTs['/Items/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Similar',
@@ -3692,8 +3649,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3706,7 +3662,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsByIdDownload(data: GetItemsByIdDownloadData): CancelablePromise<GetItemsByIdDownloadResponse> {
+    public getItemsByIdDownload(data: $OpenApiTs['/Items/{Id}/Download']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Download']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Download',
@@ -3717,8 +3673,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3731,7 +3686,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsByIdFile(data: GetItemsByIdFileData): CancelablePromise<GetItemsByIdFileResponse> {
+    public getItemsByIdFile(data: $OpenApiTs['/Items/{Id}/File']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/File']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/File',
@@ -3742,8 +3697,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3757,7 +3711,7 @@ export class LibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getItemsByIdAncestors(data: GetItemsByIdAncestorsData): CancelablePromise<GetItemsByIdAncestorsResponse> {
+    public getItemsByIdAncestors(data: $OpenApiTs['/Items/{Id}/Ancestors']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Ancestors']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Ancestors',
@@ -3771,8 +3725,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3787,7 +3740,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getItemsByIdCriticreviews(data: GetItemsByIdCriticreviewsData): CancelablePromise<GetItemsByIdCriticreviewsResponse> {
+    public getItemsByIdCriticreviews(data: $OpenApiTs['/Items/{Id}/CriticReviews']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/CriticReviews']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/CriticReviews',
@@ -3802,8 +3755,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3818,7 +3770,7 @@ export class LibraryServiceService {
      * @returns AllThemeMediaResult Operation successful. Returning a AllThemeMediaResult object.
      * @throws ApiError
      */
-    public getItemsByIdThememedia(data: GetItemsByIdThememediaData): CancelablePromise<GetItemsByIdThememediaResponse> {
+    public getItemsByIdThememedia(data: $OpenApiTs['/Items/{Id}/ThemeMedia']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/ThemeMedia']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/ThemeMedia',
@@ -3833,8 +3785,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3849,7 +3800,7 @@ export class LibraryServiceService {
      * @returns ThemeMediaResult Operation successful. Returning a ThemeMediaResult object.
      * @throws ApiError
      */
-    public getItemsByIdThemesongs(data: GetItemsByIdThemesongsData): CancelablePromise<GetItemsByIdThemesongsResponse> {
+    public getItemsByIdThemesongs(data: $OpenApiTs['/Items/{Id}/ThemeSongs']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/ThemeSongs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/ThemeSongs',
@@ -3864,8 +3815,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3880,7 +3830,7 @@ export class LibraryServiceService {
      * @returns ThemeMediaResult Operation successful. Returning a ThemeMediaResult object.
      * @throws ApiError
      */
-    public getItemsByIdThemevideos(data: GetItemsByIdThemevideosData): CancelablePromise<GetItemsByIdThemevideosResponse> {
+    public getItemsByIdThemevideos(data: $OpenApiTs['/Items/{Id}/ThemeVideos']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/ThemeVideos']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/ThemeVideos',
@@ -3895,8 +3845,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3907,7 +3856,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibrarySeriesAdded(): CancelablePromise<PostLibrarySeriesAddedResponse> {
+    public postLibrarySeriesAdded(): CancelablePromise<$OpenApiTs['/Library/Series/Added']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Series/Added',
@@ -3915,8 +3864,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3927,7 +3875,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibrarySeriesUpdated(): CancelablePromise<PostLibrarySeriesUpdatedResponse> {
+    public postLibrarySeriesUpdated(): CancelablePromise<$OpenApiTs['/Library/Series/Updated']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Series/Updated',
@@ -3935,8 +3883,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3949,7 +3896,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryMediaUpdated(data: PostLibraryMediaUpdatedData): CancelablePromise<PostLibraryMediaUpdatedResponse> {
+    public postLibraryMediaUpdated(data: $OpenApiTs['/Library/Media/Updated']['post']['req']): CancelablePromise<$OpenApiTs['/Library/Media/Updated']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Media/Updated',
@@ -3959,8 +3906,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3971,7 +3917,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryMoviesAdded(): CancelablePromise<PostLibraryMoviesAddedResponse> {
+    public postLibraryMoviesAdded(): CancelablePromise<$OpenApiTs['/Library/Movies/Added']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Movies/Added',
@@ -3979,8 +3925,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -3991,7 +3936,7 @@ export class LibraryServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryMoviesUpdated(): CancelablePromise<PostLibraryMoviesUpdatedResponse> {
+    public postLibraryMoviesUpdated(): CancelablePromise<$OpenApiTs['/Library/Movies/Updated']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/Movies/Updated',
@@ -3999,8 +3944,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4021,7 +3965,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getMoviesByIdSimilar(data: GetMoviesByIdSimilarData): CancelablePromise<GetMoviesByIdSimilarResponse> {
+    public getMoviesByIdSimilar(data: $OpenApiTs['/Movies/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Movies/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Movies/{Id}/Similar',
@@ -4042,8 +3986,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4064,7 +4007,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getShowsByIdSimilar(data: GetShowsByIdSimilarData): CancelablePromise<GetShowsByIdSimilarResponse> {
+    public getShowsByIdSimilar(data: $OpenApiTs['/Shows/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Shows/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Shows/{Id}/Similar',
@@ -4085,8 +4028,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4107,7 +4049,7 @@ export class LibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getTrailersByIdSimilar(data: GetTrailersByIdSimilarData): CancelablePromise<GetTrailersByIdSimilarResponse> {
+    public getTrailersByIdSimilar(data: $OpenApiTs['/Trailers/{Id}/Similar']['get']['req']): CancelablePromise<$OpenApiTs['/Trailers/{Id}/Similar']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Trailers/{Id}/Similar',
@@ -4128,8 +4070,7 @@ export class LibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4230,7 +4171,7 @@ export class MusicGenresServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getMusicgenres(data: GetMusicgenresData = {}): CancelablePromise<GetMusicgenresResponse> {
+    public getMusicgenres(data: $OpenApiTs['/MusicGenres']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/MusicGenres']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres',
@@ -4324,8 +4265,7 @@ export class MusicGenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4339,7 +4279,7 @@ export class MusicGenresServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getMusicgenresByName(data: GetMusicgenresByNameData): CancelablePromise<GetMusicgenresByNameResponse> {
+    public getMusicgenresByName(data: $OpenApiTs['/MusicGenres/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres/{Name}',
@@ -4353,8 +4293,7 @@ export class MusicGenresServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4455,7 +4394,7 @@ export class OfficialRatingServiceService {
      * @returns QueryResult_UserLibrary_OfficialRatingItem Operation successful. Returning a QueryResult<OfficialRatingItem> object.
      * @throws ApiError
      */
-    public getOfficialratings(data: GetOfficialratingsData = {}): CancelablePromise<GetOfficialratingsResponse> {
+    public getOfficialratings(data: $OpenApiTs['/OfficialRatings']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/OfficialRatings']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/OfficialRatings',
@@ -4547,8 +4486,7 @@ export class OfficialRatingServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4564,14 +4502,13 @@ export class OpenApiServiceService {
      * @returns string Operation successful. Returning a String object.
      * @throws ApiError
      */
-    public getOpenapi(): CancelablePromise<GetOpenapiResponse> {
+    public getOpenapi(): CancelablePromise<$OpenApiTs['/openapi']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/openapi',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4582,14 +4519,13 @@ export class OpenApiServiceService {
      * @returns string Operation successful. Returning a String object.
      * @throws ApiError
      */
-    public getOpenapiJson(): CancelablePromise<GetOpenapiJsonResponse> {
+    public getOpenapiJson(): CancelablePromise<$OpenApiTs['/openapi.json']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/openapi.json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4600,14 +4536,13 @@ export class OpenApiServiceService {
      * @returns string Operation successful. Returning a String object.
      * @throws ApiError
      */
-    public getSwagger(): CancelablePromise<GetSwaggerResponse> {
+    public getSwagger(): CancelablePromise<$OpenApiTs['/swagger']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/swagger',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4618,14 +4553,13 @@ export class OpenApiServiceService {
      * @returns string Operation successful. Returning a String object.
      * @throws ApiError
      */
-    public getSwaggerJson(): CancelablePromise<GetSwaggerJsonResponse> {
+    public getSwaggerJson(): CancelablePromise<$OpenApiTs['/swagger.json']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/swagger.json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4646,7 +4580,7 @@ export class PackageServiceService {
      * @returns Updates_PackageInfo Operation successful. Returning a PackageInfo[] object.
      * @throws ApiError
      */
-    public getPackages(data: GetPackagesData = {}): CancelablePromise<GetPackagesResponse> {
+    public getPackages(data: $OpenApiTs['/Packages']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Packages']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Packages',
@@ -4660,8 +4594,7 @@ export class PackageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4674,7 +4607,7 @@ export class PackageServiceService {
      * @returns Updates_PackageVersionInfo Operation successful. Returning a PackageVersionInfo[] object.
      * @throws ApiError
      */
-    public getPackagesUpdates(data: GetPackagesUpdatesData): CancelablePromise<GetPackagesUpdatesResponse> {
+    public getPackagesUpdates(data: $OpenApiTs['/Packages/Updates']['get']['req']): CancelablePromise<$OpenApiTs['/Packages/Updates']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Packages/Updates',
@@ -4685,8 +4618,7 @@ export class PackageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4700,7 +4632,7 @@ export class PackageServiceService {
      * @returns Updates_PackageInfo Operation successful. Returning a PackageInfo object.
      * @throws ApiError
      */
-    public getPackagesByName(data: GetPackagesByNameData): CancelablePromise<GetPackagesByNameResponse> {
+    public getPackagesByName(data: $OpenApiTs['/Packages/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Packages/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Packages/{Name}',
@@ -4714,8 +4646,7 @@ export class PackageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4731,7 +4662,7 @@ export class PackageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postPackagesInstalledByName(data: PostPackagesInstalledByNameData): CancelablePromise<PostPackagesInstalledByNameResponse> {
+    public postPackagesInstalledByName(data: $OpenApiTs['/Packages/Installed/{Name}']['post']['req']): CancelablePromise<$OpenApiTs['/Packages/Installed/{Name}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Packages/Installed/{Name}',
@@ -4747,8 +4678,7 @@ export class PackageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4761,7 +4691,7 @@ export class PackageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deletePackagesInstallingById(data: DeletePackagesInstallingByIdData): CancelablePromise<DeletePackagesInstallingByIdResponse> {
+    public deletePackagesInstallingById(data: $OpenApiTs['/Packages/Installing/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Packages/Installing/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Packages/Installing/{Id}',
@@ -4772,8 +4702,7 @@ export class PackageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4874,7 +4803,7 @@ export class PersonsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getPersons(data: GetPersonsData = {}): CancelablePromise<GetPersonsResponse> {
+    public getPersons(data: $OpenApiTs['/Persons']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Persons']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Persons',
@@ -4968,8 +4897,7 @@ export class PersonsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -4983,7 +4911,7 @@ export class PersonsServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getPersonsByName(data: GetPersonsByNameData): CancelablePromise<GetPersonsByNameResponse> {
+    public getPersonsByName(data: $OpenApiTs['/Persons/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Persons/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Persons/{Name}',
@@ -4997,8 +4925,7 @@ export class PersonsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5018,7 +4945,7 @@ export class PlaylistServiceService {
      * @returns Playlists_PlaylistCreationResult Operation successful. Returning a PlaylistCreationResult object.
      * @throws ApiError
      */
-    public postPlaylists(data: PostPlaylistsData = {}): CancelablePromise<PostPlaylistsResponse> {
+    public postPlaylists(data: $OpenApiTs['/Playlists']['post']['req'] = {}): CancelablePromise<$OpenApiTs['/Playlists']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Playlists',
@@ -5031,8 +4958,7 @@ export class PlaylistServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5047,7 +4973,7 @@ export class PlaylistServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postPlaylistsByIdItems(data: PostPlaylistsByIdItemsData): CancelablePromise<PostPlaylistsByIdItemsResponse> {
+    public postPlaylistsByIdItems(data: $OpenApiTs['/Playlists/{Id}/Items']['post']['req']): CancelablePromise<$OpenApiTs['/Playlists/{Id}/Items']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Playlists/{Id}/Items',
@@ -5062,8 +4988,7 @@ export class PlaylistServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5077,7 +5002,7 @@ export class PlaylistServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deletePlaylistsByIdItems(data: DeletePlaylistsByIdItemsData): CancelablePromise<DeletePlaylistsByIdItemsResponse> {
+    public deletePlaylistsByIdItems(data: $OpenApiTs['/Playlists/{Id}/Items']['delete']['req']): CancelablePromise<$OpenApiTs['/Playlists/{Id}/Items']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Playlists/{Id}/Items',
@@ -5091,8 +5016,7 @@ export class PlaylistServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5113,7 +5037,7 @@ export class PlaylistServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getPlaylistsByIdItems(data: GetPlaylistsByIdItemsData): CancelablePromise<GetPlaylistsByIdItemsResponse> {
+    public getPlaylistsByIdItems(data: $OpenApiTs['/Playlists/{Id}/Items']['get']['req']): CancelablePromise<$OpenApiTs['/Playlists/{Id}/Items']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Playlists/{Id}/Items',
@@ -5134,8 +5058,7 @@ export class PlaylistServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5150,7 +5073,7 @@ export class PlaylistServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postPlaylistsByIdItemsByItemidMoveByNewindex(data: PostPlaylistsByIdItemsByItemidMoveByNewindexData): CancelablePromise<PostPlaylistsByIdItemsByItemidMoveByNewindexResponse> {
+    public postPlaylistsByIdItemsByItemidMoveByNewindex(data: $OpenApiTs['/Playlists/{Id}/Items/{ItemId}/Move/{NewIndex}']['post']['req']): CancelablePromise<$OpenApiTs['/Playlists/{Id}/Items/{ItemId}/Move/{NewIndex}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Playlists/{Id}/Items/{ItemId}/Move/{NewIndex}',
@@ -5163,8 +5086,7 @@ export class PlaylistServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5180,7 +5102,7 @@ export class PluginServiceService {
      * @returns Plugins_PluginInfo Operation successful. Returning a PluginInfo[] object.
      * @throws ApiError
      */
-    public getPlugins(): CancelablePromise<GetPluginsResponse> {
+    public getPlugins(): CancelablePromise<$OpenApiTs['/Plugins']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Plugins',
@@ -5188,8 +5110,7 @@ export class PluginServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5202,7 +5123,7 @@ export class PluginServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deletePluginsById(data: DeletePluginsByIdData): CancelablePromise<DeletePluginsByIdResponse> {
+    public deletePluginsById(data: $OpenApiTs['/Plugins/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Plugins/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Plugins/{Id}',
@@ -5213,8 +5134,7 @@ export class PluginServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5227,7 +5147,7 @@ export class PluginServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getPluginsByIdThumb(data: GetPluginsByIdThumbData): CancelablePromise<GetPluginsByIdThumbResponse> {
+    public getPluginsByIdThumb(data: $OpenApiTs['/Plugins/{Id}/Thumb']['get']['req']): CancelablePromise<$OpenApiTs['/Plugins/{Id}/Thumb']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Plugins/{Id}/Thumb',
@@ -5236,8 +5156,7 @@ export class PluginServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5250,7 +5169,7 @@ export class PluginServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getPluginsByIdConfiguration(data: GetPluginsByIdConfigurationData): CancelablePromise<GetPluginsByIdConfigurationResponse> {
+    public getPluginsByIdConfiguration(data: $OpenApiTs['/Plugins/{Id}/Configuration']['get']['req']): CancelablePromise<$OpenApiTs['/Plugins/{Id}/Configuration']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Plugins/{Id}/Configuration',
@@ -5261,8 +5180,7 @@ export class PluginServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5276,7 +5194,7 @@ export class PluginServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postPluginsByIdConfiguration(data: PostPluginsByIdConfigurationData): CancelablePromise<PostPluginsByIdConfigurationResponse> {
+    public postPluginsByIdConfiguration(data: $OpenApiTs['/Plugins/{Id}/Configuration']['post']['req']): CancelablePromise<$OpenApiTs['/Plugins/{Id}/Configuration']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Plugins/{Id}/Configuration',
@@ -5289,8 +5207,7 @@ export class PluginServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5309,7 +5226,7 @@ export class ScheduledTaskServiceService {
      * @returns Tasks_TaskInfo Operation successful. Returning a TaskInfo[] object.
      * @throws ApiError
      */
-    public getScheduledtasks(data: GetScheduledtasksData = {}): CancelablePromise<GetScheduledtasksResponse> {
+    public getScheduledtasks(data: $OpenApiTs['/ScheduledTasks']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/ScheduledTasks']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/ScheduledTasks',
@@ -5321,8 +5238,7 @@ export class ScheduledTaskServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5335,7 +5251,7 @@ export class ScheduledTaskServiceService {
      * @returns Tasks_TaskInfo Operation successful. Returning a TaskInfo object.
      * @throws ApiError
      */
-    public getScheduledtasksById(data: GetScheduledtasksByIdData): CancelablePromise<GetScheduledtasksByIdResponse> {
+    public getScheduledtasksById(data: $OpenApiTs['/ScheduledTasks/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/ScheduledTasks/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/ScheduledTasks/{Id}',
@@ -5346,8 +5262,7 @@ export class ScheduledTaskServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5360,7 +5275,7 @@ export class ScheduledTaskServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postScheduledtasksRunningById(data: PostScheduledtasksRunningByIdData): CancelablePromise<PostScheduledtasksRunningByIdResponse> {
+    public postScheduledtasksRunningById(data: $OpenApiTs['/ScheduledTasks/Running/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/ScheduledTasks/Running/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/ScheduledTasks/Running/{Id}',
@@ -5371,8 +5286,7 @@ export class ScheduledTaskServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5385,7 +5299,7 @@ export class ScheduledTaskServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteScheduledtasksRunningById(data: DeleteScheduledtasksRunningByIdData): CancelablePromise<DeleteScheduledtasksRunningByIdResponse> {
+    public deleteScheduledtasksRunningById(data: $OpenApiTs['/ScheduledTasks/Running/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/ScheduledTasks/Running/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/ScheduledTasks/Running/{Id}',
@@ -5396,8 +5310,7 @@ export class ScheduledTaskServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5411,7 +5324,7 @@ export class ScheduledTaskServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postScheduledtasksByIdTriggers(data: PostScheduledtasksByIdTriggersData): CancelablePromise<PostScheduledtasksByIdTriggersResponse> {
+    public postScheduledtasksByIdTriggers(data: $OpenApiTs['/ScheduledTasks/{Id}/Triggers']['post']['req']): CancelablePromise<$OpenApiTs['/ScheduledTasks/{Id}/Triggers']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/ScheduledTasks/{Id}/Triggers',
@@ -5424,8 +5337,7 @@ export class ScheduledTaskServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5444,7 +5356,7 @@ export class SessionsServiceService {
      * @returns Session_SessionInfo Operation successful. Returning a SessionInfo[] object.
      * @throws ApiError
      */
-    public getSessions(data: GetSessionsData = {}): CancelablePromise<GetSessionsResponse> {
+    public getSessions(data: $OpenApiTs['/Sessions']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Sessions']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sessions',
@@ -5456,8 +5368,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5467,7 +5378,7 @@ export class SessionsServiceService {
      * @returns NameIdPair Operation successful. Returning a NameIdPair[] object.
      * @throws ApiError
      */
-    public getAuthProviders(): CancelablePromise<GetAuthProvidersResponse> {
+    public getAuthProviders(): CancelablePromise<$OpenApiTs['/Auth/Providers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Auth/Providers',
@@ -5475,8 +5386,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5488,7 +5398,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postAuthKeys(data: PostAuthKeysData): CancelablePromise<PostAuthKeysResponse> {
+    public postAuthKeys(data: $OpenApiTs['/Auth/Keys']['post']['req']): CancelablePromise<$OpenApiTs['/Auth/Keys']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Auth/Keys',
@@ -5499,8 +5409,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5510,7 +5419,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAuthKeys(): CancelablePromise<GetAuthKeysResponse> {
+    public getAuthKeys(): CancelablePromise<$OpenApiTs['/Auth/Keys']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Auth/Keys',
@@ -5518,8 +5427,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5530,7 +5438,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsLogout(): CancelablePromise<PostSessionsLogoutResponse> {
+    public postSessionsLogout(): CancelablePromise<$OpenApiTs['/Sessions/Logout']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Logout',
@@ -5538,8 +5446,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5557,7 +5464,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsCapabilities(data: PostSessionsCapabilitiesData): CancelablePromise<PostSessionsCapabilitiesResponse> {
+    public postSessionsCapabilities(data: $OpenApiTs['/Sessions/Capabilities']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/Capabilities']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Capabilities',
@@ -5573,8 +5480,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5586,7 +5492,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteAuthKeysByKey(data: DeleteAuthKeysByKeyData): CancelablePromise<DeleteAuthKeysByKeyResponse> {
+    public deleteAuthKeysByKey(data: $OpenApiTs['/Auth/Keys/{Key}']['delete']['req']): CancelablePromise<$OpenApiTs['/Auth/Keys/{Key}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Auth/Keys/{Key}',
@@ -5597,8 +5503,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5614,7 +5519,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdViewing(data: PostSessionsByIdViewingData): CancelablePromise<PostSessionsByIdViewingResponse> {
+    public postSessionsByIdViewing(data: $OpenApiTs['/Sessions/{Id}/Viewing']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Viewing']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Viewing',
@@ -5630,8 +5535,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5647,7 +5551,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdMessage(data: PostSessionsByIdMessageData): CancelablePromise<PostSessionsByIdMessageResponse> {
+    public postSessionsByIdMessage(data: $OpenApiTs['/Sessions/{Id}/Message']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Message']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Message',
@@ -5663,8 +5567,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5681,7 +5584,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postSessionsByIdPlaying(data: PostSessionsByIdPlayingData): CancelablePromise<PostSessionsByIdPlayingResponse> {
+    public postSessionsByIdPlaying(data: $OpenApiTs['/Sessions/{Id}/Playing']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Playing']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Playing',
@@ -5699,8 +5602,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5714,7 +5616,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdCommand(data: PostSessionsByIdCommandData): CancelablePromise<PostSessionsByIdCommandResponse> {
+    public postSessionsByIdCommand(data: $OpenApiTs['/Sessions/{Id}/Command']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Command']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Command',
@@ -5727,8 +5629,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5742,7 +5643,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsCapabilitiesFull(data: PostSessionsCapabilitiesFullData): CancelablePromise<PostSessionsCapabilitiesFullResponse> {
+    public postSessionsCapabilitiesFull(data: $OpenApiTs['/Sessions/Capabilities/Full']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/Capabilities/Full']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Capabilities/Full',
@@ -5755,8 +5656,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5771,7 +5671,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdPlayingByCommand(data: PostSessionsByIdPlayingByCommandData): CancelablePromise<PostSessionsByIdPlayingByCommandResponse> {
+    public postSessionsByIdPlayingByCommand(data: $OpenApiTs['/Sessions/{Id}/Playing/{Command}']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Playing/{Command}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Playing/{Command}',
@@ -5785,8 +5685,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5800,7 +5699,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdSystemByCommand(data: PostSessionsByIdSystemByCommandData): CancelablePromise<PostSessionsByIdSystemByCommandResponse> {
+    public postSessionsByIdSystemByCommand(data: $OpenApiTs['/Sessions/{Id}/System/{Command}']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/System/{Command}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/System/{Command}',
@@ -5812,8 +5711,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5827,7 +5725,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdCommandByCommand(data: PostSessionsByIdCommandByCommandData): CancelablePromise<PostSessionsByIdCommandByCommandResponse> {
+    public postSessionsByIdCommandByCommand(data: $OpenApiTs['/Sessions/{Id}/Command/{Command}']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Command/{Command}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Command/{Command}',
@@ -5839,8 +5737,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5854,7 +5751,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsByIdUsersByUserid(data: PostSessionsByIdUsersByUseridData): CancelablePromise<PostSessionsByIdUsersByUseridResponse> {
+    public postSessionsByIdUsersByUserid(data: $OpenApiTs['/Sessions/{Id}/Users/{UserId}']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Users/{UserId}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/{Id}/Users/{UserId}',
@@ -5866,8 +5763,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5881,7 +5777,7 @@ export class SessionsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteSessionsByIdUsersByUserid(data: DeleteSessionsByIdUsersByUseridData): CancelablePromise<DeleteSessionsByIdUsersByUseridResponse> {
+    public deleteSessionsByIdUsersByUserid(data: $OpenApiTs['/Sessions/{Id}/Users/{UserId}']['delete']['req']): CancelablePromise<$OpenApiTs['/Sessions/{Id}/Users/{UserId}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Sessions/{Id}/Users/{UserId}',
@@ -5893,8 +5789,7 @@ export class SessionsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -5995,7 +5890,7 @@ export class StudiosServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getStudios(data: GetStudiosData = {}): CancelablePromise<GetStudiosResponse> {
+    public getStudios(data: $OpenApiTs['/Studios']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Studios']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Studios',
@@ -6089,8 +5984,7 @@ export class StudiosServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6104,7 +5998,7 @@ export class StudiosServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getStudiosByName(data: GetStudiosByNameData): CancelablePromise<GetStudiosByNameResponse> {
+    public getStudiosByName(data: $OpenApiTs['/Studios/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Studios/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Studios/{Name}',
@@ -6118,8 +6012,7 @@ export class StudiosServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6220,7 +6113,7 @@ export class TrailersServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getTrailers(data: GetTrailersData = {}): CancelablePromise<GetTrailersResponse> {
+    public getTrailers(data: $OpenApiTs['/Trailers']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Trailers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Trailers',
@@ -6314,8 +6207,7 @@ export class TrailersServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6334,7 +6226,7 @@ export class UserServiceService {
      * @returns UserDto Operation successful. Returning a UserDto[] object.
      * @throws ApiError
      */
-    public getUsers(data: GetUsersData = {}): CancelablePromise<GetUsersResponse> {
+    public getUsers(data: $OpenApiTs['/Users']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Users']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users',
@@ -6346,8 +6238,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6358,14 +6249,13 @@ export class UserServiceService {
      * @returns UserDto Operation successful. Returning a UserDto[] object.
      * @throws ApiError
      */
-    public getUsersPublic(): CancelablePromise<GetUsersPublicResponse> {
+    public getUsersPublic(): CancelablePromise<$OpenApiTs['/Users/Public']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/Public',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6378,7 +6268,7 @@ export class UserServiceService {
      * @returns UserDto Operation successful. Returning a UserDto object.
      * @throws ApiError
      */
-    public getUsersById(data: GetUsersByIdData): CancelablePromise<GetUsersByIdResponse> {
+    public getUsersById(data: $OpenApiTs['/Users/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{Id}',
@@ -6389,8 +6279,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6403,7 +6292,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteUsersById(data: DeleteUsersByIdData): CancelablePromise<DeleteUsersByIdResponse> {
+    public deleteUsersById(data: $OpenApiTs['/Users/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{Id}',
@@ -6414,8 +6303,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6429,7 +6317,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersById(data: PostUsersByIdData): CancelablePromise<PostUsersByIdResponse> {
+    public postUsersById(data: $OpenApiTs['/Users/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}',
@@ -6442,8 +6330,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6462,7 +6349,7 @@ export class UserServiceService {
      * @returns Authentication_AuthenticationResult Operation successful. Returning a AuthenticationResult object.
      * @throws ApiError
      */
-    public postUsersAuthenticatebyname(data: PostUsersAuthenticatebynameData): CancelablePromise<PostUsersAuthenticatebynameResponse> {
+    public postUsersAuthenticatebyname(data: $OpenApiTs['/Users/AuthenticateByName']['post']['req']): CancelablePromise<$OpenApiTs['/Users/AuthenticateByName']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/AuthenticateByName',
@@ -6475,8 +6362,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6489,7 +6375,7 @@ export class UserServiceService {
      * @returns UserDto Operation successful. Returning a UserDto object.
      * @throws ApiError
      */
-    public postUsersNew(data: PostUsersNewData): CancelablePromise<PostUsersNewResponse> {
+    public postUsersNew(data: $OpenApiTs['/Users/New']['post']['req']): CancelablePromise<$OpenApiTs['/Users/New']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/New',
@@ -6499,8 +6385,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6513,7 +6398,7 @@ export class UserServiceService {
      * @returns Users_ForgotPasswordResult Operation successful. Returning a ForgotPasswordResult object.
      * @throws ApiError
      */
-    public postUsersForgotpassword(data: PostUsersForgotpasswordData): CancelablePromise<PostUsersForgotpasswordResponse> {
+    public postUsersForgotpassword(data: $OpenApiTs['/Users/ForgotPassword']['post']['req']): CancelablePromise<$OpenApiTs['/Users/ForgotPassword']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/ForgotPassword',
@@ -6521,8 +6406,7 @@ export class UserServiceService {
             mediaType: 'application/json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6536,7 +6420,7 @@ export class UserServiceService {
      * @returns Authentication_AuthenticationResult Operation successful. Returning a AuthenticationResult object.
      * @throws ApiError
      */
-    public postUsersByIdAuthenticate(data: PostUsersByIdAuthenticateData): CancelablePromise<PostUsersByIdAuthenticateResponse> {
+    public postUsersByIdAuthenticate(data: $OpenApiTs['/Users/{Id}/Authenticate']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Authenticate']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Authenticate',
@@ -6547,8 +6431,7 @@ export class UserServiceService {
             mediaType: 'application/json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6562,7 +6445,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdPassword(data: PostUsersByIdPasswordData): CancelablePromise<PostUsersByIdPasswordResponse> {
+    public postUsersByIdPassword(data: $OpenApiTs['/Users/{Id}/Password']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Password']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Password',
@@ -6575,8 +6458,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6590,7 +6472,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdEasypassword(data: PostUsersByIdEasypasswordData): CancelablePromise<PostUsersByIdEasypasswordResponse> {
+    public postUsersByIdEasypassword(data: $OpenApiTs['/Users/{Id}/EasyPassword']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/EasyPassword']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/EasyPassword',
@@ -6603,8 +6485,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6617,7 +6498,7 @@ export class UserServiceService {
      * @returns Users_PinRedeemResult Operation successful. Returning a PinRedeemResult object.
      * @throws ApiError
      */
-    public postUsersForgotpasswordPin(data: PostUsersForgotpasswordPinData): CancelablePromise<PostUsersForgotpasswordPinResponse> {
+    public postUsersForgotpasswordPin(data: $OpenApiTs['/Users/ForgotPassword/Pin']['post']['req']): CancelablePromise<$OpenApiTs['/Users/ForgotPassword/Pin']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/ForgotPassword/Pin',
@@ -6625,8 +6506,7 @@ export class UserServiceService {
             mediaType: 'application/json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6640,7 +6520,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdConfiguration(data: PostUsersByIdConfigurationData): CancelablePromise<PostUsersByIdConfigurationResponse> {
+    public postUsersByIdConfiguration(data: $OpenApiTs['/Users/{Id}/Configuration']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Configuration']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Configuration',
@@ -6653,8 +6533,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6668,7 +6547,7 @@ export class UserServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdPolicy(data: PostUsersByIdPolicyData): CancelablePromise<PostUsersByIdPolicyResponse> {
+    public postUsersByIdPolicy(data: $OpenApiTs['/Users/{Id}/Policy']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Policy']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Policy',
@@ -6681,8 +6560,7 @@ export class UserServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6715,7 +6593,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(data: GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountData): CancelablePromise<GetItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountResponse> {
+    public getItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}',
@@ -6742,8 +6620,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6771,7 +6648,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(data: HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountData): CancelablePromise<HeadItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcountResponse> {
+    public headItemsByIdImagesByTypeByIndexByTagByFormatByMaxwidthByMaxheightByPercentplayedByUnplayedcount(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}']['head']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Items/{Id}/Images/{Type}/{Index}/{Tag}/{Format}/{MaxWidth}/{MaxHeight}/{PercentPlayed}/{UnplayedCount}',
@@ -6798,8 +6675,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6812,7 +6688,7 @@ export class ImageServiceService {
      * @returns ImageInfo Operation successful. Returning a List<ImageInfo> object.
      * @throws ApiError
      */
-    public getItemsByIdImages(data: GetItemsByIdImagesData): CancelablePromise<GetItemsByIdImagesResponse> {
+    public getItemsByIdImages(data: $OpenApiTs['/Items/{Id}/Images']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Images',
@@ -6823,8 +6699,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6852,7 +6727,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getArtistsByNameImagesByType(data: GetArtistsByNameImagesByTypeData): CancelablePromise<GetArtistsByNameImagesByTypeResponse> {
+    public getArtistsByNameImagesByType(data: $OpenApiTs['/Artists/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Artists/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/{Name}/Images/{Type}',
@@ -6879,8 +6754,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6908,7 +6782,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headArtistsByNameImagesByType(data: HeadArtistsByNameImagesByTypeData): CancelablePromise<HeadArtistsByNameImagesByTypeResponse> {
+    public headArtistsByNameImagesByType(data: $OpenApiTs['/Artists/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Artists/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Artists/{Name}/Images/{Type}',
@@ -6935,8 +6809,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -6964,7 +6837,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getGamegenresByNameImagesByType(data: GetGamegenresByNameImagesByTypeData): CancelablePromise<GetGamegenresByNameImagesByTypeResponse> {
+    public getGamegenresByNameImagesByType(data: $OpenApiTs['/GameGenres/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/GameGenres/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/GameGenres/{Name}/Images/{Type}',
@@ -6991,8 +6864,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7020,7 +6892,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headGamegenresByNameImagesByType(data: HeadGamegenresByNameImagesByTypeData): CancelablePromise<HeadGamegenresByNameImagesByTypeResponse> {
+    public headGamegenresByNameImagesByType(data: $OpenApiTs['/GameGenres/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/GameGenres/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/GameGenres/{Name}/Images/{Type}',
@@ -7047,8 +6919,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7076,7 +6947,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getGenresByNameImagesByType(data: GetGenresByNameImagesByTypeData): CancelablePromise<GetGenresByNameImagesByTypeResponse> {
+    public getGenresByNameImagesByType(data: $OpenApiTs['/Genres/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Genres/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Genres/{Name}/Images/{Type}',
@@ -7103,8 +6974,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7132,7 +7002,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headGenresByNameImagesByType(data: HeadGenresByNameImagesByTypeData): CancelablePromise<HeadGenresByNameImagesByTypeResponse> {
+    public headGenresByNameImagesByType(data: $OpenApiTs['/Genres/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Genres/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Genres/{Name}/Images/{Type}',
@@ -7159,8 +7029,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7188,7 +7057,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsByIdImagesByType(data: GetItemsByIdImagesByTypeData): CancelablePromise<GetItemsByIdImagesByTypeResponse> {
+    public getItemsByIdImagesByType(data: $OpenApiTs['/Items/{Id}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Images/{Type}',
@@ -7215,8 +7084,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7244,7 +7112,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headItemsByIdImagesByType(data: HeadItemsByIdImagesByTypeData): CancelablePromise<HeadItemsByIdImagesByTypeResponse> {
+    public headItemsByIdImagesByType(data: $OpenApiTs['/Items/{Id}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Items/{Id}/Images/{Type}',
@@ -7271,8 +7139,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7287,7 +7154,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdImagesByType(data: PostItemsByIdImagesByTypeData): CancelablePromise<PostItemsByIdImagesByTypeResponse> {
+    public postItemsByIdImagesByType(data: $OpenApiTs['/Items/{Id}/Images/{Type}']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/Images/{Type}',
@@ -7304,8 +7171,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7319,7 +7185,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteItemsByIdImagesByType(data: DeleteItemsByIdImagesByTypeData): CancelablePromise<DeleteItemsByIdImagesByTypeResponse> {
+    public deleteItemsByIdImagesByType(data: $OpenApiTs['/Items/{Id}/Images/{Type}']['delete']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Items/{Id}/Images/{Type}',
@@ -7334,8 +7200,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7363,7 +7228,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getMusicgenresByNameImagesByType(data: GetMusicgenresByNameImagesByTypeData): CancelablePromise<GetMusicgenresByNameImagesByTypeResponse> {
+    public getMusicgenresByNameImagesByType(data: $OpenApiTs['/MusicGenres/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres/{Name}/Images/{Type}',
@@ -7390,8 +7255,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7419,7 +7283,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headMusicgenresByNameImagesByType(data: HeadMusicgenresByNameImagesByTypeData): CancelablePromise<HeadMusicgenresByNameImagesByTypeResponse> {
+    public headMusicgenresByNameImagesByType(data: $OpenApiTs['/MusicGenres/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/MusicGenres/{Name}/Images/{Type}',
@@ -7446,8 +7310,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7475,7 +7338,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getPersonsByNameImagesByType(data: GetPersonsByNameImagesByTypeData): CancelablePromise<GetPersonsByNameImagesByTypeResponse> {
+    public getPersonsByNameImagesByType(data: $OpenApiTs['/Persons/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Persons/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Persons/{Name}/Images/{Type}',
@@ -7502,8 +7365,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7531,7 +7393,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headPersonsByNameImagesByType(data: HeadPersonsByNameImagesByTypeData): CancelablePromise<HeadPersonsByNameImagesByTypeResponse> {
+    public headPersonsByNameImagesByType(data: $OpenApiTs['/Persons/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Persons/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Persons/{Name}/Images/{Type}',
@@ -7558,8 +7420,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7587,7 +7448,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getStudiosByNameImagesByType(data: GetStudiosByNameImagesByTypeData): CancelablePromise<GetStudiosByNameImagesByTypeResponse> {
+    public getStudiosByNameImagesByType(data: $OpenApiTs['/Studios/{Name}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Studios/{Name}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Studios/{Name}/Images/{Type}',
@@ -7614,8 +7475,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7643,7 +7503,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headStudiosByNameImagesByType(data: HeadStudiosByNameImagesByTypeData): CancelablePromise<HeadStudiosByNameImagesByTypeResponse> {
+    public headStudiosByNameImagesByType(data: $OpenApiTs['/Studios/{Name}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Studios/{Name}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Studios/{Name}/Images/{Type}',
@@ -7670,8 +7530,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7699,7 +7558,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getUsersByIdImagesByType(data: GetUsersByIdImagesByTypeData): CancelablePromise<GetUsersByIdImagesByTypeResponse> {
+    public getUsersByIdImagesByType(data: $OpenApiTs['/Users/{Id}/Images/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{Id}/Images/{Type}',
@@ -7726,8 +7585,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7755,7 +7613,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headUsersByIdImagesByType(data: HeadUsersByIdImagesByTypeData): CancelablePromise<HeadUsersByIdImagesByTypeResponse> {
+    public headUsersByIdImagesByType(data: $OpenApiTs['/Users/{Id}/Images/{Type}']['head']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Users/{Id}/Images/{Type}',
@@ -7782,8 +7640,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7798,7 +7655,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdImagesByType(data: PostUsersByIdImagesByTypeData): CancelablePromise<PostUsersByIdImagesByTypeResponse> {
+    public postUsersByIdImagesByType(data: $OpenApiTs['/Users/{Id}/Images/{Type}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Images/{Type}',
@@ -7815,8 +7672,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7830,7 +7686,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteUsersByIdImagesByType(data: DeleteUsersByIdImagesByTypeData): CancelablePromise<DeleteUsersByIdImagesByTypeResponse> {
+    public deleteUsersByIdImagesByType(data: $OpenApiTs['/Users/{Id}/Images/{Type}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{Id}/Images/{Type}',
@@ -7845,8 +7701,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7874,7 +7729,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getArtistsByNameImagesByTypeByIndex(data: GetArtistsByNameImagesByTypeByIndexData): CancelablePromise<GetArtistsByNameImagesByTypeByIndexResponse> {
+    public getArtistsByNameImagesByTypeByIndex(data: $OpenApiTs['/Artists/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Artists/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/{Name}/Images/{Type}/{Index}',
@@ -7901,8 +7756,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7930,7 +7784,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headArtistsByNameImagesByTypeByIndex(data: HeadArtistsByNameImagesByTypeByIndexData): CancelablePromise<HeadArtistsByNameImagesByTypeByIndexResponse> {
+    public headArtistsByNameImagesByTypeByIndex(data: $OpenApiTs['/Artists/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Artists/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Artists/{Name}/Images/{Type}/{Index}',
@@ -7957,8 +7811,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -7986,7 +7839,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getGamegenresByNameImagesByTypeByIndex(data: GetGamegenresByNameImagesByTypeByIndexData): CancelablePromise<GetGamegenresByNameImagesByTypeByIndexResponse> {
+    public getGamegenresByNameImagesByTypeByIndex(data: $OpenApiTs['/GameGenres/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/GameGenres/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/GameGenres/{Name}/Images/{Type}/{Index}',
@@ -8013,8 +7866,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8042,7 +7894,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headGamegenresByNameImagesByTypeByIndex(data: HeadGamegenresByNameImagesByTypeByIndexData): CancelablePromise<HeadGamegenresByNameImagesByTypeByIndexResponse> {
+    public headGamegenresByNameImagesByTypeByIndex(data: $OpenApiTs['/GameGenres/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/GameGenres/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/GameGenres/{Name}/Images/{Type}/{Index}',
@@ -8069,8 +7921,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8098,7 +7949,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getGenresByNameImagesByTypeByIndex(data: GetGenresByNameImagesByTypeByIndexData): CancelablePromise<GetGenresByNameImagesByTypeByIndexResponse> {
+    public getGenresByNameImagesByTypeByIndex(data: $OpenApiTs['/Genres/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Genres/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Genres/{Name}/Images/{Type}/{Index}',
@@ -8125,8 +7976,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8154,7 +8004,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headGenresByNameImagesByTypeByIndex(data: HeadGenresByNameImagesByTypeByIndexData): CancelablePromise<HeadGenresByNameImagesByTypeByIndexResponse> {
+    public headGenresByNameImagesByTypeByIndex(data: $OpenApiTs['/Genres/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Genres/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Genres/{Name}/Images/{Type}/{Index}',
@@ -8181,8 +8031,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8210,7 +8059,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsByIdImagesByTypeByIndex(data: GetItemsByIdImagesByTypeByIndexData): CancelablePromise<GetItemsByIdImagesByTypeByIndexResponse> {
+    public getItemsByIdImagesByTypeByIndex(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/Images/{Type}/{Index}',
@@ -8237,8 +8086,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8266,7 +8114,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headItemsByIdImagesByTypeByIndex(data: HeadItemsByIdImagesByTypeByIndexData): CancelablePromise<HeadItemsByIdImagesByTypeByIndexResponse> {
+    public headItemsByIdImagesByTypeByIndex(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Items/{Id}/Images/{Type}/{Index}',
@@ -8293,8 +8141,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8309,7 +8156,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdImagesByTypeByIndex(data: PostItemsByIdImagesByTypeByIndexData): CancelablePromise<PostItemsByIdImagesByTypeByIndexResponse> {
+    public postItemsByIdImagesByTypeByIndex(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/Images/{Type}/{Index}',
@@ -8324,8 +8171,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8339,7 +8185,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteItemsByIdImagesByTypeByIndex(data: DeleteItemsByIdImagesByTypeByIndexData): CancelablePromise<DeleteItemsByIdImagesByTypeByIndexResponse> {
+    public deleteItemsByIdImagesByTypeByIndex(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['delete']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Items/{Id}/Images/{Type}/{Index}',
@@ -8352,8 +8198,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8381,7 +8226,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getMusicgenresByNameImagesByTypeByIndex(data: GetMusicgenresByNameImagesByTypeByIndexData): CancelablePromise<GetMusicgenresByNameImagesByTypeByIndexResponse> {
+    public getMusicgenresByNameImagesByTypeByIndex(data: $OpenApiTs['/MusicGenres/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres/{Name}/Images/{Type}/{Index}',
@@ -8408,8 +8253,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8437,7 +8281,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headMusicgenresByNameImagesByTypeByIndex(data: HeadMusicgenresByNameImagesByTypeByIndexData): CancelablePromise<HeadMusicgenresByNameImagesByTypeByIndexResponse> {
+    public headMusicgenresByNameImagesByTypeByIndex(data: $OpenApiTs['/MusicGenres/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/MusicGenres/{Name}/Images/{Type}/{Index}',
@@ -8464,8 +8308,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8493,7 +8336,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getPersonsByNameImagesByTypeByIndex(data: GetPersonsByNameImagesByTypeByIndexData): CancelablePromise<GetPersonsByNameImagesByTypeByIndexResponse> {
+    public getPersonsByNameImagesByTypeByIndex(data: $OpenApiTs['/Persons/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Persons/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Persons/{Name}/Images/{Type}/{Index}',
@@ -8520,8 +8363,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8549,7 +8391,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headPersonsByNameImagesByTypeByIndex(data: HeadPersonsByNameImagesByTypeByIndexData): CancelablePromise<HeadPersonsByNameImagesByTypeByIndexResponse> {
+    public headPersonsByNameImagesByTypeByIndex(data: $OpenApiTs['/Persons/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Persons/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Persons/{Name}/Images/{Type}/{Index}',
@@ -8576,8 +8418,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8605,7 +8446,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getStudiosByNameImagesByTypeByIndex(data: GetStudiosByNameImagesByTypeByIndexData): CancelablePromise<GetStudiosByNameImagesByTypeByIndexResponse> {
+    public getStudiosByNameImagesByTypeByIndex(data: $OpenApiTs['/Studios/{Name}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Studios/{Name}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Studios/{Name}/Images/{Type}/{Index}',
@@ -8632,8 +8473,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8661,7 +8501,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headStudiosByNameImagesByTypeByIndex(data: HeadStudiosByNameImagesByTypeByIndexData): CancelablePromise<HeadStudiosByNameImagesByTypeByIndexResponse> {
+    public headStudiosByNameImagesByTypeByIndex(data: $OpenApiTs['/Studios/{Name}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Studios/{Name}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Studios/{Name}/Images/{Type}/{Index}',
@@ -8688,8 +8528,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8717,7 +8556,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getUsersByIdImagesByTypeByIndex(data: GetUsersByIdImagesByTypeByIndexData): CancelablePromise<GetUsersByIdImagesByTypeByIndexResponse> {
+    public getUsersByIdImagesByTypeByIndex(data: $OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{Id}/Images/{Type}/{Index}',
@@ -8744,8 +8583,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8773,7 +8611,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headUsersByIdImagesByTypeByIndex(data: HeadUsersByIdImagesByTypeByIndexData): CancelablePromise<HeadUsersByIdImagesByTypeByIndexResponse> {
+    public headUsersByIdImagesByTypeByIndex(data: $OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['head']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Users/{Id}/Images/{Type}/{Index}',
@@ -8800,8 +8638,7 @@ export class ImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8816,7 +8653,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByIdImagesByTypeByIndex(data: PostUsersByIdImagesByTypeByIndexData): CancelablePromise<PostUsersByIdImagesByTypeByIndexResponse> {
+    public postUsersByIdImagesByTypeByIndex(data: $OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Images/{Type}/{Index}',
@@ -8831,8 +8668,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8846,7 +8682,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteUsersByIdImagesByTypeByIndex(data: DeleteUsersByIdImagesByTypeByIndexData): CancelablePromise<DeleteUsersByIdImagesByTypeByIndexResponse> {
+    public deleteUsersByIdImagesByTypeByIndex(data: $OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Images/{Type}/{Index}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{Id}/Images/{Type}/{Index}',
@@ -8859,8 +8695,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8876,7 +8711,7 @@ export class ImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdImagesByTypeByIndexIndex(data: PostItemsByIdImagesByTypeByIndexIndexData): CancelablePromise<PostItemsByIdImagesByTypeByIndexIndexResponse> {
+    public postItemsByIdImagesByTypeByIndexIndex(data: $OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/Index']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Images/{Type}/{Index}/Index']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/Images/{Type}/{Index}/Index',
@@ -8892,8 +8727,7 @@ export class ImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8919,7 +8753,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getArtistsInstantmix(data: GetArtistsInstantmixData): CancelablePromise<GetArtistsInstantmixResponse> {
+    public getArtistsInstantmix(data: $OpenApiTs['/Artists/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/Artists/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Artists/InstantMix',
@@ -8938,8 +8772,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -8960,7 +8793,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getMusicgenresInstantmix(data: GetMusicgenresInstantmixData): CancelablePromise<GetMusicgenresInstantmixResponse> {
+    public getMusicgenresInstantmix(data: $OpenApiTs['/MusicGenres/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres/InstantMix',
@@ -8979,8 +8812,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9001,7 +8833,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getAlbumsByIdInstantmix(data: GetAlbumsByIdInstantmixData): CancelablePromise<GetAlbumsByIdInstantmixResponse> {
+    public getAlbumsByIdInstantmix(data: $OpenApiTs['/Albums/{Id}/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/Albums/{Id}/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Albums/{Id}/InstantMix',
@@ -9022,8 +8854,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9044,7 +8875,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getItemsByIdInstantmix(data: GetItemsByIdInstantmixData): CancelablePromise<GetItemsByIdInstantmixResponse> {
+    public getItemsByIdInstantmix(data: $OpenApiTs['/Items/{Id}/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/InstantMix',
@@ -9065,8 +8896,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9087,7 +8917,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getMusicgenresByNameInstantmix(data: GetMusicgenresByNameInstantmixData): CancelablePromise<GetMusicgenresByNameInstantmixResponse> {
+    public getMusicgenresByNameInstantmix(data: $OpenApiTs['/MusicGenres/{Name}/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/MusicGenres/{Name}/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/MusicGenres/{Name}/InstantMix',
@@ -9108,8 +8938,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9130,7 +8959,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getPlaylistsByIdInstantmix(data: GetPlaylistsByIdInstantmixData): CancelablePromise<GetPlaylistsByIdInstantmixResponse> {
+    public getPlaylistsByIdInstantmix(data: $OpenApiTs['/Playlists/{Id}/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/Playlists/{Id}/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Playlists/{Id}/InstantMix',
@@ -9151,8 +8980,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9173,7 +9001,7 @@ export class InstantMixServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getSongsByIdInstantmix(data: GetSongsByIdInstantmixData): CancelablePromise<GetSongsByIdInstantmixResponse> {
+    public getSongsByIdInstantmix(data: $OpenApiTs['/Songs/{Id}/InstantMix']['get']['req']): CancelablePromise<$OpenApiTs['/Songs/{Id}/InstantMix']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Songs/{Id}/InstantMix',
@@ -9194,8 +9022,7 @@ export class InstantMixServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9211,14 +9038,13 @@ export class BrandingServiceService {
      * @returns Branding_BrandingOptions Operation successful. Returning a BrandingOptions object.
      * @throws ApiError
      */
-    public getBrandingConfiguration(): CancelablePromise<GetBrandingConfigurationResponse> {
+    public getBrandingConfiguration(): CancelablePromise<$OpenApiTs['/Branding/Configuration']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Branding/Configuration',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9229,14 +9055,13 @@ export class BrandingServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getBrandingCss(): CancelablePromise<GetBrandingCssResponse> {
+    public getBrandingCss(): CancelablePromise<$OpenApiTs['/Branding/Css']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Branding/Css',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9247,14 +9072,13 @@ export class BrandingServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getBrandingCssCss(): CancelablePromise<GetBrandingCssCssResponse> {
+    public getBrandingCssCss(): CancelablePromise<$OpenApiTs['/Branding/Css.css']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Branding/Css.css',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9270,7 +9094,7 @@ export class ConnectServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getConnectPending(): CancelablePromise<GetConnectPendingResponse> {
+    public getConnectPending(): CancelablePromise<$OpenApiTs['/Connect/Pending']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Connect/Pending',
@@ -9278,8 +9102,7 @@ export class ConnectServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9292,7 +9115,7 @@ export class ConnectServiceService {
      * @returns Connect_ConnectAuthenticationExchangeResult Operation successful. Returning a ConnectAuthenticationExchangeResult object.
      * @throws ApiError
      */
-    public getConnectExchange(data: GetConnectExchangeData): CancelablePromise<GetConnectExchangeResponse> {
+    public getConnectExchange(data: $OpenApiTs['/Connect/Exchange']['get']['req']): CancelablePromise<$OpenApiTs['/Connect/Exchange']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Connect/Exchange',
@@ -9303,8 +9126,7 @@ export class ConnectServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9318,7 +9140,7 @@ export class ConnectServiceService {
      * @returns Connect_UserLinkResult Operation successful. Returning a UserLinkResult object.
      * @throws ApiError
      */
-    public postUsersByIdConnectLink(data: PostUsersByIdConnectLinkData): CancelablePromise<PostUsersByIdConnectLinkResponse> {
+    public postUsersByIdConnectLink(data: $OpenApiTs['/Users/{Id}/Connect/Link']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Connect/Link']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{Id}/Connect/Link',
@@ -9332,8 +9154,7 @@ export class ConnectServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9346,7 +9167,7 @@ export class ConnectServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteUsersByIdConnectLink(data: DeleteUsersByIdConnectLinkData): CancelablePromise<DeleteUsersByIdConnectLinkResponse> {
+    public deleteUsersByIdConnectLink(data: $OpenApiTs['/Users/{Id}/Connect/Link']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{Id}/Connect/Link']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{Id}/Connect/Link',
@@ -9357,8 +9178,7 @@ export class ConnectServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9378,7 +9198,7 @@ export class DisplayPreferencesServiceService {
      * @returns DisplayPreferences Operation successful. Returning a DisplayPreferences object.
      * @throws ApiError
      */
-    public getDisplaypreferencesById(data: GetDisplaypreferencesByIdData): CancelablePromise<GetDisplaypreferencesByIdResponse> {
+    public getDisplaypreferencesById(data: $OpenApiTs['/DisplayPreferences/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/DisplayPreferences/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/DisplayPreferences/{Id}',
@@ -9393,8 +9213,7 @@ export class DisplayPreferencesServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9409,7 +9228,7 @@ export class DisplayPreferencesServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postDisplaypreferencesByDisplaypreferencesid(data: PostDisplaypreferencesByDisplaypreferencesidData): CancelablePromise<PostDisplaypreferencesByDisplaypreferencesidResponse> {
+    public postDisplaypreferencesByDisplaypreferencesid(data: $OpenApiTs['/DisplayPreferences/{DisplayPreferencesId}']['post']['req']): CancelablePromise<$OpenApiTs['/DisplayPreferences/{DisplayPreferencesId}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/DisplayPreferences/{DisplayPreferencesId}',
@@ -9425,8 +9244,7 @@ export class DisplayPreferencesServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9442,7 +9260,7 @@ export class DlnaServiceService {
      * @returns Dlna_DeviceProfileInfo Operation successful. Returning a DeviceProfileInfo[] object.
      * @throws ApiError
      */
-    public getDlnaProfileinfos(): CancelablePromise<GetDlnaProfileinfosResponse> {
+    public getDlnaProfileinfos(): CancelablePromise<$OpenApiTs['/Dlna/ProfileInfos']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/ProfileInfos',
@@ -9450,8 +9268,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9464,7 +9281,7 @@ export class DlnaServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postDlnaProfiles(data: PostDlnaProfilesData): CancelablePromise<PostDlnaProfilesResponse> {
+    public postDlnaProfiles(data: $OpenApiTs['/Dlna/Profiles']['post']['req']): CancelablePromise<$OpenApiTs['/Dlna/Profiles']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Dlna/Profiles',
@@ -9474,8 +9291,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9488,7 +9304,7 @@ export class DlnaServiceService {
      * @returns Dlna_DeviceProfile Operation successful. Returning a DeviceProfile object.
      * @throws ApiError
      */
-    public getDlnaProfilesById(data: GetDlnaProfilesByIdData): CancelablePromise<GetDlnaProfilesByIdResponse> {
+    public getDlnaProfilesById(data: $OpenApiTs['/Dlna/Profiles/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/Profiles/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/Profiles/{Id}',
@@ -9499,8 +9315,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9513,7 +9328,7 @@ export class DlnaServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteDlnaProfilesById(data: DeleteDlnaProfilesByIdData): CancelablePromise<DeleteDlnaProfilesByIdResponse> {
+    public deleteDlnaProfilesById(data: $OpenApiTs['/Dlna/Profiles/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Dlna/Profiles/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Dlna/Profiles/{Id}',
@@ -9524,8 +9339,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9539,7 +9353,7 @@ export class DlnaServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postDlnaProfilesById(data: PostDlnaProfilesByIdData): CancelablePromise<PostDlnaProfilesByIdResponse> {
+    public postDlnaProfilesById(data: $OpenApiTs['/Dlna/Profiles/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Dlna/Profiles/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Dlna/Profiles/{Id}',
@@ -9552,8 +9366,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9564,7 +9377,7 @@ export class DlnaServiceService {
      * @returns Dlna_DeviceProfile Operation successful. Returning a DeviceProfile object.
      * @throws ApiError
      */
-    public getDlnaProfilesDefault(): CancelablePromise<GetDlnaProfilesDefaultResponse> {
+    public getDlnaProfilesDefault(): CancelablePromise<$OpenApiTs['/Dlna/Profiles/Default']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/Profiles/Default',
@@ -9572,8 +9385,7 @@ export class DlnaServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9592,7 +9404,7 @@ export class EnvironmentServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postEnvironmentValidatepath(data: PostEnvironmentValidatepathData): CancelablePromise<PostEnvironmentValidatepathResponse> {
+    public postEnvironmentValidatepath(data: $OpenApiTs['/Environment/ValidatePath']['post']['req']): CancelablePromise<$OpenApiTs['/Environment/ValidatePath']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Environment/ValidatePath',
@@ -9605,8 +9417,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9617,7 +9428,7 @@ export class EnvironmentServiceService {
      * @returns DefaultDirectoryBrowserInfo Operation successful. Returning a DefaultDirectoryBrowserInfo object.
      * @throws ApiError
      */
-    public getEnvironmentDefaultdirectorybrowser(): CancelablePromise<GetEnvironmentDefaultdirectorybrowserResponse> {
+    public getEnvironmentDefaultdirectorybrowser(): CancelablePromise<$OpenApiTs['/Environment/DefaultDirectoryBrowser']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/DefaultDirectoryBrowser',
@@ -9625,8 +9436,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9641,7 +9451,7 @@ export class EnvironmentServiceService {
      * @returns IO_FileSystemEntryInfo Operation successful. Returning a List<FileSystemEntryInfo> object.
      * @throws ApiError
      */
-    public getEnvironmentDirectorycontents(data: GetEnvironmentDirectorycontentsData): CancelablePromise<GetEnvironmentDirectorycontentsResponse> {
+    public getEnvironmentDirectorycontents(data: $OpenApiTs['/Environment/DirectoryContents']['get']['req']): CancelablePromise<$OpenApiTs['/Environment/DirectoryContents']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/DirectoryContents',
@@ -9654,8 +9464,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9668,7 +9477,7 @@ export class EnvironmentServiceService {
      * @returns IO_FileSystemEntryInfo Operation successful. Returning a List<FileSystemEntryInfo> object.
      * @throws ApiError
      */
-    public getEnvironmentNetworkshares(data: GetEnvironmentNetworksharesData): CancelablePromise<GetEnvironmentNetworksharesResponse> {
+    public getEnvironmentNetworkshares(data: $OpenApiTs['/Environment/NetworkShares']['get']['req']): CancelablePromise<$OpenApiTs['/Environment/NetworkShares']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/NetworkShares',
@@ -9679,8 +9488,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9691,7 +9499,7 @@ export class EnvironmentServiceService {
      * @returns IO_FileSystemEntryInfo Operation successful. Returning a List<FileSystemEntryInfo> object.
      * @throws ApiError
      */
-    public getEnvironmentDrives(): CancelablePromise<GetEnvironmentDrivesResponse> {
+    public getEnvironmentDrives(): CancelablePromise<$OpenApiTs['/Environment/Drives']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/Drives',
@@ -9699,8 +9507,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9711,7 +9518,7 @@ export class EnvironmentServiceService {
      * @returns IO_FileSystemEntryInfo Operation successful. Returning a List<FileSystemEntryInfo> object.
      * @throws ApiError
      */
-    public getEnvironmentNetworkdevices(): CancelablePromise<GetEnvironmentNetworkdevicesResponse> {
+    public getEnvironmentNetworkdevices(): CancelablePromise<$OpenApiTs['/Environment/NetworkDevices']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/NetworkDevices',
@@ -9719,8 +9526,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9733,7 +9539,7 @@ export class EnvironmentServiceService {
      * @returns string Operation successful. Returning a String object.
      * @throws ApiError
      */
-    public getEnvironmentParentpath(data: GetEnvironmentParentpathData): CancelablePromise<GetEnvironmentParentpathResponse> {
+    public getEnvironmentParentpath(data: $OpenApiTs['/Environment/ParentPath']['get']['req']): CancelablePromise<$OpenApiTs['/Environment/ParentPath']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Environment/ParentPath',
@@ -9744,8 +9550,7 @@ export class EnvironmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9763,7 +9568,7 @@ export class GamesServiceService {
      * @returns GameSystemSummary Operation successful. Returning a GameSystemSummary[] object.
      * @throws ApiError
      */
-    public getGamesSystemsummaries(data: GetGamesSystemsummariesData = {}): CancelablePromise<GetGamesSystemsummariesResponse> {
+    public getGamesSystemsummaries(data: $OpenApiTs['/Games/SystemSummaries']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Games/SystemSummaries']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Games/SystemSummaries',
@@ -9774,8 +9579,7 @@ export class GamesServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9791,7 +9595,7 @@ export class ImageByNameServiceService {
      * @returns ImageByNameInfo Operation successful. Returning a List<ImageByNameInfo> object.
      * @throws ApiError
      */
-    public getImagesMediainfo(): CancelablePromise<GetImagesMediainfoResponse> {
+    public getImagesMediainfo(): CancelablePromise<$OpenApiTs['/Images/MediaInfo']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/MediaInfo',
@@ -9799,8 +9603,7 @@ export class ImageByNameServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9811,7 +9614,7 @@ export class ImageByNameServiceService {
      * @returns ImageByNameInfo Operation successful. Returning a List<ImageByNameInfo> object.
      * @throws ApiError
      */
-    public getImagesRatings(): CancelablePromise<GetImagesRatingsResponse> {
+    public getImagesRatings(): CancelablePromise<$OpenApiTs['/Images/Ratings']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/Ratings',
@@ -9819,8 +9622,7 @@ export class ImageByNameServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9831,7 +9633,7 @@ export class ImageByNameServiceService {
      * @returns ImageByNameInfo Operation successful. Returning a List<ImageByNameInfo> object.
      * @throws ApiError
      */
-    public getImagesGeneral(): CancelablePromise<GetImagesGeneralResponse> {
+    public getImagesGeneral(): CancelablePromise<$OpenApiTs['/Images/General']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/General',
@@ -9839,8 +9641,7 @@ export class ImageByNameServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9854,7 +9655,7 @@ export class ImageByNameServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getImagesGeneralByNameByType(data: GetImagesGeneralByNameByTypeData): CancelablePromise<GetImagesGeneralByNameByTypeResponse> {
+    public getImagesGeneralByNameByType(data: $OpenApiTs['/Images/General/{Name}/{Type}']['get']['req']): CancelablePromise<$OpenApiTs['/Images/General/{Name}/{Type}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/General/{Name}/{Type}',
@@ -9864,8 +9665,7 @@ export class ImageByNameServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9879,7 +9679,7 @@ export class ImageByNameServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getImagesRatingsByThemeByName(data: GetImagesRatingsByThemeByNameData): CancelablePromise<GetImagesRatingsByThemeByNameResponse> {
+    public getImagesRatingsByThemeByName(data: $OpenApiTs['/Images/Ratings/{Theme}/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Images/Ratings/{Theme}/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/Ratings/{Theme}/{Name}',
@@ -9889,8 +9689,7 @@ export class ImageByNameServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9904,7 +9703,7 @@ export class ImageByNameServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getImagesMediainfoByThemeByName(data: GetImagesMediainfoByThemeByNameData): CancelablePromise<GetImagesMediainfoByThemeByNameResponse> {
+    public getImagesMediainfoByThemeByName(data: $OpenApiTs['/Images/MediaInfo/{Theme}/{Name}']['get']['req']): CancelablePromise<$OpenApiTs['/Images/MediaInfo/{Theme}/{Name}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/MediaInfo/{Theme}/{Name}',
@@ -9914,8 +9713,7 @@ export class ImageByNameServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9933,7 +9731,7 @@ export class RemoteImageServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getImagesRemote(data: GetImagesRemoteData): CancelablePromise<GetImagesRemoteResponse> {
+    public getImagesRemote(data: $OpenApiTs['/Images/Remote']['get']['req']): CancelablePromise<$OpenApiTs['/Images/Remote']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Images/Remote',
@@ -9942,8 +9740,7 @@ export class RemoteImageServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9961,7 +9758,7 @@ export class RemoteImageServiceService {
      * @returns RemoteImageResult Operation successful. Returning a RemoteImageResult object.
      * @throws ApiError
      */
-    public getItemsByIdRemoteimages(data: GetItemsByIdRemoteimagesData): CancelablePromise<GetItemsByIdRemoteimagesResponse> {
+    public getItemsByIdRemoteimages(data: $OpenApiTs['/Items/{Id}/RemoteImages']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/RemoteImages']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/RemoteImages',
@@ -9979,8 +9776,7 @@ export class RemoteImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -9993,7 +9789,7 @@ export class RemoteImageServiceService {
      * @returns ImageProviderInfo Operation successful. Returning a List<ImageProviderInfo> object.
      * @throws ApiError
      */
-    public getItemsByIdRemoteimagesProviders(data: GetItemsByIdRemoteimagesProvidersData): CancelablePromise<GetItemsByIdRemoteimagesProvidersResponse> {
+    public getItemsByIdRemoteimagesProviders(data: $OpenApiTs['/Items/{Id}/RemoteImages/Providers']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/RemoteImages/Providers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/RemoteImages/Providers',
@@ -10004,8 +9800,7 @@ export class RemoteImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10021,7 +9816,7 @@ export class RemoteImageServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdRemoteimagesDownload(data: PostItemsByIdRemoteimagesDownloadData): CancelablePromise<PostItemsByIdRemoteimagesDownloadResponse> {
+    public postItemsByIdRemoteimagesDownload(data: $OpenApiTs['/Items/{Id}/RemoteImages/Download']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/RemoteImages/Download']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/RemoteImages/Download',
@@ -10037,8 +9832,7 @@ export class RemoteImageServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10059,7 +9853,7 @@ export class FilterServiceService {
      * @returns QueryFilters Operation successful. Returning a QueryFilters object.
      * @throws ApiError
      */
-    public getItemsFilters2(data: GetItemsFilters2Data = {}): CancelablePromise<GetItemsFilters2Response> {
+    public getItemsFilters2(data: $OpenApiTs['/Items/Filters2']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Items/Filters2']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/Filters2',
@@ -10073,8 +9867,7 @@ export class FilterServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10090,7 +9883,7 @@ export class FilterServiceService {
      * @returns QueryFiltersLegacy Operation successful. Returning a QueryFiltersLegacy object.
      * @throws ApiError
      */
-    public getItemsFilters(data: GetItemsFiltersData = {}): CancelablePromise<GetItemsFiltersResponse> {
+    public getItemsFilters(data: $OpenApiTs['/Items/Filters']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Items/Filters']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/Filters',
@@ -10104,8 +9897,7 @@ export class FilterServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10124,7 +9916,7 @@ export class ItemUpdateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByItemid(data: PostItemsByItemidData): CancelablePromise<PostItemsByItemidResponse> {
+    public postItemsByItemid(data: $OpenApiTs['/Items/{ItemId}']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{ItemId}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{ItemId}',
@@ -10137,8 +9929,7 @@ export class ItemUpdateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10151,7 +9942,7 @@ export class ItemUpdateServiceService {
      * @returns MetadataEditorInfo Operation successful. Returning a MetadataEditorInfo object.
      * @throws ApiError
      */
-    public getItemsByItemidMetadataeditor(data: GetItemsByItemidMetadataeditorData): CancelablePromise<GetItemsByItemidMetadataeditorResponse> {
+    public getItemsByItemidMetadataeditor(data: $OpenApiTs['/Items/{ItemId}/MetadataEditor']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{ItemId}/MetadataEditor']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{ItemId}/MetadataEditor',
@@ -10162,8 +9953,7 @@ export class ItemUpdateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10179,7 +9969,7 @@ export class VideoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsFile(): CancelablePromise<GetItemsFileResponse> {
+    public getItemsFile(): CancelablePromise<$OpenApiTs['/Items/File']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/File',
@@ -10187,8 +9977,7 @@ export class VideoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10229,7 +10018,7 @@ export class VideoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdByContainer(data: GetVideosByIdByContainerData): CancelablePromise<GetVideosByIdByContainerResponse> {
+    public getVideosByIdByContainer(data: $OpenApiTs['/Videos/{Id}/stream.{Container}']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/stream.{Container}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/stream.{Container}',
@@ -10268,8 +10057,7 @@ export class VideoServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10310,7 +10098,7 @@ export class VideoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headVideosByIdByContainer(data: HeadVideosByIdByContainerData): CancelablePromise<HeadVideosByIdByContainerResponse> {
+    public headVideosByIdByContainer(data: $OpenApiTs['/Videos/{Id}/stream.{Container}']['head']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/stream.{Container}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Videos/{Id}/stream.{Container}',
@@ -10349,8 +10137,7 @@ export class VideoServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10391,7 +10178,7 @@ export class VideoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdStream(data: GetVideosByIdStreamData): CancelablePromise<GetVideosByIdStreamResponse> {
+    public getVideosByIdStream(data: $OpenApiTs['/Videos/{Id}/stream']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/stream']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/stream',
@@ -10430,8 +10217,7 @@ export class VideoServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10472,7 +10258,7 @@ export class VideoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headVideosByIdStream(data: HeadVideosByIdStreamData): CancelablePromise<HeadVideosByIdStreamResponse> {
+    public headVideosByIdStream(data: $OpenApiTs['/Videos/{Id}/stream']['head']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/stream']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Videos/{Id}/stream',
@@ -10511,8 +10297,7 @@ export class VideoServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10527,7 +10312,7 @@ export class LibraryStructureServiceService {
      * @returns VirtualFolderInfo Operation successful. Returning a List<VirtualFolderInfo> object.
      * @throws ApiError
      */
-    public getLibraryVirtualfolders(): CancelablePromise<GetLibraryVirtualfoldersResponse> {
+    public getLibraryVirtualfolders(): CancelablePromise<$OpenApiTs['/Library/VirtualFolders']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Library/VirtualFolders',
@@ -10535,8 +10320,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10548,7 +10332,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryVirtualfolders(data: PostLibraryVirtualfoldersData): CancelablePromise<PostLibraryVirtualfoldersResponse> {
+    public postLibraryVirtualfolders(data: $OpenApiTs['/Library/VirtualFolders']['post']['req']): CancelablePromise<$OpenApiTs['/Library/VirtualFolders']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/VirtualFolders',
@@ -10558,8 +10342,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10569,7 +10352,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLibraryVirtualfolders(): CancelablePromise<DeleteLibraryVirtualfoldersResponse> {
+    public deleteLibraryVirtualfolders(): CancelablePromise<$OpenApiTs['/Library/VirtualFolders']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Library/VirtualFolders',
@@ -10577,8 +10360,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10590,7 +10372,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryVirtualfoldersLibraryoptions(data: PostLibraryVirtualfoldersLibraryoptionsData): CancelablePromise<PostLibraryVirtualfoldersLibraryoptionsResponse> {
+    public postLibraryVirtualfoldersLibraryoptions(data: $OpenApiTs['/Library/VirtualFolders/LibraryOptions']['post']['req']): CancelablePromise<$OpenApiTs['/Library/VirtualFolders/LibraryOptions']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/VirtualFolders/LibraryOptions',
@@ -10600,8 +10382,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10613,7 +10394,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryVirtualfoldersName(data: PostLibraryVirtualfoldersNameData): CancelablePromise<PostLibraryVirtualfoldersNameResponse> {
+    public postLibraryVirtualfoldersName(data: $OpenApiTs['/Library/VirtualFolders/Name']['post']['req']): CancelablePromise<$OpenApiTs['/Library/VirtualFolders/Name']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/VirtualFolders/Name',
@@ -10623,8 +10404,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10636,7 +10416,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryVirtualfoldersPaths(data: PostLibraryVirtualfoldersPathsData): CancelablePromise<PostLibraryVirtualfoldersPathsResponse> {
+    public postLibraryVirtualfoldersPaths(data: $OpenApiTs['/Library/VirtualFolders/Paths']['post']['req']): CancelablePromise<$OpenApiTs['/Library/VirtualFolders/Paths']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/VirtualFolders/Paths',
@@ -10646,8 +10426,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10657,7 +10436,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLibraryVirtualfoldersPaths(): CancelablePromise<DeleteLibraryVirtualfoldersPathsResponse> {
+    public deleteLibraryVirtualfoldersPaths(): CancelablePromise<$OpenApiTs['/Library/VirtualFolders/Paths']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Library/VirtualFolders/Paths',
@@ -10665,8 +10444,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10678,7 +10456,7 @@ export class LibraryStructureServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLibraryVirtualfoldersPathsUpdate(data: PostLibraryVirtualfoldersPathsUpdateData): CancelablePromise<PostLibraryVirtualfoldersPathsUpdateResponse> {
+    public postLibraryVirtualfoldersPathsUpdate(data: $OpenApiTs['/Library/VirtualFolders/Paths/Update']['post']['req']): CancelablePromise<$OpenApiTs['/Library/VirtualFolders/Paths/Update']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Library/VirtualFolders/Paths/Update',
@@ -10688,8 +10466,7 @@ export class LibraryStructureServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10707,7 +10484,7 @@ export class MediaInfoServiceService {
      * @returns MediaInfo_LiveStreamResponse Operation successful. Returning a LiveStreamResponse object.
      * @throws ApiError
      */
-    public postLivestreamsOpen(data: PostLivestreamsOpenData): CancelablePromise<PostLivestreamsOpenResponse> {
+    public postLivestreamsOpen(data: $OpenApiTs['/LiveStreams/Open']['post']['req']): CancelablePromise<$OpenApiTs['/LiveStreams/Open']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveStreams/Open',
@@ -10717,8 +10494,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10731,7 +10507,7 @@ export class MediaInfoServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivestreamsClose(data: PostLivestreamsCloseData): CancelablePromise<PostLivestreamsCloseResponse> {
+    public postLivestreamsClose(data: $OpenApiTs['/LiveStreams/Close']['post']['req']): CancelablePromise<$OpenApiTs['/LiveStreams/Close']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveStreams/Close',
@@ -10742,8 +10518,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10756,7 +10531,7 @@ export class MediaInfoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postLivestreamsMediainfo(data: PostLivestreamsMediainfoData): CancelablePromise<PostLivestreamsMediainfoResponse> {
+    public postLivestreamsMediainfo(data: $OpenApiTs['/LiveStreams/MediaInfo']['post']['req']): CancelablePromise<$OpenApiTs['/LiveStreams/MediaInfo']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveStreams/MediaInfo',
@@ -10767,8 +10542,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10780,7 +10554,7 @@ export class MediaInfoServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getPlaybackBitratetest(data: GetPlaybackBitratetestData): CancelablePromise<GetPlaybackBitratetestResponse> {
+    public getPlaybackBitratetest(data: $OpenApiTs['/Playback/BitrateTest']['get']['req']): CancelablePromise<$OpenApiTs['/Playback/BitrateTest']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Playback/BitrateTest',
@@ -10791,8 +10565,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10806,7 +10579,7 @@ export class MediaInfoServiceService {
      * @returns MediaInfo_PlaybackInfoResponse Operation successful. Returning a PlaybackInfoResponse object.
      * @throws ApiError
      */
-    public getItemsByIdPlaybackinfo(data: GetItemsByIdPlaybackinfoData): CancelablePromise<GetItemsByIdPlaybackinfoResponse> {
+    public getItemsByIdPlaybackinfo(data: $OpenApiTs['/Items/{Id}/PlaybackInfo']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/PlaybackInfo']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/PlaybackInfo',
@@ -10820,8 +10593,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10835,7 +10607,7 @@ export class MediaInfoServiceService {
      * @returns MediaInfo_PlaybackInfoResponse Operation successful. Returning a PlaybackInfoResponse object.
      * @throws ApiError
      */
-    public postItemsByIdPlaybackinfo(data: PostItemsByIdPlaybackinfoData): CancelablePromise<PostItemsByIdPlaybackinfoResponse> {
+    public postItemsByIdPlaybackinfo(data: $OpenApiTs['/Items/{Id}/PlaybackInfo']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/PlaybackInfo']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/PlaybackInfo',
@@ -10848,8 +10620,7 @@ export class MediaInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10866,7 +10637,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public optionsLivetvChannelmappings(data: OptionsLivetvChannelmappingsData): CancelablePromise<OptionsLivetvChannelmappingsResponse> {
+    public optionsLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['options']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['options']['res'][200]> {
         return this.httpRequest.request({
             method: 'OPTIONS',
             url: '/LiveTv/ChannelMappings',
@@ -10877,8 +10648,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10890,7 +10660,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvChannelmappings(data: GetLivetvChannelmappingsData): CancelablePromise<GetLivetvChannelmappingsResponse> {
+    public getLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ChannelMappings',
@@ -10901,8 +10671,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10914,7 +10683,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headLivetvChannelmappings(data: HeadLivetvChannelmappingsData): CancelablePromise<HeadLivetvChannelmappingsResponse> {
+    public headLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['head']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/LiveTv/ChannelMappings',
@@ -10925,8 +10694,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10939,7 +10707,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postLivetvChannelmappings(data: PostLivetvChannelmappingsData): CancelablePromise<PostLivetvChannelmappingsResponse> {
+    public postLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/ChannelMappings',
@@ -10952,8 +10720,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10966,7 +10733,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public putLivetvChannelmappings(data: PutLivetvChannelmappingsData): CancelablePromise<PutLivetvChannelmappingsResponse> {
+    public putLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['put']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['put']['res'][200]> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/LiveTv/ChannelMappings',
@@ -10979,8 +10746,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -10992,7 +10758,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteLivetvChannelmappings(data: DeleteLivetvChannelmappingsData): CancelablePromise<DeleteLivetvChannelmappingsResponse> {
+    public deleteLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['delete']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/ChannelMappings',
@@ -11003,8 +10769,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11016,31 +10781,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public traceLivetvChannelmappings(data: TraceLivetvChannelmappingsData): CancelablePromise<TraceLivetvChannelmappingsResponse> {
-        return this.httpRequest.request({
-            method: 'TRACE',
-            url: '/LiveTv/ChannelMappings',
-            query: {
-                ProviderId: data.providerId
-            },
-            errors: {
-                400: 'Bad Request. Server cannot process request.',
-                401: 'Unauthorized. Client needs to authenticate.',
-                403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
-            }
-        });
-    }
-    
-    /**
-     * Requires authentication as user
-     * @param data The data for the request.
-     * @param data.providerId Provider id
-     * @returns unknown Operation successful. Response content unknown.
-     * @throws ApiError
-     */
-    public patchLivetvChannelmappings(data: PatchLivetvChannelmappingsData): CancelablePromise<PatchLivetvChannelmappingsResponse> {
+    public patchLivetvChannelmappings(data: $OpenApiTs['/LiveTv/ChannelMappings']['patch']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappings']['patch']['res'][200]> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/LiveTv/ChannelMappings',
@@ -11051,8 +10792,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11064,7 +10804,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public optionsLivetvChannelmappingoptions(data: OptionsLivetvChannelmappingoptionsData): CancelablePromise<OptionsLivetvChannelmappingoptionsResponse> {
+    public optionsLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['options']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['options']['res'][200]> {
         return this.httpRequest.request({
             method: 'OPTIONS',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11075,8 +10815,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11088,7 +10827,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvChannelmappingoptions(data: GetLivetvChannelmappingoptionsData): CancelablePromise<GetLivetvChannelmappingoptionsResponse> {
+    public getLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11099,8 +10838,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11112,7 +10850,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headLivetvChannelmappingoptions(data: HeadLivetvChannelmappingoptionsData): CancelablePromise<HeadLivetvChannelmappingoptionsResponse> {
+    public headLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['head']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11123,8 +10861,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11136,7 +10873,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postLivetvChannelmappingoptions(data: PostLivetvChannelmappingoptionsData): CancelablePromise<PostLivetvChannelmappingoptionsResponse> {
+    public postLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11147,8 +10884,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11160,7 +10896,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public putLivetvChannelmappingoptions(data: PutLivetvChannelmappingoptionsData): CancelablePromise<PutLivetvChannelmappingoptionsResponse> {
+    public putLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['put']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['put']['res'][200]> {
         return this.httpRequest.request({
             method: 'PUT',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11171,8 +10907,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11184,7 +10919,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteLivetvChannelmappingoptions(data: DeleteLivetvChannelmappingoptionsData): CancelablePromise<DeleteLivetvChannelmappingoptionsResponse> {
+    public deleteLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['delete']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11195,8 +10930,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11208,31 +10942,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public traceLivetvChannelmappingoptions(data: TraceLivetvChannelmappingoptionsData): CancelablePromise<TraceLivetvChannelmappingoptionsResponse> {
-        return this.httpRequest.request({
-            method: 'TRACE',
-            url: '/LiveTv/ChannelMappingOptions',
-            query: {
-                ProviderId: data.providerId
-            },
-            errors: {
-                400: 'Bad Request. Server cannot process request.',
-                401: 'Unauthorized. Client needs to authenticate.',
-                403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
-            }
-        });
-    }
-    
-    /**
-     * Requires authentication as user
-     * @param data The data for the request.
-     * @param data.providerId Provider id
-     * @returns unknown Operation successful. Response content unknown.
-     * @throws ApiError
-     */
-    public patchLivetvChannelmappingoptions(data: PatchLivetvChannelmappingoptionsData): CancelablePromise<PatchLivetvChannelmappingoptionsResponse> {
+    public patchLivetvChannelmappingoptions(data: $OpenApiTs['/LiveTv/ChannelMappingOptions']['patch']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ChannelMappingOptions']['patch']['res'][200]> {
         return this.httpRequest.request({
             method: 'PATCH',
             url: '/LiveTv/ChannelMappingOptions',
@@ -11243,8 +10953,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11257,7 +10966,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_ListingsProviderInfo Operation successful. Returning a ListingsProviderInfo object.
      * @throws ApiError
      */
-    public postLivetvListingproviders(data: PostLivetvListingprovidersData): CancelablePromise<PostLivetvListingprovidersResponse> {
+    public postLivetvListingproviders(data: $OpenApiTs['/LiveTv/ListingProviders']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/ListingProviders',
@@ -11267,8 +10976,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11281,7 +10989,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLivetvListingproviders(data: DeleteLivetvListingprovidersData = {}): CancelablePromise<DeleteLivetvListingprovidersResponse> {
+    public deleteLivetvListingproviders(data: $OpenApiTs['/LiveTv/ListingProviders']['delete']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/ListingProviders',
@@ -11292,8 +11000,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11304,7 +11011,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_ListingsProviderInfo Operation successful. Returning a ListingsProviderInfo[] object.
      * @throws ApiError
      */
-    public getLivetvListingproviders(): CancelablePromise<GetLivetvListingprovidersResponse> {
+    public getLivetvListingproviders(): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ListingProviders',
@@ -11312,8 +11019,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11324,7 +11030,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_TunerHostInfo Operation successful. Returning a TunerHostInfo[] object.
      * @throws ApiError
      */
-    public getLivetvTunerhosts(): CancelablePromise<GetLivetvTunerhostsResponse> {
+    public getLivetvTunerhosts(): CancelablePromise<$OpenApiTs['/LiveTv/TunerHosts']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/TunerHosts',
@@ -11332,8 +11038,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11346,7 +11051,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_TunerHostInfo Operation successful. Returning a TunerHostInfo object.
      * @throws ApiError
      */
-    public postLivetvTunerhosts(data: PostLivetvTunerhostsData): CancelablePromise<PostLivetvTunerhostsResponse> {
+    public postLivetvTunerhosts(data: $OpenApiTs['/LiveTv/TunerHosts']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/TunerHosts']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/TunerHosts',
@@ -11356,8 +11061,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11370,7 +11074,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLivetvTunerhosts(data: DeleteLivetvTunerhostsData = {}): CancelablePromise<DeleteLivetvTunerhostsResponse> {
+    public deleteLivetvTunerhosts(data: $OpenApiTs['/LiveTv/TunerHosts']['delete']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/TunerHosts']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/TunerHosts',
@@ -11381,8 +11085,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11393,7 +11096,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_LiveTvInfo Operation successful. Returning a LiveTvInfo object.
      * @throws ApiError
      */
-    public getLivetvInfo(): CancelablePromise<GetLivetvInfoResponse> {
+    public getLivetvInfo(): CancelablePromise<$OpenApiTs['/LiveTv/Info']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Info',
@@ -11401,8 +11104,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11433,7 +11135,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLivetvChannels(data: GetLivetvChannelsData = {}): CancelablePromise<GetLivetvChannelsResponse> {
+    public getLivetvChannels(data: $OpenApiTs['/LiveTv/Channels']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Channels']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Channels',
@@ -11462,8 +11164,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11497,7 +11198,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLivetvPrograms(data: GetLivetvProgramsData = {}): CancelablePromise<GetLivetvProgramsResponse> {
+    public getLivetvPrograms(data: $OpenApiTs['/LiveTv/Programs']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Programs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Programs',
@@ -11529,8 +11230,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11555,7 +11255,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public postLivetvPrograms(data: PostLivetvProgramsData): CancelablePromise<PostLivetvProgramsResponse> {
+    public postLivetvPrograms(data: $OpenApiTs['/LiveTv/Programs']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Programs']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/Programs',
@@ -11579,8 +11279,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11680,7 +11379,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvRecordings(data: GetLivetvRecordingsData = {}): CancelablePromise<GetLivetvRecordingsResponse> {
+    public getLivetvRecordings(data: $OpenApiTs['/LiveTv/Recordings']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Recordings']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings',
@@ -11778,8 +11477,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11793,7 +11491,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_LiveTv_TimerInfoDto Operation successful. Returning a QueryResult<TimerInfoDto> object.
      * @throws ApiError
      */
-    public getLivetvTimers(data: GetLivetvTimersData = {}): CancelablePromise<GetLivetvTimersResponse> {
+    public getLivetvTimers(data: $OpenApiTs['/LiveTv/Timers']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Timers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Timers',
@@ -11805,8 +11503,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11819,7 +11516,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivetvTimers(data: PostLivetvTimersData): CancelablePromise<PostLivetvTimersResponse> {
+    public postLivetvTimers(data: $OpenApiTs['/LiveTv/Timers']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Timers']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/Timers',
@@ -11829,8 +11526,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11844,7 +11540,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_LiveTv_SeriesTimerInfoDto Operation successful. Returning a QueryResult<SeriesTimerInfoDto> object.
      * @throws ApiError
      */
-    public getLivetvSeriestimers(data: GetLivetvSeriestimersData = {}): CancelablePromise<GetLivetvSeriestimersResponse> {
+    public getLivetvSeriestimers(data: $OpenApiTs['/LiveTv/SeriesTimers']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/SeriesTimers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/SeriesTimers',
@@ -11856,8 +11552,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11870,7 +11565,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivetvSeriestimers(data: PostLivetvSeriestimersData): CancelablePromise<PostLivetvSeriestimersResponse> {
+    public postLivetvSeriestimers(data: $OpenApiTs['/LiveTv/SeriesTimers']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/SeriesTimers']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/SeriesTimers',
@@ -11880,8 +11575,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11892,7 +11586,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_GuideInfo Operation successful. Returning a GuideInfo object.
      * @throws ApiError
      */
-    public getLivetvGuideinfo(): CancelablePromise<GetLivetvGuideinfoResponse> {
+    public getLivetvGuideinfo(): CancelablePromise<$OpenApiTs['/LiveTv/GuideInfo']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/GuideInfo',
@@ -11900,8 +11594,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11911,7 +11604,7 @@ export class LiveTvServiceService {
      * @returns NameIdPair Operation successful. Returning a List<NameIdPair> object.
      * @throws ApiError
      */
-    public getLivetvTunerhostsTypes(): CancelablePromise<GetLivetvTunerhostsTypesResponse> {
+    public getLivetvTunerhostsTypes(): CancelablePromise<$OpenApiTs['/LiveTv/TunerHosts/Types']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/TunerHosts/Types',
@@ -11919,8 +11612,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11933,7 +11625,7 @@ export class LiveTvServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getLivetvRecordingsFolders(data: GetLivetvRecordingsFoldersData = {}): CancelablePromise<GetLivetvRecordingsFoldersResponse> {
+    public getLivetvRecordingsFolders(data: $OpenApiTs['/LiveTv/Recordings/Folders']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/Folders']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings/Folders',
@@ -11944,8 +11636,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11955,7 +11646,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_TunerHostInfo Operation successful. Returning a List<TunerHostInfo> object.
      * @throws ApiError
      */
-    public getLivetvTunersDiscvover(): CancelablePromise<GetLivetvTunersDiscvoverResponse> {
+    public getLivetvTunersDiscvover(): CancelablePromise<$OpenApiTs['/LiveTv/Tuners/Discvover']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Tuners/Discvover',
@@ -11963,8 +11654,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11974,7 +11664,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_ListingsProviderInfo Operation successful. Returning a ListingsProviderInfo object.
      * @throws ApiError
      */
-    public getLivetvListingprovidersDefault(): CancelablePromise<GetLivetvListingprovidersDefaultResponse> {
+    public getLivetvListingprovidersDefault(): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders/Default']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ListingProviders/Default',
@@ -11982,8 +11672,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -11999,7 +11688,7 @@ export class LiveTvServiceService {
      * @returns NameIdPair Operation successful. Returning a List<NameIdPair> object.
      * @throws ApiError
      */
-    public getLivetvListingprovidersLineups(data: GetLivetvListingprovidersLineupsData = {}): CancelablePromise<GetLivetvListingprovidersLineupsResponse> {
+    public getLivetvListingprovidersLineups(data: $OpenApiTs['/LiveTv/ListingProviders/Lineups']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders/Lineups']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ListingProviders/Lineups',
@@ -12013,8 +11702,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12028,7 +11716,7 @@ export class LiveTvServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getLivetvChannelsById(data: GetLivetvChannelsByIdData): CancelablePromise<GetLivetvChannelsByIdResponse> {
+    public getLivetvChannelsById(data: $OpenApiTs['/LiveTv/Channels/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Channels/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Channels/{Id}',
@@ -12042,8 +11730,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12070,7 +11757,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLivetvProgramsRecommended(data: GetLivetvProgramsRecommendedData = {}): CancelablePromise<GetLivetvProgramsRecommendedResponse> {
+    public getLivetvProgramsRecommended(data: $OpenApiTs['/LiveTv/Programs/Recommended']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Programs/Recommended']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Programs/Recommended',
@@ -12095,8 +11782,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12121,7 +11807,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLivetvRecordingsSeries(data: GetLivetvRecordingsSeriesData = {}): CancelablePromise<GetLivetvRecordingsSeriesResponse> {
+    public getLivetvRecordingsSeries(data: $OpenApiTs['/LiveTv/Recordings/Series']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/Series']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings/Series',
@@ -12144,8 +11830,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12159,7 +11844,7 @@ export class LiveTvServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getLivetvRecordingsById(data: GetLivetvRecordingsByIdData): CancelablePromise<GetLivetvRecordingsByIdResponse> {
+    public getLivetvRecordingsById(data: $OpenApiTs['/LiveTv/Recordings/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings/{Id}',
@@ -12173,8 +11858,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12187,7 +11871,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLivetvRecordingsById(data: DeleteLivetvRecordingsByIdData): CancelablePromise<DeleteLivetvRecordingsByIdResponse> {
+    public deleteLivetvRecordingsById(data: $OpenApiTs['/LiveTv/Recordings/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/Recordings/{Id}',
@@ -12198,8 +11882,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12212,7 +11895,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_TimerInfoDto Operation successful. Returning a TimerInfoDto object.
      * @throws ApiError
      */
-    public getLivetvTimersById(data: GetLivetvTimersByIdData): CancelablePromise<GetLivetvTimersByIdResponse> {
+    public getLivetvTimersById(data: $OpenApiTs['/LiveTv/Timers/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Timers/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Timers/{Id}',
@@ -12223,8 +11906,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12237,7 +11919,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLivetvTimersById(data: DeleteLivetvTimersByIdData): CancelablePromise<DeleteLivetvTimersByIdResponse> {
+    public deleteLivetvTimersById(data: $OpenApiTs['/LiveTv/Timers/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Timers/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/Timers/{Id}',
@@ -12248,8 +11930,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12263,7 +11944,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivetvTimersById(data: PostLivetvTimersByIdData): CancelablePromise<PostLivetvTimersByIdResponse> {
+    public postLivetvTimersById(data: $OpenApiTs['/LiveTv/Timers/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Timers/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/Timers/{Id}',
@@ -12276,8 +11957,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12290,7 +11970,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_TimerInfoDto Operation successful. Returning a TimerInfoDto object.
      * @throws ApiError
      */
-    public getLivetvSeriestimersById(data: GetLivetvSeriestimersByIdData): CancelablePromise<GetLivetvSeriestimersByIdResponse> {
+    public getLivetvSeriestimersById(data: $OpenApiTs['/LiveTv/SeriesTimers/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/SeriesTimers/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/SeriesTimers/{Id}',
@@ -12301,8 +11981,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12315,7 +11994,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteLivetvSeriestimersById(data: DeleteLivetvSeriestimersByIdData): CancelablePromise<DeleteLivetvSeriestimersByIdResponse> {
+    public deleteLivetvSeriestimersById(data: $OpenApiTs['/LiveTv/SeriesTimers/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/LiveTv/SeriesTimers/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/LiveTv/SeriesTimers/{Id}',
@@ -12326,8 +12005,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12341,7 +12019,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivetvSeriestimersById(data: PostLivetvSeriestimersByIdData): CancelablePromise<PostLivetvSeriestimersByIdResponse> {
+    public postLivetvSeriestimersById(data: $OpenApiTs['/LiveTv/SeriesTimers/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/SeriesTimers/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/SeriesTimers/{Id}',
@@ -12354,8 +12032,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12368,7 +12045,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_SeriesTimerInfoDto Operation successful. Returning a SeriesTimerInfoDto object.
      * @throws ApiError
      */
-    public getLivetvTimersDefaults(data: GetLivetvTimersDefaultsData = {}): CancelablePromise<GetLivetvTimersDefaultsResponse> {
+    public getLivetvTimersDefaults(data: $OpenApiTs['/LiveTv/Timers/Defaults']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Timers/Defaults']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Timers/Defaults',
@@ -12379,8 +12056,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12393,7 +12069,7 @@ export class LiveTvServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getLivetvRecordingsGroups(data: GetLivetvRecordingsGroupsData = {}): CancelablePromise<GetLivetvRecordingsGroupsResponse> {
+    public getLivetvRecordingsGroups(data: $OpenApiTs['/LiveTv/Recordings/Groups']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/Groups']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings/Groups',
@@ -12404,8 +12080,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12416,7 +12091,7 @@ export class LiveTvServiceService {
      * @returns LiveTv_ListingProviderTypeInfo Operation successful. Returning a ListingProviderTypeInfo[] object.
      * @throws ApiError
      */
-    public getLivetvListingprovidersAvailable(): CancelablePromise<GetLivetvListingprovidersAvailableResponse> {
+    public getLivetvListingprovidersAvailable(): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders/Available']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ListingProviders/Available',
@@ -12424,8 +12099,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12438,7 +12112,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvLiverecordingsByIdStream(data: GetLivetvLiverecordingsByIdStreamData): CancelablePromise<GetLivetvLiverecordingsByIdStreamResponse> {
+    public getLivetvLiverecordingsByIdStream(data: $OpenApiTs['/LiveTv/LiveRecordings/{Id}/stream']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/LiveRecordings/{Id}/stream']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/LiveRecordings/{Id}/stream',
@@ -12447,8 +12121,7 @@ export class LiveTvServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12462,7 +12135,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvLivestreamfilesByIdByContainer(data: GetLivetvLivestreamfilesByIdByContainerData): CancelablePromise<GetLivetvLivestreamfilesByIdByContainerResponse> {
+    public getLivetvLivestreamfilesByIdByContainer(data: $OpenApiTs['/LiveTv/LiveStreamFiles/{Id}/stream.{Container}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/LiveStreamFiles/{Id}/stream.{Container}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/LiveStreamFiles/{Id}/stream.{Container}',
@@ -12472,8 +12145,7 @@ export class LiveTvServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12484,7 +12156,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getLivetvListingprovidersSchedulesdirectCountries(): CancelablePromise<GetLivetvListingprovidersSchedulesdirectCountriesResponse> {
+    public getLivetvListingprovidersSchedulesdirectCountries(): CancelablePromise<$OpenApiTs['/LiveTv/ListingProviders/SchedulesDirect/Countries']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/ListingProviders/SchedulesDirect/Countries',
@@ -12492,8 +12164,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12506,7 +12177,7 @@ export class LiveTvServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getLivetvRecordingsGroupsById(data: GetLivetvRecordingsGroupsByIdData): CancelablePromise<GetLivetvRecordingsGroupsByIdResponse> {
+    public getLivetvRecordingsGroupsById(data: $OpenApiTs['/LiveTv/Recordings/Groups/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Recordings/Groups/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Recordings/Groups/{Id}',
@@ -12517,8 +12188,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12531,7 +12201,7 @@ export class LiveTvServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postLivetvTunersByIdReset(data: PostLivetvTunersByIdResetData): CancelablePromise<PostLivetvTunersByIdResetResponse> {
+    public postLivetvTunersByIdReset(data: $OpenApiTs['/LiveTv/Tuners/{Id}/Reset']['post']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Tuners/{Id}/Reset']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/LiveTv/Tuners/{Id}/Reset',
@@ -12542,8 +12212,7 @@ export class LiveTvServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12559,7 +12228,7 @@ export class LocalizationServiceService {
      * @returns ParentalRating Operation successful. Returning a ParentalRating[] object.
      * @throws ApiError
      */
-    public getLocalizationParentalratings(): CancelablePromise<GetLocalizationParentalratingsResponse> {
+    public getLocalizationParentalratings(): CancelablePromise<$OpenApiTs['/Localization/ParentalRatings']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Localization/ParentalRatings',
@@ -12567,8 +12236,7 @@ export class LocalizationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12579,7 +12247,7 @@ export class LocalizationServiceService {
      * @returns Globalization_LocalizatonOption Operation successful. Returning a LocalizatonOption[] object.
      * @throws ApiError
      */
-    public getLocalizationOptions(): CancelablePromise<GetLocalizationOptionsResponse> {
+    public getLocalizationOptions(): CancelablePromise<$OpenApiTs['/Localization/Options']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Localization/Options',
@@ -12587,8 +12255,7 @@ export class LocalizationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12599,7 +12266,7 @@ export class LocalizationServiceService {
      * @returns Globalization_CountryInfo Operation successful. Returning a CountryInfo[] object.
      * @throws ApiError
      */
-    public getLocalizationCountries(): CancelablePromise<GetLocalizationCountriesResponse> {
+    public getLocalizationCountries(): CancelablePromise<$OpenApiTs['/Localization/Countries']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Localization/Countries',
@@ -12607,8 +12274,7 @@ export class LocalizationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12619,7 +12285,7 @@ export class LocalizationServiceService {
      * @returns Globalization_CultureDto Operation successful. Returning a CultureDto[] object.
      * @throws ApiError
      */
-    public getLocalizationCultures(): CancelablePromise<GetLocalizationCulturesResponse> {
+    public getLocalizationCultures(): CancelablePromise<$OpenApiTs['/Localization/Cultures']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Localization/Cultures',
@@ -12627,8 +12293,7 @@ export class LocalizationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12653,7 +12318,7 @@ export class MoviesServiceService {
      * @returns RecommendationDto Operation successful. Returning a RecommendationDto[] object.
      * @throws ApiError
      */
-    public getMoviesRecommendations(data: GetMoviesRecommendationsData = {}): CancelablePromise<GetMoviesRecommendationsResponse> {
+    public getMoviesRecommendations(data: $OpenApiTs['/Movies/Recommendations']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/Movies/Recommendations']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Movies/Recommendations',
@@ -12671,8 +12336,7 @@ export class MoviesServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12691,7 +12355,7 @@ export class NewsServiceService {
      * @returns QueryResult_News_NewsItem Operation successful. Returning a QueryResult<NewsItem> object.
      * @throws ApiError
      */
-    public getNewsProduct(data: GetNewsProductData = {}): CancelablePromise<GetNewsProductResponse> {
+    public getNewsProduct(data: $OpenApiTs['/News/Product']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/News/Product']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/News/Product',
@@ -12701,8 +12365,7 @@ export class NewsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12718,7 +12381,7 @@ export class NotificationsServiceService {
      * @returns Notifications_NotificationTypeInfo Operation successful. Returning a List<NotificationTypeInfo> object.
      * @throws ApiError
      */
-    public getNotificationsTypes(): CancelablePromise<GetNotificationsTypesResponse> {
+    public getNotificationsTypes(): CancelablePromise<$OpenApiTs['/Notifications/Types']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Notifications/Types',
@@ -12726,8 +12389,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12738,7 +12400,7 @@ export class NotificationsServiceService {
      * @returns NameIdPair Operation successful. Returning a List<NameIdPair> object.
      * @throws ApiError
      */
-    public getNotificationsServices(): CancelablePromise<GetNotificationsServicesResponse> {
+    public getNotificationsServices(): CancelablePromise<$OpenApiTs['/Notifications/Services']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Notifications/Services',
@@ -12746,8 +12408,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12764,7 +12425,7 @@ export class NotificationsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postNotificationsAdmin(data: PostNotificationsAdminData): CancelablePromise<PostNotificationsAdminResponse> {
+    public postNotificationsAdmin(data: $OpenApiTs['/Notifications/Admin']['post']['req']): CancelablePromise<$OpenApiTs['/Notifications/Admin']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Notifications/Admin',
@@ -12779,8 +12440,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12796,7 +12456,7 @@ export class NotificationsServiceService {
      * @returns Emby_Notifications_Api_NotificationResult Operation successful. Returning a NotificationResult object.
      * @throws ApiError
      */
-    public getNotificationsByUserid(data: GetNotificationsByUseridData): CancelablePromise<GetNotificationsByUseridResponse> {
+    public getNotificationsByUserid(data: $OpenApiTs['/Notifications/{UserId}']['get']['req']): CancelablePromise<$OpenApiTs['/Notifications/{UserId}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Notifications/{UserId}',
@@ -12812,8 +12472,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12826,7 +12485,7 @@ export class NotificationsServiceService {
      * @returns Emby_Notifications_Api_NotificationsSummary Operation successful. Returning a NotificationsSummary object.
      * @throws ApiError
      */
-    public getNotificationsByUseridSummary(data: GetNotificationsByUseridSummaryData): CancelablePromise<GetNotificationsByUseridSummaryResponse> {
+    public getNotificationsByUseridSummary(data: $OpenApiTs['/Notifications/{UserId}/Summary']['get']['req']): CancelablePromise<$OpenApiTs['/Notifications/{UserId}/Summary']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Notifications/{UserId}/Summary',
@@ -12837,8 +12496,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12852,7 +12510,7 @@ export class NotificationsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postNotificationsByUseridRead(data: PostNotificationsByUseridReadData): CancelablePromise<PostNotificationsByUseridReadResponse> {
+    public postNotificationsByUseridRead(data: $OpenApiTs['/Notifications/{UserId}/Read']['post']['req']): CancelablePromise<$OpenApiTs['/Notifications/{UserId}/Read']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Notifications/{UserId}/Read',
@@ -12866,8 +12524,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12881,7 +12538,7 @@ export class NotificationsServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postNotificationsByUseridUnread(data: PostNotificationsByUseridUnreadData): CancelablePromise<PostNotificationsByUseridUnreadResponse> {
+    public postNotificationsByUseridUnread(data: $OpenApiTs['/Notifications/{UserId}/Unread']['post']['req']): CancelablePromise<$OpenApiTs['/Notifications/{UserId}/Unread']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Notifications/{UserId}/Unread',
@@ -12895,8 +12552,7 @@ export class NotificationsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12921,7 +12577,7 @@ export class ReportsServiceService {
      * @returns EmbyReports_Api_Model_ReportResult Operation successful. Returning a ReportResult object.
      * @throws ApiError
      */
-    public getReportsActivities(data: GetReportsActivitiesData): CancelablePromise<GetReportsActivitiesResponse> {
+    public getReportsActivities(data: $OpenApiTs['/Reports/Activities']['get']['req']): CancelablePromise<$OpenApiTs['/Reports/Activities']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Reports/Activities',
@@ -12937,8 +12593,7 @@ export class ReportsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -12954,7 +12609,7 @@ export class ReportsServiceService {
      * @returns EmbyReports_Api_Model_ReportHeader Operation successful. Returning a List<ReportHeader> object.
      * @throws ApiError
      */
-    public getReportsHeaders(data: GetReportsHeadersData): CancelablePromise<GetReportsHeadersResponse> {
+    public getReportsHeaders(data: $OpenApiTs['/Reports/Headers']['get']['req']): CancelablePromise<$OpenApiTs['/Reports/Headers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Reports/Headers',
@@ -12966,8 +12621,7 @@ export class ReportsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13062,7 +12716,7 @@ export class ReportsServiceService {
      * @returns EmbyReports_Api_Model_ReportResult Operation successful. Returning a ReportResult object.
      * @throws ApiError
      */
-    public getReportsItems(data: GetReportsItemsData): CancelablePromise<GetReportsItemsResponse> {
+    public getReportsItems(data: $OpenApiTs['/Reports/Items']['get']['req']): CancelablePromise<$OpenApiTs['/Reports/Items']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Reports/Items',
@@ -13153,8 +12807,7 @@ export class ReportsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13249,7 +12902,7 @@ export class ReportsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getReportsItemsDownload(data: GetReportsItemsDownloadData): CancelablePromise<GetReportsItemsDownloadResponse> {
+    public getReportsItemsDownload(data: $OpenApiTs['/Reports/Items/Download']['get']['req']): CancelablePromise<$OpenApiTs['/Reports/Items/Download']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Reports/Items/Download',
@@ -13340,8 +12993,7 @@ export class ReportsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13375,7 +13027,7 @@ export class SearchServiceService {
      * @returns Search_SearchHintResult Operation successful. Returning a SearchHintResult object.
      * @throws ApiError
      */
-    public getSearchHints(data: GetSearchHintsData): CancelablePromise<GetSearchHintsResponse> {
+    public getSearchHints(data: $OpenApiTs['/Search/Hints']['get']['req']): CancelablePromise<$OpenApiTs['/Search/Hints']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Search/Hints',
@@ -13402,8 +13054,7 @@ export class SearchServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13421,7 +13072,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsPlaying(data: PostSessionsPlayingData): CancelablePromise<PostSessionsPlayingResponse> {
+    public postSessionsPlaying(data: $OpenApiTs['/Sessions/Playing']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/Playing']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Playing',
@@ -13431,8 +13082,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13445,7 +13095,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsPlayingProgress(data: PostSessionsPlayingProgressData): CancelablePromise<PostSessionsPlayingProgressResponse> {
+    public postSessionsPlayingProgress(data: $OpenApiTs['/Sessions/Playing/Progress']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/Playing/Progress']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Playing/Progress',
@@ -13455,8 +13105,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13469,7 +13118,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsPlayingPing(data: PostSessionsPlayingPingData = {}): CancelablePromise<PostSessionsPlayingPingResponse> {
+    public postSessionsPlayingPing(data: $OpenApiTs['/Sessions/Playing/Ping']['post']['req'] = {}): CancelablePromise<$OpenApiTs['/Sessions/Playing/Ping']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Playing/Ping',
@@ -13480,8 +13129,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13494,7 +13142,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSessionsPlayingStopped(data: PostSessionsPlayingStoppedData): CancelablePromise<PostSessionsPlayingStoppedResponse> {
+    public postSessionsPlayingStopped(data: $OpenApiTs['/Sessions/Playing/Stopped']['post']['req']): CancelablePromise<$OpenApiTs['/Sessions/Playing/Stopped']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sessions/Playing/Stopped',
@@ -13504,8 +13152,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13520,7 +13167,7 @@ export class PlaystateServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public postUsersByUseridPlayeditemsById(data: PostUsersByUseridPlayeditemsByIdData): CancelablePromise<PostUsersByUseridPlayeditemsByIdResponse> {
+    public postUsersByUseridPlayeditemsById(data: $OpenApiTs['/Users/{UserId}/PlayedItems/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/PlayedItems/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{UserId}/PlayedItems/{Id}',
@@ -13535,8 +13182,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13550,7 +13196,7 @@ export class PlaystateServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public deleteUsersByUseridPlayeditemsById(data: DeleteUsersByUseridPlayeditemsByIdData): CancelablePromise<DeleteUsersByUseridPlayeditemsByIdResponse> {
+    public deleteUsersByUseridPlayeditemsById(data: $OpenApiTs['/Users/{UserId}/PlayedItems/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/PlayedItems/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{UserId}/PlayedItems/{Id}',
@@ -13562,8 +13208,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13584,7 +13229,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByUseridPlayingitemsById(data: PostUsersByUseridPlayingitemsByIdData): CancelablePromise<PostUsersByUseridPlayingitemsByIdResponse> {
+    public postUsersByUseridPlayingitemsById(data: $OpenApiTs['/Users/{UserId}/PlayingItems/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/PlayingItems/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{UserId}/PlayingItems/{Id}',
@@ -13605,8 +13250,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13625,7 +13269,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteUsersByUseridPlayingitemsById(data: DeleteUsersByUseridPlayingitemsByIdData): CancelablePromise<DeleteUsersByUseridPlayingitemsByIdResponse> {
+    public deleteUsersByUseridPlayingitemsById(data: $OpenApiTs['/Users/{UserId}/PlayingItems/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/PlayingItems/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{UserId}/PlayingItems/{Id}',
@@ -13644,8 +13288,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13670,7 +13313,7 @@ export class PlaystateServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUsersByUseridPlayingitemsByIdProgress(data: PostUsersByUseridPlayingitemsByIdProgressData): CancelablePromise<PostUsersByUseridPlayingitemsByIdProgressResponse> {
+    public postUsersByUseridPlayingitemsByIdProgress(data: $OpenApiTs['/Users/{UserId}/PlayingItems/{Id}/Progress']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/PlayingItems/{Id}/Progress']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{UserId}/PlayingItems/{Id}/Progress',
@@ -13695,8 +13338,7 @@ export class PlaystateServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13722,7 +13364,7 @@ export class TvShowsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getShowsUpcoming(data: GetShowsUpcomingData): CancelablePromise<GetShowsUpcomingResponse> {
+    public getShowsUpcoming(data: $OpenApiTs['/Shows/Upcoming']['get']['req']): CancelablePromise<$OpenApiTs['/Shows/Upcoming']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Shows/Upcoming',
@@ -13741,8 +13383,7 @@ export class TvShowsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13764,7 +13405,7 @@ export class TvShowsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getShowsNextup(data: GetShowsNextupData): CancelablePromise<GetShowsNextupResponse> {
+    public getShowsNextup(data: $OpenApiTs['/Shows/NextUp']['get']['req']): CancelablePromise<$OpenApiTs['/Shows/NextUp']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Shows/NextUp',
@@ -13784,8 +13425,7 @@ export class TvShowsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13807,7 +13447,7 @@ export class TvShowsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getShowsByIdSeasons(data: GetShowsByIdSeasonsData): CancelablePromise<GetShowsByIdSeasonsResponse> {
+    public getShowsByIdSeasons(data: $OpenApiTs['/Shows/{Id}/Seasons']['get']['req']): CancelablePromise<$OpenApiTs['/Shows/{Id}/Seasons']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Shows/{Id}/Seasons',
@@ -13829,8 +13469,7 @@ export class TvShowsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13858,7 +13497,7 @@ export class TvShowsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getShowsByIdEpisodes(data: GetShowsByIdEpisodesData): CancelablePromise<GetShowsByIdEpisodesResponse> {
+    public getShowsByIdEpisodes(data: $OpenApiTs['/Shows/{Id}/Episodes']['get']['req']): CancelablePromise<$OpenApiTs['/Shows/{Id}/Episodes']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Shows/{Id}/Episodes',
@@ -13886,8 +13525,7 @@ export class TvShowsServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13905,7 +13543,7 @@ export class SyncServiceService {
      * @returns Sync_SyncTarget Operation successful. Returning a List<SyncTarget> object.
      * @throws ApiError
      */
-    public getSyncTargets(data: GetSyncTargetsData): CancelablePromise<GetSyncTargetsResponse> {
+    public getSyncTargets(data: $OpenApiTs['/Sync/Targets']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/Targets']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/Targets',
@@ -13916,8 +13554,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13928,7 +13565,7 @@ export class SyncServiceService {
      * @returns QueryResult_Sync_SyncJob Operation successful. Returning a QueryResult<SyncJob> object.
      * @throws ApiError
      */
-    public getSyncJobs(): CancelablePromise<GetSyncJobsResponse> {
+    public getSyncJobs(): CancelablePromise<$OpenApiTs['/Sync/Jobs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/Jobs',
@@ -13936,8 +13573,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13950,7 +13586,7 @@ export class SyncServiceService {
      * @returns Sync_Model_SyncJobCreationResult Operation successful. Returning a SyncJobCreationResult object.
      * @throws ApiError
      */
-    public postSyncJobs(data: PostSyncJobsData): CancelablePromise<PostSyncJobsResponse> {
+    public postSyncJobs(data: $OpenApiTs['/Sync/Jobs']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/Jobs']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/Jobs',
@@ -13960,8 +13596,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13972,7 +13607,7 @@ export class SyncServiceService {
      * @returns QueryResult_Sync_Model_SyncJobItem Operation successful. Returning a QueryResult<SyncJobItem> object.
      * @throws ApiError
      */
-    public getSyncJobitems(): CancelablePromise<GetSyncJobitemsResponse> {
+    public getSyncJobitems(): CancelablePromise<$OpenApiTs['/Sync/JobItems']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/JobItems',
@@ -13980,8 +13615,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -13998,7 +13632,7 @@ export class SyncServiceService {
      * @returns Sync_Model_SyncDialogOptions Operation successful. Returning a SyncDialogOptions object.
      * @throws ApiError
      */
-    public getSyncOptions(data: GetSyncOptionsData): CancelablePromise<GetSyncOptionsResponse> {
+    public getSyncOptions(data: $OpenApiTs['/Sync/Options']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/Options']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/Options',
@@ -14013,8 +13647,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14027,7 +13660,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncOfflineactions(data: PostSyncOfflineactionsData): CancelablePromise<PostSyncOfflineactionsResponse> {
+    public postSyncOfflineactions(data: $OpenApiTs['/Sync/OfflineActions']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/OfflineActions']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/OfflineActions',
@@ -14037,8 +13670,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14051,7 +13683,7 @@ export class SyncServiceService {
      * @returns Sync_Model_SyncDataResponse Operation successful. Returning a SyncDataResponse object.
      * @throws ApiError
      */
-    public postSyncData(data: PostSyncDataData): CancelablePromise<PostSyncDataResponse> {
+    public postSyncData(data: $OpenApiTs['/Sync/Data']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/Data']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/Data',
@@ -14061,8 +13693,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14076,7 +13707,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncByItemidStatus(data: PostSyncByItemidStatusData): CancelablePromise<PostSyncByItemidStatusResponse> {
+    public postSyncByItemidStatus(data: $OpenApiTs['/Sync/{ItemId}/Status']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/{ItemId}/Status']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/{ItemId}/Status',
@@ -14089,8 +13720,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14103,7 +13733,7 @@ export class SyncServiceService {
      * @returns Sync_SyncJob Operation successful. Returning a SyncJob object.
      * @throws ApiError
      */
-    public getSyncJobsById(data: GetSyncJobsByIdData): CancelablePromise<GetSyncJobsByIdResponse> {
+    public getSyncJobsById(data: $OpenApiTs['/Sync/Jobs/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/Jobs/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/Jobs/{Id}',
@@ -14114,8 +13744,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14128,7 +13757,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteSyncJobsById(data: DeleteSyncJobsByIdData): CancelablePromise<DeleteSyncJobsByIdResponse> {
+    public deleteSyncJobsById(data: $OpenApiTs['/Sync/Jobs/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Sync/Jobs/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Sync/Jobs/{Id}',
@@ -14139,8 +13768,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14154,7 +13782,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncJobsById(data: PostSyncJobsByIdData): CancelablePromise<PostSyncJobsByIdResponse> {
+    public postSyncJobsById(data: $OpenApiTs['/Sync/Jobs/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/Jobs/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/Jobs/{Id}',
@@ -14167,8 +13795,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14181,7 +13808,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncItemsCancel(data: PostSyncItemsCancelData = {}): CancelablePromise<PostSyncItemsCancelResponse> {
+    public postSyncItemsCancel(data: $OpenApiTs['/Sync/Items/Cancel']['post']['req'] = {}): CancelablePromise<$OpenApiTs['/Sync/Items/Cancel']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/Items/Cancel',
@@ -14192,8 +13819,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14206,7 +13832,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteSyncByTargetidItems(data: DeleteSyncByTargetidItemsData): CancelablePromise<DeleteSyncByTargetidItemsResponse> {
+    public deleteSyncByTargetidItems(data: $OpenApiTs['/Sync/{TargetId}/Items']['delete']['req']): CancelablePromise<$OpenApiTs['/Sync/{TargetId}/Items']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Sync/{TargetId}/Items',
@@ -14217,8 +13843,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14231,7 +13856,7 @@ export class SyncServiceService {
      * @returns Sync_Model_SyncedItem Operation successful. Returning a List<SyncedItem> object.
      * @throws ApiError
      */
-    public getSyncItemsReady(data: GetSyncItemsReadyData): CancelablePromise<GetSyncItemsReadyResponse> {
+    public getSyncItemsReady(data: $OpenApiTs['/Sync/Items/Ready']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/Items/Ready']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/Items/Ready',
@@ -14242,8 +13867,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14256,7 +13880,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteSyncJobitemsById(data: DeleteSyncJobitemsByIdData): CancelablePromise<DeleteSyncJobitemsByIdResponse> {
+    public deleteSyncJobitemsById(data: $OpenApiTs['/Sync/JobItems/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Sync/JobItems/{Id}',
@@ -14267,8 +13891,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14281,7 +13904,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncJobitemsByIdTransferred(data: PostSyncJobitemsByIdTransferredData): CancelablePromise<PostSyncJobitemsByIdTransferredResponse> {
+    public postSyncJobitemsByIdTransferred(data: $OpenApiTs['/Sync/JobItems/{Id}/Transferred']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/Transferred']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/JobItems/{Id}/Transferred',
@@ -14292,8 +13915,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14306,7 +13928,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getSyncJobitemsByIdFile(data: GetSyncJobitemsByIdFileData): CancelablePromise<GetSyncJobitemsByIdFileResponse> {
+    public getSyncJobitemsByIdFile(data: $OpenApiTs['/Sync/JobItems/{Id}/File']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/File']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/JobItems/{Id}/File',
@@ -14317,8 +13939,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14332,7 +13953,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getSyncJobitemsByIdAdditionalfiles(data: GetSyncJobitemsByIdAdditionalfilesData): CancelablePromise<GetSyncJobitemsByIdAdditionalfilesResponse> {
+    public getSyncJobitemsByIdAdditionalfiles(data: $OpenApiTs['/Sync/JobItems/{Id}/AdditionalFiles']['get']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/AdditionalFiles']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Sync/JobItems/{Id}/AdditionalFiles',
@@ -14346,8 +13967,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14360,7 +13980,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncJobitemsByIdEnable(data: PostSyncJobitemsByIdEnableData): CancelablePromise<PostSyncJobitemsByIdEnableResponse> {
+    public postSyncJobitemsByIdEnable(data: $OpenApiTs['/Sync/JobItems/{Id}/Enable']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/Enable']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/JobItems/{Id}/Enable',
@@ -14371,8 +13991,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14385,7 +14004,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncJobitemsByIdMarkforremoval(data: PostSyncJobitemsByIdMarkforremovalData): CancelablePromise<PostSyncJobitemsByIdMarkforremovalResponse> {
+    public postSyncJobitemsByIdMarkforremoval(data: $OpenApiTs['/Sync/JobItems/{Id}/MarkForRemoval']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/MarkForRemoval']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/JobItems/{Id}/MarkForRemoval',
@@ -14396,8 +14015,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14410,7 +14028,7 @@ export class SyncServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSyncJobitemsByIdUnmarkforremoval(data: PostSyncJobitemsByIdUnmarkforremovalData): CancelablePromise<PostSyncJobitemsByIdUnmarkforremovalResponse> {
+    public postSyncJobitemsByIdUnmarkforremoval(data: $OpenApiTs['/Sync/JobItems/{Id}/UnmarkForRemoval']['post']['req']): CancelablePromise<$OpenApiTs['/Sync/JobItems/{Id}/UnmarkForRemoval']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Sync/JobItems/{Id}/UnmarkForRemoval',
@@ -14421,8 +14039,7 @@ export class SyncServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14438,7 +14055,7 @@ export class ConfigurationServiceService {
      * @returns Configuration_ServerConfiguration Operation successful. Returning a ServerConfiguration object.
      * @throws ApiError
      */
-    public getSystemConfiguration(): CancelablePromise<GetSystemConfigurationResponse> {
+    public getSystemConfiguration(): CancelablePromise<$OpenApiTs['/System/Configuration']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Configuration',
@@ -14446,8 +14063,7 @@ export class ConfigurationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14460,7 +14076,7 @@ export class ConfigurationServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSystemConfiguration(data: PostSystemConfigurationData): CancelablePromise<PostSystemConfigurationResponse> {
+    public postSystemConfiguration(data: $OpenApiTs['/System/Configuration']['post']['req']): CancelablePromise<$OpenApiTs['/System/Configuration']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/System/Configuration',
@@ -14470,8 +14086,7 @@ export class ConfigurationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14484,7 +14099,7 @@ export class ConfigurationServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getSystemConfigurationByKey(data: GetSystemConfigurationByKeyData): CancelablePromise<GetSystemConfigurationByKeyResponse> {
+    public getSystemConfigurationByKey(data: $OpenApiTs['/System/Configuration/{Key}']['get']['req']): CancelablePromise<$OpenApiTs['/System/Configuration/{Key}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Configuration/{Key}',
@@ -14495,8 +14110,7 @@ export class ConfigurationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14510,7 +14124,7 @@ export class ConfigurationServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSystemConfigurationByKey(data: PostSystemConfigurationByKeyData): CancelablePromise<PostSystemConfigurationByKeyResponse> {
+    public postSystemConfigurationByKey(data: $OpenApiTs['/System/Configuration/{Key}']['post']['req']): CancelablePromise<$OpenApiTs['/System/Configuration/{Key}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/System/Configuration/{Key}',
@@ -14523,8 +14137,7 @@ export class ConfigurationServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14539,14 +14152,13 @@ export class SystemServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postSystemPing(): CancelablePromise<PostSystemPingResponse> {
+    public postSystemPing(): CancelablePromise<$OpenApiTs['/System/Ping']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/System/Ping',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14556,14 +14168,13 @@ export class SystemServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public getSystemPing(): CancelablePromise<GetSystemPingResponse> {
+    public getSystemPing(): CancelablePromise<$OpenApiTs['/System/Ping']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Ping',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14574,7 +14185,7 @@ export class SystemServiceService {
      * @returns WakeOnLanInfo Operation successful. Returning a WakeOnLanInfo[] object.
      * @throws ApiError
      */
-    public getSystemWakeonlaninfo(): CancelablePromise<GetSystemWakeonlaninfoResponse> {
+    public getSystemWakeonlaninfo(): CancelablePromise<$OpenApiTs['/System/WakeOnLanInfo']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/WakeOnLanInfo',
@@ -14582,8 +14193,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14594,7 +14204,7 @@ export class SystemServiceService {
      * @returns LogFile Operation successful. Returning a LogFile[] object.
      * @throws ApiError
      */
-    public getSystemLogs(): CancelablePromise<GetSystemLogsResponse> {
+    public getSystemLogs(): CancelablePromise<$OpenApiTs['/System/Logs']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Logs',
@@ -14602,8 +14212,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14614,7 +14223,7 @@ export class SystemServiceService {
      * @returns SystemInfo Operation successful. Returning a SystemInfo object.
      * @throws ApiError
      */
-    public getSystemInfo(): CancelablePromise<GetSystemInfoResponse> {
+    public getSystemInfo(): CancelablePromise<$OpenApiTs['/System/Info']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Info',
@@ -14622,8 +14231,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14634,7 +14242,7 @@ export class SystemServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postSystemRestart(): CancelablePromise<PostSystemRestartResponse> {
+    public postSystemRestart(): CancelablePromise<$OpenApiTs['/System/Restart']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/System/Restart',
@@ -14642,8 +14250,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14654,7 +14261,7 @@ export class SystemServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postSystemShutdown(): CancelablePromise<PostSystemShutdownResponse> {
+    public postSystemShutdown(): CancelablePromise<$OpenApiTs['/System/Shutdown']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/System/Shutdown',
@@ -14662,8 +14269,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14674,7 +14280,7 @@ export class SystemServiceService {
      * @returns Net_EndPointInfo Operation successful. Returning a EndPointInfo object.
      * @throws ApiError
      */
-    public getSystemEndpoint(): CancelablePromise<GetSystemEndpointResponse> {
+    public getSystemEndpoint(): CancelablePromise<$OpenApiTs['/System/Endpoint']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Endpoint',
@@ -14682,8 +14288,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14696,7 +14301,7 @@ export class SystemServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getSystemLogsLog(data: GetSystemLogsLogData): CancelablePromise<GetSystemLogsLogResponse> {
+    public getSystemLogsLog(data: $OpenApiTs['/System/Logs/Log']['get']['req']): CancelablePromise<$OpenApiTs['/System/Logs/Log']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Logs/Log',
@@ -14707,8 +14312,7 @@ export class SystemServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14719,14 +14323,13 @@ export class SystemServiceService {
      * @returns PublicSystemInfo Operation successful. Returning a PublicSystemInfo object.
      * @throws ApiError
      */
-    public getSystemInfoPublic(): CancelablePromise<GetSystemInfoPublicResponse> {
+    public getSystemInfoPublic(): CancelablePromise<$OpenApiTs['/System/Info/Public']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/Info/Public',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14742,14 +14345,13 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsTypeFilterList(): CancelablePromise<GetUserUsageStatsTypeFilterListResponse> {
+    public getUserUsageStatsTypeFilterList(): CancelablePromise<$OpenApiTs['/user_usage_stats/type_filter_list']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/type_filter_list',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14763,7 +14365,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsUserActivity(data: GetUserUsageStatsUserActivityData = {}): CancelablePromise<GetUserUsageStatsUserActivityResponse> {
+    public getUserUsageStatsUserActivity(data: $OpenApiTs['/user_usage_stats/user_activity']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/user_activity']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/user_activity',
@@ -14773,8 +14375,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14785,14 +14386,13 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsUserList(): CancelablePromise<GetUserUsageStatsUserListResponse> {
+    public getUserUsageStatsUserList(): CancelablePromise<$OpenApiTs['/user_usage_stats/user_list']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/user_list',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14805,7 +14405,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postUserUsageStatsImportBackup(data: PostUserUsageStatsImportBackupData): CancelablePromise<PostUserUsageStatsImportBackupResponse> {
+    public postUserUsageStatsImportBackup(data: $OpenApiTs['/user_usage_stats/import_backup']['post']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/import_backup']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/user_usage_stats/import_backup',
@@ -14813,8 +14413,7 @@ export class UserActivityApiService {
             mediaType: 'application/octet-stream',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14827,7 +14426,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsLoadBackup(data: GetUserUsageStatsLoadBackupData): CancelablePromise<GetUserUsageStatsLoadBackupResponse> {
+    public getUserUsageStatsLoadBackup(data: $OpenApiTs['/user_usage_stats/load_backup']['get']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/load_backup']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/load_backup',
@@ -14836,8 +14435,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14848,14 +14446,13 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsSaveBackup(): CancelablePromise<GetUserUsageStatsSaveBackupResponse> {
+    public getUserUsageStatsSaveBackup(): CancelablePromise<$OpenApiTs['/user_usage_stats/save_backup']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/save_backup',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14871,7 +14468,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsPlayactivity(data: GetUserUsageStatsPlayactivityData = {}): CancelablePromise<GetUserUsageStatsPlayactivityResponse> {
+    public getUserUsageStatsPlayactivity(data: $OpenApiTs['/user_usage_stats/PlayActivity']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/PlayActivity']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/PlayActivity',
@@ -14883,8 +14480,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14899,7 +14495,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsHourlyreport(data: GetUserUsageStatsHourlyreportData = {}): CancelablePromise<GetUserUsageStatsHourlyreportResponse> {
+    public getUserUsageStatsHourlyreport(data: $OpenApiTs['/user_usage_stats/HourlyReport']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/HourlyReport']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/HourlyReport',
@@ -14910,8 +14506,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14926,7 +14521,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsDurationhistogramreport(data: GetUserUsageStatsDurationhistogramreportData = {}): CancelablePromise<GetUserUsageStatsDurationhistogramreportResponse> {
+    public getUserUsageStatsDurationhistogramreport(data: $OpenApiTs['/user_usage_stats/DurationHistogramReport']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/DurationHistogramReport']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/DurationHistogramReport',
@@ -14937,8 +14532,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14952,7 +14546,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsTvshowsreport(data: GetUserUsageStatsTvshowsreportData = {}): CancelablePromise<GetUserUsageStatsTvshowsreportResponse> {
+    public getUserUsageStatsTvshowsreport(data: $OpenApiTs['/user_usage_stats/TvShowsReport']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/TvShowsReport']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/TvShowsReport',
@@ -14962,8 +14556,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -14977,7 +14570,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsMoviesreport(data: GetUserUsageStatsMoviesreportData = {}): CancelablePromise<GetUserUsageStatsMoviesreportResponse> {
+    public getUserUsageStatsMoviesreport(data: $OpenApiTs['/user_usage_stats/MoviesReport']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/MoviesReport']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/MoviesReport',
@@ -14987,8 +14580,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15001,7 +14593,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public postUserUsageStatsSubmitCustomQuery(data: PostUserUsageStatsSubmitCustomQueryData): CancelablePromise<PostUserUsageStatsSubmitCustomQueryResponse> {
+    public postUserUsageStatsSubmitCustomQuery(data: $OpenApiTs['/user_usage_stats/submit_custom_query']['post']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/submit_custom_query']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/user_usage_stats/submit_custom_query',
@@ -15009,8 +14601,7 @@ export class UserActivityApiService {
             mediaType: 'application/json',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15026,7 +14617,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsUserplaylist(data: GetUserUsageStatsUserplaylistData): CancelablePromise<GetUserUsageStatsUserplaylistResponse> {
+    public getUserUsageStatsUserplaylist(data: $OpenApiTs['/user_usage_stats/UserPlaylist']['get']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/UserPlaylist']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/UserPlaylist',
@@ -15038,8 +14629,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15050,14 +14640,13 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsSessionList(): CancelablePromise<GetUserUsageStatsSessionListResponse> {
+    public getUserUsageStatsSessionList(): CancelablePromise<$OpenApiTs['/user_usage_stats/session_list']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/session_list',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15070,7 +14659,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsResourceUsage(data: GetUserUsageStatsResourceUsageData = {}): CancelablePromise<GetUserUsageStatsResourceUsageResponse> {
+    public getUserUsageStatsResourceUsage(data: $OpenApiTs['/user_usage_stats/resource_usage']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/user_usage_stats/resource_usage']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/resource_usage',
@@ -15079,8 +14668,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15091,14 +14679,13 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsProcessList(): CancelablePromise<GetUserUsageStatsProcessListResponse> {
+    public getUserUsageStatsProcessList(): CancelablePromise<$OpenApiTs['/user_usage_stats/process_list']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/process_list',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15113,7 +14700,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsByBreakdowntypeBreakdownreport(data: GetUserUsageStatsByBreakdowntypeBreakdownreportData): CancelablePromise<GetUserUsageStatsByBreakdowntypeBreakdownreportResponse> {
+    public getUserUsageStatsByBreakdowntypeBreakdownreport(data: $OpenApiTs['/user_usage_stats/{BreakdownType}/BreakdownReport']['get']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/{BreakdownType}/BreakdownReport']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/{BreakdownType}/BreakdownReport',
@@ -15126,8 +14713,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15141,7 +14727,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsUserManageByActionById(data: GetUserUsageStatsUserManageByActionByIdData): CancelablePromise<GetUserUsageStatsUserManageByActionByIdResponse> {
+    public getUserUsageStatsUserManageByActionById(data: $OpenApiTs['/user_usage_stats/user_manage/{Action}/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/user_manage/{Action}/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/user_manage/{Action}/{Id}',
@@ -15151,8 +14737,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15167,7 +14752,7 @@ export class UserActivityApiService {
      * @returns unknown Operation successful. Returning a Object object.
      * @throws ApiError
      */
-    public getUserUsageStatsByUseridByDateGetitems(data: GetUserUsageStatsByUseridByDateGetitemsData): CancelablePromise<GetUserUsageStatsByUseridByDateGetitemsResponse> {
+    public getUserUsageStatsByUseridByDateGetitems(data: $OpenApiTs['/user_usage_stats/{UserID}/{Date}/GetItems']['get']['req']): CancelablePromise<$OpenApiTs['/user_usage_stats/{UserID}/{Date}/GetItems']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/user_usage_stats/{UserID}/{Date}/GetItems',
@@ -15180,8 +14765,7 @@ export class UserActivityApiService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15199,7 +14783,7 @@ export class VideosServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postVideosMergeversions(data: PostVideosMergeversionsData = {}): CancelablePromise<PostVideosMergeversionsResponse> {
+    public postVideosMergeversions(data: $OpenApiTs['/Videos/MergeVersions']['post']['req'] = {}): CancelablePromise<$OpenApiTs['/Videos/MergeVersions']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Videos/MergeVersions',
@@ -15210,8 +14794,7 @@ export class VideosServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15225,7 +14808,7 @@ export class VideosServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getVideosByIdAdditionalparts(data: GetVideosByIdAdditionalpartsData): CancelablePromise<GetVideosByIdAdditionalpartsResponse> {
+    public getVideosByIdAdditionalparts(data: $OpenApiTs['/Videos/{Id}/AdditionalParts']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/AdditionalParts']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/AdditionalParts',
@@ -15239,8 +14822,7 @@ export class VideosServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15253,7 +14835,7 @@ export class VideosServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public deleteVideosByIdAlternatesources(data: DeleteVideosByIdAlternatesourcesData): CancelablePromise<DeleteVideosByIdAlternatesourcesResponse> {
+    public deleteVideosByIdAlternatesources(data: $OpenApiTs['/Videos/{Id}/AlternateSources']['delete']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/AlternateSources']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Videos/{Id}/AlternateSources',
@@ -15264,8 +14846,7 @@ export class VideosServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15283,7 +14864,7 @@ export class HlsSegmentServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteVideosActiveencodings(data: DeleteVideosActiveencodingsData): CancelablePromise<DeleteVideosActiveencodingsResponse> {
+    public deleteVideosActiveencodings(data: $OpenApiTs['/Videos/ActiveEncodings']['delete']['req']): CancelablePromise<$OpenApiTs['/Videos/ActiveEncodings']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Videos/ActiveEncodings',
@@ -15295,8 +14876,7 @@ export class HlsSegmentServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15339,7 +14919,7 @@ export class HlsSegmentServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainer(data: GetVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainerData): CancelablePromise<GetVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainerResponse> {
+    public getVideosByIdHlsByPlaylistidBySegmentidBySegmentcontainer(data: $OpenApiTs['/Videos/{Id}/hls/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/hls/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/hls/{PlaylistId}/{SegmentId}.{SegmentContainer}',
@@ -15381,8 +14961,7 @@ export class HlsSegmentServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15397,14 +14976,13 @@ export class DashboardServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getWebConfigurationpage(): CancelablePromise<GetWebConfigurationpageResponse> {
+    public getWebConfigurationpage(): CancelablePromise<$OpenApiTs['/web/ConfigurationPage']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/web/ConfigurationPage',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15414,14 +14992,13 @@ export class DashboardServiceService {
      * @returns WebDashboard_Api_ConfigurationPageInfo Operation successful. Returning a List<ConfigurationPageInfo> object.
      * @throws ApiError
      */
-    public getWebConfigurationpages(): CancelablePromise<GetWebConfigurationpagesResponse> {
+    public getWebConfigurationpages(): CancelablePromise<$OpenApiTs['/web/ConfigurationPages']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/web/ConfigurationPages',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15442,7 +15019,7 @@ export class UniversalAudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdByContainer(data: GetAudioByIdByContainerData): CancelablePromise<GetAudioByIdByContainerResponse> {
+    public getAudioByIdByContainer(data: $OpenApiTs['/Audio/{Id}/universal.{Container}']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/universal.{Container}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/universal.{Container}',
@@ -15458,8 +15035,7 @@ export class UniversalAudioServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15475,7 +15051,7 @@ export class UniversalAudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdByContainer(data: HeadAudioByIdByContainerData): CancelablePromise<HeadAudioByIdByContainerResponse> {
+    public headAudioByIdByContainer(data: $OpenApiTs['/Audio/{Id}/universal.{Container}']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/universal.{Container}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/universal.{Container}',
@@ -15491,8 +15067,7 @@ export class UniversalAudioServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15507,7 +15082,7 @@ export class UniversalAudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdUniversal(data: GetAudioByIdUniversalData): CancelablePromise<GetAudioByIdUniversalResponse> {
+    public getAudioByIdUniversal(data: $OpenApiTs['/Audio/{Id}/universal']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/universal']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/universal',
@@ -15522,8 +15097,7 @@ export class UniversalAudioServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15538,7 +15112,7 @@ export class UniversalAudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdUniversal(data: HeadAudioByIdUniversalData): CancelablePromise<HeadAudioByIdUniversalResponse> {
+    public headAudioByIdUniversal(data: $OpenApiTs['/Audio/{Id}/universal']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/universal']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/universal',
@@ -15553,8 +15127,7 @@ export class UniversalAudioServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15600,7 +15173,7 @@ export class AudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdByContainer(data: GetAudioByIdByContainerData): CancelablePromise<GetAudioByIdByContainerResponse> {
+    public getAudioByIdByContainer(data: $OpenApiTs['/Audio/{Id}/stream.{Container}']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/stream.{Container}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/stream.{Container}',
@@ -15639,8 +15212,7 @@ export class AudioServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15681,7 +15253,7 @@ export class AudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdByContainer(data: HeadAudioByIdByContainerData): CancelablePromise<HeadAudioByIdByContainerResponse> {
+    public headAudioByIdByContainer(data: $OpenApiTs['/Audio/{Id}/stream.{Container}']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/stream.{Container}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/stream.{Container}',
@@ -15720,8 +15292,7 @@ export class AudioServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15762,7 +15333,7 @@ export class AudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdStream(data: GetAudioByIdStreamData): CancelablePromise<GetAudioByIdStreamResponse> {
+    public getAudioByIdStream(data: $OpenApiTs['/Audio/{Id}/stream']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/stream']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/stream',
@@ -15801,8 +15372,7 @@ export class AudioServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15843,7 +15413,7 @@ export class AudioServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdStream(data: HeadAudioByIdStreamData): CancelablePromise<HeadAudioByIdStreamResponse> {
+    public headAudioByIdStream(data: $OpenApiTs['/Audio/{Id}/stream']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/stream']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/stream',
@@ -15882,8 +15452,7 @@ export class AudioServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -15929,7 +15498,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdMasterM3U8(data: GetAudioByIdMasterM3U8Data): CancelablePromise<GetAudioByIdMasterM3U8Response> {
+    public getAudioByIdMasterM3U8(data: $OpenApiTs['/Audio/{Id}/master.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/master.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/master.m3u8',
@@ -15968,8 +15537,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16010,7 +15578,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdMasterM3U8(data: HeadAudioByIdMasterM3U8Data): CancelablePromise<HeadAudioByIdMasterM3U8Response> {
+    public headAudioByIdMasterM3U8(data: $OpenApiTs['/Audio/{Id}/master.m3u8']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/master.m3u8']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/master.m3u8',
@@ -16049,8 +15617,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16091,7 +15658,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdMainM3U8(data: GetAudioByIdMainM3U8Data): CancelablePromise<GetAudioByIdMainM3U8Response> {
+    public getAudioByIdMainM3U8(data: $OpenApiTs['/Audio/{Id}/main.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/main.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/main.m3u8',
@@ -16130,8 +15697,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16172,7 +15738,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdMasterM3U8(data: GetVideosByIdMasterM3U8Data): CancelablePromise<GetVideosByIdMasterM3U8Response> {
+    public getVideosByIdMasterM3U8(data: $OpenApiTs['/Videos/{Id}/master.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/master.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/master.m3u8',
@@ -16211,8 +15777,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16253,7 +15818,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headVideosByIdMasterM3U8(data: HeadVideosByIdMasterM3U8Data): CancelablePromise<HeadVideosByIdMasterM3U8Response> {
+    public headVideosByIdMasterM3U8(data: $OpenApiTs['/Videos/{Id}/master.m3u8']['head']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/master.m3u8']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Videos/{Id}/master.m3u8',
@@ -16292,8 +15857,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16334,7 +15898,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdMainM3U8(data: GetVideosByIdMainM3U8Data): CancelablePromise<GetVideosByIdMainM3U8Response> {
+    public getVideosByIdMainM3U8(data: $OpenApiTs['/Videos/{Id}/main.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/main.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/main.m3u8',
@@ -16373,8 +15937,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16389,7 +15952,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdSubtitlesM3U8(data: GetVideosByIdSubtitlesM3U8Data): CancelablePromise<GetVideosByIdSubtitlesM3U8Response> {
+    public getVideosByIdSubtitlesM3U8(data: $OpenApiTs['/Videos/{Id}/subtitles.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/subtitles.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/subtitles.m3u8',
@@ -16402,8 +15965,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16446,7 +16008,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: GetAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData): CancelablePromise<GetAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse> {
+    public getAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: $OpenApiTs['/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}',
@@ -16488,8 +16050,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16532,7 +16093,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: HeadAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData): CancelablePromise<HeadAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse> {
+    public headAudioByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: $OpenApiTs['/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['head']['req']): CancelablePromise<$OpenApiTs['/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Audio/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}',
@@ -16574,8 +16135,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16618,7 +16178,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: GetVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData): CancelablePromise<GetVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse> {
+    public getVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: $OpenApiTs['/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}',
@@ -16660,8 +16220,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16704,7 +16263,7 @@ export class DynamicHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public headVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData): CancelablePromise<HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse> {
+    public headVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainer(data: $OpenApiTs['/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['head']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}']['head']['res'][200]> {
         return this.httpRequest.request({
             method: 'HEAD',
             url: '/Videos/{Id}/hls1/{PlaylistId}/{SegmentId}.{SegmentContainer}',
@@ -16746,8 +16305,7 @@ export class DynamicHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16765,7 +16323,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidDescriptionXml(data: GetDlnaByUuidDescriptionXmlData): CancelablePromise<GetDlnaByUuidDescriptionXmlResponse> {
+    public getDlnaByUuidDescriptionXml(data: $OpenApiTs['/Dlna/{UuId}/description.xml']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/description.xml']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/description.xml',
@@ -16774,8 +16332,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16788,7 +16345,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidDescription(data: GetDlnaByUuidDescriptionData): CancelablePromise<GetDlnaByUuidDescriptionResponse> {
+    public getDlnaByUuidDescription(data: $OpenApiTs['/Dlna/{UuId}/description']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/description']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/description',
@@ -16797,8 +16354,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16812,7 +16368,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaIconsByFilename(data: GetDlnaIconsByFilenameData): CancelablePromise<GetDlnaIconsByFilenameResponse> {
+    public getDlnaIconsByFilename(data: $OpenApiTs['/Dlna/icons/{Filename}']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/icons/{Filename}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/icons/{Filename}',
@@ -16824,8 +16380,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16838,7 +16393,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidContentdirectoryContentdirectoryXml(data: GetDlnaByUuidContentdirectoryContentdirectoryXmlData): CancelablePromise<GetDlnaByUuidContentdirectoryContentdirectoryXmlResponse> {
+    public getDlnaByUuidContentdirectoryContentdirectoryXml(data: $OpenApiTs['/Dlna/{UuId}/contentdirectory/contentdirectory.xml']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/contentdirectory/contentdirectory.xml']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/contentdirectory/contentdirectory.xml',
@@ -16847,8 +16402,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16861,7 +16415,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidContentdirectoryContentdirectory(data: GetDlnaByUuidContentdirectoryContentdirectoryData): CancelablePromise<GetDlnaByUuidContentdirectoryContentdirectoryResponse> {
+    public getDlnaByUuidContentdirectoryContentdirectory(data: $OpenApiTs['/Dlna/{UuId}/contentdirectory/contentdirectory']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/contentdirectory/contentdirectory']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/contentdirectory/contentdirectory',
@@ -16870,8 +16424,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16884,7 +16437,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidConnectionmanagerConnectionmanagerXml(data: GetDlnaByUuidConnectionmanagerConnectionmanagerXmlData): CancelablePromise<GetDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse> {
+    public getDlnaByUuidConnectionmanagerConnectionmanagerXml(data: $OpenApiTs['/Dlna/{UuId}/connectionmanager/connectionmanager.xml']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/connectionmanager/connectionmanager.xml']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/connectionmanager/connectionmanager.xml',
@@ -16893,8 +16446,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16907,7 +16459,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidConnectionmanagerConnectionmanager(data: GetDlnaByUuidConnectionmanagerConnectionmanagerData): CancelablePromise<GetDlnaByUuidConnectionmanagerConnectionmanagerResponse> {
+    public getDlnaByUuidConnectionmanagerConnectionmanager(data: $OpenApiTs['/Dlna/{UuId}/connectionmanager/connectionmanager']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/connectionmanager/connectionmanager']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/connectionmanager/connectionmanager',
@@ -16916,8 +16468,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16931,7 +16482,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postDlnaByUuidContentdirectoryControl(data: PostDlnaByUuidContentdirectoryControlData): CancelablePromise<PostDlnaByUuidContentdirectoryControlResponse> {
+    public postDlnaByUuidContentdirectoryControl(data: $OpenApiTs['/Dlna/{UuId}/contentdirectory/control']['post']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/contentdirectory/control']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Dlna/{UuId}/contentdirectory/control',
@@ -16942,8 +16493,7 @@ export class DlnaServerServiceService {
             mediaType: 'application/octet-stream',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16957,7 +16507,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public postDlnaByUuidConnectionmanagerControl(data: PostDlnaByUuidConnectionmanagerControlData): CancelablePromise<PostDlnaByUuidConnectionmanagerControlResponse> {
+    public postDlnaByUuidConnectionmanagerControl(data: $OpenApiTs['/Dlna/{UuId}/connectionmanager/control']['post']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/connectionmanager/control']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Dlna/{UuId}/connectionmanager/control',
@@ -16968,8 +16518,7 @@ export class DlnaServerServiceService {
             mediaType: 'application/octet-stream',
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -16983,7 +16532,7 @@ export class DlnaServerServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getDlnaByUuidIconsByFilename(data: GetDlnaByUuidIconsByFilenameData): CancelablePromise<GetDlnaByUuidIconsByFilenameResponse> {
+    public getDlnaByUuidIconsByFilename(data: $OpenApiTs['/Dlna/{UuId}/icons/{Filename}']['get']['req']): CancelablePromise<$OpenApiTs['/Dlna/{UuId}/icons/{Filename}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Dlna/{UuId}/icons/{Filename}',
@@ -16993,8 +16542,7 @@ export class DlnaServerServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17010,7 +16558,7 @@ export class EncodingInfoServiceService {
      * @returns MediaEncoding_Codecs_VideoCodecs_VideoCodecBase Operation successful. Returning a VideoCodecBase[] object.
      * @throws ApiError
      */
-    public getEncodingCodecinformationVideo(): CancelablePromise<GetEncodingCodecinformationVideoResponse> {
+    public getEncodingCodecinformationVideo(): CancelablePromise<$OpenApiTs['/Encoding/CodecInformation/Video']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Encoding/CodecInformation/Video',
@@ -17018,8 +16566,7 @@ export class EncodingInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17030,7 +16577,7 @@ export class EncodingInfoServiceService {
      * @returns Configuration_CodecConfiguration Operation successful. Returning a CodecConfiguration[] object.
      * @throws ApiError
      */
-    public getEncodingCodecconfigurationDefaults(): CancelablePromise<GetEncodingCodecconfigurationDefaultsResponse> {
+    public getEncodingCodecconfigurationDefaults(): CancelablePromise<$OpenApiTs['/Encoding/CodecConfiguration/Defaults']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Encoding/CodecConfiguration/Defaults',
@@ -17038,8 +16585,7 @@ export class EncodingInfoServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17057,7 +16603,7 @@ export class ItemLookupServiceService {
      * @returns ExternalIdInfo Operation successful. Returning a List<ExternalIdInfo> object.
      * @throws ApiError
      */
-    public getItemsByIdExternalidinfos(data: GetItemsByIdExternalidinfosData): CancelablePromise<GetItemsByIdExternalidinfosResponse> {
+    public getItemsByIdExternalidinfos(data: $OpenApiTs['/Items/{Id}/ExternalIdInfos']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/ExternalIdInfos']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/ExternalIdInfos',
@@ -17068,8 +16614,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17081,7 +16626,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchTrailer(data: PostItemsRemotesearchTrailerData): CancelablePromise<PostItemsRemotesearchTrailerResponse> {
+    public postItemsRemotesearchTrailer(data: $OpenApiTs['/Items/RemoteSearch/Trailer']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Trailer']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Trailer',
@@ -17091,8 +16636,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17104,7 +16648,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchBook(data: PostItemsRemotesearchBookData): CancelablePromise<PostItemsRemotesearchBookResponse> {
+    public postItemsRemotesearchBook(data: $OpenApiTs['/Items/RemoteSearch/Book']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Book']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Book',
@@ -17114,8 +16658,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17127,7 +16670,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchMovie(data: PostItemsRemotesearchMovieData): CancelablePromise<PostItemsRemotesearchMovieResponse> {
+    public postItemsRemotesearchMovie(data: $OpenApiTs['/Items/RemoteSearch/Movie']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Movie']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Movie',
@@ -17137,8 +16680,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17150,7 +16692,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchSeries(data: PostItemsRemotesearchSeriesData): CancelablePromise<PostItemsRemotesearchSeriesResponse> {
+    public postItemsRemotesearchSeries(data: $OpenApiTs['/Items/RemoteSearch/Series']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Series']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Series',
@@ -17160,8 +16702,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17173,7 +16714,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchGame(data: PostItemsRemotesearchGameData): CancelablePromise<PostItemsRemotesearchGameResponse> {
+    public postItemsRemotesearchGame(data: $OpenApiTs['/Items/RemoteSearch/Game']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Game']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Game',
@@ -17183,8 +16724,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17196,7 +16736,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchBoxset(data: PostItemsRemotesearchBoxsetData): CancelablePromise<PostItemsRemotesearchBoxsetResponse> {
+    public postItemsRemotesearchBoxset(data: $OpenApiTs['/Items/RemoteSearch/BoxSet']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/BoxSet']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/BoxSet',
@@ -17206,8 +16746,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17219,7 +16758,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchMusicvideo(data: PostItemsRemotesearchMusicvideoData): CancelablePromise<PostItemsRemotesearchMusicvideoResponse> {
+    public postItemsRemotesearchMusicvideo(data: $OpenApiTs['/Items/RemoteSearch/MusicVideo']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/MusicVideo']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/MusicVideo',
@@ -17229,8 +16768,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17242,7 +16780,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchPerson(data: PostItemsRemotesearchPersonData): CancelablePromise<PostItemsRemotesearchPersonResponse> {
+    public postItemsRemotesearchPerson(data: $OpenApiTs['/Items/RemoteSearch/Person']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Person']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Person',
@@ -17252,8 +16790,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17265,7 +16802,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchMusicalbum(data: PostItemsRemotesearchMusicalbumData): CancelablePromise<PostItemsRemotesearchMusicalbumResponse> {
+    public postItemsRemotesearchMusicalbum(data: $OpenApiTs['/Items/RemoteSearch/MusicAlbum']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/MusicAlbum']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/MusicAlbum',
@@ -17275,8 +16812,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17288,7 +16824,7 @@ export class ItemLookupServiceService {
      * @returns RemoteSearchResult Operation successful. Returning a List<RemoteSearchResult> object.
      * @throws ApiError
      */
-    public postItemsRemotesearchMusicartist(data: PostItemsRemotesearchMusicartistData): CancelablePromise<PostItemsRemotesearchMusicartistResponse> {
+    public postItemsRemotesearchMusicartist(data: $OpenApiTs['/Items/RemoteSearch/MusicArtist']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/MusicArtist']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/MusicArtist',
@@ -17298,8 +16834,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17313,7 +16848,7 @@ export class ItemLookupServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getItemsRemotesearchImage(data: GetItemsRemotesearchImageData): CancelablePromise<GetItemsRemotesearchImageResponse> {
+    public getItemsRemotesearchImage(data: $OpenApiTs['/Items/RemoteSearch/Image']['get']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Image']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/RemoteSearch/Image',
@@ -17323,8 +16858,7 @@ export class ItemLookupServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17339,7 +16873,7 @@ export class ItemLookupServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsRemotesearchApplyById(data: PostItemsRemotesearchApplyByIdData): CancelablePromise<PostItemsRemotesearchApplyByIdResponse> {
+    public postItemsRemotesearchApplyById(data: $OpenApiTs['/Items/RemoteSearch/Apply/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Items/RemoteSearch/Apply/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/RemoteSearch/Apply/{Id}',
@@ -17355,8 +16889,7 @@ export class ItemLookupServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17379,7 +16912,7 @@ export class ItemRefreshServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdRefresh(data: PostItemsByIdRefreshData): CancelablePromise<PostItemsByIdRefreshResponse> {
+    public postItemsByIdRefresh(data: $OpenApiTs['/Items/{Id}/Refresh']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/Refresh']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/Refresh',
@@ -17397,8 +16930,7 @@ export class ItemRefreshServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17416,7 +16948,7 @@ export class BifServiceService {
      * @returns RokuMetadata_Api_ThumbnailSetInfo Operation successful. Returning a ThumbnailSetInfo object.
      * @throws ApiError
      */
-    public getItemsByIdThumbnailset(data: GetItemsByIdThumbnailsetData): CancelablePromise<GetItemsByIdThumbnailsetResponse> {
+    public getItemsByIdThumbnailset(data: $OpenApiTs['/Items/{Id}/ThumbnailSet']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/ThumbnailSet']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/ThumbnailSet',
@@ -17430,8 +16962,7 @@ export class BifServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17444,7 +16975,7 @@ export class BifServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdIndexBif(data: GetVideosByIdIndexBifData): CancelablePromise<GetVideosByIdIndexBifResponse> {
+    public getVideosByIdIndexBif(data: $OpenApiTs['/Videos/{Id}/index.bif']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/index.bif']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/index.bif',
@@ -17456,8 +16987,7 @@ export class BifServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17475,7 +17005,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getLivetvProgramsById(data: GetLivetvProgramsByIdData): CancelablePromise<GetLivetvProgramsByIdResponse> {
+    public getLivetvProgramsById(data: $OpenApiTs['/LiveTv/Programs/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/LiveTv/Programs/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/LiveTv/Programs/{Id}',
@@ -17486,8 +17016,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17511,7 +17040,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsLatest(data: GetUsersByUseridItemsLatestData): CancelablePromise<GetUsersByUseridItemsLatestResponse> {
+    public getUsersByUseridItemsLatest(data: $OpenApiTs['/Users/{UserId}/Items/Latest']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/Latest']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/Latest',
@@ -17535,8 +17064,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17550,7 +17078,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsById(data: GetUsersByUseridItemsByIdData): CancelablePromise<GetUsersByUseridItemsByIdResponse> {
+    public getUsersByUseridItemsById(data: $OpenApiTs['/Users/{UserId}/Items/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/{Id}',
@@ -17562,8 +17090,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17576,7 +17103,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsRoot(data: GetUsersByUseridItemsRootData): CancelablePromise<GetUsersByUseridItemsRootResponse> {
+    public getUsersByUseridItemsRoot(data: $OpenApiTs['/Users/{UserId}/Items/Root']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/Root']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/Root',
@@ -17587,8 +17114,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17602,7 +17128,7 @@ export class UserLibraryServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public postUsersByUseridFavoriteitemsById(data: PostUsersByUseridFavoriteitemsByIdData): CancelablePromise<PostUsersByUseridFavoriteitemsByIdResponse> {
+    public postUsersByUseridFavoriteitemsById(data: $OpenApiTs['/Users/{UserId}/FavoriteItems/{Id}']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/FavoriteItems/{Id}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{UserId}/FavoriteItems/{Id}',
@@ -17614,8 +17140,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17629,7 +17154,7 @@ export class UserLibraryServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public deleteUsersByUseridFavoriteitemsById(data: DeleteUsersByUseridFavoriteitemsByIdData): CancelablePromise<DeleteUsersByUseridFavoriteitemsByIdResponse> {
+    public deleteUsersByUseridFavoriteitemsById(data: $OpenApiTs['/Users/{UserId}/FavoriteItems/{Id}']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/FavoriteItems/{Id}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{UserId}/FavoriteItems/{Id}',
@@ -17641,8 +17166,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17656,7 +17180,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsByIdSpecialfeatures(data: GetUsersByUseridItemsByIdSpecialfeaturesData): CancelablePromise<GetUsersByUseridItemsByIdSpecialfeaturesResponse> {
+    public getUsersByUseridItemsByIdSpecialfeatures(data: $OpenApiTs['/Users/{UserId}/Items/{Id}/SpecialFeatures']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}/SpecialFeatures']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/{Id}/SpecialFeatures',
@@ -17668,8 +17192,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17683,7 +17206,7 @@ export class UserLibraryServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsByIdLocaltrailers(data: GetUsersByUseridItemsByIdLocaltrailersData): CancelablePromise<GetUsersByUseridItemsByIdLocaltrailersResponse> {
+    public getUsersByUseridItemsByIdLocaltrailers(data: $OpenApiTs['/Users/{UserId}/Items/{Id}/LocalTrailers']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}/LocalTrailers']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/{Id}/LocalTrailers',
@@ -17695,8 +17218,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17710,7 +17232,7 @@ export class UserLibraryServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getUsersByUseridItemsByIdIntros(data: GetUsersByUseridItemsByIdIntrosData): CancelablePromise<GetUsersByUseridItemsByIdIntrosResponse> {
+    public getUsersByUseridItemsByIdIntros(data: $OpenApiTs['/Users/{UserId}/Items/{Id}/Intros']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}/Intros']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Items/{Id}/Intros',
@@ -17722,8 +17244,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17737,7 +17258,7 @@ export class UserLibraryServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public deleteUsersByUseridItemsByIdRating(data: DeleteUsersByUseridItemsByIdRatingData): CancelablePromise<DeleteUsersByUseridItemsByIdRatingResponse> {
+    public deleteUsersByUseridItemsByIdRating(data: $OpenApiTs['/Users/{UserId}/Items/{Id}/Rating']['delete']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}/Rating']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Users/{UserId}/Items/{Id}/Rating',
@@ -17749,8 +17270,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17765,7 +17285,7 @@ export class UserLibraryServiceService {
      * @returns UserItemDataDto Operation successful. Returning a UserItemDataDto object.
      * @throws ApiError
      */
-    public postUsersByUseridItemsByIdRating(data: PostUsersByUseridItemsByIdRatingData): CancelablePromise<PostUsersByUseridItemsByIdRatingResponse> {
+    public postUsersByUseridItemsByIdRating(data: $OpenApiTs['/Users/{UserId}/Items/{Id}/Rating']['post']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Items/{Id}/Rating']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Users/{UserId}/Items/{Id}/Rating',
@@ -17780,8 +17300,7 @@ export class UserLibraryServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17801,7 +17320,7 @@ export class ActivityLogServiceService {
      * @returns QueryResult_ActivityLogEntry Operation successful. Returning a QueryResult<ActivityLogEntry> object.
      * @throws ApiError
      */
-    public getSystemActivitylogEntries(data: GetSystemActivitylogEntriesData = {}): CancelablePromise<GetSystemActivitylogEntriesResponse> {
+    public getSystemActivitylogEntries(data: $OpenApiTs['/System/ActivityLog/Entries']['get']['req'] = {}): CancelablePromise<$OpenApiTs['/System/ActivityLog/Entries']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/System/ActivityLog/Entries',
@@ -17814,8 +17333,7 @@ export class ActivityLogServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17833,7 +17351,7 @@ export class SuggestionsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getUsersByUseridSuggestions(data: GetUsersByUseridSuggestionsData): CancelablePromise<GetUsersByUseridSuggestionsResponse> {
+    public getUsersByUseridSuggestions(data: $OpenApiTs['/Users/{UserId}/Suggestions']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Suggestions']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Suggestions',
@@ -17842,8 +17360,7 @@ export class SuggestionsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17861,7 +17378,7 @@ export class UserViewsServiceService {
      * @returns QueryResult_BaseItemDto Operation successful. Returning a QueryResult<BaseItemDto> object.
      * @throws ApiError
      */
-    public getUsersByUseridViews(data: GetUsersByUseridViewsData): CancelablePromise<GetUsersByUseridViewsResponse> {
+    public getUsersByUseridViews(data: $OpenApiTs['/Users/{UserId}/Views']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/Views']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/Views',
@@ -17873,8 +17390,7 @@ export class UserViewsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17886,7 +17402,7 @@ export class UserViewsServiceService {
      * @returns BaseItemDto Operation successful. Returning a BaseItemDto[] object.
      * @throws ApiError
      */
-    public getUsersByUseridGroupingoptions(data: GetUsersByUseridGroupingoptionsData): CancelablePromise<GetUsersByUseridGroupingoptionsResponse> {
+    public getUsersByUseridGroupingoptions(data: $OpenApiTs['/Users/{UserId}/GroupingOptions']['get']['req']): CancelablePromise<$OpenApiTs['/Users/{UserId}/GroupingOptions']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Users/{UserId}/GroupingOptions',
@@ -17895,8 +17411,7 @@ export class UserViewsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17941,7 +17456,7 @@ export class VideoHlsServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdLiveM3U8(data: GetVideosByIdLiveM3U8Data): CancelablePromise<GetVideosByIdLiveM3U8Response> {
+    public getVideosByIdLiveM3U8(data: $OpenApiTs['/Videos/{Id}/live.m3u8']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/live.m3u8']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/live.m3u8',
@@ -17980,8 +17495,7 @@ export class VideoHlsServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -17999,7 +17513,7 @@ export class ServerApiEndpointsService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postNotificationSmtpTestByUserid(data: PostNotificationSmtpTestByUseridData): CancelablePromise<PostNotificationSmtpTestByUseridResponse> {
+    public postNotificationSmtpTestByUserid(data: $OpenApiTs['/Notification/SMTP/Test/{UserID}']['post']['req']): CancelablePromise<$OpenApiTs['/Notification/SMTP/Test/{UserID}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Notification/SMTP/Test/{UserID}',
@@ -18008,8 +17522,7 @@ export class ServerApiEndpointsService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18026,7 +17539,7 @@ export class SubtitleServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public getProvidersSubtitlesSubtitlesById(data: GetProvidersSubtitlesSubtitlesByIdData): CancelablePromise<GetProvidersSubtitlesSubtitlesByIdResponse> {
+    public getProvidersSubtitlesSubtitlesById(data: $OpenApiTs['/Providers/Subtitles/Subtitles/{Id}']['get']['req']): CancelablePromise<$OpenApiTs['/Providers/Subtitles/Subtitles/{Id}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Providers/Subtitles/Subtitles/{Id}',
@@ -18037,8 +17550,7 @@ export class SubtitleServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18052,7 +17564,7 @@ export class SubtitleServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public deleteVideosByIdSubtitlesByIndex(data: DeleteVideosByIdSubtitlesByIndexData): CancelablePromise<DeleteVideosByIdSubtitlesByIndexResponse> {
+    public deleteVideosByIdSubtitlesByIndex(data: $OpenApiTs['/Videos/{Id}/Subtitles/{Index}']['delete']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/Subtitles/{Index}']['delete']['res'][200]> {
         return this.httpRequest.request({
             method: 'DELETE',
             url: '/Videos/{Id}/Subtitles/{Index}',
@@ -18064,8 +17576,7 @@ export class SubtitleServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18080,7 +17591,7 @@ export class SubtitleServiceService {
      * @returns RemoteSubtitleInfo Operation successful. Returning a RemoteSubtitleInfo[] object.
      * @throws ApiError
      */
-    public getItemsByIdRemotesearchSubtitlesByLanguage(data: GetItemsByIdRemotesearchSubtitlesByLanguageData): CancelablePromise<GetItemsByIdRemotesearchSubtitlesByLanguageResponse> {
+    public getItemsByIdRemotesearchSubtitlesByLanguage(data: $OpenApiTs['/Items/{Id}/RemoteSearch/Subtitles/{Language}']['get']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/RemoteSearch/Subtitles/{Language}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Items/{Id}/RemoteSearch/Subtitles/{Language}',
@@ -18096,8 +17607,7 @@ export class SubtitleServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18110,7 +17620,7 @@ export class SubtitleServiceService {
      * @returns unknown Operation successful. Empty response.
      * @throws ApiError
      */
-    public postItemsByIdRemotesearchSubtitlesBySubtitleid(data: PostItemsByIdRemotesearchSubtitlesBySubtitleidData): CancelablePromise<PostItemsByIdRemotesearchSubtitlesBySubtitleidResponse> {
+    public postItemsByIdRemotesearchSubtitlesBySubtitleid(data: $OpenApiTs['/Items/{Id}/RemoteSearch/Subtitles/{SubtitleId}']['post']['req']): CancelablePromise<$OpenApiTs['/Items/{Id}/RemoteSearch/Subtitles/{SubtitleId}']['post']['res'][200]> {
         return this.httpRequest.request({
             method: 'POST',
             url: '/Items/{Id}/RemoteSearch/Subtitles/{SubtitleId}',
@@ -18122,8 +17632,7 @@ export class SubtitleServiceService {
                 400: 'Bad Request. Server cannot process request.',
                 401: 'Unauthorized. Client needs to authenticate.',
                 403: 'Forbidden. No permission for the reqested operation.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18142,7 +17651,7 @@ export class SubtitleServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdByMediasourceidSubtitlesByIndexByFormat(data: GetVideosByIdByMediasourceidSubtitlesByIndexByFormatData): CancelablePromise<GetVideosByIdByMediasourceidSubtitlesByIndexByFormatResponse> {
+    public getVideosByIdByMediasourceidSubtitlesByIndexByFormat(data: $OpenApiTs['/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/Stream.{Format}']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/Stream.{Format}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/Stream.{Format}',
@@ -18159,8 +17668,7 @@ export class SubtitleServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }
@@ -18179,7 +17687,7 @@ export class SubtitleServiceService {
      * @returns unknown Operation successful. Response content unknown.
      * @throws ApiError
      */
-    public getVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormat(data: GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormatData): CancelablePromise<GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormatResponse> {
+    public getVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksByFormat(data: $OpenApiTs['/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/{StartPositionTicks}/Stream.{Format}']['get']['req']): CancelablePromise<$OpenApiTs['/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/{StartPositionTicks}/Stream.{Format}']['get']['res'][200]> {
         return this.httpRequest.request({
             method: 'GET',
             url: '/Videos/{Id}/{MediaSourceId}/Subtitles/{Index}/{StartPositionTicks}/Stream.{Format}',
@@ -18196,8 +17704,7 @@ export class SubtitleServiceService {
             },
             errors: {
                 400: 'Bad Request. Server cannot process request.',
-                404: 'Resource not found or unavailable.',
-                '5XX': 'Server error.'
+                404: 'Resource not found or unavailable.'
             }
         });
     }

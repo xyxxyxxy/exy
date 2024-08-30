@@ -16,7 +16,7 @@ export class AxiosHttpRequest extends BaseHttpRequest {
 	 * @returns CancelablePromise<T>
 	 * @throws ApiError
 	 */
-	public override request<T>(options: ApiRequestOptions<T>): CancelablePromise<T> {
+	public override request<T>(options: ApiRequestOptions): CancelablePromise<T> {
 		return __request(this.config, options);
 	}
 }
