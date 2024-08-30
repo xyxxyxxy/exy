@@ -1,4 +1,6 @@
 node_modules
 dist
 out
-.gitignore
+
+# Generated Emby client.
+src/main/core/emby-client
