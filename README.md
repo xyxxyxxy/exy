@@ -78,3 +78,22 @@ All art assets are stored in [resources/discord-art-assets/](resources/discord-a
 
 Assets need to be uploaded in the application settings -> "Rich Presence" -> "Art Assets":
 ![discord-art-assets](/resources/docs/discord-art-assets.png)
+
+# Code Dependency Upgrade Notes
+
+To upgrade `electron-store` to [version 9](https://github.com/sindresorhus/electron-store/releases/tag/v9.0.0) or higher the following config is required in `tsconfig.node.json`, because `electron-store` was converted into an ESM:
+
+```
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+```
+
+And `"type": "module"` needs to be added in the `package.json`.
+
+This means that [imports need to be updated](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c#how-can-i-make-my-typescript-project-output-esm) in the project:
+
+> You must use a .js extension in relative imports even though you're importing .ts files.
+
+The generated emby client in `./src/main/core/emby-client` does not work as ESM yet and a workaround using [fix-esm-import-path](https://www.npmjs.com/package/fix-esm-import-path) did not work.
