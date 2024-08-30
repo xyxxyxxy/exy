@@ -3,7 +3,7 @@ import type { ApiRequestOptions } from './ApiRequestOptions';
 
 type Headers = Record<string, string>;
 type Middleware<T> = (value: T) => T | Promise<T>;
-type Resolver<T> = (options: ApiRequestOptions) => Promise<T>;
+type Resolver<T> = (options: ApiRequestOptions<T>) => Promise<T>;
 
 export class Interceptors<T> {
   _fns: Middleware<T>[];
@@ -12,14 +12,14 @@ export class Interceptors<T> {
     this._fns = [];
   }
 
-  eject(fn: Middleware<T>) {
+  eject(fn: Middleware<T>): void {
     const index = this._fns.indexOf(fn);
     if (index !== -1) {
       this._fns = [...this._fns.slice(0, index), ...this._fns.slice(index + 1)];
     }
   }
 
-  use(fn: Middleware<T>) {
+  use(fn: Middleware<T>): void {
     this._fns = [...this._fns, fn];
   }
 }
@@ -41,14 +41,14 @@ export type OpenAPIConfig = {
 };
 
 export const OpenAPI: OpenAPIConfig = {
-	BASE: 'https://home.ourflix.de:32865/emby',
+	BASE: 'http://192.168.1.11:8096/emby',
 	CREDENTIALS: 'include',
 	ENCODE_PATH: undefined,
 	HEADERS: undefined,
 	PASSWORD: undefined,
 	TOKEN: undefined,
 	USERNAME: undefined,
-	VERSION: '4.1.1.0',
+	VERSION: '4.8.8.0',
 	WITH_CREDENTIALS: false,
 	interceptors: {
 		request: new Interceptors(),

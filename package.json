@@ -1,12 +1,12 @@
 {
   "name": "exy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "xyxxyxxy",
   "homepage": "https://github.com/xyxxyxxy/exy",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=20.17.0"
   },
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --write .",
@@ -22,7 +22,7 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi-ts --input https://swagger.emby.media/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "generate-emby-client": "openapi-ts --input ./src/main/core/emby-client/openapi.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
   },
   "dependencies": {
     "@electron-toolkit/utils": "^3.0.0"
@@ -32,30 +32,30 @@
     "@electron-toolkit/eslint-config-ts": "^2.0.0",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
-    "@hey-api/openapi-ts": "^0.48.0",
+    "@hey-api/openapi-ts": "^0.52.11",
     "@picocss/pico": "^2.0.6",
-    "@sveltejs/vite-plugin-svelte": "^3.1.1",
+    "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@types/discord-rpc": "^4.0.8",
-    "@types/node": "^20.14.8",
-    "axios": "^1.7.2",
+    "@types/node": "^22.5.1",
+    "axios": "^1.7.5",
     "bufferutil": "^4.0.8",
     "discord-rpc": "^4.0.1",
-    "electron": "^31.0.2",
+    "electron": "^32.0.1",
     "electron-builder": "^24.13.3",
-    "electron-context-menu": "^4.0.0",
-    "electron-log": "^5.1.5",
+    "electron-context-menu": "^4.0.4",
+    "electron-log": "^5.1.7",
     "electron-store": "^8.2.0",
     "electron-vite": "^2.3.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-svelte": "^2.41.0",
+    "eslint-plugin-svelte": "^2.43.0",
     "imgur": "^2.4.2",
-    "prettier": "^3.3.2",
-    "prettier-plugin-svelte": "^3.2.5",
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.6",
     "rxjs": "^7.8.1",
-    "svelte": "^4.2.18",
-    "svelte-check": "^3.8.2",
-    "typescript": "^5.5.2",
+    "svelte": "^4.2.19",
+    "svelte-check": "^3.8.6",
+    "typescript": "^5.5.4",
     "utf-8-validate": "^5.0.10",
-    "vite": "^5.3.1"
+    "vite": "^5.4.2"
   }
 }
