@@ -6,7 +6,7 @@
   "author": "xyxxyxxy",
   "homepage": "https://github.com/xyxxyxxy/exy",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=20.17.0"
   },
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --write .",
