@@ -6958,6 +6958,9 @@ export const $RemoteSearchResult = {
         Name: {
             type: 'string'
         },
+        OriginalTitle: {
+            type: 'string'
+        },
         ProviderIds: {
             '$ref': '#/components/schemas/ProviderIdDictionary'
         },

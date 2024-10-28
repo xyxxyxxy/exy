@@ -150,7 +150,7 @@ export class EmbyClient {
 	constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = AxiosHttpRequest) {
 		this.request = new HttpRequest({
 			BASE: config?.BASE ?? 'http://192.168.1.11:8096/emby',
-			VERSION: config?.VERSION ?? '4.8.8.0',
+			VERSION: config?.VERSION ?? '4.8.10.0',
 			WITH_CREDENTIALS: config?.WITH_CREDENTIALS ?? false,
 			CREDENTIALS: config?.CREDENTIALS ?? 'include',
 			TOKEN: config?.TOKEN,

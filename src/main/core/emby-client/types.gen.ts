@@ -2147,6 +2147,7 @@ export type TrailerInfo = {
 
 export type RemoteSearchResult = {
     Name?: string;
+    OriginalTitle?: string;
     ProviderIds?: ProviderIdDictionary;
     ProductionYear?: (number) | null;
     IndexNumber?: (number) | null;
@@ -25934,6 +25935,39 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
 
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks?: number;
+};
+
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
+
 export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
     /**
      * CopyTimestamps
@@ -25966,6 +26000,39 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
 };
 
 export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks?: number;
+};
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
     /**
@@ -26000,6 +26067,39 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStrea
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
 
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks: number;
+};
+
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
+
 export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
     /**
      * CopyTimestamps
@@ -26032,6 +26132,39 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStre
 };
 
 export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks: number;
+};
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
 
 export type GetLivetvLivestreamfilesByIdStreamByContainerData = {
     container: string;
