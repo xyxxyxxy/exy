@@ -84,8 +84,7 @@ Assets need to be uploaded in the application settings -> "Rich Presence" -> "Ar
 The Emby API client is generated using `npm run generate-emby-client`.
 
 A local copy of the Emby OpenAPI configuration is used, so builds are reproducible.
-To get the latest version of the OpenAPI JSON see:
-https://dev.emby.media/doc/restapi/index.html#emby-api-browser
+To get the latest version of the OpenAPI JSON from your Emby server, click the API link on the admin dashboard page, like described [here](https://dev.emby.media/doc/restapi/index.html#emby-api-browser).
 
 # Code Dependency Upgrade Notes
 
