@@ -79,12 +79,9 @@ All art assets are stored in [resources/discord-art-assets/](resources/discord-a
 Assets need to be uploaded in the application settings -> "Rich Presence" -> "Art Assets":
 ![discord-art-assets](/resources/docs/discord-art-assets.png)
 
-## Emby API client
+## Update Emby API client
 
-The Emby API client is generated using `npm run generate-emby-client`.
-
-A local copy of the Emby OpenAPI configuration is used, so builds are reproducible.
-To get the latest version of the OpenAPI JSON from your Emby server, click the API link on the admin dashboard page, like described [here](https://dev.emby.media/doc/restapi/index.html#emby-api-browser).
+The Emby API client is generated using `npm run generate-emby-client`. This commands loads the openapi spec from the [Emby SDK](https://dev.emby.media/home/sdk/index.html) and generates a TypeScript client using [Hey API](https://heyapi.dev/).
 
 # Code Dependency Upgrade Notes
 
