@@ -41,14 +41,14 @@ export type OpenAPIConfig = {
 };
 
 export const OpenAPI: OpenAPIConfig = {
-	BASE: 'http://192.168.1.11:8096/emby',
+	BASE: 'http://emby.media/emby',
 	CREDENTIALS: 'include',
 	ENCODE_PATH: undefined,
 	HEADERS: undefined,
 	PASSWORD: undefined,
 	TOKEN: undefined,
 	USERNAME: undefined,
-	VERSION: '4.8.8.0',
+	VERSION: '4.9.1.80',
 	WITH_CREDENTIALS: false,
 	interceptors: {
 		request: new Interceptors(),

@@ -5,16 +5,47 @@ export type QueryResult_BaseItemDto = {
     TotalRecordCount?: number;
 };
 
+/**
+ * This is strictly used as a data transfer object from the api layer. This holds information about a BaseItem in a format that is convenient for the client.
+ *
+ */
 export type BaseItemDto = {
+    /**
+     * The name.
+     */
     Name?: string;
     OriginalTitle?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * The id.
+     */
     Id?: string;
     Guid?: string;
+    /**
+     * The etag.
+     */
     Etag?: string;
+    /**
+     * The Prefix.
+     */
     Prefix?: string;
+    TunerName?: string;
+    /**
+     * The playlist item identifier.
+     */
     PlaylistItemId?: string;
+    /**
+     * The date created.
+     */
     DateCreated?: (string) | null;
+    DateModified?: (string) | null;
+    VideoCodec?: string;
+    AudioCodec?: string;
+    AverageFrameRate?: (number) | null;
+    RealFrameRate?: (number) | null;
     ExtraType?: string;
     SortIndexNumber?: (number) | null;
     SortParentIndexNumber?: (number) | null;
@@ -25,96 +56,295 @@ export type BaseItemDto = {
     PresentationUniqueKey?: string;
     PreferredMetadataLanguage?: string;
     PreferredMetadataCountryCode?: string;
+    /**
+     * A value indicating whether \[supports synchronize\].
+     */
     SupportsSync?: (boolean) | null;
     SyncStatus?: SyncJobItemStatus;
     CanManageAccess?: (boolean) | null;
     CanLeaveContent?: (boolean) | null;
     CanMakePublic?: (boolean) | null;
     Container?: string;
+    /**
+     * The name of the sort.
+     */
     SortName?: string;
     ForcedSortName?: string;
     Video3DFormat?: Video3DFormat;
+    /**
+     * The premiere date.
+     */
     PremiereDate?: (string) | null;
+    /**
+     * The external urls.
+     */
     ExternalUrls?: Array<ExternalUrl>;
+    /**
+     * The media versions.
+     */
     MediaSources?: Array<MediaSourceInfo>;
+    /**
+     * The critic rating.
+     */
     CriticRating?: (number) | null;
     GameSystemId?: (number) | null;
     AsSeries?: (boolean) | null;
+    /**
+     * The game system.
+     */
     GameSystem?: string;
     ProductionLocations?: Array<(string)>;
+    /**
+     * The path.
+     */
     Path?: string;
+    /**
+     * The official rating.
+     */
     OfficialRating?: string;
+    /**
+     * The custom rating.
+     */
     CustomRating?: string;
+    /**
+     * The channel identifier.
+     */
     ChannelId?: string;
     ChannelName?: string;
+    /**
+     * The overview.
+     */
     Overview?: string;
+    /**
+     * The taglines.
+     */
     Taglines?: Array<(string)>;
+    /**
+     * The genres.
+     */
     Genres?: Array<(string)>;
+    /**
+     * The community rating.
+     */
     CommunityRating?: (number) | null;
+    /**
+     * The run time ticks.
+     */
     RunTimeTicks?: (number) | null;
     Size?: (number) | null;
     FileName?: string;
     Bitrate?: (number) | null;
+    /**
+     * The production year.
+     */
     ProductionYear?: (number) | null;
+    /**
+     * The number.
+     */
     Number?: string;
     ChannelNumber?: string;
+    /**
+     * The index number.
+     */
     IndexNumber?: (number) | null;
+    /**
+     * The index number end.
+     */
     IndexNumberEnd?: (number) | null;
+    /**
+     * The parent index number.
+     */
     ParentIndexNumber?: (number) | null;
+    /**
+     * The trailer urls.
+     */
     RemoteTrailers?: Array<MediaUrl>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * A value indicating whether this instance is folder.
+     */
     IsFolder?: (boolean) | null;
+    /**
+     * The parent id.
+     */
     ParentId?: string;
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The people.
+     */
     People?: Array<BaseItemPerson>;
+    /**
+     * The studios.
+     */
     Studios?: Array<NameLongIdPair>;
     GenreItems?: Array<NameLongIdPair>;
     TagItems?: Array<NameLongIdPair>;
+    /**
+     * If the item does not have a logo, this will hold the Id of the Parent that has one.
+     */
     ParentLogoItemId?: string;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * The local trailer count.
+     */
     LocalTrailerCount?: (number) | null;
     UserData?: UserItemDataDto;
+    /**
+     * The recursive item count.
+     */
     RecursiveItemCount?: (number) | null;
+    /**
+     * The child count.
+     */
     ChildCount?: (number) | null;
+    SeasonCount?: (number) | null;
+    /**
+     * The name of the series.
+     */
     SeriesName?: string;
+    /**
+     * The series id.
+     */
     SeriesId?: string;
+    /**
+     * The season identifier.
+     */
     SeasonId?: string;
+    /**
+     * The special feature count.
+     */
     SpecialFeatureCount?: (number) | null;
+    /**
+     * The display preferences id.
+     */
     DisplayPreferencesId?: string;
+    /**
+     * The status.
+     */
     Status?: string;
+    /**
+     * The air days.
+     */
     AirDays?: Array<DayOfWeek>;
+    /**
+     * The tags.
+     */
     Tags?: Array<(string)>;
+    /**
+     * The primary image aspect ratio, after image enhancements.
+     */
     PrimaryImageAspectRatio?: (number) | null;
+    /**
+     * The artists.
+     */
     Artists?: Array<(string)>;
+    /**
+     * The artist items.
+     */
     ArtistItems?: Array<NameIdPair>;
     Composers?: Array<NameIdPair>;
+    /**
+     * The album.
+     */
     Album?: string;
+    /**
+     * The type of the collection.
+     */
     CollectionType?: string;
+    /**
+     * The display order.
+     */
     DisplayOrder?: string;
+    /**
+     * The album id.
+     */
     AlbumId?: string;
+    /**
+     * The album image tag.
+     */
     AlbumPrimaryImageTag?: string;
+    /**
+     * The series primary image tag.
+     */
     SeriesPrimaryImageTag?: string;
+    /**
+     * The album artist.
+     */
     AlbumArtist?: string;
+    /**
+     * The album artists.
+     */
     AlbumArtists?: Array<NameIdPair>;
+    /**
+     * The name of the season.
+     */
     SeasonName?: string;
+    /**
+     * The media streams.
+     */
     MediaStreams?: Array<MediaStream>;
+    /**
+     * The part count.
+     */
     PartCount?: (number) | null;
+    /**
+     * The image tags.
+     */
     ImageTags?: {
         [key: string]: (string);
     };
+    /**
+     * The backdrop image tags.
+     */
     BackdropImageTags?: Array<(string)>;
+    /**
+     * The parent logo image tag.
+     */
     ParentLogoImageTag?: string;
+    /**
+     * The series studio.
+     */
     SeriesStudio?: string;
     PrimaryImageItemId?: string;
     PrimaryImageTag?: string;
+    /**
+     * The parent thumb item id.
+     */
     ParentThumbItemId?: string;
+    /**
+     * The parent thumb image tag.
+     */
     ParentThumbImageTag?: string;
+    /**
+     * The chapters.
+     */
     Chapters?: Array<ChapterInfo>;
     LocationType?: LocationType;
+    /**
+     * The type of the media.
+     */
     MediaType?: string;
+    /**
+     * The end date.
+     */
     EndDate?: (string) | null;
+    /**
+     * The locked fields.
+     */
     LockedFields?: Array<MetadataFields>;
+    /**
+     * A value indicating whether \[enable internet providers\].
+     */
     LockData?: (boolean) | null;
     Width?: (number) | null;
     Height?: (number) | null;
@@ -130,23 +360,65 @@ export type BaseItemDto = {
     Longitude?: (number) | null;
     Altitude?: (number) | null;
     IsoSpeedRating?: (number) | null;
+    /**
+     * The series timer identifier.
+     */
     SeriesTimerId?: string;
+    /**
+     * The channel primary image tag.
+     */
     ChannelPrimaryImageTag?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: (string) | null;
+    /**
+     * The completion percentage.
+     */
     CompletionPercentage?: (number) | null;
+    /**
+     * A value indicating whether this instance is repeat.
+     */
     IsRepeat?: (boolean) | null;
     IsNew?: (boolean) | null;
+    /**
+     * The episode title.
+     */
     EpisodeTitle?: string;
+    /**
+     * A value indicating whether this instance is movie.
+     */
     IsMovie?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is sports.
+     */
     IsSports?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is series.
+     */
     IsSeries?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is live.
+     */
     IsLive?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is news.
+     */
     IsNews?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is kids.
+     */
     IsKids?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is premiere.
+     */
     IsPremiere?: (boolean) | null;
     TimerType?: LiveTv_TimerType;
     Disabled?: (boolean) | null;
     ManagementId?: string;
+    /**
+     * The timer identifier.
+     */
     TimerId?: string;
     CurrentProgram?: BaseItemDto;
     MovieCount?: (number) | null;
@@ -169,11 +441,18 @@ export type SyncJobItemStatus = 'Queued' | 'Converting' | 'ReadyToTransfer' | 'T
 export type Video3DFormat = 'HalfSideBySide' | 'FullSideBySide' | 'FullTopAndBottom' | 'HalfTopAndBottom' | 'MVC';
 
 export type ExternalUrl = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The type of the item.
+     */
     Url?: string;
 };
 
 export type MediaSourceInfo = {
+    Chapters?: Array<ChapterInfo>;
     Protocol?: MediaProtocol;
     Id?: string;
     Path?: string;
@@ -186,6 +465,9 @@ export type MediaSourceInfo = {
     Size?: (number) | null;
     Name?: string;
     SortName?: string;
+    /**
+     * Differentiate internet url vs local network
+     */
     IsRemote?: boolean;
     HasMixedProtocols?: boolean;
     RunTimeTicks?: (number) | null;
@@ -232,74 +514,362 @@ export type MediaSourceInfo = {
     ReadAtNativeFramerate?: boolean;
     DefaultAudioStreamIndex?: (number) | null;
     DefaultSubtitleStreamIndex?: (number) | null;
+    /**
+     * Used only by our Windows app. Not used by Emby Server. The id of the item that this mediasource belongs to, if there is one Also used by Emby for Kodi
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
 };
+
+/**
+ * Class ChapterInfo
+ *
+ */
+export type ChapterInfo = {
+    /**
+     * The start position ticks.
+     */
+    StartPositionTicks?: number;
+    /**
+     * The name.
+     */
+    Name?: string;
+    ImageTag?: string;
+    MarkerType?: MarkerType;
+    ChapterIndex?: number;
+};
+
+export type MarkerType = 'Chapter' | 'IntroStart' | 'IntroEnd' | 'CreditsStart';
 
 export type MediaProtocol = 'File' | 'Http' | 'Rtmp' | 'Rtsp' | 'Udp' | 'Rtp' | 'Ftp' | 'Mms';
 
 export type MediaSourceType = 'Default' | 'Grouping' | 'Placeholder';
 
+/**
+ * MediaStream information.
+ *
+ *
+ * MediaStream itens are typically included in a `MediaBrowser.Model.Dto.MediaSourceInfo` object.
+ *
+ *
+ * `MediaBrowser.Model.Dto.MediaSourceInfo.MediaStreams`
+ *
+ */
 export type MediaStream = {
+    /**
+     * The codec.
+     *
+     * Probe Field: `codec_name`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`
+     * Related Enums: `T:Emby.Media.Model.Enums.VideoMediaTypes`, `Emby.Media.Model.Enums.AudioMediaTypes`, `Emby.Media.Model.Enums.SubtitleMediaTypes`.
+     */
     Codec?: string;
+    /**
+     * The codec tag.
+     *
+     * Probe Field: `codec_tag`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     CodecTag?: string;
+    /**
+     * The language.
+     *
+     * Probe Field: `tags["language"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Language?: string;
+    /**
+     * The color transfer characteristics.
+     *
+     * Probe Field: `color_transfer`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorTransfers`.
+     */
     ColorTransfer?: string;
+    /**
+     * The chromaticity coordinates of the source primaries.
+     *
+     * Probe Field: `color_primaries`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorPrimaries`.
+     */
     ColorPrimaries?: string;
+    /**
+     * The YUV colorspace type.
+     *
+     * Probe Field: `color_space`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorSpaces`.
+     */
     ColorSpace?: string;
+    /**
+     * The comment.
+     *
+     * Probe Field: `tags["comment"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Comment?: string;
+    /**
+     * The start time of the stream.
+     *
+     * Probe Field: `start_time`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     * Actual type: `System.TimeSpan`.
+     */
     StreamStartTimeTicks?: (number) | null;
+    /**
+     * The time\-base.
+     *
+     * Probe Field: `time_base`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     TimeBase?: string;
+    /**
+     * The title.
+     *
+     * Probe Field: `tags["title"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Title?: string;
+    /**
+     * The extradata.
+     *
+     * Probe Field: `extradata`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     *
+     * Currently, this value is only parsed for subtitle streams with codec `Emby.Media.Model.Enums.SubtitleMediaTypes.dvb_teletext`.
+     */
     Extradata?: string;
     VideoRange?: string;
+    /**
+     * The display title.
+     *
+     * Custom property set by the application.
+     */
     DisplayTitle?: string;
+    /**
+     * The display language.
+     *
+     * Custom property set by the application.
+     */
     DisplayLanguage?: string;
+    /**
+     * The nal length size.
+     *
+     * Probe Field: `nal_length_size`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video` of type `Emby.Media.Model.Enums.VideoMediaTypes.h264`.
+     * Actual type: `System.Int32`.
+     */
     NalLengthSize?: string;
+    /**
+     * A value indicating whether this instance is interlaced.
+     *
+     * Probe Field: `field_order` \!\= `progressive`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     IsInterlaced?: boolean;
     /**
      * @deprecated
      */
     IsAVC?: (boolean) | null;
+    /**
+     * The channel layout.
+     *
+     * Probe Field: `channel_layout`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enum: `MediaBrowser.Model.Entities.MediaStream.ChannelLayout`.
+     */
     ChannelLayout?: string;
+    /**
+     * The bit rate.
+     *
+     * Probe Field: `bit_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     *
+     * THIS VALUE IS PROCESSED BY CUSTOM LOGIC AND DOES NOT NECESSARILY MATCH FFPROBE RESULTS\!
+     */
     BitRate?: (number) | null;
+    /**
+     * The bit depth.
+     *
+     * Probe Field: `bits_per_sample` or `bits_per_raw_sample`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     */
     BitDepth?: (number) | null;
+    /**
+     * The reference frames.
+     *
+     * Probe Field: `refs`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     RefFrames?: (number) | null;
     Rotation?: (number) | null;
+    /**
+     * The audio channel count.
+     *
+     * Probe Field: `channels`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     */
     Channels?: (number) | null;
+    /**
+     * The sample rate.
+     *
+     * Probe Field: `sample_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enum: `Emby.Media.Model.Enums.SampleRates`.
+     */
     SampleRate?: (number) | null;
+    /**
+     * A value indicating whether this instance is default.
+     *
+     * Probe Field: `disposition["default"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     IsDefault?: boolean;
+    /**
+     * A value indicating whether this instance is forced.
+     *
+     * Probe Field: `disposition["forced"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     IsForced?: boolean;
     IsHearingImpaired?: boolean;
+    /**
+     * The height.
+     *
+     * Probe Field: `height`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     *
+     * Probe Field: `width`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     Width?: (number) | null;
+    /**
+     * The average frame rate..
+     *
+     * Probe Field: `avg_frame_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     AverageFrameRate?: (number) | null;
+    /**
+     * The real frame rate..
+     *
+     * Probe Field: `r_frame_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     RealFrameRate?: (number) | null;
+    /**
+     * The profile.
+     *
+     * Probe Field: `profile`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enums: `Emby.Media.Model.Enums.AacProfiles`, `Emby.Media.Model.Enums.AvcProfiles`, `Emby.Media.Model.Enums.H263Profiles`, `Emby.Media.Model.Enums.HevcProfiles`, `Emby.Media.Model.Enums.Mpeg2Profiles`,`Emby.Media.Model.Enums.Vc1Profiles`, `Emby.Media.Model.Enums.Mpeg4Profiles`, `Emby.Media.Model.Enums.Vp8Profiles`, `Emby.Media.Model.Enums.Vp9Profiles`.
+     */
     Profile?: string;
     Type?: MediaStreamType;
+    /**
+     * The aspect ratio.
+     *
+     * Probe Field: `display_aspect_ratio`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     AspectRatio?: string;
+    /**
+     * The index of the stream inside its container.
+     *
+     * Probe Field: `index`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Index?: number;
+    /**
+     * A value indicating whether this instance is external.
+     *
+     * Custom property set by the application.
+     */
     IsExternal?: boolean;
     DeliveryMethod?: SubtitleDeliveryMethod;
+    /**
+     * The delivery URL.
+     *
+     * Custom property set by the application.
+     */
     DeliveryUrl?: string;
+    /**
+     * A value indicating whether this instance is external URL.
+     *
+     * Custom property set by the application.
+     */
     IsExternalUrl?: (boolean) | null;
     IsTextSubtitleStream?: boolean;
+    /**
+     * A value indicating whether \[supports external stream\].
+     */
     SupportsExternalStream?: boolean;
+    /**
+     * The filename.
+     */
     Path?: string;
     Protocol?: MediaProtocol;
+    /**
+     * The pixel format.
+     *
+     * Probe Field: `pix_fmt`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `MediaBrowser.Model.Entities.MediaStream.PixelFormat`.
+     */
     PixelFormat?: string;
+    /**
+     * The codec level.
+     *
+     * Probe Field: `level`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enums: `Emby.Media.Model.Enums.AvcLevels`, `Emby.Media.Model.Enums.H263Levels`, `Emby.Media.Model.Enums.HevcLevels`, `Emby.Media.Model.Enums.Mpeg2Levels`,`Emby.Media.Model.Enums.Vc1Levels`, `Emby.Media.Model.Enums.Mpeg4Levels`, `Emby.Media.Model.Enums.Vp8Levels`, `Emby.Media.Model.Enums.Vp9Levels`.
+     */
     Level?: (number) | null;
+    /**
+     * A value indicating whether this instance is anamorphic.
+     */
     IsAnamorphic?: (boolean) | null;
     ExtendedVideoType?: ExtendedVideoTypes;
     ExtendedVideoSubType?: ExtendedVideoSubTypes;
+    /**
+     * The extended video sub\-type description.
+     */
     ExtendedVideoSubTypeDescription?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
+    /**
+     * The size of the attachment.
+     */
     AttachmentSize?: (number) | null;
+    /**
+     * The type of the MIME.
+     */
     MimeType?: string;
     SubtitleLocationType?: SubtitleLocationType;
 };
 
+/**
+ * Enum MediaStreamType
+ *
+ */
 export type MediaStreamType = 'Unknown' | 'Audio' | 'Video' | 'Subtitle' | 'EmbeddedImage' | 'Attachment' | 'Data';
 
 export type SubtitleDeliveryMethod = 'Encode' | 'Embed' | 'External' | 'Hls' | 'VideoSideData';
@@ -321,55 +891,118 @@ export type ProviderIdDictionary = {
     [key: string]: (string);
 };
 
+/**
+ * This is used by the api to get information about a Person within a BaseItem
+ *
+ */
 export type BaseItemPerson = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
+    /**
+     * The role.
+     */
     Role?: string;
     Type?: PersonType;
+    /**
+     * The primary image tag.
+     */
     PrimaryImageTag?: string;
 };
 
 export type PersonType = 'Actor' | 'Director' | 'Writer' | 'Producer' | 'GuestStar' | 'Composer' | 'Conductor' | 'Lyricist';
 
 export type NameLongIdPair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: number;
 };
 
+/**
+ * Class UserItemDataDto
+ *
+ */
 export type UserItemDataDto = {
+    /**
+     * The rating.
+     */
     Rating?: (number) | null;
+    /**
+     * The played percentage.
+     */
     PlayedPercentage?: (number) | null;
+    /**
+     * The unplayed item count.
+     */
     UnplayedItemCount?: (number) | null;
+    /**
+     * The playback position ticks.
+     */
     PlaybackPositionTicks?: number;
+    /**
+     * The play count.
+     */
     PlayCount?: (number) | null;
+    /**
+     * A value indicating whether this instance is favorite.
+     */
     IsFavorite?: boolean;
+    /**
+     * The last played date.
+     */
     LastPlayedDate?: (string) | null;
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Dto.UserItemDataDto` is played.
+     */
     Played?: boolean;
+    /**
+     * The key.
+     */
     Key?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
 };
 
 export type DayOfWeek = 'Sunday' | 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday';
 
 export type NameIdPair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
-export type ChapterInfo = {
-    StartPositionTicks?: number;
-    Name?: string;
-    ImageTag?: string;
-    MarkerType?: MarkerType;
-    ChapterIndex?: number;
-};
-
-export type MarkerType = 'Chapter' | 'IntroStart' | 'IntroEnd' | 'CreditsStart';
-
+/**
+ * Enum LocationType
+ *
+ */
 export type LocationType = 'FileSystem' | 'Virtual';
 
-export type MetadataFields = 'Cast' | 'Genres' | 'ProductionLocations' | 'Studios' | 'Tags' | 'Name' | 'Overview' | 'Runtime' | 'OfficialRating' | 'Collections' | 'ChannelNumber' | 'SortName' | 'OriginalTitle' | 'SortIndexNumber' | 'SortParentIndexNumber' | 'CommunityRating' | 'CriticRating' | 'Tagline';
+/**
+ * Enum MetadataFields
+ *
+ */
+export type MetadataFields = 'Cast' | 'Genres' | 'ProductionLocations' | 'Studios' | 'Tags' | 'Name' | 'Overview' | 'Runtime' | 'OfficialRating' | 'Collections' | 'ChannelNumber' | 'SortName' | 'OriginalTitle' | 'SortIndexNumber' | 'SortParentIndexNumber' | 'CommunityRating' | 'CriticRating' | 'Tagline' | 'Composers' | 'Artists' | 'AlbumArtists';
 
 export type Drawing_ImageOrientation = 'TopLeft' | 'TopRight' | 'BottomRight' | 'BottomLeft' | 'LeftTop' | 'RightTop' | 'RightBottom' | 'LeftBottom';
 
@@ -397,12 +1030,27 @@ export type QueryResult_Devices_DeviceInfo = {
 
 export type Devices_DeviceInfo = {
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
     InternalId?: number;
     ReportedDeviceId?: string;
+    /**
+     * The last name of the user.
+     */
     LastUserName?: string;
+    /**
+     * The name of the application.
+     */
     AppName?: string;
+    /**
+     * The application version.
+     */
     AppVersion?: string;
+    /**
+     * The last user identifier.
+     */
     LastUserId?: string;
     DateLastActivity?: string;
     IconUrl?: string;
@@ -426,49 +1074,155 @@ export type UserLibrary_OfficialRatingItem = {
     Name?: string;
 };
 
+/**
+ * Class PackageInfo
+ *
+ */
 export type PackageInfo = {
+    /**
+     * The internal id of this package.
+     */
     id?: string;
+    /**
+     * The name.
+     */
     name?: string;
+    /**
+     * The short description.
+     */
     shortDescription?: string;
+    /**
+     * The overview.
+     */
     overview?: string;
+    /**
+     * A value indicating whether this instance is premium.
+     */
     isPremium?: boolean;
+    /**
+     * A value indicating whether this instance is adult only content.
+     */
     adult?: boolean;
+    /**
+     * The rich desc URL.
+     */
     richDescUrl?: string;
+    /**
+     * The thumb image.
+     */
     thumbImage?: string;
+    /**
+     * The preview image.
+     */
     previewImage?: string;
+    /**
+     * The type.
+     */
     type?: string;
+    /**
+     * The target filename.
+     */
     targetFilename?: string;
+    /**
+     * The owner.
+     */
     owner?: string;
+    /**
+     * The category.
+     */
     category?: string;
+    /**
+     * The catalog tile color.
+     */
     tileColor?: string;
+    /**
+     * The feature id of this package (if premium).
+     */
     featureId?: string;
+    /**
+     * The price for this package (if premium).
+     */
     price?: (number) | null;
     targetSystem?: PackageTargetSystem;
+    /**
+     * The guid of the assembly associated with this package (if a plug\-in). This is used to identify the proper item for automatic updates.
+     */
     guid?: string;
+    /**
+     * Whether or not this package is registered.
+     */
     isRegistered?: boolean;
+    /**
+     * The expiration date for this package.
+     */
     expDate?: string;
+    /**
+     * The versions.
+     */
     versions?: Array<PackageVersionInfo>;
+    /**
+     * A value indicating whether \[enable in application store\].
+     */
     enableInAppStore?: boolean;
+    /**
+     * The installs.
+     */
     installs?: number;
 };
 
+/**
+ * Enum PackageType
+ *
+ */
 export type PackageTargetSystem = 'Server' | 'MBTheater' | 'MBClassic' | 'Other';
 
+/**
+ * Class PackageVersionInfo
+ *
+ */
 export type PackageVersionInfo = {
+    /**
+     * The name.
+     */
     name?: string;
+    /**
+     * The guid.
+     */
     guid?: string;
+    /**
+     * The version STR.
+     */
     versionStr?: string;
     classification?: PackageVersionClass;
+    /**
+     * The description.
+     */
     description?: string;
+    /**
+     * The required version STR.
+     */
     requiredVersionStr?: string;
+    /**
+     * The source URL.
+     */
     sourceUrl?: string;
+    /**
+     * The source URL.
+     */
     checksum?: string;
+    /**
+     * The target filename.
+     */
     targetFilename?: string;
     infoUrl?: string;
     runtimes?: string;
     timestamp?: (string) | null;
 };
 
+/**
+ * Enum PackageVersionClass
+ *
+ */
 export type PackageVersionClass = 'Release' | 'Beta' | 'Dev';
 
 export type Playlists_PlaylistCreationResult = {
@@ -477,93 +1231,264 @@ export type Playlists_PlaylistCreationResult = {
     ItemAddedCount?: number;
 };
 
+/**
+ * This is a serializable stub class that is used by the api to provide information about installed plugins.
+ *
+ */
 export type Plugins_PluginInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The name of the configuration file.
+     */
     ConfigurationFileName?: string;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The unique id.
+     */
     Id?: string;
+    /**
+     * The image URL.
+     */
     ImageTag?: string;
 };
 
+/**
+ * Class TaskInfo
+ *
+ */
 export type TaskInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     State?: TaskState;
+    /**
+     * The progress.
+     */
     CurrentProgressPercentage?: (number) | null;
+    /**
+     * The id.
+     */
     Id?: string;
     LastExecutionResult?: TaskResult;
+    /**
+     * The triggers.
+     */
     Triggers?: Array<TaskTriggerInfo>;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The category.
+     */
     Category?: string;
+    /**
+     * A value indicating whether this instance is hidden.
+     */
     IsHidden?: boolean;
+    /**
+     * The key.
+     */
     Key?: string;
 };
 
+/**
+ * Enum TaskState
+ *
+ */
 export type TaskState = 'Idle' | 'Cancelling' | 'Running';
 
+/**
+ * Class TaskExecutionInfo
+ *
+ */
 export type TaskResult = {
+    /**
+     * The start time UTC.
+     */
     StartTimeUtc?: string;
+    /**
+     * The end time UTC.
+     */
     EndTimeUtc?: string;
     Status?: TaskCompletionStatus;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The key.
+     */
     Key?: string;
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The error message.
+     */
     ErrorMessage?: string;
+    /**
+     * The long error message.
+     */
     LongErrorMessage?: string;
 };
 
+/**
+ * Enum TaskCompletionStatus
+ *
+ */
 export type TaskCompletionStatus = 'Completed' | 'Failed' | 'Cancelled' | 'Aborted';
 
+/**
+ * Class TaskTriggerInfo
+ *
+ */
 export type TaskTriggerInfo = {
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The time of day.
+     */
     TimeOfDayTicks?: (number) | null;
+    /**
+     * The interval.
+     */
     IntervalTicks?: (number) | null;
     SystemEvent?: SystemEvent;
     DayOfWeek?: DayOfWeek;
+    /**
+     * The maximum runtime ticks.
+     */
     MaxRuntimeTicks?: (number) | null;
 };
 
+/**
+ * Enum SystemEvent
+ *
+ */
 export type SystemEvent = 'WakeFromSleep' | 'DisplayConfigurationChange' | 'NetworkChange';
 
+/**
+ * Class SessionInfo
+ *
+ */
 export type Session_SessionInfo = {
     PlayState?: PlayerStateInfo;
     AdditionalUsers?: Array<SessionUserInfo>;
+    /**
+     * The remote end point.
+     */
     RemoteEndPoint?: string;
     Protocol?: string;
+    /**
+     * The playable media types.
+     */
     PlayableMediaTypes?: Array<(string)>;
     PlaylistItemId?: string;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * The id.
+     */
     Id?: string;
     ServerId?: string;
+    /**
+     * The user id.
+     */
     UserId?: string;
+    PartyId?: string;
+    /**
+     * The username.
+     */
     UserName?: string;
     UserPrimaryImageTag?: string;
+    /**
+     * The type of the client.
+     */
     Client?: string;
+    /**
+     * The last activity date.
+     */
     LastActivityDate?: string;
+    /**
+     * The name of the device.
+     */
     DeviceName?: string;
     DeviceType?: string;
     NowPlayingItem?: BaseItemDto;
     InternalDeviceId?: number;
+    /**
+     * The device id.
+     */
     DeviceId?: string;
+    /**
+     * The application version.
+     */
     ApplicationVersion?: string;
+    /**
+     * The application icon URL.
+     */
     AppIconUrl?: string;
+    /**
+     * The supported commands.
+     */
     SupportedCommands?: Array<(string)>;
     TranscodingInfo?: TranscodingInfo;
     SupportsRemoteControl?: boolean;
 };
 
 export type PlayerStateInfo = {
+    /**
+     * The now playing position ticks.
+     */
     PositionTicks?: (number) | null;
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
+    /**
+     * The index of the now playing audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the now playing subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * The now playing media version identifier.
+     */
     MediaSourceId?: string;
+    MediaSource?: MediaSourceInfo;
     PlayMethod?: PlayMethod;
     RepeatMode?: RepeatMode;
+    SleepTimerMode?: SleepTimerMode;
+    SleepTimerEndTime?: (string) | null;
     SubtitleOffset?: number;
     Shuffle?: boolean;
     PlaybackRate?: number;
@@ -573,8 +1498,20 @@ export type PlayMethod = 'Transcode' | 'DirectStream' | 'DirectPlay';
 
 export type RepeatMode = 'RepeatNone' | 'RepeatAll' | 'RepeatOne';
 
+export type SleepTimerMode = 'None' | 'AfterItem' | 'AtTime';
+
+/**
+ * Class SessionUserInfo.
+ *
+ */
 export type SessionUserInfo = {
+    /**
+     * The user identifier.
+     */
     UserId?: string;
+    /**
+     * The name of the user.
+     */
     UserName?: string;
     UserInternalId?: number;
 };
@@ -626,7 +1563,7 @@ export type TranscodingInfo = {
     SubtitlePipelineInfos?: Array<Array<Transcoding_VpStepInfo>>;
 };
 
-export type TranscodeReason = 'ContainerNotSupported' | 'VideoCodecNotSupported' | 'AudioCodecNotSupported' | 'ContainerBitrateExceedsLimit' | 'AudioBitrateNotSupported' | 'AudioChannelsNotSupported' | 'VideoResolutionNotSupported' | 'UnknownVideoStreamInfo' | 'UnknownAudioStreamInfo' | 'AudioProfileNotSupported' | 'AudioSampleRateNotSupported' | 'AnamorphicVideoNotSupported' | 'InterlacedVideoNotSupported' | 'SecondaryAudioNotSupported' | 'RefFramesNotSupported' | 'VideoBitDepthNotSupported' | 'VideoBitrateNotSupported' | 'VideoFramerateNotSupported' | 'VideoLevelNotSupported' | 'VideoProfileNotSupported' | 'AudioBitDepthNotSupported' | 'SubtitleCodecNotSupported' | 'DirectPlayError' | 'VideoRangeNotSupported' | 'SubtitleContentOptionsEnabled';
+export type TranscodeReason = 'ContainerNotSupported' | 'VideoCodecNotSupported' | 'AudioCodecNotSupported' | 'ContainerBitrateExceedsLimit' | 'AudioBitrateNotSupported' | 'AudioChannelsNotSupported' | 'VideoResolutionNotSupported' | 'UnknownVideoStreamInfo' | 'UnknownAudioStreamInfo' | 'AudioProfileNotSupported' | 'AudioSampleRateNotSupported' | 'AnamorphicVideoNotSupported' | 'InterlacedVideoNotSupported' | 'SecondaryAudioNotSupported' | 'RefFramesNotSupported' | 'VideoBitDepthNotSupported' | 'VideoBitrateNotSupported' | 'VideoFramerateNotSupported' | 'VideoLevelNotSupported' | 'VideoProfileNotSupported' | 'AudioBitDepthNotSupported' | 'SubtitleCodecNotSupported' | 'DirectPlayError' | 'VideoRangeNotSupported' | 'SubtitleContentOptionsEnabled' | 'ExternalAudioNotSupported' | 'AudioDelayNotSupported';
 
 export type Tuple_Double_Double = {
     Item1?: number;
@@ -634,17 +1571,44 @@ export type Tuple_Double_Double = {
 };
 
 export type ProcessRun_Metrics_ProcessStatistics = {
+    /**
+     * The current cpu.
+     */
     CurrentCpu?: number;
+    /**
+     * The average cpu.
+     */
     AverageCpu?: number;
+    /**
+     * The currently allocated virtual memory.
+     */
     CurrentVirtualMemory?: number;
+    /**
+     * The currently allocated working set.
+     */
     CurrentWorkingSet?: number;
+    /**
+     * The metrics.
+     */
     Metrics?: Array<ProcessRun_Metrics_ProcessMetricPoint>;
 };
 
 export type ProcessRun_Metrics_ProcessMetricPoint = {
+    /**
+     * The time.
+     */
     Time?: string;
+    /**
+     * The cpu percent.
+     */
     CpuPercent?: number;
+    /**
+     * The virtual memory.
+     */
     VirtualMemory?: number;
+    /**
+     * The working set.
+     */
     WorkingSet?: number;
 };
 
@@ -662,12 +1626,26 @@ export type Transcoding_VpStepInfo = {
     ParamShort?: string;
 };
 
-export type Transcoding_VpStepTypes = 'Decoder' | 'Encoder' | 'Scaling' | 'Deinterlace' | 'SubtitleOverlay' | 'ToneMapping' | 'ColorConversion' | 'SplitCaptions' | 'TextSub2Video' | 'GraphicSub2Video' | 'GraphicSub2Text' | 'BurnInTextSubs' | 'BurnInGraphicSubs' | 'ScaleSubs' | 'TextMod' | 'Censor' | 'ShowSpeaker' | 'StripStyles' | 'ConnectTo';
+/**
+ * Video Processing Step Type enum.
+ *
+ */
+export type Transcoding_VpStepTypes = 'Decoder' | 'Encoder' | 'Scaling' | 'Deinterlace' | 'SubtitleOverlay' | 'ToneMapping' | 'ColorConversion' | 'SplitCaptions' | 'TextSub2Video' | 'GraphicSub2Video' | 'GraphicSub2Text' | 'BurnInTextSubs' | 'BurnInGraphicSubs' | 'ScaleSubs' | 'TextMod' | 'Censor' | 'ShowSpeaker' | 'StripStyles' | 'ConnectTo' | 'Rotate';
 
+/**
+ * Enum ImageType
+ *
+ */
 export type ImageType = 'Primary' | 'Art' | 'Backdrop' | 'Banner' | 'Logo' | 'Thumb' | 'Disc' | 'Box' | 'Screenshot' | 'Menu' | 'Chapter' | 'BoxRear' | 'Thumbnail' | 'LogoLight' | 'LogoLightColor';
 
 export type NameValuePair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The value.
+     */
     Value?: string;
 };
 
@@ -701,7 +1679,13 @@ export type MBBackup_BackupInfo = {
 };
 
 export type Branding_BrandingOptions = {
+    /**
+     * The login disclaimer.
+     */
     LoginDisclaimer?: string;
+    /**
+     * The custom CSS.
+     */
     CustomCss?: string;
 };
 
@@ -724,6 +1708,7 @@ export type Devices_LocalFileInfo = {
     Id?: string;
     Album?: string;
     MimeType?: string;
+    DateCreated?: (string) | null;
 };
 
 export type DisplayPreferences = {
@@ -736,324 +1721,91 @@ export type DisplayPreferences = {
     Client?: string;
 };
 
+/**
+ * Enum SortOrder
+ *
+ */
 export type SortOrder = 'Ascending' | 'Descending';
 
-export type Configuration_ToneMapping_ToneMapOptionsVisibility = {
-    ShowAdvanced?: boolean;
-    IsSoftwareToneMappingAvailable?: boolean;
-    IsAnyHardwareToneMappingAvailable?: boolean;
-    ShowNvidiaOptions?: boolean;
-    ShowQuickSyncOptions?: boolean;
-    ShowVaapiOptions?: boolean;
-    IsOpenClAvailable?: boolean;
-    IsOpenClSuperTAvailable?: boolean;
-    IsVaapiNativeAvailable?: boolean;
-    IsQuickSyncNativeAvailable?: boolean;
-    OperatingSystem?: OperatingSystem;
-};
-
-export type OperatingSystem = 'Windows' | 'Linux' | 'OSX' | 'BSD' | 'Android';
-
-export type EditObjectContainer = {
-    Object?: {
-        [key: string]: unknown;
-    };
-    DefaultObject?: {
-        [key: string]: unknown;
-    };
-    TypeName?: string;
-    EditorRoot?: Editors_EditorRoot;
-};
-
-export type Editors_EditorRoot = {
-    PropertyConditions?: Array<Conditions_PropertyCondition>;
-    PostbackActions?: Array<Actions_PostbackAction>;
-    TitleButton?: Editors_EditorButtonItem;
-    EditorItems?: Array<Editors_EditorBase>;
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type Conditions_PropertyCondition = {
-    AffectedPropertyId?: string;
-    ConditionType?: Conditions_PropertyConditionType;
-    TargetPropertyId?: string;
-    SimpleCondition?: Attributes_SimpleCondition;
-    ValueCondition?: Attributes_ValueCondition;
-    Value?: {
-        [key: string]: unknown;
-    };
-};
-
-export type Conditions_PropertyConditionType = 'Visible' | 'Enabled';
-
-export type Attributes_SimpleCondition = 'IsTrue' | 'IsFalse' | 'IsNull' | 'IsNotNullOrEmpty';
-
-export type Attributes_ValueCondition = 'IsEqual' | 'IsNotEqual' | 'IsGreater' | 'IsGreaterOrEqual' | 'IsLess' | 'IsLessOrEqual';
-
-export type Actions_PostbackAction = {
-    TargetEditorId?: string;
-    PostbackCommandId?: string;
-    CommandParameterPropertyId?: string;
-};
-
-export type Editors_EditorButtonItem = {
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type Common_EditorTypes = 'Group' | 'Text' | 'Numeric' | 'Boolean' | 'SelectSingle' | 'SelectMultiple' | 'Date' | 'FilePath' | 'FolderPath' | 'StatusItem' | 'ProgressItem' | 'ButtonItem' | 'ButtonGroup' | 'CaptionItem' | 'LabelItem' | 'ItemList' | 'RadioGroup' | 'DxDataGrid' | 'DxPivotGrid' | 'SpacerItem';
-
-export type Editors_EditorBase = {
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type MediaEncoding_CodecParameterContext = 'Playback' | 'Conversion';
-
-export type ValidatePath = {
-    ValidateWriteable?: boolean;
-    IsFile?: (boolean) | null;
-    Username?: string;
-    Password?: string;
-};
-
-export type DefaultDirectoryBrowserInfo = {
+export type Dlna_Profiles_DlnaProfile = {
+    Type?: Dlna_Profiles_DeviceProfileType;
     Path?: string;
-};
-
-export type IO_FileSystemEntryInfo = {
-    Name?: string;
-    Path?: string;
-    Type?: IO_FileSystemEntryType;
-};
-
-export type IO_FileSystemEntryType = 'File' | 'Directory' | 'NetworkComputer' | 'NetworkShare';
-
-export type GetDirectoryContents = {
-    Username?: string;
-    Password?: string;
-};
-
-export type UserLibrary_UpdateUserItemAccess = {
-    ItemIds?: Array<(string)>;
-    UserIds?: Array<(string)>;
-    ItemAccess?: UserItemShareLevel;
-};
-
-export type UserItemShareLevel = 'None' | 'Read' | 'Write' | 'Manage' | 'ManageDelete';
-
-export type ItemCounts = {
-    MovieCount?: number;
-    SeriesCount?: number;
-    EpisodeCount?: number;
-    GameCount?: number;
-    ArtistCount?: number;
-    ProgramCount?: number;
-    GameSystemCount?: number;
-    TrailerCount?: number;
-    SongCount?: number;
-    AlbumCount?: number;
-    MusicVideoCount?: number;
-    BoxSetCount?: number;
-    BookCount?: number;
-    ItemCount?: number;
-};
-
-export type Persistence_IntroDebugInfo = {
-    Id?: number;
-    Path?: string;
-    Start?: number;
-    End?: number;
-};
-
-export type Library_LibraryOptionsResult = {
-    MetadataSavers?: Array<Library_LibraryOptionInfo>;
-    MetadataReaders?: Array<Library_LibraryOptionInfo>;
-    SubtitleFetchers?: Array<Library_LibraryOptionInfo>;
-    LyricsFetchers?: Array<Library_LibraryOptionInfo>;
-    TypeOptions?: Array<Library_LibraryTypeOptions>;
-};
-
-export type Library_LibraryOptionInfo = {
-    Name?: string;
-    SetupUrl?: string;
-    DefaultEnabled?: boolean;
-    Features?: Array<MetadataFeatures>;
-};
-
-export type MetadataFeatures = 'Collections' | 'Adult' | 'RequiredSetup';
-
-export type Library_LibraryTypeOptions = {
-    Type?: string;
-    MetadataFetchers?: Array<Library_LibraryOptionInfo>;
-    ImageFetchers?: Array<Library_LibraryOptionInfo>;
-    SupportedImageTypes?: Array<ImageType>;
-    DefaultImageOptions?: Array<ImageOption>;
-};
-
-export type ImageOption = {
-    Type?: ImageType;
-    Limit?: number;
-    MinWidth?: number;
-};
-
-export type Library_MediaFolder = {
-    Name?: string;
-    Id?: string;
-    Guid?: string;
-    SubFolders?: Array<Library_SubFolder>;
-    IsUserAccessConfigurable?: boolean;
-};
-
-export type Library_SubFolder = {
-    Name?: string;
-    Id?: string;
-    Path?: string;
-    IsUserAccessConfigurable?: boolean;
-};
-
-export type Library_AddVirtualFolder = {
-    Name?: string;
-    CollectionType?: string;
-    RefreshLibrary?: boolean;
-    Paths?: Array<(string)>;
-    LibraryOptions?: LibraryOptions;
-};
-
-export type LibraryOptions = {
-    EnableArchiveMediaFiles?: boolean;
-    EnablePhotos?: boolean;
-    EnableRealtimeMonitor?: boolean;
-    EnableMarkerDetection?: boolean;
-    EnableMarkerDetectionDuringLibraryScan?: boolean;
-    IntroDetectionFingerprintLength?: number;
-    EnableChapterImageExtraction?: boolean;
-    ExtractChapterImagesDuringLibraryScan?: boolean;
-    DownloadImagesInAdvance?: boolean;
-    CacheImages?: boolean;
-    PathInfos?: Array<MediaPathInfo>;
-    IgnoreHiddenFiles?: boolean;
-    IgnoreFileExtensions?: Array<(string)>;
-    SaveLocalMetadata?: boolean;
-    SaveMetadataHidden?: boolean;
-    SaveLocalThumbnailSets?: boolean;
-    ImportPlaylists?: boolean;
-    EnableAutomaticSeriesGrouping?: boolean;
-    ShareEmbeddedMusicAlbumImages?: boolean;
-    EnableEmbeddedTitles?: boolean;
-    EnableAudioResume?: boolean;
-    AutoGenerateChapters?: boolean;
-    AutomaticRefreshIntervalDays?: number;
-    PlaceholderMetadataRefreshIntervalDays?: number;
-    PreferredMetadataLanguage?: string;
-    PreferredImageLanguage?: string;
-    ContentType?: string;
-    MetadataCountryCode?: string;
-    MetadataSavers?: Array<(string)>;
-    DisabledLocalMetadataReaders?: Array<(string)>;
-    LocalMetadataReaderOrder?: Array<(string)>;
-    DisabledLyricsFetchers?: Array<(string)>;
-    SaveLyricsWithMedia?: boolean;
-    LyricsDownloadMaxAgeDays?: number;
-    LyricsFetcherOrder?: Array<(string)>;
-    LyricsDownloadLanguages?: Array<(string)>;
-    DisabledSubtitleFetchers?: Array<(string)>;
-    SubtitleFetcherOrder?: Array<(string)>;
-    SkipSubtitlesIfEmbeddedSubtitlesPresent?: boolean;
-    SkipSubtitlesIfAudioTrackMatches?: boolean;
-    SubtitleDownloadLanguages?: Array<(string)>;
-    SubtitleDownloadMaxAgeDays?: number;
-    RequirePerfectSubtitleMatch?: boolean;
-    SaveSubtitlesWithMedia?: boolean;
-    ForcedSubtitlesOnly?: boolean;
-    HearingImpairedSubtitlesOnly?: boolean;
-    TypeOptions?: Array<TypeOptions>;
-    CollapseSingleItemFolders?: boolean;
-    EnableAdultMetadata?: boolean;
-    ImportCollections?: boolean;
-    MinCollectionItems?: number;
-    MusicFolderStructure?: string;
-    MinResumePct?: number;
-    MaxResumePct?: number;
-    MinResumeDurationSeconds?: number;
-    ThumbnailImagesIntervalSeconds?: number;
-    SampleIgnoreSize?: number;
-};
-
-export type MediaPathInfo = {
-    Path?: string;
-    NetworkPath?: string;
-    Username?: string;
-    Password?: string;
-};
-
-export type TypeOptions = {
-    Type?: string;
-    MetadataFetchers?: Array<(string)>;
-    MetadataFetcherOrder?: Array<(string)>;
-    ImageFetchers?: Array<(string)>;
-    ImageFetcherOrder?: Array<(string)>;
-    ImageOptions?: Array<ImageOption>;
-};
-
-export type LiveStreamRequest = {
-    OpenToken?: string;
     UserId?: string;
-    PlaySessionId?: string;
-    MaxStreamingBitrate?: (number) | null;
-    StartTimeTicks?: (number) | null;
-    AudioStreamIndex?: (number) | null;
-    SubtitleStreamIndex?: (number) | null;
-    MaxAudioChannels?: (number) | null;
-    ItemId?: number;
-    DeviceProfile?: DeviceProfile;
-    EnableDirectPlay?: boolean;
-    EnableDirectStream?: boolean;
-    EnableTranscoding?: boolean;
-    AllowVideoStreamCopy?: boolean;
-    AllowInterlacedVideoStreamCopy?: boolean;
-    AllowAudioStreamCopy?: boolean;
-    DirectPlayProtocols?: Array<MediaProtocol>;
-};
-
-export type DeviceProfile = {
+    AlbumArtPn?: string;
+    MaxAlbumArtWidth?: number;
+    MaxAlbumArtHeight?: number;
+    MaxIconWidth?: (number) | null;
+    MaxIconHeight?: (number) | null;
+    FriendlyName?: string;
+    Manufacturer?: string;
+    ManufacturerUrl?: string;
+    ModelName?: string;
+    ModelDescription?: string;
+    ModelNumber?: string;
+    ModelUrl?: string;
+    SerialNumber?: string;
+    EnableAlbumArtInDidl?: boolean;
+    EnableSingleAlbumArtLimit?: boolean;
+    EnableSingleSubtitleLimit?: boolean;
+    ProtocolInfo?: string;
+    TimelineOffsetSeconds?: number;
+    RequiresPlainVideoItems?: boolean;
+    RequiresPlainFolders?: boolean;
+    IgnoreTranscodeByteRangeRequests?: boolean;
+    SupportsSamsungBookmark?: boolean;
+    Identification?: Dlna_Profiles_DeviceIdentification;
+    ProtocolInfoDetection?: Dlna_Profiles_ProtocolInfoDetection;
+    /**
+     * The name.
+     */
     Name?: string;
     Id?: string;
     SupportedMediaTypes?: string;
     MaxStreamingBitrate?: (number) | null;
     MusicStreamingTranscodingBitrate?: (number) | null;
     MaxStaticMusicBitrate?: (number) | null;
+    DeclaredFeatures?: Array<(string)>;
+    /**
+     * The direct play profiles.
+     */
     DirectPlayProfiles?: Array<DirectPlayProfile>;
+    /**
+     * The transcoding profiles.
+     */
     TranscodingProfiles?: Array<TranscodingProfile>;
     ContainerProfiles?: Array<ContainerProfile>;
     CodecProfiles?: Array<CodecProfile>;
     ResponseProfiles?: Array<ResponseProfile>;
     SubtitleProfiles?: Array<SubtitleProfile>;
+};
+
+export type Dlna_Profiles_DeviceProfileType = 'System' | 'User';
+
+export type Dlna_Profiles_DeviceIdentification = {
+    FriendlyName?: string;
+    ModelNumber?: string;
+    SerialNumber?: string;
+    ModelName?: string;
+    ModelDescription?: string;
+    DeviceDescription?: string;
+    ModelUrl?: string;
+    Manufacturer?: string;
+    ManufacturerUrl?: string;
+    Headers?: Array<Dlna_Profiles_HttpHeaderInfo>;
+};
+
+export type Dlna_Profiles_HttpHeaderInfo = {
+    Name?: string;
+    Value?: string;
+    Match?: Dlna_Profiles_HeaderMatchType;
+};
+
+export type Dlna_Profiles_HeaderMatchType = 'Equals' | 'Regex' | 'Substring';
+
+export type Dlna_Profiles_ProtocolInfoDetection = {
+    EnabledForVideo?: boolean;
+    EnabledForAudio?: boolean;
+    EnabledForPhotos?: boolean;
 };
 
 export type DirectPlayProfile = {
@@ -1107,7 +1859,7 @@ export type ProfileCondition = {
 
 export type ProfileConditionType = 'Equals' | 'NotEquals' | 'LessThanEqual' | 'GreaterThanEqual' | 'EqualsAny';
 
-export type ProfileConditionValue = 'AudioChannels' | 'AudioBitrate' | 'AudioProfile' | 'Width' | 'Height' | 'Has64BitOffsets' | 'PacketLength' | 'VideoBitDepth' | 'VideoBitrate' | 'VideoFramerate' | 'VideoLevel' | 'VideoProfile' | 'VideoTimestamp' | 'IsAnamorphic' | 'RefFrames' | 'NumAudioStreams' | 'NumVideoStreams' | 'IsSecondaryAudio' | 'VideoCodecTag' | 'IsAvc' | 'IsInterlaced' | 'AudioSampleRate' | 'AudioBitDepth' | 'VideoRange' | 'VideoRotation';
+export type ProfileConditionValue = 'AudioChannels' | 'AudioBitrate' | 'AudioProfile' | 'Width' | 'Height' | 'Has64BitOffsets' | 'PacketLength' | 'VideoBitDepth' | 'VideoBitrate' | 'VideoFramerate' | 'VideoLevel' | 'VideoProfile' | 'VideoTimestamp' | 'IsAnamorphic' | 'RefFrames' | 'NumAudioStreams' | 'NumVideoStreams' | 'IsSecondaryAudio' | 'VideoCodecTag' | 'IsAvc' | 'IsInterlaced' | 'AudioSampleRate' | 'AudioBitDepth' | 'VideoRange' | 'VideoRotation' | 'IsExternalAudio';
 
 export type CodecProfile = {
     Type?: CodecType;
@@ -1138,6 +1890,427 @@ export type SubtitleProfile = {
     Protocol?: string;
 };
 
+export type Configuration_ToneMapping_ToneMapOptionsVisibility = {
+    ShowAdvanced?: boolean;
+    IsSoftwareToneMappingAvailable?: boolean;
+    IsAnyHardwareToneMappingAvailable?: boolean;
+    ShowNvidiaOptions?: boolean;
+    ShowQuickSyncOptions?: boolean;
+    ShowVaapiOptions?: boolean;
+    IsOpenClAvailable?: boolean;
+    IsOpenClSuperTAvailable?: boolean;
+    IsVaapiNativeAvailable?: boolean;
+    IsQuickSyncNativeAvailable?: boolean;
+    OperatingSystem?: OperatingSystem;
+};
+
+export type OperatingSystem = 'Windows' | 'Linux' | 'OSX' | 'BSD' | 'Android';
+
+export type EditObjectContainer = {
+    Object?: {
+        [key: string]: unknown;
+    };
+    DefaultObject?: {
+        [key: string]: unknown;
+    };
+    TypeName?: string;
+    EditorRoot?: Editors_EditorRoot;
+};
+
+export type Editors_EditorRoot = {
+    PropertyConditions?: Array<Conditions_PropertyCondition>;
+    PostbackActions?: Array<Actions_PostbackAction>;
+    TitleButton?: Editors_EditorButtonItem;
+    EditorItems?: Array<Editors_EditorBase>;
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type Conditions_PropertyCondition = {
+    AffectedPropertyId?: string;
+    ConditionType?: Conditions_PropertyConditionType;
+    /**
+     * The target property name or path.
+     */
+    TargetPropertyId?: string;
+    SimpleCondition?: Attributes_SimpleCondition;
+    ValueCondition?: Attributes_ValueCondition;
+    /**
+     * The value.
+     */
+    Value?: {
+        [key: string]: unknown;
+    };
+};
+
+export type Conditions_PropertyConditionType = 'Visible' | 'Enabled';
+
+/**
+ * Conditions on the source value.
+ *
+ */
+export type Attributes_SimpleCondition = 'IsTrue' | 'IsFalse' | 'IsNull' | 'IsNotNullOrEmpty';
+
+/**
+ * Conditions for comparing with a target value.
+ *
+ */
+export type Attributes_ValueCondition = 'IsEqual' | 'IsNotEqual' | 'IsGreater' | 'IsGreaterOrEqual' | 'IsLess' | 'IsLessOrEqual';
+
+export type Actions_PostbackAction = {
+    TargetEditorId?: string;
+    PostbackCommandId?: string;
+    CommandParameterPropertyId?: string;
+};
+
+export type Editors_EditorButtonItem = {
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type Common_EditorTypes = 'Group' | 'Text' | 'Numeric' | 'Boolean' | 'SelectSingle' | 'SelectMultiple' | 'Date' | 'FilePath' | 'FolderPath' | 'StatusItem' | 'ProgressItem' | 'ButtonItem' | 'ButtonGroup' | 'CaptionItem' | 'LabelItem' | 'ItemList' | 'RadioGroup' | 'DxDataGrid' | 'DxPivotGrid' | 'SpacerItem';
+
+export type Editors_EditorBase = {
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type MediaEncoding_CodecParameterContext = 'Playback' | 'Conversion';
+
+export type ValidatePath = {
+    ValidateWriteable?: boolean;
+    IsFile?: (boolean) | null;
+    Username?: string;
+    Password?: string;
+};
+
+export type DefaultDirectoryBrowserInfo = {
+    Path?: string;
+};
+
+/**
+ * Class FileSystemEntryInfo
+ *
+ */
+export type IO_FileSystemEntryInfo = {
+    /**
+     * The name.
+     */
+    Name?: string;
+    /**
+     * The path.
+     */
+    Path?: string;
+    Type?: IO_FileSystemEntryType;
+};
+
+/**
+ * Enum FileSystemEntryType
+ *
+ */
+export type IO_FileSystemEntryType = 'File' | 'Directory' | 'NetworkComputer' | 'NetworkShare';
+
+export type GetDirectoryContents = {
+    Username?: string;
+    Password?: string;
+};
+
+export type UserLibrary_UpdateUserItemAccess = {
+    ItemIds?: Array<(string)>;
+    UserIds?: Array<(string)>;
+    ItemAccess?: UserItemShareLevel;
+};
+
+export type UserItemShareLevel = 'None' | 'Read' | 'Write' | 'Manage' | 'ManageDelete';
+
+/**
+ * Class LibrarySummary
+ *
+ */
+export type ItemCounts = {
+    /**
+     * The movie count.
+     */
+    MovieCount?: number;
+    /**
+     * The series count.
+     */
+    SeriesCount?: number;
+    /**
+     * The episode count.
+     */
+    EpisodeCount?: number;
+    /**
+     * The game count.
+     */
+    GameCount?: number;
+    ArtistCount?: number;
+    ProgramCount?: number;
+    /**
+     * The game system count.
+     */
+    GameSystemCount?: number;
+    /**
+     * The trailer count.
+     */
+    TrailerCount?: number;
+    /**
+     * The song count.
+     */
+    SongCount?: number;
+    /**
+     * The album count.
+     */
+    AlbumCount?: number;
+    /**
+     * The music video count.
+     */
+    MusicVideoCount?: number;
+    /**
+     * The box set count.
+     */
+    BoxSetCount?: number;
+    /**
+     * The book count.
+     */
+    BookCount?: number;
+    ItemCount?: number;
+};
+
+export type Persistence_IntroDebugInfo = {
+    Id?: number;
+    Path?: string;
+    Start?: number;
+    End?: number;
+};
+
+export type LibraryOptionsResult = {
+    MetadataSavers?: Array<LibraryOptionInfo>;
+    MetadataReaders?: Array<LibraryOptionInfo>;
+    SubtitleFetchers?: Array<LibraryOptionInfo>;
+    LyricsFetchers?: Array<LibraryOptionInfo>;
+    TypeOptions?: Array<LibraryTypeOptions>;
+    DefaultLibraryOptions?: LibraryOptions;
+};
+
+export type LibraryOptionInfo = {
+    Name?: string;
+    SetupUrl?: string;
+    DefaultEnabled?: boolean;
+    Features?: Array<MetadataFeatures>;
+};
+
+export type MetadataFeatures = 'Collections' | 'Adult' | 'RequiredSetup';
+
+export type LibraryTypeOptions = {
+    Type?: string;
+    MetadataFetchers?: Array<LibraryOptionInfo>;
+    ImageFetchers?: Array<LibraryOptionInfo>;
+    SupportedImageTypes?: Array<ImageType>;
+    DefaultImageOptions?: Array<ImageOption>;
+};
+
+export type ImageOption = {
+    Type?: ImageType;
+    /**
+     * The limit.
+     */
+    Limit?: number;
+    /**
+     * The minimum width.
+     */
+    MinWidth?: number;
+};
+
+export type LibraryOptions = {
+    EnableArchiveMediaFiles?: boolean;
+    EnablePhotos?: boolean;
+    EnableRealtimeMonitor?: boolean;
+    EnableMarkerDetection?: boolean;
+    EnableMarkerDetectionDuringLibraryScan?: boolean;
+    IntroDetectionFingerprintLength?: number;
+    EnableChapterImageExtraction?: boolean;
+    ExtractChapterImagesDuringLibraryScan?: boolean;
+    DownloadImagesInAdvance?: boolean;
+    CacheImages?: boolean;
+    ExcludeFromSearch?: boolean;
+    EnablePlexIgnore?: boolean;
+    PathInfos?: Array<MediaPathInfo>;
+    IgnoreHiddenFiles?: boolean;
+    IgnoreFileExtensions?: Array<(string)>;
+    SaveLocalMetadata?: boolean;
+    SaveMetadataHidden?: boolean;
+    SaveLocalThumbnailSets?: boolean;
+    ImportPlaylists?: boolean;
+    EnableAutomaticSeriesGrouping?: boolean;
+    ShareEmbeddedMusicAlbumImages?: boolean;
+    EnableEmbeddedTitles?: boolean;
+    EnableAudioResume?: boolean;
+    AutoGenerateChapters?: boolean;
+    MergeTopLevelFolders?: boolean;
+    AutoGenerateChapterIntervalMinutes?: number;
+    AutomaticRefreshIntervalDays?: number;
+    PlaceholderMetadataRefreshIntervalDays?: number;
+    /**
+     * The preferred metadata language.
+     */
+    PreferredMetadataLanguage?: string;
+    PreferredImageLanguage?: string;
+    ContentType?: string;
+    /**
+     * The metadata country code.
+     */
+    MetadataCountryCode?: string;
+    MetadataSavers?: Array<(string)>;
+    DisabledLocalMetadataReaders?: Array<(string)>;
+    LocalMetadataReaderOrder?: Array<(string)>;
+    DisabledLyricsFetchers?: Array<(string)>;
+    SaveLyricsWithMedia?: boolean;
+    LyricsDownloadMaxAgeDays?: number;
+    LyricsFetcherOrder?: Array<(string)>;
+    LyricsDownloadLanguages?: Array<(string)>;
+    DisabledSubtitleFetchers?: Array<(string)>;
+    SubtitleFetcherOrder?: Array<(string)>;
+    SkipSubtitlesIfEmbeddedSubtitlesPresent?: boolean;
+    SkipSubtitlesIfAudioTrackMatches?: boolean;
+    SubtitleDownloadLanguages?: Array<(string)>;
+    SubtitleDownloadMaxAgeDays?: number;
+    RequirePerfectSubtitleMatch?: boolean;
+    SaveSubtitlesWithMedia?: boolean;
+    ForcedSubtitlesOnly?: boolean;
+    HearingImpairedSubtitlesOnly?: boolean;
+    TypeOptions?: Array<TypeOptions>;
+    CollapseSingleItemFolders?: boolean;
+    EnableAdultMetadata?: boolean;
+    ImportCollections?: boolean;
+    EnableMultiVersionByFiles?: boolean;
+    EnableMultiVersionByMetadata?: boolean;
+    EnableMultiPartItems?: boolean;
+    MinCollectionItems?: number;
+    MusicFolderStructure?: string;
+    /**
+     * The minimum percentage of an item that must be played in order for playstate to be updated.
+     */
+    MinResumePct?: number;
+    /**
+     * The maximum percentage of an item that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
+     */
+    MaxResumePct?: number;
+    /**
+     * The minimum duration that an item must have in order to be eligible for playstate updates..
+     */
+    MinResumeDurationSeconds?: number;
+    ThumbnailImagesIntervalSeconds?: number;
+    SampleIgnoreSize?: number;
+};
+
+export type MediaPathInfo = {
+    Path?: string;
+    NetworkPath?: string;
+    Username?: string;
+    Password?: string;
+};
+
+export type TypeOptions = {
+    Type?: string;
+    MetadataFetchers?: Array<(string)>;
+    MetadataFetcherOrder?: Array<(string)>;
+    ImageFetchers?: Array<(string)>;
+    ImageFetcherOrder?: Array<(string)>;
+    ImageOptions?: Array<ImageOption>;
+};
+
+export type Library_MediaFolder = {
+    Name?: string;
+    Id?: string;
+    Guid?: string;
+    SubFolders?: Array<Library_SubFolder>;
+    IsUserAccessConfigurable?: boolean;
+};
+
+export type Library_SubFolder = {
+    Name?: string;
+    Id?: string;
+    Path?: string;
+    IsUserAccessConfigurable?: boolean;
+};
+
+export type Library_AddVirtualFolder = {
+    Name?: string;
+    CollectionType?: string;
+    RefreshLibrary?: boolean;
+    Paths?: Array<(string)>;
+    LibraryOptions?: LibraryOptions;
+};
+
+export type LiveStreamRequest = {
+    OpenToken?: string;
+    UserId?: string;
+    PlaySessionId?: string;
+    MaxStreamingBitrate?: (number) | null;
+    StartTimeTicks?: (number) | null;
+    AudioStreamIndex?: (number) | null;
+    SubtitleStreamIndex?: (number) | null;
+    MaxAudioChannels?: (number) | null;
+    ItemId?: number;
+    DeviceProfile?: DeviceProfile;
+    EnableDirectPlay?: boolean;
+    EnableDirectStream?: boolean;
+    EnableTranscoding?: boolean;
+    AllowVideoStreamCopy?: boolean;
+    AllowInterlacedVideoStreamCopy?: boolean;
+    AllowAudioStreamCopy?: boolean;
+};
+
+export type DeviceProfile = {
+    /**
+     * The name.
+     */
+    Name?: string;
+    Id?: string;
+    SupportedMediaTypes?: string;
+    MaxStreamingBitrate?: (number) | null;
+    MusicStreamingTranscodingBitrate?: (number) | null;
+    MaxStaticMusicBitrate?: (number) | null;
+    DeclaredFeatures?: Array<(string)>;
+    /**
+     * The direct play profiles.
+     */
+    DirectPlayProfiles?: Array<DirectPlayProfile>;
+    /**
+     * The transcoding profiles.
+     */
+    TranscodingProfiles?: Array<TranscodingProfile>;
+    ContainerProfiles?: Array<ContainerProfile>;
+    CodecProfiles?: Array<CodecProfile>;
+    ResponseProfiles?: Array<ResponseProfile>;
+    SubtitleProfiles?: Array<SubtitleProfile>;
+};
+
 export type LiveStreamResponse = {
     MediaSource?: MediaSourceInfo;
 };
@@ -1165,6 +2338,7 @@ export type LiveTv_ListingsProviderInfo = {
     KidsCategories?: Array<(string)>;
     MovieCategories?: Array<(string)>;
     ChannelMappings?: Array<NameValuePair>;
+    TvgShiftTicks?: number;
     MoviePrefix?: string;
     PreferredLanguage?: string;
     UserAgent?: string;
@@ -1193,10 +2367,20 @@ export type LiveTv_TunerHostInfo = {
 };
 
 export type LiveTv_LiveTvInfo = {
+    /**
+     * A value indicating whether this instance is enabled.
+     */
     IsEnabled?: boolean;
+    /**
+     * The enabled users.
+     */
     EnabledUsers?: Array<(string)>;
 };
 
+/**
+ * Enum ChannelType
+ *
+ */
 export type LiveTv_ChannelType = 'TV' | 'Radio';
 
 export type QueryResult_Api_EpgRow = {
@@ -1210,8 +2394,14 @@ export type Api_EpgRow = {
 };
 
 export type Api_BaseItemsRequest = {
+    IsSpecialEpisode?: (boolean) | null;
     Is4K?: (boolean) | null;
+    MinDateCreated?: (string) | null;
+    MaxDateCreated?: (string) | null;
     EnableTotalRecordCount?: boolean;
+    MatchAnyWord?: boolean;
+    IsDuplicate?: (boolean) | null;
+    Name?: string;
     RecordingKeyword?: string;
     RecordingKeywordType?: LiveTv_KeywordType;
     RandomSeed?: number;
@@ -1219,8 +2409,10 @@ export type Api_BaseItemsRequest = {
     CollectionIds?: string;
     TagIds?: string;
     ExcludeTagIds?: string;
+    ItemPersonTypes?: Array<PersonType>;
     ExcludeArtistIds?: string;
     AlbumArtistIds?: string;
+    ComposerArtistIds?: string;
     ContributingArtistIds?: string;
     AlbumIds?: string;
     OuterIds?: string;
@@ -1229,6 +2421,7 @@ export type Api_BaseItemsRequest = {
     SubtitleLanguages?: string;
     CanEditItems?: (boolean) | null;
     GroupItemsInto?: Library_ItemLinkType;
+    IsStandaloneSpecial?: (boolean) | null;
     MinWidth?: (number) | null;
     MinHeight?: (number) | null;
     MaxWidth?: (number) | null;
@@ -1237,11 +2430,13 @@ export type Api_BaseItemsRequest = {
     AirDays?: Array<DayOfWeek>;
     IsAiring?: (boolean) | null;
     HasAired?: (boolean) | null;
+    CollectionTypes?: string;
+    ExcludeSources?: Array<(string)>;
 };
 
 export type LiveTv_KeywordType = 'Name' | 'EpisodeTitle' | 'Overview' | 'Actor' | 'Director';
 
-export type Library_ItemLinkType = 'Artists' | 'AlbumArtists' | 'Genres' | 'Studios' | 'Tags' | 'Composers' | 'Collections' | 'Albums' | 'CollectionFolders';
+export type Library_ItemLinkType = 'Artists' | 'AlbumArtists' | 'Genres' | 'Studios' | 'Tags' | 'Composers' | 'Collections' | 'Albums' | 'CollectionFolders' | 'LiveTVSeries' | 'GameSystems';
 
 export type LiveTv_RecordingStatus = 'New' | 'InProgress' | 'Completed' | 'Cancelled' | 'ConflictedOk' | 'ConflictedNotOk' | 'Error';
 
@@ -1252,29 +2447,83 @@ export type QueryResult_LiveTv_TimerInfoDto = {
 
 export type LiveTv_TimerInfoDto = {
     Status?: LiveTv_RecordingStatus;
+    /**
+     * The series timer identifier.
+     */
     SeriesTimerId?: string;
+    /**
+     * The run time ticks.
+     */
     RunTimeTicks?: (number) | null;
     ProgramInfo?: BaseItemDto;
     TimerType?: LiveTv_TimerType;
+    /**
+     * Id of the recording.
+     */
     Id?: string;
     Type?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
+    /**
+     * ChannelName of the recording.
+     */
     ChannelName?: string;
     ChannelNumber?: string;
     ChannelPrimaryImageTag?: string;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
     ParentFolderId?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
     KeepUntil?: LiveTv_KeepUntil;
 };
@@ -1286,45 +2535,124 @@ export type QueryResult_LiveTv_SeriesTimerInfoDto = {
     TotalRecordCount?: number;
 };
 
+/**
+ * Class SeriesTimerInfoDto.
+ *
+ */
 export type LiveTv_SeriesTimerInfoDto = {
+    /**
+     * A value indicating whether \[record any time\].
+     */
     RecordAnyTime?: boolean;
     SkipEpisodesInLibrary?: boolean;
     MatchExistingItemsWithAnyLibrary?: boolean;
+    /**
+     * A value indicating whether \[record any channel\].
+     */
     RecordAnyChannel?: boolean;
     KeepUpTo?: number;
     MaxRecordingSeconds?: number;
+    /**
+     * A value indicating whether \[record new only\].
+     */
     RecordNewOnly?: boolean;
     ChannelIds?: Array<(string)>;
+    /**
+     * The days.
+     */
     Days?: Array<DayOfWeek>;
+    /**
+     * The image tags.
+     */
     ImageTags?: {
         [key: string]: (string);
     };
+    /**
+     * The parent thumb item id.
+     */
     ParentThumbItemId?: string;
+    /**
+     * The parent thumb image tag.
+     */
     ParentThumbImageTag?: string;
+    /**
+     * The parent primary image item identifier.
+     */
     ParentPrimaryImageItemId?: string;
+    /**
+     * The parent primary image tag.
+     */
     ParentPrimaryImageTag?: string;
     SeriesId?: string;
     Keywords?: Array<LiveTv_KeywordInfo>;
     TimerType?: LiveTv_TimerType;
+    /**
+     * Id of the recording.
+     */
     Id?: string;
     Type?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
+    /**
+     * ChannelName of the recording.
+     */
     ChannelName?: string;
     ChannelNumber?: string;
     ChannelPrimaryImageTag?: string;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
     ParentFolderId?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
     KeepUntil?: LiveTv_KeepUntil;
 };
@@ -1335,28 +2663,76 @@ export type LiveTv_KeywordInfo = {
 };
 
 export type LiveTv_SeriesTimerInfo = {
+    /**
+     * Id of the recording.
+     */
     Id?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
     ChannelIds?: Array<(string)>;
     ParentFolderId?: number;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
     ServiceName?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * A value indicating whether \[record any time\].
+     */
     RecordAnyTime?: boolean;
     KeepUpTo?: number;
     KeepUntil?: LiveTv_KeepUntil;
     SkipEpisodesInLibrary?: boolean;
     MatchExistingItemsWithAnyLibrary?: boolean;
+    /**
+     * A value indicating whether \[record new only\].
+     */
     RecordNewOnly?: boolean;
+    /**
+     * The days.
+     */
     Days?: Array<DayOfWeek>;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
+    /**
+     * The series identifier.
+     */
     SeriesId?: string;
     ProviderIds?: ProviderIdDictionary;
     MaxRecordingSeconds?: number;
@@ -1365,7 +2741,13 @@ export type LiveTv_SeriesTimerInfo = {
 };
 
 export type LiveTv_GuideInfo = {
+    /**
+     * The start date.
+     */
     StartDate?: string;
+    /**
+     * The end date.
+     */
     EndDate?: string;
 };
 
@@ -1377,12 +2759,28 @@ export type Api_AvailableRecordingOptions = {
 
 export type Api_NameIdDescriptionPair = {
     ShortOverview?: string;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
+/**
+ * Class ParentalRating
+ *
+ */
 export type ParentalRating = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The value.
+     */
     Value?: number;
 };
 
@@ -1391,18 +2789,53 @@ export type Globalization_LocalizatonOption = {
     Value?: string;
 };
 
+/**
+ * Class CountryInfo
+ *
+ */
 export type Globalization_CountryInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The display name.
+     */
     DisplayName?: string;
+    /**
+     * The English name.
+     */
     EnglishName?: string;
+    /**
+     * The name of the two letter ISO region.
+     */
     TwoLetterISORegionName?: string;
+    /**
+     * The name of the three letter ISO region.
+     */
     ThreeLetterISORegionName?: string;
 };
 
+/**
+ * Class CultureDto
+ *
+ */
 export type Globalization_CultureDto = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The display name.
+     */
     DisplayName?: string;
+    /**
+     * The name of the two letter ISO language.
+     */
     TwoLetterISOLanguageName?: string;
+    /**
+     * The name of the three letter ISO language.
+     */
     ThreeLetterISOLanguageName?: string;
     ThreeLetterISOLanguageNames?: Array<(string)>;
     TwoLetterISOLanguageNames?: Array<(string)>;
@@ -1430,35 +2863,81 @@ export type NotificationTypeInfo = {
     CategoryId?: string;
 };
 
+export type Api_AddAdminNotification = {
+    DisplayDateTime?: boolean;
+};
+
+/**
+ * Class PlaybackStartInfo.
+ *
+ */
 export type PlaybackStartInfo = {
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
-    Item?: BaseItemDto;
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
-    ItemId?: string;
+    /**
+     * The session id.
+     */
     SessionId?: string;
-    MediaSourceId?: string;
+    /**
+     * The index of the audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
-    PositionTicks?: (number) | null;
     RunTimeTicks?: (number) | null;
     PlaybackStartTimeTicks?: (number) | null;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
     Brightness?: (number) | null;
     AspectRatio?: string;
     EventName?: ProgressEvent;
     PlayMethod?: PlayMethod;
-    LiveStreamId?: string;
-    PlaySessionId?: string;
     RepeatMode?: RepeatMode;
+    SleepTimerMode?: SleepTimerMode;
+    SleepTimerEndTime?: (string) | null;
     Shuffle?: boolean;
     SubtitleOffset?: number;
     PlaybackRate?: number;
     PlaylistItemIds?: Array<(string)>;
+    /**
+     * The play session identifier.
+     */
+    PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
+    ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
+    LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
+    MediaSourceId?: string;
+    Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
+    PositionTicks?: (number) | null;
 };
 
 export type QueueItem = {
@@ -1466,10 +2945,16 @@ export type QueueItem = {
     PlaylistItemId?: string;
 };
 
-export type ProgressEvent = 'TimeUpdate' | 'Pause' | 'Unpause' | 'VolumeChange' | 'RepeatModeChange' | 'AudioTrackChange' | 'SubtitleTrackChange' | 'PlaylistItemMove' | 'PlaylistItemRemove' | 'PlaylistItemAdd' | 'QualityChange' | 'StateChange' | 'SubtitleOffsetChange' | 'PlaybackRateChange' | 'ShuffleChange';
+export type ProgressEvent = 'TimeUpdate' | 'Pause' | 'Unpause' | 'VolumeChange' | 'RepeatModeChange' | 'AudioTrackChange' | 'SubtitleTrackChange' | 'PlaylistItemMove' | 'PlaylistItemRemove' | 'PlaylistItemAdd' | 'QualityChange' | 'StateChange' | 'SubtitleOffsetChange' | 'PlaybackRateChange' | 'ShuffleChange' | 'SleepTimerChange';
 
 export type SyncTarget = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
@@ -1479,29 +2964,80 @@ export type QueryResult_SyncJob = {
 };
 
 export type SyncJob = {
+    /**
+     * The identifier.
+     */
     Id?: number;
+    /**
+     * The device identifier.
+     */
     TargetId?: string;
     InternalTargetId?: number;
+    /**
+     * The name of the target.
+     */
     TargetName?: string;
+    /**
+     * The quality.
+     */
     Quality?: string;
+    /**
+     * The bitrate.
+     */
     Bitrate?: (number) | null;
     Container?: string;
     VideoCodec?: string;
     AudioCodec?: string;
+    /**
+     * The profile.
+     */
     Profile?: string;
     Category?: SyncCategory;
+    /**
+     * The parent identifier.
+     */
     ParentId?: number;
+    /**
+     * The current progress.
+     */
     Progress?: number;
+    /**
+     * The name.
+     */
     Name?: string;
     Status?: SyncJobStatus;
+    /**
+     * The user identifier.
+     */
     UserId?: number;
+    /**
+     * A value indicating whether \[unwatched only\].
+     */
     UnwatchedOnly?: boolean;
+    /**
+     * A value indicating whether \[synchronize new content\].
+     */
     SyncNewContent?: boolean;
+    /**
+     * The item limit.
+     */
     ItemLimit?: (number) | null;
+    /**
+     * The requested item ids.
+     */
     RequestedItemIds?: Array<(number)>;
     ItemId?: number;
+    /**
+     * The date created.
+     */
     DateCreated?: string;
+    /**
+     * The date last modified.
+     */
     DateLastModified?: string;
+    /**
+     * The item count.
+     */
     ItemCount?: number;
     ParentName?: string;
     PrimaryImageItemId?: string;
@@ -1618,27 +3154,80 @@ export type SyncDataResponse = {
     ItemIdsToRemove?: Array<(string)>;
 };
 
+/**
+ * Represents the server configuration.
+ *
+ */
 export type ServerConfiguration = {
+    /**
+     * A value indicating whether \[enable u pn p\].
+     */
     EnableUPnP?: boolean;
+    /**
+     * The public mapped port.
+     */
     PublicPort?: number;
+    /**
+     * The public HTTPS port.
+     */
     PublicHttpsPort?: number;
+    /**
+     * The HTTP server port number.
+     */
     HttpServerPortNumber?: number;
+    /**
+     * The HTTPS server port number.
+     */
     HttpsPortNumber?: number;
+    /**
+     * A value indicating whether \[use HTTPS\].
+     */
     EnableHttps?: boolean;
+    /**
+     * The value pointing to the file system where the ssl certiifcate is located..
+     */
     CertificatePath?: string;
     CertificatePassword?: string;
+    /**
+     * A value indicating whether this instance is port authorized.
+     */
     IsPortAuthorized?: boolean;
     AutoRunWebApp?: boolean;
     EnableRemoteAccess?: boolean;
     LogAllQueryTimes?: boolean;
+    DisableOutgoingIPv6?: boolean;
+    /**
+     * A value indicating whether \[enable case sensitive item ids\].
+     */
     EnableCaseSensitiveItemIds?: boolean;
+    /**
+     * The metadata path.
+     */
     MetadataPath?: string;
     MetadataNetworkPath?: string;
+    /**
+     * The preferred metadata language.
+     */
     PreferredMetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
+    /**
+     * Words to be removed from strings to create a sort name
+     */
     SortRemoveWords?: Array<(string)>;
+    /**
+     * The delay in seconds that we will wait after a file system change to try and discover what has been added\/removed Some delay is necessary with some items because their creation is not atomic.  It involves the creation of several different directories and files.
+     */
     LibraryMonitorDelaySeconds?: number;
+    /**
+     * A value indicating whether \[enable dashboard response caching\]. Allows potential contributors without visual studio to modify production dashboard code and test changes.
+     */
     EnableDashboardResponseCaching?: boolean;
+    /**
+     * Allows the dashboard to be served from a custom path.
+     */
     DashboardSourcePath?: string;
     ImageSavingConvention?: ImageSavingConvention;
     EnableAutomaticRestart?: boolean;
@@ -1668,6 +3257,9 @@ export type ServerConfiguration = {
     EnablePeopleLetterSubFolders?: boolean;
     OptimizeDatabaseOnShutdown?: boolean;
     DatabaseAnalysisLimit?: number;
+    MaxLibraryDbConnections?: number;
+    MaxAuthDbConnections?: number;
+    MaxOtherDbConnections?: number;
     DisableAsyncIO?: boolean;
     MigratedToUserItemShares8?: boolean;
     MigratedLibraryOptionsToDb?: boolean;
@@ -1675,18 +3267,38 @@ export type ServerConfiguration = {
     EnableSavedMetadataForPeople?: boolean;
     TvChannelsRefreshed?: boolean;
     ProxyHeaderMode?: ProxyHeaderMode;
+    IsInMaintenanceMode?: boolean;
+    MaintenanceModeMessage?: string;
+    /**
+     * A value indicating whether \[enable debug level logging\].
+     */
     EnableDebugLevelLogging?: boolean;
     RevertDebugLogging?: string;
+    /**
+     * Enable automatically and silently updating of the application
+     */
     EnableAutoUpdate?: boolean;
+    /**
+     * The number of days we should retain log files
+     */
     LogFileRetentionDays?: number;
+    /**
+     * A value indicating whether \[run at startup\].
+     */
     RunAtStartup?: boolean;
+    /**
+     * A value indicating whether this instance is first run.
+     */
     IsStartupWizardCompleted?: boolean;
+    /**
+     * The cache path.
+     */
     CachePath?: string;
 };
 
 export type ImageSavingConvention = 'Legacy' | 'Compatible';
 
-export type Net_Sockets_AddressFamily = 'Unspecified' | 'Unix' | 'InterNetwork' | 'ImpLink' | 'Pup' | 'Chaos' | 'NS' | 'Ipx' | 'Osi' | 'Iso' | 'Ecma' | 'DataKit' | 'Ccitt' | 'Sna' | 'DecNet' | 'DataLink' | 'Lat' | 'HyperChannel' | 'AppleTalk' | 'NetBios' | 'VoiceView' | 'FireFox' | 'Banyan' | 'Atm' | 'InterNetworkV6' | 'Cluster' | 'Ieee12844' | 'Irda' | 'NetworkDesigners' | 'Max' | 'Packet' | 'ControllerAreaNetwork' | 'Unknown';
+export type Net_Sockets_AddressFamily = 'Unspecified' | 'Unix' | 'InterNetwork' | 'ImpLink' | 'Pup' | 'Chaos' | 'NS' | 'Ipx' | 'Iso' | 'Osi' | 'Ecma' | 'DataKit' | 'Ccitt' | 'Sna' | 'DecNet' | 'DataLink' | 'Lat' | 'HyperChannel' | 'AppleTalk' | 'NetBios' | 'VoiceView' | 'FireFox' | 'Banyan' | 'Atm' | 'InterNetworkV6' | 'Cluster' | 'Ieee12844' | 'Irda' | 'NetworkDesigners' | 'Max' | 'Packet' | 'ControllerAreaNetwork' | 'Unknown';
 
 export type PathSubstitution = {
     From?: string;
@@ -1701,50 +3313,146 @@ export type WakeOnLanInfo = {
     Port?: number;
 };
 
+/**
+ * Class SystemInfo
+ *
+ */
 export type SystemInfo = {
     SystemUpdateLevel?: PackageVersionClass;
+    /**
+     * The display name of the operating system.
+     */
     OperatingSystemDisplayName?: string;
     PackageName?: string;
+    /**
+     * A value indicating whether this instance has pending restart.
+     */
     HasPendingRestart?: boolean;
     IsShuttingDown?: boolean;
     HasImageEnhancers?: boolean;
+    /**
+     * The operating sytem.
+     */
     OperatingSystem?: string;
+    /**
+     * A value indicating whether \[supports library monitor\].
+     */
     SupportsLibraryMonitor?: boolean;
     SupportsLocalPortConfiguration?: boolean;
     SupportsWakeServer?: boolean;
+    /**
+     * The web socket port number.
+     */
     WebSocketPortNumber?: number;
+    /**
+     * The completed installations.
+     */
     CompletedInstallations?: Array<InstallationInfo>;
+    /**
+     * A value indicating whether this instance can self restart.
+     */
     CanSelfRestart?: boolean;
+    /**
+     * A value indicating whether this instance can self update.
+     */
     CanSelfUpdate?: boolean;
     CanLaunchWebBrowser?: boolean;
+    /**
+     * The program data path.
+     */
     ProgramDataPath?: string;
+    /**
+     * The items by name path.
+     */
     ItemsByNamePath?: string;
+    /**
+     * The cache path.
+     */
     CachePath?: string;
+    /**
+     * The log path.
+     */
     LogPath?: string;
+    /**
+     * The internal metadata path.
+     */
     InternalMetadataPath?: string;
+    /**
+     * The transcoding temporary path.
+     */
     TranscodingTempPath?: string;
+    /**
+     * The HTTP server port number.
+     */
     HttpServerPortNumber?: number;
+    /**
+     * A value indicating whether \[enable HTTPS\].
+     */
     SupportsHttps?: boolean;
+    /**
+     * The HTTPS server port number.
+     */
     HttpsPortNumber?: number;
+    /**
+     * A value indicating whether this instance has update available.
+     */
     HasUpdateAvailable?: boolean;
+    /**
+     * A value indicating whether \[supports automatic run at startup\].
+     */
     SupportsAutoRunAtStartup?: boolean;
     HardwareAccelerationRequiresPremiere?: boolean;
     WakeOnLanInfo?: Array<WakeOnLanInfo>;
+    IsInMaintenanceMode?: boolean;
+    /**
+     * The local address.
+     */
     LocalAddress?: string;
     LocalAddresses?: Array<(string)>;
+    /**
+     * The wan address.
+     */
     WanAddress?: string;
     RemoteAddresses?: Array<(string)>;
+    /**
+     * The name of the server.
+     */
     ServerName?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The id.
+     */
     Id?: string;
 };
 
+/**
+ * Class InstallationInfo
+ *
+ */
 export type InstallationInfo = {
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The assembly guid.
+     */
     AssemblyGuid?: string;
+    /**
+     * The version.
+     */
     Version?: string;
     UpdateClass?: PackageVersionClass;
+    /**
+     * The percent complete.
+     */
     PercentComplete?: (number) | null;
 };
 
@@ -1810,23 +3518,60 @@ export type RunUICommand = {
     ClientLocale?: string;
 };
 
+/**
+ * Class UserDto
+ *
+ */
 export type UserDto = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * The name of the server. This is not used by the server and is for client\-side usage only.
+     */
     ServerName?: string;
     Prefix?: string;
+    /**
+     * The name of the connect user.
+     */
     ConnectUserName?: string;
     DateCreated?: (string) | null;
     ConnectLinkType?: Connect_UserLinkType;
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The primary image tag.
+     */
     PrimaryImageTag?: string;
+    /**
+     * A value indicating whether this instance has password.
+     */
     HasPassword?: boolean;
+    /**
+     * A value indicating whether this instance has configured password.
+     */
     HasConfiguredPassword?: boolean;
     EnableAutoLogin?: (boolean) | null;
+    /**
+     * The last login date.
+     */
     LastLoginDate?: (string) | null;
+    /**
+     * The last activity date.
+     */
     LastActivityDate?: (string) | null;
     Configuration?: UserConfiguration;
     Policy?: UserPolicy;
+    /**
+     * The primary image aspect ratio.
+     */
     PrimaryImageAspectRatio?: (number) | null;
     /**
      * @deprecated
@@ -1837,9 +3582,22 @@ export type UserDto = {
 
 export type Connect_UserLinkType = 'LinkedUser' | 'Guest';
 
+/**
+ * Class UserConfiguration
+ *
+ */
 export type UserConfiguration = {
+    /**
+     * The audio language preference.
+     */
     AudioLanguagePreference?: string;
+    /**
+     * A value indicating whether \[play default audio track\].
+     */
     PlayDefaultAudioTrack?: boolean;
+    /**
+     * The subtitle language preference.
+     */
     SubtitleLanguagePreference?: string;
     ProfilePin?: string;
     DisplayMissingEpisodes?: boolean;
@@ -1866,12 +3624,24 @@ export type SubtitlePlaybackMode = 'Default' | 'Always' | 'OnlyForced' | 'None' 
 export type SegmentSkipMode = 'ShowButton' | 'AutoSkip' | 'None';
 
 export type UserPolicy = {
+    /**
+     * A value indicating whether this instance is administrator.
+     */
     IsAdministrator?: boolean;
+    /**
+     * A value indicating whether this instance is hidden.
+     */
     IsHidden?: boolean;
     IsHiddenRemotely?: boolean;
     IsHiddenFromUnusedDevices?: boolean;
+    /**
+     * A value indicating whether this instance is disabled.
+     */
     IsDisabled?: boolean;
     LockedOutDate?: number;
+    /**
+     * The max parental rating.
+     */
     MaxParentalRating?: (number) | null;
     AllowTagOrRating?: boolean;
     BlockedTags?: Array<(string)>;
@@ -1895,6 +3665,9 @@ export type UserPolicy = {
     EnableContentDownloading?: boolean;
     EnableSubtitleDownloading?: boolean;
     EnableSubtitleManagement?: boolean;
+    /**
+     * A value indicating whether \[enable synchronize\].
+     */
     EnableSyncTranscoding?: boolean;
     EnableMediaConversion?: boolean;
     EnabledChannels?: Array<(string)>;
@@ -1903,7 +3676,6 @@ export type UserPolicy = {
     EnableAllFolders?: boolean;
     InvalidLoginAttemptCount?: number;
     EnablePublicSharing?: boolean;
-    BlockedMediaFolders?: Array<(string)>;
     RemoteClientBitrateLimit?: number;
     AuthenticationProviderId?: string;
     ExcludedSubFolders?: Array<(string)>;
@@ -1916,7 +3688,13 @@ export type UserPolicy = {
 
 export type AccessSchedule = {
     DayOfWeek?: DynamicDayOfWeek;
+    /**
+     * The start hour.
+     */
     StartHour?: number;
+    /**
+     * The end hour.
+     */
     EndHour?: number;
 };
 
@@ -1937,7 +3715,13 @@ export type AuthenticateUserByName = {
 export type Authentication_AuthenticationResult = {
     User?: UserDto;
     SessionInfo?: Session_SessionInfo;
+    /**
+     * The authentication token.
+     */
     AccessToken?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
 };
 
@@ -1947,7 +3731,7 @@ export type CreateUserByName = {
     UserCopyOptions?: Array<Library_UserCopyOptions>;
 };
 
-export type Library_UserCopyOptions = 'UserPolicy' | 'UserConfiguration';
+export type Library_UserCopyOptions = 'UserPolicy' | 'UserConfiguration' | 'UserData';
 
 export type ForgotPassword = {
     EnteredUsername?: string;
@@ -1955,16 +3739,17 @@ export type ForgotPassword = {
 
 export type ForgotPasswordResult = {
     Action?: ForgotPasswordAction;
+    /**
+     * The pin file.
+     */
     PinFile?: string;
+    /**
+     * The pin expiration date.
+     */
     PinExpirationDate?: (string) | null;
 };
 
 export type ForgotPasswordAction = 'ContactAdmin' | 'PinCode';
-
-export type playback_reporting_Api_CustomQuery = {
-    CustomQueryString?: string;
-    ReplaceUserId?: boolean;
-};
 
 export type Api_ConfigurationPageInfo = {
     Name?: string;
@@ -1982,14 +3767,37 @@ export type Api_ConfigurationPageInfo = {
     Translations?: Array<(string)>;
 };
 
+/**
+ * Enum ConfigurationPageType
+ *
+ */
 export type Plugins_ConfigurationPageType = 'PluginConfiguration' | 'None';
 
+/**
+ * Interface IPlugin
+ *
+ */
 export type Common_Plugins_IPlugin = {
+    /**
+     * The name of the plugin
+     */
     Name?: string;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The unique id.
+     */
     Id?: string;
     Version?: Version;
+    /**
+     * The path to the assembly file
+     */
     AssemblyFilePath?: string;
+    /**
+     * The full path to the data folder, where the plugin can store any miscellaneous files needed
+     */
     DataFolderPath?: string;
 };
 
@@ -2056,69 +3864,214 @@ export type Common_Interfaces_ICodecDeviceCapabilities = {
     SupportsNativeToneMapping?: boolean;
 };
 
+/**
+ * Enum defining secondary frameworks for encoding and decoding.
+ *
+ *
+ * While most of these are hardware acceleration frameworks, this is not a necessity             (e.g. Android MediaCodec offers software codecs as well).
+ *
+ */
 export type SecondaryFrameworks = 'Unknown' | 'None' | 'AmdAmf' | 'MediaCodec' | 'NvEncDec' | 'OpenMax' | 'QuickSync' | 'VaApi' | 'V4L2' | 'DxVa' | 'D3d11va' | 'VideoToolbox' | 'Mmal';
 
+/**
+ * Enum defining the kind of media a codec is processing.
+ *
+ */
 export type CodecKinds = 'Audio' | 'Video' | 'SubTitles';
 
+/**
+ * Enum listing video media types.
+ *
+ *
+ * The enum member names are matching exactly those that are used by ffmpeg. Exception: Items that are starting with a number are prefixed with an underscore here.
+ *
+ */
 export type VideoMediaTypes = 'Unknown' | 'copy' | 'flv1' | 'h263' | 'h263p' | 'h264' | 'hevc' | 'mjpeg' | 'mpeg1video' | 'mpeg2video' | 'mpeg4' | 'msvideo1' | 'theora' | 'vc1image' | 'vc1' | 'vp8' | 'vp9' | 'wmv1' | 'wmv2' | 'wmv3' | '_012v' | '_4xm' | '_8bps' | 'a64_multi' | 'a64_multi5' | 'aasc' | 'aic' | 'alias_pix' | 'amv' | 'anm' | 'ansi' | 'apng' | 'asv1' | 'asv2' | 'aura' | 'aura2' | 'av1' | 'avrn' | 'avrp' | 'avs' | 'avui' | 'ayuv' | 'bethsoftvid' | 'bfi' | 'binkvideo' | 'bintext' | 'bitpacked' | 'bmp' | 'bmv_video' | 'brender_pix' | 'c93' | 'cavs' | 'cdgraphics' | 'cdxl' | 'cfhd' | 'cinepak' | 'clearvideo' | 'cljr' | 'cllc' | 'cmv' | 'cpia' | 'cscd' | 'cyuv' | 'daala' | 'dds' | 'dfa' | 'dirac' | 'dnxhd' | 'dpx' | 'dsicinvideo' | 'dvvideo' | 'dxa' | 'dxtory' | 'dxv' | 'escape124' | 'escape130' | 'exr' | 'ffv1' | 'ffvhuff' | 'fic' | 'fits' | 'flashsv' | 'flashsv2' | 'flic' | 'fmvc' | 'fraps' | 'frwu' | 'g2m' | 'gdv' | 'gif' | 'h261' | 'h263i' | 'hap' | 'hnm4video' | 'hq_hqa' | 'hqx' | 'huffyuv' | 'idcin' | 'idf' | 'iff_ilbm' | 'indeo2' | 'indeo3' | 'indeo4' | 'indeo5' | 'interplayvideo' | 'jpeg2000' | 'jpegls' | 'jv' | 'kgv1' | 'kmvc' | 'lagarith' | 'ljpeg' | 'loco' | 'm101' | 'mad' | 'magicyuv' | 'mdec' | 'mimic' | 'mjpegb' | 'mmvideo' | 'motionpixels' | 'msa1' | 'mscc' | 'msmpeg4v1' | 'msmpeg4v2' | 'msmpeg4v3' | 'msrle' | 'mss1' | 'mss2' | 'mszh' | 'mts2' | 'mvc1' | 'mvc2' | 'mxpeg' | 'nuv' | 'paf_video' | 'pam' | 'pbm' | 'pcx' | 'pgm' | 'pgmyuv' | 'pictor' | 'pixlet' | 'png' | 'ppm' | 'prores' | 'psd' | 'ptx' | 'qdraw' | 'qpeg' | 'qtrle' | 'r10k' | 'r210' | 'rawvideo' | 'rl2' | 'roq' | 'rpza' | 'rscc' | 'rv10' | 'rv20' | 'rv30' | 'rv40' | 'sanm' | 'scpr' | 'screenpresso' | 'sgi' | 'sgirle' | 'sheervideo' | 'smackvideo' | 'smc' | 'smvjpeg' | 'snow' | 'sp5x' | 'speedhq' | 'srgc' | 'sunrast' | 'svg' | 'svq1' | 'svq3' | 'targa' | 'targa_y216' | 'tdsc' | 'tgq' | 'tgv' | 'thp' | 'tiertexseqvideo' | 'tiff' | 'tmv' | 'tqi' | 'truemotion1' | 'truemotion2' | 'truemotion2rt' | 'tscc' | 'tscc2' | 'txd' | 'ulti' | 'utvideo' | 'v210' | 'v210x' | 'v308' | 'v408' | 'v410' | 'vb' | 'vble' | 'vcr1' | 'vixl' | 'vmdvideo' | 'vmnc' | 'vp3' | 'vp5' | 'vp6' | 'vp6a' | 'vp6f' | 'vp7' | 'webp' | 'wmv3image' | 'wnv1' | 'wrapped_avframe' | 'ws_vqa' | 'xan_wc3' | 'xan_wc4' | 'xbin' | 'xbm' | 'xface' | 'xpm' | 'xwd' | 'y41p' | 'ylc' | 'yop' | 'yuv4' | 'zerocodec' | 'zlib' | 'zmbv';
 
+/**
+ * A type for handling bit rates.
+ *
+ *
+ * The purpose of this type is to avoid manual calculations and conversions in code,             unified handling and conversion as well as presentation through its various To\*\*\*String methods.
+ *
+ *
+ * `System.IComparable`
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type BitRate = {
     bps?: number;
     kbps?: number;
     Mbps?: number;
 };
 
+/**
+ * Enum listing color formats.
+ *
+ *
+ * The enum member names are matching those that are used by ffmpeg. (execute 'ffmpeg \-pix\_fmts' to list them) Exception: Items that are starting with a number are prefixed with an underscore here. In ffmpeg code these are prefixed with 'AV\_PIX\_FMT\_' and all\-caps.
+ *
+ */
 export type ColorFormats = 'Unknown' | 'yuv420p' | 'yuyv422' | 'rgb24' | 'bgr24' | 'yuv422p' | 'yuv444p' | 'yuv410p' | 'yuv411p' | 'gray' | 'monow' | 'monob' | 'pal8' | 'yuvj420p' | 'yuvj422p' | 'yuvj444p' | 'uyvy422' | 'uyyvyy411' | 'bgr8' | 'bgr4' | 'bgr4_byte' | 'rgb8' | 'rgb4' | 'rgb4_byte' | 'nv12' | 'nv21' | 'argb' | 'rgba' | 'abgr' | 'bgra' | 'gray16' | 'yuv440p' | 'yuvj440p' | 'yuva420p' | 'rgb48' | 'rgb565' | 'rgb555' | 'bgr565' | 'bgr555' | 'vaapi_moco' | 'vaapi_idct' | 'vaapi_vld' | 'yuv420p16' | 'yuv422p16' | 'yuv444p16' | 'dxva2_vld' | 'rgb444' | 'bgr444' | 'ya8' | 'bgr48' | 'yuv420p9' | 'yuv420p10' | 'yuv422p10' | 'yuv444p9' | 'yuv444p10' | 'yuv422p9' | 'gbrp' | 'gbrp9' | 'gbrp10' | 'gbrp16' | 'yuva422p' | 'yuva444p' | 'yuva420p9' | 'yuva422p9' | 'yuva444p9' | 'yuva420p10' | 'yuva422p10' | 'yuva444p10' | 'yuva420p16' | 'yuva422p16' | 'yuva444p16' | 'vdpau' | 'xyz12' | 'nv16' | 'nv20' | 'rgba64' | 'bgra64' | 'yvyu422' | 'ya16' | 'gbrap' | 'gbrap16' | 'qsv' | 'mmal' | 'd3d11va_vld' | 'cuda' | '_0rgb' | 'rgb0' | '_0bgr' | 'bgr0' | 'yuv420p12' | 'yuv420p14' | 'yuv422p12' | 'yuv422p14' | 'yuv444p12' | 'yuv444p14' | 'gbrp12' | 'gbrp14' | 'yuvj411p' | 'bayer_bggr8' | 'bayer_rggb8' | 'bayer_gbrg8' | 'bayer_grbg8' | 'bayer_bggr16' | 'bayer_rggb16' | 'bayer_gbrg16' | 'bayer_grbg16' | 'xvmc' | 'yuv440p10' | 'yuv440p12' | 'ayuv64' | 'videotoolbox_vld' | 'p010' | 'gbrap12' | 'gbrap10' | 'mediacodec' | 'gray12' | 'gray10' | 'gray14' | 'p016' | 'd3d11' | 'gray9' | 'gbrpf32' | 'gbrapf32' | 'drm_prime' | 'opencl' | 'grayf32' | 'yuva422p12' | 'yuva444p12' | 'nv24' | 'nv42';
 
+/**
+ * A class combining both `Emby.Media.Model.Types.ProfileInformation` and `Emby.Media.Model.Types.LevelInformation`.
+ *
+ */
 export type ProfileLevelInformation = {
     Profile?: ProfileInformation;
     Level?: LevelInformation;
 };
 
+/**
+ * Class for unified presentation of all information associated with a specific codec profile.
+ *
+ */
 export type ProfileInformation = {
+    /**
+     * The enum member name of the profile.
+     */
     ShortName?: string;
+    /**
+     * The common name of the profile.
+     */
     Description?: string;
+    /**
+     * Detail information about the profile.
+     */
     Details?: string;
+    /**
+     * A unique identifier.
+     */
     Id?: string;
+    /**
+     * The bit depths.
+     */
     BitDepths?: Array<(number)>;
 };
 
+/**
+ * Class for unified presentation of all information associated with a specific codec level.
+ *
+ */
 export type LevelInformation = {
+    /**
+     * The enum member name of the level.
+     */
     ShortName?: string;
+    /**
+     * The common name of the level.
+     */
     Description?: string;
+    /**
+     * A value indicating the level's ranking relative to other levels.
+     */
     Ordinal?: (number) | null;
     MaxBitRate?: BitRate;
+    /**
+     * A display value of the `Emby.Media.Model.Types.LevelInformation.MaxBitRate` property.
+     */
     MaxBitRateDisplay?: string;
+    /**
+     * A unique identifier.
+     */
     Id?: string;
+    /**
+     * Examples for the maximum supported combinations of resolution and rate for this level.
+     */
     ResolutionRates?: Array<ResolutionWithRate>;
+    /**
+     * Examples for the maximum supported combinations of resolution and rate for this level as string values.
+     */
     ResolutionRateStrings?: Array<(string)>;
+    /**
+     * A single string from the `Emby.Media.Model.Types.LevelInformation.ResolutionRateStrings` list.
+     */
     ResolutionRatesDisplay?: string;
 };
 
+/**
+ * Struct representing a combination of video resolution and frame rate.
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type ResolutionWithRate = {
+    /**
+     * The resolution width.
+     */
     Width?: number;
+    /**
+     * The resolution height.
+     */
     Height?: number;
+    /**
+     * The frame rate in frames\/second (fps).
+     */
     FrameRate?: number;
     Resolution?: Resolution;
 };
 
+/**
+ * Struct representing a video resolution specified in X and Y dimension.
+ *
+ *
+ * `System.IComparable`
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type Resolution = {
+    /**
+     * The resolution width.
+     */
     Width?: number;
+    /**
+     * The resolution height.
+     */
     Height?: number;
 };
 
+/**
+ * Enum for indicating the processing direction of a codec.
+ *
+ */
 export type CodecDirections = 'Encoder' | 'Decoder';
 
 export type CodecConfiguration = {
+    /**
+     * A value indicating whether the codec is enabled.
+     */
     IsEnabled?: boolean;
+    /**
+     * The selection priority for the codec.
+     *
+     * Higher values mean higher priority.
+     */
     Priority?: number;
+    /**
+     * The codec identifier.
+     */
     CodecId?: string;
 };
 
 export type ExternalIdInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The key.
+     */
     Key?: string;
     Website?: string;
+    /**
+     * The URL format string.
+     */
     UrlFormatString?: string;
     IsSupportedAsIdentifier?: boolean;
 };
@@ -2132,11 +4085,24 @@ export type RemoteSearchQuery_TrailerInfo = {
 };
 
 export type TrailerInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2146,8 +4112,15 @@ export type TrailerInfo = {
 };
 
 export type RemoteSearchResult = {
+    /**
+     * The name.
+     */
     Name?: string;
+    OriginalTitle?: string;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     ProductionYear?: (number) | null;
     IndexNumber?: (number) | null;
     IndexNumberEnd?: (number) | null;
@@ -2155,6 +4128,8 @@ export type RemoteSearchResult = {
     SortIndexNumber?: (number) | null;
     SortParentIndexNumber?: (number) | null;
     PremiereDate?: (string) | null;
+    StartDate?: (string) | null;
+    EndDate?: (string) | null;
     ImageUrl?: string;
     SearchProviderName?: string;
     GameSystem?: string;
@@ -2174,11 +4149,24 @@ export type RemoteSearchQuery_BookInfo = {
 
 export type BookInfo = {
     SeriesName?: string;
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2196,11 +4184,24 @@ export type RemoteSearchQuery_MovieInfo = {
 };
 
 export type MovieInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2220,11 +4221,24 @@ export type RemoteSearchQuery_SeriesInfo = {
 export type SeriesInfo = {
     EpisodeAirDate?: (string) | null;
     DisplayOrder?: SeriesDisplayOrder;
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2244,11 +4258,24 @@ export type RemoteSearchQuery_GameInfo = {
 };
 
 export type GameInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2266,11 +4293,24 @@ export type RemoteSearchQuery_ItemLookupInfo = {
 };
 
 export type ItemLookupInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2289,11 +4329,24 @@ export type RemoteSearchQuery_MusicVideoInfo = {
 
 export type MusicVideoInfo = {
     Artists?: Array<(string)>;
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2311,11 +4364,24 @@ export type RemoteSearchQuery_PersonLookupInfo = {
 };
 
 export type PersonLookupInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2333,13 +4399,29 @@ export type RemoteSearchQuery_AlbumInfo = {
 };
 
 export type AlbumInfo = {
+    /**
+     * The album artist.
+     */
     AlbumArtists?: Array<(string)>;
     SongInfos?: Array<SongInfo>;
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2353,11 +4435,24 @@ export type SongInfo = {
     Album?: string;
     Artists?: Array<(string)>;
     Composers?: Array<(string)>;
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2375,11 +4470,24 @@ export type RemoteSearchQuery_ArtistInfo = {
 };
 
 export type ArtistInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2390,11 +4498,16 @@ export type ArtistInfo = {
 
 export type MetadataRefreshMode = 'ValidationOnly' | 'Default' | 'FullRefresh';
 
+export type BaseRefreshRequest = {
+    ReplaceThumbnailImages?: boolean;
+};
+
 export type MetadataEditorInfo = {
     ParentalRatingOptions?: Array<ParentalRating>;
     Countries?: Array<Globalization_CountryInfo>;
     Cultures?: Array<Globalization_CultureDto>;
     ExternalIdInfos?: Array<ExternalIdInfo>;
+    PersonExternalIdInfos?: Array<ExternalIdInfo>;
 };
 
 export type UserLibrary_LeaveSharedItems = {
@@ -2412,36 +4525,103 @@ export type AllThemeMediaResult = {
     SoundtrackSongsResult?: ThemeMediaResult;
 };
 
+/**
+ * Class ThemeMediaResult
+ *
+ */
 export type ThemeMediaResult = {
+    /**
+     * The owner id.
+     */
     OwnerId?: number;
     Items?: Array<BaseItemDto>;
     TotalRecordCount?: number;
 };
 
+/**
+ * Class ImageInfo
+ *
+ */
 export type ImageInfo = {
     ImageType?: ImageType;
+    /**
+     * The index of the image.
+     */
     ImageIndex?: (number) | null;
+    /**
+     * The path.
+     */
     Path?: string;
     Filename?: string;
+    /**
+     * The height.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     */
     Width?: (number) | null;
+    /**
+     * The size.
+     */
     Size?: number;
 };
 
+/**
+ * Class RemoteImageResult.
+ *
+ */
 export type RemoteImageResult = {
+    /**
+     * The images.
+     */
     Images?: Array<RemoteImageInfo>;
+    /**
+     * The total record count.
+     */
     TotalRecordCount?: number;
+    /**
+     * The providers.
+     */
     Providers?: Array<(string)>;
 };
 
+/**
+ * Class RemoteImageInfo
+ *
+ */
 export type RemoteImageInfo = {
+    /**
+     * The name of the provider.
+     */
     ProviderName?: string;
+    /**
+     * The URL.
+     */
     Url?: string;
+    /**
+     * A url used for previewing a smaller version
+     */
     ThumbnailUrl?: string;
+    /**
+     * The height.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     */
     Width?: (number) | null;
+    /**
+     * The community rating.
+     */
     CommunityRating?: (number) | null;
+    /**
+     * The vote count.
+     */
     VoteCount?: (number) | null;
+    /**
+     * The language.
+     */
     Language?: string;
     DisplayLanguage?: string;
     Type?: ImageType;
@@ -2461,7 +4641,13 @@ export type RokuMetadata_Api_ThumbnailInfo = {
 };
 
 export type PlaybackInfoResponse = {
+    /**
+     * The media sources.
+     */
     MediaSources?: Array<MediaSourceInfo>;
+    /**
+     * The play session identifier.
+     */
     PlaySessionId?: string;
     ErrorCode?: PlaybackErrorCode;
 };
@@ -2487,7 +4673,6 @@ export type PlaybackInfoRequest = {
     AllowAudioStreamCopy?: boolean;
     IsPlayback?: boolean;
     AutoOpenLiveStream?: boolean;
-    DirectPlayProtocols?: Array<MediaProtocol>;
     CurrentPlaySessionId?: string;
 };
 
@@ -2505,15 +4690,38 @@ export type QueryResult_VirtualFolderInfo = {
     TotalRecordCount?: number;
 };
 
+/**
+ * Used to hold information about a user's list of configured virtual folders
+ *
+ */
 export type VirtualFolderInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The locations.
+     */
     Locations?: Array<(string)>;
+    /**
+     * The type of the collection.
+     */
     CollectionType?: string;
     LibraryOptions?: LibraryOptions;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * ItemId came first, so that is left for compatability purposes
+     */
     Id?: string;
     Guid?: string;
+    /**
+     * The primary image item identifier.
+     */
     PrimaryImageItemId?: string;
+    PrimaryImageTag?: string;
     RefreshProgress?: (number) | null;
     RefreshStatus?: string;
 };
@@ -2540,16 +4748,6 @@ export type Library_AddMediaPath = {
     RefreshLibrary?: boolean;
 };
 
-export type QueryResult_ChannelManagementInfo = {
-    Items?: Array<ChannelManagementInfo>;
-    TotalRecordCount?: number;
-};
-
-export type ChannelManagementInfo = {
-    Id?: string;
-    Name?: string;
-};
-
 export type Api_TagItem = {
     Name?: string;
     Id?: string;
@@ -2569,16 +4767,30 @@ export type UserNotificationInfo = {
     FriendlyName?: string;
     Id?: string;
     Enabled?: boolean;
+    /**
+     * Limit events based on user ids, for admin notifications
+     */
     UserIds?: Array<(string)>;
     DeviceIds?: Array<(string)>;
     LibraryIds?: Array<(string)>;
     EventIds?: Array<(string)>;
+    /**
+     * Notification intended for a specific user
+     */
     UserId?: string;
     IsSelfNotification?: boolean;
     GroupItems?: boolean;
+    /**
+     * This is for webhooks since this will cause xml serialization to fail
+     */
     Options?: {
         [key: string]: (string);
     };
+};
+
+export type Playlists_AddToPlaylistInfo = {
+    ItemCount?: number;
+    ContainsDuplicates?: boolean;
 };
 
 export type Playlists_AddToPlaylistResult = {
@@ -2586,9 +4798,20 @@ export type Playlists_AddToPlaylistResult = {
     ItemAddedCount?: number;
 };
 
+/**
+ * Enum PlayCommand
+ *
+ */
 export type PlayCommand = 'PlayNow' | 'PlayNext' | 'PlayLast' | 'PlayInstantMix' | 'PlayShuffle';
 
+/**
+ * Class PlayRequest
+ *
+ */
 export type PlayRequest = {
+    /**
+     * The controlling user identifier.
+     */
     ControllingUserId?: string;
     SubtitleStreamIndex?: (number) | null;
     AudioStreamIndex?: (number) | null;
@@ -2616,52 +4839,119 @@ export type ClientCapabilities = {
     AppId?: string;
 };
 
+/**
+ * Class PlaybackProgressInfo.
+ *
+ */
 export type PlaybackProgressInfo = {
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
-    Item?: BaseItemDto;
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
-    ItemId?: string;
+    /**
+     * The session id.
+     */
     SessionId?: string;
-    MediaSourceId?: string;
+    /**
+     * The index of the audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
-    PositionTicks?: (number) | null;
     RunTimeTicks?: (number) | null;
     PlaybackStartTimeTicks?: (number) | null;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
     Brightness?: (number) | null;
     AspectRatio?: string;
     EventName?: ProgressEvent;
     PlayMethod?: PlayMethod;
-    LiveStreamId?: string;
-    PlaySessionId?: string;
     RepeatMode?: RepeatMode;
+    SleepTimerMode?: SleepTimerMode;
+    SleepTimerEndTime?: (string) | null;
     Shuffle?: boolean;
     SubtitleOffset?: number;
     PlaybackRate?: number;
     PlaylistItemIds?: Array<(string)>;
+    /**
+     * The play session identifier.
+     */
+    PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
+    ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
+    LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
+    MediaSourceId?: string;
+    Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
+    PositionTicks?: (number) | null;
 };
 
+/**
+ * Class PlaybackStopInfo.
+ *
+ */
 export type PlaybackStopInfo = {
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
     PlaylistIndex?: number;
     PlaylistLength?: number;
-    Item?: BaseItemDto;
-    ItemId?: string;
+    /**
+     * The session id.
+     */
     SessionId?: string;
-    MediaSourceId?: string;
-    PositionTicks?: (number) | null;
-    LiveStreamId?: string;
-    PlaySessionId?: string;
-    Failed?: boolean;
     IsAutomated?: boolean;
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Session.PlaybackStopInfo` is failed.
+     */
+    Failed?: boolean;
     NextMediaType?: string;
+    /**
+     * The play session identifier.
+     */
+    PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
+    ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
+    LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
+    MediaSourceId?: string;
+    Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
+    PositionTicks?: (number) | null;
 };
 
 export type SyncedItemProgress = {
@@ -2687,19 +4977,46 @@ export type QueryResult_LogFile = {
 };
 
 export type LogFile = {
+    /**
+     * The date created.
+     */
     DateCreated?: string;
+    /**
+     * The date modified.
+     */
     DateModified?: string;
+    /**
+     * The size.
+     */
     Size?: number;
+    /**
+     * The name.
+     */
     Name?: string;
 };
 
 export type PublicSystemInfo = {
+    /**
+     * The local address.
+     */
     LocalAddress?: string;
     LocalAddresses?: Array<(string)>;
+    /**
+     * The wan address.
+     */
     WanAddress?: string;
     RemoteAddresses?: Array<(string)>;
+    /**
+     * The name of the server.
+     */
     ServerName?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The id.
+     */
     Id?: string;
 };
 
@@ -2709,18 +5026,49 @@ export type QueryResult_ActivityLogEntry = {
 };
 
 export type ActivityLogEntry = {
+    /**
+     * The identifier.
+     */
     Id?: number;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The overview.
+     */
     Overview?: string;
+    /**
+     * The short overview.
+     */
     ShortOverview?: string;
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * The date.
+     */
     Date?: string;
+    /**
+     * The user identifier.
+     */
     UserId?: string;
+    /**
+     * The user primary image tag.
+     */
     UserPrimaryImageTag?: string;
     Severity?: Logging_LogSeverity;
 };
 
+/**
+ * Enum LogSeverity
+ *
+ */
 export type Logging_LogSeverity = 'Info' | 'Debug' | 'Warn' | 'Error' | 'Fatal';
 
 export type AuthenticateUser = {
@@ -2738,9 +5086,43 @@ export type ForgotPasswordPin = {
 };
 
 export type PinRedeemResult = {
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Users.PinRedeemResult` is success.
+     */
     Success?: boolean;
+    /**
+     * The users reset.
+     */
     UsersReset?: Array<(string)>;
 };
+
+export type ContentSection = {
+    Name?: string;
+    Subtitle?: string;
+    Id?: string;
+    SectionType?: string;
+    CollectionType?: string;
+    ViewType?: string;
+    Monitor?: Array<(string)>;
+    CardSizeOffset?: number;
+    ScrollDirection?: ScrollDirection;
+    ParentItem?: BaseItemDto;
+    TextInfo?: TextSectionInfo;
+    PremiumFeature?: string;
+    PremiumMessage?: string;
+    RefreshInterval?: (number) | null;
+};
+
+export type ScrollDirection = 'Horizontal' | 'Vertical';
+
+export type TextSectionInfo = {
+    Text?: string;
+    Name?: string;
+    Id?: string;
+    Level?: Notifications_NotificationLevel;
+};
+
+export type Notifications_NotificationLevel = 'Normal' | 'Warning' | 'Error';
 
 export type UserLibrary_AddTags = {
     Tags?: Array<NameIdPair>;
@@ -2750,9 +5132,20 @@ export type UserLibrary_RemoveTags = {
     Tags?: Array<NameIdPair>;
 };
 
+/**
+ * Class ImageProviderInfo.
+ *
+ */
 export type ImageProviderInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     SupportedImages?: Array<ImageType>;
+};
+
+export type Images_BaseDownloadRemoteImage = {
+    ImageIndex?: (number) | null;
 };
 
 export type Library_UpdateMediaPath = {
@@ -2766,11 +5159,18 @@ export type Library_RemoveMediaPath = {
     RefreshLibrary?: boolean;
 };
 
+/**
+ * Enum PlaystateCommand
+ *
+ */
 export type PlaystateCommand = 'Stop' | 'Pause' | 'Unpause' | 'NextTrack' | 'PreviousTrack' | 'Seek' | 'Rewind' | 'FastForward' | 'PlayPause' | 'SeekRelative';
 
 export type PlaystateRequest = {
     Command?: PlaystateCommand;
     SeekPositionTicks?: (number) | null;
+    /**
+     * The controlling user identifier.
+     */
     ControllingUserId?: string;
 };
 
@@ -2816,6 +5216,16 @@ export type Api_SetChannelDisabled = {
     Disabled?: boolean;
 };
 
+export type QueryResult_ChannelManagementInfo = {
+    Items?: Array<ChannelManagementInfo>;
+    TotalRecordCount?: number;
+};
+
+export type ChannelManagementInfo = {
+    Id?: string;
+    Name?: string;
+};
+
 export type Api_SetChannelSortIndex = {
     Id?: string;
     ManagementId?: string;
@@ -2826,6 +5236,8 @@ export type Api_OnPlaybackProgress = {
     PlaylistIndex?: number;
     PlaylistLength?: number;
     Shuffle?: boolean;
+    SleepTimerMode?: SleepTimerMode;
+    SleepTimerEndTime?: (string) | null;
     EventName?: ProgressEvent;
 };
 
@@ -3043,6 +5455,10 @@ export type GetArtistsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -3057,7 +5473,7 @@ export type GetArtistsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -3069,11 +5485,11 @@ export type GetArtistsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -3089,15 +5505,15 @@ export type GetArtistsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -3113,11 +5529,11 @@ export type GetArtistsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -3186,6 +5602,10 @@ export type GetArtistsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -3449,6 +5869,10 @@ export type GetArtistsAlbumartistsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -3463,7 +5887,7 @@ export type GetArtistsAlbumartistsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -3475,11 +5899,11 @@ export type GetArtistsAlbumartistsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -3495,15 +5919,15 @@ export type GetArtistsAlbumartistsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -3519,11 +5943,11 @@ export type GetArtistsAlbumartistsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -3592,6 +6016,10 @@ export type GetArtistsAlbumartistsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -3842,6 +6270,10 @@ export type GetAudiocodecsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -3856,7 +6288,7 @@ export type GetAudiocodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -3868,11 +6300,11 @@ export type GetAudiocodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -3888,15 +6320,15 @@ export type GetAudiocodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -3912,11 +6344,11 @@ export type GetAudiocodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -3985,6 +6417,10 @@ export type GetAudiocodecsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -4235,6 +6671,10 @@ export type GetAudiolayoutsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -4249,7 +6689,7 @@ export type GetAudiolayoutsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -4261,11 +6701,11 @@ export type GetAudiolayoutsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -4281,15 +6721,15 @@ export type GetAudiolayoutsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -4305,11 +6745,11 @@ export type GetAudiolayoutsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -4378,6 +6818,10 @@ export type GetAudiolayoutsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -4628,6 +7072,10 @@ export type GetContainersData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -4642,7 +7090,7 @@ export type GetContainersData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -4654,11 +7102,11 @@ export type GetContainersData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -4674,15 +7122,15 @@ export type GetContainersData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -4698,11 +7146,11 @@ export type GetContainersData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -4771,6 +7219,10 @@ export type GetContainersData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -5021,6 +7473,10 @@ export type GetExtendedvideotypesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -5035,7 +7491,7 @@ export type GetExtendedvideotypesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -5047,11 +7503,11 @@ export type GetExtendedvideotypesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -5067,15 +7523,15 @@ export type GetExtendedvideotypesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -5091,11 +7547,11 @@ export type GetExtendedvideotypesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -5164,6 +7620,10 @@ export type GetExtendedvideotypesData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -5414,6 +7874,10 @@ export type GetItemtypesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -5428,7 +7892,7 @@ export type GetItemtypesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -5440,11 +7904,11 @@ export type GetItemtypesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -5460,15 +7924,15 @@ export type GetItemtypesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -5484,11 +7948,11 @@ export type GetItemtypesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -5557,6 +8021,10 @@ export type GetItemtypesData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -5807,6 +8275,10 @@ export type GetStreamlanguagesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -5821,7 +8293,7 @@ export type GetStreamlanguagesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -5833,11 +8305,11 @@ export type GetStreamlanguagesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -5853,15 +8325,15 @@ export type GetStreamlanguagesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -5877,11 +8349,11 @@ export type GetStreamlanguagesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -5950,6 +8422,10 @@ export type GetStreamlanguagesData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -6200,6 +8676,10 @@ export type GetSubtitlecodecsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -6214,7 +8694,7 @@ export type GetSubtitlecodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -6226,11 +8706,11 @@ export type GetSubtitlecodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -6246,15 +8726,15 @@ export type GetSubtitlecodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -6270,11 +8750,11 @@ export type GetSubtitlecodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -6343,6 +8823,10 @@ export type GetSubtitlecodecsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -6593,6 +9077,10 @@ export type GetTagsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -6607,7 +9095,7 @@ export type GetTagsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -6619,11 +9107,11 @@ export type GetTagsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -6639,15 +9127,15 @@ export type GetTagsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -6663,11 +9151,11 @@ export type GetTagsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -6736,6 +9224,10 @@ export type GetTagsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -6986,6 +9478,10 @@ export type GetVideocodecsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -7000,7 +9496,7 @@ export type GetVideocodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -7012,11 +9508,11 @@ export type GetVideocodecsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -7032,15 +9528,15 @@ export type GetVideocodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -7056,11 +9552,11 @@ export type GetVideocodecsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -7129,6 +9625,10 @@ export type GetVideocodecsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -7379,6 +9879,10 @@ export type GetYearsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -7393,7 +9897,7 @@ export type GetYearsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -7405,11 +9909,11 @@ export type GetYearsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -7425,15 +9929,15 @@ export type GetYearsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -7449,11 +9953,11 @@ export type GetYearsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -7522,6 +10026,10 @@ export type GetYearsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -7772,6 +10280,10 @@ export type GetArtistsPrefixesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -7786,7 +10298,7 @@ export type GetArtistsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -7798,11 +10310,11 @@ export type GetArtistsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -7818,15 +10330,15 @@ export type GetArtistsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -7842,11 +10354,11 @@ export type GetArtistsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -7915,6 +10427,10 @@ export type GetArtistsPrefixesData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -8165,6 +10681,10 @@ export type GetItemsPrefixesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -8179,7 +10699,7 @@ export type GetItemsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -8191,11 +10711,11 @@ export type GetItemsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -8211,15 +10731,15 @@ export type GetItemsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -8235,11 +10755,11 @@ export type GetItemsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -8309,6 +10829,10 @@ export type GetItemsPrefixesData = {
      */
     startIndex?: (number) | null;
     /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
     studioIds?: string;
@@ -8372,6 +10896,54 @@ export type PostItemsByIdTagsDeleteResponse = (unknown);
 
 export type GetChannelsData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -8384,25 +10956,341 @@ export type GetChannelsData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
     /**
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
     /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
      * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetChannelsResponse = (QueryResult_BaseItemDto);
@@ -8755,6 +11643,10 @@ export type GetGamegenresData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -8769,7 +11661,7 @@ export type GetGamegenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -8781,11 +11673,11 @@ export type GetGamegenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -8801,15 +11693,15 @@ export type GetGamegenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -8825,11 +11717,11 @@ export type GetGamegenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -8898,6 +11790,10 @@ export type GetGamegenresData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -9161,6 +12057,10 @@ export type GetGenresData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -9175,7 +12075,7 @@ export type GetGenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -9187,11 +12087,11 @@ export type GetGenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -9207,15 +12107,15 @@ export type GetGenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -9231,11 +12131,11 @@ export type GetGenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -9304,6 +12204,10 @@ export type GetGenresData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -9567,6 +12471,10 @@ export type GetItemsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -9581,7 +12489,7 @@ export type GetItemsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -9593,11 +12501,11 @@ export type GetItemsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -9613,15 +12521,15 @@ export type GetItemsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -9637,11 +12545,11 @@ export type GetItemsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -9710,6 +12618,10 @@ export type GetItemsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -9960,6 +12872,10 @@ export type GetUsersByUseridItemsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -9974,7 +12890,7 @@ export type GetUsersByUseridItemsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -9986,11 +12902,11 @@ export type GetUsersByUseridItemsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -10006,15 +12922,15 @@ export type GetUsersByUseridItemsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -10030,11 +12946,11 @@ export type GetUsersByUseridItemsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -10103,6 +13019,10 @@ export type GetUsersByUseridItemsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -10353,6 +13273,10 @@ export type GetUsersByUseridItemsResumeData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -10367,7 +13291,7 @@ export type GetUsersByUseridItemsResumeData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -10379,11 +13303,11 @@ export type GetUsersByUseridItemsResumeData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -10399,15 +13323,15 @@ export type GetUsersByUseridItemsResumeData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -10423,11 +13347,11 @@ export type GetUsersByUseridItemsResumeData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -10496,6 +13420,10 @@ export type GetUsersByUseridItemsResumeData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -10574,7 +13502,7 @@ export type DeleteItemsByIdData = {
 
 export type DeleteItemsByIdResponse = (unknown);
 
-export type GetLibrariesAvailableoptionsResponse = (Library_LibraryOptionsResult);
+export type GetLibrariesAvailableoptionsResponse = (LibraryOptionsResult);
 
 export type GetLibrarySelectablemediafoldersResponse = (Array<Library_MediaFolder>);
 
@@ -10593,6 +13521,54 @@ export type PostLibraryRefreshResponse = (unknown);
 
 export type GetAlbumsByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10605,35 +13581,399 @@ export type GetAlbumsByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetAlbumsByIdSimilarResponse = (QueryResult_BaseItemDto);
 
 export type GetArtistsByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10646,35 +13986,399 @@ export type GetArtistsByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetArtistsByIdSimilarResponse = (QueryResult_BaseItemDto);
 
 export type GetGamesByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10687,29 +14391,345 @@ export type GetGamesByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetGamesByIdSimilarResponse = (QueryResult_BaseItemDto);
@@ -10725,6 +14745,54 @@ export type GetItemsByIdDeleteinfoResponse = (Library_DeleteInfo);
 
 export type GetItemsByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10737,29 +14805,345 @@ export type GetItemsByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetItemsByIdSimilarResponse = (QueryResult_BaseItemDto);
@@ -10823,6 +15207,54 @@ export type PostItemsByIdDeleteResponse = (unknown);
 
 export type GetItemsByIdThememediaData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10835,31 +15267,403 @@ export type GetItemsByIdThememediaData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
     /**
      * Determines whether or not parent items should be searched for theme media.
      */
     inheritFromParent?: boolean;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetItemsByIdThememediaResponse = (AllThemeMediaResult);
 
 export type GetItemsByIdThemesongsData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10872,31 +15676,403 @@ export type GetItemsByIdThemesongsData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
     /**
      * Determines whether or not parent items should be searched for theme media.
      */
     inheritFromParent?: boolean;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetItemsByIdThemesongsResponse = (ThemeMediaResult);
 
 export type GetItemsByIdThemevideosData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10909,25 +16085,349 @@ export type GetItemsByIdThemevideosData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
     /**
      * Determines whether or not parent items should be searched for theme media.
      */
     inheritFromParent?: boolean;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetItemsByIdThemevideosResponse = (ThemeMediaResult);
@@ -10951,6 +16451,54 @@ export type PostLibraryMoviesUpdatedResponse = (unknown);
 
 export type GetMoviesByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -10963,35 +16511,399 @@ export type GetMoviesByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetMoviesByIdSimilarResponse = (QueryResult_BaseItemDto);
 
 export type GetShowsByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -11004,35 +16916,399 @@ export type GetShowsByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetShowsByIdSimilarResponse = (QueryResult_BaseItemDto);
 
 export type GetTrailersByIdSimilarData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -11045,29 +17321,345 @@ export type GetTrailersByIdSimilarData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetTrailersByIdSimilarResponse = (QueryResult_BaseItemDto);
@@ -11286,6 +17878,10 @@ export type GetMusicgenresData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -11300,7 +17896,7 @@ export type GetMusicgenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -11312,11 +17908,11 @@ export type GetMusicgenresData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -11332,15 +17928,15 @@ export type GetMusicgenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -11356,11 +17952,11 @@ export type GetMusicgenresData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -11429,6 +18025,10 @@ export type GetMusicgenresData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -11692,6 +18292,10 @@ export type GetOfficialratingsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -11706,7 +18310,7 @@ export type GetOfficialratingsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -11718,11 +18322,11 @@ export type GetOfficialratingsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -11738,15 +18342,15 @@ export type GetOfficialratingsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -11762,11 +18366,11 @@ export type GetOfficialratingsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -11835,6 +18439,10 @@ export type GetOfficialratingsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -12175,6 +18783,10 @@ export type GetPersonsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -12189,7 +18801,7 @@ export type GetPersonsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -12201,11 +18813,11 @@ export type GetPersonsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -12221,15 +18833,15 @@ export type GetPersonsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -12245,11 +18857,11 @@ export type GetPersonsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -12318,6 +18930,10 @@ export type GetPersonsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -12396,7 +19012,7 @@ export type GetPlaylistsByIdAddtoplaylistinfoData = {
     userId?: string;
 };
 
-export type GetPlaylistsByIdAddtoplaylistinfoResponse = (unknown);
+export type GetPlaylistsByIdAddtoplaylistinfoResponse = (Playlists_AddToPlaylistInfo);
 
 export type PostPlaylistsByIdItemsData = {
     id: string;
@@ -13061,6 +19677,10 @@ export type GetStudiosData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -13075,7 +19695,7 @@ export type GetStudiosData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -13087,11 +19707,11 @@ export type GetStudiosData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -13107,15 +19727,15 @@ export type GetStudiosData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -13131,11 +19751,11 @@ export type GetStudiosData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -13204,6 +19824,10 @@ export type GetStudiosData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -13467,6 +20091,10 @@ export type GetTrailersData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -13481,7 +20109,7 @@ export type GetTrailersData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -13493,11 +20121,11 @@ export type GetTrailersData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -13513,15 +20141,15 @@ export type GetTrailersData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -13537,11 +20165,11 @@ export type GetTrailersData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -13610,6 +20238,10 @@ export type GetTrailersData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -14357,7 +20989,7 @@ export type PostItemsByIdImagesByTypeData = {
     /**
      * Image Index
      */
-    index?: number;
+    index?: (number) | null;
     /**
      * Binary stream
      */
@@ -14944,10 +21576,6 @@ export type PostUsersByIdImagesByTypeData = {
      * User Id
      */
     id: string;
-    /**
-     * Image Index
-     */
-    index?: number;
     /**
      * Binary stream
      */
@@ -15537,7 +22165,7 @@ export type PostItemsByIdImagesByTypeByIndexData = {
     /**
      * Image Index
      */
-    index: number;
+    index: (number) | null;
     /**
      * Binary stream
      */
@@ -16142,10 +22770,6 @@ export type PostUsersByIdImagesByTypeByIndexData = {
      */
     id: string;
     /**
-     * Image Index
-     */
-    index: number;
-    /**
      * Binary stream
      */
     requestBody: (Blob | File);
@@ -16269,6 +22893,54 @@ export type PostUsersByIdImagesByTypeByIndexDeleteResponse = (unknown);
 
 export type GetArtistsInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16281,25 +22953,341 @@ export type GetArtistsInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
     /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetArtistsInstantmixResponse = (QueryResult_BaseItemDto);
@@ -16351,6 +23339,54 @@ export type GetAudiobooksNextupResponse = (QueryResult_BaseItemDto);
 
 export type GetMusicgenresInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16363,31 +23399,395 @@ export type GetMusicgenresInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
     /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetMusicgenresInstantmixResponse = (QueryResult_BaseItemDto);
 
 export type GetAlbumsByIdInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16400,35 +23800,399 @@ export type GetAlbumsByIdInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetAlbumsByIdInstantmixResponse = (QueryResult_BaseItemDto);
 
 export type GetItemsByIdInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16441,35 +24205,399 @@ export type GetItemsByIdInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetItemsByIdInstantmixResponse = (QueryResult_BaseItemDto);
 
 export type GetMusicgenresByNameInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16482,35 +24610,396 @@ export type GetMusicgenresByNameInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
     /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * The genre name
+     * Optional. The maximum premiere date. Format = ISO
      */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
     name: string;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetMusicgenresByNameInstantmixResponse = (QueryResult_BaseItemDto);
 
 export type GetPlaylistsByIdInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16523,35 +25012,399 @@ export type GetPlaylistsByIdInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetPlaylistsByIdInstantmixResponse = (QueryResult_BaseItemDto);
 
 export type GetSongsByIdInstantmixData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -16564,29 +25417,345 @@ export type GetSongsByIdInstantmixData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * Item Id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
     /**
      * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
      */
     includeItemTypes?: string;
     /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional. Filter by user id, and attach user data
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetSongsByIdInstantmixResponse = (QueryResult_BaseItemDto);
@@ -16692,6 +25861,84 @@ export type PostDisplaypreferencesByDisplaypreferencesidData = {
 };
 
 export type PostDisplaypreferencesByDisplaypreferencesidResponse = (unknown);
+
+export type GetUsersettingsByUseridData = {
+    /**
+     * User Id
+     */
+    userId: string;
+};
+
+export type GetUsersettingsByUseridResponse = ({
+    [key: string]: (string);
+});
+
+export type PostUsersettingsByUseridData = {
+    /**
+     * UserSettings:
+     */
+    requestBody: Array<(string)>;
+    /**
+     * User Id
+     */
+    userId: string;
+};
+
+export type PostUsersettingsByUseridResponse = (unknown);
+
+export type PostUsersettingsByUseridPartialData = {
+    /**
+     * Binary stream
+     */
+    requestBody: (Blob | File);
+    /**
+     * User Id
+     */
+    userId: string;
+};
+
+export type PostUsersettingsByUseridPartialResponse = (unknown);
+
+export type GetDlnaProfileinfosResponse = (Array<Dlna_Profiles_DlnaProfile>);
+
+export type PostDlnaProfilesData = {
+    /**
+     * DlnaProfile:
+     */
+    requestBody: Dlna_Profiles_DlnaProfile;
+};
+
+export type PostDlnaProfilesResponse = (unknown);
+
+export type GetDlnaProfilesByIdData = {
+    /**
+     * Profile Id
+     */
+    id: string;
+};
+
+export type GetDlnaProfilesByIdResponse = (Dlna_Profiles_DlnaProfile);
+
+export type DeleteDlnaProfilesByIdData = {
+    /**
+     * Profile Id
+     */
+    id: string;
+};
+
+export type DeleteDlnaProfilesByIdResponse = (unknown);
+
+export type PostDlnaProfilesByIdData = {
+    id: string;
+    /**
+     * DlnaProfile:
+     */
+    requestBody: Dlna_Profiles_DlnaProfile;
+};
+
+export type PostDlnaProfilesByIdResponse = (unknown);
+
+export type GetDlnaProfilesDefaultResponse = (Dlna_Profiles_DlnaProfile);
 
 export type GetEncodingTonemapoptionsResponse = (Configuration_ToneMapping_ToneMapOptionsVisibility);
 
@@ -16893,6 +26140,10 @@ export type PostItemsByIdRemoteimagesDownloadData = {
      * The image provider
      */
     providerName?: string;
+    /**
+     * BaseDownloadRemoteImage:
+     */
+    requestBody: Images_BaseDownloadRemoteImage;
     /**
      * The image type
      */
@@ -17631,6 +26882,10 @@ export type GetLivetvChanneltagsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -17645,7 +26900,7 @@ export type GetLivetvChanneltagsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -17657,11 +26912,11 @@ export type GetLivetvChanneltagsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -17677,15 +26932,15 @@ export type GetLivetvChanneltagsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -17701,11 +26956,11 @@ export type GetLivetvChanneltagsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -17774,6 +27029,10 @@ export type GetLivetvChanneltagsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -18193,6 +27452,10 @@ export type GetLivetvEpgData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -18207,7 +27470,7 @@ export type GetLivetvEpgData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -18219,11 +27482,11 @@ export type GetLivetvEpgData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -18239,15 +27502,15 @@ export type GetLivetvEpgData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -18263,11 +27526,11 @@ export type GetLivetvEpgData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -18336,6 +27599,10 @@ export type GetLivetvEpgData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -18606,6 +27873,10 @@ export type GetLivetvChannelsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -18620,7 +27891,7 @@ export type GetLivetvChannelsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -18632,11 +27903,11 @@ export type GetLivetvChannelsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -18652,15 +27923,15 @@ export type GetLivetvChannelsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -18676,11 +27947,11 @@ export type GetLivetvChannelsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -18749,6 +28020,10 @@ export type GetLivetvChannelsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -19007,6 +28282,10 @@ export type GetLivetvProgramsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -19021,7 +28300,7 @@ export type GetLivetvProgramsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -19033,11 +28312,11 @@ export type GetLivetvProgramsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -19053,15 +28332,15 @@ export type GetLivetvProgramsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -19077,11 +28356,11 @@ export type GetLivetvProgramsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -19150,6 +28429,10 @@ export type GetLivetvProgramsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -19404,6 +28687,10 @@ export type PostLivetvProgramsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -19418,7 +28705,7 @@ export type PostLivetvProgramsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -19430,11 +28717,11 @@ export type PostLivetvProgramsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -19450,15 +28737,15 @@ export type PostLivetvProgramsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -19474,11 +28761,11 @@ export type PostLivetvProgramsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -19551,6 +28838,10 @@ export type PostLivetvProgramsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -19809,6 +29100,10 @@ export type GetLivetvRecordingsData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -19823,7 +29118,7 @@ export type GetLivetvRecordingsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -19835,11 +29130,11 @@ export type GetLivetvRecordingsData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -19855,15 +29150,15 @@ export type GetLivetvRecordingsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -19879,11 +29174,11 @@ export type GetLivetvRecordingsData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -19956,6 +29251,10 @@ export type GetLivetvRecordingsData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional filter by recording status.
      */
@@ -20046,7 +29345,7 @@ export type PostLivetvSeriestimersData = {
     requestBody: LiveTv_SeriesTimerInfo;
 };
 
-export type PostLivetvSeriestimersResponse = (unknown);
+export type PostLivetvSeriestimersResponse = (LiveTv_SeriesTimerInfoDto);
 
 export type GetLivetvGuideinfoResponse = (LiveTv_GuideInfo);
 
@@ -20073,7 +29372,7 @@ export type GetLivetvManageChannelsData = {
     startIndex?: (number) | null;
 };
 
-export type GetLivetvManageChannelsResponse = (QueryResult_ChannelManagementInfo);
+export type GetLivetvManageChannelsResponse = (QueryResult_BaseItemDto);
 
 export type GetLivetvChanneltagsPrefixesData = {
     /**
@@ -20289,6 +29588,10 @@ export type GetLivetvChanneltagsPrefixesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -20303,7 +29606,7 @@ export type GetLivetvChanneltagsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -20315,11 +29618,11 @@ export type GetLivetvChanneltagsPrefixesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -20335,15 +29638,15 @@ export type GetLivetvChanneltagsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -20359,11 +29662,11 @@ export type GetLivetvChanneltagsPrefixesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -20433,6 +29736,10 @@ export type GetLivetvChanneltagsPrefixesData = {
      */
     startIndex?: (number) | null;
     /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
     studioIds?: string;
@@ -20470,6 +29777,54 @@ export type GetLivetvChanneltagsPrefixesResponse = (Array<Api_TagItem>);
 
 export type GetLivetvRecordingsFoldersData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -20482,22 +29837,348 @@ export type GetLivetvRecordingsFoldersData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
-     * Optional filter by user and attach user data.
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetLivetvRecordingsFoldersResponse = (Array<BaseItemDto>);
 
 export type GetLivetvTunersDiscvoverResponse = (Array<LiveTv_TunerHostInfo>);
+
+export type GetLivetvTunersDiscoverResponse = (Array<LiveTv_TunerHostInfo>);
 
 export type GetLivetvListingprovidersDefaultResponse = (LiveTv_ListingsProviderInfo);
 
@@ -20555,6 +30236,54 @@ export type GetLivetvChannelsByIdResponse = (BaseItemDto);
 
 export type GetLivetvProgramsRecommendedData = {
     /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -20567,53 +30296,341 @@ export type GetLivetvProgramsRecommendedData = {
      */
     enableUserData?: (boolean) | null;
     /**
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
      * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
     /**
-     * The genres to return guide information for.
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
      */
-    genreIds?: string;
+    filters?: string;
     /**
-     * Optional. Filter by programs that have completed airing, or not.
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
      */
-    hasAired?: (boolean) | null;
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
     /**
-     * Optional. Filter by programs that are currently airing, or not.
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
      */
-    isAiring?: (boolean) | null;
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
     /**
      * Optional filter for kids.
      */
     isKids?: (boolean) | null;
     /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
      * Optional filter for movies.
      */
     isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
     /**
      * Optional filter for news.
      */
     isNews?: (boolean) | null;
     /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
      * Optional filter for series.
      */
     isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
     /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
     /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
      * Optional. The maximum number of records to return
      */
     limit?: (number) | null;
     /**
-     * Optional filter by user id.
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
      */
     userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetLivetvProgramsRecommendedResponse = (QueryResult_BaseItemDto);
@@ -20842,6 +30859,10 @@ export type PostNotificationsAdminData = {
      * The notification's name
      */
     name: string;
+    /**
+     * AddAdminNotification
+     */
+    requestBody: Api_AddAdminNotification;
     /**
      * The notification's info url
      */
@@ -21279,6 +31300,10 @@ export type GetShowsMissingData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -21293,7 +31318,7 @@ export type GetShowsMissingData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -21305,11 +31330,11 @@ export type GetShowsMissingData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -21325,15 +31350,15 @@ export type GetShowsMissingData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -21349,11 +31374,11 @@ export type GetShowsMissingData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -21422,6 +31447,10 @@ export type GetShowsMissingData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -21672,6 +31701,10 @@ export type GetShowsUpcomingData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -21686,7 +31719,7 @@ export type GetShowsUpcomingData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -21698,11 +31731,11 @@ export type GetShowsUpcomingData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -21718,15 +31751,15 @@ export type GetShowsUpcomingData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -21742,11 +31775,11 @@ export type GetShowsUpcomingData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -21815,6 +31848,10 @@ export type GetShowsUpcomingData = {
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
     startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
     /**
      * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
      */
@@ -21902,6 +31939,50 @@ export type GetShowsByIdSeasonsData = {
      */
     adjacentTo?: string;
     /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
      * Optional, include image information in output
      */
     enableImages?: (boolean) | null;
@@ -21914,25 +31995,345 @@ export type GetShowsByIdSeasonsData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
     /**
      * The series id
      */
     id: string;
     /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
     /**
      * Optional. Filter by special season.
      */
     isSpecialSeason?: (boolean) | null;
     /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
      * User Id
      */
-    userId: string;
+    userId?: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetShowsByIdSeasonsResponse = (QueryResult_BaseItemDto);
@@ -22155,6 +32556,10 @@ export type GetShowsByIdEpisodesData = {
      */
     isSeries?: (boolean) | null;
     /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
      * Optional filter for sports.
      */
     isSports?: (boolean) | null;
@@ -22169,7 +32574,7 @@ export type GetShowsByIdEpisodesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxEndDate?: string;
+    maxEndDate?: (string) | null;
     /**
      * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
      */
@@ -22181,11 +32586,11 @@ export type GetShowsByIdEpisodesData = {
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxPremiereDate?: string;
+    maxPremiereDate?: (string) | null;
     /**
      * Optional. The maximum premiere date. Format = ISO
      */
-    maxStartDate?: string;
+    maxStartDate?: (string) | null;
     /**
      * Optional filter by MediaType. Allows multiple, comma delimited.
      */
@@ -22201,15 +32606,15 @@ export type GetShowsByIdEpisodesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSaved?: string;
+    minDateLastSaved?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minDateLastSavedForUser?: string;
+    minDateLastSavedForUser?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minEndDate?: string;
+    minEndDate?: (string) | null;
     /**
      * Optional filter by minimum index number.
      */
@@ -22225,11 +32630,11 @@ export type GetShowsByIdEpisodesData = {
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minPremiereDate?: string;
+    minPremiereDate?: (string) | null;
     /**
      * Optional. The minimum premiere date. Format = ISO
      */
-    minStartDate?: string;
+    minStartDate?: (string) | null;
     /**
      * Optional filter by items whose name is equally or lesser than a given input string.
      */
@@ -22646,6 +33051,8 @@ export type PostSystemPingResponse = (unknown);
 
 export type GetSystemPingResponse = (unknown);
 
+export type HeadSystemPingResponse = (unknown);
+
 export type GetSystemWakeonlaninfoResponse = (Array<WakeOnLanInfo>);
 
 export type GetSystemInfoResponse = (SystemInfo);
@@ -22965,281 +33372,6 @@ export type PostUsersByIdTrackselectionsByTracktypeDeleteData = {
 
 export type PostUsersByIdTrackselectionsByTracktypeDeleteResponse = (unknown);
 
-export type GetUserUsageStatsGetItemPathData = {
-    /**
-     * item id
-     */
-    id: number;
-};
-
-export type GetUserUsageStatsGetItemPathResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsGetItemStatsData = {
-    /**
-     * item id
-     */
-    id: number;
-};
-
-export type GetUserUsageStatsGetItemStatsResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsGetItemsData = {
-    /**
-     * filter string
-     */
-    filter?: string;
-    /**
-     * type of items to return
-     */
-    itemType?: string;
-    /**
-     * parentid
-     */
-    parent?: number;
-};
-
-export type GetUserUsageStatsGetItemsResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsTypeFilterListResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserActivityData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-};
-
-export type GetUserUsageStatsUserActivityResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserListResponse = ({
-    [key: string]: unknown;
-});
-
-export type PostUserUsageStatsImportBackupData = {
-    /**
-     * Binary stream
-     */
-    requestBody: (Blob | File);
-};
-
-export type PostUserUsageStatsImportBackupResponse = (unknown);
-
-export type GetUserUsageStatsLoadBackupData = {
-    /**
-     * File name of file to load
-     */
-    backupfile: string;
-};
-
-export type GetUserUsageStatsLoadBackupResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsSaveBackupResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsPlayactivityData = {
-    /**
-     * Data type to return (count,time)
-     */
-    dataType?: string;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-};
-
-export type GetUserUsageStatsPlayactivityResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsHourlyreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsHourlyreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsTvshowsreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsTvshowsreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsMoviesreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsMoviesreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type PostUserUsageStatsSubmitCustomQueryData = {
-    /**
-     * CustomQuery
-     */
-    requestBody: playback_reporting_Api_CustomQuery;
-};
-
-export type PostUserUsageStatsSubmitCustomQueryResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserplaylistData = {
-    /**
-     * Aggregate the data to total duration per user per item
-     */
-    aggregateData: boolean;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * Name Filter
-     */
-    filterName?: string;
-    /**
-     * User Id
-     */
-    userId: string;
-};
-
-export type GetUserUsageStatsUserplaylistResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsSessionListResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsByBreakdowntypeBreakdownreportData = {
-    /**
-     * Breakdown type
-     */
-    breakdownType: string;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsByBreakdowntypeBreakdownreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserManageByActionByIdData = {
-    /**
-     * action to perform
-     */
-    action: string;
-    /**
-     * user Id to perform the action on
-     */
-    id: string;
-};
-
-export type GetUserUsageStatsUserManageByActionByIdResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsByUseridByDateGetitemsData = {
-    /**
-     * UTC DateTime, Format yyyy-MM-dd
-     */
-    date: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * User Id
-     */
-    userId: string;
-};
-
-export type GetUserUsageStatsByUseridByDateGetitemsResponse = ({
-    [key: string]: unknown;
-});
-
 export type PostVideosMergeversionsData = {
     /**
      * Item id list. This allows multiple, comma delimited.
@@ -23292,68 +33424,6 @@ export type PostVideosActiveencodingsDeleteData = {
 };
 
 export type PostVideosActiveencodingsDeleteResponse = (unknown);
-
-export type GetVirtualtvChannelsM3UResponse = (unknown);
-
-export type GetVirtualtvChannelsData = {
-    /**
-     * StreamType Universal only: original, mpegts or hls (Container of the catchup stream. Defaults to original)
-     */
-    catchupContainer?: string;
-    /**
-     * StreamType Universal only: vod, flussonic, shift or append (Defaults to vod)
-     */
-    catchupType?: string;
-    /**
-     * StreamType Universal only: Max. video bitrate in Kbps (Optional)
-     */
-    maxBitrate?: (number) | null;
-    /**
-     * Returns real live tv channels (Optional)
-     */
-    realLiveTv?: boolean;
-    /**
-     * Type of channel playlist streaming urls: Universal, EmbyCon or EmbyNextGen (Mandatory)
-     */
-    streamType: string;
-    /**
-     * StreamType Universal only: Time in seconds after streaming is stopped if client has disconnected (Defaults to 10 sec)
-     */
-    timeout?: (number) | null;
-    /**
-     * Token
-     */
-    token: string;
-};
-
-export type GetVirtualtvChannelsResponse = (unknown);
-
-export type GetVirtualtvGuideXmlResponse = (unknown);
-
-export type GetVirtualtvGuideData = {
-    /**
-     * Aspect ratio of program images: Thumb or Poster (Defaults to Thumb)
-     */
-    imageType?: string;
-    /**
-     * Matches programs to library items to enable catchup streams (Only for real live tv. Optional)
-     */
-    matchProgramToLibrary?: boolean;
-    /**
-     * Returns program for real live tv channels (Optional)
-     */
-    realLiveTv?: boolean;
-    /**
-     * Type of channel playlist catchup urls: Universal, EmbyCon or EmbyNextGen (Mandatory)
-     */
-    streamType: string;
-    /**
-     * Token
-     */
-    token: string;
-};
-
-export type GetVirtualtvGuideResponse = (unknown);
 
 export type GetWebConfigurationpageResponse = (unknown);
 
@@ -24919,6 +34989,166 @@ export type HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData = {
 
 export type HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse = (unknown);
 
+export type GetDlnaByUuidDescriptionXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidDescriptionXmlResponse = (unknown);
+
+export type HeadDlnaByUuidDescriptionXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidDescriptionXmlResponse = (unknown);
+
+export type GetDlnaByUuidDescriptionData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidDescriptionResponse = (unknown);
+
+export type HeadDlnaByUuidDescriptionData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidDescriptionResponse = (unknown);
+
+export type GetDlnaIconsByFilenameData = {
+    /**
+     * The icon filename
+     */
+    filename: string;
+    /**
+     * Server UuId
+     */
+    uuId?: string;
+};
+
+export type GetDlnaIconsByFilenameResponse = (unknown);
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryXmlResponse = (unknown);
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryXmlResponse = (unknown);
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryResponse = (unknown);
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryResponse = (unknown);
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse = (unknown);
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse = (unknown);
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerResponse = (unknown);
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerResponse = (unknown);
+
+export type PostDlnaByUuidContentdirectoryControlData = {
+    /**
+     * Binary stream
+     */
+    requestBody: (Blob | File);
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type PostDlnaByUuidContentdirectoryControlResponse = (unknown);
+
+export type PostDlnaByUuidConnectionmanagerControlData = {
+    /**
+     * Binary stream
+     */
+    requestBody: (Blob | File);
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type PostDlnaByUuidConnectionmanagerControlResponse = (unknown);
+
+export type GetDlnaByUuidIconsByFilenameData = {
+    /**
+     * The icon filename
+     */
+    filename: string;
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidIconsByFilenameResponse = (unknown);
+
 export type GetItemsByIdExternalidinfosData = {
     /**
      * Item Id
@@ -25079,6 +35309,10 @@ export type PostItemsByIdRefreshData = {
      * Determines if metadata should be replaced. Only applicable if mode is FullRefresh
      */
     replaceAllMetadata?: boolean;
+    /**
+     * BaseRefreshRequest:
+     */
+    requestBody: BaseRefreshRequest;
 };
 
 export type PostItemsByIdRefreshResponse = (unknown);
@@ -25122,7 +35356,7 @@ export type GetSystemActivitylogEntriesData = {
     /**
      * Optional. The minimum date. Format = ISO
      */
-    minDate?: string;
+    minDate?: (string) | null;
     /**
      * Optional. The record index to start at. All items with a lower index will be dropped from the results.
      */
@@ -25132,6 +35366,54 @@ export type GetSystemActivitylogEntriesData = {
 export type GetSystemActivitylogEntriesResponse = (QueryResult_ActivityLogEntry);
 
 export type GetUsersByUseridSuggestionsData = {
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
     /**
      * Optional, include image information in output
      */
@@ -25145,17 +35427,755 @@ export type GetUsersByUseridSuggestionsData = {
      */
     enableUserData?: (boolean) | null;
     /**
-     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines, TrailerUrls
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
      */
     fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
     /**
      * Optional, the max number of images to return, per image type
      */
     imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
+     */
     userId: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
 };
 
 export type GetUsersByUseridSuggestionsResponse = (QueryResult_BaseItemDto);
+
+export type GetUsersByUseridHomesectionsData = {
+    /**
+     * User Id
+     */
+    userId: string;
+};
+
+export type GetUsersByUseridHomesectionsResponse = (Array<ContentSection>);
+
+export type GetUsersByUseridSectionsBySectionidItemsData = {
+    /**
+     * Optional. Return items that are siblings of a supplied item.
+     */
+    adjacentTo?: string;
+    /**
+     * Gets all episodes that aired during a season, including specials.
+     */
+    airedDuringSeason?: (number) | null;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    albumArtistStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on album. This allows multiple, pipe delimeted.
+     */
+    albums?: string;
+    /**
+     * Optional. If specified, result will be filtered to contain only items which match at least one of the specified IDs. Each provider ID must be in the form 'prov.id', e.g. 'imdb.tt123456'. This allows multiple, comma delimeted value pairs.
+     */
+    anyProviderIdEquals?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artistIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on artist. This allows multiple, pipe delimeted.
+     */
+    artists?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    artistStartsWithOrGreater?: string;
+    /**
+     * Artist or AlbumArtist
+     */
+    artistType?: string;
+    /**
+     * Optional filter by AudioCodec. Allows multiple, comma delimeted.
+     */
+    audioCodecs?: string;
+    /**
+     * Optional filter by AudioLayout. Allows multiple, comma delimeted.
+     */
+    audioLayouts?: string;
+    /**
+     * Optional filter by Container. Allows multiple, comma delimeted.
+     */
+    containers?: string;
+    /**
+     * Optional, include image information in output
+     */
+    enableImages?: (boolean) | null;
+    /**
+     * Optional. The image types to include in the output.
+     */
+    enableImageTypes?: string;
+    /**
+     * Optional, include user data
+     */
+    enableUserData?: (boolean) | null;
+    /**
+     * Optional. If specified, results will be filtered by exxcluding item ids. This allows multiple, comma delimeted.
+     */
+    excludeItemIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    excludeItemTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    excludeTags?: string;
+    /**
+     * Optional filter by ExtendedVideoType. Allows multiple, comma delimeted.
+     */
+    extendedVideoTypes?: string;
+    /**
+     * Optional. Specify additional fields of information to return in the output. This allows multiple, comma delimeted. Options: Budget, Chapters, DateCreated, Genres, HomePageUrl, IndexOptions, MediaStreams, Overview, ParentId, Path, People, ProviderIds, PrimaryImageAspectRatio, Revenue, SortName, Studios, Taglines
+     */
+    fields?: string;
+    /**
+     * Optional. Specify additional filters to apply. This allows multiple, comma delimeted. Options: IsFolder, IsNotFolder, IsUnplayed, IsPlayed, IsFavorite, IsResumable, Likes, Dislikes
+     */
+    filters?: string;
+    /**
+     * Optional. If specified, results will be filtered based on genre. This allows multiple, pipe delimeted.
+     */
+    genres?: string;
+    /**
+     * Whether or not to hide items behind their boxsets.
+     */
+    groupItemsIntoCollections?: boolean;
+    /**
+     * Optional filter by items that have an imdb id or not.
+     */
+    hasImdbId?: (boolean) | null;
+    /**
+     * Optional filter by items that have official ratings
+     */
+    hasOfficialRating?: (boolean) | null;
+    /**
+     * Optional filter by items that have an overview or not.
+     */
+    hasOverview?: (boolean) | null;
+    /**
+     * Optional filter by items that have or do not have a parental rating
+     */
+    hasParentalRating?: (boolean) | null;
+    /**
+     * Optional filter by items with special features.
+     */
+    hasSpecialFeature?: (boolean) | null;
+    /**
+     * Optional filter by items with subtitles.
+     */
+    hasSubtitles?: (boolean) | null;
+    /**
+     * Optional filter by items with theme songs.
+     */
+    hasThemeSong?: (boolean) | null;
+    /**
+     * Optional filter by items with theme videos.
+     */
+    hasThemeVideo?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tmdb id or not.
+     */
+    hasTmdbId?: (boolean) | null;
+    /**
+     * Optional filter by items with trailers.
+     */
+    hasTrailer?: (boolean) | null;
+    /**
+     * Optional filter by items that have a tvdb id or not.
+     */
+    hasTvdbId?: (boolean) | null;
+    /**
+     * Optional. If specific items are needed, specify a list of item id's to retrieve. This allows multiple, comma delimited.
+     */
+    ids?: string;
+    /**
+     * Optional, the max number of images to return, per image type
+     */
+    imageTypeLimit?: (number) | null;
+    /**
+     * Optional. If specified, results will be filtered based on those containing image types. This allows multiple, comma delimited.
+     */
+    imageTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on item type. This allows multiple, comma delimeted.
+     */
+    includeItemTypes?: string;
+    /**
+     * Optional filter by items that are 3D, or not.
+     */
+    is3D?: (boolean) | null;
+    /**
+     * Optional filter by items that are marked as favorite, or not.
+     */
+    isFavorite?: (boolean) | null;
+    /**
+     * Optional filter for folders.
+     */
+    isFolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are HD or not.
+     */
+    isHd?: (boolean) | null;
+    /**
+     * Optional filter for kids.
+     */
+    isKids?: (boolean) | null;
+    /**
+     * Optional filter by items that are locked.
+     */
+    isLocked?: (boolean) | null;
+    /**
+     * Optional filter for movies.
+     */
+    isMovie?: (boolean) | null;
+    /**
+     * Optional filter for IsNew.
+     */
+    isNew?: (boolean) | null;
+    /**
+     * Optional filter for IsNewOrPremiere.
+     */
+    isNewOrPremiere?: (boolean) | null;
+    /**
+     * Optional filter for news.
+     */
+    isNews?: (boolean) | null;
+    /**
+     * Optional filter by items that are placeholders
+     */
+    isPlaceHolder?: (boolean) | null;
+    /**
+     * Optional filter by items that are played, or not.
+     */
+    isPlayed?: (boolean) | null;
+    /**
+     * Optional filter for IsPremiere.
+     */
+    isPremiere?: (boolean) | null;
+    /**
+     * Optional filter for IsRepeat.
+     */
+    isRepeat?: (boolean) | null;
+    /**
+     * Optional filter for series.
+     */
+    isSeries?: (boolean) | null;
+    /**
+     * Optional. Filter by special season.
+     */
+    isSpecialSeason?: (boolean) | null;
+    /**
+     * Optional filter for sports.
+     */
+    isSports?: (boolean) | null;
+    /**
+     * Optional filter by items that are unaired episodes or not.
+     */
+    isUnaired?: (boolean) | null;
+    /**
+     * Optional. The maximum number of records to return
+     */
+    limit?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxEndDate?: (string) | null;
+    /**
+     * Optional filter by maximum official rating (PG, PG-13, TV-MA, etc).
+     */
+    maxOfficialRating?: string;
+    /**
+     * Optional filter by maximum number of game players.
+     */
+    maxPlayers?: (number) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxPremiereDate?: (string) | null;
+    /**
+     * Optional. The maximum premiere date. Format = ISO
+     */
+    maxStartDate?: (string) | null;
+    /**
+     * Optional filter by MediaType. Allows multiple, comma delimited.
+     */
+    mediaTypes?: string;
+    /**
+     * Optional filter by minimum community rating.
+     */
+    minCommunityRating?: (number) | null;
+    /**
+     * Optional filter by minimum critic rating.
+     */
+    minCriticRating?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSaved?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minDateLastSavedForUser?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minEndDate?: (string) | null;
+    /**
+     * Optional filter by minimum index number.
+     */
+    minIndexNumber?: (number) | null;
+    /**
+     * Optional filter by minimum official rating (PG, PG-13, TV-MA, etc).
+     */
+    minOfficialRating?: string;
+    /**
+     * Optional filter by minimum number of game players.
+     */
+    minPlayers?: (number) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minPremiereDate?: (string) | null;
+    /**
+     * Optional. The minimum premiere date. Format = ISO
+     */
+    minStartDate?: (string) | null;
+    /**
+     * Optional filter by items whose name is equally or lesser than a given input string.
+     */
+    nameLessThan?: string;
+    /**
+     * Optional filter by items whose name is sorted equally than a given input string.
+     */
+    nameStartsWith?: string;
+    /**
+     * Optional filter by items whose name is sorted equally or greater than a given input string.
+     */
+    nameStartsWithOrGreater?: string;
+    /**
+     * Optional. If specified, results will be filtered based on OfficialRating. This allows multiple, pipe delimeted.
+     */
+    officialRatings?: string;
+    /**
+     * Specify this to localize the search to a specific item or folder. Omit to use the root
+     */
+    parentId?: string;
+    /**
+     * Optional filter by parent index number.
+     */
+    parentIndexNumber?: (number) | null;
+    /**
+     * Optional filter by Path.
+     */
+    path?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    person?: string;
+    /**
+     * Optional. If specified, results will be filtered to include only those containing the specified person.
+     */
+    personIds?: string;
+    /**
+     * Optional. If specified, along with Person, results will be filtered to include only those containing the specified person and PersonType. Allows multiple, comma-delimited
+     */
+    personTypes?: string;
+    /**
+     * ProjectToMedia
+     */
+    projectToMedia?: boolean;
+    /**
+     * When searching within folders, this determines whether or not the search will be recursive. true/false
+     */
+    recursive?: boolean;
+    /**
+     * Enter a search term to perform a search request
+     */
+    searchTerm?: string;
+    sectionId: string;
+    /**
+     * Optional filter by Series Status. Allows multiple, comma delimeted.
+     */
+    seriesStatus?: string;
+    /**
+     * Optional. Specify one or more sort orders, comma delimeted. Options: Album, AlbumArtist, Artist, Budget, CommunityRating, CriticRating, DateCreated, DatePlayed, PlayCount, PremiereDate, ProductionYear, SortName, Random, Revenue, Runtime
+     */
+    sortBy?: string;
+    /**
+     * Sort Order - Ascending,Descending
+     */
+    sortOrder?: string;
+    /**
+     * Optional. The record index to start at. All items with a lower index will be dropped from the results.
+     */
+    startIndex?: (number) | null;
+    /**
+     * Optional. Skip through the list until a given item is found.
+     */
+    startItemId?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studioIds?: string;
+    /**
+     * Optional. If specified, results will be filtered based on studio. This allows multiple, pipe delimeted.
+     */
+    studios?: string;
+    /**
+     * Optional filter by SubtitleCodec. Allows multiple, comma delimeted.
+     */
+    subtitleCodecs?: string;
+    /**
+     * Optional. If specified, results will be filtered based on tag. This allows multiple, pipe delimeted.
+     */
+    tags?: string;
+    /**
+     * User Id
+     */
+    userId: string;
+    /**
+     * Optional filter by VideoCodec. Allows multiple, comma delimeted.
+     */
+    videoCodecs?: string;
+    /**
+     * Optional filter by VideoType (videofile, dvd, bluray, iso). Allows multiple, comma delimeted.
+     */
+    videoTypes?: string;
+    /**
+     * Optional. If specified, results will be filtered based on production year. This allows multiple, comma delimeted.
+     */
+    years?: string;
+};
+
+export type GetUsersByUseridSectionsBySectionidItemsResponse = (QueryResult_BaseItemDto);
 
 export type GetUsersByUseridViewsData = {
     /**
@@ -25934,6 +36954,39 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
 
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks?: number;
+};
+
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
+
 export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
     /**
      * CopyTimestamps
@@ -25966,6 +37019,56 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
 };
 
 export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks?: number;
+};
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatResponse = (unknown);
+
+export type GetVideosByIdByMediasourceidAttachmentsByIndexStreamData = {
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+};
+
+export type GetVideosByIdByMediasourceidAttachmentsByIndexStreamResponse = (unknown);
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
     /**
@@ -26000,6 +37103,39 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStrea
 
 export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
 
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks: number;
+};
+
+export type HeadItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
+
 export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
     /**
      * CopyTimestamps
@@ -26032,6 +37168,39 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStre
 };
 
 export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatData = {
+    /**
+     * CopyTimestamps
+     */
+    copyTimestamps?: boolean;
+    /**
+     * EndPositionTicks
+     */
+    endPositionTicks?: (number) | null;
+    /**
+     * Format
+     */
+    format: string;
+    /**
+     * Item Id
+     */
+    id: string;
+    /**
+     * The subtitle stream index
+     */
+    index: number;
+    /**
+     * MediaSourceId
+     */
+    mediaSourceId: string;
+    /**
+     * StartPositionTicks
+     */
+    startPositionTicks: number;
+};
+
+export type HeadVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStreamByFormatResponse = (unknown);
 
 export type GetLivetvLivestreamfilesByIdStreamByContainerData = {
     container: string;

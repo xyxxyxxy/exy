@@ -14,8 +14,11 @@ import { CodecParameterServiceService } from './services.gen';
 import { CollectionServiceService } from './services.gen';
 import { ConfigurationServiceService } from './services.gen';
 import { ConnectServiceService } from './services.gen';
+import { ContentServiceService } from './services.gen';
 import { DeviceServiceService } from './services.gen';
 import { DisplayPreferencesServiceService } from './services.gen';
+import { DlnaServerServiceService } from './services.gen';
+import { DlnaServiceService } from './services.gen';
 import { DynamicHlsServiceService } from './services.gen';
 import { EncodingInfoServiceService } from './services.gen';
 import { EnvironmentServiceService } from './services.gen';
@@ -61,7 +64,6 @@ import { ToneMapOptionsServiceService } from './services.gen';
 import { TrailersServiceService } from './services.gen';
 import { TvShowsServiceService } from './services.gen';
 import { UniversalAudioServiceService } from './services.gen';
-import { UserActivityApiService } from './services.gen';
 import { UserLibraryServiceService } from './services.gen';
 import { UserNotificationsServiceService } from './services.gen';
 import { UserServiceService } from './services.gen';
@@ -69,7 +71,6 @@ import { UserViewsServiceService } from './services.gen';
 import { VideoHlsServiceService } from './services.gen';
 import { VideoServiceService } from './services.gen';
 import { VideosServiceService } from './services.gen';
-import { VirtualTvExportServiceService } from './services.gen';
 import { WebAppServiceService } from './services.gen';
 
 type HttpRequestConstructor = new (config: OpenAPIConfig) => BaseHttpRequest;
@@ -87,8 +88,11 @@ export class EmbyClient {
 	public readonly collectionService: CollectionServiceService;
 	public readonly configurationService: ConfigurationServiceService;
 	public readonly connectService: ConnectServiceService;
+	public readonly contentService: ContentServiceService;
 	public readonly deviceService: DeviceServiceService;
 	public readonly displayPreferencesService: DisplayPreferencesServiceService;
+	public readonly dlnaServerService: DlnaServerServiceService;
+	public readonly dlnaService: DlnaServiceService;
 	public readonly dynamicHlsService: DynamicHlsServiceService;
 	public readonly encodingInfoService: EncodingInfoServiceService;
 	public readonly environmentService: EnvironmentServiceService;
@@ -134,7 +138,6 @@ export class EmbyClient {
 	public readonly trailersService: TrailersServiceService;
 	public readonly tvShowsService: TvShowsServiceService;
 	public readonly universalAudioService: UniversalAudioServiceService;
-	public readonly userActivityApi: UserActivityApiService;
 	public readonly userLibraryService: UserLibraryServiceService;
 	public readonly userNotificationsService: UserNotificationsServiceService;
 	public readonly userService: UserServiceService;
@@ -142,15 +145,14 @@ export class EmbyClient {
 	public readonly videoHlsService: VideoHlsServiceService;
 	public readonly videoService: VideoServiceService;
 	public readonly videosService: VideosServiceService;
-	public readonly virtualTvExportService: VirtualTvExportServiceService;
 	public readonly webAppService: WebAppServiceService;
 
 	public readonly request: BaseHttpRequest;
 
 	constructor(config?: Partial<OpenAPIConfig>, HttpRequest: HttpRequestConstructor = AxiosHttpRequest) {
 		this.request = new HttpRequest({
-			BASE: config?.BASE ?? 'http://192.168.1.11:8096/emby',
-			VERSION: config?.VERSION ?? '4.8.8.0',
+			BASE: config?.BASE ?? 'http://emby.media/emby',
+			VERSION: config?.VERSION ?? '4.9.1.80',
 			WITH_CREDENTIALS: config?.WITH_CREDENTIALS ?? false,
 			CREDENTIALS: config?.CREDENTIALS ?? 'include',
 			TOKEN: config?.TOKEN,
@@ -175,8 +177,11 @@ export class EmbyClient {
 		this.collectionService = new CollectionServiceService(this.request);
 		this.configurationService = new ConfigurationServiceService(this.request);
 		this.connectService = new ConnectServiceService(this.request);
+		this.contentService = new ContentServiceService(this.request);
 		this.deviceService = new DeviceServiceService(this.request);
 		this.displayPreferencesService = new DisplayPreferencesServiceService(this.request);
+		this.dlnaServerService = new DlnaServerServiceService(this.request);
+		this.dlnaService = new DlnaServiceService(this.request);
 		this.dynamicHlsService = new DynamicHlsServiceService(this.request);
 		this.encodingInfoService = new EncodingInfoServiceService(this.request);
 		this.environmentService = new EnvironmentServiceService(this.request);
@@ -222,7 +227,6 @@ export class EmbyClient {
 		this.trailersService = new TrailersServiceService(this.request);
 		this.tvShowsService = new TvShowsServiceService(this.request);
 		this.universalAudioService = new UniversalAudioServiceService(this.request);
-		this.userActivityApi = new UserActivityApiService(this.request);
 		this.userLibraryService = new UserLibraryServiceService(this.request);
 		this.userNotificationsService = new UserNotificationsServiceService(this.request);
 		this.userService = new UserServiceService(this.request);
@@ -230,7 +234,6 @@ export class EmbyClient {
 		this.videoHlsService = new VideoHlsServiceService(this.request);
 		this.videoService = new VideoServiceService(this.request);
 		this.videosService = new VideosServiceService(this.request);
-		this.virtualTvExportService = new VirtualTvExportServiceService(this.request);
 		this.webAppService = new WebAppServiceService(this.request);
 	}
 }
