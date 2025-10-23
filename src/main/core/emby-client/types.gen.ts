@@ -5,16 +5,41 @@ export type QueryResult_BaseItemDto = {
     TotalRecordCount?: number;
 };
 
+/**
+ * This is strictly used as a data transfer object from the api layer. This holds information about a BaseItem in a format that is convenient for the client.
+ *
+ */
 export type BaseItemDto = {
+    /**
+     * The name.
+     */
     Name?: string;
     OriginalTitle?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * The id.
+     */
     Id?: string;
     Guid?: string;
+    /**
+     * The etag.
+     */
     Etag?: string;
+    /**
+     * The Prefix.
+     */
     Prefix?: string;
     TunerName?: string;
+    /**
+     * The playlist item identifier.
+     */
     PlaylistItemId?: string;
+    /**
+     * The date created.
+     */
     DateCreated?: (string) | null;
     DateModified?: (string) | null;
     VideoCodec?: string;
@@ -31,97 +56,295 @@ export type BaseItemDto = {
     PresentationUniqueKey?: string;
     PreferredMetadataLanguage?: string;
     PreferredMetadataCountryCode?: string;
+    /**
+     * A value indicating whether \[supports synchronize\].
+     */
     SupportsSync?: (boolean) | null;
     SyncStatus?: SyncJobItemStatus;
     CanManageAccess?: (boolean) | null;
     CanLeaveContent?: (boolean) | null;
     CanMakePublic?: (boolean) | null;
     Container?: string;
+    /**
+     * The name of the sort.
+     */
     SortName?: string;
     ForcedSortName?: string;
     Video3DFormat?: Video3DFormat;
+    /**
+     * The premiere date.
+     */
     PremiereDate?: (string) | null;
+    /**
+     * The external urls.
+     */
     ExternalUrls?: Array<ExternalUrl>;
+    /**
+     * The media versions.
+     */
     MediaSources?: Array<MediaSourceInfo>;
+    /**
+     * The critic rating.
+     */
     CriticRating?: (number) | null;
     GameSystemId?: (number) | null;
     AsSeries?: (boolean) | null;
+    /**
+     * The game system.
+     */
     GameSystem?: string;
     ProductionLocations?: Array<(string)>;
+    /**
+     * The path.
+     */
     Path?: string;
+    /**
+     * The official rating.
+     */
     OfficialRating?: string;
+    /**
+     * The custom rating.
+     */
     CustomRating?: string;
+    /**
+     * The channel identifier.
+     */
     ChannelId?: string;
     ChannelName?: string;
+    /**
+     * The overview.
+     */
     Overview?: string;
+    /**
+     * The taglines.
+     */
     Taglines?: Array<(string)>;
+    /**
+     * The genres.
+     */
     Genres?: Array<(string)>;
+    /**
+     * The community rating.
+     */
     CommunityRating?: (number) | null;
+    /**
+     * The run time ticks.
+     */
     RunTimeTicks?: (number) | null;
     Size?: (number) | null;
     FileName?: string;
     Bitrate?: (number) | null;
+    /**
+     * The production year.
+     */
     ProductionYear?: (number) | null;
+    /**
+     * The number.
+     */
     Number?: string;
     ChannelNumber?: string;
+    /**
+     * The index number.
+     */
     IndexNumber?: (number) | null;
+    /**
+     * The index number end.
+     */
     IndexNumberEnd?: (number) | null;
+    /**
+     * The parent index number.
+     */
     ParentIndexNumber?: (number) | null;
+    /**
+     * The trailer urls.
+     */
     RemoteTrailers?: Array<MediaUrl>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * A value indicating whether this instance is folder.
+     */
     IsFolder?: (boolean) | null;
+    /**
+     * The parent id.
+     */
     ParentId?: string;
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The people.
+     */
     People?: Array<BaseItemPerson>;
+    /**
+     * The studios.
+     */
     Studios?: Array<NameLongIdPair>;
     GenreItems?: Array<NameLongIdPair>;
     TagItems?: Array<NameLongIdPair>;
+    /**
+     * If the item does not have a logo, this will hold the Id of the Parent that has one.
+     */
     ParentLogoItemId?: string;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * The local trailer count.
+     */
     LocalTrailerCount?: (number) | null;
     UserData?: UserItemDataDto;
+    /**
+     * The recursive item count.
+     */
     RecursiveItemCount?: (number) | null;
+    /**
+     * The child count.
+     */
     ChildCount?: (number) | null;
     SeasonCount?: (number) | null;
+    /**
+     * The name of the series.
+     */
     SeriesName?: string;
+    /**
+     * The series id.
+     */
     SeriesId?: string;
+    /**
+     * The season identifier.
+     */
     SeasonId?: string;
+    /**
+     * The special feature count.
+     */
     SpecialFeatureCount?: (number) | null;
+    /**
+     * The display preferences id.
+     */
     DisplayPreferencesId?: string;
+    /**
+     * The status.
+     */
     Status?: string;
+    /**
+     * The air days.
+     */
     AirDays?: Array<DayOfWeek>;
+    /**
+     * The tags.
+     */
     Tags?: Array<(string)>;
+    /**
+     * The primary image aspect ratio, after image enhancements.
+     */
     PrimaryImageAspectRatio?: (number) | null;
+    /**
+     * The artists.
+     */
     Artists?: Array<(string)>;
+    /**
+     * The artist items.
+     */
     ArtistItems?: Array<NameIdPair>;
     Composers?: Array<NameIdPair>;
+    /**
+     * The album.
+     */
     Album?: string;
+    /**
+     * The type of the collection.
+     */
     CollectionType?: string;
+    /**
+     * The display order.
+     */
     DisplayOrder?: string;
+    /**
+     * The album id.
+     */
     AlbumId?: string;
+    /**
+     * The album image tag.
+     */
     AlbumPrimaryImageTag?: string;
+    /**
+     * The series primary image tag.
+     */
     SeriesPrimaryImageTag?: string;
+    /**
+     * The album artist.
+     */
     AlbumArtist?: string;
+    /**
+     * The album artists.
+     */
     AlbumArtists?: Array<NameIdPair>;
+    /**
+     * The name of the season.
+     */
     SeasonName?: string;
+    /**
+     * The media streams.
+     */
     MediaStreams?: Array<MediaStream>;
+    /**
+     * The part count.
+     */
     PartCount?: (number) | null;
+    /**
+     * The image tags.
+     */
     ImageTags?: {
         [key: string]: (string);
     };
+    /**
+     * The backdrop image tags.
+     */
     BackdropImageTags?: Array<(string)>;
+    /**
+     * The parent logo image tag.
+     */
     ParentLogoImageTag?: string;
+    /**
+     * The series studio.
+     */
     SeriesStudio?: string;
     PrimaryImageItemId?: string;
     PrimaryImageTag?: string;
+    /**
+     * The parent thumb item id.
+     */
     ParentThumbItemId?: string;
+    /**
+     * The parent thumb image tag.
+     */
     ParentThumbImageTag?: string;
+    /**
+     * The chapters.
+     */
     Chapters?: Array<ChapterInfo>;
     LocationType?: LocationType;
+    /**
+     * The type of the media.
+     */
     MediaType?: string;
+    /**
+     * The end date.
+     */
     EndDate?: (string) | null;
+    /**
+     * The locked fields.
+     */
     LockedFields?: Array<MetadataFields>;
+    /**
+     * A value indicating whether \[enable internet providers\].
+     */
     LockData?: (boolean) | null;
     Width?: (number) | null;
     Height?: (number) | null;
@@ -137,23 +360,65 @@ export type BaseItemDto = {
     Longitude?: (number) | null;
     Altitude?: (number) | null;
     IsoSpeedRating?: (number) | null;
+    /**
+     * The series timer identifier.
+     */
     SeriesTimerId?: string;
+    /**
+     * The channel primary image tag.
+     */
     ChannelPrimaryImageTag?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: (string) | null;
+    /**
+     * The completion percentage.
+     */
     CompletionPercentage?: (number) | null;
+    /**
+     * A value indicating whether this instance is repeat.
+     */
     IsRepeat?: (boolean) | null;
     IsNew?: (boolean) | null;
+    /**
+     * The episode title.
+     */
     EpisodeTitle?: string;
+    /**
+     * A value indicating whether this instance is movie.
+     */
     IsMovie?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is sports.
+     */
     IsSports?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is series.
+     */
     IsSeries?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is live.
+     */
     IsLive?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is news.
+     */
     IsNews?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is kids.
+     */
     IsKids?: (boolean) | null;
+    /**
+     * A value indicating whether this instance is premiere.
+     */
     IsPremiere?: (boolean) | null;
     TimerType?: LiveTv_TimerType;
     Disabled?: (boolean) | null;
     ManagementId?: string;
+    /**
+     * The timer identifier.
+     */
     TimerId?: string;
     CurrentProgram?: BaseItemDto;
     MovieCount?: (number) | null;
@@ -176,7 +441,13 @@ export type SyncJobItemStatus = 'Queued' | 'Converting' | 'ReadyToTransfer' | 'T
 export type Video3DFormat = 'HalfSideBySide' | 'FullSideBySide' | 'FullTopAndBottom' | 'HalfTopAndBottom' | 'MVC';
 
 export type ExternalUrl = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The type of the item.
+     */
     Url?: string;
 };
 
@@ -194,6 +465,9 @@ export type MediaSourceInfo = {
     Size?: (number) | null;
     Name?: string;
     SortName?: string;
+    /**
+     * Differentiate internet url vs local network
+     */
     IsRemote?: boolean;
     HasMixedProtocols?: boolean;
     RunTimeTicks?: (number) | null;
@@ -240,12 +514,28 @@ export type MediaSourceInfo = {
     ReadAtNativeFramerate?: boolean;
     DefaultAudioStreamIndex?: (number) | null;
     DefaultSubtitleStreamIndex?: (number) | null;
+    /**
+     * Used only by our Windows app. Not used by Emby Server. The id of the item that this mediasource belongs to, if there is one Also used by Emby for Kodi
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
 };
 
+/**
+ * Class ChapterInfo
+ *
+ */
 export type ChapterInfo = {
+    /**
+     * The start position ticks.
+     */
     StartPositionTicks?: number;
+    /**
+     * The name.
+     */
     Name?: string;
     ImageTag?: string;
     MarkerType?: MarkerType;
@@ -258,66 +548,328 @@ export type MediaProtocol = 'File' | 'Http' | 'Rtmp' | 'Rtsp' | 'Udp' | 'Rtp' | 
 
 export type MediaSourceType = 'Default' | 'Grouping' | 'Placeholder';
 
+/**
+ * MediaStream information.
+ *
+ *
+ * MediaStream itens are typically included in a `MediaBrowser.Model.Dto.MediaSourceInfo` object.
+ *
+ *
+ * `MediaBrowser.Model.Dto.MediaSourceInfo.MediaStreams`
+ *
+ */
 export type MediaStream = {
+    /**
+     * The codec.
+     *
+     * Probe Field: `codec_name`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`
+     * Related Enums: `T:Emby.Media.Model.Enums.VideoMediaTypes`, `Emby.Media.Model.Enums.AudioMediaTypes`, `Emby.Media.Model.Enums.SubtitleMediaTypes`.
+     */
     Codec?: string;
+    /**
+     * The codec tag.
+     *
+     * Probe Field: `codec_tag`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     CodecTag?: string;
+    /**
+     * The language.
+     *
+     * Probe Field: `tags["language"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Language?: string;
+    /**
+     * The color transfer characteristics.
+     *
+     * Probe Field: `color_transfer`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorTransfers`.
+     */
     ColorTransfer?: string;
+    /**
+     * The chromaticity coordinates of the source primaries.
+     *
+     * Probe Field: `color_primaries`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorPrimaries`.
+     */
     ColorPrimaries?: string;
+    /**
+     * The YUV colorspace type.
+     *
+     * Probe Field: `color_space`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enum: `Emby.Media.Model.Enums.ColorSpaces`.
+     */
     ColorSpace?: string;
+    /**
+     * The comment.
+     *
+     * Probe Field: `tags["comment"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Comment?: string;
+    /**
+     * The start time of the stream.
+     *
+     * Probe Field: `start_time`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     * Actual type: `System.TimeSpan`.
+     */
     StreamStartTimeTicks?: (number) | null;
+    /**
+     * The time\-base.
+     *
+     * Probe Field: `time_base`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     TimeBase?: string;
+    /**
+     * The title.
+     *
+     * Probe Field: `tags["title"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Title?: string;
+    /**
+     * The extradata.
+     *
+     * Probe Field: `extradata`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     *
+     * Currently, this value is only parsed for subtitle streams with codec `Emby.Media.Model.Enums.SubtitleMediaTypes.dvb_teletext`.
+     */
     Extradata?: string;
     VideoRange?: string;
+    /**
+     * The display title.
+     *
+     * Custom property set by the application.
+     */
     DisplayTitle?: string;
+    /**
+     * The display language.
+     *
+     * Custom property set by the application.
+     */
     DisplayLanguage?: string;
+    /**
+     * The nal length size.
+     *
+     * Probe Field: `nal_length_size`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video` of type `Emby.Media.Model.Enums.VideoMediaTypes.h264`.
+     * Actual type: `System.Int32`.
+     */
     NalLengthSize?: string;
+    /**
+     * A value indicating whether this instance is interlaced.
+     *
+     * Probe Field: `field_order` \!\= `progressive`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     IsInterlaced?: boolean;
     /**
      * @deprecated
      */
     IsAVC?: (boolean) | null;
+    /**
+     * The channel layout.
+     *
+     * Probe Field: `channel_layout`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enum: `MediaBrowser.Model.Entities.MediaStream.ChannelLayout`.
+     */
     ChannelLayout?: string;
+    /**
+     * The bit rate.
+     *
+     * Probe Field: `bit_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     *
+     * THIS VALUE IS PROCESSED BY CUSTOM LOGIC AND DOES NOT NECESSARILY MATCH FFPROBE RESULTS\!
+     */
     BitRate?: (number) | null;
+    /**
+     * The bit depth.
+     *
+     * Probe Field: `bits_per_sample` or `bits_per_raw_sample`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     */
     BitDepth?: (number) | null;
+    /**
+     * The reference frames.
+     *
+     * Probe Field: `refs`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     RefFrames?: (number) | null;
     Rotation?: (number) | null;
+    /**
+     * The audio channel count.
+     *
+     * Probe Field: `channels`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`.
+     */
     Channels?: (number) | null;
+    /**
+     * The sample rate.
+     *
+     * Probe Field: `sample_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enum: `Emby.Media.Model.Enums.SampleRates`.
+     */
     SampleRate?: (number) | null;
+    /**
+     * A value indicating whether this instance is default.
+     *
+     * Probe Field: `disposition["default"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     IsDefault?: boolean;
+    /**
+     * A value indicating whether this instance is forced.
+     *
+     * Probe Field: `disposition["forced"]`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     IsForced?: boolean;
     IsHearingImpaired?: boolean;
+    /**
+     * The height.
+     *
+     * Probe Field: `height`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     *
+     * Probe Field: `width`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     */
     Width?: (number) | null;
+    /**
+     * The average frame rate..
+     *
+     * Probe Field: `avg_frame_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     AverageFrameRate?: (number) | null;
+    /**
+     * The real frame rate..
+     *
+     * Probe Field: `r_frame_rate`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     RealFrameRate?: (number) | null;
+    /**
+     * The profile.
+     *
+     * Probe Field: `profile`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`
+     * Related Enums: `Emby.Media.Model.Enums.AacProfiles`, `Emby.Media.Model.Enums.AvcProfiles`, `Emby.Media.Model.Enums.H263Profiles`, `Emby.Media.Model.Enums.HevcProfiles`, `Emby.Media.Model.Enums.Mpeg2Profiles`,`Emby.Media.Model.Enums.Vc1Profiles`, `Emby.Media.Model.Enums.Mpeg4Profiles`, `Emby.Media.Model.Enums.Vp8Profiles`, `Emby.Media.Model.Enums.Vp9Profiles`.
+     */
     Profile?: string;
     Type?: MediaStreamType;
+    /**
+     * The aspect ratio.
+     *
+     * Probe Field: `display_aspect_ratio`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `Emby.Media.Model.Types.Rational`.
+     */
     AspectRatio?: string;
+    /**
+     * The index of the stream inside its container.
+     *
+     * Probe Field: `index`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
+     */
     Index?: number;
+    /**
+     * A value indicating whether this instance is external.
+     *
+     * Custom property set by the application.
+     */
     IsExternal?: boolean;
     DeliveryMethod?: SubtitleDeliveryMethod;
+    /**
+     * The delivery URL.
+     *
+     * Custom property set by the application.
+     */
     DeliveryUrl?: string;
+    /**
+     * A value indicating whether this instance is external URL.
+     *
+     * Custom property set by the application.
+     */
     IsExternalUrl?: (boolean) | null;
     IsTextSubtitleStream?: boolean;
+    /**
+     * A value indicating whether \[supports external stream\].
+     */
     SupportsExternalStream?: boolean;
+    /**
+     * The filename.
+     */
     Path?: string;
     Protocol?: MediaProtocol;
+    /**
+     * The pixel format.
+     *
+     * Probe Field: `pix_fmt`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`.
+     * Actual type: `MediaBrowser.Model.Entities.MediaStream.PixelFormat`.
+     */
     PixelFormat?: string;
+    /**
+     * The codec level.
+     *
+     * Probe Field: `level`
+     * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`
+     * Related Enums: `Emby.Media.Model.Enums.AvcLevels`, `Emby.Media.Model.Enums.H263Levels`, `Emby.Media.Model.Enums.HevcLevels`, `Emby.Media.Model.Enums.Mpeg2Levels`,`Emby.Media.Model.Enums.Vc1Levels`, `Emby.Media.Model.Enums.Mpeg4Levels`, `Emby.Media.Model.Enums.Vp8Levels`, `Emby.Media.Model.Enums.Vp9Levels`.
+     */
     Level?: (number) | null;
+    /**
+     * A value indicating whether this instance is anamorphic.
+     */
     IsAnamorphic?: (boolean) | null;
     ExtendedVideoType?: ExtendedVideoTypes;
     ExtendedVideoSubType?: ExtendedVideoSubTypes;
+    /**
+     * The extended video sub\-type description.
+     */
     ExtendedVideoSubTypeDescription?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
+    /**
+     * The size of the attachment.
+     */
     AttachmentSize?: (number) | null;
+    /**
+     * The type of the MIME.
+     */
     MimeType?: string;
     SubtitleLocationType?: SubtitleLocationType;
 };
 
+/**
+ * Enum MediaStreamType
+ *
+ */
 export type MediaStreamType = 'Unknown' | 'Audio' | 'Video' | 'Subtitle' | 'EmbeddedImage' | 'Attachment' | 'Data';
 
 export type SubtitleDeliveryMethod = 'Encode' | 'Embed' | 'External' | 'Hls' | 'VideoSideData';
@@ -339,44 +891,117 @@ export type ProviderIdDictionary = {
     [key: string]: (string);
 };
 
+/**
+ * This is used by the api to get information about a Person within a BaseItem
+ *
+ */
 export type BaseItemPerson = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
+    /**
+     * The role.
+     */
     Role?: string;
     Type?: PersonType;
+    /**
+     * The primary image tag.
+     */
     PrimaryImageTag?: string;
 };
 
 export type PersonType = 'Actor' | 'Director' | 'Writer' | 'Producer' | 'GuestStar' | 'Composer' | 'Conductor' | 'Lyricist';
 
 export type NameLongIdPair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: number;
 };
 
+/**
+ * Class UserItemDataDto
+ *
+ */
 export type UserItemDataDto = {
+    /**
+     * The rating.
+     */
     Rating?: (number) | null;
+    /**
+     * The played percentage.
+     */
     PlayedPercentage?: (number) | null;
+    /**
+     * The unplayed item count.
+     */
     UnplayedItemCount?: (number) | null;
+    /**
+     * The playback position ticks.
+     */
     PlaybackPositionTicks?: number;
+    /**
+     * The play count.
+     */
     PlayCount?: (number) | null;
+    /**
+     * A value indicating whether this instance is favorite.
+     */
     IsFavorite?: boolean;
+    /**
+     * The last played date.
+     */
     LastPlayedDate?: (string) | null;
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Dto.UserItemDataDto` is played.
+     */
     Played?: boolean;
+    /**
+     * The key.
+     */
     Key?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * Used only by our Windows app. Not used by Emby Server.
+     */
     ServerId?: string;
 };
 
 export type DayOfWeek = 'Sunday' | 'Monday' | 'Tuesday' | 'Wednesday' | 'Thursday' | 'Friday' | 'Saturday';
 
 export type NameIdPair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
+/**
+ * Enum LocationType
+ *
+ */
 export type LocationType = 'FileSystem' | 'Virtual';
 
+/**
+ * Enum MetadataFields
+ *
+ */
 export type MetadataFields = 'Cast' | 'Genres' | 'ProductionLocations' | 'Studios' | 'Tags' | 'Name' | 'Overview' | 'Runtime' | 'OfficialRating' | 'Collections' | 'ChannelNumber' | 'SortName' | 'OriginalTitle' | 'SortIndexNumber' | 'SortParentIndexNumber' | 'CommunityRating' | 'CriticRating' | 'Tagline' | 'Composers' | 'Artists' | 'AlbumArtists';
 
 export type Drawing_ImageOrientation = 'TopLeft' | 'TopRight' | 'BottomRight' | 'BottomLeft' | 'LeftTop' | 'RightTop' | 'RightBottom' | 'LeftBottom';
@@ -405,12 +1030,27 @@ export type QueryResult_Devices_DeviceInfo = {
 
 export type Devices_DeviceInfo = {
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
     InternalId?: number;
     ReportedDeviceId?: string;
+    /**
+     * The last name of the user.
+     */
     LastUserName?: string;
+    /**
+     * The name of the application.
+     */
     AppName?: string;
+    /**
+     * The application version.
+     */
     AppVersion?: string;
+    /**
+     * The last user identifier.
+     */
     LastUserId?: string;
     DateLastActivity?: string;
     IconUrl?: string;
@@ -434,49 +1074,155 @@ export type UserLibrary_OfficialRatingItem = {
     Name?: string;
 };
 
+/**
+ * Class PackageInfo
+ *
+ */
 export type PackageInfo = {
+    /**
+     * The internal id of this package.
+     */
     id?: string;
+    /**
+     * The name.
+     */
     name?: string;
+    /**
+     * The short description.
+     */
     shortDescription?: string;
+    /**
+     * The overview.
+     */
     overview?: string;
+    /**
+     * A value indicating whether this instance is premium.
+     */
     isPremium?: boolean;
+    /**
+     * A value indicating whether this instance is adult only content.
+     */
     adult?: boolean;
+    /**
+     * The rich desc URL.
+     */
     richDescUrl?: string;
+    /**
+     * The thumb image.
+     */
     thumbImage?: string;
+    /**
+     * The preview image.
+     */
     previewImage?: string;
+    /**
+     * The type.
+     */
     type?: string;
+    /**
+     * The target filename.
+     */
     targetFilename?: string;
+    /**
+     * The owner.
+     */
     owner?: string;
+    /**
+     * The category.
+     */
     category?: string;
+    /**
+     * The catalog tile color.
+     */
     tileColor?: string;
+    /**
+     * The feature id of this package (if premium).
+     */
     featureId?: string;
+    /**
+     * The price for this package (if premium).
+     */
     price?: (number) | null;
     targetSystem?: PackageTargetSystem;
+    /**
+     * The guid of the assembly associated with this package (if a plug\-in). This is used to identify the proper item for automatic updates.
+     */
     guid?: string;
+    /**
+     * Whether or not this package is registered.
+     */
     isRegistered?: boolean;
+    /**
+     * The expiration date for this package.
+     */
     expDate?: string;
+    /**
+     * The versions.
+     */
     versions?: Array<PackageVersionInfo>;
+    /**
+     * A value indicating whether \[enable in application store\].
+     */
     enableInAppStore?: boolean;
+    /**
+     * The installs.
+     */
     installs?: number;
 };
 
+/**
+ * Enum PackageType
+ *
+ */
 export type PackageTargetSystem = 'Server' | 'MBTheater' | 'MBClassic' | 'Other';
 
+/**
+ * Class PackageVersionInfo
+ *
+ */
 export type PackageVersionInfo = {
+    /**
+     * The name.
+     */
     name?: string;
+    /**
+     * The guid.
+     */
     guid?: string;
+    /**
+     * The version STR.
+     */
     versionStr?: string;
     classification?: PackageVersionClass;
+    /**
+     * The description.
+     */
     description?: string;
+    /**
+     * The required version STR.
+     */
     requiredVersionStr?: string;
+    /**
+     * The source URL.
+     */
     sourceUrl?: string;
+    /**
+     * The source URL.
+     */
     checksum?: string;
+    /**
+     * The target filename.
+     */
     targetFilename?: string;
     infoUrl?: string;
     runtimes?: string;
     timestamp?: (string) | null;
 };
 
+/**
+ * Enum PackageVersionClass
+ *
+ */
 export type PackageVersionClass = 'Release' | 'Beta' | 'Dev';
 
 export type Playlists_PlaylistCreationResult = {
@@ -485,91 +1231,258 @@ export type Playlists_PlaylistCreationResult = {
     ItemAddedCount?: number;
 };
 
+/**
+ * This is a serializable stub class that is used by the api to provide information about installed plugins.
+ *
+ */
 export type Plugins_PluginInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The name of the configuration file.
+     */
     ConfigurationFileName?: string;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The unique id.
+     */
     Id?: string;
+    /**
+     * The image URL.
+     */
     ImageTag?: string;
 };
 
+/**
+ * Class TaskInfo
+ *
+ */
 export type TaskInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     State?: TaskState;
+    /**
+     * The progress.
+     */
     CurrentProgressPercentage?: (number) | null;
+    /**
+     * The id.
+     */
     Id?: string;
     LastExecutionResult?: TaskResult;
+    /**
+     * The triggers.
+     */
     Triggers?: Array<TaskTriggerInfo>;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The category.
+     */
     Category?: string;
+    /**
+     * A value indicating whether this instance is hidden.
+     */
     IsHidden?: boolean;
+    /**
+     * The key.
+     */
     Key?: string;
 };
 
+/**
+ * Enum TaskState
+ *
+ */
 export type TaskState = 'Idle' | 'Cancelling' | 'Running';
 
+/**
+ * Class TaskExecutionInfo
+ *
+ */
 export type TaskResult = {
+    /**
+     * The start time UTC.
+     */
     StartTimeUtc?: string;
+    /**
+     * The end time UTC.
+     */
     EndTimeUtc?: string;
     Status?: TaskCompletionStatus;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The key.
+     */
     Key?: string;
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The error message.
+     */
     ErrorMessage?: string;
+    /**
+     * The long error message.
+     */
     LongErrorMessage?: string;
 };
 
+/**
+ * Enum TaskCompletionStatus
+ *
+ */
 export type TaskCompletionStatus = 'Completed' | 'Failed' | 'Cancelled' | 'Aborted';
 
+/**
+ * Class TaskTriggerInfo
+ *
+ */
 export type TaskTriggerInfo = {
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The time of day.
+     */
     TimeOfDayTicks?: (number) | null;
+    /**
+     * The interval.
+     */
     IntervalTicks?: (number) | null;
     SystemEvent?: SystemEvent;
     DayOfWeek?: DayOfWeek;
+    /**
+     * The maximum runtime ticks.
+     */
     MaxRuntimeTicks?: (number) | null;
 };
 
+/**
+ * Enum SystemEvent
+ *
+ */
 export type SystemEvent = 'WakeFromSleep' | 'DisplayConfigurationChange' | 'NetworkChange';
 
+/**
+ * Class SessionInfo
+ *
+ */
 export type Session_SessionInfo = {
     PlayState?: PlayerStateInfo;
     AdditionalUsers?: Array<SessionUserInfo>;
+    /**
+     * The remote end point.
+     */
     RemoteEndPoint?: string;
     Protocol?: string;
+    /**
+     * The playable media types.
+     */
     PlayableMediaTypes?: Array<(string)>;
     PlaylistItemId?: string;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * The id.
+     */
     Id?: string;
     ServerId?: string;
+    /**
+     * The user id.
+     */
     UserId?: string;
     PartyId?: string;
+    /**
+     * The username.
+     */
     UserName?: string;
     UserPrimaryImageTag?: string;
+    /**
+     * The type of the client.
+     */
     Client?: string;
+    /**
+     * The last activity date.
+     */
     LastActivityDate?: string;
+    /**
+     * The name of the device.
+     */
     DeviceName?: string;
     DeviceType?: string;
     NowPlayingItem?: BaseItemDto;
     InternalDeviceId?: number;
+    /**
+     * The device id.
+     */
     DeviceId?: string;
+    /**
+     * The application version.
+     */
     ApplicationVersion?: string;
+    /**
+     * The application icon URL.
+     */
     AppIconUrl?: string;
+    /**
+     * The supported commands.
+     */
     SupportedCommands?: Array<(string)>;
     TranscodingInfo?: TranscodingInfo;
     SupportsRemoteControl?: boolean;
 };
 
 export type PlayerStateInfo = {
+    /**
+     * The now playing position ticks.
+     */
     PositionTicks?: (number) | null;
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
+    /**
+     * The index of the now playing audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the now playing subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * The now playing media version identifier.
+     */
     MediaSourceId?: string;
     MediaSource?: MediaSourceInfo;
     PlayMethod?: PlayMethod;
@@ -587,8 +1500,18 @@ export type RepeatMode = 'RepeatNone' | 'RepeatAll' | 'RepeatOne';
 
 export type SleepTimerMode = 'None' | 'AfterItem' | 'AtTime';
 
+/**
+ * Class SessionUserInfo.
+ *
+ */
 export type SessionUserInfo = {
+    /**
+     * The user identifier.
+     */
     UserId?: string;
+    /**
+     * The name of the user.
+     */
     UserName?: string;
     UserInternalId?: number;
 };
@@ -648,17 +1571,44 @@ export type Tuple_Double_Double = {
 };
 
 export type ProcessRun_Metrics_ProcessStatistics = {
+    /**
+     * The current cpu.
+     */
     CurrentCpu?: number;
+    /**
+     * The average cpu.
+     */
     AverageCpu?: number;
+    /**
+     * The currently allocated virtual memory.
+     */
     CurrentVirtualMemory?: number;
+    /**
+     * The currently allocated working set.
+     */
     CurrentWorkingSet?: number;
+    /**
+     * The metrics.
+     */
     Metrics?: Array<ProcessRun_Metrics_ProcessMetricPoint>;
 };
 
 export type ProcessRun_Metrics_ProcessMetricPoint = {
+    /**
+     * The time.
+     */
     Time?: string;
+    /**
+     * The cpu percent.
+     */
     CpuPercent?: number;
+    /**
+     * The virtual memory.
+     */
     VirtualMemory?: number;
+    /**
+     * The working set.
+     */
     WorkingSet?: number;
 };
 
@@ -676,12 +1626,26 @@ export type Transcoding_VpStepInfo = {
     ParamShort?: string;
 };
 
+/**
+ * Video Processing Step Type enum.
+ *
+ */
 export type Transcoding_VpStepTypes = 'Decoder' | 'Encoder' | 'Scaling' | 'Deinterlace' | 'SubtitleOverlay' | 'ToneMapping' | 'ColorConversion' | 'SplitCaptions' | 'TextSub2Video' | 'GraphicSub2Video' | 'GraphicSub2Text' | 'BurnInTextSubs' | 'BurnInGraphicSubs' | 'ScaleSubs' | 'TextMod' | 'Censor' | 'ShowSpeaker' | 'StripStyles' | 'ConnectTo' | 'Rotate';
 
+/**
+ * Enum ImageType
+ *
+ */
 export type ImageType = 'Primary' | 'Art' | 'Backdrop' | 'Banner' | 'Logo' | 'Thumb' | 'Disc' | 'Box' | 'Screenshot' | 'Menu' | 'Chapter' | 'BoxRear' | 'Thumbnail' | 'LogoLight' | 'LogoLightColor';
 
 export type NameValuePair = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The value.
+     */
     Value?: string;
 };
 
@@ -715,7 +1679,13 @@ export type MBBackup_BackupInfo = {
 };
 
 export type Branding_BrandingOptions = {
+    /**
+     * The login disclaimer.
+     */
     LoginDisclaimer?: string;
+    /**
+     * The custom CSS.
+     */
     CustomCss?: string;
 };
 
@@ -751,319 +1721,43 @@ export type DisplayPreferences = {
     Client?: string;
 };
 
+/**
+ * Enum SortOrder
+ *
+ */
 export type SortOrder = 'Ascending' | 'Descending';
 
-export type Configuration_ToneMapping_ToneMapOptionsVisibility = {
-    ShowAdvanced?: boolean;
-    IsSoftwareToneMappingAvailable?: boolean;
-    IsAnyHardwareToneMappingAvailable?: boolean;
-    ShowNvidiaOptions?: boolean;
-    ShowQuickSyncOptions?: boolean;
-    ShowVaapiOptions?: boolean;
-    IsOpenClAvailable?: boolean;
-    IsOpenClSuperTAvailable?: boolean;
-    IsVaapiNativeAvailable?: boolean;
-    IsQuickSyncNativeAvailable?: boolean;
-    OperatingSystem?: OperatingSystem;
-};
-
-export type OperatingSystem = 'Windows' | 'Linux' | 'OSX' | 'BSD' | 'Android';
-
-export type EditObjectContainer = {
-    Object?: {
-        [key: string]: unknown;
-    };
-    DefaultObject?: {
-        [key: string]: unknown;
-    };
-    TypeName?: string;
-    EditorRoot?: Editors_EditorRoot;
-};
-
-export type Editors_EditorRoot = {
-    PropertyConditions?: Array<Conditions_PropertyCondition>;
-    PostbackActions?: Array<Actions_PostbackAction>;
-    TitleButton?: Editors_EditorButtonItem;
-    EditorItems?: Array<Editors_EditorBase>;
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type Conditions_PropertyCondition = {
-    AffectedPropertyId?: string;
-    ConditionType?: Conditions_PropertyConditionType;
-    TargetPropertyId?: string;
-    SimpleCondition?: Attributes_SimpleCondition;
-    ValueCondition?: Attributes_ValueCondition;
-    Value?: {
-        [key: string]: unknown;
-    };
-};
-
-export type Conditions_PropertyConditionType = 'Visible' | 'Enabled';
-
-export type Attributes_SimpleCondition = 'IsTrue' | 'IsFalse' | 'IsNull' | 'IsNotNullOrEmpty';
-
-export type Attributes_ValueCondition = 'IsEqual' | 'IsNotEqual' | 'IsGreater' | 'IsGreaterOrEqual' | 'IsLess' | 'IsLessOrEqual';
-
-export type Actions_PostbackAction = {
-    TargetEditorId?: string;
-    PostbackCommandId?: string;
-    CommandParameterPropertyId?: string;
-};
-
-export type Editors_EditorButtonItem = {
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type Common_EditorTypes = 'Group' | 'Text' | 'Numeric' | 'Boolean' | 'SelectSingle' | 'SelectMultiple' | 'Date' | 'FilePath' | 'FolderPath' | 'StatusItem' | 'ProgressItem' | 'ButtonItem' | 'ButtonGroup' | 'CaptionItem' | 'LabelItem' | 'ItemList' | 'RadioGroup' | 'DxDataGrid' | 'DxPivotGrid' | 'SpacerItem';
-
-export type Editors_EditorBase = {
-    EditorType?: Common_EditorTypes;
-    Name?: string;
-    Id?: string;
-    AllowEmpty?: boolean;
-    IsReadOnly?: boolean;
-    IsAdvanced?: boolean;
-    DisplayName?: string;
-    Description?: string;
-    FeatureRequiresPremiere?: boolean;
-    ParentId?: string;
-};
-
-export type MediaEncoding_CodecParameterContext = 'Playback' | 'Conversion';
-
-export type ValidatePath = {
-    ValidateWriteable?: boolean;
-    IsFile?: (boolean) | null;
-    Username?: string;
-    Password?: string;
-};
-
-export type DefaultDirectoryBrowserInfo = {
+export type Dlna_Profiles_DlnaProfile = {
+    Type?: Dlna_Profiles_DeviceProfileType;
     Path?: string;
-};
-
-export type IO_FileSystemEntryInfo = {
-    Name?: string;
-    Path?: string;
-    Type?: IO_FileSystemEntryType;
-};
-
-export type IO_FileSystemEntryType = 'File' | 'Directory' | 'NetworkComputer' | 'NetworkShare';
-
-export type GetDirectoryContents = {
-    Username?: string;
-    Password?: string;
-};
-
-export type UserLibrary_UpdateUserItemAccess = {
-    ItemIds?: Array<(string)>;
-    UserIds?: Array<(string)>;
-    ItemAccess?: UserItemShareLevel;
-};
-
-export type UserItemShareLevel = 'None' | 'Read' | 'Write' | 'Manage' | 'ManageDelete';
-
-export type ItemCounts = {
-    MovieCount?: number;
-    SeriesCount?: number;
-    EpisodeCount?: number;
-    GameCount?: number;
-    ArtistCount?: number;
-    ProgramCount?: number;
-    GameSystemCount?: number;
-    TrailerCount?: number;
-    SongCount?: number;
-    AlbumCount?: number;
-    MusicVideoCount?: number;
-    BoxSetCount?: number;
-    BookCount?: number;
-    ItemCount?: number;
-};
-
-export type Persistence_IntroDebugInfo = {
-    Id?: number;
-    Path?: string;
-    Start?: number;
-    End?: number;
-};
-
-export type LibraryOptionsResult = {
-    MetadataSavers?: Array<LibraryOptionInfo>;
-    MetadataReaders?: Array<LibraryOptionInfo>;
-    SubtitleFetchers?: Array<LibraryOptionInfo>;
-    LyricsFetchers?: Array<LibraryOptionInfo>;
-    TypeOptions?: Array<LibraryTypeOptions>;
-    DefaultLibraryOptions?: LibraryOptions;
-};
-
-export type LibraryOptionInfo = {
-    Name?: string;
-    SetupUrl?: string;
-    DefaultEnabled?: boolean;
-    Features?: Array<MetadataFeatures>;
-};
-
-export type MetadataFeatures = 'Collections' | 'Adult' | 'RequiredSetup';
-
-export type LibraryTypeOptions = {
-    Type?: string;
-    MetadataFetchers?: Array<LibraryOptionInfo>;
-    ImageFetchers?: Array<LibraryOptionInfo>;
-    SupportedImageTypes?: Array<ImageType>;
-    DefaultImageOptions?: Array<ImageOption>;
-};
-
-export type ImageOption = {
-    Type?: ImageType;
-    Limit?: number;
-    MinWidth?: number;
-};
-
-export type LibraryOptions = {
-    EnableArchiveMediaFiles?: boolean;
-    EnablePhotos?: boolean;
-    EnableRealtimeMonitor?: boolean;
-    EnableMarkerDetection?: boolean;
-    EnableMarkerDetectionDuringLibraryScan?: boolean;
-    IntroDetectionFingerprintLength?: number;
-    EnableChapterImageExtraction?: boolean;
-    ExtractChapterImagesDuringLibraryScan?: boolean;
-    DownloadImagesInAdvance?: boolean;
-    CacheImages?: boolean;
-    ExcludeFromSearch?: boolean;
-    EnablePlexIgnore?: boolean;
-    PathInfos?: Array<MediaPathInfo>;
-    IgnoreHiddenFiles?: boolean;
-    IgnoreFileExtensions?: Array<(string)>;
-    SaveLocalMetadata?: boolean;
-    SaveMetadataHidden?: boolean;
-    SaveLocalThumbnailSets?: boolean;
-    ImportPlaylists?: boolean;
-    EnableAutomaticSeriesGrouping?: boolean;
-    ShareEmbeddedMusicAlbumImages?: boolean;
-    EnableEmbeddedTitles?: boolean;
-    EnableAudioResume?: boolean;
-    AutoGenerateChapters?: boolean;
-    MergeTopLevelFolders?: boolean;
-    AutoGenerateChapterIntervalMinutes?: number;
-    AutomaticRefreshIntervalDays?: number;
-    PlaceholderMetadataRefreshIntervalDays?: number;
-    PreferredMetadataLanguage?: string;
-    PreferredImageLanguage?: string;
-    ContentType?: string;
-    MetadataCountryCode?: string;
-    MetadataSavers?: Array<(string)>;
-    DisabledLocalMetadataReaders?: Array<(string)>;
-    LocalMetadataReaderOrder?: Array<(string)>;
-    DisabledLyricsFetchers?: Array<(string)>;
-    SaveLyricsWithMedia?: boolean;
-    LyricsDownloadMaxAgeDays?: number;
-    LyricsFetcherOrder?: Array<(string)>;
-    LyricsDownloadLanguages?: Array<(string)>;
-    DisabledSubtitleFetchers?: Array<(string)>;
-    SubtitleFetcherOrder?: Array<(string)>;
-    SkipSubtitlesIfEmbeddedSubtitlesPresent?: boolean;
-    SkipSubtitlesIfAudioTrackMatches?: boolean;
-    SubtitleDownloadLanguages?: Array<(string)>;
-    SubtitleDownloadMaxAgeDays?: number;
-    RequirePerfectSubtitleMatch?: boolean;
-    SaveSubtitlesWithMedia?: boolean;
-    ForcedSubtitlesOnly?: boolean;
-    HearingImpairedSubtitlesOnly?: boolean;
-    TypeOptions?: Array<TypeOptions>;
-    CollapseSingleItemFolders?: boolean;
-    EnableAdultMetadata?: boolean;
-    ImportCollections?: boolean;
-    EnableMultiVersionByFiles?: boolean;
-    EnableMultiVersionByMetadata?: boolean;
-    EnableMultiPartItems?: boolean;
-    MinCollectionItems?: number;
-    MusicFolderStructure?: string;
-    MinResumePct?: number;
-    MaxResumePct?: number;
-    MinResumeDurationSeconds?: number;
-    ThumbnailImagesIntervalSeconds?: number;
-    SampleIgnoreSize?: number;
-};
-
-export type MediaPathInfo = {
-    Path?: string;
-    NetworkPath?: string;
-    Username?: string;
-    Password?: string;
-};
-
-export type TypeOptions = {
-    Type?: string;
-    MetadataFetchers?: Array<(string)>;
-    MetadataFetcherOrder?: Array<(string)>;
-    ImageFetchers?: Array<(string)>;
-    ImageFetcherOrder?: Array<(string)>;
-    ImageOptions?: Array<ImageOption>;
-};
-
-export type Library_MediaFolder = {
-    Name?: string;
-    Id?: string;
-    Guid?: string;
-    SubFolders?: Array<Library_SubFolder>;
-    IsUserAccessConfigurable?: boolean;
-};
-
-export type Library_SubFolder = {
-    Name?: string;
-    Id?: string;
-    Path?: string;
-    IsUserAccessConfigurable?: boolean;
-};
-
-export type Library_AddVirtualFolder = {
-    Name?: string;
-    CollectionType?: string;
-    RefreshLibrary?: boolean;
-    Paths?: Array<(string)>;
-    LibraryOptions?: LibraryOptions;
-};
-
-export type LiveStreamRequest = {
-    OpenToken?: string;
     UserId?: string;
-    PlaySessionId?: string;
-    MaxStreamingBitrate?: (number) | null;
-    StartTimeTicks?: (number) | null;
-    AudioStreamIndex?: (number) | null;
-    SubtitleStreamIndex?: (number) | null;
-    MaxAudioChannels?: (number) | null;
-    ItemId?: number;
-    DeviceProfile?: DeviceProfile;
-    EnableDirectPlay?: boolean;
-    EnableDirectStream?: boolean;
-    EnableTranscoding?: boolean;
-    AllowVideoStreamCopy?: boolean;
-    AllowInterlacedVideoStreamCopy?: boolean;
-    AllowAudioStreamCopy?: boolean;
-};
-
-export type DeviceProfile = {
+    AlbumArtPn?: string;
+    MaxAlbumArtWidth?: number;
+    MaxAlbumArtHeight?: number;
+    MaxIconWidth?: (number) | null;
+    MaxIconHeight?: (number) | null;
+    FriendlyName?: string;
+    Manufacturer?: string;
+    ManufacturerUrl?: string;
+    ModelName?: string;
+    ModelDescription?: string;
+    ModelNumber?: string;
+    ModelUrl?: string;
+    SerialNumber?: string;
+    EnableAlbumArtInDidl?: boolean;
+    EnableSingleAlbumArtLimit?: boolean;
+    EnableSingleSubtitleLimit?: boolean;
+    ProtocolInfo?: string;
+    TimelineOffsetSeconds?: number;
+    RequiresPlainVideoItems?: boolean;
+    RequiresPlainFolders?: boolean;
+    IgnoreTranscodeByteRangeRequests?: boolean;
+    SupportsSamsungBookmark?: boolean;
+    Identification?: Dlna_Profiles_DeviceIdentification;
+    ProtocolInfoDetection?: Dlna_Profiles_ProtocolInfoDetection;
+    /**
+     * The name.
+     */
     Name?: string;
     Id?: string;
     SupportedMediaTypes?: string;
@@ -1071,12 +1765,47 @@ export type DeviceProfile = {
     MusicStreamingTranscodingBitrate?: (number) | null;
     MaxStaticMusicBitrate?: (number) | null;
     DeclaredFeatures?: Array<(string)>;
+    /**
+     * The direct play profiles.
+     */
     DirectPlayProfiles?: Array<DirectPlayProfile>;
+    /**
+     * The transcoding profiles.
+     */
     TranscodingProfiles?: Array<TranscodingProfile>;
     ContainerProfiles?: Array<ContainerProfile>;
     CodecProfiles?: Array<CodecProfile>;
     ResponseProfiles?: Array<ResponseProfile>;
     SubtitleProfiles?: Array<SubtitleProfile>;
+};
+
+export type Dlna_Profiles_DeviceProfileType = 'System' | 'User';
+
+export type Dlna_Profiles_DeviceIdentification = {
+    FriendlyName?: string;
+    ModelNumber?: string;
+    SerialNumber?: string;
+    ModelName?: string;
+    ModelDescription?: string;
+    DeviceDescription?: string;
+    ModelUrl?: string;
+    Manufacturer?: string;
+    ManufacturerUrl?: string;
+    Headers?: Array<Dlna_Profiles_HttpHeaderInfo>;
+};
+
+export type Dlna_Profiles_HttpHeaderInfo = {
+    Name?: string;
+    Value?: string;
+    Match?: Dlna_Profiles_HeaderMatchType;
+};
+
+export type Dlna_Profiles_HeaderMatchType = 'Equals' | 'Regex' | 'Substring';
+
+export type Dlna_Profiles_ProtocolInfoDetection = {
+    EnabledForVideo?: boolean;
+    EnabledForAudio?: boolean;
+    EnabledForPhotos?: boolean;
 };
 
 export type DirectPlayProfile = {
@@ -1161,6 +1890,427 @@ export type SubtitleProfile = {
     Protocol?: string;
 };
 
+export type Configuration_ToneMapping_ToneMapOptionsVisibility = {
+    ShowAdvanced?: boolean;
+    IsSoftwareToneMappingAvailable?: boolean;
+    IsAnyHardwareToneMappingAvailable?: boolean;
+    ShowNvidiaOptions?: boolean;
+    ShowQuickSyncOptions?: boolean;
+    ShowVaapiOptions?: boolean;
+    IsOpenClAvailable?: boolean;
+    IsOpenClSuperTAvailable?: boolean;
+    IsVaapiNativeAvailable?: boolean;
+    IsQuickSyncNativeAvailable?: boolean;
+    OperatingSystem?: OperatingSystem;
+};
+
+export type OperatingSystem = 'Windows' | 'Linux' | 'OSX' | 'BSD' | 'Android';
+
+export type EditObjectContainer = {
+    Object?: {
+        [key: string]: unknown;
+    };
+    DefaultObject?: {
+        [key: string]: unknown;
+    };
+    TypeName?: string;
+    EditorRoot?: Editors_EditorRoot;
+};
+
+export type Editors_EditorRoot = {
+    PropertyConditions?: Array<Conditions_PropertyCondition>;
+    PostbackActions?: Array<Actions_PostbackAction>;
+    TitleButton?: Editors_EditorButtonItem;
+    EditorItems?: Array<Editors_EditorBase>;
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type Conditions_PropertyCondition = {
+    AffectedPropertyId?: string;
+    ConditionType?: Conditions_PropertyConditionType;
+    /**
+     * The target property name or path.
+     */
+    TargetPropertyId?: string;
+    SimpleCondition?: Attributes_SimpleCondition;
+    ValueCondition?: Attributes_ValueCondition;
+    /**
+     * The value.
+     */
+    Value?: {
+        [key: string]: unknown;
+    };
+};
+
+export type Conditions_PropertyConditionType = 'Visible' | 'Enabled';
+
+/**
+ * Conditions on the source value.
+ *
+ */
+export type Attributes_SimpleCondition = 'IsTrue' | 'IsFalse' | 'IsNull' | 'IsNotNullOrEmpty';
+
+/**
+ * Conditions for comparing with a target value.
+ *
+ */
+export type Attributes_ValueCondition = 'IsEqual' | 'IsNotEqual' | 'IsGreater' | 'IsGreaterOrEqual' | 'IsLess' | 'IsLessOrEqual';
+
+export type Actions_PostbackAction = {
+    TargetEditorId?: string;
+    PostbackCommandId?: string;
+    CommandParameterPropertyId?: string;
+};
+
+export type Editors_EditorButtonItem = {
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type Common_EditorTypes = 'Group' | 'Text' | 'Numeric' | 'Boolean' | 'SelectSingle' | 'SelectMultiple' | 'Date' | 'FilePath' | 'FolderPath' | 'StatusItem' | 'ProgressItem' | 'ButtonItem' | 'ButtonGroup' | 'CaptionItem' | 'LabelItem' | 'ItemList' | 'RadioGroup' | 'DxDataGrid' | 'DxPivotGrid' | 'SpacerItem';
+
+export type Editors_EditorBase = {
+    EditorType?: Common_EditorTypes;
+    Name?: string;
+    Id?: string;
+    AllowEmpty?: boolean;
+    IsReadOnly?: boolean;
+    IsAdvanced?: boolean;
+    DisplayName?: string;
+    Description?: string;
+    FeatureRequiresPremiere?: boolean;
+    ParentId?: string;
+};
+
+export type MediaEncoding_CodecParameterContext = 'Playback' | 'Conversion';
+
+export type ValidatePath = {
+    ValidateWriteable?: boolean;
+    IsFile?: (boolean) | null;
+    Username?: string;
+    Password?: string;
+};
+
+export type DefaultDirectoryBrowserInfo = {
+    Path?: string;
+};
+
+/**
+ * Class FileSystemEntryInfo
+ *
+ */
+export type IO_FileSystemEntryInfo = {
+    /**
+     * The name.
+     */
+    Name?: string;
+    /**
+     * The path.
+     */
+    Path?: string;
+    Type?: IO_FileSystemEntryType;
+};
+
+/**
+ * Enum FileSystemEntryType
+ *
+ */
+export type IO_FileSystemEntryType = 'File' | 'Directory' | 'NetworkComputer' | 'NetworkShare';
+
+export type GetDirectoryContents = {
+    Username?: string;
+    Password?: string;
+};
+
+export type UserLibrary_UpdateUserItemAccess = {
+    ItemIds?: Array<(string)>;
+    UserIds?: Array<(string)>;
+    ItemAccess?: UserItemShareLevel;
+};
+
+export type UserItemShareLevel = 'None' | 'Read' | 'Write' | 'Manage' | 'ManageDelete';
+
+/**
+ * Class LibrarySummary
+ *
+ */
+export type ItemCounts = {
+    /**
+     * The movie count.
+     */
+    MovieCount?: number;
+    /**
+     * The series count.
+     */
+    SeriesCount?: number;
+    /**
+     * The episode count.
+     */
+    EpisodeCount?: number;
+    /**
+     * The game count.
+     */
+    GameCount?: number;
+    ArtistCount?: number;
+    ProgramCount?: number;
+    /**
+     * The game system count.
+     */
+    GameSystemCount?: number;
+    /**
+     * The trailer count.
+     */
+    TrailerCount?: number;
+    /**
+     * The song count.
+     */
+    SongCount?: number;
+    /**
+     * The album count.
+     */
+    AlbumCount?: number;
+    /**
+     * The music video count.
+     */
+    MusicVideoCount?: number;
+    /**
+     * The box set count.
+     */
+    BoxSetCount?: number;
+    /**
+     * The book count.
+     */
+    BookCount?: number;
+    ItemCount?: number;
+};
+
+export type Persistence_IntroDebugInfo = {
+    Id?: number;
+    Path?: string;
+    Start?: number;
+    End?: number;
+};
+
+export type LibraryOptionsResult = {
+    MetadataSavers?: Array<LibraryOptionInfo>;
+    MetadataReaders?: Array<LibraryOptionInfo>;
+    SubtitleFetchers?: Array<LibraryOptionInfo>;
+    LyricsFetchers?: Array<LibraryOptionInfo>;
+    TypeOptions?: Array<LibraryTypeOptions>;
+    DefaultLibraryOptions?: LibraryOptions;
+};
+
+export type LibraryOptionInfo = {
+    Name?: string;
+    SetupUrl?: string;
+    DefaultEnabled?: boolean;
+    Features?: Array<MetadataFeatures>;
+};
+
+export type MetadataFeatures = 'Collections' | 'Adult' | 'RequiredSetup';
+
+export type LibraryTypeOptions = {
+    Type?: string;
+    MetadataFetchers?: Array<LibraryOptionInfo>;
+    ImageFetchers?: Array<LibraryOptionInfo>;
+    SupportedImageTypes?: Array<ImageType>;
+    DefaultImageOptions?: Array<ImageOption>;
+};
+
+export type ImageOption = {
+    Type?: ImageType;
+    /**
+     * The limit.
+     */
+    Limit?: number;
+    /**
+     * The minimum width.
+     */
+    MinWidth?: number;
+};
+
+export type LibraryOptions = {
+    EnableArchiveMediaFiles?: boolean;
+    EnablePhotos?: boolean;
+    EnableRealtimeMonitor?: boolean;
+    EnableMarkerDetection?: boolean;
+    EnableMarkerDetectionDuringLibraryScan?: boolean;
+    IntroDetectionFingerprintLength?: number;
+    EnableChapterImageExtraction?: boolean;
+    ExtractChapterImagesDuringLibraryScan?: boolean;
+    DownloadImagesInAdvance?: boolean;
+    CacheImages?: boolean;
+    ExcludeFromSearch?: boolean;
+    EnablePlexIgnore?: boolean;
+    PathInfos?: Array<MediaPathInfo>;
+    IgnoreHiddenFiles?: boolean;
+    IgnoreFileExtensions?: Array<(string)>;
+    SaveLocalMetadata?: boolean;
+    SaveMetadataHidden?: boolean;
+    SaveLocalThumbnailSets?: boolean;
+    ImportPlaylists?: boolean;
+    EnableAutomaticSeriesGrouping?: boolean;
+    ShareEmbeddedMusicAlbumImages?: boolean;
+    EnableEmbeddedTitles?: boolean;
+    EnableAudioResume?: boolean;
+    AutoGenerateChapters?: boolean;
+    MergeTopLevelFolders?: boolean;
+    AutoGenerateChapterIntervalMinutes?: number;
+    AutomaticRefreshIntervalDays?: number;
+    PlaceholderMetadataRefreshIntervalDays?: number;
+    /**
+     * The preferred metadata language.
+     */
+    PreferredMetadataLanguage?: string;
+    PreferredImageLanguage?: string;
+    ContentType?: string;
+    /**
+     * The metadata country code.
+     */
+    MetadataCountryCode?: string;
+    MetadataSavers?: Array<(string)>;
+    DisabledLocalMetadataReaders?: Array<(string)>;
+    LocalMetadataReaderOrder?: Array<(string)>;
+    DisabledLyricsFetchers?: Array<(string)>;
+    SaveLyricsWithMedia?: boolean;
+    LyricsDownloadMaxAgeDays?: number;
+    LyricsFetcherOrder?: Array<(string)>;
+    LyricsDownloadLanguages?: Array<(string)>;
+    DisabledSubtitleFetchers?: Array<(string)>;
+    SubtitleFetcherOrder?: Array<(string)>;
+    SkipSubtitlesIfEmbeddedSubtitlesPresent?: boolean;
+    SkipSubtitlesIfAudioTrackMatches?: boolean;
+    SubtitleDownloadLanguages?: Array<(string)>;
+    SubtitleDownloadMaxAgeDays?: number;
+    RequirePerfectSubtitleMatch?: boolean;
+    SaveSubtitlesWithMedia?: boolean;
+    ForcedSubtitlesOnly?: boolean;
+    HearingImpairedSubtitlesOnly?: boolean;
+    TypeOptions?: Array<TypeOptions>;
+    CollapseSingleItemFolders?: boolean;
+    EnableAdultMetadata?: boolean;
+    ImportCollections?: boolean;
+    EnableMultiVersionByFiles?: boolean;
+    EnableMultiVersionByMetadata?: boolean;
+    EnableMultiPartItems?: boolean;
+    MinCollectionItems?: number;
+    MusicFolderStructure?: string;
+    /**
+     * The minimum percentage of an item that must be played in order for playstate to be updated.
+     */
+    MinResumePct?: number;
+    /**
+     * The maximum percentage of an item that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.
+     */
+    MaxResumePct?: number;
+    /**
+     * The minimum duration that an item must have in order to be eligible for playstate updates..
+     */
+    MinResumeDurationSeconds?: number;
+    ThumbnailImagesIntervalSeconds?: number;
+    SampleIgnoreSize?: number;
+};
+
+export type MediaPathInfo = {
+    Path?: string;
+    NetworkPath?: string;
+    Username?: string;
+    Password?: string;
+};
+
+export type TypeOptions = {
+    Type?: string;
+    MetadataFetchers?: Array<(string)>;
+    MetadataFetcherOrder?: Array<(string)>;
+    ImageFetchers?: Array<(string)>;
+    ImageFetcherOrder?: Array<(string)>;
+    ImageOptions?: Array<ImageOption>;
+};
+
+export type Library_MediaFolder = {
+    Name?: string;
+    Id?: string;
+    Guid?: string;
+    SubFolders?: Array<Library_SubFolder>;
+    IsUserAccessConfigurable?: boolean;
+};
+
+export type Library_SubFolder = {
+    Name?: string;
+    Id?: string;
+    Path?: string;
+    IsUserAccessConfigurable?: boolean;
+};
+
+export type Library_AddVirtualFolder = {
+    Name?: string;
+    CollectionType?: string;
+    RefreshLibrary?: boolean;
+    Paths?: Array<(string)>;
+    LibraryOptions?: LibraryOptions;
+};
+
+export type LiveStreamRequest = {
+    OpenToken?: string;
+    UserId?: string;
+    PlaySessionId?: string;
+    MaxStreamingBitrate?: (number) | null;
+    StartTimeTicks?: (number) | null;
+    AudioStreamIndex?: (number) | null;
+    SubtitleStreamIndex?: (number) | null;
+    MaxAudioChannels?: (number) | null;
+    ItemId?: number;
+    DeviceProfile?: DeviceProfile;
+    EnableDirectPlay?: boolean;
+    EnableDirectStream?: boolean;
+    EnableTranscoding?: boolean;
+    AllowVideoStreamCopy?: boolean;
+    AllowInterlacedVideoStreamCopy?: boolean;
+    AllowAudioStreamCopy?: boolean;
+};
+
+export type DeviceProfile = {
+    /**
+     * The name.
+     */
+    Name?: string;
+    Id?: string;
+    SupportedMediaTypes?: string;
+    MaxStreamingBitrate?: (number) | null;
+    MusicStreamingTranscodingBitrate?: (number) | null;
+    MaxStaticMusicBitrate?: (number) | null;
+    DeclaredFeatures?: Array<(string)>;
+    /**
+     * The direct play profiles.
+     */
+    DirectPlayProfiles?: Array<DirectPlayProfile>;
+    /**
+     * The transcoding profiles.
+     */
+    TranscodingProfiles?: Array<TranscodingProfile>;
+    ContainerProfiles?: Array<ContainerProfile>;
+    CodecProfiles?: Array<CodecProfile>;
+    ResponseProfiles?: Array<ResponseProfile>;
+    SubtitleProfiles?: Array<SubtitleProfile>;
+};
+
 export type LiveStreamResponse = {
     MediaSource?: MediaSourceInfo;
 };
@@ -1217,10 +2367,20 @@ export type LiveTv_TunerHostInfo = {
 };
 
 export type LiveTv_LiveTvInfo = {
+    /**
+     * A value indicating whether this instance is enabled.
+     */
     IsEnabled?: boolean;
+    /**
+     * The enabled users.
+     */
     EnabledUsers?: Array<(string)>;
 };
 
+/**
+ * Enum ChannelType
+ *
+ */
 export type LiveTv_ChannelType = 'TV' | 'Radio';
 
 export type QueryResult_Api_EpgRow = {
@@ -1287,29 +2447,83 @@ export type QueryResult_LiveTv_TimerInfoDto = {
 
 export type LiveTv_TimerInfoDto = {
     Status?: LiveTv_RecordingStatus;
+    /**
+     * The series timer identifier.
+     */
     SeriesTimerId?: string;
+    /**
+     * The run time ticks.
+     */
     RunTimeTicks?: (number) | null;
     ProgramInfo?: BaseItemDto;
     TimerType?: LiveTv_TimerType;
+    /**
+     * Id of the recording.
+     */
     Id?: string;
     Type?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
+    /**
+     * ChannelName of the recording.
+     */
     ChannelName?: string;
     ChannelNumber?: string;
     ChannelPrimaryImageTag?: string;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
     ParentFolderId?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
     KeepUntil?: LiveTv_KeepUntil;
 };
@@ -1321,45 +2535,124 @@ export type QueryResult_LiveTv_SeriesTimerInfoDto = {
     TotalRecordCount?: number;
 };
 
+/**
+ * Class SeriesTimerInfoDto.
+ *
+ */
 export type LiveTv_SeriesTimerInfoDto = {
+    /**
+     * A value indicating whether \[record any time\].
+     */
     RecordAnyTime?: boolean;
     SkipEpisodesInLibrary?: boolean;
     MatchExistingItemsWithAnyLibrary?: boolean;
+    /**
+     * A value indicating whether \[record any channel\].
+     */
     RecordAnyChannel?: boolean;
     KeepUpTo?: number;
     MaxRecordingSeconds?: number;
+    /**
+     * A value indicating whether \[record new only\].
+     */
     RecordNewOnly?: boolean;
     ChannelIds?: Array<(string)>;
+    /**
+     * The days.
+     */
     Days?: Array<DayOfWeek>;
+    /**
+     * The image tags.
+     */
     ImageTags?: {
         [key: string]: (string);
     };
+    /**
+     * The parent thumb item id.
+     */
     ParentThumbItemId?: string;
+    /**
+     * The parent thumb image tag.
+     */
     ParentThumbImageTag?: string;
+    /**
+     * The parent primary image item identifier.
+     */
     ParentPrimaryImageItemId?: string;
+    /**
+     * The parent primary image tag.
+     */
     ParentPrimaryImageTag?: string;
     SeriesId?: string;
     Keywords?: Array<LiveTv_KeywordInfo>;
     TimerType?: LiveTv_TimerType;
+    /**
+     * Id of the recording.
+     */
     Id?: string;
     Type?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
+    /**
+     * ChannelName of the recording.
+     */
     ChannelName?: string;
     ChannelNumber?: string;
     ChannelPrimaryImageTag?: string;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
     ParentFolderId?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * If the item does not have any backdrops, this will hold the Id of the Parent that has one.
+     */
     ParentBackdropItemId?: string;
+    /**
+     * The parent backdrop image tags.
+     */
     ParentBackdropImageTags?: Array<(string)>;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
     KeepUntil?: LiveTv_KeepUntil;
 };
@@ -1370,28 +2663,76 @@ export type LiveTv_KeywordInfo = {
 };
 
 export type LiveTv_SeriesTimerInfo = {
+    /**
+     * Id of the recording.
+     */
     Id?: string;
+    /**
+     * ChannelId of the recording.
+     */
     ChannelId?: string;
     ChannelIds?: Array<(string)>;
     ParentFolderId?: number;
+    /**
+     * The program identifier.
+     */
     ProgramId?: string;
+    /**
+     * Name of the recording.
+     */
     Name?: string;
     ServiceName?: string;
+    /**
+     * Description of the recording.
+     */
     Overview?: string;
+    /**
+     * The start date of the recording, in UTC.
+     */
     StartDate?: string;
+    /**
+     * The end date of the recording, in UTC.
+     */
     EndDate?: string;
+    /**
+     * A value indicating whether \[record any time\].
+     */
     RecordAnyTime?: boolean;
     KeepUpTo?: number;
     KeepUntil?: LiveTv_KeepUntil;
     SkipEpisodesInLibrary?: boolean;
     MatchExistingItemsWithAnyLibrary?: boolean;
+    /**
+     * A value indicating whether \[record new only\].
+     */
     RecordNewOnly?: boolean;
+    /**
+     * The days.
+     */
     Days?: Array<DayOfWeek>;
+    /**
+     * The priority.
+     */
     Priority?: number;
+    /**
+     * The pre padding seconds.
+     */
     PrePaddingSeconds?: number;
+    /**
+     * The post padding seconds.
+     */
     PostPaddingSeconds?: number;
+    /**
+     * A value indicating whether this instance is pre padding required.
+     */
     IsPrePaddingRequired?: boolean;
+    /**
+     * A value indicating whether this instance is post padding required.
+     */
     IsPostPaddingRequired?: boolean;
+    /**
+     * The series identifier.
+     */
     SeriesId?: string;
     ProviderIds?: ProviderIdDictionary;
     MaxRecordingSeconds?: number;
@@ -1400,7 +2741,13 @@ export type LiveTv_SeriesTimerInfo = {
 };
 
 export type LiveTv_GuideInfo = {
+    /**
+     * The start date.
+     */
     StartDate?: string;
+    /**
+     * The end date.
+     */
     EndDate?: string;
 };
 
@@ -1412,12 +2759,28 @@ export type Api_AvailableRecordingOptions = {
 
 export type Api_NameIdDescriptionPair = {
     ShortOverview?: string;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
+/**
+ * Class ParentalRating
+ *
+ */
 export type ParentalRating = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The value.
+     */
     Value?: number;
 };
 
@@ -1426,18 +2789,53 @@ export type Globalization_LocalizatonOption = {
     Value?: string;
 };
 
+/**
+ * Class CountryInfo
+ *
+ */
 export type Globalization_CountryInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The display name.
+     */
     DisplayName?: string;
+    /**
+     * The English name.
+     */
     EnglishName?: string;
+    /**
+     * The name of the two letter ISO region.
+     */
     TwoLetterISORegionName?: string;
+    /**
+     * The name of the three letter ISO region.
+     */
     ThreeLetterISORegionName?: string;
 };
 
+/**
+ * Class CultureDto
+ *
+ */
 export type Globalization_CultureDto = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The display name.
+     */
     DisplayName?: string;
+    /**
+     * The name of the two letter ISO language.
+     */
     TwoLetterISOLanguageName?: string;
+    /**
+     * The name of the three letter ISO language.
+     */
     ThreeLetterISOLanguageName?: string;
     ThreeLetterISOLanguageNames?: Array<(string)>;
     TwoLetterISOLanguageNames?: Array<(string)>;
@@ -1469,19 +2867,44 @@ export type Api_AddAdminNotification = {
     DisplayDateTime?: boolean;
 };
 
+/**
+ * Class PlaybackStartInfo.
+ *
+ */
 export type PlaybackStartInfo = {
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
+    /**
+     * The session id.
+     */
     SessionId?: string;
+    /**
+     * The index of the audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
     RunTimeTicks?: (number) | null;
     PlaybackStartTimeTicks?: (number) | null;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
     Brightness?: (number) | null;
     AspectRatio?: string;
@@ -1494,11 +2917,26 @@ export type PlaybackStartInfo = {
     SubtitleOffset?: number;
     PlaybackRate?: number;
     PlaylistItemIds?: Array<(string)>;
+    /**
+     * The play session identifier.
+     */
     PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
     LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
     MediaSourceId?: string;
     Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
     PositionTicks?: (number) | null;
 };
 
@@ -1510,7 +2948,13 @@ export type QueueItem = {
 export type ProgressEvent = 'TimeUpdate' | 'Pause' | 'Unpause' | 'VolumeChange' | 'RepeatModeChange' | 'AudioTrackChange' | 'SubtitleTrackChange' | 'PlaylistItemMove' | 'PlaylistItemRemove' | 'PlaylistItemAdd' | 'QualityChange' | 'StateChange' | 'SubtitleOffsetChange' | 'PlaybackRateChange' | 'ShuffleChange' | 'SleepTimerChange';
 
 export type SyncTarget = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The identifier.
+     */
     Id?: string;
 };
 
@@ -1520,29 +2964,80 @@ export type QueryResult_SyncJob = {
 };
 
 export type SyncJob = {
+    /**
+     * The identifier.
+     */
     Id?: number;
+    /**
+     * The device identifier.
+     */
     TargetId?: string;
     InternalTargetId?: number;
+    /**
+     * The name of the target.
+     */
     TargetName?: string;
+    /**
+     * The quality.
+     */
     Quality?: string;
+    /**
+     * The bitrate.
+     */
     Bitrate?: (number) | null;
     Container?: string;
     VideoCodec?: string;
     AudioCodec?: string;
+    /**
+     * The profile.
+     */
     Profile?: string;
     Category?: SyncCategory;
+    /**
+     * The parent identifier.
+     */
     ParentId?: number;
+    /**
+     * The current progress.
+     */
     Progress?: number;
+    /**
+     * The name.
+     */
     Name?: string;
     Status?: SyncJobStatus;
+    /**
+     * The user identifier.
+     */
     UserId?: number;
+    /**
+     * A value indicating whether \[unwatched only\].
+     */
     UnwatchedOnly?: boolean;
+    /**
+     * A value indicating whether \[synchronize new content\].
+     */
     SyncNewContent?: boolean;
+    /**
+     * The item limit.
+     */
     ItemLimit?: (number) | null;
+    /**
+     * The requested item ids.
+     */
     RequestedItemIds?: Array<(number)>;
     ItemId?: number;
+    /**
+     * The date created.
+     */
     DateCreated?: string;
+    /**
+     * The date last modified.
+     */
     DateLastModified?: string;
+    /**
+     * The item count.
+     */
     ItemCount?: number;
     ParentName?: string;
     PrimaryImageItemId?: string;
@@ -1659,28 +3154,80 @@ export type SyncDataResponse = {
     ItemIdsToRemove?: Array<(string)>;
 };
 
+/**
+ * Represents the server configuration.
+ *
+ */
 export type ServerConfiguration = {
+    /**
+     * A value indicating whether \[enable u pn p\].
+     */
     EnableUPnP?: boolean;
+    /**
+     * The public mapped port.
+     */
     PublicPort?: number;
+    /**
+     * The public HTTPS port.
+     */
     PublicHttpsPort?: number;
+    /**
+     * The HTTP server port number.
+     */
     HttpServerPortNumber?: number;
+    /**
+     * The HTTPS server port number.
+     */
     HttpsPortNumber?: number;
+    /**
+     * A value indicating whether \[use HTTPS\].
+     */
     EnableHttps?: boolean;
+    /**
+     * The value pointing to the file system where the ssl certiifcate is located..
+     */
     CertificatePath?: string;
     CertificatePassword?: string;
+    /**
+     * A value indicating whether this instance is port authorized.
+     */
     IsPortAuthorized?: boolean;
     AutoRunWebApp?: boolean;
     EnableRemoteAccess?: boolean;
     LogAllQueryTimes?: boolean;
     DisableOutgoingIPv6?: boolean;
+    /**
+     * A value indicating whether \[enable case sensitive item ids\].
+     */
     EnableCaseSensitiveItemIds?: boolean;
+    /**
+     * The metadata path.
+     */
     MetadataPath?: string;
     MetadataNetworkPath?: string;
+    /**
+     * The preferred metadata language.
+     */
     PreferredMetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
+    /**
+     * Words to be removed from strings to create a sort name
+     */
     SortRemoveWords?: Array<(string)>;
+    /**
+     * The delay in seconds that we will wait after a file system change to try and discover what has been added\/removed Some delay is necessary with some items because their creation is not atomic.  It involves the creation of several different directories and files.
+     */
     LibraryMonitorDelaySeconds?: number;
+    /**
+     * A value indicating whether \[enable dashboard response caching\]. Allows potential contributors without visual studio to modify production dashboard code and test changes.
+     */
     EnableDashboardResponseCaching?: boolean;
+    /**
+     * Allows the dashboard to be served from a custom path.
+     */
     DashboardSourcePath?: string;
     ImageSavingConvention?: ImageSavingConvention;
     EnableAutomaticRestart?: boolean;
@@ -1722,12 +3269,30 @@ export type ServerConfiguration = {
     ProxyHeaderMode?: ProxyHeaderMode;
     IsInMaintenanceMode?: boolean;
     MaintenanceModeMessage?: string;
+    /**
+     * A value indicating whether \[enable debug level logging\].
+     */
     EnableDebugLevelLogging?: boolean;
     RevertDebugLogging?: string;
+    /**
+     * Enable automatically and silently updating of the application
+     */
     EnableAutoUpdate?: boolean;
+    /**
+     * The number of days we should retain log files
+     */
     LogFileRetentionDays?: number;
+    /**
+     * A value indicating whether \[run at startup\].
+     */
     RunAtStartup?: boolean;
+    /**
+     * A value indicating whether this instance is first run.
+     */
     IsStartupWizardCompleted?: boolean;
+    /**
+     * The cache path.
+     */
     CachePath?: string;
 };
 
@@ -1748,51 +3313,146 @@ export type WakeOnLanInfo = {
     Port?: number;
 };
 
+/**
+ * Class SystemInfo
+ *
+ */
 export type SystemInfo = {
     SystemUpdateLevel?: PackageVersionClass;
+    /**
+     * The display name of the operating system.
+     */
     OperatingSystemDisplayName?: string;
     PackageName?: string;
+    /**
+     * A value indicating whether this instance has pending restart.
+     */
     HasPendingRestart?: boolean;
     IsShuttingDown?: boolean;
     HasImageEnhancers?: boolean;
+    /**
+     * The operating sytem.
+     */
     OperatingSystem?: string;
+    /**
+     * A value indicating whether \[supports library monitor\].
+     */
     SupportsLibraryMonitor?: boolean;
     SupportsLocalPortConfiguration?: boolean;
     SupportsWakeServer?: boolean;
+    /**
+     * The web socket port number.
+     */
     WebSocketPortNumber?: number;
+    /**
+     * The completed installations.
+     */
     CompletedInstallations?: Array<InstallationInfo>;
+    /**
+     * A value indicating whether this instance can self restart.
+     */
     CanSelfRestart?: boolean;
+    /**
+     * A value indicating whether this instance can self update.
+     */
     CanSelfUpdate?: boolean;
     CanLaunchWebBrowser?: boolean;
+    /**
+     * The program data path.
+     */
     ProgramDataPath?: string;
+    /**
+     * The items by name path.
+     */
     ItemsByNamePath?: string;
+    /**
+     * The cache path.
+     */
     CachePath?: string;
+    /**
+     * The log path.
+     */
     LogPath?: string;
+    /**
+     * The internal metadata path.
+     */
     InternalMetadataPath?: string;
+    /**
+     * The transcoding temporary path.
+     */
     TranscodingTempPath?: string;
+    /**
+     * The HTTP server port number.
+     */
     HttpServerPortNumber?: number;
+    /**
+     * A value indicating whether \[enable HTTPS\].
+     */
     SupportsHttps?: boolean;
+    /**
+     * The HTTPS server port number.
+     */
     HttpsPortNumber?: number;
+    /**
+     * A value indicating whether this instance has update available.
+     */
     HasUpdateAvailable?: boolean;
+    /**
+     * A value indicating whether \[supports automatic run at startup\].
+     */
     SupportsAutoRunAtStartup?: boolean;
     HardwareAccelerationRequiresPremiere?: boolean;
     WakeOnLanInfo?: Array<WakeOnLanInfo>;
     IsInMaintenanceMode?: boolean;
+    /**
+     * The local address.
+     */
     LocalAddress?: string;
     LocalAddresses?: Array<(string)>;
+    /**
+     * The wan address.
+     */
     WanAddress?: string;
     RemoteAddresses?: Array<(string)>;
+    /**
+     * The name of the server.
+     */
     ServerName?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The id.
+     */
     Id?: string;
 };
 
+/**
+ * Class InstallationInfo
+ *
+ */
 export type InstallationInfo = {
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The assembly guid.
+     */
     AssemblyGuid?: string;
+    /**
+     * The version.
+     */
     Version?: string;
     UpdateClass?: PackageVersionClass;
+    /**
+     * The percent complete.
+     */
     PercentComplete?: (number) | null;
 };
 
@@ -1858,23 +3518,60 @@ export type RunUICommand = {
     ClientLocale?: string;
 };
 
+/**
+ * Class UserDto
+ *
+ */
 export type UserDto = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
+    /**
+     * The name of the server. This is not used by the server and is for client\-side usage only.
+     */
     ServerName?: string;
     Prefix?: string;
+    /**
+     * The name of the connect user.
+     */
     ConnectUserName?: string;
     DateCreated?: (string) | null;
     ConnectLinkType?: Connect_UserLinkType;
+    /**
+     * The id.
+     */
     Id?: string;
+    /**
+     * The primary image tag.
+     */
     PrimaryImageTag?: string;
+    /**
+     * A value indicating whether this instance has password.
+     */
     HasPassword?: boolean;
+    /**
+     * A value indicating whether this instance has configured password.
+     */
     HasConfiguredPassword?: boolean;
     EnableAutoLogin?: (boolean) | null;
+    /**
+     * The last login date.
+     */
     LastLoginDate?: (string) | null;
+    /**
+     * The last activity date.
+     */
     LastActivityDate?: (string) | null;
     Configuration?: UserConfiguration;
     Policy?: UserPolicy;
+    /**
+     * The primary image aspect ratio.
+     */
     PrimaryImageAspectRatio?: (number) | null;
     /**
      * @deprecated
@@ -1885,9 +3582,22 @@ export type UserDto = {
 
 export type Connect_UserLinkType = 'LinkedUser' | 'Guest';
 
+/**
+ * Class UserConfiguration
+ *
+ */
 export type UserConfiguration = {
+    /**
+     * The audio language preference.
+     */
     AudioLanguagePreference?: string;
+    /**
+     * A value indicating whether \[play default audio track\].
+     */
     PlayDefaultAudioTrack?: boolean;
+    /**
+     * The subtitle language preference.
+     */
     SubtitleLanguagePreference?: string;
     ProfilePin?: string;
     DisplayMissingEpisodes?: boolean;
@@ -1914,12 +3624,24 @@ export type SubtitlePlaybackMode = 'Default' | 'Always' | 'OnlyForced' | 'None' 
 export type SegmentSkipMode = 'ShowButton' | 'AutoSkip' | 'None';
 
 export type UserPolicy = {
+    /**
+     * A value indicating whether this instance is administrator.
+     */
     IsAdministrator?: boolean;
+    /**
+     * A value indicating whether this instance is hidden.
+     */
     IsHidden?: boolean;
     IsHiddenRemotely?: boolean;
     IsHiddenFromUnusedDevices?: boolean;
+    /**
+     * A value indicating whether this instance is disabled.
+     */
     IsDisabled?: boolean;
     LockedOutDate?: number;
+    /**
+     * The max parental rating.
+     */
     MaxParentalRating?: (number) | null;
     AllowTagOrRating?: boolean;
     BlockedTags?: Array<(string)>;
@@ -1943,6 +3665,9 @@ export type UserPolicy = {
     EnableContentDownloading?: boolean;
     EnableSubtitleDownloading?: boolean;
     EnableSubtitleManagement?: boolean;
+    /**
+     * A value indicating whether \[enable synchronize\].
+     */
     EnableSyncTranscoding?: boolean;
     EnableMediaConversion?: boolean;
     EnabledChannels?: Array<(string)>;
@@ -1963,7 +3688,13 @@ export type UserPolicy = {
 
 export type AccessSchedule = {
     DayOfWeek?: DynamicDayOfWeek;
+    /**
+     * The start hour.
+     */
     StartHour?: number;
+    /**
+     * The end hour.
+     */
     EndHour?: number;
 };
 
@@ -1984,7 +3715,13 @@ export type AuthenticateUserByName = {
 export type Authentication_AuthenticationResult = {
     User?: UserDto;
     SessionInfo?: Session_SessionInfo;
+    /**
+     * The authentication token.
+     */
     AccessToken?: string;
+    /**
+     * The server identifier.
+     */
     ServerId?: string;
 };
 
@@ -2002,16 +3739,17 @@ export type ForgotPassword = {
 
 export type ForgotPasswordResult = {
     Action?: ForgotPasswordAction;
+    /**
+     * The pin file.
+     */
     PinFile?: string;
+    /**
+     * The pin expiration date.
+     */
     PinExpirationDate?: (string) | null;
 };
 
 export type ForgotPasswordAction = 'ContactAdmin' | 'PinCode';
-
-export type playback_reporting_Api_CustomQuery = {
-    CustomQueryString?: string;
-    ReplaceUserId?: boolean;
-};
 
 export type Api_ConfigurationPageInfo = {
     Name?: string;
@@ -2029,14 +3767,37 @@ export type Api_ConfigurationPageInfo = {
     Translations?: Array<(string)>;
 };
 
+/**
+ * Enum ConfigurationPageType
+ *
+ */
 export type Plugins_ConfigurationPageType = 'PluginConfiguration' | 'None';
 
+/**
+ * Interface IPlugin
+ *
+ */
 export type Common_Plugins_IPlugin = {
+    /**
+     * The name of the plugin
+     */
     Name?: string;
+    /**
+     * The description.
+     */
     Description?: string;
+    /**
+     * The unique id.
+     */
     Id?: string;
     Version?: Version;
+    /**
+     * The path to the assembly file
+     */
     AssemblyFilePath?: string;
+    /**
+     * The full path to the data folder, where the plugin can store any miscellaneous files needed
+     */
     DataFolderPath?: string;
 };
 
@@ -2103,69 +3864,214 @@ export type Common_Interfaces_ICodecDeviceCapabilities = {
     SupportsNativeToneMapping?: boolean;
 };
 
+/**
+ * Enum defining secondary frameworks for encoding and decoding.
+ *
+ *
+ * While most of these are hardware acceleration frameworks, this is not a necessity             (e.g. Android MediaCodec offers software codecs as well).
+ *
+ */
 export type SecondaryFrameworks = 'Unknown' | 'None' | 'AmdAmf' | 'MediaCodec' | 'NvEncDec' | 'OpenMax' | 'QuickSync' | 'VaApi' | 'V4L2' | 'DxVa' | 'D3d11va' | 'VideoToolbox' | 'Mmal';
 
+/**
+ * Enum defining the kind of media a codec is processing.
+ *
+ */
 export type CodecKinds = 'Audio' | 'Video' | 'SubTitles';
 
+/**
+ * Enum listing video media types.
+ *
+ *
+ * The enum member names are matching exactly those that are used by ffmpeg. Exception: Items that are starting with a number are prefixed with an underscore here.
+ *
+ */
 export type VideoMediaTypes = 'Unknown' | 'copy' | 'flv1' | 'h263' | 'h263p' | 'h264' | 'hevc' | 'mjpeg' | 'mpeg1video' | 'mpeg2video' | 'mpeg4' | 'msvideo1' | 'theora' | 'vc1image' | 'vc1' | 'vp8' | 'vp9' | 'wmv1' | 'wmv2' | 'wmv3' | '_012v' | '_4xm' | '_8bps' | 'a64_multi' | 'a64_multi5' | 'aasc' | 'aic' | 'alias_pix' | 'amv' | 'anm' | 'ansi' | 'apng' | 'asv1' | 'asv2' | 'aura' | 'aura2' | 'av1' | 'avrn' | 'avrp' | 'avs' | 'avui' | 'ayuv' | 'bethsoftvid' | 'bfi' | 'binkvideo' | 'bintext' | 'bitpacked' | 'bmp' | 'bmv_video' | 'brender_pix' | 'c93' | 'cavs' | 'cdgraphics' | 'cdxl' | 'cfhd' | 'cinepak' | 'clearvideo' | 'cljr' | 'cllc' | 'cmv' | 'cpia' | 'cscd' | 'cyuv' | 'daala' | 'dds' | 'dfa' | 'dirac' | 'dnxhd' | 'dpx' | 'dsicinvideo' | 'dvvideo' | 'dxa' | 'dxtory' | 'dxv' | 'escape124' | 'escape130' | 'exr' | 'ffv1' | 'ffvhuff' | 'fic' | 'fits' | 'flashsv' | 'flashsv2' | 'flic' | 'fmvc' | 'fraps' | 'frwu' | 'g2m' | 'gdv' | 'gif' | 'h261' | 'h263i' | 'hap' | 'hnm4video' | 'hq_hqa' | 'hqx' | 'huffyuv' | 'idcin' | 'idf' | 'iff_ilbm' | 'indeo2' | 'indeo3' | 'indeo4' | 'indeo5' | 'interplayvideo' | 'jpeg2000' | 'jpegls' | 'jv' | 'kgv1' | 'kmvc' | 'lagarith' | 'ljpeg' | 'loco' | 'm101' | 'mad' | 'magicyuv' | 'mdec' | 'mimic' | 'mjpegb' | 'mmvideo' | 'motionpixels' | 'msa1' | 'mscc' | 'msmpeg4v1' | 'msmpeg4v2' | 'msmpeg4v3' | 'msrle' | 'mss1' | 'mss2' | 'mszh' | 'mts2' | 'mvc1' | 'mvc2' | 'mxpeg' | 'nuv' | 'paf_video' | 'pam' | 'pbm' | 'pcx' | 'pgm' | 'pgmyuv' | 'pictor' | 'pixlet' | 'png' | 'ppm' | 'prores' | 'psd' | 'ptx' | 'qdraw' | 'qpeg' | 'qtrle' | 'r10k' | 'r210' | 'rawvideo' | 'rl2' | 'roq' | 'rpza' | 'rscc' | 'rv10' | 'rv20' | 'rv30' | 'rv40' | 'sanm' | 'scpr' | 'screenpresso' | 'sgi' | 'sgirle' | 'sheervideo' | 'smackvideo' | 'smc' | 'smvjpeg' | 'snow' | 'sp5x' | 'speedhq' | 'srgc' | 'sunrast' | 'svg' | 'svq1' | 'svq3' | 'targa' | 'targa_y216' | 'tdsc' | 'tgq' | 'tgv' | 'thp' | 'tiertexseqvideo' | 'tiff' | 'tmv' | 'tqi' | 'truemotion1' | 'truemotion2' | 'truemotion2rt' | 'tscc' | 'tscc2' | 'txd' | 'ulti' | 'utvideo' | 'v210' | 'v210x' | 'v308' | 'v408' | 'v410' | 'vb' | 'vble' | 'vcr1' | 'vixl' | 'vmdvideo' | 'vmnc' | 'vp3' | 'vp5' | 'vp6' | 'vp6a' | 'vp6f' | 'vp7' | 'webp' | 'wmv3image' | 'wnv1' | 'wrapped_avframe' | 'ws_vqa' | 'xan_wc3' | 'xan_wc4' | 'xbin' | 'xbm' | 'xface' | 'xpm' | 'xwd' | 'y41p' | 'ylc' | 'yop' | 'yuv4' | 'zerocodec' | 'zlib' | 'zmbv';
 
+/**
+ * A type for handling bit rates.
+ *
+ *
+ * The purpose of this type is to avoid manual calculations and conversions in code,             unified handling and conversion as well as presentation through its various To\*\*\*String methods.
+ *
+ *
+ * `System.IComparable`
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type BitRate = {
     bps?: number;
     kbps?: number;
     Mbps?: number;
 };
 
+/**
+ * Enum listing color formats.
+ *
+ *
+ * The enum member names are matching those that are used by ffmpeg. (execute 'ffmpeg \-pix\_fmts' to list them) Exception: Items that are starting with a number are prefixed with an underscore here. In ffmpeg code these are prefixed with 'AV\_PIX\_FMT\_' and all\-caps.
+ *
+ */
 export type ColorFormats = 'Unknown' | 'yuv420p' | 'yuyv422' | 'rgb24' | 'bgr24' | 'yuv422p' | 'yuv444p' | 'yuv410p' | 'yuv411p' | 'gray' | 'monow' | 'monob' | 'pal8' | 'yuvj420p' | 'yuvj422p' | 'yuvj444p' | 'uyvy422' | 'uyyvyy411' | 'bgr8' | 'bgr4' | 'bgr4_byte' | 'rgb8' | 'rgb4' | 'rgb4_byte' | 'nv12' | 'nv21' | 'argb' | 'rgba' | 'abgr' | 'bgra' | 'gray16' | 'yuv440p' | 'yuvj440p' | 'yuva420p' | 'rgb48' | 'rgb565' | 'rgb555' | 'bgr565' | 'bgr555' | 'vaapi_moco' | 'vaapi_idct' | 'vaapi_vld' | 'yuv420p16' | 'yuv422p16' | 'yuv444p16' | 'dxva2_vld' | 'rgb444' | 'bgr444' | 'ya8' | 'bgr48' | 'yuv420p9' | 'yuv420p10' | 'yuv422p10' | 'yuv444p9' | 'yuv444p10' | 'yuv422p9' | 'gbrp' | 'gbrp9' | 'gbrp10' | 'gbrp16' | 'yuva422p' | 'yuva444p' | 'yuva420p9' | 'yuva422p9' | 'yuva444p9' | 'yuva420p10' | 'yuva422p10' | 'yuva444p10' | 'yuva420p16' | 'yuva422p16' | 'yuva444p16' | 'vdpau' | 'xyz12' | 'nv16' | 'nv20' | 'rgba64' | 'bgra64' | 'yvyu422' | 'ya16' | 'gbrap' | 'gbrap16' | 'qsv' | 'mmal' | 'd3d11va_vld' | 'cuda' | '_0rgb' | 'rgb0' | '_0bgr' | 'bgr0' | 'yuv420p12' | 'yuv420p14' | 'yuv422p12' | 'yuv422p14' | 'yuv444p12' | 'yuv444p14' | 'gbrp12' | 'gbrp14' | 'yuvj411p' | 'bayer_bggr8' | 'bayer_rggb8' | 'bayer_gbrg8' | 'bayer_grbg8' | 'bayer_bggr16' | 'bayer_rggb16' | 'bayer_gbrg16' | 'bayer_grbg16' | 'xvmc' | 'yuv440p10' | 'yuv440p12' | 'ayuv64' | 'videotoolbox_vld' | 'p010' | 'gbrap12' | 'gbrap10' | 'mediacodec' | 'gray12' | 'gray10' | 'gray14' | 'p016' | 'd3d11' | 'gray9' | 'gbrpf32' | 'gbrapf32' | 'drm_prime' | 'opencl' | 'grayf32' | 'yuva422p12' | 'yuva444p12' | 'nv24' | 'nv42';
 
+/**
+ * A class combining both `Emby.Media.Model.Types.ProfileInformation` and `Emby.Media.Model.Types.LevelInformation`.
+ *
+ */
 export type ProfileLevelInformation = {
     Profile?: ProfileInformation;
     Level?: LevelInformation;
 };
 
+/**
+ * Class for unified presentation of all information associated with a specific codec profile.
+ *
+ */
 export type ProfileInformation = {
+    /**
+     * The enum member name of the profile.
+     */
     ShortName?: string;
+    /**
+     * The common name of the profile.
+     */
     Description?: string;
+    /**
+     * Detail information about the profile.
+     */
     Details?: string;
+    /**
+     * A unique identifier.
+     */
     Id?: string;
+    /**
+     * The bit depths.
+     */
     BitDepths?: Array<(number)>;
 };
 
+/**
+ * Class for unified presentation of all information associated with a specific codec level.
+ *
+ */
 export type LevelInformation = {
+    /**
+     * The enum member name of the level.
+     */
     ShortName?: string;
+    /**
+     * The common name of the level.
+     */
     Description?: string;
+    /**
+     * A value indicating the level's ranking relative to other levels.
+     */
     Ordinal?: (number) | null;
     MaxBitRate?: BitRate;
+    /**
+     * A display value of the `Emby.Media.Model.Types.LevelInformation.MaxBitRate` property.
+     */
     MaxBitRateDisplay?: string;
+    /**
+     * A unique identifier.
+     */
     Id?: string;
+    /**
+     * Examples for the maximum supported combinations of resolution and rate for this level.
+     */
     ResolutionRates?: Array<ResolutionWithRate>;
+    /**
+     * Examples for the maximum supported combinations of resolution and rate for this level as string values.
+     */
     ResolutionRateStrings?: Array<(string)>;
+    /**
+     * A single string from the `Emby.Media.Model.Types.LevelInformation.ResolutionRateStrings` list.
+     */
     ResolutionRatesDisplay?: string;
 };
 
+/**
+ * Struct representing a combination of video resolution and frame rate.
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type ResolutionWithRate = {
+    /**
+     * The resolution width.
+     */
     Width?: number;
+    /**
+     * The resolution height.
+     */
     Height?: number;
+    /**
+     * The frame rate in frames\/second (fps).
+     */
     FrameRate?: number;
     Resolution?: Resolution;
 };
 
+/**
+ * Struct representing a video resolution specified in X and Y dimension.
+ *
+ *
+ * `System.IComparable`
+ *
+ *
+ * `System.IEquatable`1`
+ *
+ */
 export type Resolution = {
+    /**
+     * The resolution width.
+     */
     Width?: number;
+    /**
+     * The resolution height.
+     */
     Height?: number;
 };
 
+/**
+ * Enum for indicating the processing direction of a codec.
+ *
+ */
 export type CodecDirections = 'Encoder' | 'Decoder';
 
 export type CodecConfiguration = {
+    /**
+     * A value indicating whether the codec is enabled.
+     */
     IsEnabled?: boolean;
+    /**
+     * The selection priority for the codec.
+     *
+     * Higher values mean higher priority.
+     */
     Priority?: number;
+    /**
+     * The codec identifier.
+     */
     CodecId?: string;
 };
 
 export type ExternalIdInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The key.
+     */
     Key?: string;
     Website?: string;
+    /**
+     * The URL format string.
+     */
     UrlFormatString?: string;
     IsSupportedAsIdentifier?: boolean;
 };
@@ -2179,12 +4085,24 @@ export type RemoteSearchQuery_TrailerInfo = {
 };
 
 export type TrailerInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2194,9 +4112,15 @@ export type TrailerInfo = {
 };
 
 export type RemoteSearchResult = {
+    /**
+     * The name.
+     */
     Name?: string;
     OriginalTitle?: string;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     ProductionYear?: (number) | null;
     IndexNumber?: (number) | null;
     IndexNumberEnd?: (number) | null;
@@ -2225,12 +4149,24 @@ export type RemoteSearchQuery_BookInfo = {
 
 export type BookInfo = {
     SeriesName?: string;
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2248,12 +4184,24 @@ export type RemoteSearchQuery_MovieInfo = {
 };
 
 export type MovieInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2273,12 +4221,24 @@ export type RemoteSearchQuery_SeriesInfo = {
 export type SeriesInfo = {
     EpisodeAirDate?: (string) | null;
     DisplayOrder?: SeriesDisplayOrder;
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2298,12 +4258,24 @@ export type RemoteSearchQuery_GameInfo = {
 };
 
 export type GameInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2321,12 +4293,24 @@ export type RemoteSearchQuery_ItemLookupInfo = {
 };
 
 export type ItemLookupInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2345,12 +4329,24 @@ export type RemoteSearchQuery_MusicVideoInfo = {
 
 export type MusicVideoInfo = {
     Artists?: Array<(string)>;
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2368,12 +4364,24 @@ export type RemoteSearchQuery_PersonLookupInfo = {
 };
 
 export type PersonLookupInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2391,14 +4399,29 @@ export type RemoteSearchQuery_AlbumInfo = {
 };
 
 export type AlbumInfo = {
+    /**
+     * The album artist.
+     */
     AlbumArtists?: Array<(string)>;
     SongInfos?: Array<SongInfo>;
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2412,12 +4435,24 @@ export type SongInfo = {
     Album?: string;
     Artists?: Array<(string)>;
     Composers?: Array<(string)>;
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2435,12 +4470,24 @@ export type RemoteSearchQuery_ArtistInfo = {
 };
 
 export type ArtistInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     Path?: string;
+    /**
+     * The metadata language.
+     */
     MetadataLanguage?: string;
+    /**
+     * The metadata country code.
+     */
     MetadataCountryCode?: string;
     MetadataLanguages?: Array<Globalization_CultureDto>;
     ProviderIds?: ProviderIdDictionary;
+    /**
+     * The year.
+     */
     Year?: (number) | null;
     IndexNumber?: (number) | null;
     ParentIndexNumber?: (number) | null;
@@ -2478,36 +4525,103 @@ export type AllThemeMediaResult = {
     SoundtrackSongsResult?: ThemeMediaResult;
 };
 
+/**
+ * Class ThemeMediaResult
+ *
+ */
 export type ThemeMediaResult = {
+    /**
+     * The owner id.
+     */
     OwnerId?: number;
     Items?: Array<BaseItemDto>;
     TotalRecordCount?: number;
 };
 
+/**
+ * Class ImageInfo
+ *
+ */
 export type ImageInfo = {
     ImageType?: ImageType;
+    /**
+     * The index of the image.
+     */
     ImageIndex?: (number) | null;
+    /**
+     * The path.
+     */
     Path?: string;
     Filename?: string;
+    /**
+     * The height.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     */
     Width?: (number) | null;
+    /**
+     * The size.
+     */
     Size?: number;
 };
 
+/**
+ * Class RemoteImageResult.
+ *
+ */
 export type RemoteImageResult = {
+    /**
+     * The images.
+     */
     Images?: Array<RemoteImageInfo>;
+    /**
+     * The total record count.
+     */
     TotalRecordCount?: number;
+    /**
+     * The providers.
+     */
     Providers?: Array<(string)>;
 };
 
+/**
+ * Class RemoteImageInfo
+ *
+ */
 export type RemoteImageInfo = {
+    /**
+     * The name of the provider.
+     */
     ProviderName?: string;
+    /**
+     * The URL.
+     */
     Url?: string;
+    /**
+     * A url used for previewing a smaller version
+     */
     ThumbnailUrl?: string;
+    /**
+     * The height.
+     */
     Height?: (number) | null;
+    /**
+     * The width.
+     */
     Width?: (number) | null;
+    /**
+     * The community rating.
+     */
     CommunityRating?: (number) | null;
+    /**
+     * The vote count.
+     */
     VoteCount?: (number) | null;
+    /**
+     * The language.
+     */
     Language?: string;
     DisplayLanguage?: string;
     Type?: ImageType;
@@ -2527,7 +4641,13 @@ export type RokuMetadata_Api_ThumbnailInfo = {
 };
 
 export type PlaybackInfoResponse = {
+    /**
+     * The media sources.
+     */
     MediaSources?: Array<MediaSourceInfo>;
+    /**
+     * The play session identifier.
+     */
     PlaySessionId?: string;
     ErrorCode?: PlaybackErrorCode;
 };
@@ -2570,14 +4690,36 @@ export type QueryResult_VirtualFolderInfo = {
     TotalRecordCount?: number;
 };
 
+/**
+ * Used to hold information about a user's list of configured virtual folders
+ *
+ */
 export type VirtualFolderInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The locations.
+     */
     Locations?: Array<(string)>;
+    /**
+     * The type of the collection.
+     */
     CollectionType?: string;
     LibraryOptions?: LibraryOptions;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * ItemId came first, so that is left for compatability purposes
+     */
     Id?: string;
     Guid?: string;
+    /**
+     * The primary image item identifier.
+     */
     PrimaryImageItemId?: string;
     PrimaryImageTag?: string;
     RefreshProgress?: (number) | null;
@@ -2625,13 +4767,22 @@ export type UserNotificationInfo = {
     FriendlyName?: string;
     Id?: string;
     Enabled?: boolean;
+    /**
+     * Limit events based on user ids, for admin notifications
+     */
     UserIds?: Array<(string)>;
     DeviceIds?: Array<(string)>;
     LibraryIds?: Array<(string)>;
     EventIds?: Array<(string)>;
+    /**
+     * Notification intended for a specific user
+     */
     UserId?: string;
     IsSelfNotification?: boolean;
     GroupItems?: boolean;
+    /**
+     * This is for webhooks since this will cause xml serialization to fail
+     */
     Options?: {
         [key: string]: (string);
     };
@@ -2647,9 +4798,20 @@ export type Playlists_AddToPlaylistResult = {
     ItemAddedCount?: number;
 };
 
+/**
+ * Enum PlayCommand
+ *
+ */
 export type PlayCommand = 'PlayNow' | 'PlayNext' | 'PlayLast' | 'PlayInstantMix' | 'PlayShuffle';
 
+/**
+ * Class PlayRequest
+ *
+ */
 export type PlayRequest = {
+    /**
+     * The controlling user identifier.
+     */
     ControllingUserId?: string;
     SubtitleStreamIndex?: (number) | null;
     AudioStreamIndex?: (number) | null;
@@ -2677,19 +4839,44 @@ export type ClientCapabilities = {
     AppId?: string;
 };
 
+/**
+ * Class PlaybackProgressInfo.
+ *
+ */
 export type PlaybackProgressInfo = {
+    /**
+     * A value indicating whether this instance can seek.
+     */
     CanSeek?: boolean;
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
+    /**
+     * The session id.
+     */
     SessionId?: string;
+    /**
+     * The index of the audio stream.
+     */
     AudioStreamIndex?: (number) | null;
+    /**
+     * The index of the subtitle stream.
+     */
     SubtitleStreamIndex?: (number) | null;
+    /**
+     * A value indicating whether this instance is paused.
+     */
     IsPaused?: boolean;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * A value indicating whether this instance is muted.
+     */
     IsMuted?: boolean;
     RunTimeTicks?: (number) | null;
     PlaybackStartTimeTicks?: (number) | null;
+    /**
+     * The volume level.
+     */
     VolumeLevel?: (number) | null;
     Brightness?: (number) | null;
     AspectRatio?: string;
@@ -2702,28 +4889,68 @@ export type PlaybackProgressInfo = {
     SubtitleOffset?: number;
     PlaybackRate?: number;
     PlaylistItemIds?: Array<(string)>;
+    /**
+     * The play session identifier.
+     */
     PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
     LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
     MediaSourceId?: string;
     Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
     PositionTicks?: (number) | null;
 };
 
+/**
+ * Class PlaybackStopInfo.
+ *
+ */
 export type PlaybackStopInfo = {
     NowPlayingQueue?: Array<QueueItem>;
     PlaylistItemId?: string;
     PlaylistIndex?: number;
     PlaylistLength?: number;
+    /**
+     * The session id.
+     */
     SessionId?: string;
     IsAutomated?: boolean;
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Session.PlaybackStopInfo` is failed.
+     */
     Failed?: boolean;
     NextMediaType?: string;
+    /**
+     * The play session identifier.
+     */
     PlaySessionId?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * The live stream identifier.
+     */
     LiveStreamId?: string;
+    /**
+     * The media version identifier.
+     */
     MediaSourceId?: string;
     Item?: BaseItemDto;
+    /**
+     * The position ticks.
+     */
     PositionTicks?: (number) | null;
 };
 
@@ -2750,19 +4977,46 @@ export type QueryResult_LogFile = {
 };
 
 export type LogFile = {
+    /**
+     * The date created.
+     */
     DateCreated?: string;
+    /**
+     * The date modified.
+     */
     DateModified?: string;
+    /**
+     * The size.
+     */
     Size?: number;
+    /**
+     * The name.
+     */
     Name?: string;
 };
 
 export type PublicSystemInfo = {
+    /**
+     * The local address.
+     */
     LocalAddress?: string;
     LocalAddresses?: Array<(string)>;
+    /**
+     * The wan address.
+     */
     WanAddress?: string;
     RemoteAddresses?: Array<(string)>;
+    /**
+     * The name of the server.
+     */
     ServerName?: string;
+    /**
+     * The version.
+     */
     Version?: string;
+    /**
+     * The id.
+     */
     Id?: string;
 };
 
@@ -2772,18 +5026,49 @@ export type QueryResult_ActivityLogEntry = {
 };
 
 export type ActivityLogEntry = {
+    /**
+     * The identifier.
+     */
     Id?: number;
+    /**
+     * The name.
+     */
     Name?: string;
+    /**
+     * The overview.
+     */
     Overview?: string;
+    /**
+     * The short overview.
+     */
     ShortOverview?: string;
+    /**
+     * The type.
+     */
     Type?: string;
+    /**
+     * The item identifier.
+     */
     ItemId?: string;
+    /**
+     * The date.
+     */
     Date?: string;
+    /**
+     * The user identifier.
+     */
     UserId?: string;
+    /**
+     * The user primary image tag.
+     */
     UserPrimaryImageTag?: string;
     Severity?: Logging_LogSeverity;
 };
 
+/**
+ * Enum LogSeverity
+ *
+ */
 export type Logging_LogSeverity = 'Info' | 'Debug' | 'Warn' | 'Error' | 'Fatal';
 
 export type AuthenticateUser = {
@@ -2801,7 +5086,13 @@ export type ForgotPasswordPin = {
 };
 
 export type PinRedeemResult = {
+    /**
+     * A value indicating whether this `MediaBrowser.Model.Users.PinRedeemResult` is success.
+     */
     Success?: boolean;
+    /**
+     * The users reset.
+     */
     UsersReset?: Array<(string)>;
 };
 
@@ -2841,7 +5132,14 @@ export type UserLibrary_RemoveTags = {
     Tags?: Array<NameIdPair>;
 };
 
+/**
+ * Class ImageProviderInfo.
+ *
+ */
 export type ImageProviderInfo = {
+    /**
+     * The name.
+     */
     Name?: string;
     SupportedImages?: Array<ImageType>;
 };
@@ -2861,11 +5159,18 @@ export type Library_RemoveMediaPath = {
     RefreshLibrary?: boolean;
 };
 
+/**
+ * Enum PlaystateCommand
+ *
+ */
 export type PlaystateCommand = 'Stop' | 'Pause' | 'Unpause' | 'NextTrack' | 'PreviousTrack' | 'Seek' | 'Rewind' | 'FastForward' | 'PlayPause' | 'SeekRelative';
 
 export type PlaystateRequest = {
     Command?: PlaystateCommand;
     SeekPositionTicks?: (number) | null;
+    /**
+     * The controlling user identifier.
+     */
     ControllingUserId?: string;
 };
 
@@ -23594,6 +25899,47 @@ export type PostUsersettingsByUseridPartialData = {
 
 export type PostUsersettingsByUseridPartialResponse = (unknown);
 
+export type GetDlnaProfileinfosResponse = (Array<Dlna_Profiles_DlnaProfile>);
+
+export type PostDlnaProfilesData = {
+    /**
+     * DlnaProfile:
+     */
+    requestBody: Dlna_Profiles_DlnaProfile;
+};
+
+export type PostDlnaProfilesResponse = (unknown);
+
+export type GetDlnaProfilesByIdData = {
+    /**
+     * Profile Id
+     */
+    id: string;
+};
+
+export type GetDlnaProfilesByIdResponse = (Dlna_Profiles_DlnaProfile);
+
+export type DeleteDlnaProfilesByIdData = {
+    /**
+     * Profile Id
+     */
+    id: string;
+};
+
+export type DeleteDlnaProfilesByIdResponse = (unknown);
+
+export type PostDlnaProfilesByIdData = {
+    id: string;
+    /**
+     * DlnaProfile:
+     */
+    requestBody: Dlna_Profiles_DlnaProfile;
+};
+
+export type PostDlnaProfilesByIdResponse = (unknown);
+
+export type GetDlnaProfilesDefaultResponse = (Dlna_Profiles_DlnaProfile);
+
 export type GetEncodingTonemapoptionsResponse = (Configuration_ToneMapping_ToneMapOptionsVisibility);
 
 export type GetEncodingCodecinformationVideoResponse = (Array<VideoCodecBase>);
@@ -31026,281 +33372,6 @@ export type PostUsersByIdTrackselectionsByTracktypeDeleteData = {
 
 export type PostUsersByIdTrackselectionsByTracktypeDeleteResponse = (unknown);
 
-export type GetUserUsageStatsGetItemPathData = {
-    /**
-     * item id
-     */
-    id: number;
-};
-
-export type GetUserUsageStatsGetItemPathResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsGetItemStatsData = {
-    /**
-     * item id
-     */
-    id: number;
-};
-
-export type GetUserUsageStatsGetItemStatsResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsGetItemsData = {
-    /**
-     * filter string
-     */
-    filter?: string;
-    /**
-     * type of items to return
-     */
-    itemType?: string;
-    /**
-     * parentid
-     */
-    parent?: number;
-};
-
-export type GetUserUsageStatsGetItemsResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsTypeFilterListResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserActivityData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-};
-
-export type GetUserUsageStatsUserActivityResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserListResponse = ({
-    [key: string]: unknown;
-});
-
-export type PostUserUsageStatsImportBackupData = {
-    /**
-     * Binary stream
-     */
-    requestBody: (Blob | File);
-};
-
-export type PostUserUsageStatsImportBackupResponse = (unknown);
-
-export type GetUserUsageStatsLoadBackupData = {
-    /**
-     * File name of file to load
-     */
-    backupfile: string;
-};
-
-export type GetUserUsageStatsLoadBackupResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsSaveBackupResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsPlayactivityData = {
-    /**
-     * Data type to return (count,time)
-     */
-    dataType?: string;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-};
-
-export type GetUserUsageStatsPlayactivityResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsHourlyreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsHourlyreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsTvshowsreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsTvshowsreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsMoviesreportData = {
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsMoviesreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type PostUserUsageStatsSubmitCustomQueryData = {
-    /**
-     * CustomQuery
-     */
-    requestBody: playback_reporting_Api_CustomQuery;
-};
-
-export type PostUserUsageStatsSubmitCustomQueryResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserplaylistData = {
-    /**
-     * Aggregate the data to total duration per user per item
-     */
-    aggregateData: boolean;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * Name Filter
-     */
-    filterName?: string;
-    /**
-     * User Id
-     */
-    userId: string;
-};
-
-export type GetUserUsageStatsUserplaylistResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsSessionListResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsByBreakdowntypeBreakdownreportData = {
-    /**
-     * Breakdown type
-     */
-    breakdownType: string;
-    /**
-     * Number of Days
-     */
-    days?: number;
-    /**
-     * End date of the report in yyyy-MM-dd format
-     */
-    endDate?: string;
-    /**
-     * User Id
-     */
-    userId?: string;
-};
-
-export type GetUserUsageStatsByBreakdowntypeBreakdownreportResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsUserManageByActionByIdData = {
-    /**
-     * action to perform
-     */
-    action: string;
-    /**
-     * user Id to perform the action on
-     */
-    id: string;
-};
-
-export type GetUserUsageStatsUserManageByActionByIdResponse = ({
-    [key: string]: unknown;
-});
-
-export type GetUserUsageStatsByUseridByDateGetitemsData = {
-    /**
-     * UTC DateTime, Format yyyy-MM-dd
-     */
-    date: string;
-    /**
-     * Comma separated list of media types to filter (movies,series)
-     */
-    filter?: string;
-    /**
-     * User Id
-     */
-    userId: string;
-};
-
-export type GetUserUsageStatsByUseridByDateGetitemsResponse = ({
-    [key: string]: unknown;
-});
-
 export type PostVideosMergeversionsData = {
     /**
      * Item id list. This allows multiple, comma delimited.
@@ -32917,6 +34988,166 @@ export type HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerData = {
 };
 
 export type HeadVideosByIdHls1ByPlaylistidBySegmentidBySegmentcontainerResponse = (unknown);
+
+export type GetDlnaByUuidDescriptionXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidDescriptionXmlResponse = (unknown);
+
+export type HeadDlnaByUuidDescriptionXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidDescriptionXmlResponse = (unknown);
+
+export type GetDlnaByUuidDescriptionData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidDescriptionResponse = (unknown);
+
+export type HeadDlnaByUuidDescriptionData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidDescriptionResponse = (unknown);
+
+export type GetDlnaIconsByFilenameData = {
+    /**
+     * The icon filename
+     */
+    filename: string;
+    /**
+     * Server UuId
+     */
+    uuId?: string;
+};
+
+export type GetDlnaIconsByFilenameResponse = (unknown);
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryXmlResponse = (unknown);
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryXmlResponse = (unknown);
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidContentdirectoryContentdirectoryResponse = (unknown);
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidContentdirectoryContentdirectoryResponse = (unknown);
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse = (unknown);
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerXmlData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerXmlResponse = (unknown);
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidConnectionmanagerConnectionmanagerResponse = (unknown);
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerData = {
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type HeadDlnaByUuidConnectionmanagerConnectionmanagerResponse = (unknown);
+
+export type PostDlnaByUuidContentdirectoryControlData = {
+    /**
+     * Binary stream
+     */
+    requestBody: (Blob | File);
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type PostDlnaByUuidContentdirectoryControlResponse = (unknown);
+
+export type PostDlnaByUuidConnectionmanagerControlData = {
+    /**
+     * Binary stream
+     */
+    requestBody: (Blob | File);
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type PostDlnaByUuidConnectionmanagerControlResponse = (unknown);
+
+export type GetDlnaByUuidIconsByFilenameData = {
+    /**
+     * The icon filename
+     */
+    filename: string;
+    /**
+     * Server UuId
+     */
+    uuId: string;
+};
+
+export type GetDlnaByUuidIconsByFilenameResponse = (unknown);
 
 export type GetItemsByIdExternalidinfosData = {
     /**

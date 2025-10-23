@@ -20,34 +20,41 @@ export const $BaseItemDto = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         OriginalTitle: {
             type: 'string'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The server identifier.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         },
         Guid: {
             type: 'string'
         },
         Etag: {
-            type: 'string'
+            type: 'string',
+            description: 'The etag.'
         },
         Prefix: {
-            type: 'string'
+            type: 'string',
+            description: 'The Prefix.'
         },
         TunerName: {
             type: 'string'
         },
         PlaylistItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The playlist item identifier.'
         },
         DateCreated: {
             type: 'string',
+            description: 'The date created.',
             format: 'date-time',
             nullable: true
         },
@@ -112,6 +119,7 @@ export const $BaseItemDto = {
         },
         SupportsSync: {
             type: 'boolean',
+            description: 'A value indicating whether \\[supports synchronize\\].',
             nullable: true
         },
         SyncStatus: {
@@ -133,7 +141,8 @@ export const $BaseItemDto = {
             type: 'string'
         },
         SortName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the sort.'
         },
         ForcedSortName: {
             type: 'string'
@@ -143,6 +152,7 @@ export const $BaseItemDto = {
         },
         PremiereDate: {
             type: 'string',
+            description: 'The premiere date.',
             format: 'date-time',
             nullable: true
         },
@@ -150,16 +160,19 @@ export const $BaseItemDto = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/ExternalUrl'
-            }
+            },
+            description: 'The external urls.'
         },
         MediaSources: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/MediaSourceInfo'
-            }
+            },
+            description: 'The media versions.'
         },
         CriticRating: {
             type: 'number',
+            description: 'The critic rating.',
             format: 'float',
             nullable: true
         },
@@ -173,7 +186,8 @@ export const $BaseItemDto = {
             nullable: true
         },
         GameSystem: {
-            type: 'string'
+            type: 'string',
+            description: 'The game system.'
         },
         ProductionLocations: {
             type: 'array',
@@ -182,42 +196,51 @@ export const $BaseItemDto = {
             }
         },
         Path: {
-            type: 'string'
+            type: 'string',
+            description: 'The path.'
         },
         OfficialRating: {
-            type: 'string'
+            type: 'string',
+            description: 'The official rating.'
         },
         CustomRating: {
-            type: 'string'
+            type: 'string',
+            description: 'The custom rating.'
         },
         ChannelId: {
-            type: 'string'
+            type: 'string',
+            description: 'The channel identifier.'
         },
         ChannelName: {
             type: 'string'
         },
         Overview: {
-            type: 'string'
+            type: 'string',
+            description: 'The overview.'
         },
         Taglines: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The taglines.'
         },
         Genres: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The genres.'
         },
         CommunityRating: {
             type: 'number',
+            description: 'The community rating.',
             format: 'float',
             nullable: true
         },
         RunTimeTicks: {
             type: 'integer',
+            description: 'The run time ticks.',
             format: 'int64',
             nullable: true
         },
@@ -236,27 +259,32 @@ export const $BaseItemDto = {
         },
         ProductionYear: {
             type: 'integer',
+            description: 'The production year.',
             format: 'int32',
             nullable: true
         },
         Number: {
-            type: 'string'
+            type: 'string',
+            description: 'The number.'
         },
         ChannelNumber: {
             type: 'string'
         },
         IndexNumber: {
             type: 'integer',
+            description: 'The index number.',
             format: 'int32',
             nullable: true
         },
         IndexNumberEnd: {
             type: 'integer',
+            description: 'The index number end.',
             format: 'int32',
             nullable: true
         },
         ParentIndexNumber: {
             type: 'integer',
+            description: 'The parent index number.',
             format: 'int32',
             nullable: true
         },
@@ -264,32 +292,38 @@ export const $BaseItemDto = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/MediaUrl'
-            }
+            },
+            description: 'The trailer urls.'
         },
         ProviderIds: {
             '$ref': '#/components/schemas/ProviderIdDictionary'
         },
         IsFolder: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is folder.',
             nullable: true
         },
         ParentId: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent id.'
         },
         Type: {
-            type: 'string'
+            type: 'string',
+            description: 'The type.'
         },
         People: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/BaseItemPerson'
-            }
+            },
+            description: 'The people.'
         },
         Studios: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/NameLongIdPair'
-            }
+            },
+            description: 'The studios.'
         },
         GenreItems: {
             type: 'array',
@@ -304,19 +338,23 @@ export const $BaseItemDto = {
             }
         },
         ParentLogoItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'If the item does not have a logo, this will hold the Id of the Parent that has one.'
         },
         ParentBackdropItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'If the item does not have any backdrops, this will hold the Id of the Parent that has one.'
         },
         ParentBackdropImageTags: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The parent backdrop image tags.'
         },
         LocalTrailerCount: {
             type: 'integer',
+            description: 'The local trailer count.',
             format: 'int32',
             nullable: true
         },
@@ -325,11 +363,13 @@ export const $BaseItemDto = {
         },
         RecursiveItemCount: {
             type: 'integer',
+            description: 'The recursive item count.',
             format: 'int32',
             nullable: true
         },
         ChildCount: {
             type: 'integer',
+            description: 'The child count.',
             format: 'int32',
             nullable: true
         },
@@ -339,39 +379,48 @@ export const $BaseItemDto = {
             nullable: true
         },
         SeriesName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the series.'
         },
         SeriesId: {
-            type: 'string'
+            type: 'string',
+            description: 'The series id.'
         },
         SeasonId: {
-            type: 'string'
+            type: 'string',
+            description: 'The season identifier.'
         },
         SpecialFeatureCount: {
             type: 'integer',
+            description: 'The special feature count.',
             format: 'int32',
             nullable: true
         },
         DisplayPreferencesId: {
-            type: 'string'
+            type: 'string',
+            description: 'The display preferences id.'
         },
         Status: {
-            type: 'string'
+            type: 'string',
+            description: 'The status.'
         },
         AirDays: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/DayOfWeek'
-            }
+            },
+            description: 'The air days.'
         },
         Tags: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The tags.'
         },
         PrimaryImageAspectRatio: {
             type: 'number',
+            description: 'The primary image aspect ratio, after image enhancements.',
             format: 'double',
             nullable: true
         },
@@ -379,13 +428,15 @@ export const $BaseItemDto = {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The artists.'
         },
         ArtistItems: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/NameIdPair'
-            }
+            },
+            description: 'The artist items.'
         },
         Composers: {
             type: 'array',
@@ -394,43 +445,54 @@ export const $BaseItemDto = {
             }
         },
         Album: {
-            type: 'string'
+            type: 'string',
+            description: 'The album.'
         },
         CollectionType: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the collection.'
         },
         DisplayOrder: {
-            type: 'string'
+            type: 'string',
+            description: 'The display order.'
         },
         AlbumId: {
-            type: 'string'
+            type: 'string',
+            description: 'The album id.'
         },
         AlbumPrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The album image tag.'
         },
         SeriesPrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The series primary image tag.'
         },
         AlbumArtist: {
-            type: 'string'
+            type: 'string',
+            description: 'The album artist.'
         },
         AlbumArtists: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/NameIdPair'
-            }
+            },
+            description: 'The album artists.'
         },
         SeasonName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the season.'
         },
         MediaStreams: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/MediaStream'
-            }
+            },
+            description: 'The media streams.'
         },
         PartCount: {
             type: 'integer',
+            description: 'The part count.',
             format: 'int32',
             nullable: true
         },
@@ -438,19 +500,23 @@ export const $BaseItemDto = {
             type: 'object',
             additionalProperties: {
                 type: 'string'
-            }
+            },
+            description: 'The image tags.'
         },
         BackdropImageTags: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The backdrop image tags.'
         },
         ParentLogoImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent logo image tag.'
         },
         SeriesStudio: {
-            type: 'string'
+            type: 'string',
+            description: 'The series studio.'
         },
         PrimaryImageItemId: {
             type: 'string'
@@ -459,25 +525,30 @@ export const $BaseItemDto = {
             type: 'string'
         },
         ParentThumbItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent thumb item id.'
         },
         ParentThumbImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent thumb image tag.'
         },
         Chapters: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/ChapterInfo'
-            }
+            },
+            description: 'The chapters.'
         },
         LocationType: {
             '$ref': '#/components/schemas/LocationType'
         },
         MediaType: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the media.'
         },
         EndDate: {
             type: 'string',
+            description: 'The end date.',
             format: 'date-time',
             nullable: true
         },
@@ -485,10 +556,12 @@ export const $BaseItemDto = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/MetadataFields'
-            }
+            },
+            description: 'The locked fields.'
         },
         LockData: {
             type: 'boolean',
+            description: 'A value indicating whether \\[enable internet providers\\].',
             nullable: true
         },
         Width: {
@@ -554,23 +627,28 @@ export const $BaseItemDto = {
             nullable: true
         },
         SeriesTimerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The series timer identifier.'
         },
         ChannelPrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The channel primary image tag.'
         },
         StartDate: {
             type: 'string',
+            description: 'The start date of the recording, in UTC.',
             format: 'date-time',
             nullable: true
         },
         CompletionPercentage: {
             type: 'number',
+            description: 'The completion percentage.',
             format: 'double',
             nullable: true
         },
         IsRepeat: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is repeat.',
             nullable: true
         },
         IsNew: {
@@ -578,34 +656,42 @@ export const $BaseItemDto = {
             nullable: true
         },
         EpisodeTitle: {
-            type: 'string'
+            type: 'string',
+            description: 'The episode title.'
         },
         IsMovie: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is movie.',
             nullable: true
         },
         IsSports: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is sports.',
             nullable: true
         },
         IsSeries: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is series.',
             nullable: true
         },
         IsLive: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is live.',
             nullable: true
         },
         IsNews: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is news.',
             nullable: true
         },
         IsKids: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is kids.',
             nullable: true
         },
         IsPremiere: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is premiere.',
             nullable: true
         },
         TimerType: {
@@ -619,7 +705,8 @@ export const $BaseItemDto = {
             type: 'string'
         },
         TimerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The timer identifier.'
         },
         CurrentProgram: {
             '$ref': '#/components/schemas/BaseItemDto'
@@ -677,6 +764,8 @@ export const $BaseItemDto = {
             type: 'string'
         }
     },
+    description: `This is strictly used as a data transfer object from the api layer. This holds information about a BaseItem in a format that is convenient for the client.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.BaseItemDto'
 } as const;
 
@@ -696,10 +785,12 @@ export const $ExternalUrl = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Url: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the item.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Providers.ExternalUrl'
@@ -753,7 +844,8 @@ export const $MediaSourceInfo = {
             type: 'string'
         },
         IsRemote: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'Differentiate internet url vs local network'
         },
         HasMixedProtocols: {
             type: 'boolean'
@@ -880,10 +972,12 @@ export const $MediaSourceInfo = {
             nullable: true
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'Used only by our Windows app. Not used by Emby Server. The id of the item that this mediasource belongs to, if there is one Also used by Emby for Kodi'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'Used only by our Windows app. Not used by Emby Server.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.MediaSourceInfo'
@@ -894,10 +988,12 @@ export const $ChapterInfo = {
     properties: {
         StartPositionTicks: {
             type: 'integer',
+            description: 'The start position ticks.',
             format: 'int64'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         ImageTag: {
             type: 'string'
@@ -910,6 +1006,8 @@ export const $ChapterInfo = {
             format: 'int32'
         }
     },
+    description: `Class ChapterInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.ChapterInfo'
 } as const;
 
@@ -935,54 +1033,121 @@ export const $MediaStream = {
     type: 'object',
     properties: {
         Codec: {
-            type: 'string'
+            type: 'string',
+            description: `The codec.
+
+Probe Field: \`codec_name\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`  
+Related Enums: \`T:Emby.Media.Model.Enums.VideoMediaTypes\`, \`Emby.Media.Model.Enums.AudioMediaTypes\`, \`Emby.Media.Model.Enums.SubtitleMediaTypes\`.`
         },
         CodecTag: {
-            type: 'string'
+            type: 'string',
+            description: `The codec tag.
+
+Probe Field: \`codec_tag\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         Language: {
-            type: 'string'
+            type: 'string',
+            description: `The language.
+
+Probe Field: \`tags["language"]\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         ColorTransfer: {
-            type: 'string'
+            type: 'string',
+            description: `The color transfer characteristics.
+
+Probe Field: \`color_transfer\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`  
+Related Enum: \`Emby.Media.Model.Enums.ColorTransfers\`.`
         },
         ColorPrimaries: {
-            type: 'string'
+            type: 'string',
+            description: `The chromaticity coordinates of the source primaries.
+
+Probe Field: \`color_primaries\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`  
+Related Enum: \`Emby.Media.Model.Enums.ColorPrimaries\`.`
         },
         ColorSpace: {
-            type: 'string'
+            type: 'string',
+            description: `The YUV colorspace type.
+
+Probe Field: \`color_space\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`  
+Related Enum: \`Emby.Media.Model.Enums.ColorSpaces\`.`
         },
         Comment: {
-            type: 'string'
+            type: 'string',
+            description: `The comment.
+
+Probe Field: \`tags["comment"]\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         StreamStartTimeTicks: {
             type: 'integer',
+            description: `The start time of the stream.
+
+Probe Field: \`start_time\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.  
+Actual type: \`System.TimeSpan\`.`,
             format: 'int64',
             nullable: true
         },
         TimeBase: {
-            type: 'string'
+            type: 'string',
+            description: `The time\-base.
+
+Probe Field: \`time_base\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.  
+Actual type: \`Emby.Media.Model.Types.Rational\`.`
         },
         Title: {
-            type: 'string'
+            type: 'string',
+            description: `The title.
+
+Probe Field: \`tags["title"]\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         Extradata: {
-            type: 'string'
+            type: 'string',
+            description: `The extradata.
+
+Probe Field: \`extradata\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.
+
+Currently, this value is only parsed for subtitle streams with codec \`Emby.Media.Model.Enums.SubtitleMediaTypes.dvb_teletext\`.`
         },
         VideoRange: {
             type: 'string'
         },
         DisplayTitle: {
-            type: 'string'
+            type: 'string',
+            description: `The display title.
+
+Custom property set by the application.`
         },
         DisplayLanguage: {
-            type: 'string'
+            type: 'string',
+            description: `The display language.
+
+Custom property set by the application.`
         },
         NalLengthSize: {
-            type: 'string'
+            type: 'string',
+            description: `The nal length size.
+
+Probe Field: \`nal_length_size\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\` of type \`Emby.Media.Model.Enums.VideoMediaTypes.h264\`.  
+Actual type: \`System.Int32\`.`
         },
         IsInterlaced: {
-            type: 'boolean'
+            type: 'boolean',
+            description: `A value indicating whether this instance is interlaced.
+
+Probe Field: \`field_order\` \!\= \`progressive\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.`
         },
         IsAVC: {
             type: 'boolean',
@@ -990,20 +1155,39 @@ export const $MediaStream = {
             deprecated: true
         },
         ChannelLayout: {
-            type: 'string'
+            type: 'string',
+            description: `The channel layout.
+
+Probe Field: \`channel_layout\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`  
+Related Enum: \`MediaBrowser.Model.Entities.MediaStream.ChannelLayout\`.`
         },
         BitRate: {
             type: 'integer',
+            description: `The bit rate.
+
+Probe Field: \`bit_rate\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`.
+
+THIS VALUE IS PROCESSED BY CUSTOM LOGIC AND DOES NOT NECESSARILY MATCH FFPROBE RESULTS\!`,
             format: 'int32',
             nullable: true
         },
         BitDepth: {
             type: 'integer',
+            description: `The bit depth.
+
+Probe Field: \`bits_per_sample\` or \`bits_per_raw_sample\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`.`,
             format: 'int32',
             nullable: true
         },
         RefFrames: {
             type: 'integer',
+            description: `The reference frames.
+
+Probe Field: \`refs\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.`,
             format: 'int32',
             nullable: true
         },
@@ -1014,91 +1198,162 @@ export const $MediaStream = {
         },
         Channels: {
             type: 'integer',
+            description: `The audio channel count.
+
+Probe Field: \`channels\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`.`,
             format: 'int32',
             nullable: true
         },
         SampleRate: {
             type: 'integer',
+            description: `The sample rate.
+
+Probe Field: \`sample_rate\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`  
+Related Enum: \`Emby.Media.Model.Enums.SampleRates\`.`,
             format: 'int32',
             nullable: true
         },
         IsDefault: {
-            type: 'boolean'
+            type: 'boolean',
+            description: `A value indicating whether this instance is default.
+
+Probe Field: \`disposition["default"]\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         IsForced: {
-            type: 'boolean'
+            type: 'boolean',
+            description: `A value indicating whether this instance is forced.
+
+Probe Field: \`disposition["forced"]\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`
         },
         IsHearingImpaired: {
             type: 'boolean'
         },
         Height: {
             type: 'integer',
+            description: `The height.
+
+Probe Field: \`height\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.`,
             format: 'int32',
             nullable: true
         },
         Width: {
             type: 'integer',
+            description: `The width.
+
+Probe Field: \`width\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.`,
             format: 'int32',
             nullable: true
         },
         AverageFrameRate: {
             type: 'number',
+            description: `The average frame rate..
+
+Probe Field: \`avg_frame_rate\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.  
+Actual type: \`Emby.Media.Model.Types.Rational\`.`,
             format: 'float',
             nullable: true
         },
         RealFrameRate: {
             type: 'number',
+            description: `The real frame rate..
+
+Probe Field: \`r_frame_rate\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.  
+Actual type: \`Emby.Media.Model.Types.Rational\`.`,
             format: 'float',
             nullable: true
         },
         Profile: {
-            type: 'string'
+            type: 'string',
+            description: `The profile.
+
+Probe Field: \`profile\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`  
+Related Enums: \`Emby.Media.Model.Enums.AacProfiles\`, \`Emby.Media.Model.Enums.AvcProfiles\`, \`Emby.Media.Model.Enums.H263Profiles\`, \`Emby.Media.Model.Enums.HevcProfiles\`, \`Emby.Media.Model.Enums.Mpeg2Profiles\`,\`Emby.Media.Model.Enums.Vc1Profiles\`, \`Emby.Media.Model.Enums.Mpeg4Profiles\`, \`Emby.Media.Model.Enums.Vp8Profiles\`, \`Emby.Media.Model.Enums.Vp9Profiles\`.`
         },
         Type: {
             '$ref': '#/components/schemas/MediaStreamType'
         },
         AspectRatio: {
-            type: 'string'
+            type: 'string',
+            description: `The aspect ratio.
+
+Probe Field: \`display_aspect_ratio\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.  
+Actual type: \`Emby.Media.Model.Types.Rational\`.`
         },
         Index: {
             type: 'integer',
+            description: `The index of the stream inside its container.
+
+Probe Field: \`index\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`, \`MediaBrowser.Model.Entities.MediaStreamType.Audio\`, \`MediaBrowser.Model.Entities.MediaStreamType.Subtitle\`.`,
             format: 'int32'
         },
         IsExternal: {
-            type: 'boolean'
+            type: 'boolean',
+            description: `A value indicating whether this instance is external.
+
+Custom property set by the application.`
         },
         DeliveryMethod: {
             '$ref': '#/components/schemas/SubtitleDeliveryMethod'
         },
         DeliveryUrl: {
-            type: 'string'
+            type: 'string',
+            description: `The delivery URL.
+
+Custom property set by the application.`
         },
         IsExternalUrl: {
             type: 'boolean',
+            description: `A value indicating whether this instance is external URL.
+
+Custom property set by the application.`,
             nullable: true
         },
         IsTextSubtitleStream: {
             type: 'boolean'
         },
         SupportsExternalStream: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[supports external stream\\].'
         },
         Path: {
-            type: 'string'
+            type: 'string',
+            description: 'The filename.'
         },
         Protocol: {
             '$ref': '#/components/schemas/MediaProtocol'
         },
         PixelFormat: {
-            type: 'string'
+            type: 'string',
+            description: `The pixel format.
+
+Probe Field: \`pix_fmt\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`.  
+Actual type: \`MediaBrowser.Model.Entities.MediaStream.PixelFormat\`.`
         },
         Level: {
             type: 'number',
+            description: `The codec level.
+
+Probe Field: \`level\`  
+Applies to: \`MediaBrowser.Model.Entities.MediaStreamType.Video\`  
+Related Enums: \`Emby.Media.Model.Enums.AvcLevels\`, \`Emby.Media.Model.Enums.H263Levels\`, \`Emby.Media.Model.Enums.HevcLevels\`, \`Emby.Media.Model.Enums.Mpeg2Levels\`,\`Emby.Media.Model.Enums.Vc1Levels\`, \`Emby.Media.Model.Enums.Mpeg4Levels\`, \`Emby.Media.Model.Enums.Vp8Levels\`, \`Emby.Media.Model.Enums.Vp9Levels\`.`,
             format: 'double',
             nullable: true
         },
         IsAnamorphic: {
             type: 'boolean',
+            description: 'A value indicating whether this instance is anamorphic.',
             nullable: true
         },
         ExtendedVideoType: {
@@ -1108,32 +1363,47 @@ export const $MediaStream = {
             '$ref': '#/components/schemas/ExtendedVideoSubTypes'
         },
         ExtendedVideoSubTypeDescription: {
-            type: 'string'
+            type: 'string',
+            description: 'The extended video sub\\-type description.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'Used only by our Windows app. Not used by Emby Server.'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'Used only by our Windows app. Not used by Emby Server.'
         },
         AttachmentSize: {
             type: 'integer',
+            description: 'The size of the attachment.',
             format: 'int32',
             nullable: true
         },
         MimeType: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the MIME.'
         },
         SubtitleLocationType: {
             '$ref': '#/components/schemas/SubtitleLocationType'
         }
     },
+    description: `MediaStream information.
+
+
+MediaStream itens are typically included in a \`MediaBrowser.Model.Dto.MediaSourceInfo\` object.
+
+
+\`MediaBrowser.Model.Dto.MediaSourceInfo.MediaStreams\`
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.MediaStream'
 } as const;
 
 export const $MediaStreamType = {
     enum: ['Unknown', 'Audio', 'Video', 'Subtitle', 'EmbeddedImage', 'Attachment', 'Data'],
     type: 'string',
+    description: `Enum MediaStreamType
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.MediaStreamType'
 } as const;
 
@@ -1192,21 +1462,27 @@ export const $BaseItemPerson = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The identifier.'
         },
         Role: {
-            type: 'string'
+            type: 'string',
+            description: 'The role.'
         },
         Type: {
             '$ref': '#/components/schemas/PersonType'
         },
         PrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The primary image tag.'
         }
     },
+    description: `This is used by the api to get information about a Person within a BaseItem
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.BaseItemPerson'
 } as const;
 
@@ -1220,10 +1496,12 @@ export const $NameLongIdPair = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
             type: 'integer',
+            description: 'The identifier.',
             format: 'int64'
         }
     },
@@ -1235,49 +1513,62 @@ export const $UserItemDataDto = {
     properties: {
         Rating: {
             type: 'number',
+            description: 'The rating.',
             format: 'double',
             nullable: true
         },
         PlayedPercentage: {
             type: 'number',
+            description: 'The played percentage.',
             format: 'double',
             nullable: true
         },
         UnplayedItemCount: {
             type: 'integer',
+            description: 'The unplayed item count.',
             format: 'int32',
             nullable: true
         },
         PlaybackPositionTicks: {
             type: 'integer',
+            description: 'The playback position ticks.',
             format: 'int64'
         },
         PlayCount: {
             type: 'integer',
+            description: 'The play count.',
             format: 'int32',
             nullable: true
         },
         IsFavorite: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is favorite.'
         },
         LastPlayedDate: {
             type: 'string',
+            description: 'The last played date.',
             format: 'date-time',
             nullable: true
         },
         Played: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this `MediaBrowser.Model.Dto.UserItemDataDto` is played.'
         },
         Key: {
-            type: 'string'
+            type: 'string',
+            description: 'The key.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'Used only by our Windows app. Not used by Emby Server.'
         }
     },
+    description: `Class UserItemDataDto
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.UserItemDataDto'
 } as const;
 
@@ -1291,10 +1582,12 @@ export const $NameIdPair = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The identifier.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.NameIdPair'
@@ -1303,12 +1596,16 @@ export const $NameIdPair = {
 export const $LocationType = {
     enum: ['FileSystem', 'Virtual'],
     type: 'string',
+    description: `Enum LocationType
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.LocationType'
 } as const;
 
 export const $MetadataFields = {
     enum: ['Cast', 'Genres', 'ProductionLocations', 'Studios', 'Tags', 'Name', 'Overview', 'Runtime', 'OfficialRating', 'Collections', 'ChannelNumber', 'SortName', 'OriginalTitle', 'SortIndexNumber', 'SortParentIndexNumber', 'CommunityRating', 'CriticRating', 'Tagline', 'Composers', 'Artists', 'AlbumArtists'],
     type: 'string',
+    description: `Enum MetadataFields
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.MetadataFields'
 } as const;
 
@@ -1389,7 +1686,8 @@ export const $Devices_DeviceInfo = {
             type: 'string'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The identifier.'
         },
         InternalId: {
             type: 'integer',
@@ -1399,16 +1697,20 @@ export const $Devices_DeviceInfo = {
             type: 'string'
         },
         LastUserName: {
-            type: 'string'
+            type: 'string',
+            description: 'The last name of the user.'
         },
         AppName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the application.'
         },
         AppVersion: {
-            type: 'string'
+            type: 'string',
+            description: 'The application version.'
         },
         LastUserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The last user identifier.'
         },
         DateLastActivity: {
             type: 'string',
@@ -1477,52 +1779,68 @@ export const $PackageInfo = {
     type: 'object',
     properties: {
         id: {
-            type: 'string'
+            type: 'string',
+            description: 'The internal id of this package.'
         },
         name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         shortDescription: {
-            type: 'string'
+            type: 'string',
+            description: 'The short description.'
         },
         overview: {
-            type: 'string'
+            type: 'string',
+            description: 'The overview.'
         },
         isPremium: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is premium.'
         },
         adult: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is adult only content.'
         },
         richDescUrl: {
-            type: 'string'
+            type: 'string',
+            description: 'The rich desc URL.'
         },
         thumbImage: {
-            type: 'string'
+            type: 'string',
+            description: 'The thumb image.'
         },
         previewImage: {
-            type: 'string'
+            type: 'string',
+            description: 'The preview image.'
         },
         type: {
-            type: 'string'
+            type: 'string',
+            description: 'The type.'
         },
         targetFilename: {
-            type: 'string'
+            type: 'string',
+            description: 'The target filename.'
         },
         owner: {
-            type: 'string'
+            type: 'string',
+            description: 'The owner.'
         },
         category: {
-            type: 'string'
+            type: 'string',
+            description: 'The category.'
         },
         tileColor: {
-            type: 'string'
+            type: 'string',
+            description: 'The catalog tile color.'
         },
         featureId: {
-            type: 'string'
+            type: 'string',
+            description: 'The feature id of this package (if premium).'
         },
         price: {
             type: 'number',
+            description: 'The price for this package (if premium).',
             format: 'float',
             nullable: true
         },
@@ -1530,35 +1848,45 @@ export const $PackageInfo = {
             '$ref': '#/components/schemas/PackageTargetSystem'
         },
         guid: {
-            type: 'string'
+            type: 'string',
+            description: 'The guid of the assembly associated with this package (if a plug\\-in). This is used to identify the proper item for automatic updates.'
         },
         isRegistered: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'Whether or not this package is registered.'
         },
         expDate: {
             type: 'string',
+            description: 'The expiration date for this package.',
             format: 'date-time'
         },
         versions: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/PackageVersionInfo'
-            }
+            },
+            description: 'The versions.'
         },
         enableInAppStore: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable in application store\\].'
         },
         installs: {
             type: 'integer',
+            description: 'The installs.',
             format: 'int32'
         }
     },
+    description: `Class PackageInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Updates.PackageInfo'
 } as const;
 
 export const $PackageTargetSystem = {
     enum: ['Server', 'MBTheater', 'MBClassic', 'Other'],
     type: 'string',
+    description: `Enum PackageType
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Updates.PackageTargetSystem'
 } as const;
 
@@ -1566,31 +1894,39 @@ export const $PackageVersionInfo = {
     type: 'object',
     properties: {
         name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         guid: {
-            type: 'string'
+            type: 'string',
+            description: 'The guid.'
         },
         versionStr: {
-            type: 'string'
+            type: 'string',
+            description: 'The version STR.'
         },
         classification: {
             '$ref': '#/components/schemas/PackageVersionClass'
         },
         description: {
-            type: 'string'
+            type: 'string',
+            description: 'The description.'
         },
         requiredVersionStr: {
-            type: 'string'
+            type: 'string',
+            description: 'The required version STR.'
         },
         sourceUrl: {
-            type: 'string'
+            type: 'string',
+            description: 'The source URL.'
         },
         checksum: {
-            type: 'string'
+            type: 'string',
+            description: 'The source URL.'
         },
         targetFilename: {
-            type: 'string'
+            type: 'string',
+            description: 'The target filename.'
         },
         infoUrl: {
             type: 'string'
@@ -1604,12 +1940,16 @@ export const $PackageVersionInfo = {
             nullable: true
         }
     },
+    description: `Class PackageVersionInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Updates.PackageVersionInfo'
 } as const;
 
 export const $PackageVersionClass = {
     enum: ['Release', 'Beta', 'Dev'],
     type: 'string',
+    description: `Enum PackageVersionClass
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Updates.PackageVersionClass'
 } as const;
 
@@ -1634,24 +1974,32 @@ export const $Plugins_PluginInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Version: {
-            type: 'string'
+            type: 'string',
+            description: 'The version.'
         },
         ConfigurationFileName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the configuration file.'
         },
         Description: {
-            type: 'string'
+            type: 'string',
+            description: 'The description.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The unique id.'
         },
         ImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The image URL.'
         }
     },
+    description: `This is a serializable stub class that is used by the api to provide information about installed plugins.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Plugins.PluginInfo'
 } as const;
 
@@ -1659,18 +2007,21 @@ export const $TaskInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         State: {
             '$ref': '#/components/schemas/TaskState'
         },
         CurrentProgressPercentage: {
             type: 'number',
+            description: 'The progress.',
             format: 'double',
             nullable: true
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         },
         LastExecutionResult: {
             '$ref': '#/components/schemas/TaskResult'
@@ -1679,27 +2030,36 @@ export const $TaskInfo = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/TaskTriggerInfo'
-            }
+            },
+            description: 'The triggers.'
         },
         Description: {
-            type: 'string'
+            type: 'string',
+            description: 'The description.'
         },
         Category: {
-            type: 'string'
+            type: 'string',
+            description: 'The category.'
         },
         IsHidden: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is hidden.'
         },
         Key: {
-            type: 'string'
+            type: 'string',
+            description: 'The key.'
         }
     },
+    description: `Class TaskInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.TaskInfo'
 } as const;
 
 export const $TaskState = {
     enum: ['Idle', 'Cancelling', 'Running'],
     type: 'string',
+    description: `Enum TaskState
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.TaskState'
 } as const;
 
@@ -1708,37 +2068,48 @@ export const $TaskResult = {
     properties: {
         StartTimeUtc: {
             type: 'string',
+            description: 'The start time UTC.',
             format: 'date-time'
         },
         EndTimeUtc: {
             type: 'string',
+            description: 'The end time UTC.',
             format: 'date-time'
         },
         Status: {
             '$ref': '#/components/schemas/TaskCompletionStatus'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Key: {
-            type: 'string'
+            type: 'string',
+            description: 'The key.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         },
         ErrorMessage: {
-            type: 'string'
+            type: 'string',
+            description: 'The error message.'
         },
         LongErrorMessage: {
-            type: 'string'
+            type: 'string',
+            description: 'The long error message.'
         }
     },
+    description: `Class TaskExecutionInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.TaskResult'
 } as const;
 
 export const $TaskCompletionStatus = {
     enum: ['Completed', 'Failed', 'Cancelled', 'Aborted'],
     type: 'string',
+    description: `Enum TaskCompletionStatus
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.TaskCompletionStatus'
 } as const;
 
@@ -1746,15 +2117,18 @@ export const $TaskTriggerInfo = {
     type: 'object',
     properties: {
         Type: {
-            type: 'string'
+            type: 'string',
+            description: 'The type.'
         },
         TimeOfDayTicks: {
             type: 'integer',
+            description: 'The time of day.',
             format: 'int64',
             nullable: true
         },
         IntervalTicks: {
             type: 'integer',
+            description: 'The interval.',
             format: 'int64',
             nullable: true
         },
@@ -1766,16 +2140,21 @@ export const $TaskTriggerInfo = {
         },
         MaxRuntimeTicks: {
             type: 'integer',
+            description: 'The maximum runtime ticks.',
             format: 'int64',
             nullable: true
         }
     },
+    description: `Class TaskTriggerInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.TaskTriggerInfo'
 } as const;
 
 export const $SystemEvent = {
     enum: ['WakeFromSleep', 'DisplayConfigurationChange', 'NetworkChange'],
     type: 'string',
+    description: `Enum SystemEvent
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Tasks.SystemEvent'
 } as const;
 
@@ -1793,6 +2172,7 @@ export const $Session_SessionInfo = {
         },
         RemoteEndPoint: {
             type: 'string',
+            description: 'The remote end point.',
             format: 'ipv4'
         },
         Protocol: {
@@ -1802,7 +2182,8 @@ export const $Session_SessionInfo = {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The playable media types.'
         },
         PlaylistItemId: {
             type: 'string'
@@ -1816,32 +2197,38 @@ export const $Session_SessionInfo = {
             format: 'int32'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         },
         ServerId: {
             type: 'string'
         },
         UserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The user id.'
         },
         PartyId: {
             type: 'string'
         },
         UserName: {
-            type: 'string'
+            type: 'string',
+            description: 'The username.'
         },
         UserPrimaryImageTag: {
             type: 'string'
         },
         Client: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the client.'
         },
         LastActivityDate: {
             type: 'string',
+            description: 'The last activity date.',
             format: 'date-time'
         },
         DeviceName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the device.'
         },
         DeviceType: {
             type: 'string'
@@ -1854,19 +2241,23 @@ export const $Session_SessionInfo = {
             format: 'int64'
         },
         DeviceId: {
-            type: 'string'
+            type: 'string',
+            description: 'The device id.'
         },
         ApplicationVersion: {
-            type: 'string'
+            type: 'string',
+            description: 'The application version.'
         },
         AppIconUrl: {
-            type: 'string'
+            type: 'string',
+            description: 'The application icon URL.'
         },
         SupportedCommands: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The supported commands.'
         },
         TranscodingInfo: {
             '$ref': '#/components/schemas/TranscodingInfo'
@@ -1875,6 +2266,8 @@ export const $Session_SessionInfo = {
             type: 'boolean'
         }
     },
+    description: `Class SessionInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Controller.Session.SessionInfo'
 } as const;
 
@@ -1883,35 +2276,43 @@ export const $PlayerStateInfo = {
     properties: {
         PositionTicks: {
             type: 'integer',
+            description: 'The now playing position ticks.',
             format: 'int64',
             nullable: true
         },
         CanSeek: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance can seek.'
         },
         IsPaused: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is paused.'
         },
         IsMuted: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is muted.'
         },
         VolumeLevel: {
             type: 'integer',
+            description: 'The volume level.',
             format: 'int32',
             nullable: true
         },
         AudioStreamIndex: {
             type: 'integer',
+            description: 'The index of the now playing audio stream.',
             format: 'int32',
             nullable: true
         },
         SubtitleStreamIndex: {
             type: 'integer',
+            description: 'The index of the now playing subtitle stream.',
             format: 'int32',
             nullable: true
         },
         MediaSourceId: {
-            type: 'string'
+            type: 'string',
+            description: 'The now playing media version identifier.'
         },
         MediaSource: {
             '$ref': '#/components/schemas/MediaSourceInfo'
@@ -1967,16 +2368,20 @@ export const $SessionUserInfo = {
     type: 'object',
     properties: {
         UserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The user identifier.'
         },
         UserName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the user.'
         },
         UserInternalId: {
             type: 'integer',
             format: 'int64'
         }
     },
+    description: `Class SessionUserInfo.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.SessionUserInfo'
 } as const;
 
@@ -2155,25 +2560,30 @@ export const $ProcessRun_Metrics_ProcessStatistics = {
     properties: {
         CurrentCpu: {
             type: 'number',
+            description: 'The current cpu.',
             format: 'double'
         },
         AverageCpu: {
             type: 'number',
+            description: 'The average cpu.',
             format: 'double'
         },
         CurrentVirtualMemory: {
             type: 'number',
+            description: 'The currently allocated virtual memory.',
             format: 'double'
         },
         CurrentWorkingSet: {
             type: 'number',
+            description: 'The currently allocated working set.',
             format: 'double'
         },
         Metrics: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/ProcessRun.Metrics.ProcessMetricPoint'
-            }
+            },
+            description: 'The metrics.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.ProcessRun.Metrics.ProcessStatistics'
@@ -2184,18 +2594,22 @@ export const $ProcessRun_Metrics_ProcessMetricPoint = {
     properties: {
         Time: {
             type: 'string',
+            description: 'The time.',
             format: 'time'
         },
         CpuPercent: {
             type: 'number',
+            description: 'The cpu percent.',
             format: 'double'
         },
         VirtualMemory: {
             type: 'number',
+            description: 'The virtual memory.',
             format: 'double'
         },
         WorkingSet: {
             type: 'number',
+            description: 'The working set.',
             format: 'double'
         }
     },
@@ -2245,12 +2659,16 @@ export const $Transcoding_VpStepInfo = {
 export const $Transcoding_VpStepTypes = {
     enum: ['Decoder', 'Encoder', 'Scaling', 'Deinterlace', 'SubtitleOverlay', 'ToneMapping', 'ColorConversion', 'SplitCaptions', 'TextSub2Video', 'GraphicSub2Video', 'GraphicSub2Text', 'BurnInTextSubs', 'BurnInGraphicSubs', 'ScaleSubs', 'TextMod', 'Censor', 'ShowSpeaker', 'StripStyles', 'ConnectTo', 'Rotate'],
     type: 'string',
+    description: `Video Processing Step Type enum.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.Transcoding.VpStepTypes'
 } as const;
 
 export const $ImageType = {
     enum: ['Primary', 'Art', 'Backdrop', 'Banner', 'Logo', 'Thumb', 'Disc', 'Box', 'Screenshot', 'Menu', 'Chapter', 'BoxRear', 'Thumbnail', 'LogoLight', 'LogoLightColor'],
     type: 'string',
+    description: `Enum ImageType
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.ImageType'
 } as const;
 
@@ -2258,10 +2676,12 @@ export const $NameValuePair = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Value: {
-            type: 'string'
+            type: 'string',
+            description: 'The value.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.NameValuePair'
@@ -2358,10 +2778,12 @@ export const $Branding_BrandingOptions = {
     type: 'object',
     properties: {
         LoginDisclaimer: {
-            type: 'string'
+            type: 'string',
+            description: 'The login disclaimer.'
         },
         CustomCss: {
-            type: 'string'
+            type: 'string',
+            description: 'The custom CSS.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Branding.BrandingOptions'
@@ -2458,1021 +2880,105 @@ export const $DisplayPreferences = {
 export const $SortOrder = {
     enum: ['Ascending', 'Descending'],
     type: 'string',
+    description: `Enum SortOrder
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.SortOrder'
 } as const;
 
-export const $Configuration_ToneMapping_ToneMapOptionsVisibility = {
-    type: 'object',
-    properties: {
-        ShowAdvanced: {
-            type: 'boolean'
-        },
-        IsSoftwareToneMappingAvailable: {
-            type: 'boolean'
-        },
-        IsAnyHardwareToneMappingAvailable: {
-            type: 'boolean'
-        },
-        ShowNvidiaOptions: {
-            type: 'boolean'
-        },
-        ShowQuickSyncOptions: {
-            type: 'boolean'
-        },
-        ShowVaapiOptions: {
-            type: 'boolean'
-        },
-        IsOpenClAvailable: {
-            type: 'boolean'
-        },
-        IsOpenClSuperTAvailable: {
-            type: 'boolean'
-        },
-        IsVaapiNativeAvailable: {
-            type: 'boolean'
-        },
-        IsQuickSyncNativeAvailable: {
-            type: 'boolean'
-        },
-        OperatingSystem: {
-            '$ref': '#/components/schemas/OperatingSystem'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Server.MediaEncoding.Configuration.ToneMapping.ToneMapOptionsVisibility'
-} as const;
-
-export const $OperatingSystem = {
-    enum: ['Windows', 'Linux', 'OSX', 'BSD', 'Android'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.System.OperatingSystem'
-} as const;
-
-export const $EditObjectContainer = {
-    type: 'object',
-    properties: {
-        Object: {
-            type: 'object'
-        },
-        DefaultObject: {
-            type: 'object'
-        },
-        TypeName: {
-            type: 'string'
-        },
-        EditorRoot: {
-            '$ref': '#/components/schemas/Editors.EditorRoot'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.EditObjectContainer'
-} as const;
-
-export const $Editors_EditorRoot = {
-    type: 'object',
-    properties: {
-        PropertyConditions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/Conditions.PropertyCondition'
-            }
-        },
-        PostbackActions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/Actions.PostbackAction'
-            }
-        },
-        TitleButton: {
-            '$ref': '#/components/schemas/Editors.EditorButtonItem'
-        },
-        EditorItems: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/Editors.EditorBase'
-            }
-        },
-        EditorType: {
-            '$ref': '#/components/schemas/Common.EditorTypes'
-        },
-        Name: {
-            type: 'string'
-        },
-        Id: {
-            type: 'string'
-        },
-        AllowEmpty: {
-            type: 'boolean'
-        },
-        IsReadOnly: {
-            type: 'boolean'
-        },
-        IsAdvanced: {
-            type: 'boolean'
-        },
-        DisplayName: {
-            type: 'string'
-        },
-        Description: {
-            type: 'string'
-        },
-        FeatureRequiresPremiere: {
-            type: 'boolean'
-        },
-        ParentId: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorRoot'
-} as const;
-
-export const $Conditions_PropertyCondition = {
-    type: 'object',
-    properties: {
-        AffectedPropertyId: {
-            type: 'string'
-        },
-        ConditionType: {
-            '$ref': '#/components/schemas/Conditions.PropertyConditionType'
-        },
-        TargetPropertyId: {
-            type: 'string'
-        },
-        SimpleCondition: {
-            '$ref': '#/components/schemas/Attributes.SimpleCondition'
-        },
-        ValueCondition: {
-            '$ref': '#/components/schemas/Attributes.ValueCondition'
-        },
-        Value: {
-            type: 'object'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Conditions.PropertyCondition'
-} as const;
-
-export const $Conditions_PropertyConditionType = {
-    enum: ['Visible', 'Enabled'],
-    type: 'string',
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Conditions.PropertyConditionType'
-} as const;
-
-export const $Attributes_SimpleCondition = {
-    enum: ['IsTrue', 'IsFalse', 'IsNull', 'IsNotNullOrEmpty'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.Attributes.SimpleCondition'
-} as const;
-
-export const $Attributes_ValueCondition = {
-    enum: ['IsEqual', 'IsNotEqual', 'IsGreater', 'IsGreaterOrEqual', 'IsLess', 'IsLessOrEqual'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.Attributes.ValueCondition'
-} as const;
-
-export const $Actions_PostbackAction = {
-    type: 'object',
-    properties: {
-        TargetEditorId: {
-            type: 'string'
-        },
-        PostbackCommandId: {
-            type: 'string'
-        },
-        CommandParameterPropertyId: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Actions.PostbackAction'
-} as const;
-
-export const $Editors_EditorButtonItem = {
-    type: 'object',
-    properties: {
-        EditorType: {
-            '$ref': '#/components/schemas/Common.EditorTypes'
-        },
-        Name: {
-            type: 'string'
-        },
-        Id: {
-            type: 'string'
-        },
-        AllowEmpty: {
-            type: 'boolean'
-        },
-        IsReadOnly: {
-            type: 'boolean'
-        },
-        IsAdvanced: {
-            type: 'boolean'
-        },
-        DisplayName: {
-            type: 'string'
-        },
-        Description: {
-            type: 'string'
-        },
-        FeatureRequiresPremiere: {
-            type: 'boolean'
-        },
-        ParentId: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorButtonItem'
-} as const;
-
-export const $Common_EditorTypes = {
-    enum: ['Group', 'Text', 'Numeric', 'Boolean', 'SelectSingle', 'SelectMultiple', 'Date', 'FilePath', 'FolderPath', 'StatusItem', 'ProgressItem', 'ButtonItem', 'ButtonGroup', 'CaptionItem', 'LabelItem', 'ItemList', 'RadioGroup', 'DxDataGrid', 'DxPivotGrid', 'SpacerItem'],
-    type: 'string',
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Common.EditorTypes'
-} as const;
-
-export const $Editors_EditorBase = {
-    type: 'object',
-    properties: {
-        EditorType: {
-            '$ref': '#/components/schemas/Common.EditorTypes'
-        },
-        Name: {
-            type: 'string'
-        },
-        Id: {
-            type: 'string'
-        },
-        AllowEmpty: {
-            type: 'boolean'
-        },
-        IsReadOnly: {
-            type: 'boolean'
-        },
-        IsAdvanced: {
-            type: 'boolean'
-        },
-        DisplayName: {
-            type: 'string'
-        },
-        Description: {
-            type: 'string'
-        },
-        FeatureRequiresPremiere: {
-            type: 'boolean'
-        },
-        ParentId: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorBase'
-} as const;
-
-export const $MediaEncoding_CodecParameterContext = {
-    enum: ['Playback', 'Conversion'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Controller.MediaEncoding.CodecParameterContext'
-} as const;
-
-export const $ValidatePath = {
-    type: 'object',
-    properties: {
-        ValidateWriteable: {
-            type: 'boolean'
-        },
-        IsFile: {
-            type: 'boolean',
-            nullable: true
-        },
-        Username: {
-            type: 'string'
-        },
-        Password: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.ValidatePath'
-} as const;
-
-export const $DefaultDirectoryBrowserInfo = {
-    type: 'object',
-    properties: {
-        Path: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.DefaultDirectoryBrowserInfo'
-} as const;
-
-export const $IO_FileSystemEntryInfo = {
-    type: 'object',
-    properties: {
-        Name: {
-            type: 'string'
-        },
-        Path: {
-            type: 'string'
-        },
-        Type: {
-            '$ref': '#/components/schemas/IO.FileSystemEntryType'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.IO.FileSystemEntryInfo'
-} as const;
-
-export const $IO_FileSystemEntryType = {
-    enum: ['File', 'Directory', 'NetworkComputer', 'NetworkShare'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.IO.FileSystemEntryType'
-} as const;
-
-export const $GetDirectoryContents = {
-    type: 'object',
-    properties: {
-        Username: {
-            type: 'string'
-        },
-        Password: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.GetDirectoryContents'
-} as const;
-
-export const $UserLibrary_UpdateUserItemAccess = {
-    type: 'object',
-    properties: {
-        ItemIds: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        UserIds: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        ItemAccess: {
-            '$ref': '#/components/schemas/UserItemShareLevel'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.UserLibrary.UpdateUserItemAccess'
-} as const;
-
-export const $UserItemShareLevel = {
-    enum: ['None', 'Read', 'Write', 'Manage', 'ManageDelete'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.Dto.UserItemShareLevel'
-} as const;
-
-export const $ItemCounts = {
-    type: 'object',
-    properties: {
-        MovieCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        SeriesCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        EpisodeCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        GameCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        ArtistCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        ProgramCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        GameSystemCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        TrailerCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        SongCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        AlbumCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        MusicVideoCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        BoxSetCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        BookCount: {
-            type: 'integer',
-            format: 'int32'
-        },
-        ItemCount: {
-            type: 'integer',
-            format: 'int32'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.Dto.ItemCounts'
-} as const;
-
-export const $Persistence_IntroDebugInfo = {
-    type: 'object',
-    properties: {
-        Id: {
-            type: 'integer',
-            format: 'int64'
-        },
-        Path: {
-            type: 'string'
-        },
-        Start: {
-            type: 'integer',
-            format: 'int64'
-        },
-        End: {
-            type: 'integer',
-            format: 'int64'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Controller.Persistence.IntroDebugInfo'
-} as const;
-
-export const $LibraryOptionsResult = {
-    type: 'object',
-    properties: {
-        MetadataSavers: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        MetadataReaders: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        SubtitleFetchers: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        LyricsFetchers: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        TypeOptions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryTypeOptions'
-            }
-        },
-        DefaultLibraryOptions: {
-            '$ref': '#/components/schemas/LibraryOptions'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryOptionsResult'
-} as const;
-
-export const $LibraryOptionInfo = {
-    type: 'object',
-    properties: {
-        Name: {
-            type: 'string'
-        },
-        SetupUrl: {
-            type: 'string'
-        },
-        DefaultEnabled: {
-            type: 'boolean'
-        },
-        Features: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/MetadataFeatures'
-            }
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryOptionInfo'
-} as const;
-
-export const $MetadataFeatures = {
-    enum: ['Collections', 'Adult', 'RequiredSetup'],
-    type: 'string',
-    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.MetadataFeatures'
-} as const;
-
-export const $LibraryTypeOptions = {
+export const $Dlna_Profiles_DlnaProfile = {
     type: 'object',
     properties: {
         Type: {
-            type: 'string'
-        },
-        MetadataFetchers: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        ImageFetchers: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/LibraryOptionInfo'
-            }
-        },
-        SupportedImageTypes: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/ImageType'
-            }
-        },
-        DefaultImageOptions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/ImageOption'
-            }
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryTypeOptions'
-} as const;
-
-export const $ImageOption = {
-    type: 'object',
-    properties: {
-        Type: {
-            '$ref': '#/components/schemas/ImageType'
-        },
-        Limit: {
-            type: 'integer',
-            format: 'int32'
-        },
-        MinWidth: {
-            type: 'integer',
-            format: 'int32'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.ImageOption'
-} as const;
-
-export const $LibraryOptions = {
-    type: 'object',
-    properties: {
-        EnableArchiveMediaFiles: {
-            type: 'boolean'
-        },
-        EnablePhotos: {
-            type: 'boolean'
-        },
-        EnableRealtimeMonitor: {
-            type: 'boolean'
-        },
-        EnableMarkerDetection: {
-            type: 'boolean'
-        },
-        EnableMarkerDetectionDuringLibraryScan: {
-            type: 'boolean'
-        },
-        IntroDetectionFingerprintLength: {
-            type: 'integer',
-            format: 'int32'
-        },
-        EnableChapterImageExtraction: {
-            type: 'boolean'
-        },
-        ExtractChapterImagesDuringLibraryScan: {
-            type: 'boolean'
-        },
-        DownloadImagesInAdvance: {
-            type: 'boolean'
-        },
-        CacheImages: {
-            type: 'boolean'
-        },
-        ExcludeFromSearch: {
-            type: 'boolean'
-        },
-        EnablePlexIgnore: {
-            type: 'boolean'
-        },
-        PathInfos: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/MediaPathInfo'
-            }
-        },
-        IgnoreHiddenFiles: {
-            type: 'boolean'
-        },
-        IgnoreFileExtensions: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        SaveLocalMetadata: {
-            type: 'boolean'
-        },
-        SaveMetadataHidden: {
-            type: 'boolean'
-        },
-        SaveLocalThumbnailSets: {
-            type: 'boolean'
-        },
-        ImportPlaylists: {
-            type: 'boolean'
-        },
-        EnableAutomaticSeriesGrouping: {
-            type: 'boolean'
-        },
-        ShareEmbeddedMusicAlbumImages: {
-            type: 'boolean'
-        },
-        EnableEmbeddedTitles: {
-            type: 'boolean'
-        },
-        EnableAudioResume: {
-            type: 'boolean'
-        },
-        AutoGenerateChapters: {
-            type: 'boolean'
-        },
-        MergeTopLevelFolders: {
-            type: 'boolean'
-        },
-        AutoGenerateChapterIntervalMinutes: {
-            type: 'integer',
-            format: 'int32'
-        },
-        AutomaticRefreshIntervalDays: {
-            type: 'integer',
-            format: 'int32'
-        },
-        PlaceholderMetadataRefreshIntervalDays: {
-            type: 'integer',
-            format: 'int32'
-        },
-        PreferredMetadataLanguage: {
-            type: 'string'
-        },
-        PreferredImageLanguage: {
-            type: 'string'
-        },
-        ContentType: {
-            type: 'string'
-        },
-        MetadataCountryCode: {
-            type: 'string'
-        },
-        MetadataSavers: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        DisabledLocalMetadataReaders: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        LocalMetadataReaderOrder: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        DisabledLyricsFetchers: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        SaveLyricsWithMedia: {
-            type: 'boolean'
-        },
-        LyricsDownloadMaxAgeDays: {
-            type: 'integer',
-            format: 'int32'
-        },
-        LyricsFetcherOrder: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        LyricsDownloadLanguages: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        DisabledSubtitleFetchers: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        SubtitleFetcherOrder: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        SkipSubtitlesIfEmbeddedSubtitlesPresent: {
-            type: 'boolean'
-        },
-        SkipSubtitlesIfAudioTrackMatches: {
-            type: 'boolean'
-        },
-        SubtitleDownloadLanguages: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        SubtitleDownloadMaxAgeDays: {
-            type: 'integer',
-            format: 'int32'
-        },
-        RequirePerfectSubtitleMatch: {
-            type: 'boolean'
-        },
-        SaveSubtitlesWithMedia: {
-            type: 'boolean'
-        },
-        ForcedSubtitlesOnly: {
-            type: 'boolean'
-        },
-        HearingImpairedSubtitlesOnly: {
-            type: 'boolean'
-        },
-        TypeOptions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/TypeOptions'
-            }
-        },
-        CollapseSingleItemFolders: {
-            type: 'boolean'
-        },
-        EnableAdultMetadata: {
-            type: 'boolean'
-        },
-        ImportCollections: {
-            type: 'boolean'
-        },
-        EnableMultiVersionByFiles: {
-            type: 'boolean'
-        },
-        EnableMultiVersionByMetadata: {
-            type: 'boolean'
-        },
-        EnableMultiPartItems: {
-            type: 'boolean'
-        },
-        MinCollectionItems: {
-            type: 'integer',
-            format: 'int32'
-        },
-        MusicFolderStructure: {
-            type: 'string'
-        },
-        MinResumePct: {
-            type: 'integer',
-            format: 'int32'
-        },
-        MaxResumePct: {
-            type: 'integer',
-            format: 'int32'
-        },
-        MinResumeDurationSeconds: {
-            type: 'integer',
-            format: 'int32'
-        },
-        ThumbnailImagesIntervalSeconds: {
-            type: 'integer',
-            format: 'int32'
-        },
-        SampleIgnoreSize: {
-            type: 'integer',
-            format: 'int32'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.LibraryOptions'
-} as const;
-
-export const $MediaPathInfo = {
-    type: 'object',
-    properties: {
-        Path: {
-            type: 'string'
-        },
-        NetworkPath: {
-            type: 'string'
-        },
-        Username: {
-            type: 'string'
-        },
-        Password: {
-            type: 'string'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.MediaPathInfo'
-} as const;
-
-export const $TypeOptions = {
-    type: 'object',
-    properties: {
-        Type: {
-            type: 'string'
-        },
-        MetadataFetchers: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        MetadataFetcherOrder: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        ImageFetchers: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        ImageFetcherOrder: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        ImageOptions: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/ImageOption'
-            }
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.TypeOptions'
-} as const;
-
-export const $Library_MediaFolder = {
-    type: 'object',
-    properties: {
-        Name: {
-            type: 'string'
-        },
-        Id: {
-            type: 'string'
-        },
-        Guid: {
-            type: 'string'
-        },
-        SubFolders: {
-            type: 'array',
-            items: {
-                '$ref': '#/components/schemas/Library.SubFolder'
-            }
-        },
-        IsUserAccessConfigurable: {
-            type: 'boolean'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.Library.MediaFolder'
-} as const;
-
-export const $Library_SubFolder = {
-    type: 'object',
-    properties: {
-        Name: {
-            type: 'string'
-        },
-        Id: {
-            type: 'string'
+            '$ref': '#/components/schemas/Dlna.Profiles.DeviceProfileType'
         },
         Path: {
-            type: 'string'
-        },
-        IsUserAccessConfigurable: {
-            type: 'boolean'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.Library.SubFolder'
-} as const;
-
-export const $Library_AddVirtualFolder = {
-    type: 'object',
-    properties: {
-        Name: {
-            type: 'string'
-        },
-        CollectionType: {
-            type: 'string'
-        },
-        RefreshLibrary: {
-            type: 'boolean'
-        },
-        Paths: {
-            type: 'array',
-            items: {
-                type: 'string'
-            }
-        },
-        LibraryOptions: {
-            '$ref': '#/components/schemas/LibraryOptions'
-        }
-    },
-    'x-internal-ref-name': 'Emby.Api.Library.AddVirtualFolder'
-} as const;
-
-export const $LiveStreamRequest = {
-    type: 'object',
-    properties: {
-        OpenToken: {
             type: 'string'
         },
         UserId: {
             type: 'string'
         },
-        PlaySessionId: {
+        AlbumArtPn: {
             type: 'string'
         },
-        MaxStreamingBitrate: {
+        MaxAlbumArtWidth: {
             type: 'integer',
-            format: 'int64',
-            nullable: true
+            format: 'int32'
         },
-        StartTimeTicks: {
+        MaxAlbumArtHeight: {
             type: 'integer',
-            format: 'int64',
-            nullable: true
+            format: 'int32'
         },
-        AudioStreamIndex: {
+        MaxIconWidth: {
             type: 'integer',
             format: 'int32',
             nullable: true
         },
-        SubtitleStreamIndex: {
+        MaxIconHeight: {
             type: 'integer',
             format: 'int32',
             nullable: true
         },
-        MaxAudioChannels: {
+        FriendlyName: {
+            type: 'string'
+        },
+        Manufacturer: {
+            type: 'string'
+        },
+        ManufacturerUrl: {
+            type: 'string'
+        },
+        ModelName: {
+            type: 'string'
+        },
+        ModelDescription: {
+            type: 'string'
+        },
+        ModelNumber: {
+            type: 'string'
+        },
+        ModelUrl: {
+            type: 'string'
+        },
+        SerialNumber: {
+            type: 'string'
+        },
+        EnableAlbumArtInDidl: {
+            type: 'boolean'
+        },
+        EnableSingleAlbumArtLimit: {
+            type: 'boolean'
+        },
+        EnableSingleSubtitleLimit: {
+            type: 'boolean'
+        },
+        ProtocolInfo: {
+            type: 'string'
+        },
+        TimelineOffsetSeconds: {
             type: 'integer',
-            format: 'int32',
-            nullable: true
+            format: 'int32'
         },
-        ItemId: {
-            type: 'integer',
-            format: 'int64'
-        },
-        DeviceProfile: {
-            '$ref': '#/components/schemas/DeviceProfile'
-        },
-        EnableDirectPlay: {
+        RequiresPlainVideoItems: {
             type: 'boolean'
         },
-        EnableDirectStream: {
+        RequiresPlainFolders: {
             type: 'boolean'
         },
-        EnableTranscoding: {
+        IgnoreTranscodeByteRangeRequests: {
             type: 'boolean'
         },
-        AllowVideoStreamCopy: {
+        SupportsSamsungBookmark: {
             type: 'boolean'
         },
-        AllowInterlacedVideoStreamCopy: {
-            type: 'boolean'
+        Identification: {
+            '$ref': '#/components/schemas/Dlna.Profiles.DeviceIdentification'
         },
-        AllowAudioStreamCopy: {
-            type: 'boolean'
-        }
-    },
-    'x-internal-ref-name': 'MediaBrowser.Model.MediaInfo.LiveStreamRequest'
-} as const;
-
-export const $DeviceProfile = {
-    type: 'object',
-    properties: {
+        ProtocolInfoDetection: {
+            '$ref': '#/components/schemas/Dlna.Profiles.ProtocolInfoDetection'
+        },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
             type: 'string'
@@ -3505,13 +3011,15 @@ export const $DeviceProfile = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/DirectPlayProfile'
-            }
+            },
+            description: 'The direct play profiles.'
         },
         TranscodingProfiles: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/TranscodingProfile'
-            }
+            },
+            description: 'The transcoding profiles.'
         },
         ContainerProfiles: {
             type: 'array',
@@ -3538,7 +3046,91 @@ export const $DeviceProfile = {
             }
         }
     },
-    'x-internal-ref-name': 'MediaBrowser.Model.Dlna.DeviceProfile'
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.DlnaProfile'
+} as const;
+
+export const $Dlna_Profiles_DeviceProfileType = {
+    enum: ['System', 'User'],
+    type: 'string',
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.DeviceProfileType'
+} as const;
+
+export const $Dlna_Profiles_DeviceIdentification = {
+    type: 'object',
+    properties: {
+        FriendlyName: {
+            type: 'string'
+        },
+        ModelNumber: {
+            type: 'string'
+        },
+        SerialNumber: {
+            type: 'string'
+        },
+        ModelName: {
+            type: 'string'
+        },
+        ModelDescription: {
+            type: 'string'
+        },
+        DeviceDescription: {
+            type: 'string'
+        },
+        ModelUrl: {
+            type: 'string'
+        },
+        Manufacturer: {
+            type: 'string'
+        },
+        ManufacturerUrl: {
+            type: 'string'
+        },
+        Headers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/Dlna.Profiles.HttpHeaderInfo'
+            }
+        }
+    },
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.DeviceIdentification'
+} as const;
+
+export const $Dlna_Profiles_HttpHeaderInfo = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string'
+        },
+        Value: {
+            type: 'string'
+        },
+        Match: {
+            '$ref': '#/components/schemas/Dlna.Profiles.HeaderMatchType'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.HttpHeaderInfo'
+} as const;
+
+export const $Dlna_Profiles_HeaderMatchType = {
+    enum: ['Equals', 'Regex', 'Substring'],
+    type: 'string',
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.HeaderMatchType'
+} as const;
+
+export const $Dlna_Profiles_ProtocolInfoDetection = {
+    type: 'object',
+    properties: {
+        EnabledForVideo: {
+            type: 'boolean'
+        },
+        EnabledForAudio: {
+            type: 'boolean'
+        },
+        EnabledForPhotos: {
+            type: 'boolean'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Dlna.Profiles.ProtocolInfoDetection'
 } as const;
 
 export const $DirectPlayProfile = {
@@ -3790,6 +3382,1121 @@ export const $SubtitleProfile = {
     'x-internal-ref-name': 'MediaBrowser.Model.Dlna.SubtitleProfile'
 } as const;
 
+export const $Configuration_ToneMapping_ToneMapOptionsVisibility = {
+    type: 'object',
+    properties: {
+        ShowAdvanced: {
+            type: 'boolean'
+        },
+        IsSoftwareToneMappingAvailable: {
+            type: 'boolean'
+        },
+        IsAnyHardwareToneMappingAvailable: {
+            type: 'boolean'
+        },
+        ShowNvidiaOptions: {
+            type: 'boolean'
+        },
+        ShowQuickSyncOptions: {
+            type: 'boolean'
+        },
+        ShowVaapiOptions: {
+            type: 'boolean'
+        },
+        IsOpenClAvailable: {
+            type: 'boolean'
+        },
+        IsOpenClSuperTAvailable: {
+            type: 'boolean'
+        },
+        IsVaapiNativeAvailable: {
+            type: 'boolean'
+        },
+        IsQuickSyncNativeAvailable: {
+            type: 'boolean'
+        },
+        OperatingSystem: {
+            '$ref': '#/components/schemas/OperatingSystem'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Server.MediaEncoding.Configuration.ToneMapping.ToneMapOptionsVisibility'
+} as const;
+
+export const $OperatingSystem = {
+    enum: ['Windows', 'Linux', 'OSX', 'BSD', 'Android'],
+    type: 'string',
+    'x-internal-ref-name': 'MediaBrowser.Model.System.OperatingSystem'
+} as const;
+
+export const $EditObjectContainer = {
+    type: 'object',
+    properties: {
+        Object: {
+            type: 'object'
+        },
+        DefaultObject: {
+            type: 'object'
+        },
+        TypeName: {
+            type: 'string'
+        },
+        EditorRoot: {
+            '$ref': '#/components/schemas/Editors.EditorRoot'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.EditObjectContainer'
+} as const;
+
+export const $Editors_EditorRoot = {
+    type: 'object',
+    properties: {
+        PropertyConditions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/Conditions.PropertyCondition'
+            }
+        },
+        PostbackActions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/Actions.PostbackAction'
+            }
+        },
+        TitleButton: {
+            '$ref': '#/components/schemas/Editors.EditorButtonItem'
+        },
+        EditorItems: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/Editors.EditorBase'
+            }
+        },
+        EditorType: {
+            '$ref': '#/components/schemas/Common.EditorTypes'
+        },
+        Name: {
+            type: 'string'
+        },
+        Id: {
+            type: 'string'
+        },
+        AllowEmpty: {
+            type: 'boolean'
+        },
+        IsReadOnly: {
+            type: 'boolean'
+        },
+        IsAdvanced: {
+            type: 'boolean'
+        },
+        DisplayName: {
+            type: 'string'
+        },
+        Description: {
+            type: 'string'
+        },
+        FeatureRequiresPremiere: {
+            type: 'boolean'
+        },
+        ParentId: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorRoot'
+} as const;
+
+export const $Conditions_PropertyCondition = {
+    type: 'object',
+    properties: {
+        AffectedPropertyId: {
+            type: 'string'
+        },
+        ConditionType: {
+            '$ref': '#/components/schemas/Conditions.PropertyConditionType'
+        },
+        TargetPropertyId: {
+            type: 'string',
+            description: 'The target property name or path.'
+        },
+        SimpleCondition: {
+            '$ref': '#/components/schemas/Attributes.SimpleCondition'
+        },
+        ValueCondition: {
+            '$ref': '#/components/schemas/Attributes.ValueCondition'
+        },
+        Value: {
+            type: 'object',
+            description: 'The value.'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Conditions.PropertyCondition'
+} as const;
+
+export const $Conditions_PropertyConditionType = {
+    enum: ['Visible', 'Enabled'],
+    type: 'string',
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Conditions.PropertyConditionType'
+} as const;
+
+export const $Attributes_SimpleCondition = {
+    enum: ['IsTrue', 'IsFalse', 'IsNull', 'IsNotNullOrEmpty'],
+    type: 'string',
+    description: `Conditions on the source value.
+`,
+    'x-internal-ref-name': 'MediaBrowser.Model.Attributes.SimpleCondition'
+} as const;
+
+export const $Attributes_ValueCondition = {
+    enum: ['IsEqual', 'IsNotEqual', 'IsGreater', 'IsGreaterOrEqual', 'IsLess', 'IsLessOrEqual'],
+    type: 'string',
+    description: `Conditions for comparing with a target value.
+`,
+    'x-internal-ref-name': 'MediaBrowser.Model.Attributes.ValueCondition'
+} as const;
+
+export const $Actions_PostbackAction = {
+    type: 'object',
+    properties: {
+        TargetEditorId: {
+            type: 'string'
+        },
+        PostbackCommandId: {
+            type: 'string'
+        },
+        CommandParameterPropertyId: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Actions.PostbackAction'
+} as const;
+
+export const $Editors_EditorButtonItem = {
+    type: 'object',
+    properties: {
+        EditorType: {
+            '$ref': '#/components/schemas/Common.EditorTypes'
+        },
+        Name: {
+            type: 'string'
+        },
+        Id: {
+            type: 'string'
+        },
+        AllowEmpty: {
+            type: 'boolean'
+        },
+        IsReadOnly: {
+            type: 'boolean'
+        },
+        IsAdvanced: {
+            type: 'boolean'
+        },
+        DisplayName: {
+            type: 'string'
+        },
+        Description: {
+            type: 'string'
+        },
+        FeatureRequiresPremiere: {
+            type: 'boolean'
+        },
+        ParentId: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorButtonItem'
+} as const;
+
+export const $Common_EditorTypes = {
+    enum: ['Group', 'Text', 'Numeric', 'Boolean', 'SelectSingle', 'SelectMultiple', 'Date', 'FilePath', 'FolderPath', 'StatusItem', 'ProgressItem', 'ButtonItem', 'ButtonGroup', 'CaptionItem', 'LabelItem', 'ItemList', 'RadioGroup', 'DxDataGrid', 'DxPivotGrid', 'SpacerItem'],
+    type: 'string',
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Common.EditorTypes'
+} as const;
+
+export const $Editors_EditorBase = {
+    type: 'object',
+    properties: {
+        EditorType: {
+            '$ref': '#/components/schemas/Common.EditorTypes'
+        },
+        Name: {
+            type: 'string'
+        },
+        Id: {
+            type: 'string'
+        },
+        AllowEmpty: {
+            type: 'boolean'
+        },
+        IsReadOnly: {
+            type: 'boolean'
+        },
+        IsAdvanced: {
+            type: 'boolean'
+        },
+        DisplayName: {
+            type: 'string'
+        },
+        Description: {
+            type: 'string'
+        },
+        FeatureRequiresPremiere: {
+            type: 'boolean'
+        },
+        ParentId: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Web.GenericEdit.Editors.EditorBase'
+} as const;
+
+export const $MediaEncoding_CodecParameterContext = {
+    enum: ['Playback', 'Conversion'],
+    type: 'string',
+    'x-internal-ref-name': 'MediaBrowser.Controller.MediaEncoding.CodecParameterContext'
+} as const;
+
+export const $ValidatePath = {
+    type: 'object',
+    properties: {
+        ValidateWriteable: {
+            type: 'boolean'
+        },
+        IsFile: {
+            type: 'boolean',
+            nullable: true
+        },
+        Username: {
+            type: 'string'
+        },
+        Password: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.ValidatePath'
+} as const;
+
+export const $DefaultDirectoryBrowserInfo = {
+    type: 'object',
+    properties: {
+        Path: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.DefaultDirectoryBrowserInfo'
+} as const;
+
+export const $IO_FileSystemEntryInfo = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string',
+            description: 'The name.'
+        },
+        Path: {
+            type: 'string',
+            description: 'The path.'
+        },
+        Type: {
+            '$ref': '#/components/schemas/IO.FileSystemEntryType'
+        }
+    },
+    description: `Class FileSystemEntryInfo
+`,
+    'x-internal-ref-name': 'MediaBrowser.Model.IO.FileSystemEntryInfo'
+} as const;
+
+export const $IO_FileSystemEntryType = {
+    enum: ['File', 'Directory', 'NetworkComputer', 'NetworkShare'],
+    type: 'string',
+    description: `Enum FileSystemEntryType
+`,
+    'x-internal-ref-name': 'MediaBrowser.Model.IO.FileSystemEntryType'
+} as const;
+
+export const $GetDirectoryContents = {
+    type: 'object',
+    properties: {
+        Username: {
+            type: 'string'
+        },
+        Password: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.GetDirectoryContents'
+} as const;
+
+export const $UserLibrary_UpdateUserItemAccess = {
+    type: 'object',
+    properties: {
+        ItemIds: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        UserIds: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        ItemAccess: {
+            '$ref': '#/components/schemas/UserItemShareLevel'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.UserLibrary.UpdateUserItemAccess'
+} as const;
+
+export const $UserItemShareLevel = {
+    enum: ['None', 'Read', 'Write', 'Manage', 'ManageDelete'],
+    type: 'string',
+    'x-internal-ref-name': 'MediaBrowser.Model.Dto.UserItemShareLevel'
+} as const;
+
+export const $ItemCounts = {
+    type: 'object',
+    properties: {
+        MovieCount: {
+            type: 'integer',
+            description: 'The movie count.',
+            format: 'int32'
+        },
+        SeriesCount: {
+            type: 'integer',
+            description: 'The series count.',
+            format: 'int32'
+        },
+        EpisodeCount: {
+            type: 'integer',
+            description: 'The episode count.',
+            format: 'int32'
+        },
+        GameCount: {
+            type: 'integer',
+            description: 'The game count.',
+            format: 'int32'
+        },
+        ArtistCount: {
+            type: 'integer',
+            format: 'int32'
+        },
+        ProgramCount: {
+            type: 'integer',
+            format: 'int32'
+        },
+        GameSystemCount: {
+            type: 'integer',
+            description: 'The game system count.',
+            format: 'int32'
+        },
+        TrailerCount: {
+            type: 'integer',
+            description: 'The trailer count.',
+            format: 'int32'
+        },
+        SongCount: {
+            type: 'integer',
+            description: 'The song count.',
+            format: 'int32'
+        },
+        AlbumCount: {
+            type: 'integer',
+            description: 'The album count.',
+            format: 'int32'
+        },
+        MusicVideoCount: {
+            type: 'integer',
+            description: 'The music video count.',
+            format: 'int32'
+        },
+        BoxSetCount: {
+            type: 'integer',
+            description: 'The box set count.',
+            format: 'int32'
+        },
+        BookCount: {
+            type: 'integer',
+            description: 'The book count.',
+            format: 'int32'
+        },
+        ItemCount: {
+            type: 'integer',
+            format: 'int32'
+        }
+    },
+    description: `Class LibrarySummary
+`,
+    'x-internal-ref-name': 'MediaBrowser.Model.Dto.ItemCounts'
+} as const;
+
+export const $Persistence_IntroDebugInfo = {
+    type: 'object',
+    properties: {
+        Id: {
+            type: 'integer',
+            format: 'int64'
+        },
+        Path: {
+            type: 'string'
+        },
+        Start: {
+            type: 'integer',
+            format: 'int64'
+        },
+        End: {
+            type: 'integer',
+            format: 'int64'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Controller.Persistence.IntroDebugInfo'
+} as const;
+
+export const $LibraryOptionsResult = {
+    type: 'object',
+    properties: {
+        MetadataSavers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        MetadataReaders: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        SubtitleFetchers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        LyricsFetchers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        TypeOptions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryTypeOptions'
+            }
+        },
+        DefaultLibraryOptions: {
+            '$ref': '#/components/schemas/LibraryOptions'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryOptionsResult'
+} as const;
+
+export const $LibraryOptionInfo = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string'
+        },
+        SetupUrl: {
+            type: 'string'
+        },
+        DefaultEnabled: {
+            type: 'boolean'
+        },
+        Features: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/MetadataFeatures'
+            }
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryOptionInfo'
+} as const;
+
+export const $MetadataFeatures = {
+    enum: ['Collections', 'Adult', 'RequiredSetup'],
+    type: 'string',
+    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.MetadataFeatures'
+} as const;
+
+export const $LibraryTypeOptions = {
+    type: 'object',
+    properties: {
+        Type: {
+            type: 'string'
+        },
+        MetadataFetchers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        ImageFetchers: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/LibraryOptionInfo'
+            }
+        },
+        SupportedImageTypes: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/ImageType'
+            }
+        },
+        DefaultImageOptions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/ImageOption'
+            }
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Controller.Providers.LibraryTypeOptions'
+} as const;
+
+export const $ImageOption = {
+    type: 'object',
+    properties: {
+        Type: {
+            '$ref': '#/components/schemas/ImageType'
+        },
+        Limit: {
+            type: 'integer',
+            description: 'The limit.',
+            format: 'int32'
+        },
+        MinWidth: {
+            type: 'integer',
+            description: 'The minimum width.',
+            format: 'int32'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.ImageOption'
+} as const;
+
+export const $LibraryOptions = {
+    type: 'object',
+    properties: {
+        EnableArchiveMediaFiles: {
+            type: 'boolean'
+        },
+        EnablePhotos: {
+            type: 'boolean'
+        },
+        EnableRealtimeMonitor: {
+            type: 'boolean'
+        },
+        EnableMarkerDetection: {
+            type: 'boolean'
+        },
+        EnableMarkerDetectionDuringLibraryScan: {
+            type: 'boolean'
+        },
+        IntroDetectionFingerprintLength: {
+            type: 'integer',
+            format: 'int32'
+        },
+        EnableChapterImageExtraction: {
+            type: 'boolean'
+        },
+        ExtractChapterImagesDuringLibraryScan: {
+            type: 'boolean'
+        },
+        DownloadImagesInAdvance: {
+            type: 'boolean'
+        },
+        CacheImages: {
+            type: 'boolean'
+        },
+        ExcludeFromSearch: {
+            type: 'boolean'
+        },
+        EnablePlexIgnore: {
+            type: 'boolean'
+        },
+        PathInfos: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/MediaPathInfo'
+            }
+        },
+        IgnoreHiddenFiles: {
+            type: 'boolean'
+        },
+        IgnoreFileExtensions: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        SaveLocalMetadata: {
+            type: 'boolean'
+        },
+        SaveMetadataHidden: {
+            type: 'boolean'
+        },
+        SaveLocalThumbnailSets: {
+            type: 'boolean'
+        },
+        ImportPlaylists: {
+            type: 'boolean'
+        },
+        EnableAutomaticSeriesGrouping: {
+            type: 'boolean'
+        },
+        ShareEmbeddedMusicAlbumImages: {
+            type: 'boolean'
+        },
+        EnableEmbeddedTitles: {
+            type: 'boolean'
+        },
+        EnableAudioResume: {
+            type: 'boolean'
+        },
+        AutoGenerateChapters: {
+            type: 'boolean'
+        },
+        MergeTopLevelFolders: {
+            type: 'boolean'
+        },
+        AutoGenerateChapterIntervalMinutes: {
+            type: 'integer',
+            format: 'int32'
+        },
+        AutomaticRefreshIntervalDays: {
+            type: 'integer',
+            format: 'int32'
+        },
+        PlaceholderMetadataRefreshIntervalDays: {
+            type: 'integer',
+            format: 'int32'
+        },
+        PreferredMetadataLanguage: {
+            type: 'string',
+            description: 'The preferred metadata language.'
+        },
+        PreferredImageLanguage: {
+            type: 'string'
+        },
+        ContentType: {
+            type: 'string'
+        },
+        MetadataCountryCode: {
+            type: 'string',
+            description: 'The metadata country code.'
+        },
+        MetadataSavers: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        DisabledLocalMetadataReaders: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        LocalMetadataReaderOrder: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        DisabledLyricsFetchers: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        SaveLyricsWithMedia: {
+            type: 'boolean'
+        },
+        LyricsDownloadMaxAgeDays: {
+            type: 'integer',
+            format: 'int32'
+        },
+        LyricsFetcherOrder: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        LyricsDownloadLanguages: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        DisabledSubtitleFetchers: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        SubtitleFetcherOrder: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        SkipSubtitlesIfEmbeddedSubtitlesPresent: {
+            type: 'boolean'
+        },
+        SkipSubtitlesIfAudioTrackMatches: {
+            type: 'boolean'
+        },
+        SubtitleDownloadLanguages: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        SubtitleDownloadMaxAgeDays: {
+            type: 'integer',
+            format: 'int32'
+        },
+        RequirePerfectSubtitleMatch: {
+            type: 'boolean'
+        },
+        SaveSubtitlesWithMedia: {
+            type: 'boolean'
+        },
+        ForcedSubtitlesOnly: {
+            type: 'boolean'
+        },
+        HearingImpairedSubtitlesOnly: {
+            type: 'boolean'
+        },
+        TypeOptions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/TypeOptions'
+            }
+        },
+        CollapseSingleItemFolders: {
+            type: 'boolean'
+        },
+        EnableAdultMetadata: {
+            type: 'boolean'
+        },
+        ImportCollections: {
+            type: 'boolean'
+        },
+        EnableMultiVersionByFiles: {
+            type: 'boolean'
+        },
+        EnableMultiVersionByMetadata: {
+            type: 'boolean'
+        },
+        EnableMultiPartItems: {
+            type: 'boolean'
+        },
+        MinCollectionItems: {
+            type: 'integer',
+            format: 'int32'
+        },
+        MusicFolderStructure: {
+            type: 'string'
+        },
+        MinResumePct: {
+            type: 'integer',
+            description: 'The minimum percentage of an item that must be played in order for playstate to be updated.',
+            format: 'int32'
+        },
+        MaxResumePct: {
+            type: 'integer',
+            description: 'The maximum percentage of an item that can be played while still saving playstate. If this percentage is crossed playstate will be reset to the beginning and the item will be marked watched.',
+            format: 'int32'
+        },
+        MinResumeDurationSeconds: {
+            type: 'integer',
+            description: 'The minimum duration that an item must have in order to be eligible for playstate updates..',
+            format: 'int32'
+        },
+        ThumbnailImagesIntervalSeconds: {
+            type: 'integer',
+            format: 'int32'
+        },
+        SampleIgnoreSize: {
+            type: 'integer',
+            format: 'int32'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.LibraryOptions'
+} as const;
+
+export const $MediaPathInfo = {
+    type: 'object',
+    properties: {
+        Path: {
+            type: 'string'
+        },
+        NetworkPath: {
+            type: 'string'
+        },
+        Username: {
+            type: 'string'
+        },
+        Password: {
+            type: 'string'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.MediaPathInfo'
+} as const;
+
+export const $TypeOptions = {
+    type: 'object',
+    properties: {
+        Type: {
+            type: 'string'
+        },
+        MetadataFetchers: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        MetadataFetcherOrder: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        ImageFetchers: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        ImageFetcherOrder: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        ImageOptions: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/ImageOption'
+            }
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.Configuration.TypeOptions'
+} as const;
+
+export const $Library_MediaFolder = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string'
+        },
+        Id: {
+            type: 'string'
+        },
+        Guid: {
+            type: 'string'
+        },
+        SubFolders: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/Library.SubFolder'
+            }
+        },
+        IsUserAccessConfigurable: {
+            type: 'boolean'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.Library.MediaFolder'
+} as const;
+
+export const $Library_SubFolder = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string'
+        },
+        Id: {
+            type: 'string'
+        },
+        Path: {
+            type: 'string'
+        },
+        IsUserAccessConfigurable: {
+            type: 'boolean'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.Library.SubFolder'
+} as const;
+
+export const $Library_AddVirtualFolder = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string'
+        },
+        CollectionType: {
+            type: 'string'
+        },
+        RefreshLibrary: {
+            type: 'boolean'
+        },
+        Paths: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        LibraryOptions: {
+            '$ref': '#/components/schemas/LibraryOptions'
+        }
+    },
+    'x-internal-ref-name': 'Emby.Api.Library.AddVirtualFolder'
+} as const;
+
+export const $LiveStreamRequest = {
+    type: 'object',
+    properties: {
+        OpenToken: {
+            type: 'string'
+        },
+        UserId: {
+            type: 'string'
+        },
+        PlaySessionId: {
+            type: 'string'
+        },
+        MaxStreamingBitrate: {
+            type: 'integer',
+            format: 'int64',
+            nullable: true
+        },
+        StartTimeTicks: {
+            type: 'integer',
+            format: 'int64',
+            nullable: true
+        },
+        AudioStreamIndex: {
+            type: 'integer',
+            format: 'int32',
+            nullable: true
+        },
+        SubtitleStreamIndex: {
+            type: 'integer',
+            format: 'int32',
+            nullable: true
+        },
+        MaxAudioChannels: {
+            type: 'integer',
+            format: 'int32',
+            nullable: true
+        },
+        ItemId: {
+            type: 'integer',
+            format: 'int64'
+        },
+        DeviceProfile: {
+            '$ref': '#/components/schemas/DeviceProfile'
+        },
+        EnableDirectPlay: {
+            type: 'boolean'
+        },
+        EnableDirectStream: {
+            type: 'boolean'
+        },
+        EnableTranscoding: {
+            type: 'boolean'
+        },
+        AllowVideoStreamCopy: {
+            type: 'boolean'
+        },
+        AllowInterlacedVideoStreamCopy: {
+            type: 'boolean'
+        },
+        AllowAudioStreamCopy: {
+            type: 'boolean'
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.MediaInfo.LiveStreamRequest'
+} as const;
+
+export const $DeviceProfile = {
+    type: 'object',
+    properties: {
+        Name: {
+            type: 'string',
+            description: 'The name.'
+        },
+        Id: {
+            type: 'string'
+        },
+        SupportedMediaTypes: {
+            type: 'string'
+        },
+        MaxStreamingBitrate: {
+            type: 'integer',
+            format: 'int64',
+            nullable: true
+        },
+        MusicStreamingTranscodingBitrate: {
+            type: 'integer',
+            format: 'int32',
+            nullable: true
+        },
+        MaxStaticMusicBitrate: {
+            type: 'integer',
+            format: 'int32',
+            nullable: true
+        },
+        DeclaredFeatures: {
+            type: 'array',
+            items: {
+                type: 'string'
+            }
+        },
+        DirectPlayProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/DirectPlayProfile'
+            },
+            description: 'The direct play profiles.'
+        },
+        TranscodingProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/TranscodingProfile'
+            },
+            description: 'The transcoding profiles.'
+        },
+        ContainerProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/ContainerProfile'
+            }
+        },
+        CodecProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/CodecProfile'
+            }
+        },
+        ResponseProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/ResponseProfile'
+            }
+        },
+        SubtitleProfiles: {
+            type: 'array',
+            items: {
+                '$ref': '#/components/schemas/SubtitleProfile'
+            }
+        }
+    },
+    'x-internal-ref-name': 'MediaBrowser.Model.Dlna.DeviceProfile'
+} as const;
+
 export const $LiveStreamResponse = {
     type: 'object',
     properties: {
@@ -3972,13 +4679,15 @@ export const $LiveTv_LiveTvInfo = {
     type: 'object',
     properties: {
         IsEnabled: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is enabled.'
         },
         EnabledUsers: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The enabled users.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.LiveTv.LiveTvInfo'
@@ -3987,6 +4696,8 @@ export const $LiveTv_LiveTvInfo = {
 export const $LiveTv_ChannelType = {
     enum: ['TV', 'Radio'],
     type: 'string',
+    description: `Enum ChannelType
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.LiveTv.ChannelType'
 } as const;
 
@@ -4213,10 +4924,12 @@ export const $LiveTv_TimerInfoDto = {
             '$ref': '#/components/schemas/LiveTv.RecordingStatus'
         },
         SeriesTimerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The series timer identifier.'
         },
         RunTimeTicks: {
             type: 'integer',
+            description: 'The run time ticks.',
             format: 'int64',
             nullable: true
         },
@@ -4227,19 +4940,23 @@ export const $LiveTv_TimerInfoDto = {
             '$ref': '#/components/schemas/LiveTv.TimerType'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'Id of the recording.'
         },
         Type: {
             type: 'string'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The server identifier.'
         },
         ChannelId: {
-            type: 'string'
+            type: 'string',
+            description: 'ChannelId of the recording.'
         },
         ChannelName: {
-            type: 'string'
+            type: 'string',
+            description: 'ChannelName of the recording.'
         },
         ChannelNumber: {
             type: 'string'
@@ -4248,51 +4965,63 @@ export const $LiveTv_TimerInfoDto = {
             type: 'string'
         },
         ProgramId: {
-            type: 'string'
+            type: 'string',
+            description: 'The program identifier.'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'Name of the recording.'
         },
         Overview: {
-            type: 'string'
+            type: 'string',
+            description: 'Description of the recording.'
         },
         ParentFolderId: {
             type: 'string'
         },
         StartDate: {
             type: 'string',
+            description: 'The start date of the recording, in UTC.',
             format: 'date-time'
         },
         EndDate: {
             type: 'string',
+            description: 'The end date of the recording, in UTC.',
             format: 'date-time'
         },
         Priority: {
             type: 'integer',
+            description: 'The priority.',
             format: 'int32'
         },
         PrePaddingSeconds: {
             type: 'integer',
+            description: 'The pre padding seconds.',
             format: 'int32'
         },
         PostPaddingSeconds: {
             type: 'integer',
+            description: 'The post padding seconds.',
             format: 'int32'
         },
         IsPrePaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is pre padding required.'
         },
         ParentBackdropItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'If the item does not have any backdrops, this will hold the Id of the Parent that has one.'
         },
         ParentBackdropImageTags: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The parent backdrop image tags.'
         },
         IsPostPaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is post padding required.'
         },
         KeepUntil: {
             '$ref': '#/components/schemas/LiveTv.KeepUntil'
@@ -4327,7 +5056,8 @@ export const $LiveTv_SeriesTimerInfoDto = {
     type: 'object',
     properties: {
         RecordAnyTime: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[record any time\\].'
         },
         SkipEpisodesInLibrary: {
             type: 'boolean'
@@ -4336,7 +5066,8 @@ export const $LiveTv_SeriesTimerInfoDto = {
             type: 'boolean'
         },
         RecordAnyChannel: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[record any channel\\].'
         },
         KeepUpTo: {
             type: 'integer',
@@ -4347,7 +5078,8 @@ export const $LiveTv_SeriesTimerInfoDto = {
             format: 'int32'
         },
         RecordNewOnly: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[record new only\\].'
         },
         ChannelIds: {
             type: 'array',
@@ -4359,25 +5091,31 @@ export const $LiveTv_SeriesTimerInfoDto = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/DayOfWeek'
-            }
+            },
+            description: 'The days.'
         },
         ImageTags: {
             type: 'object',
             additionalProperties: {
                 type: 'string'
-            }
+            },
+            description: 'The image tags.'
         },
         ParentThumbItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent thumb item id.'
         },
         ParentThumbImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent thumb image tag.'
         },
         ParentPrimaryImageItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent primary image item identifier.'
         },
         ParentPrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The parent primary image tag.'
         },
         SeriesId: {
             type: 'string'
@@ -4392,19 +5130,23 @@ export const $LiveTv_SeriesTimerInfoDto = {
             '$ref': '#/components/schemas/LiveTv.TimerType'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'Id of the recording.'
         },
         Type: {
             type: 'string'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The server identifier.'
         },
         ChannelId: {
-            type: 'string'
+            type: 'string',
+            description: 'ChannelId of the recording.'
         },
         ChannelName: {
-            type: 'string'
+            type: 'string',
+            description: 'ChannelName of the recording.'
         },
         ChannelNumber: {
             type: 'string'
@@ -4413,56 +5155,70 @@ export const $LiveTv_SeriesTimerInfoDto = {
             type: 'string'
         },
         ProgramId: {
-            type: 'string'
+            type: 'string',
+            description: 'The program identifier.'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'Name of the recording.'
         },
         Overview: {
-            type: 'string'
+            type: 'string',
+            description: 'Description of the recording.'
         },
         ParentFolderId: {
             type: 'string'
         },
         StartDate: {
             type: 'string',
+            description: 'The start date of the recording, in UTC.',
             format: 'date-time'
         },
         EndDate: {
             type: 'string',
+            description: 'The end date of the recording, in UTC.',
             format: 'date-time'
         },
         Priority: {
             type: 'integer',
+            description: 'The priority.',
             format: 'int32'
         },
         PrePaddingSeconds: {
             type: 'integer',
+            description: 'The pre padding seconds.',
             format: 'int32'
         },
         PostPaddingSeconds: {
             type: 'integer',
+            description: 'The post padding seconds.',
             format: 'int32'
         },
         IsPrePaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is pre padding required.'
         },
         ParentBackdropItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'If the item does not have any backdrops, this will hold the Id of the Parent that has one.'
         },
         ParentBackdropImageTags: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The parent backdrop image tags.'
         },
         IsPostPaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is post padding required.'
         },
         KeepUntil: {
             '$ref': '#/components/schemas/LiveTv.KeepUntil'
         }
     },
+    description: `Class SeriesTimerInfoDto.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.LiveTv.SeriesTimerInfoDto'
 } as const;
 
@@ -4483,10 +5239,12 @@ export const $LiveTv_SeriesTimerInfo = {
     type: 'object',
     properties: {
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'Id of the recording.'
         },
         ChannelId: {
-            type: 'string'
+            type: 'string',
+            description: 'ChannelId of the recording.'
         },
         ChannelIds: {
             type: 'array',
@@ -4499,27 +5257,33 @@ export const $LiveTv_SeriesTimerInfo = {
             format: 'int64'
         },
         ProgramId: {
-            type: 'string'
+            type: 'string',
+            description: 'The program identifier.'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'Name of the recording.'
         },
         ServiceName: {
             type: 'string'
         },
         Overview: {
-            type: 'string'
+            type: 'string',
+            description: 'Description of the recording.'
         },
         StartDate: {
             type: 'string',
+            description: 'The start date of the recording, in UTC.',
             format: 'date-time'
         },
         EndDate: {
             type: 'string',
+            description: 'The end date of the recording, in UTC.',
             format: 'date-time'
         },
         RecordAnyTime: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[record any time\\].'
         },
         KeepUpTo: {
             type: 'integer',
@@ -4535,34 +5299,42 @@ export const $LiveTv_SeriesTimerInfo = {
             type: 'boolean'
         },
         RecordNewOnly: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[record new only\\].'
         },
         Days: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/DayOfWeek'
-            }
+            },
+            description: 'The days.'
         },
         Priority: {
             type: 'integer',
+            description: 'The priority.',
             format: 'int32'
         },
         PrePaddingSeconds: {
             type: 'integer',
+            description: 'The pre padding seconds.',
             format: 'int32'
         },
         PostPaddingSeconds: {
             type: 'integer',
+            description: 'The post padding seconds.',
             format: 'int32'
         },
         IsPrePaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is pre padding required.'
         },
         IsPostPaddingRequired: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is post padding required.'
         },
         SeriesId: {
-            type: 'string'
+            type: 'string',
+            description: 'The series identifier.'
         },
         ProviderIds: {
             '$ref': '#/components/schemas/ProviderIdDictionary'
@@ -4589,10 +5361,12 @@ export const $LiveTv_GuideInfo = {
     properties: {
         StartDate: {
             type: 'string',
+            description: 'The start date.',
             format: 'date-time'
         },
         EndDate: {
             type: 'string',
+            description: 'The end date.',
             format: 'date-time'
         }
     },
@@ -4631,10 +5405,12 @@ export const $Api_NameIdDescriptionPair = {
             type: 'string'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The identifier.'
         }
     },
     'x-internal-ref-name': 'Emby.LiveTV.Api.NameIdDescriptionPair'
@@ -4644,13 +5420,17 @@ export const $ParentalRating = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Value: {
             type: 'integer',
+            description: 'The value.',
             format: 'int32'
         }
     },
+    description: `Class ParentalRating
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.ParentalRating'
 } as const;
 
@@ -4671,21 +5451,28 @@ export const $Globalization_CountryInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         DisplayName: {
-            type: 'string'
+            type: 'string',
+            description: 'The display name.'
         },
         EnglishName: {
-            type: 'string'
+            type: 'string',
+            description: 'The English name.'
         },
         TwoLetterISORegionName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the two letter ISO region.'
         },
         ThreeLetterISORegionName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the three letter ISO region.'
         }
     },
+    description: `Class CountryInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Globalization.CountryInfo'
 } as const;
 
@@ -4693,16 +5480,20 @@ export const $Globalization_CultureDto = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         DisplayName: {
-            type: 'string'
+            type: 'string',
+            description: 'The display name.'
         },
         TwoLetterISOLanguageName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the two letter ISO language.'
         },
         ThreeLetterISOLanguageName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the three letter ISO language.'
         },
         ThreeLetterISOLanguageNames: {
             type: 'array',
@@ -4717,6 +5508,8 @@ export const $Globalization_CultureDto = {
             }
         }
     },
+    description: `Class CultureDto
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Globalization.CultureDto'
 } as const;
 
@@ -4801,7 +5594,8 @@ export const $PlaybackStartInfo = {
     type: 'object',
     properties: {
         CanSeek: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance can seek.'
         },
         NowPlayingQueue: {
             type: 'array',
@@ -4813,20 +5607,24 @@ export const $PlaybackStartInfo = {
             type: 'string'
         },
         SessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The session id.'
         },
         AudioStreamIndex: {
             type: 'integer',
+            description: 'The index of the audio stream.',
             format: 'int32',
             nullable: true
         },
         SubtitleStreamIndex: {
             type: 'integer',
+            description: 'The index of the subtitle stream.',
             format: 'int32',
             nullable: true
         },
         IsPaused: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is paused.'
         },
         PlaylistIndex: {
             type: 'integer',
@@ -4837,7 +5635,8 @@ export const $PlaybackStartInfo = {
             format: 'int32'
         },
         IsMuted: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is muted.'
         },
         RunTimeTicks: {
             type: 'integer',
@@ -4851,6 +5650,7 @@ export const $PlaybackStartInfo = {
         },
         VolumeLevel: {
             type: 'integer',
+            description: 'The volume level.',
             format: 'int32',
             nullable: true
         },
@@ -4897,26 +5697,33 @@ export const $PlaybackStartInfo = {
             }
         },
         PlaySessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The play session identifier.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         LiveStreamId: {
-            type: 'string'
+            type: 'string',
+            description: 'The live stream identifier.'
         },
         MediaSourceId: {
-            type: 'string'
+            type: 'string',
+            description: 'The media version identifier.'
         },
         Item: {
             '$ref': '#/components/schemas/BaseItemDto'
         },
         PositionTicks: {
             type: 'integer',
+            description: 'The position ticks.',
             format: 'int64',
             nullable: true
         }
     },
+    description: `Class PlaybackStartInfo.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlaybackStartInfo'
 } as const;
 
@@ -4944,10 +5751,12 @@ export const $SyncTarget = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The identifier.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Sync.SyncTarget'
@@ -4974,23 +5783,28 @@ export const $SyncJob = {
     properties: {
         Id: {
             type: 'integer',
+            description: 'The identifier.',
             format: 'int64'
         },
         TargetId: {
-            type: 'string'
+            type: 'string',
+            description: 'The device identifier.'
         },
         InternalTargetId: {
             type: 'integer',
             format: 'int64'
         },
         TargetName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the target.'
         },
         Quality: {
-            type: 'string'
+            type: 'string',
+            description: 'The quality.'
         },
         Bitrate: {
             type: 'integer',
+            description: 'The bitrate.',
             format: 'int32',
             nullable: true
         },
@@ -5004,37 +5818,45 @@ export const $SyncJob = {
             type: 'string'
         },
         Profile: {
-            type: 'string'
+            type: 'string',
+            description: 'The profile.'
         },
         Category: {
             '$ref': '#/components/schemas/SyncCategory'
         },
         ParentId: {
             type: 'integer',
+            description: 'The parent identifier.',
             format: 'int64'
         },
         Progress: {
             type: 'number',
+            description: 'The current progress.',
             format: 'double'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Status: {
             '$ref': '#/components/schemas/SyncJobStatus'
         },
         UserId: {
             type: 'integer',
+            description: 'The user identifier.',
             format: 'int64'
         },
         UnwatchedOnly: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[unwatched only\\].'
         },
         SyncNewContent: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[synchronize new content\\].'
         },
         ItemLimit: {
             type: 'integer',
+            description: 'The item limit.',
             format: 'int32',
             nullable: true
         },
@@ -5043,7 +5865,8 @@ export const $SyncJob = {
             items: {
                 type: 'integer',
                 format: 'int64'
-            }
+            },
+            description: 'The requested item ids.'
         },
         ItemId: {
             type: 'integer',
@@ -5051,14 +5874,17 @@ export const $SyncJob = {
         },
         DateCreated: {
             type: 'string',
+            description: 'The date created.',
             format: 'date-time'
         },
         DateLastModified: {
             type: 'string',
+            description: 'The date last modified.',
             format: 'date-time'
         },
         ItemCount: {
             type: 'integer',
+            description: 'The item count.',
             format: 'int32'
         },
         ParentName: {
@@ -5437,35 +6263,43 @@ export const $ServerConfiguration = {
     type: 'object',
     properties: {
         EnableUPnP: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable u pn p\\].'
         },
         PublicPort: {
             type: 'integer',
+            description: 'The public mapped port.',
             format: 'int32'
         },
         PublicHttpsPort: {
             type: 'integer',
+            description: 'The public HTTPS port.',
             format: 'int32'
         },
         HttpServerPortNumber: {
             type: 'integer',
+            description: 'The HTTP server port number.',
             format: 'int32'
         },
         HttpsPortNumber: {
             type: 'integer',
+            description: 'The HTTPS server port number.',
             format: 'int32'
         },
         EnableHttps: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[use HTTPS\\].'
         },
         CertificatePath: {
-            type: 'string'
+            type: 'string',
+            description: 'The value pointing to the file system where the ssl certiifcate is located..'
         },
         CertificatePassword: {
             type: 'string'
         },
         IsPortAuthorized: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is port authorized.'
         },
         AutoRunWebApp: {
             type: 'boolean'
@@ -5480,35 +6314,43 @@ export const $ServerConfiguration = {
             type: 'boolean'
         },
         EnableCaseSensitiveItemIds: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable case sensitive item ids\\].'
         },
         MetadataPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata path.'
         },
         MetadataNetworkPath: {
             type: 'string'
         },
         PreferredMetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The preferred metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         SortRemoveWords: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'Words to be removed from strings to create a sort name'
         },
         LibraryMonitorDelaySeconds: {
             type: 'integer',
+            description: 'The delay in seconds that we will wait after a file system change to try and discover what has been added\\/removed Some delay is necessary with some items because their creation is not atomic.  It involves the creation of several different directories and files.',
             format: 'int32'
         },
         EnableDashboardResponseCaching: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable dashboard response caching\\]. Allows potential contributors without visual studio to modify production dashboard code and test changes.'
         },
         DashboardSourcePath: {
-            type: 'string'
+            type: 'string',
+            description: 'Allows the dashboard to be served from a custom path.'
         },
         ImageSavingConvention: {
             '$ref': '#/components/schemas/ImageSavingConvention'
@@ -5654,28 +6496,36 @@ export const $ServerConfiguration = {
             type: 'string'
         },
         EnableDebugLevelLogging: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable debug level logging\\].'
         },
         RevertDebugLogging: {
             type: 'string'
         },
         EnableAutoUpdate: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'Enable automatically and silently updating of the application'
         },
         LogFileRetentionDays: {
             type: 'integer',
+            description: 'The number of days we should retain log files',
             format: 'int32'
         },
         RunAtStartup: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[run at startup\\].'
         },
         IsStartupWizardCompleted: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is first run.'
         },
         CachePath: {
-            type: 'string'
+            type: 'string',
+            description: 'The cache path.'
         }
     },
+    description: `Represents the server configuration.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Configuration.ServerConfiguration'
 } as const;
 
@@ -5734,13 +6584,15 @@ export const $SystemInfo = {
             '$ref': '#/components/schemas/PackageVersionClass'
         },
         OperatingSystemDisplayName: {
-            type: 'string'
+            type: 'string',
+            description: 'The display name of the operating system.'
         },
         PackageName: {
             type: 'string'
         },
         HasPendingRestart: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance has pending restart.'
         },
         IsShuttingDown: {
             type: 'boolean'
@@ -5749,10 +6601,12 @@ export const $SystemInfo = {
             type: 'boolean'
         },
         OperatingSystem: {
-            type: 'string'
+            type: 'string',
+            description: 'The operating sytem.'
         },
         SupportsLibraryMonitor: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[supports library monitor\\].'
         },
         SupportsLocalPortConfiguration: {
             type: 'boolean'
@@ -5762,57 +6616,72 @@ export const $SystemInfo = {
         },
         WebSocketPortNumber: {
             type: 'integer',
+            description: 'The web socket port number.',
             format: 'int32'
         },
         CompletedInstallations: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/InstallationInfo'
-            }
+            },
+            description: 'The completed installations.'
         },
         CanSelfRestart: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance can self restart.'
         },
         CanSelfUpdate: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance can self update.'
         },
         CanLaunchWebBrowser: {
             type: 'boolean'
         },
         ProgramDataPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The program data path.'
         },
         ItemsByNamePath: {
-            type: 'string'
+            type: 'string',
+            description: 'The items by name path.'
         },
         CachePath: {
-            type: 'string'
+            type: 'string',
+            description: 'The cache path.'
         },
         LogPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The log path.'
         },
         InternalMetadataPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The internal metadata path.'
         },
         TranscodingTempPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The transcoding temporary path.'
         },
         HttpServerPortNumber: {
             type: 'integer',
+            description: 'The HTTP server port number.',
             format: 'int32'
         },
         SupportsHttps: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable HTTPS\\].'
         },
         HttpsPortNumber: {
             type: 'integer',
+            description: 'The HTTPS server port number.',
             format: 'int32'
         },
         HasUpdateAvailable: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance has update available.'
         },
         SupportsAutoRunAtStartup: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[supports automatic run at startup\\].'
         },
         HardwareAccelerationRequiresPremiere: {
             type: 'boolean'
@@ -5827,7 +6696,8 @@ export const $SystemInfo = {
             type: 'boolean'
         },
         LocalAddress: {
-            type: 'string'
+            type: 'string',
+            description: 'The local address.'
         },
         LocalAddresses: {
             type: 'array',
@@ -5836,7 +6706,8 @@ export const $SystemInfo = {
             }
         },
         WanAddress: {
-            type: 'string'
+            type: 'string',
+            description: 'The wan address.'
         },
         RemoteAddresses: {
             type: 'array',
@@ -5845,15 +6716,20 @@ export const $SystemInfo = {
             }
         },
         ServerName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the server.'
         },
         Version: {
-            type: 'string'
+            type: 'string',
+            description: 'The version.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         }
     },
+    description: `Class SystemInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.System.SystemInfo'
 } as const;
 
@@ -5862,26 +6738,33 @@ export const $InstallationInfo = {
     properties: {
         Id: {
             type: 'string',
+            description: 'The id.',
             format: 'guid'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         AssemblyGuid: {
-            type: 'string'
+            type: 'string',
+            description: 'The assembly guid.'
         },
         Version: {
-            type: 'string'
+            type: 'string',
+            description: 'The version.'
         },
         UpdateClass: {
             '$ref': '#/components/schemas/PackageVersionClass'
         },
         PercentComplete: {
             type: 'number',
+            description: 'The percent complete.',
             format: 'double',
             nullable: true
         }
     },
+    description: `Class InstallationInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Updates.InstallationInfo'
 } as const;
 
@@ -6058,19 +6941,23 @@ export const $UserDto = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The server identifier.'
         },
         ServerName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the server. This is not used by the server and is for client\\-side usage only.'
         },
         Prefix: {
             type: 'string'
         },
         ConnectUserName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the connect user.'
         },
         DateCreated: {
             type: 'string',
@@ -6081,16 +6968,20 @@ export const $UserDto = {
             '$ref': '#/components/schemas/Connect.UserLinkType'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         },
         PrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The primary image tag.'
         },
         HasPassword: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance has password.'
         },
         HasConfiguredPassword: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance has configured password.'
         },
         EnableAutoLogin: {
             type: 'boolean',
@@ -6098,11 +6989,13 @@ export const $UserDto = {
         },
         LastLoginDate: {
             type: 'string',
+            description: 'The last login date.',
             format: 'date-time',
             nullable: true
         },
         LastActivityDate: {
             type: 'string',
+            description: 'The last activity date.',
             format: 'date-time',
             nullable: true
         },
@@ -6114,6 +7007,7 @@ export const $UserDto = {
         },
         PrimaryImageAspectRatio: {
             type: 'number',
+            description: 'The primary image aspect ratio.',
             format: 'double',
             nullable: true
         },
@@ -6125,6 +7019,8 @@ export const $UserDto = {
             '$ref': '#/components/schemas/UserItemShareLevel'
         }
     },
+    description: `Class UserDto
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.UserDto'
 } as const;
 
@@ -6138,13 +7034,16 @@ export const $UserConfiguration = {
     type: 'object',
     properties: {
         AudioLanguagePreference: {
-            type: 'string'
+            type: 'string',
+            description: 'The audio language preference.'
         },
         PlayDefaultAudioTrack: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[play default audio track\\].'
         },
         SubtitleLanguagePreference: {
-            type: 'string'
+            type: 'string',
+            description: 'The subtitle language preference.'
         },
         ProfilePin: {
             type: 'string'
@@ -6203,6 +7102,8 @@ export const $UserConfiguration = {
             deprecated: true
         }
     },
+    description: `Class UserConfiguration
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Configuration.UserConfiguration'
 } as const;
 
@@ -6222,10 +7123,12 @@ export const $UserPolicy = {
     type: 'object',
     properties: {
         IsAdministrator: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is administrator.'
         },
         IsHidden: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is hidden.'
         },
         IsHiddenRemotely: {
             type: 'boolean'
@@ -6234,7 +7137,8 @@ export const $UserPolicy = {
             type: 'boolean'
         },
         IsDisabled: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is disabled.'
         },
         LockedOutDate: {
             type: 'integer',
@@ -6242,6 +7146,7 @@ export const $UserPolicy = {
         },
         MaxParentalRating: {
             type: 'integer',
+            description: 'The max parental rating.',
             format: 'int32',
             nullable: true
         },
@@ -6330,7 +7235,8 @@ export const $UserPolicy = {
             type: 'boolean'
         },
         EnableSyncTranscoding: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether \\[enable synchronize\\].'
         },
         EnableMediaConversion: {
             type: 'boolean'
@@ -6404,10 +7310,12 @@ export const $AccessSchedule = {
         },
         StartHour: {
             type: 'number',
+            description: 'The start hour.',
             format: 'double'
         },
         EndHour: {
             type: 'number',
+            description: 'The end hour.',
             format: 'double'
         }
     },
@@ -6465,10 +7373,12 @@ export const $Authentication_AuthenticationResult = {
             '$ref': '#/components/schemas/Session.SessionInfo'
         },
         AccessToken: {
-            type: 'string'
+            type: 'string',
+            description: 'The authentication token.'
         },
         ServerId: {
-            type: 'string'
+            type: 'string',
+            description: 'The server identifier.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Controller.Authentication.AuthenticationResult'
@@ -6516,10 +7426,12 @@ export const $ForgotPasswordResult = {
             '$ref': '#/components/schemas/ForgotPasswordAction'
         },
         PinFile: {
-            type: 'string'
+            type: 'string',
+            description: 'The pin file.'
         },
         PinExpirationDate: {
             type: 'string',
+            description: 'The pin expiration date.',
             format: 'date-time',
             nullable: true
         }
@@ -6531,19 +7443,6 @@ export const $ForgotPasswordAction = {
     enum: ['ContactAdmin', 'PinCode'],
     type: 'string',
     'x-internal-ref-name': 'MediaBrowser.Model.Users.ForgotPasswordAction'
-} as const;
-
-export const $playback_reporting_Api_CustomQuery = {
-    type: 'object',
-    properties: {
-        CustomQueryString: {
-            type: 'string'
-        },
-        ReplaceUserId: {
-            type: 'boolean'
-        }
-    },
-    'x-internal-ref-name': 'playback_reporting.Api.CustomQuery'
 } as const;
 
 export const $Api_ConfigurationPageInfo = {
@@ -6598,6 +7497,8 @@ export const $Api_ConfigurationPageInfo = {
 export const $Plugins_ConfigurationPageType = {
     enum: ['PluginConfiguration', 'None'],
     type: 'string',
+    description: `Enum ConfigurationPageType
+`,
     'x-internal-ref-name': 'MediaBrowser.Controller.Plugins.ConfigurationPageType'
 } as const;
 
@@ -6605,25 +7506,32 @@ export const $Common_Plugins_IPlugin = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the plugin'
         },
         Description: {
-            type: 'string'
+            type: 'string',
+            description: 'The description.'
         },
         Id: {
             type: 'string',
+            description: 'The unique id.',
             format: 'guid'
         },
         Version: {
             '$ref': '#/components/schemas/Version'
         },
         AssemblyFilePath: {
-            type: 'string'
+            type: 'string',
+            description: 'The path to the assembly file'
         },
         DataFolderPath: {
-            type: 'string'
+            type: 'string',
+            description: 'The full path to the data folder, where the plugin can store any miscellaneous files needed'
         }
     },
+    description: `Interface IPlugin
+`,
     'x-internal-ref-name': 'MediaBrowser.Common.Plugins.IPlugin'
 } as const;
 
@@ -6844,18 +7752,30 @@ export const $Common_Interfaces_ICodecDeviceCapabilities = {
 export const $SecondaryFrameworks = {
     enum: ['Unknown', 'None', 'AmdAmf', 'MediaCodec', 'NvEncDec', 'OpenMax', 'QuickSync', 'VaApi', 'V4L2', 'DxVa', 'D3d11va', 'VideoToolbox', 'Mmal'],
     type: 'string',
+    description: `Enum defining secondary frameworks for encoding and decoding.
+
+
+While most of these are hardware acceleration frameworks, this is not a necessity             (e.g. Android MediaCodec offers software codecs as well).
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Enums.SecondaryFrameworks'
 } as const;
 
 export const $CodecKinds = {
     enum: ['Audio', 'Video', 'SubTitles'],
     type: 'string',
+    description: `Enum defining the kind of media a codec is processing.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Enums.CodecKinds'
 } as const;
 
 export const $VideoMediaTypes = {
     enum: ['Unknown', 'copy', 'flv1', 'h263', 'h263p', 'h264', 'hevc', 'mjpeg', 'mpeg1video', 'mpeg2video', 'mpeg4', 'msvideo1', 'theora', 'vc1image', 'vc1', 'vp8', 'vp9', 'wmv1', 'wmv2', 'wmv3', '_012v', '_4xm', '_8bps', 'a64_multi', 'a64_multi5', 'aasc', 'aic', 'alias_pix', 'amv', 'anm', 'ansi', 'apng', 'asv1', 'asv2', 'aura', 'aura2', 'av1', 'avrn', 'avrp', 'avs', 'avui', 'ayuv', 'bethsoftvid', 'bfi', 'binkvideo', 'bintext', 'bitpacked', 'bmp', 'bmv_video', 'brender_pix', 'c93', 'cavs', 'cdgraphics', 'cdxl', 'cfhd', 'cinepak', 'clearvideo', 'cljr', 'cllc', 'cmv', 'cpia', 'cscd', 'cyuv', 'daala', 'dds', 'dfa', 'dirac', 'dnxhd', 'dpx', 'dsicinvideo', 'dvvideo', 'dxa', 'dxtory', 'dxv', 'escape124', 'escape130', 'exr', 'ffv1', 'ffvhuff', 'fic', 'fits', 'flashsv', 'flashsv2', 'flic', 'fmvc', 'fraps', 'frwu', 'g2m', 'gdv', 'gif', 'h261', 'h263i', 'hap', 'hnm4video', 'hq_hqa', 'hqx', 'huffyuv', 'idcin', 'idf', 'iff_ilbm', 'indeo2', 'indeo3', 'indeo4', 'indeo5', 'interplayvideo', 'jpeg2000', 'jpegls', 'jv', 'kgv1', 'kmvc', 'lagarith', 'ljpeg', 'loco', 'm101', 'mad', 'magicyuv', 'mdec', 'mimic', 'mjpegb', 'mmvideo', 'motionpixels', 'msa1', 'mscc', 'msmpeg4v1', 'msmpeg4v2', 'msmpeg4v3', 'msrle', 'mss1', 'mss2', 'mszh', 'mts2', 'mvc1', 'mvc2', 'mxpeg', 'nuv', 'paf_video', 'pam', 'pbm', 'pcx', 'pgm', 'pgmyuv', 'pictor', 'pixlet', 'png', 'ppm', 'prores', 'psd', 'ptx', 'qdraw', 'qpeg', 'qtrle', 'r10k', 'r210', 'rawvideo', 'rl2', 'roq', 'rpza', 'rscc', 'rv10', 'rv20', 'rv30', 'rv40', 'sanm', 'scpr', 'screenpresso', 'sgi', 'sgirle', 'sheervideo', 'smackvideo', 'smc', 'smvjpeg', 'snow', 'sp5x', 'speedhq', 'srgc', 'sunrast', 'svg', 'svq1', 'svq3', 'targa', 'targa_y216', 'tdsc', 'tgq', 'tgv', 'thp', 'tiertexseqvideo', 'tiff', 'tmv', 'tqi', 'truemotion1', 'truemotion2', 'truemotion2rt', 'tscc', 'tscc2', 'txd', 'ulti', 'utvideo', 'v210', 'v210x', 'v308', 'v408', 'v410', 'vb', 'vble', 'vcr1', 'vixl', 'vmdvideo', 'vmnc', 'vp3', 'vp5', 'vp6', 'vp6a', 'vp6f', 'vp7', 'webp', 'wmv3image', 'wnv1', 'wrapped_avframe', 'ws_vqa', 'xan_wc3', 'xan_wc4', 'xbin', 'xbm', 'xface', 'xpm', 'xwd', 'y41p', 'ylc', 'yop', 'yuv4', 'zerocodec', 'zlib', 'zmbv'],
     type: 'string',
+    description: `Enum listing video media types.
+
+
+The enum member names are matching exactly those that are used by ffmpeg. Exception: Items that are starting with a number are prefixed with an underscore here.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Enums.VideoMediaTypes'
 } as const;
 
@@ -6875,12 +7795,28 @@ export const $BitRate = {
             format: 'double'
         }
     },
+    description: `A type for handling bit rates.
+
+
+The purpose of this type is to avoid manual calculations and conversions in code,             unified handling and conversion as well as presentation through its various To\*\*\*String methods.
+
+
+\`System.IComparable\`
+
+
+\`System.IEquatable\`1\`
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.BitRate'
 } as const;
 
 export const $ColorFormats = {
     enum: ['Unknown', 'yuv420p', 'yuyv422', 'rgb24', 'bgr24', 'yuv422p', 'yuv444p', 'yuv410p', 'yuv411p', 'gray', 'monow', 'monob', 'pal8', 'yuvj420p', 'yuvj422p', 'yuvj444p', 'uyvy422', 'uyyvyy411', 'bgr8', 'bgr4', 'bgr4_byte', 'rgb8', 'rgb4', 'rgb4_byte', 'nv12', 'nv21', 'argb', 'rgba', 'abgr', 'bgra', 'gray16', 'yuv440p', 'yuvj440p', 'yuva420p', 'rgb48', 'rgb565', 'rgb555', 'bgr565', 'bgr555', 'vaapi_moco', 'vaapi_idct', 'vaapi_vld', 'yuv420p16', 'yuv422p16', 'yuv444p16', 'dxva2_vld', 'rgb444', 'bgr444', 'ya8', 'bgr48', 'yuv420p9', 'yuv420p10', 'yuv422p10', 'yuv444p9', 'yuv444p10', 'yuv422p9', 'gbrp', 'gbrp9', 'gbrp10', 'gbrp16', 'yuva422p', 'yuva444p', 'yuva420p9', 'yuva422p9', 'yuva444p9', 'yuva420p10', 'yuva422p10', 'yuva444p10', 'yuva420p16', 'yuva422p16', 'yuva444p16', 'vdpau', 'xyz12', 'nv16', 'nv20', 'rgba64', 'bgra64', 'yvyu422', 'ya16', 'gbrap', 'gbrap16', 'qsv', 'mmal', 'd3d11va_vld', 'cuda', '_0rgb', 'rgb0', '_0bgr', 'bgr0', 'yuv420p12', 'yuv420p14', 'yuv422p12', 'yuv422p14', 'yuv444p12', 'yuv444p14', 'gbrp12', 'gbrp14', 'yuvj411p', 'bayer_bggr8', 'bayer_rggb8', 'bayer_gbrg8', 'bayer_grbg8', 'bayer_bggr16', 'bayer_rggb16', 'bayer_gbrg16', 'bayer_grbg16', 'xvmc', 'yuv440p10', 'yuv440p12', 'ayuv64', 'videotoolbox_vld', 'p010', 'gbrap12', 'gbrap10', 'mediacodec', 'gray12', 'gray10', 'gray14', 'p016', 'd3d11', 'gray9', 'gbrpf32', 'gbrapf32', 'drm_prime', 'opencl', 'grayf32', 'yuva422p12', 'yuva444p12', 'nv24', 'nv42'],
     type: 'string',
+    description: `Enum listing color formats.
+
+
+The enum member names are matching those that are used by ffmpeg. (execute 'ffmpeg \-pix\_fmts' to list them) Exception: Items that are starting with a number are prefixed with an underscore here. In ffmpeg code these are prefixed with 'AV\_PIX\_FMT\_' and all\-caps.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Enums.ColorFormats'
 } as const;
 
@@ -6894,6 +7830,8 @@ export const $ProfileLevelInformation = {
             '$ref': '#/components/schemas/LevelInformation'
         }
     },
+    description: `A class combining both \`Emby.Media.Model.Types.ProfileInformation\` and \`Emby.Media.Model.Types.LevelInformation\`.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.ProfileLevelInformation'
 } as const;
 
@@ -6901,25 +7839,32 @@ export const $ProfileInformation = {
     type: 'object',
     properties: {
         ShortName: {
-            type: 'string'
+            type: 'string',
+            description: 'The enum member name of the profile.'
         },
         Description: {
-            type: 'string'
+            type: 'string',
+            description: 'The common name of the profile.'
         },
         Details: {
-            type: 'string'
+            type: 'string',
+            description: 'Detail information about the profile.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'A unique identifier.'
         },
         BitDepths: {
             type: 'array',
             items: {
                 type: 'integer',
                 format: 'int32'
-            }
+            },
+            description: 'The bit depths.'
         }
     },
+    description: `Class for unified presentation of all information associated with a specific codec profile.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.ProfileInformation'
 } as const;
 
@@ -6927,13 +7872,16 @@ export const $LevelInformation = {
     type: 'object',
     properties: {
         ShortName: {
-            type: 'string'
+            type: 'string',
+            description: 'The enum member name of the level.'
         },
         Description: {
-            type: 'string'
+            type: 'string',
+            description: 'The common name of the level.'
         },
         Ordinal: {
             type: 'integer',
+            description: "A value indicating the level's ranking relative to other levels.",
             format: 'int32',
             nullable: true
         },
@@ -6941,27 +7889,34 @@ export const $LevelInformation = {
             '$ref': '#/components/schemas/BitRate'
         },
         MaxBitRateDisplay: {
-            type: 'string'
+            type: 'string',
+            description: 'A display value of the `Emby.Media.Model.Types.LevelInformation.MaxBitRate` property.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'A unique identifier.'
         },
         ResolutionRates: {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/ResolutionWithRate'
-            }
+            },
+            description: 'Examples for the maximum supported combinations of resolution and rate for this level.'
         },
         ResolutionRateStrings: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'Examples for the maximum supported combinations of resolution and rate for this level as string values.'
         },
         ResolutionRatesDisplay: {
-            type: 'string'
+            type: 'string',
+            description: 'A single string from the `Emby.Media.Model.Types.LevelInformation.ResolutionRateStrings` list.'
         }
     },
+    description: `Class for unified presentation of all information associated with a specific codec level.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.LevelInformation'
 } as const;
 
@@ -6970,20 +7925,28 @@ export const $ResolutionWithRate = {
     properties: {
         Width: {
             type: 'integer',
+            description: 'The resolution width.',
             format: 'int32'
         },
         Height: {
             type: 'integer',
+            description: 'The resolution height.',
             format: 'int32'
         },
         FrameRate: {
             type: 'number',
+            description: 'The frame rate in frames\\/second (fps).',
             format: 'double'
         },
         Resolution: {
             '$ref': '#/components/schemas/Resolution'
         }
     },
+    description: `Struct representing a combination of video resolution and frame rate.
+
+
+\`System.IEquatable\`1\`
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.ResolutionWithRate'
 } as const;
 
@@ -6992,19 +7955,31 @@ export const $Resolution = {
     properties: {
         Width: {
             type: 'integer',
+            description: 'The resolution width.',
             format: 'int32'
         },
         Height: {
             type: 'integer',
+            description: 'The resolution height.',
             format: 'int32'
         }
     },
+    description: `Struct representing a video resolution specified in X and Y dimension.
+
+
+\`System.IComparable\`
+
+
+\`System.IEquatable\`1\`
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Types.Resolution'
 } as const;
 
 export const $CodecDirections = {
     enum: ['Encoder', 'Decoder'],
     type: 'string',
+    description: `Enum for indicating the processing direction of a codec.
+`,
     'x-internal-ref-name': 'Emby.Media.Model.Enums.CodecDirections'
 } as const;
 
@@ -7012,14 +7987,19 @@ export const $CodecConfiguration = {
     type: 'object',
     properties: {
         IsEnabled: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether the codec is enabled.'
         },
         Priority: {
             type: 'integer',
+            description: `The selection priority for the codec.
+
+Higher values mean higher priority.`,
             format: 'int32'
         },
         CodecId: {
-            type: 'string'
+            type: 'string',
+            description: 'The codec identifier.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Configuration.CodecConfiguration'
@@ -7029,16 +8009,19 @@ export const $ExternalIdInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Key: {
-            type: 'string'
+            type: 'string',
+            description: 'The key.'
         },
         Website: {
             type: 'string'
         },
         UrlFormatString: {
-            type: 'string'
+            type: 'string',
+            description: 'The URL format string.'
         },
         IsSupportedAsIdentifier: {
             type: 'boolean'
@@ -7076,16 +8059,19 @@ export const $TrailerInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7098,6 +8084,7 @@ export const $TrailerInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7130,7 +8117,8 @@ export const $RemoteSearchResult = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         OriginalTitle: {
             type: 'string'
@@ -7140,6 +8128,7 @@ export const $RemoteSearchResult = {
         },
         ProductionYear: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7243,16 +8232,19 @@ export const $BookInfo = {
             type: 'string'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7265,6 +8257,7 @@ export const $BookInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7322,16 +8315,19 @@ export const $MovieInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7344,6 +8340,7 @@ export const $MovieInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7409,16 +8406,19 @@ export const $SeriesInfo = {
             '$ref': '#/components/schemas/SeriesDisplayOrder'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7431,6 +8431,7 @@ export const $SeriesInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7494,16 +8495,19 @@ export const $GameInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7516,6 +8520,7 @@ export const $GameInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7573,16 +8578,19 @@ export const $ItemLookupInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7595,6 +8603,7 @@ export const $ItemLookupInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7658,16 +8667,19 @@ export const $MusicVideoInfo = {
             }
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7680,6 +8692,7 @@ export const $MusicVideoInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7737,16 +8750,19 @@ export const $PersonLookupInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7759,6 +8775,7 @@ export const $PersonLookupInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7819,7 +8836,8 @@ export const $AlbumInfo = {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The album artist.'
         },
         SongInfos: {
             type: 'array',
@@ -7828,16 +8846,19 @@ export const $AlbumInfo = {
             }
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7850,6 +8871,7 @@ export const $AlbumInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7903,16 +8925,19 @@ export const $SongInfo = {
             }
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -7925,6 +8950,7 @@ export const $SongInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -7982,16 +9008,19 @@ export const $ArtistInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Path: {
             type: 'string'
         },
         MetadataLanguage: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata language.'
         },
         MetadataCountryCode: {
-            type: 'string'
+            type: 'string',
+            description: 'The metadata country code.'
         },
         MetadataLanguages: {
             type: 'array',
@@ -8004,6 +9033,7 @@ export const $ArtistInfo = {
         },
         Year: {
             type: 'integer',
+            description: 'The year.',
             format: 'int32',
             nullable: true
         },
@@ -8135,6 +9165,7 @@ export const $ThemeMediaResult = {
     properties: {
         OwnerId: {
             type: 'integer',
+            description: 'The owner id.',
             format: 'int64'
         },
         Items: {
@@ -8148,6 +9179,8 @@ export const $ThemeMediaResult = {
             format: 'int32'
         }
     },
+    description: `Class ThemeMediaResult
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Querying.ThemeMediaResult'
 } as const;
 
@@ -8159,30 +9192,37 @@ export const $ImageInfo = {
         },
         ImageIndex: {
             type: 'integer',
+            description: 'The index of the image.',
             format: 'int32',
             nullable: true
         },
         Path: {
-            type: 'string'
+            type: 'string',
+            description: 'The path.'
         },
         Filename: {
             type: 'string'
         },
         Height: {
             type: 'integer',
+            description: 'The height.',
             format: 'int32',
             nullable: true
         },
         Width: {
             type: 'integer',
+            description: 'The width.',
             format: 'int32',
             nullable: true
         },
         Size: {
             type: 'integer',
+            description: 'The size.',
             format: 'int64'
         }
     },
+    description: `Class ImageInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Dto.ImageInfo'
 } as const;
 
@@ -8193,19 +9233,24 @@ export const $RemoteImageResult = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/RemoteImageInfo'
-            }
+            },
+            description: 'The images.'
         },
         TotalRecordCount: {
             type: 'integer',
+            description: 'The total record count.',
             format: 'int32'
         },
         Providers: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The providers.'
         }
     },
+    description: `Class RemoteImageResult.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Providers.RemoteImageResult'
 } as const;
 
@@ -8213,36 +9258,44 @@ export const $RemoteImageInfo = {
     type: 'object',
     properties: {
         ProviderName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the provider.'
         },
         Url: {
-            type: 'string'
+            type: 'string',
+            description: 'The URL.'
         },
         ThumbnailUrl: {
-            type: 'string'
+            type: 'string',
+            description: 'A url used for previewing a smaller version'
         },
         Height: {
             type: 'integer',
+            description: 'The height.',
             format: 'int32',
             nullable: true
         },
         Width: {
             type: 'integer',
+            description: 'The width.',
             format: 'int32',
             nullable: true
         },
         CommunityRating: {
             type: 'number',
+            description: 'The community rating.',
             format: 'double',
             nullable: true
         },
         VoteCount: {
             type: 'integer',
+            description: 'The vote count.',
             format: 'int32',
             nullable: true
         },
         Language: {
-            type: 'string'
+            type: 'string',
+            description: 'The language.'
         },
         DisplayLanguage: {
             type: 'string'
@@ -8254,6 +9307,8 @@ export const $RemoteImageInfo = {
             '$ref': '#/components/schemas/RatingType'
         }
     },
+    description: `Class RemoteImageInfo
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Providers.RemoteImageInfo'
 } as const;
 
@@ -8302,10 +9357,12 @@ export const $PlaybackInfoResponse = {
             type: 'array',
             items: {
                 '$ref': '#/components/schemas/MediaSourceInfo'
-            }
+            },
+            description: 'The media sources.'
         },
         PlaySessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The play session identifier.'
         },
         ErrorCode: {
             '$ref': '#/components/schemas/PlaybackErrorCode'
@@ -8440,31 +9497,37 @@ export const $VirtualFolderInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Locations: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The locations.'
         },
         CollectionType: {
-            type: 'string'
+            type: 'string',
+            description: 'The type of the collection.'
         },
         LibraryOptions: {
             '$ref': '#/components/schemas/LibraryOptions'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'ItemId came first, so that is left for compatability purposes'
         },
         Guid: {
             type: 'string'
         },
         PrimaryImageItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The primary image item identifier.'
         },
         PrimaryImageTag: {
             type: 'string'
@@ -8478,6 +9541,8 @@ export const $VirtualFolderInfo = {
             type: 'string'
         }
     },
+    description: `Used to hold information about a user's list of configured virtual folders
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Entities.VirtualFolderInfo'
 } as const;
 
@@ -8596,7 +9661,8 @@ export const $UserNotificationInfo = {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'Limit events based on user ids, for admin notifications'
         },
         DeviceIds: {
             type: 'array',
@@ -8617,7 +9683,8 @@ export const $UserNotificationInfo = {
             }
         },
         UserId: {
-            type: 'string'
+            type: 'string',
+            description: 'Notification intended for a specific user'
         },
         IsSelfNotification: {
             type: 'boolean'
@@ -8629,7 +9696,8 @@ export const $UserNotificationInfo = {
             type: 'object',
             additionalProperties: {
                 type: 'string'
-            }
+            },
+            description: 'This is for webhooks since this will cause xml serialization to fail'
         }
     },
     'x-internal-ref-name': 'Emby.Notifications.UserNotificationInfo'
@@ -8666,6 +9734,8 @@ export const $Playlists_AddToPlaylistResult = {
 export const $PlayCommand = {
     enum: ['PlayNow', 'PlayNext', 'PlayLast', 'PlayInstantMix', 'PlayShuffle'],
     type: 'string',
+    description: `Enum PlayCommand
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlayCommand'
 } as const;
 
@@ -8673,7 +9743,8 @@ export const $PlayRequest = {
     type: 'object',
     properties: {
         ControllingUserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The controlling user identifier.'
         },
         SubtitleStreamIndex: {
             type: 'integer',
@@ -8694,6 +9765,8 @@ export const $PlayRequest = {
             nullable: true
         }
     },
+    description: `Class PlayRequest
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlayRequest'
 } as const;
 
@@ -8760,7 +9833,8 @@ export const $PlaybackProgressInfo = {
     type: 'object',
     properties: {
         CanSeek: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance can seek.'
         },
         NowPlayingQueue: {
             type: 'array',
@@ -8772,20 +9846,24 @@ export const $PlaybackProgressInfo = {
             type: 'string'
         },
         SessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The session id.'
         },
         AudioStreamIndex: {
             type: 'integer',
+            description: 'The index of the audio stream.',
             format: 'int32',
             nullable: true
         },
         SubtitleStreamIndex: {
             type: 'integer',
+            description: 'The index of the subtitle stream.',
             format: 'int32',
             nullable: true
         },
         IsPaused: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is paused.'
         },
         PlaylistIndex: {
             type: 'integer',
@@ -8796,7 +9874,8 @@ export const $PlaybackProgressInfo = {
             format: 'int32'
         },
         IsMuted: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this instance is muted.'
         },
         RunTimeTicks: {
             type: 'integer',
@@ -8810,6 +9889,7 @@ export const $PlaybackProgressInfo = {
         },
         VolumeLevel: {
             type: 'integer',
+            description: 'The volume level.',
             format: 'int32',
             nullable: true
         },
@@ -8856,26 +9936,33 @@ export const $PlaybackProgressInfo = {
             }
         },
         PlaySessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The play session identifier.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         LiveStreamId: {
-            type: 'string'
+            type: 'string',
+            description: 'The live stream identifier.'
         },
         MediaSourceId: {
-            type: 'string'
+            type: 'string',
+            description: 'The media version identifier.'
         },
         Item: {
             '$ref': '#/components/schemas/BaseItemDto'
         },
         PositionTicks: {
             type: 'integer',
+            description: 'The position ticks.',
             format: 'int64',
             nullable: true
         }
     },
+    description: `Class PlaybackProgressInfo.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlaybackProgressInfo'
 } as const;
 
@@ -8900,38 +9987,47 @@ export const $PlaybackStopInfo = {
             format: 'int32'
         },
         SessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The session id.'
         },
         IsAutomated: {
             type: 'boolean'
         },
         Failed: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this `MediaBrowser.Model.Session.PlaybackStopInfo` is failed.'
         },
         NextMediaType: {
             type: 'string'
         },
         PlaySessionId: {
-            type: 'string'
+            type: 'string',
+            description: 'The play session identifier.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         LiveStreamId: {
-            type: 'string'
+            type: 'string',
+            description: 'The live stream identifier.'
         },
         MediaSourceId: {
-            type: 'string'
+            type: 'string',
+            description: 'The media version identifier.'
         },
         Item: {
             '$ref': '#/components/schemas/BaseItemDto'
         },
         PositionTicks: {
             type: 'integer',
+            description: 'The position ticks.',
             format: 'int64',
             nullable: true
         }
     },
+    description: `Class PlaybackStopInfo.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlaybackStopInfo'
 } as const;
 
@@ -9011,18 +10107,22 @@ export const $LogFile = {
     properties: {
         DateCreated: {
             type: 'string',
+            description: 'The date created.',
             format: 'date-time'
         },
         DateModified: {
             type: 'string',
+            description: 'The date modified.',
             format: 'date-time'
         },
         Size: {
             type: 'integer',
+            description: 'The size.',
             format: 'int64'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.System.LogFile'
@@ -9032,7 +10132,8 @@ export const $PublicSystemInfo = {
     type: 'object',
     properties: {
         LocalAddress: {
-            type: 'string'
+            type: 'string',
+            description: 'The local address.'
         },
         LocalAddresses: {
             type: 'array',
@@ -9041,7 +10142,8 @@ export const $PublicSystemInfo = {
             }
         },
         WanAddress: {
-            type: 'string'
+            type: 'string',
+            description: 'The wan address.'
         },
         RemoteAddresses: {
             type: 'array',
@@ -9050,13 +10152,16 @@ export const $PublicSystemInfo = {
             }
         },
         ServerName: {
-            type: 'string'
+            type: 'string',
+            description: 'The name of the server.'
         },
         Version: {
-            type: 'string'
+            type: 'string',
+            description: 'The version.'
         },
         Id: {
-            type: 'string'
+            type: 'string',
+            description: 'The id.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.System.PublicSystemInfo'
@@ -9083,32 +10188,41 @@ export const $ActivityLogEntry = {
     properties: {
         Id: {
             type: 'integer',
+            description: 'The identifier.',
             format: 'int64'
         },
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         Overview: {
-            type: 'string'
+            type: 'string',
+            description: 'The overview.'
         },
         ShortOverview: {
-            type: 'string'
+            type: 'string',
+            description: 'The short overview.'
         },
         Type: {
-            type: 'string'
+            type: 'string',
+            description: 'The type.'
         },
         ItemId: {
-            type: 'string'
+            type: 'string',
+            description: 'The item identifier.'
         },
         Date: {
             type: 'string',
+            description: 'The date.',
             format: 'date-time'
         },
         UserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The user identifier.'
         },
         UserPrimaryImageTag: {
-            type: 'string'
+            type: 'string',
+            description: 'The user primary image tag.'
         },
         Severity: {
             '$ref': '#/components/schemas/Logging.LogSeverity'
@@ -9120,6 +10234,8 @@ export const $ActivityLogEntry = {
 export const $Logging_LogSeverity = {
     enum: ['Info', 'Debug', 'Warn', 'Error', 'Fatal'],
     type: 'string',
+    description: `Enum LogSeverity
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Logging.LogSeverity'
 } as const;
 
@@ -9163,13 +10279,15 @@ export const $PinRedeemResult = {
     type: 'object',
     properties: {
         Success: {
-            type: 'boolean'
+            type: 'boolean',
+            description: 'A value indicating whether this `MediaBrowser.Model.Users.PinRedeemResult` is success.'
         },
         UsersReset: {
             type: 'array',
             items: {
                 type: 'string'
-            }
+            },
+            description: 'The users reset.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Users.PinRedeemResult'
@@ -9291,7 +10409,8 @@ export const $ImageProviderInfo = {
     type: 'object',
     properties: {
         Name: {
-            type: 'string'
+            type: 'string',
+            description: 'The name.'
         },
         SupportedImages: {
             type: 'array',
@@ -9300,6 +10419,8 @@ export const $ImageProviderInfo = {
             }
         }
     },
+    description: `Class ImageProviderInfo.
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Providers.ImageProviderInfo'
 } as const;
 
@@ -9347,6 +10468,8 @@ export const $Library_RemoveMediaPath = {
 export const $PlaystateCommand = {
     enum: ['Stop', 'Pause', 'Unpause', 'NextTrack', 'PreviousTrack', 'Seek', 'Rewind', 'FastForward', 'PlayPause', 'SeekRelative'],
     type: 'string',
+    description: `Enum PlaystateCommand
+`,
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlaystateCommand'
 } as const;
 
@@ -9362,7 +10485,8 @@ export const $PlaystateRequest = {
             nullable: true
         },
         ControllingUserId: {
-            type: 'string'
+            type: 'string',
+            description: 'The controlling user identifier.'
         }
     },
     'x-internal-ref-name': 'MediaBrowser.Model.Session.PlaystateRequest'
