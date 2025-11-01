@@ -1,4 +1,4 @@
-import { catchError, iif, map, Observable, of, shareReplay, switchMap, tap } from 'rxjs'
+import { iif, map, Observable, of, shareReplay, switchMap, tap } from 'rxjs'
 import { createClient } from './openapi/tmdb/client'
 import { tmdbApiReadAccessToken } from '../../environment.json'
 import { configurationDetails, movieDetails, tvSeriesDetails } from './openapi/tmdb'

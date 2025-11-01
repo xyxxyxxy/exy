@@ -37,7 +37,7 @@ export function buildFullActivity$(
   const watchLink = getWatchLink(item)
   if (watchLink) activity.externalData.push({ type: ExternalDataType.WatchLink, url: watchLink })
 
-  return addImage$(activity, server, session)
+  return addImage$(activity, session)
 }
 function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   if (!item.ExternalUrls) return []
@@ -81,7 +81,7 @@ function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | und
 
 function addImage$(
   activity: Activity,
-  server: MediaServerConfig,
+  // server: MediaServerConfig,
   session: ValidSession
 ): Observable<Activity> {
   if (activity.imageUrl) return of(activity)
