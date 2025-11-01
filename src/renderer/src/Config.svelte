@@ -11,6 +11,7 @@
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
+  import TmdbAttribution from './components/TmdbAttribution.svelte'
 
   let config: ConfigStore = $state()
   let hasMediaServers: boolean = $state()
@@ -73,6 +74,11 @@
       <p>Making images publicly available while keeping media-servers private.</p>
     </hgroup>
     <ImgurInfo {config} />
+
+    <hgroup>
+      <h2>Attributions 🌠</h2>
+      <TmdbAttribution />
+    </hgroup>
 
     <hgroup>
       <h2>Debug & Reset 🩻</h2>
