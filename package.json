@@ -22,7 +22,8 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi-ts --input https://raw.githubusercontent.com/MediaBrowser/Emby.SDK/refs/heads/master/Resources/OpenApi/openapi_v3.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "openapi-emby": "openapi-ts --file ./openapi-ts.emby-config.ts",
+    "openapi-tmdb": "openapi-ts --file ./openapi-ts.tmdb-config.ts"
   },
   "dependencies": {
     "@electron-toolkit/utils": "^3.0.0"
@@ -32,7 +33,7 @@
     "@electron-toolkit/eslint-config-ts": "^2.0.0",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/tsconfig": "^1.0.1",
-    "@hey-api/openapi-ts": "^0.52.11",
+    "@hey-api/openapi-ts": "^0.86.11",
     "@picocss/pico": "^2.0.6",
     "@sveltejs/vite-plugin-svelte": "^3.1.2",
     "@types/discord-rpc": "^4.0.8",
