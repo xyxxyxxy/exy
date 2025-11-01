@@ -5,7 +5,6 @@ import {
   config$,
   deleteMediaServer,
   isConnectionConfigured,
-  setImgurClientId,
   toggleMediaServerActive,
   toggleIgnoredMediaType,
   resetExternalLinks,
@@ -19,7 +18,6 @@ import {
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
-import { testImgurClientId$ } from './core/imgur'
 import {
   authenticate$,
   logout$,
@@ -152,27 +150,6 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
         status: error.status,
         message: error.toString()
       })
-    }
-  })
-})
-ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
-  // Reset if empty.
-  if (!clientId) {
-    setImgurClientId(null)
-    event.sender.send(IpcChannel.SaveImgurClientId)
-    return
-  }
-
-  logger.info(`Testing Imgur client ID.`, clientId)
-  testImgurClientId$(clientId).subscribe({
-    next: () => {
-      logger.info(`Imgur client ID is valid.`, clientId)
-      setImgurClientId(clientId)
-      event.sender.send(IpcChannel.SaveImgurClientId)
-    },
-    error: (error) => {
-      logger.info(`Imgur client ID is invalid.`, error)
-      event.sender.send(IpcChannel.SaveImgurClientId, error)
     }
   })
 })

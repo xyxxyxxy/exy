@@ -79,7 +79,7 @@
 
   function disconnect(): void {
     isBusyDisconnecting = true
-    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, server)
+    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, { ...server })
   }
 </script>
 

@@ -11,7 +11,7 @@
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
-  import TmdbAttribution from './components/TmdbAttribution.svelte'
+  import TmdbAttribution from './components/AttributionTmdb.svelte'
 
   let config: ConfigStore = $state()
   let hasMediaServers: boolean = $state()

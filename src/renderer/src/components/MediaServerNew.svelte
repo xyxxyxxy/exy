@@ -43,7 +43,7 @@
   function submit(): void {
     isBusy = true
     resetValidation()
-    window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, config)
+    window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, { ...config })
   }
 
   window.electron.ipcRenderer.on(

@@ -35,21 +35,11 @@ import {
   SystemInfo
 } from '../openapi/emby'
 import { Client, createClient } from '../openapi/emby/client'
-import { AxiosError, AxiosResponse } from 'axios'
+import { toResponseData } from '../utils'
 
 const logger = log.scope('media-server')
 
 export type ConnectionDetails = Pick<MediaServerConfig, 'protocol' | 'address' | 'port'>
-
-function toResponseData<T>(
-  response:
-    | (AxiosResponse<T, any, {}> & { error: undefined })
-    | (AxiosError<unknown, any> & { data: undefined; error: unknown })
-): T {
-  if (response.status === 200 && response.data) {
-    return response.data
-  } else throw response
-}
 
 export function authenticate$(
   connectionDetails: Pick<MediaServerConfig, 'protocol' | 'address' | 'port' | 'username'> & {
@@ -206,7 +196,7 @@ function pickBetweenPollingResults$(
 function getAuthenticatedClient$(server: MediaServerConfig): Observable<Client> {
   return of(
     createClient({ baseURL: getBaseUrl(server), headers: { 'X-Emby-Token': server.accessToken } })
-  )
+  ).pipe(shareReplay(1))
 }
 
 const xEmbyAuthorization$ = config$.pipe(

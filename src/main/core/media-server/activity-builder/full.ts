@@ -1,12 +1,11 @@
 import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
-import { getImageUrl } from '..'
-import { getImgurLink$ } from '../../imgur'
 import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import log from 'electron-log'
 import { addPublicContent$ } from './public'
 import { BaseItemDto, PlayerStateInfo } from '../../openapi/emby'
+import { getTmdbImageUrl$ } from '../../tmdbId'
 
 const logger = log.scope('builder-full')
 
@@ -91,43 +90,25 @@ function addImage$(
 ): Observable<Activity> {
   if (activity.imageUrl) return of(activity)
 
-  return getImageLink$(server, session.NowPlayingItem).pipe(
+  return getExternalImageLink$(session.NowPlayingItem).pipe(
     tap((url) => (activity.imageUrl = url)),
-    map(() => activity)
+    map(() => activity),
+    catchError(() => {
+      logger.warn(`Failed to add image to activity.`)
+      return of(activity)
+    })
   )
 }
+// Images need to be publicly available. Even if the media-server is reachable on the
+// public internet, sending the server address to Discord should be avoided, since
+// everyone seeing the status will also be able to see the media-server domain.
+function getExternalImageLink$(item: BaseItemDto): Observable<string | undefined> {
+  if (!item.ProviderIds) return of(undefined)
+  const tmdbId = parseInt(item.ProviderIds.Tmdb)
+  if (tmdbId) return getTmdbImageUrl$(tmdbId, item.Type === 'Movie')
 
-function getImageLink$(
-  server: MediaServerConfig,
-  item: BaseItemDto
-): Observable<string | undefined> {
-  const imageIds: Array<string> = [
-    // Try the item image first.
-    item.Id,
-    // Emby responds with 500 error for primary images of some songs.
-    // Also some episodes don't have images, like specials/extras not present in TVDB.
-    // Fallback to the parent image (Album cover for songs and show poster for episodes) in such a case.
-    item.ParentId,
-    // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
-    item.SeriesId,
-    item.ParentBackdropItemId
-  ]
-    // Remove undefined entries.
-    .filter((id): id is string => typeof id === 'string')
-    // Reverse to process in the right order.
-    .reverse()
+  // TODO For music another service is needed.
+  // TODO Add TVDB for episodes
 
-  const tryNextImage = (): Observable<string | undefined> => {
-    const id = imageIds.pop()
-
-    if (!id) {
-      logger.info(`Failed to get any image for item:`, item)
-      return of(undefined)
-    }
-
-    const url = getImageUrl(server, id)
-    return getImgurLink$(url).pipe(catchError(() => tryNextImage()))
-  }
-
-  return tryNextImage()
+  return of(undefined)
 }

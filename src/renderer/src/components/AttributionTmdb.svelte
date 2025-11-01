@@ -4,8 +4,9 @@
 
 <div class="grid">
   <p>
-    This application uses <a href="https://www.themoviedb.org/" target="_blank">TMDB</a> and the TMDB
-    APIs but is not endorsed, certified, or otherwise approved by TMDB.
+    This application uses <a href="https://www.themoviedb.org/" target="_blank">TMDB</a> and the
+    <a href="https://developer.themoviedb.org/" target="_blank">TMDB APIs</a> but is not endorsed, certified,
+    or otherwise approved by TMDB.
   </p>
 
   <a href="https://www.themoviedb.org/" target="_blank"

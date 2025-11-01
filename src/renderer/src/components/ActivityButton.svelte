@@ -41,7 +41,7 @@
   }
 
   function save(): void {
-    window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, externalLink)
+    window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, { ...externalLink })
     reset()
   }
 
@@ -68,18 +68,6 @@
       {#if !externalLink.id}
         ✨ Add button
       {:else}
-        <!-- {#if !isFirst}<span
-        role="button"
-        tabindex="0"
-        on:click|preventDefault={moveUp}
-        on:keydown={moveUp}>⬆</span
-      >{/if}
-    {#if !isLast}<span
-        role="button"
-        tabindex="0"
-        on:click|preventDefault={moveDown}
-        on:keydown={moveDown}>⬇</span
-      >{/if} -->
         <input
           type="checkbox"
           role="switch"

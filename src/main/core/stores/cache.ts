@@ -1,34 +1,34 @@
 import Store, { Schema } from 'electron-store'
 
 type CacheStore = {
-  image: {
-    // Mapping the image hash to a public link URL.
-    [hash: string]: string
-  }
+  [key: string]: string
 }
 
 const schema: Schema<CacheStore> = {
-  image: {
-    type: 'object'
+  additionalProperties: {
+    type: 'string'
   }
 }
 
 const cacheStore = new Store<CacheStore>({
   name: 'cache',
   schema,
-  clearInvalidConfig: true
+  clearInvalidConfig: true,
+  migrations: {
+    '1.1.0': (store) => {
+      store.clear()
+    }
+  }
 })
 
-export function getCachedImageLink(imageHash: string): string | undefined {
-  return cacheStore.get(getImageCacheKey(imageHash))
+export function getCached(key: string): string {
+  return cacheStore.get(key)
 }
 
-export function cacheImageLink(imageHash: string, link: string): void {
-  cacheStore.set(getImageCacheKey(imageHash), link)
+export function setCache(key: string, value: string): void {
+  cacheStore.set(key, value)
 }
 
 export function clearCache(): void {
   cacheStore.clear()
 }
-
-const getImageCacheKey = (imageHash: string): string => `image.${imageHash}`
