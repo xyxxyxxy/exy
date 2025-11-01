@@ -59,7 +59,7 @@
   function test(): void {
     resetTest()
     isBusyTesting = true
-    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, server)
+    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, { ...server })
   }
 
   window.electron.ipcRenderer.on(

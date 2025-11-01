@@ -1,9 +1,8 @@
-import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
+import { Observable, catchError, map, of, tap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
 import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import log from 'electron-log'
-import { addPublicContent$ } from './public'
 import { BaseItemDto, PlayerStateInfo } from '../../openapi/emby'
 import { getTmdbImageUrl$ } from '../../tmdbId'
 
@@ -35,13 +34,10 @@ export function buildFullActivity$(
     endTime: parseEndTime(item, playState)
   }
 
-  return addPublicContent$(activity).pipe(
-    switchMap((activity) => {
-      // Adding the image can be avoided if the public content already added a URL.
-      if (activity.imageUrl) return of(activity)
-      else return addImage$(activity, server, session)
-    })
-  )
+  const watchLink = getWatchLink(item)
+  if (watchLink) activity.externalData.push({ type: ExternalDataType.WatchLink, url: watchLink })
+
+  return addImage$(activity, server, session)
 }
 function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   if (!item.ExternalUrls) return []
@@ -99,11 +95,18 @@ function addImage$(
     })
   )
 }
+
 // Images need to be publicly available. Even if the media-server is reachable on the
 // public internet, sending the server address to Discord should be avoided, since
 // everyone seeing the status will also be able to see the media-server domain.
 function getExternalImageLink$(item: BaseItemDto): Observable<string | undefined> {
   if (!item.ProviderIds) return of(undefined)
+
+  // YouTube
+  const youtubeId = item.ProviderIds.youtube
+  if (youtubeId) return of(`https://img.youtube.com/vi/${youtubeId}/0.jpg`)
+
+  // TMDB
   const tmdbId = parseInt(item.ProviderIds.Tmdb)
   if (tmdbId) return getTmdbImageUrl$(tmdbId, item.Type === 'Movie')
 
@@ -111,4 +114,19 @@ function getExternalImageLink$(item: BaseItemDto): Observable<string | undefined
   // TODO Add TVDB for episodes
 
   return of(undefined)
+}
+
+function isYouTubeId(id: string): boolean {
+  // Assuming based on the size.
+  return id.length === 11
+}
+
+function getWatchLink(item: BaseItemDto): string | null {
+  if (!item.ProviderIds) return null
+
+  const youtubeId = item.ProviderIds.youtube
+  // Make sure the provider ID set for YouTube is actually a YouTube ID.
+  if (youtubeId && isYouTubeId(youtubeId)) return `https://youtube.com/watch?v=${youtubeId}`
+
+  return null
 }

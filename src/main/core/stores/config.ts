@@ -23,6 +23,7 @@ const configStore = new Store<ConfigStore>({
   migrations: {
     '1.1.0': (store): void => {
       store.delete('imgurClientId' as keyof ConfigStore)
+      store.reset('externalLinks')
     },
     '0.4.0': (store): void => {
       const activity = store.get('activity')

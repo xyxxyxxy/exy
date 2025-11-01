@@ -16,7 +16,6 @@
   let { externalLink = $bindable(null), isFirst = false, isLast = false }: Props = $props()
 
   let isOpen = $state(false)
-  let hasChanges = $state(false)
 
   if (!externalLink) reset()
 
@@ -36,17 +35,13 @@
     window.electron.ipcRenderer.send(IpcChannel.DeleteExternalLink, externalLink.id)
   }
 
-  function changed(): void {
-    hasChanges = true
-  }
-
   function save(): void {
     window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, { ...externalLink })
-    reset()
+    isOpen = false
+    if (!externalLink.id) reset() // Reset form after new button is created.
   }
 
   function reset(): void {
-    hasChanges = false
     isOpen = false
     externalLink = {
       isActive: true,
@@ -60,11 +55,7 @@
 <div class="flex">
   <details bind:open={isOpen}>
     <!-- svelte-ignore a11y_no_redundant_roles -->
-    <summary
-      role="button"
-      class:outline={!externalLink.id}
-      class:secondary={externalLink.id && !hasChanges}
-    >
+    <summary role="button" class:outline={!externalLink.id} class:secondary={externalLink.id}>
       {#if !externalLink.id}
         ✨ Add button
       {:else}
@@ -90,7 +81,6 @@
           event.preventDefault()
           save()
         }}
-        oninput={changed}
       >
         <div class="grid">
           <label>

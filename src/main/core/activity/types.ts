@@ -94,6 +94,5 @@ export enum ExternalDataType {
   TheMovieDb = 'TheMovieDb',
   Trakt = 'Trakt',
   // Public
-  YouTube = 'YouTube',
-  BitChute = 'BitChute'
+  WatchLink = 'Watch link'
 }
