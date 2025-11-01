@@ -4,9 +4,9 @@ import { getImageUrl } from '..'
 import { getImgurLink$ } from '../../imgur'
 import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
-import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
 import { addPublicContent$ } from './public'
+import { BaseItemDto, PlayerStateInfo } from '../../openapi/emby'
 
 const logger = log.scope('builder-full')
 
@@ -78,8 +78,8 @@ function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | und
   if (item.MediaType === ItemMediaType.Book || !item.RunTimeTicks || !playState.PositionTicks)
     return undefined
 
-  const runtimeMs: number = item.RunTimeTicks / 10000
-  const playPositionMs: number = playState.PositionTicks / 10000
+  const runtimeMs = item.RunTimeTicks / 10000
+  const playPositionMs = playState.PositionTicks / 10000
   // Now, plus runtime, minus play position.
   return new Date(Date.now().valueOf() + runtimeMs - playPositionMs)
 }
@@ -106,7 +106,7 @@ function getImageLink$(
     item.Id,
     // Emby responds with 500 error for primary images of some songs.
     // Also some episodes don't have images, like specials/extras not present in TVDB.
-    // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
+    // Fallback to the parent image (Album cover for songs and show poster for episodes) in such a case.
     item.ParentId,
     // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
     item.SeriesId,

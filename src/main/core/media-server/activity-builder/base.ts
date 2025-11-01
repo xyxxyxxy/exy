@@ -1,5 +1,5 @@
 import { ActivityBase, ActivityItemType, ActivityMediaType } from '../../activity/types'
-import { BaseItemDto, ChapterInfo, PlayerStateInfo } from '../../emby-client'
+import { BaseItemDto, ChapterInfo, PlayerStateInfo } from '../../openapi/emby'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import log from 'electron-log'
 
