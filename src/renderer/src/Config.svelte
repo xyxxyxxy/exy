@@ -16,8 +16,6 @@
   let hasMediaServers: boolean = $state()
   let activities: MediaServerActivityMapping = $state({})
 
-  // Typing broken after upgrading to Svelte 5. Not sure why.
-  // The type definition for window.electron in preload/index.d.ts did not change.
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
