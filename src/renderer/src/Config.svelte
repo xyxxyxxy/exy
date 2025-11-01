@@ -1,8 +1,9 @@
 <script lang="ts">
-  import ImgurInfo from './components/Imgur.svelte'
   import type { ConfigStore } from '../../main/core/stores/config.types'
   import type { MediaServerActivityMapping } from '../../main/core/media-server/types'
   import { IpcChannel } from '../../main/ipc.types'
+  import GettingStarted from './components/GettingStarted.svelte'
+  import ImgurInfo from './components/Imgur.svelte'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
   import Activity from './components/Activity.svelte'
@@ -10,11 +11,10 @@
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
-  import GettingStarted from './components/GettingStarted.svelte'
 
-  let config: ConfigStore
-  let hasMediaServers: boolean
-  let activities: MediaServerActivityMapping = {}
+  let config: ConfigStore = $state()
+  let hasMediaServers: boolean = $state()
+  let activities: MediaServerActivityMapping = $state({})
 
   window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
@@ -80,4 +80,6 @@
     </hgroup>
     <DebugAndReset {config} />
   </div>
+{:else}
+  No config.
 {/if}

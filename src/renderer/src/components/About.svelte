@@ -4,7 +4,7 @@
   import type { Update } from '../../../main/core/updater/types'
   import { IpcChannel } from '../../../main/ipc.types'
 
-  let update: Update
+  let update: Update = $state()
 
   window.electron.ipcRenderer.send(IpcChannel.UpdateAvailable) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.UpdateAvailable, (_, newUpdate: Update) => {

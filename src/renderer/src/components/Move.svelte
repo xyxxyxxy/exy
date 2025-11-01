@@ -1,14 +1,31 @@
 <script lang="ts">
-  export let isFirst = false
-  export let isLast = false
+  interface Props {
+    isFirst?: boolean
+    isLast?: boolean
+    moveUp: () => void
+    moveDown: () => void
+  }
 
-  export let moveUp: () => void
-  export let moveDown: () => void
+  let { isFirst = false, isLast = false, moveUp, moveDown }: Props = $props()
 </script>
 
 <div>
-  <button class="up" disabled={isFirst} on:click|preventDefault={moveUp}>↑</button>
-  <button class="down" disabled={isLast} on:click|preventDefault={moveDown}>↓</button>
+  <button
+    class="up"
+    disabled={isFirst}
+    onclick={(event) => {
+      event.preventDefault()
+      moveUp()
+    }}>↑</button
+  >
+  <button
+    class="down"
+    disabled={isLast}
+    onclick={(event) => {
+      event.preventDefault()
+      moveDown()
+    }}>↓</button
+  >
 </div>
 
 <style>

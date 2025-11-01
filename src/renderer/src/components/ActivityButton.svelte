@@ -6,13 +6,17 @@
   import Move from './Move.svelte'
 
   // ID is optional, because it's unset for new buttons.
-  export let externalLink: null | (Omit<ExternalLinkConfig, 'id'> & { id?: string }) = null
 
-  export let isFirst = false
-  export let isLast = false
+  interface Props {
+    externalLink?: null | (Omit<ExternalLinkConfig, 'id'> & { id?: string })
+    isFirst?: boolean
+    isLast?: boolean
+  }
 
-  let isOpen
-  let hasChanges
+  let { externalLink = $bindable(null), isFirst = false, isLast = false }: Props = $props()
+
+  let isOpen = $state(false)
+  let hasChanges = $state(false)
 
   if (!externalLink) reset()
 
@@ -55,7 +59,7 @@
 
 <div class="flex">
   <details bind:open={isOpen}>
-    <!-- svelte-ignore a11y-no-redundant-roles -->
+    <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary
       role="button"
       class:outline={!externalLink.id}
@@ -80,7 +84,10 @@
           type="checkbox"
           role="switch"
           checked={externalLink.isActive}
-          on:click|preventDefault={toggleActive}
+          onclick={(event) => {
+            event.preventDefault()
+            toggleActive()
+          }}
           disabled={!externalLink.id}
         />
         {`〔 ${externalLink.label} 〕` ||
@@ -89,7 +96,14 @@
     </summary>
 
     <article>
-      <form action="submit" on:submit|preventDefault={save} on:input={changed}>
+      <form
+        action="submit"
+        onsubmit={(event) => {
+          event.preventDefault()
+          save()
+        }}
+        oninput={changed}
+      >
         <div class="grid">
           <label>
             For media type
@@ -137,7 +151,7 @@
         {/if}
         <div class="grid">
           {#if externalLink.id}
-            <button type="button" class="secondary" on:click={deleteExternalLink}>Delete</button>
+            <button type="button" class="secondary" onclick={deleteExternalLink}>Delete</button>
           {/if}
           <button type="submit">Save</button>
         </div>

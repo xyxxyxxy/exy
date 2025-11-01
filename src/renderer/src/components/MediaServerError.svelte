@@ -1,11 +1,10 @@
 <script lang="ts">
   import type { ConnectMediaServerError } from '../../../main/ipc.types'
-  import { beforeUpdate } from 'svelte'
 
-  export let error: ConnectMediaServerError | undefined
-  let text: string
+  let { error }: { error: ConnectMediaServerError | undefined } = $props()
+  let text: string = $state()
 
-  beforeUpdate(() => {
+  $effect.pre(() => {
     if (!error) {
       text = ''
       return

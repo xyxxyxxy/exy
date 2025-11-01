@@ -1,10 +1,14 @@
 <script lang="ts">
   import { IpcChannel } from '../../../main/ipc.types'
 
-  export let clientId: string
-  let isBusy = false
-  let isInvalid: boolean | null = null
-  let helperText: string = ''
+  interface Props {
+    clientId: string
+  }
+
+  let { clientId = $bindable() }: Props = $props()
+  let isBusy = $state(false)
+  let isInvalid: boolean | null = $state(null)
+  let helperText: string = $state('')
 
   function resetValidation(): void {
     isInvalid = null
@@ -38,10 +42,10 @@
         disabled={isBusy}
         aria-invalid={isInvalid}
         aria-describedby="helper"
-        on:input={resetValidation}
+        oninput={resetValidation}
       />
       <small id="helper">{helperText}</small></label
     >
-    <button type="submit" on:click={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
+    <button type="submit" onclick={save} aria-busy={isBusy} disabled={isBusy}>Save</button>
   </form>
 </article>

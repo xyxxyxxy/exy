@@ -50,6 +50,19 @@ export enum ActivityMediaType {
   Book = 'Book' // Books are special (Jellyfin only).
 }
 
+export function isActivityItemType(str: string): str is ActivityItemType {
+  return [
+    'Songs',
+    'Episodes',
+    'Movies',
+    'MusicVideos',
+    'LiveTv',
+    'LiveRecordings',
+    'OtherVideos',
+    'Books'
+  ].includes(str)
+}
+
 export enum ActivityItemType {
   // Note: Emby does not have a special identifier for audio books.
   Songs = 'Songs',

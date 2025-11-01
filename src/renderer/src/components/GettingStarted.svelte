@@ -1,6 +1,10 @@
 <script lang="ts">
-  export let isConnected: boolean
-  export let isImgurSet: boolean
+  interface Props {
+    isConnected: boolean;
+    isImgurSet: boolean;
+  }
+
+  let { isConnected, isImgurSet }: Props = $props();
 
   const connectText = `Connect to Emby/Jellyfin`
   const imgurText = `Set Imgur client ID`

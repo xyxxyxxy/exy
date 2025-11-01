@@ -2,14 +2,14 @@
   import { ConnectionStatus } from '../../../main/core/discord/types'
   import { IpcChannel } from '../../../main/ipc.types'
 
-  let isReady: boolean
-  let statusText: string
+  let isReady: boolean = $state()
+  let statusText: string = $state()
 
-  let isTesting: boolean
+  let isTesting: boolean = $state()
 
   const errorStyle = 'color: var(--pico-del-color);'
   const successStyle = 'color: var(--pico-ins-color);'
-  let statusStyle: string
+  let statusStyle: string = $state()
 
   window.electron.ipcRenderer.send(IpcChannel.DiscordStatus) // Get initial value.
   window.electron.ipcRenderer.on(IpcChannel.DiscordStatus, (_, newStatus: ConnectionStatus) => {
@@ -23,7 +23,7 @@
   })
 
   let testTextOptions = ['test', 'test activity', 'data', 'something', 'some data']
-  let testContent: string | null = null
+  let testContent: string | null = $state(null)
   let testResetTimer
 
   function getRandomTestText(): string {
@@ -39,7 +39,7 @@
 
   function test(): void {
     if (testResetTimer) clearTimeout(testResetTimer)
-    window.electron.ipcRenderer.send(IpcChannel.TestDiscordActivity, testContent)
+    ipcRenderer.send(IpcChannel.TestDiscordActivity, testContent)
     isTesting = false
     // Reset test state after some time.
     testResetTimer = setTimeout(() => (testContent = null), 10 * 1000)
@@ -50,7 +50,7 @@
   <header>
     {#if isReady}🟢{/if} <span aria-busy={!isReady} style={statusStyle}>{statusText}</span>
   </header>
-  <button on:click={testClick} disabled={!isReady || isTesting} aria-busy={isTesting}>
+  <button onclick={testClick} disabled={!isReady || isTesting} aria-busy={isTesting}>
     {isTesting
       ? `Sending ${testContent}`
       : testContent

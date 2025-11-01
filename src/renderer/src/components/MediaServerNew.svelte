@@ -4,15 +4,19 @@
   import MediaServerError from './MediaServerError.svelte'
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
 
-  export let hasMediaServers: boolean
-  let isOpen: boolean = !hasMediaServers
-  let isBusy = false
+  interface Props {
+    hasMediaServers: boolean
+  }
 
-  let isInvalidConnection: boolean | null = null
-  let isInvalidAuthentication: boolean | null = null
+  let { hasMediaServers }: Props = $props()
+  let isOpen: boolean = $state(!hasMediaServers)
+  let isBusy = $state(false)
 
-  let config: NewMediaServerConfig
-  let connectionError: ConnectMediaServerError
+  let isInvalidConnection: boolean | null = $state(null)
+  let isInvalidAuthentication: boolean | null = $state(null)
+
+  let config: NewMediaServerConfig = $state()
+  let connectionError: ConnectMediaServerError = $state()
 
   reset()
 
@@ -41,6 +45,7 @@
     resetValidation()
     window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, config)
   }
+
   window.electron.ipcRenderer.on(
     IpcChannel.ConnectMediaServer,
     (_, error?: ConnectMediaServerError) => {
@@ -80,12 +85,17 @@
 </script>
 
 <details bind:open={isOpen}>
-  <!-- svelte-ignore a11y-no-redundant-roles -->
+  <!-- svelte-ignore a11y_no_redundant_roles -->
   <summary role="button" class="outline">
     ✨ {hasMediaServers ? 'Add connection' : 'Connect your first media-server'}
   </summary>
   <article>
-    <form on:submit|preventDefault={submit}>
+    <form
+      onsubmit={(event) => {
+        event.preventDefault()
+        submit()
+      }}
+    >
       <MediaServerTypeSelect {config} disabled={isBusy}></MediaServerTypeSelect>
 
       <div class="grid">
@@ -93,9 +103,9 @@
           >Protocol
           <select
             bind:value={config.protocol}
-            on:change={onProtocolChange}
+            onchange={onProtocolChange}
             disabled={isBusy}
-            on:input={resetValidation}
+            oninput={resetValidation}
             aria-invalid={isInvalidConnection}
           >
             <option value="http" selected>🔓 HTTP</option>
@@ -109,7 +119,7 @@
             bind:value={config.address}
             required
             disabled={isBusy}
-            on:input={resetValidation}
+            oninput={resetValidation}
             aria-invalid={isInvalidConnection}
           />
         </label>
@@ -121,7 +131,7 @@
             bind:value={config.port}
             required
             disabled={isBusy}
-            on:input={resetValidation}
+            oninput={resetValidation}
             aria-invalid={isInvalidConnection}
           />
         </label>
@@ -135,7 +145,7 @@
             bind:value={config.username}
             required
             disabled={isBusy}
-            on:input={resetValidation}
+            oninput={resetValidation}
             aria-invalid={isInvalidAuthentication}
           />
         </label>
@@ -145,7 +155,7 @@
             placeholder="Password"
             bind:value={config.password}
             disabled={isBusy}
-            on:input={resetValidation}
+            oninput={resetValidation}
             aria-invalid={isInvalidAuthentication}
           />
         </label>

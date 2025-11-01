@@ -3,7 +3,11 @@
   import { name } from '../../../../package.json'
   import ActivityButton from './ActivityButton.svelte'
 
-  export let config: ConfigStore
+  interface Props {
+    config: ConfigStore;
+  }
+
+  let { config }: Props = $props();
 </script>
 
 <section>
@@ -24,7 +28,7 @@
 
   <h4 id="button-faq">Button FaQ</h4>
   <details>
-    <!-- svelte-ignore a11y-no-redundant-roles -->
+    <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary role="button" class="secondary outline">❔ What buttons are added</summary>
     <article>
       <ol>
@@ -44,7 +48,7 @@
   </details>
 
   <details>
-    <!-- svelte-ignore a11y-no-redundant-roles -->
+    <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary role="button" class="secondary outline" id="help-predefined-targets"
       >❔ What predefined target is available for a given media type</summary
     >
@@ -62,7 +66,7 @@
   </details>
 
   <details>
-    <!-- svelte-ignore a11y-no-redundant-roles -->
+    <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary role="button" class="secondary outline" id="help-public-content"
       >❔ How does the YouTube/BitChute target work</summary
     >

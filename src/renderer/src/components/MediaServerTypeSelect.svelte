@@ -5,8 +5,12 @@
   import embyLogo from '../assets/emby.svg'
   import jellyfinLogo from '../assets/jellyfin.svg'
 
-  export let config: NewMediaServerConfig | MediaServerConfig
-  export let disabled: boolean
+  interface Props {
+    config: NewMediaServerConfig | MediaServerConfig;
+    disabled: boolean;
+  }
+
+  let { config = $bindable(), disabled }: Props = $props();
 </script>
 
 <div class="flex">
