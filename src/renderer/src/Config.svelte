@@ -3,7 +3,6 @@
   import type { MediaServerActivityMapping } from '../../main/core/media-server/types'
   import { IpcChannel } from '../../main/ipc.types'
   import GettingStarted from './components/GettingStarted.svelte'
-  import ImgurInfo from './components/Imgur.svelte'
   import MediaServer from './components/MediaServer.svelte'
   import MediaServerNew from './components/MediaServerNew.svelte'
   import Activity from './components/Activity.svelte'
@@ -31,10 +30,7 @@
 
 {#if config}
   <div class="container">
-    <GettingStarted
-      isConnected={!!config.mediaServers.length}
-      isImgurSet={!!config.imgurClientId}
-    />
+    <GettingStarted isConnected={!!config.mediaServers.length} />
     <General {config} />
     <hgroup>
       <h2 id="connections">Connections 🔮</h2>
@@ -68,12 +64,6 @@
       <p>Personalize the linked content.</p>
     </hgroup>
     <ActivityButtons {config} />
-
-    <hgroup>
-      <h3 id="imgur">Imgur 🌠</h3>
-      <p>Making images publicly available while keeping media-servers private.</p>
-    </hgroup>
-    <ImgurInfo {config} />
 
     <hgroup>
       <h2>Attributions 🌠</h2>

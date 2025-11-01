@@ -48,10 +48,6 @@ export const configSchema: Schema<ConfigStore> = {
       }
     }
   },
-  imgurClientId: {
-    type: ['string', 'null'],
-    default: null
-  },
   externalLinks: {
     type: 'array',
     default: [

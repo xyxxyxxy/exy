@@ -22,7 +22,7 @@ const configStore = new Store<ConfigStore>({
   },
   migrations: {
     '1.1.0': (store): void => {
-      // TODO remove imgur
+      store.delete('imgurClientId' as keyof ConfigStore)
     },
     '0.4.0': (store): void => {
       const activity = store.get('activity')
@@ -126,10 +126,6 @@ export function toggleIgnoredMediaType(type: ActivityItemType): void {
 
 export function toggleConfigFlag(selector: ConfigSelector): void {
   configStore.set(selector, !configStore.get(selector.toString()))
-}
-
-export function setImgurClientId(clientId: string | null): void {
-  configStore.set(ConfigSelector.ImgurClientId, clientId)
 }
 
 export function saveExternalLink(newOrUpdated: ExternalLinkConfig): void {

@@ -5,7 +5,6 @@ export type ConfigStore = {
   isStartupEnabled: boolean
   ignoredTypes: IgnoredMediaItemTypes
   mediaServers: Array<MediaServerConfig>
-  imgurClientId: string | null
   isPlayStateShown: boolean
   isLogoUsed: boolean
   isThemeUsed: boolean
@@ -46,7 +45,6 @@ export enum ConfigSelector {
   IsThemeUsed = 'isThemeUsed',
   ExternalLinks = 'externalLinks',
   MediaServers = 'mediaServers',
-  ImgurClientId = 'imgurClientId',
   IsDebugLoggingEnabled = 'isDebugLoggingEnabled'
 }
 
