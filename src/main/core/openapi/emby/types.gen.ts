@@ -44,8 +44,8 @@ export type BaseItemDto = {
     /**
      * The date created.
      */
-    DateCreated?: Date | null;
-    DateModified?: Date | null;
+    DateCreated?: string | null;
+    DateModified?: string | null;
     VideoCodec?: string;
     AudioCodec?: string;
     AverageFrameRate?: number | null;
@@ -78,7 +78,7 @@ export type BaseItemDto = {
     /**
      * The premiere date.
      */
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     /**
      * The external urls.
      */
@@ -91,7 +91,7 @@ export type BaseItemDto = {
      * The critic rating.
      */
     CriticRating?: number | null;
-    GameSystemId?: bigint | null;
+    GameSystemId?: number | null;
     AsSeries?: boolean | null;
     /**
      * The game system.
@@ -134,8 +134,8 @@ export type BaseItemDto = {
     /**
      * The run time ticks.
      */
-    RunTimeTicks?: bigint | null;
-    Size?: bigint | null;
+    RunTimeTicks?: number | null;
+    Size?: number | null;
     FileName?: string;
     Bitrate?: number | null;
     /**
@@ -341,7 +341,7 @@ export type BaseItemDto = {
     /**
      * The end date.
      */
-    EndDate?: Date | null;
+    EndDate?: string | null;
     /**
      * The locked fields.
      */
@@ -375,7 +375,7 @@ export type BaseItemDto = {
     /**
      * The start date of the recording, in UTC.
      */
-    StartDate?: Date | null;
+    StartDate?: string | null;
     /**
      * The completion percentage.
      */
@@ -466,7 +466,7 @@ export type MediaSourceInfo = {
     ProbePath?: string;
     ProbeProtocol?: MediaProtocol;
     Container?: string;
-    Size?: bigint | null;
+    Size?: number | null;
     Name?: string;
     SortName?: string;
     /**
@@ -474,11 +474,11 @@ export type MediaSourceInfo = {
      */
     IsRemote?: boolean;
     HasMixedProtocols?: boolean;
-    RunTimeTicks?: bigint | null;
-    ContainerStartTimeTicks?: bigint | null;
+    RunTimeTicks?: number | null;
+    ContainerStartTimeTicks?: number | null;
     SupportsTranscoding?: boolean;
     TrancodeLiveStartIndex?: number | null;
-    WallClockStart?: Date | null;
+    WallClockStart?: string | null;
     SupportsDirectStream?: boolean;
     SupportsDirectPlay?: boolean;
     IsInfiniteStream?: boolean;
@@ -536,7 +536,7 @@ export type ChapterInfo = {
     /**
      * The start position ticks.
      */
-    StartPositionTicks?: bigint;
+    StartPositionTicks?: number;
     /**
      * The name.
      */
@@ -623,7 +623,7 @@ export type MediaStream = {
      * Applies to: `MediaBrowser.Model.Entities.MediaStreamType.Video`, `MediaBrowser.Model.Entities.MediaStreamType.Audio`, `MediaBrowser.Model.Entities.MediaStreamType.Subtitle`.
      * Actual type: `System.TimeSpan`.
      */
-    StreamStartTimeTicks?: bigint | null;
+    StreamStartTimeTicks?: number | null;
     /**
      * The time\-base.
      *
@@ -929,7 +929,7 @@ export type NameLongIdPair = {
     /**
      * The identifier.
      */
-    Id?: bigint;
+    Id?: number;
 };
 
 /**
@@ -952,7 +952,7 @@ export type UserItemDataDto = {
     /**
      * The playback position ticks.
      */
-    PlaybackPositionTicks?: bigint;
+    PlaybackPositionTicks?: number;
     /**
      * The play count.
      */
@@ -964,7 +964,7 @@ export type UserItemDataDto = {
     /**
      * The last played date.
      */
-    LastPlayedDate?: Date | null;
+    LastPlayedDate?: string | null;
     /**
      * A value indicating whether this `MediaBrowser.Model.Dto.UserItemDataDto` is played.
      */
@@ -1038,7 +1038,7 @@ export type DevicesDeviceInfo = {
      * The identifier.
      */
     Id?: string;
-    InternalId?: bigint;
+    InternalId?: number;
     ReportedDeviceId?: string;
     /**
      * The last name of the user.
@@ -1056,7 +1056,7 @@ export type DevicesDeviceInfo = {
      * The last user identifier.
      */
     LastUserId?: string;
-    DateLastActivity?: Date;
+    DateLastActivity?: string;
     IconUrl?: string;
     IpAddress?: string;
 };
@@ -1159,7 +1159,7 @@ export type PackageInfo = {
     /**
      * The expiration date for this package.
      */
-    expDate?: Date;
+    expDate?: string;
     /**
      * The versions.
      */
@@ -1220,7 +1220,7 @@ export type PackageVersionInfo = {
     targetFilename?: string;
     infoUrl?: string;
     runtimes?: string;
-    timestamp?: Date | null;
+    timestamp?: string | null;
 };
 
 /**
@@ -1321,11 +1321,11 @@ export type TaskResult = {
     /**
      * The start time UTC.
      */
-    StartTimeUtc?: Date;
+    StartTimeUtc?: string;
     /**
      * The end time UTC.
      */
-    EndTimeUtc?: Date;
+    EndTimeUtc?: string;
     Status?: TaskCompletionStatus;
     /**
      * The name.
@@ -1367,17 +1367,17 @@ export type TaskTriggerInfo = {
     /**
      * The time of day.
      */
-    TimeOfDayTicks?: bigint | null;
+    TimeOfDayTicks?: number | null;
     /**
      * The interval.
      */
-    IntervalTicks?: bigint | null;
+    IntervalTicks?: number | null;
     SystemEvent?: SystemEvent;
     DayOfWeek?: DayOfWeek;
     /**
      * The maximum runtime ticks.
      */
-    MaxRuntimeTicks?: bigint | null;
+    MaxRuntimeTicks?: number | null;
 };
 
 /**
@@ -1427,14 +1427,14 @@ export type SessionSessionInfo = {
     /**
      * The last activity date.
      */
-    LastActivityDate?: Date;
+    LastActivityDate?: string;
     /**
      * The name of the device.
      */
     DeviceName?: string;
     DeviceType?: string;
     NowPlayingItem?: BaseItemDto;
-    InternalDeviceId?: bigint;
+    InternalDeviceId?: number;
     /**
      * The device id.
      */
@@ -1459,7 +1459,7 @@ export type PlayerStateInfo = {
     /**
      * The now playing position ticks.
      */
-    PositionTicks?: bigint | null;
+    PositionTicks?: number | null;
     /**
      * A value indicating whether this instance can seek.
      */
@@ -1492,7 +1492,7 @@ export type PlayerStateInfo = {
     PlayMethod?: PlayMethod;
     RepeatMode?: RepeatMode;
     SleepTimerMode?: SleepTimerMode;
-    SleepTimerEndTime?: Date | null;
+    SleepTimerEndTime?: string | null;
     SubtitleOffset?: number;
     Shuffle?: boolean;
     PlaybackRate?: number;
@@ -1517,7 +1517,7 @@ export type SessionUserInfo = {
      * The name of the user.
      */
     UserName?: string;
-    UserInternalId?: bigint;
+    UserInternalId?: number;
 };
 
 export type TranscodingInfo = {
@@ -1681,7 +1681,7 @@ export type MbBackupBackupInfo = {
     Name?: string;
     CanRestore?: boolean;
     IsFullBackup?: boolean;
-    DateCreated?: Date;
+    DateCreated?: string;
     Users?: Array<NameIdPair>;
 };
 
@@ -1715,7 +1715,7 @@ export type DevicesLocalFileInfo = {
     Id?: string;
     Album?: string;
     MimeType?: string;
-    DateCreated?: Date | null;
+    DateCreated?: string | null;
 };
 
 export type DisplayPreferences = {
@@ -1768,7 +1768,7 @@ export type DlnaProfilesDlnaProfile = {
     Name?: string;
     Id?: string;
     SupportedMediaTypes?: string;
-    MaxStreamingBitrate?: bigint | null;
+    MaxStreamingBitrate?: number | null;
     MusicStreamingTranscodingBitrate?: number | null;
     MaxStaticMusicBitrate?: number | null;
     DeclaredFeatures?: Array<string>;
@@ -2109,10 +2109,10 @@ export type ItemCounts = {
 };
 
 export type PersistenceIntroDebugInfo = {
-    Id?: bigint;
+    Id?: number;
     Path?: string;
-    Start?: bigint;
-    End?: bigint;
+    Start?: number;
+    End?: number;
 };
 
 export type LibraryOptionsResult = {
@@ -2278,12 +2278,12 @@ export type LiveStreamRequest = {
     OpenToken?: string;
     UserId?: string;
     PlaySessionId?: string;
-    MaxStreamingBitrate?: bigint | null;
-    StartTimeTicks?: bigint | null;
+    MaxStreamingBitrate?: number | null;
+    StartTimeTicks?: number | null;
     AudioStreamIndex?: number | null;
     SubtitleStreamIndex?: number | null;
     MaxAudioChannels?: number | null;
-    ItemId?: bigint;
+    ItemId?: number;
     DeviceProfile?: DeviceProfile;
     EnableDirectPlay?: boolean;
     EnableDirectStream?: boolean;
@@ -2300,7 +2300,7 @@ export type DeviceProfile = {
     Name?: string;
     Id?: string;
     SupportedMediaTypes?: string;
-    MaxStreamingBitrate?: bigint | null;
+    MaxStreamingBitrate?: number | null;
     MusicStreamingTranscodingBitrate?: number | null;
     MaxStaticMusicBitrate?: number | null;
     DeclaredFeatures?: Array<string>;
@@ -2345,7 +2345,7 @@ export type LiveTvListingsProviderInfo = {
     KidsCategories?: Array<string>;
     MovieCategories?: Array<string>;
     ChannelMappings?: Array<NameValuePair>;
-    TvgShiftTicks?: bigint;
+    TvgShiftTicks?: number;
     MoviePrefix?: string;
     PreferredLanguage?: string;
     UserAgent?: string;
@@ -2403,8 +2403,8 @@ export type ApiEpgRow = {
 export type ApiBaseItemsRequest = {
     IsSpecialEpisode?: boolean | null;
     Is4K?: boolean | null;
-    MinDateCreated?: Date | null;
-    MaxDateCreated?: Date | null;
+    MinDateCreated?: string | null;
+    MaxDateCreated?: string | null;
     EnableTotalRecordCount?: boolean;
     MatchAnyWord?: boolean;
     IsDuplicate?: boolean | null;
@@ -2461,7 +2461,7 @@ export type LiveTvTimerInfoDto = {
     /**
      * The run time ticks.
      */
-    RunTimeTicks?: bigint | null;
+    RunTimeTicks?: number | null;
     ProgramInfo?: BaseItemDto;
     TimerType?: LiveTvTimerType;
     /**
@@ -2499,11 +2499,11 @@ export type LiveTvTimerInfoDto = {
     /**
      * The start date of the recording, in UTC.
      */
-    StartDate?: Date;
+    StartDate?: string;
     /**
      * The end date of the recording, in UTC.
      */
-    EndDate?: Date;
+    EndDate?: string;
     /**
      * The priority.
      */
@@ -2628,11 +2628,11 @@ export type LiveTvSeriesTimerInfoDto = {
     /**
      * The start date of the recording, in UTC.
      */
-    StartDate?: Date;
+    StartDate?: string;
     /**
      * The end date of the recording, in UTC.
      */
-    EndDate?: Date;
+    EndDate?: string;
     /**
      * The priority.
      */
@@ -2679,7 +2679,7 @@ export type LiveTvSeriesTimerInfo = {
      */
     ChannelId?: string;
     ChannelIds?: Array<string>;
-    ParentFolderId?: bigint;
+    ParentFolderId?: number;
     /**
      * The program identifier.
      */
@@ -2696,11 +2696,11 @@ export type LiveTvSeriesTimerInfo = {
     /**
      * The start date of the recording, in UTC.
      */
-    StartDate?: Date;
+    StartDate?: string;
     /**
      * The end date of the recording, in UTC.
      */
-    EndDate?: Date;
+    EndDate?: string;
     /**
      * A value indicating whether \[record any time\].
      */
@@ -2751,11 +2751,11 @@ export type LiveTvGuideInfo = {
     /**
      * The start date.
      */
-    StartDate?: Date;
+    StartDate?: string;
     /**
      * The end date.
      */
-    EndDate?: Date;
+    EndDate?: string;
 };
 
 export type ApiAvailableRecordingOptions = {
@@ -2852,7 +2852,7 @@ export type RecommendationDto = {
     Items?: Array<BaseItemDto>;
     RecommendationType?: RecommendationType;
     BaselineItemName?: string;
-    CategoryId?: bigint;
+    CategoryId?: number;
 };
 
 export type RecommendationType = 'SimilarToRecentlyPlayed' | 'SimilarToLikedItem' | 'HasDirectorFromRecentlyPlayed' | 'HasActorFromRecentlyPlayed' | 'HasLikedDirector' | 'HasLikedActor';
@@ -2907,8 +2907,8 @@ export type PlaybackStartInfo = {
      * A value indicating whether this instance is muted.
      */
     IsMuted?: boolean;
-    RunTimeTicks?: bigint | null;
-    PlaybackStartTimeTicks?: bigint | null;
+    RunTimeTicks?: number | null;
+    PlaybackStartTimeTicks?: number | null;
     /**
      * The volume level.
      */
@@ -2919,7 +2919,7 @@ export type PlaybackStartInfo = {
     PlayMethod?: PlayMethod;
     RepeatMode?: RepeatMode;
     SleepTimerMode?: SleepTimerMode;
-    SleepTimerEndTime?: Date | null;
+    SleepTimerEndTime?: string | null;
     Shuffle?: boolean;
     SubtitleOffset?: number;
     PlaybackRate?: number;
@@ -2944,11 +2944,11 @@ export type PlaybackStartInfo = {
     /**
      * The position ticks.
      */
-    PositionTicks?: bigint | null;
+    PositionTicks?: number | null;
 };
 
 export type QueueItem = {
-    Id?: bigint;
+    Id?: number;
     PlaylistItemId?: string;
 };
 
@@ -2974,12 +2974,12 @@ export type SyncJob = {
     /**
      * The identifier.
      */
-    Id?: bigint;
+    Id?: number;
     /**
      * The device identifier.
      */
     TargetId?: string;
-    InternalTargetId?: bigint;
+    InternalTargetId?: number;
     /**
      * The name of the target.
      */
@@ -3003,7 +3003,7 @@ export type SyncJob = {
     /**
      * The parent identifier.
      */
-    ParentId?: bigint;
+    ParentId?: number;
     /**
      * The current progress.
      */
@@ -3016,7 +3016,7 @@ export type SyncJob = {
     /**
      * The user identifier.
      */
-    UserId?: bigint;
+    UserId?: number;
     /**
      * A value indicating whether \[unwatched only\].
      */
@@ -3032,16 +3032,16 @@ export type SyncJob = {
     /**
      * The requested item ids.
      */
-    RequestedItemIds?: Array<bigint>;
-    ItemId?: bigint;
+    RequestedItemIds?: Array<number>;
+    ItemId?: number;
     /**
      * The date created.
      */
-    DateCreated?: Date;
+    DateCreated?: string;
     /**
      * The date last modified.
      */
-    DateLastModified?: Date;
+    DateLastModified?: string;
     /**
      * The item count.
      */
@@ -3061,18 +3061,18 @@ export type QueryResultSyncJobItem = {
 };
 
 export type SyncJobItem = {
-    Id?: bigint;
-    JobId?: bigint;
-    ItemId?: bigint;
+    Id?: number;
+    JobId?: number;
+    ItemId?: number;
     ItemName?: string;
     MediaSourceId?: string;
     MediaSource?: MediaSourceInfo;
     TargetId?: string;
-    InternalTargetId?: bigint;
+    InternalTargetId?: number;
     OutputPath?: string;
     Status?: SyncJobItemStatus;
     Progress?: number | null;
-    DateCreated?: Date;
+    DateCreated?: string;
     PrimaryImageItemId?: string;
     PrimaryImageTag?: string;
     TemporaryPath?: string;
@@ -3144,8 +3144,8 @@ export type UserAction = {
     UserId?: string;
     ItemId?: string;
     Type?: UserActionType;
-    Date?: Date;
-    PositionTicks?: bigint | null;
+    Date?: string;
+    PositionTicks?: number | null;
     Played?: boolean | null;
     IsFavorite?: boolean | null;
 };
@@ -3154,7 +3154,7 @@ export type UserActionType = 'PlayedItem' | 'MarkPlayed' | 'MarkFavorite';
 
 export type SyncDataRequest = {
     LocalItemIds?: Array<string>;
-    InternalTargetIds?: Array<bigint>;
+    InternalTargetIds?: Array<number>;
 };
 
 export type SyncDataResponse = {
@@ -3547,7 +3547,7 @@ export type UserDto = {
      * The name of the connect user.
      */
     ConnectUserName?: string;
-    DateCreated?: Date | null;
+    DateCreated?: string | null;
     ConnectLinkType?: ConnectUserLinkType;
     /**
      * The id.
@@ -3569,11 +3569,11 @@ export type UserDto = {
     /**
      * The last login date.
      */
-    LastLoginDate?: Date | null;
+    LastLoginDate?: string | null;
     /**
      * The last activity date.
      */
-    LastActivityDate?: Date | null;
+    LastActivityDate?: string | null;
     Configuration?: UserConfiguration;
     Policy?: UserPolicy;
     /**
@@ -3645,7 +3645,7 @@ export type UserPolicy = {
      * A value indicating whether this instance is disabled.
      */
     IsDisabled?: boolean;
-    LockedOutDate?: bigint;
+    LockedOutDate?: number;
     /**
      * The max parental rating.
      */
@@ -3753,7 +3753,7 @@ export type ForgotPasswordResult = {
     /**
      * The pin expiration date.
      */
-    PinExpirationDate?: Date | null;
+    PinExpirationDate?: string | null;
 };
 
 export type ForgotPasswordAction = 'ContactAdmin' | 'PinCode';
@@ -3909,7 +3909,7 @@ export type VideoMediaTypes = 'Unknown' | 'copy' | 'flv1' | 'h263' | 'h263p' | '
  *
  */
 export type BitRate = {
-    bps?: bigint;
+    bps?: number;
     kbps?: number;
     Mbps?: number;
 };
@@ -4085,7 +4085,7 @@ export type ExternalIdInfo = {
 
 export type RemoteSearchQueryTrailerInfo = {
     SearchInfo?: TrailerInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4113,7 +4113,7 @@ export type TrailerInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
@@ -4134,9 +4134,9 @@ export type RemoteSearchResult = {
     ParentIndexNumber?: number | null;
     SortIndexNumber?: number | null;
     SortParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
-    StartDate?: Date | null;
-    EndDate?: Date | null;
+    PremiereDate?: string | null;
+    StartDate?: string | null;
+    EndDate?: string | null;
     ImageUrl?: string;
     SearchProviderName?: string;
     GameSystem?: string;
@@ -4148,7 +4148,7 @@ export type RemoteSearchResult = {
 
 export type RemoteSearchQueryBookInfo = {
     SearchInfo?: BookInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4177,14 +4177,14 @@ export type BookInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryMovieInfo = {
     SearchInfo?: MovieInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4212,21 +4212,21 @@ export type MovieInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQuerySeriesInfo = {
     SearchInfo?: SeriesInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
 };
 
 export type SeriesInfo = {
-    EpisodeAirDate?: Date | null;
+    EpisodeAirDate?: string | null;
     DisplayOrder?: SeriesDisplayOrder;
     /**
      * The name.
@@ -4249,7 +4249,7 @@ export type SeriesInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
@@ -4258,7 +4258,7 @@ export type SeriesDisplayOrder = 'Aired' | 'Dvd' | 'Absolute';
 
 export type RemoteSearchQueryGameInfo = {
     SearchInfo?: GameInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4286,14 +4286,14 @@ export type GameInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryItemLookupInfo = {
     SearchInfo?: ItemLookupInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4321,14 +4321,14 @@ export type ItemLookupInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryMusicVideoInfo = {
     SearchInfo?: MusicVideoInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4357,14 +4357,14 @@ export type MusicVideoInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryPersonLookupInfo = {
     SearchInfo?: PersonLookupInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4392,14 +4392,14 @@ export type PersonLookupInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryAlbumInfo = {
     SearchInfo?: AlbumInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4432,7 +4432,7 @@ export type AlbumInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
@@ -4463,14 +4463,14 @@ export type SongInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
 
 export type RemoteSearchQueryArtistInfo = {
     SearchInfo?: ArtistInfo;
-    ItemId?: bigint;
+    ItemId?: number;
     SearchProviderName?: string;
     Providers?: Array<string>;
     IncludeDisabledProviders?: boolean;
@@ -4498,7 +4498,7 @@ export type ArtistInfo = {
     Year?: number | null;
     IndexNumber?: number | null;
     ParentIndexNumber?: number | null;
-    PremiereDate?: Date | null;
+    PremiereDate?: string | null;
     IsAutomated?: boolean;
     EnableAdultMetadata?: boolean;
 };
@@ -4540,7 +4540,7 @@ export type ThemeMediaResult = {
     /**
      * The owner id.
      */
-    OwnerId?: bigint;
+    OwnerId?: number;
     Items?: Array<BaseItemDto>;
     TotalRecordCount?: number;
 };
@@ -4571,7 +4571,7 @@ export type ImageInfo = {
     /**
      * The size.
      */
-    Size?: bigint;
+    Size?: number;
 };
 
 /**
@@ -4643,7 +4643,7 @@ export type RokuMetadataApiThumbnailSetInfo = {
 };
 
 export type RokuMetadataApiThumbnailInfo = {
-    PositionTicks?: bigint;
+    PositionTicks?: number;
     ImageTag?: string;
 };
 
@@ -4664,8 +4664,8 @@ export type PlaybackErrorCode = 'NotAllowed' | 'NoCompatibleStream' | 'RateLimit
 export type PlaybackInfoRequest = {
     Id?: string;
     UserId?: string;
-    MaxStreamingBitrate?: bigint | null;
-    StartTimeTicks?: bigint | null;
+    MaxStreamingBitrate?: number | null;
+    StartTimeTicks?: number | null;
     AudioStreamIndex?: number | null;
     SubtitleStreamIndex?: number | null;
     MaxAudioChannels?: number | null;
@@ -4879,8 +4879,8 @@ export type PlaybackProgressInfo = {
      * A value indicating whether this instance is muted.
      */
     IsMuted?: boolean;
-    RunTimeTicks?: bigint | null;
-    PlaybackStartTimeTicks?: bigint | null;
+    RunTimeTicks?: number | null;
+    PlaybackStartTimeTicks?: number | null;
     /**
      * The volume level.
      */
@@ -4891,7 +4891,7 @@ export type PlaybackProgressInfo = {
     PlayMethod?: PlayMethod;
     RepeatMode?: RepeatMode;
     SleepTimerMode?: SleepTimerMode;
-    SleepTimerEndTime?: Date | null;
+    SleepTimerEndTime?: string | null;
     Shuffle?: boolean;
     SubtitleOffset?: number;
     PlaybackRate?: number;
@@ -4916,7 +4916,7 @@ export type PlaybackProgressInfo = {
     /**
      * The position ticks.
      */
-    PositionTicks?: bigint | null;
+    PositionTicks?: number | null;
 };
 
 /**
@@ -4958,7 +4958,7 @@ export type PlaybackStopInfo = {
     /**
      * The position ticks.
      */
-    PositionTicks?: bigint | null;
+    PositionTicks?: number | null;
 };
 
 export type SyncedItemProgress = {
@@ -4968,10 +4968,10 @@ export type SyncedItemProgress = {
 
 export type SyncedItem = {
     ServerId?: string;
-    SyncJobId?: bigint;
+    SyncJobId?: number;
     SyncJobName?: string;
-    SyncJobDateCreated?: Date;
-    SyncJobItemId?: bigint;
+    SyncJobDateCreated?: string;
+    SyncJobItemId?: number;
     OriginalFileName?: string;
     Item?: BaseItemDto;
     UserId?: string;
@@ -4987,15 +4987,15 @@ export type LogFile = {
     /**
      * The date created.
      */
-    DateCreated?: Date;
+    DateCreated?: string;
     /**
      * The date modified.
      */
-    DateModified?: Date;
+    DateModified?: string;
     /**
      * The size.
      */
-    Size?: bigint;
+    Size?: number;
     /**
      * The name.
      */
@@ -5036,7 +5036,7 @@ export type ActivityLogEntry = {
     /**
      * The identifier.
      */
-    Id?: bigint;
+    Id?: number;
     /**
      * The name.
      */
@@ -5060,7 +5060,7 @@ export type ActivityLogEntry = {
     /**
      * The date.
      */
-    Date?: Date;
+    Date?: string;
     /**
      * The user identifier.
      */
@@ -5174,7 +5174,7 @@ export type PlaystateCommand = 'Stop' | 'Pause' | 'Unpause' | 'NextTrack' | 'Pre
 
 export type PlaystateRequest = {
     Command?: PlaystateCommand;
-    SeekPositionTicks?: bigint | null;
+    SeekPositionTicks?: number | null;
     /**
      * The controlling user identifier.
      */
@@ -5205,7 +5205,7 @@ export type RemoteSubtitleInfo = {
     Format?: string;
     Author?: string;
     Comment?: string;
-    DateCreated?: Date | null;
+    DateCreated?: string | null;
     CommunityRating?: number | null;
     DownloadCount?: number | null;
     IsHashMatch?: boolean | null;
@@ -5245,7 +5245,7 @@ export type ApiOnPlaybackProgress = {
     PlaylistLength?: number;
     Shuffle?: boolean;
     SleepTimerMode?: SleepTimerMode;
-    SleepTimerEndTime?: Date | null;
+    SleepTimerEndTime?: string | null;
     EventName?: ProgressEvent;
 };
 
@@ -5300,19 +5300,19 @@ export type GetArtistsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -5352,19 +5352,19 @@ export type GetArtistsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -5736,19 +5736,19 @@ export type GetAudiocodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -5788,19 +5788,19 @@ export type GetAudiocodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -6172,19 +6172,19 @@ export type GetAudiolayoutsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -6224,19 +6224,19 @@ export type GetAudiolayoutsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -6608,19 +6608,19 @@ export type GetChannelsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -6660,19 +6660,19 @@ export type GetChannelsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -7100,19 +7100,19 @@ export type GetContainersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -7152,19 +7152,19 @@ export type GetContainersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -7622,19 +7622,19 @@ export type GetExtendedvideotypesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -7674,19 +7674,19 @@ export type GetExtendedvideotypesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -8097,19 +8097,19 @@ export type GetGamegenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -8149,19 +8149,19 @@ export type GetGamegenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -8533,19 +8533,19 @@ export type GetGenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -8585,19 +8585,19 @@ export type GetGenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -9011,19 +9011,19 @@ export type GetItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -9063,19 +9063,19 @@ export type GetItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -9447,19 +9447,19 @@ export type GetItemtypesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -9499,19 +9499,19 @@ export type GetItemtypesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -9883,19 +9883,19 @@ export type GetMusicgenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -9935,19 +9935,19 @@ export type GetMusicgenresData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -10319,19 +10319,19 @@ export type GetOfficialratingsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -10371,19 +10371,19 @@ export type GetOfficialratingsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -10873,19 +10873,19 @@ export type GetPersonsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -10925,19 +10925,19 @@ export type GetPersonsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -11500,19 +11500,19 @@ export type GetStreamlanguagesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -11552,19 +11552,19 @@ export type GetStreamlanguagesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -11936,19 +11936,19 @@ export type GetStudiosData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -11988,19 +11988,19 @@ export type GetStudiosData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -12372,19 +12372,19 @@ export type GetSubtitlecodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -12424,19 +12424,19 @@ export type GetSubtitlecodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -12870,19 +12870,19 @@ export type GetTagsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -12922,19 +12922,19 @@ export type GetTagsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -13306,19 +13306,19 @@ export type GetTrailersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -13358,19 +13358,19 @@ export type GetTrailersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -13742,19 +13742,19 @@ export type GetVideocodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -13794,19 +13794,19 @@ export type GetVideocodecsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -14178,19 +14178,19 @@ export type GetYearsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -14230,19 +14230,19 @@ export type GetYearsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -14873,19 +14873,19 @@ export type GetArtistsAlbumartistsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -14925,19 +14925,19 @@ export type GetArtistsAlbumartistsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -15309,19 +15309,19 @@ export type GetArtistsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -15361,19 +15361,19 @@ export type GetArtistsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -15745,19 +15745,19 @@ export type GetArtistsInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -15797,19 +15797,19 @@ export type GetArtistsInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -18129,19 +18129,19 @@ export type GetItemsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -18181,19 +18181,19 @@ export type GetItemsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -19177,19 +19177,19 @@ export type GetLivetvChanneltagsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -19229,19 +19229,19 @@ export type GetLivetvChanneltagsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -20392,19 +20392,19 @@ export type GetLivetvEpgData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -20444,19 +20444,19 @@ export type GetLivetvEpgData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -20848,19 +20848,19 @@ export type GetLivetvChannelsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -20900,19 +20900,19 @@ export type GetLivetvChannelsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -21288,19 +21288,19 @@ export type GetLivetvProgramsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -21340,19 +21340,19 @@ export type GetLivetvProgramsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -21729,19 +21729,19 @@ export type PostLivetvProgramsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -21781,19 +21781,19 @@ export type PostLivetvProgramsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -22179,19 +22179,19 @@ export type GetLivetvRecordingsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -22231,19 +22231,19 @@ export type GetLivetvRecordingsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -23154,19 +23154,19 @@ export type GetMusicgenresInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -23206,19 +23206,19 @@ export type GetMusicgenresInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -23788,7 +23788,7 @@ export type GetPlaybackBitratetestData = {
         /**
          * Size
          */
-        Size: bigint;
+        Size: number;
     };
     url: '/Playback/BitrateTest';
 };
@@ -24140,19 +24140,19 @@ export type GetShowsMissingData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -24192,19 +24192,19 @@ export type GetShowsMissingData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -24574,19 +24574,19 @@ export type GetShowsUpcomingData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -24626,19 +24626,19 @@ export type GetShowsUpcomingData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -26787,19 +26787,19 @@ export type GetAlbumsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -26839,19 +26839,19 @@ export type GetAlbumsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -27228,19 +27228,19 @@ export type GetAlbumsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -27280,19 +27280,19 @@ export type GetAlbumsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -27669,19 +27669,19 @@ export type GetArtistsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -27721,19 +27721,19 @@ export type GetArtistsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -28071,7 +28071,7 @@ export type GetAudioByIdUniversalByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
     };
     url: '/Audio/{Id}/universal.{Container}';
 };
@@ -28123,7 +28123,7 @@ export type HeadAudioByIdUniversalByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
     };
     url: '/Audio/{Id}/universal.{Container}';
 };
@@ -28174,7 +28174,7 @@ export type GetAudioByIdUniversalData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
     };
     url: '/Audio/{Id}/universal';
 };
@@ -28225,7 +28225,7 @@ export type HeadAudioByIdUniversalData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
     };
     url: '/Audio/{Id}/universal';
 };
@@ -28316,7 +28316,7 @@ export type GetAudioByIdStreamByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -28451,7 +28451,7 @@ export type HeadAudioByIdStreamByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -28586,7 +28586,7 @@ export type GetAudioByIdStreamData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -28721,7 +28721,7 @@ export type HeadAudioByIdStreamData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -28857,7 +28857,7 @@ export type GetAudioByIdByStreamfilenameData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -28993,7 +28993,7 @@ export type HeadAudioByIdByStreamfilenameData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -29128,7 +29128,7 @@ export type GetAudioByIdMasterM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -29263,7 +29263,7 @@ export type HeadAudioByIdMasterM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -29398,7 +29398,7 @@ export type GetAudioByIdLiveM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -29533,7 +29533,7 @@ export type GetAudioByIdMainM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -30218,19 +30218,19 @@ export type GetGamesByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -30270,19 +30270,19 @@ export type GetGamesByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -31442,19 +31442,19 @@ export type GetItemsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -31494,19 +31494,19 @@ export type GetItemsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -31927,19 +31927,19 @@ export type GetItemsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -31979,19 +31979,19 @@ export type GetItemsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -32600,19 +32600,19 @@ export type GetItemsByIdThememediaData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -32652,19 +32652,19 @@ export type GetItemsByIdThememediaData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -33045,19 +33045,19 @@ export type GetItemsByIdThemesongsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -33097,19 +33097,19 @@ export type GetItemsByIdThemesongsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -33490,19 +33490,19 @@ export type GetItemsByIdThemevideosData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -33542,19 +33542,19 @@ export type GetItemsByIdThemevideosData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -34746,19 +34746,19 @@ export type GetLivetvChanneltagsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -34798,19 +34798,19 @@ export type GetLivetvChanneltagsPrefixesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -35182,19 +35182,19 @@ export type GetLivetvRecordingsFoldersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -35234,19 +35234,19 @@ export type GetLivetvRecordingsFoldersData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -35924,19 +35924,19 @@ export type GetLivetvProgramsRecommendedData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -35976,19 +35976,19 @@ export type GetLivetvProgramsRecommendedData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -36873,19 +36873,19 @@ export type GetMoviesByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -36925,19 +36925,19 @@ export type GetMoviesByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -37311,19 +37311,19 @@ export type GetMusicgenresByNameInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -37363,19 +37363,19 @@ export type GetMusicgenresByNameInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -38143,19 +38143,19 @@ export type GetPlaylistsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -38195,19 +38195,19 @@ export type GetPlaylistsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -38894,7 +38894,7 @@ export type PostSessionsByIdMessageData = {
         /**
          * The message timeout. If omitted the user will have to confirm viewing the message.
          */
-        TimeoutMs?: bigint | null;
+        TimeoutMs?: number | null;
     };
     url: '/Sessions/{Id}/Message';
 };
@@ -38944,11 +38944,11 @@ export type PostSessionsByIdPlayingData = {
         /**
          * The ids of the items to play, comma delimited
          */
-        ItemIds: Array<bigint>;
+        ItemIds: Array<number>;
         /**
          * The starting position of the first item.
          */
-        StartPositionTicks?: bigint | null;
+        StartPositionTicks?: number | null;
         /**
          * The type of play command to issue (PlayNow, PlayNext, PlayLast). Clients who have not yet implemented play next and play last may play now.
          */
@@ -39252,19 +39252,19 @@ export type GetShowsByIdSeasonsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -39304,19 +39304,19 @@ export type GetShowsByIdSeasonsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -39701,19 +39701,19 @@ export type GetShowsByIdEpisodesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -39753,19 +39753,19 @@ export type GetShowsByIdEpisodesData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -40140,19 +40140,19 @@ export type GetShowsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -40192,19 +40192,19 @@ export type GetShowsByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -40581,19 +40581,19 @@ export type GetSongsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -40633,19 +40633,19 @@ export type GetSongsByIdInstantmixData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -41100,7 +41100,7 @@ export type PostSyncJobsByIdData = {
      */
     body: SyncJob;
     path: {
-        Id: bigint;
+        Id: number;
     };
     query?: never;
     url: '/Sync/Jobs/{Id}';
@@ -41626,7 +41626,7 @@ export type GetSystemActivitylogEntriesData = {
         /**
          * Optional. The minimum date. Format = ISO
          */
-        MinDate?: Date | null;
+        MinDate?: string | null;
     };
     url: '/System/ActivityLog/Entries';
 };
@@ -41719,19 +41719,19 @@ export type GetTrailersByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -41771,19 +41771,19 @@ export type GetTrailersByIdSimilarData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -42160,19 +42160,19 @@ export type GetUsersByUseridSuggestionsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -42212,19 +42212,19 @@ export type GetUsersByUseridSuggestionsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -42892,19 +42892,19 @@ export type GetUsersByUseridItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -42944,19 +42944,19 @@ export type GetUsersByUseridItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -43578,7 +43578,7 @@ export type GetVideosByIdStreamByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -43713,7 +43713,7 @@ export type HeadVideosByIdStreamByContainerData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -43848,7 +43848,7 @@ export type GetVideosByIdStreamData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -43983,7 +43983,7 @@ export type HeadVideosByIdStreamData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44119,7 +44119,7 @@ export type GetVideosByIdByStreamfilenameData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44255,7 +44255,7 @@ export type HeadVideosByIdByStreamfilenameData = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44390,7 +44390,7 @@ export type GetVideosByIdMasterM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44525,7 +44525,7 @@ export type HeadVideosByIdMasterM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44660,7 +44660,7 @@ export type GetVideosByIdLiveM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -44795,7 +44795,7 @@ export type GetVideosByIdMainM3U8Data = {
         /**
          * Optional. Specify a starting offset, in ticks. 1ms = 10000 ticks.
          */
-        StartTimeTicks?: bigint | null;
+        StartTimeTicks?: number | null;
         /**
          * Optional. The fixed horizontal resolution of the encoded video.
          */
@@ -48835,19 +48835,19 @@ export type GetUsersByUseridItemsResumeData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -48887,19 +48887,19 @@ export type GetUsersByUseridItemsResumeData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -49928,7 +49928,7 @@ export type DeleteUsersByUseridPlayingitemsByIdData = {
         /**
          * Optional. The position, in ticks, where playback stopped. 1ms = 10000 ticks.
          */
-        PositionTicks?: bigint | null;
+        PositionTicks?: number | null;
         LiveStreamId?: string;
         PlaySessionId?: string;
     };
@@ -52803,19 +52803,19 @@ export type GetUsersByUseridSectionsBySectionidItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinStartDate?: Date | null;
+        MinStartDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxStartDate?: Date | null;
+        MaxStartDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinEndDate?: Date | null;
+        MinEndDate?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxEndDate?: Date | null;
+        MaxEndDate?: string | null;
         /**
          * Optional filter by minimum number of game players.
          */
@@ -52855,19 +52855,19 @@ export type GetUsersByUseridSectionsBySectionidItemsData = {
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinPremiereDate?: Date | null;
+        MinPremiereDate?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSaved?: Date | null;
+        MinDateLastSaved?: string | null;
         /**
          * Optional. The minimum premiere date. Format = ISO
          */
-        MinDateLastSavedForUser?: Date | null;
+        MinDateLastSavedForUser?: string | null;
         /**
          * Optional. The maximum premiere date. Format = ISO
          */
-        MaxPremiereDate?: Date | null;
+        MaxPremiereDate?: string | null;
         /**
          * Optional filter by items that have an overview or not.
          */
@@ -54018,7 +54018,7 @@ export type PostUsersByUseridPlayingitemsByIdProgressData = {
         /**
          * Optional. The current position, in ticks. 1ms = 10000 ticks.
          */
-        PositionTicks?: bigint | null;
+        PositionTicks?: number | null;
         /**
          * Indicates if the player is paused.
          */
@@ -54097,7 +54097,7 @@ export type PostUsersByUseridPlayingitemsByIdDeleteData = {
         /**
          * Optional. The position, in ticks, where playback stopped. 1ms = 10000 ticks.
          */
-        PositionTicks?: bigint | null;
+        PositionTicks?: number | null;
         LiveStreamId?: string;
         PlaySessionId?: string;
     };
@@ -54425,11 +54425,11 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
         /**
          * StartPositionTicks
          */
-        StartPositionTicks?: bigint;
+        StartPositionTicks?: number;
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -54492,11 +54492,11 @@ export type HeadItemsByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
         /**
          * StartPositionTicks
          */
-        StartPositionTicks?: bigint;
+        StartPositionTicks?: number;
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -54701,7 +54701,7 @@ export type PostPlaylistsByIdItemsByItemidMoveByNewindexData = {
         /**
          * ItemId
          */
-        ItemId: bigint;
+        ItemId: number;
         Id: string;
         /**
          * NewIndex
@@ -54864,11 +54864,11 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
         /**
          * StartPositionTicks
          */
-        StartPositionTicks?: bigint;
+        StartPositionTicks?: number;
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -54931,11 +54931,11 @@ export type HeadVideosByIdByMediasourceidSubtitlesByIndexStreamByFormatData = {
         /**
          * StartPositionTicks
          */
-        StartPositionTicks?: bigint;
+        StartPositionTicks?: number;
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -55046,13 +55046,13 @@ export type GetItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStrea
         /**
          * StartPositionTicks
          */
-        StartPositionTicks: bigint;
+        StartPositionTicks: number;
     };
     query?: {
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -55113,13 +55113,13 @@ export type HeadItemsByIdByMediasourceidSubtitlesByIndexByStartpositionticksStre
         /**
          * StartPositionTicks
          */
-        StartPositionTicks: bigint;
+        StartPositionTicks: number;
     };
     query?: {
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -55180,13 +55180,13 @@ export type GetVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStre
         /**
          * StartPositionTicks
          */
-        StartPositionTicks: bigint;
+        StartPositionTicks: number;
     };
     query?: {
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
@@ -55247,13 +55247,13 @@ export type HeadVideosByIdByMediasourceidSubtitlesByIndexByStartpositionticksStr
         /**
          * StartPositionTicks
          */
-        StartPositionTicks: bigint;
+        StartPositionTicks: number;
     };
     query?: {
         /**
          * EndPositionTicks
          */
-        EndPositionTicks?: bigint | null;
+        EndPositionTicks?: number | null;
         /**
          * CopyTimestamps
          */
