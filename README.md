@@ -3,18 +3,15 @@
 [Emby](https://emby.media)/[Jellyfin](https://jellyfin.org) companion app to provide [Discord](https://discord.com) rich presence.
 
 - Easy to setup via UI
-- Preview images using Imgur
-- All media types supported
+- Preview images for playing media
+- Supports all media types
 - Showing play state (pause, time remaining, current chapter)
-- Ignore media types and customize what is shared
+- Customize style and media types to show or hide
 - Login with your regular user, no Emby/Jellyfin API key required
-- Detect YouTube/BitChute content and link to original video
 
 # Setup
 
-https://github.com/xyxxyxxy/exy/assets/7705456/8dff2e70-5a59-41c2-ae0d-bad2e1a5c113
-
-Follow the instructions in the UI to connect your media-server and add an Imgur client ID. Play something in Emby/Jellyfin and exy will update your Discord status.
+Follow the instructions in the UI to connect your media-server. Start a stream and see the activity in exy/Discord.
 
 ## Download
 
@@ -29,6 +26,10 @@ Discord client must run on the same machine.
 "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
 Can be found in "Discord settings" -> "Activity Privacy".
+
+# Privacy
+
+Be aware that images shown in Discord activities have to be publicly available. For this [freeimage.host](https://freeimage.host/) is used to upload the preview image of the playing media item.
 
 # Development
 
