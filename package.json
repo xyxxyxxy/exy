@@ -22,8 +22,7 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "openapi-emby": "openapi-ts --file ./openapi-ts.emby-config.ts",
-    "openapi-tmdb": "openapi-ts --file ./openapi-ts.tmdb-config.ts"
+    "openapi-emby": "openapi-ts --file ./openapi-ts.emby-config.ts"
   },
   "dependencies": {
     "@electron-toolkit/utils": "^4.0.0"

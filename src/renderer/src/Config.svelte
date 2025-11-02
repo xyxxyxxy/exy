@@ -10,7 +10,6 @@
   import DebugAndReset from './components/DebugAndReset.svelte'
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
-  import TmdbAttribution from './components/AttributionTmdb.svelte'
   import { ipcRenderer } from './utils'
 
   let config: ConfigStore = $state()
@@ -65,11 +64,6 @@
       <p>Personalize the linked content.</p>
     </hgroup>
     <ActivityButtons {config} />
-
-    <hgroup>
-      <h2>Attributions 🌠</h2>
-      <TmdbAttribution />
-    </hgroup>
 
     <hgroup>
       <h2>Debug & Reset 🩻</h2>
