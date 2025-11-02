@@ -1,4 +1,8 @@
-// Using https://freeimage.host/api to upload images.
+// Using https://freeimage.host/ to upload images.
+
+// In case this service stops working, there are similar alternatives:
+// - https://imgbox.com/
+// - https://imgbb.com/
 
 import axios from 'axios'
 import { createHash } from 'crypto'
