@@ -6,17 +6,23 @@
   import type { ActivityBase } from '../../../main/core/activity/types'
   import { isIgnoredType } from '../../../main/core/activity/utils'
   import type { IgnoredMediaItemTypes } from '../../../main/core/stores/config.types'
-  import { beforeUpdate } from 'svelte'
+  import { ipcRenderer } from '../utils'
 
-  export let server: MediaServerConfig
-  export let activity: ActivityBase | null | undefined
-  export let ignoredActivityTypes: IgnoredMediaItemTypes
+  let {
+    server,
+    activity,
+    ignoredActivityTypes
+  }: {
+    server: MediaServerConfig
+    activity: ActivityBase | null | undefined
+    ignoredActivityTypes: IgnoredMediaItemTypes
+  } = $props()
 
-  let isBusyDisconnecting = false
+  let isBusyDisconnecting = $state(false)
 
-  let isBusyTesting = false
-  let isTested = false
-  let testError: ConnectMediaServerError
+  let isBusyTesting = $state(false)
+  let isTested = $state(false)
+  let testError: ConnectMediaServerError = $state()
   let textSuccessTextOptions = [
     'Success!',
     'Working!',
@@ -29,10 +35,10 @@
     'Test successful!',
     'All systems operational!'
   ]
-  let testSuccessText: string
-  let isIgnored: boolean
+  let testSuccessText: string = $state()
+  let isIgnored: boolean = $state()
 
-  beforeUpdate(() => {
+  $effect.pre(() => {
     if (activity) isIgnored = isIgnoredType(activity, ignoredActivityTypes)
   })
 
@@ -41,7 +47,7 @@
   }
 
   function toggleActive(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, server.id)
+    ipcRenderer.send(IpcChannel.ToggleMediaServerActive, server.id)
   }
 
   function testClick(): void {
@@ -54,17 +60,15 @@
   function test(): void {
     resetTest()
     isBusyTesting = true
-    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, server)
+    ipcRenderer.send(IpcChannel.TestMediaServer, { ...server })
   }
-  window.electron.ipcRenderer.on(
-    IpcChannel.TestMediaServer + server.id,
-    (_, error: ConnectMediaServerError) => {
-      isBusyTesting = false
-      isTested = true
-      testSuccessText = getRandomSuccessText()
-      testError = error
-    }
-  )
+
+  ipcRenderer.on(IpcChannel.TestMediaServer + server.id, (_, error: ConnectMediaServerError) => {
+    isBusyTesting = false
+    isTested = true
+    testSuccessText = getRandomSuccessText()
+    testError = error
+  })
 
   function resetTest(): void {
     isTested = false
@@ -73,19 +77,22 @@
 
   function disconnect(): void {
     isBusyDisconnecting = true
-    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, server)
+    ipcRenderer.send(IpcChannel.DisconnectMediaServer, { ...server })
   }
 </script>
 
 <details>
-  <!-- svelte-ignore a11y-no-redundant-roles -->
+  <!-- svelte-ignore a11y_no_redundant_roles -->
   <summary role="button" class="secondary">
     <input
       id={'isActive' + server.id}
       type="checkbox"
       role="switch"
       checked={server.isActive}
-      on:click|preventDefault={toggleActive}
+      onclick={(event) => {
+        event.preventDefault()
+        toggleActive()
+      }}
       disabled={isBusyDisconnecting || isBusyTesting}
     />
     <span class="summary-text">
@@ -128,14 +135,20 @@
       <button
         type="button"
         class="secondary"
-        on:click={disconnect}
+        onclick={(event) => {
+          event.preventDefault()
+          disconnect()
+        }}
         disabled={isBusyTesting}
         aria-busy={isBusyDisconnecting}>Disconnect</button
       >
       <button
         type="button"
         id="test"
-        on:click={testClick}
+        onclick={(event) => {
+          event.preventDefault()
+          testClick()
+        }}
         disabled={isBusyDisconnecting || isBusyTesting}
       >
         Test Connection

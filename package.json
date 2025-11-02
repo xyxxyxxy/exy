@@ -1,12 +1,12 @@
 {
   "name": "exy",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Discord rich presence client for Emby/Jellyfin.",
   "main": "./out/main/index.js",
   "author": "xyxxyxxy",
   "homepage": "https://github.com/xyxxyxxy/exy",
   "engines": {
-    "node": ">=20.17.0"
+    "node": ">=22.20.0"
   },
   "scripts": {
     "format": "prettier --plugin prettier-plugin-svelte --write .",
@@ -22,40 +22,39 @@
     "build:win": "npm run build && electron-builder --win",
     "build:mac": "npm run build && electron-builder --mac",
     "build:linux": "npm run build && electron-builder --linux",
-    "generate-emby-client": "openapi-ts --input https://raw.githubusercontent.com/MediaBrowser/Emby.SDK/refs/heads/master/Resources/OpenApi/openapi_v3.json --output ./src/main/core/emby-client --name EmbyClient --client axios"
+    "openapi-emby": "openapi-ts --file ./openapi-ts.emby-config.ts"
   },
   "dependencies": {
-    "@electron-toolkit/utils": "^3.0.0"
+    "@electron-toolkit/utils": "^4.0.0"
   },
   "devDependencies": {
-    "@electron-toolkit/eslint-config-prettier": "^2.0.0",
-    "@electron-toolkit/eslint-config-ts": "^2.0.0",
+    "@electron-toolkit/eslint-config-prettier": "^3.0.0",
+    "@electron-toolkit/eslint-config-ts": "^3.1.0",
     "@electron-toolkit/preload": "^3.0.1",
-    "@electron-toolkit/tsconfig": "^1.0.1",
-    "@hey-api/openapi-ts": "^0.52.11",
+    "@electron-toolkit/tsconfig": "^2.0.0",
+    "@hey-api/openapi-ts": "^0.86.11",
     "@picocss/pico": "^2.0.6",
-    "@sveltejs/vite-plugin-svelte": "^3.1.2",
+    "@sveltejs/vite-plugin-svelte": "^6.2.1",
     "@types/discord-rpc": "^4.0.8",
-    "@types/node": "^22.5.1",
+    "@types/node": "^24.9.2",
     "axios": "^1.7.5",
-    "bufferutil": "^4.0.8",
+    "bufferutil": "^4.0.9",
     "discord-rpc": "^4.0.1",
-    "electron": "^32.0.1",
-    "electron-builder": "^24.13.3",
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12",
     "electron-context-menu": "^4.0.4",
     "electron-log": "^5.1.7",
-    "electron-store": "^8.2.0",
-    "electron-vite": "^2.3.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-svelte": "^2.43.0",
-    "imgur": "^2.4.2",
-    "prettier": "^3.3.3",
-    "prettier-plugin-svelte": "^3.2.6",
-    "rxjs": "^7.8.1",
-    "svelte": "^4.2.19",
-    "svelte-check": "^3.8.6",
-    "typescript": "^5.5.4",
+    "electron-store": "^11.0.2",
+    "electron-vite": "^4.0.1",
+    "eslint": "^9.39.0",
+    "eslint-plugin-svelte": "^3.13.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-svelte": "^3.4.0",
+    "rxjs": "^7.8.2",
+    "svelte": "^5.43.2",
+    "svelte-check": "^4.3.3",
+    "typescript": "^5.9.3",
     "utf-8-validate": "^5.0.10",
-    "vite": "^5.4.2"
+    "vite": "^7.1.12"
   }
 }

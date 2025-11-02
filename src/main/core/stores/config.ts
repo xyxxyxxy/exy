@@ -8,7 +8,6 @@ import {
 } from './config.types'
 import { BehaviorSubject } from 'rxjs'
 import log from 'electron-log'
-import { configMigrationOptions } from './migrations'
 import { configSchema } from './schema'
 import { ActivityItemType } from '../activity/types'
 
@@ -17,7 +16,44 @@ const logger = log.scope('config')
 const configStore = new Store<ConfigStore>({
   name: 'config',
   watch: true,
-  ...configMigrationOptions,
+  beforeEachMigration: (store, context): void => {
+    logger.info(`Migrate from ${context.fromVersion} → ${context.toVersion}`)
+    logger.debug(store)
+  },
+  migrations: {
+    '1.1.0': (store): void => {
+      store.delete('imgurClientId' as keyof ConfigStore)
+      store.reset('externalLinks')
+    },
+    '0.4.0': (store): void => {
+      const activity = store.get('activity')
+
+      if (activity) store.delete('activity' as keyof ConfigStore)
+
+      store.set('isThemeUsed', activity ? !!activity['isThemeColorUsed'] : true)
+      store.set('isLogoUsed', activity ? !!activity['isLogoShown'] : true)
+
+      // New value.
+      store.set('isPlayStateShown', true)
+
+      // Reset activity to introduce default buttons.
+      store.reset('externalLinks')
+    },
+    '0.3.0': (store): void => {
+      // Existing sources will have the unused field 'ignoredLibraryIds'.
+      store.set(ConfigSelector.IgnoredTypes, [])
+    },
+    '0.2.0': (store): void => {
+      // Move media server type shown into new activity section of config.
+      const isThemeColorUsed = store.get('isMediaServerTypeShown')
+      if (isThemeColorUsed) store.delete('isMediaServerTypeShown' as keyof ConfigStore)
+      store.set('activity', {
+        isLogoShown: isThemeColorUsed,
+        isThemeColorUsed: isThemeColorUsed,
+        isHomepageLinked: false
+      })
+    }
+  },
   schema: configSchema
 })
 
@@ -86,10 +122,6 @@ export function toggleIgnoredMediaType(type: ActivityItemType): void {
 
 export function toggleConfigFlag(selector: ConfigSelector): void {
   configStore.set(selector, !configStore.get(selector.toString()))
-}
-
-export function setImgurClientId(clientId: string | null): void {
-  configStore.set(ConfigSelector.ImgurClientId, clientId)
 }
 
 export function saveExternalLink(newOrUpdated: ExternalLinkConfig): void {

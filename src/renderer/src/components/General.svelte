@@ -4,11 +4,16 @@
   import About from './About.svelte'
   import DiscordStatus from './DiscordStatus.svelte'
   import { name } from '../../../../package.json'
+  import { ipcRenderer } from '../utils'
 
-  export let config: ConfigStore
+  interface Props {
+    config: ConfigStore
+  }
+
+  let { config }: Props = $props()
 
   function toggleStartup(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
+    ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 </script>
 
@@ -25,7 +30,7 @@
           type="checkbox"
           role="switch"
           checked={config.isStartupEnabled}
-          on:click={toggleStartup}
+          onclick={toggleStartup}
         />
         Run {name} at startup
       </label>

@@ -1,5 +1,5 @@
 import type { ActivityBase } from '../activity/types'
-import type { BaseItemDto, PlayerStateInfo, Session_SessionInfo } from '../emby-client'
+import { BaseItemDto, PlayerStateInfo, SessionSessionInfo } from '../openapi/emby'
 import type { MediaServerConfig } from '../stores/config.types'
 
 // Some additional types, not provided by the API.
@@ -20,7 +20,7 @@ export enum ItemType {
   Book = 'Book'
 }
 
-export type ValidSession = Session_SessionInfo & {
+export type ValidSession = SessionSessionInfo & {
   NowPlayingItem: BaseItemDto
   PlayState: PlayerStateInfo
 }

@@ -48,10 +48,6 @@ export const configSchema: Schema<ConfigStore> = {
       }
     }
   },
-  imgurClientId: {
-    type: ['string', 'null'],
-    default: null
-  },
   externalLinks: {
     type: 'array',
     default: [
@@ -79,16 +75,9 @@ export const configSchema: Schema<ConfigStore> = {
       {
         id: randomUUID(),
         isActive: true,
-        label: 'Watch on YouTube',
+        label: 'Watch now',
         forItemType: 'OtherVideos',
-        target: 'YouTube'
-      },
-      {
-        id: randomUUID(),
-        isActive: true,
-        label: 'Watch on BitChute',
-        forItemType: 'OtherVideos',
-        target: 'BitChute'
+        target: 'Watch link'
       },
       {
         id: randomUUID(),

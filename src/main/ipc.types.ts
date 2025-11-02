@@ -15,7 +15,6 @@ export enum IpcChannel {
   DisconnectMediaServer = 'DisconnectMediaServer',
   TestMediaServer = 'TestMediaServer',
   ConnectMediaServer = 'ConnectMediaServer',
-  SaveImgurClientId = 'SaveImgurClientId',
   SaveExternalLink = 'SaveExternalLink',
   ToggleExternalLinkActive = 'ToggleExternalLinkActive',
   MoveExternalLinkUp = 'MoveExternalLinkUp',

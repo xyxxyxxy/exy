@@ -15,12 +15,10 @@
   "eslint.validate": ["javascript", "javascriptreact", "svelte"],
   "cSpell.words": [
     "Authenticatebyname",
-    "bitchute",
     "Brainz",
     "bufferutil",
     "codegen",
     "Emby",
-    "Imgur",
     "Jellyfin",
     "NQXAC",
     "openapi",

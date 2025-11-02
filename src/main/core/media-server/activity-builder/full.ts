@@ -1,12 +1,12 @@
-import { Observable, catchError, map, of, switchMap, tap } from 'rxjs'
+import { Observable, catchError, from, map, of, switchMap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
-import { getImageUrl } from '..'
-import { getImgurLink$ } from '../../imgur'
 import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
-import type { BaseItemDto, PlayerStateInfo } from '../../emby-client'
 import log from 'electron-log'
-import { addPublicContent$ } from './public'
+import { BaseItemDto, PlayerStateInfo } from '../../openapi/emby'
+import { getImageUrl } from '..'
+import axios from 'axios'
+import { uploadImage$ } from '../../freeimage-host'
 
 const logger = log.scope('builder-full')
 
@@ -36,13 +36,10 @@ export function buildFullActivity$(
     endTime: parseEndTime(item, playState)
   }
 
-  return addPublicContent$(activity).pipe(
-    switchMap((activity) => {
-      // Adding the image can be avoided if the public content already added a URL.
-      if (activity.imageUrl) return of(activity)
-      else return addImage$(activity, server, session)
-    })
-  )
+  const watchLink = getWatchLink(item)
+  if (watchLink) activity.externalData.push({ type: ExternalDataType.WatchLink, url: watchLink })
+
+  return addImage$(activity, server, session)
 }
 function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   if (!item.ExternalUrls) return []
@@ -78,8 +75,8 @@ function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | und
   if (item.MediaType === ItemMediaType.Book || !item.RunTimeTicks || !playState.PositionTicks)
     return undefined
 
-  const runtimeMs: number = item.RunTimeTicks / 10000
-  const playPositionMs: number = playState.PositionTicks / 10000
+  const runtimeMs = item.RunTimeTicks / 10000
+  const playPositionMs = playState.PositionTicks / 10000
   // Now, plus runtime, minus play position.
   return new Date(Date.now().valueOf() + runtimeMs - playPositionMs)
 }
@@ -91,42 +88,95 @@ function addImage$(
 ): Observable<Activity> {
   if (activity.imageUrl) return of(activity)
 
-  return getImageLink$(server, session.NowPlayingItem).pipe(
-    tap((url) => (activity.imageUrl = url)),
-    map(() => activity)
+  const externalImage = getExternalImageLink(session.NowPlayingItem)
+
+  if (externalImage) {
+    activity.imageUrl = externalImage
+    return of(activity)
+  }
+
+  const sourceImageUrl = getSourceImageUrl(server, session.NowPlayingItem)
+
+  if (!sourceImageUrl) return of(activity)
+
+  // Image size is already reduced via the
+  // media-server image download parameters.
+  return downloadImage$(sourceImageUrl).pipe(
+    switchMap((image) => uploadImage$(image)),
+    map((publicImageUrl) => {
+      activity.imageUrl = publicImageUrl
+      return activity
+    }),
+    // Fallback to activity without image on error.
+    catchError((error) => {
+      logger.warn(`Failed to download/upload image.`, error)
+      return of(activity)
+    })
   )
 }
 
-function getImageLink$(
-  server: MediaServerConfig,
-  item: BaseItemDto
-): Observable<string | undefined> {
-  const imageIds: Array<string> = [
-    // Try the item image first.
-    item.Id,
-    // Emby responds with 500 error for primary images of some songs.
-    // Also some episodes don't have images, like specials/extras not present in TVDB.
-    // In such cases we fallback to the parent image (Album cover for songs and show poster for episodes).
-    item.ParentId,
-    // For some shows the parent ID also returns nothing. Falling back to series ID and then parent backdrop.
-    item.SeriesId,
-    item.ParentBackdropItemId
-  ]
+function downloadImage$(url: string): Observable<Buffer> {
+  return from(
+    axios.get(url, {
+      responseType: 'arraybuffer'
+    })
+  ).pipe(
+    map((response) => {
+      return Buffer.from(response.data, 'binary')
+    })
+  )
+}
+
+// Images need to be publicly available. Even if the media-server is reachable on the
+// public internet, sending the server address to Discord should be avoided, since
+// everyone seeing the status will also be able to see the media-server domain.
+function getExternalImageLink(item: BaseItemDto): string | undefined {
+  if (!item.ProviderIds) return undefined
+
+  // YouTube
+  const youtubeId = item.ProviderIds.youtube
+  if (youtubeId) return `https://img.youtube.com/vi/${youtubeId}/0.jpg`
+
+  return undefined
+}
+
+function isYouTubeId(id: string): boolean {
+  // Assuming based on the size.
+  return id.length === 11
+}
+
+function getWatchLink(item: BaseItemDto): string | null {
+  if (!item.ProviderIds) return null
+
+  const youtubeId = item.ProviderIds.youtube
+  // Make sure the provider ID set for YouTube is actually a YouTube ID.
+  if (youtubeId && isYouTubeId(youtubeId)) return `https://youtube.com/watch?v=${youtubeId}`
+
+  return null
+}
+
+function getSourceImageUrl(server: MediaServerConfig, item: BaseItemDto): string | undefined {
+  // Not every item has a primary image,
+  // but if the image is mentioned in the image
+  // tags it can be assumed that the primary image exists.
+  if (item.ImageTags?.Primary && item.Id) return getImageUrl(server, item.Id)
+
+  // From high to low priority.
+  const fallbackIds: Array<string> = [item.AlbumId, item.SeriesId, item.ParentId]
     // Remove undefined entries.
     .filter((id): id is string => typeof id === 'string')
     // Reverse to process in the right order.
     .reverse()
 
-  const tryNextImage = (): Observable<string | undefined> => {
-    const id = imageIds.pop()
+  const tryNextImage = (): string | undefined => {
+    const id = fallbackIds.pop()
 
     if (!id) {
       logger.info(`Failed to get any image for item:`, item)
-      return of(undefined)
+      return undefined
     }
 
-    const url = getImageUrl(server, id)
-    return getImgurLink$(url).pipe(catchError(() => tryNextImage()))
+    return getImageUrl(server, id)
   }
 
   return tryNextImage()

@@ -35,7 +35,7 @@ function createWindow(): void {
     icon: icon,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      sandbox: false // Needed for preload script, see: https://electron-vite.org/guide/dev#efficient
     }
   })
 

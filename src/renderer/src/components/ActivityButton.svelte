@@ -2,47 +2,46 @@
   import type { ExternalLinkConfig } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
   import { ActivityItemType, ExternalDataType } from '../../../main/core/activity/types'
-  import { getItemTypeText } from './utils'
+  import { getItemTypeText, ipcRenderer } from '../utils'
   import Move from './Move.svelte'
 
   // ID is optional, because it's unset for new buttons.
-  export let externalLink: null | (Omit<ExternalLinkConfig, 'id'> & { id?: string }) = null
 
-  export let isFirst = false
-  export let isLast = false
+  interface Props {
+    externalLink?: null | (Omit<ExternalLinkConfig, 'id'> & { id?: string })
+    isFirst?: boolean
+    isLast?: boolean
+  }
 
-  let isOpen
-  let hasChanges
+  let { externalLink = $bindable(null), isFirst = false, isLast = false }: Props = $props()
+
+  let isOpen = $state(false)
 
   if (!externalLink) reset()
 
   function toggleActive(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleExternalLinkActive, externalLink.id)
+    ipcRenderer.send(IpcChannel.ToggleExternalLinkActive, externalLink.id)
   }
 
   function moveUp(): void {
-    window.electron.ipcRenderer.send(IpcChannel.MoveExternalLinkUp, externalLink.id)
+    ipcRenderer.send(IpcChannel.MoveExternalLinkUp, externalLink.id)
   }
 
   function moveDown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.MoveExternalLinkDown, externalLink.id)
+    ipcRenderer.send(IpcChannel.MoveExternalLinkDown, externalLink.id)
   }
 
   function deleteExternalLink(): void {
-    window.electron.ipcRenderer.send(IpcChannel.DeleteExternalLink, externalLink.id)
-  }
-
-  function changed(): void {
-    hasChanges = true
+    ipcRenderer.send(IpcChannel.DeleteExternalLink, externalLink.id)
   }
 
   function save(): void {
-    window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, externalLink)
-    reset()
+    ipcRenderer.send(IpcChannel.SaveExternalLink, { ...externalLink })
+    isOpen = false
+    if (!externalLink.id) reset() // Reset form after new button is created.
   }
 
   function reset(): void {
-    hasChanges = false
     isOpen = false
     externalLink = {
       isActive: true,
@@ -55,32 +54,19 @@
 
 <div class="flex">
   <details bind:open={isOpen}>
-    <!-- svelte-ignore a11y-no-redundant-roles -->
-    <summary
-      role="button"
-      class:outline={!externalLink.id}
-      class:secondary={externalLink.id && !hasChanges}
-    >
+    <!-- svelte-ignore a11y_no_redundant_roles -->
+    <summary role="button" class:outline={!externalLink.id} class:secondary={externalLink.id}>
       {#if !externalLink.id}
         ✨ Add button
       {:else}
-        <!-- {#if !isFirst}<span
-        role="button"
-        tabindex="0"
-        on:click|preventDefault={moveUp}
-        on:keydown={moveUp}>⬆</span
-      >{/if}
-    {#if !isLast}<span
-        role="button"
-        tabindex="0"
-        on:click|preventDefault={moveDown}
-        on:keydown={moveDown}>⬇</span
-      >{/if} -->
         <input
           type="checkbox"
           role="switch"
           checked={externalLink.isActive}
-          on:click|preventDefault={toggleActive}
+          onclick={(event) => {
+            event.preventDefault()
+            toggleActive()
+          }}
           disabled={!externalLink.id}
         />
         {`〔 ${externalLink.label} 〕` ||
@@ -89,7 +75,13 @@
     </summary>
 
     <article>
-      <form action="submit" on:submit|preventDefault={save} on:input={changed}>
+      <form
+        action="submit"
+        onsubmit={(event) => {
+          event.preventDefault()
+          save()
+        }}
+      >
         <div class="grid">
           <label>
             For media type
@@ -137,7 +129,7 @@
         {/if}
         <div class="grid">
           {#if externalLink.id}
-            <button type="button" class="secondary" on:click={deleteExternalLink}>Delete</button>
+            <button type="button" class="secondary" onclick={deleteExternalLink}>Delete</button>
           {/if}
           <button type="submit">Save</button>
         </div>

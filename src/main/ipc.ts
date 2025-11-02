@@ -5,7 +5,6 @@ import {
   config$,
   deleteMediaServer,
   isConnectionConfigured,
-  setImgurClientId,
   toggleMediaServerActive,
   toggleIgnoredMediaType,
   resetExternalLinks,
@@ -19,7 +18,6 @@ import {
 } from './core/stores/config'
 import log from 'electron-log/main'
 import { IpcChannel, NewMediaServerConfig } from './ipc.types'
-import { testImgurClientId$ } from './core/imgur'
 import {
   authenticate$,
   logout$,
@@ -27,12 +25,12 @@ import {
   testConnection$
 } from './core/media-server'
 import { randomUUID } from 'crypto'
-import { Authentication_AuthenticationResult } from './core/emby-client'
 import { AxiosError } from 'axios'
 import { ConfigSelector, MediaServerConfig } from './core/stores/config.types'
 import { connectionStatus$, setTestActivity } from './core/discord'
 import { clearCache } from './core/stores/cache'
 import { updateAvailable$ } from './core/updater/updater'
+import { AuthenticationAuthenticationResult } from './core/openapi/emby'
 
 const logger = log.scope('ipc')
 
@@ -97,7 +95,7 @@ ipcMain.on(IpcChannel.TestMediaServer, (event, config: MediaServerConfig) => {
       logger.debug(`Test successful.`)
       event.sender.send(responseChannel)
     },
-    error: (error: AxiosError<Authentication_AuthenticationResult>) => {
+    error: (error: AxiosError<AuthenticationAuthenticationResult>) => {
       logger.debug(`Test failed.`, error)
       event.sender.send(responseChannel, {
         code: error.code,
@@ -118,7 +116,7 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
     )
 
   authenticate$(config).subscribe({
-    next: (result: Authentication_AuthenticationResult) => {
+    next: (result: AuthenticationAuthenticationResult) => {
       logger.info(`New media-server config is valid.`)
 
       const serverId = result.ServerId
@@ -145,34 +143,13 @@ ipcMain.on(IpcChannel.ConnectMediaServer, (event, config: NewMediaServerConfig) 
 
       event.sender.send(IpcChannel.ConnectMediaServer)
     },
-    error: (error: AxiosError<Authentication_AuthenticationResult>) => {
+    error: (error: AxiosError<AuthenticationAuthenticationResult>) => {
       logger.info(`New media-server config is invalid.`, error)
       event.sender.send(IpcChannel.ConnectMediaServer, {
         code: error.code,
         status: error.status,
         message: error.toString()
       })
-    }
-  })
-})
-ipcMain.on(IpcChannel.SaveImgurClientId, (event, clientId: string) => {
-  // Reset if empty.
-  if (!clientId) {
-    setImgurClientId(null)
-    event.sender.send(IpcChannel.SaveImgurClientId)
-    return
-  }
-
-  logger.info(`Testing Imgur client ID.`, clientId)
-  testImgurClientId$(clientId).subscribe({
-    next: () => {
-      logger.info(`Imgur client ID is valid.`, clientId)
-      setImgurClientId(clientId)
-      event.sender.send(IpcChannel.SaveImgurClientId)
-    },
-    error: (error) => {
-      logger.info(`Imgur client ID is invalid.`, error)
-      event.sender.send(IpcChannel.SaveImgurClientId, error)
     }
   })
 })

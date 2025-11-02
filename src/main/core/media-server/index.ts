@@ -20,17 +20,22 @@ import { hostname } from 'os'
 import { version, name } from '../../../../package.json'
 import { config$ } from '../stores/config'
 import log from 'electron-log'
-import {
-  Authentication_AuthenticationResult,
-  EmbyClient,
-  Session_SessionInfo,
-  SystemInfo
-} from '../emby-client'
 import { Activity, ActivityBase } from '../activity/types'
 import { PollingResult, MediaServerActivityMapping, ValidSession } from './types'
 import { buildActivityBase } from './activity-builder/base'
 import { buildFullActivity$ } from './activity-builder/full'
 import { isIgnoredType, pickActivity } from '../activity/utils'
+import {
+  AuthenticationAuthenticationResult,
+  getSessions,
+  getSystemInfo,
+  postSessionsLogout,
+  postUsersAuthenticatebyname,
+  SessionSessionInfo,
+  SystemInfo
+} from '../openapi/emby'
+import { Client, createClient } from '../openapi/emby/client'
+import { toResponseData } from '../utils'
 
 const logger = log.scope('media-server')
 
@@ -41,19 +46,19 @@ export function authenticate$(
     username: string
     password: string
   }
-): Observable<Authentication_AuthenticationResult> {
+): Observable<AuthenticationAuthenticationResult> {
   return xEmbyAuthorization$.pipe(
-    switchMap((xEmbyAuthorization) =>
-      new EmbyClient({
-        BASE: getBaseUrl(connectionDetails)
-      }).userService.postUsersAuthenticatebyname({
-        xEmbyAuthorization,
-        requestBody: {
-          Username: connectionDetails.username,
-          Pw: connectionDetails.password
+    switchMap((xEmbyAuthorization) => {
+      const client = createClient({ baseURL: getBaseUrl(connectionDetails) })
+      return postUsersAuthenticatebyname({
+        client,
+        body: { Username: connectionDetails.username, Pw: connectionDetails.password },
+        headers: {
+          'X-Emby-Authorization': xEmbyAuthorization
         }
       })
-    )
+    }),
+    map(toResponseData)
   )
 }
 
@@ -61,18 +66,17 @@ export function testConnection$(server: MediaServerConfig): Observable<SystemInf
   return getAuthenticatedClient$(server).pipe(
     switchMap(
       // Testing system info endpoint, since it requires authentication.
-      (client) => client.systemService.getSystemInfo()
-    )
+      (client) => getSystemInfo({ client })
+    ),
+    map(toResponseData)
   )
 }
 
 export function logout$(server: MediaServerConfig): Observable<unknown> {
-  return getAuthenticatedClient$(server).pipe(
-    switchMap((client) => client.sessionsService.postSessionsLogout())
-  )
+  return getAuthenticatedClient$(server).pipe(switchMap((client) => postSessionsLogout({ client })))
 }
 
-export function isValidSession(session: Session_SessionInfo): session is ValidSession {
+export function isValidSession(session: SessionSessionInfo): session is ValidSession {
   return !!session.NowPlayingItem && !!session.PlayState
 }
 
@@ -142,9 +146,8 @@ export const mediaServerMainActivity$: Observable<Activity | null> = combineLate
 function poll$(server: MediaServerConfig): Observable<PollingResult | null> {
   return getAuthenticatedClient$(server).pipe(
     // Get all sessions with now playing items.
-    switchMap((client) =>
-      client.sessionsService.getSessions({ controllableByUserId: server.userId })
-    ),
+    switchMap((client) => getSessions({ client, query: { ControllableByUserId: server.userId } })),
+    map(toResponseData),
     map((sessions) => sessions.filter(isValidSession)),
     // Build base activity.
     map((sessions) =>
@@ -190,13 +193,10 @@ function pickBetweenPollingResults$(
   )
 }
 
-function getAuthenticatedClient$(server: MediaServerConfig): Observable<EmbyClient> {
+function getAuthenticatedClient$(server: MediaServerConfig): Observable<Client> {
   return of(
-    new EmbyClient({
-      BASE: getBaseUrl(server),
-      HEADERS: { 'X-Emby-Token': server.accessToken }
-    })
-  )
+    createClient({ baseURL: getBaseUrl(server), headers: { 'X-Emby-Token': server.accessToken } })
+  ).pipe(shareReplay(1))
 }
 
 const xEmbyAuthorization$ = config$.pipe(

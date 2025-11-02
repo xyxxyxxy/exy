@@ -1,12 +1,14 @@
 <script lang="ts">
-  export let isConnected: boolean
-  export let isImgurSet: boolean
+  interface Props {
+    isConnected: boolean
+  }
+
+  let { isConnected }: Props = $props()
 
   const connectText = `Connect to Emby/Jellyfin`
-  const imgurText = `Set Imgur client ID`
 </script>
 
-{#if !isConnected || !isImgurSet}
+{#if !isConnected}
   <article>
     <header>
       <h2>Getting Started 🎏</h2>
@@ -16,12 +18,6 @@
         {#if isConnected}
           <s>{connectText}</s> ✔️
         {:else}<a href="#connections">{connectText}</a>
-        {/if}
-      </li>
-      <li>
-        {#if isImgurSet}
-          <s>{imgurText}</s> ✔️
-        {:else}<a href="#imgur">{imgurText}</a>
         {/if}
       </li>
     </ol>
