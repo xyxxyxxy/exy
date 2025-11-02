@@ -1,75 +1,37 @@
 // Using https://freeimage.host/api to upload images.
 
 import axios from 'axios'
-import { from, map, Observable } from 'rxjs'
+import { createHash } from 'crypto'
+import { from, map, Observable, of } from 'rxjs'
+import { getCached, setCache } from './stores/cache'
 
 type ImageUploadResponse = {
-  status_code: number
-  success: {
-    message: string
-    code: number
-  }
   image: {
-    name: string
-    extension: string
-    size: number
-    width: number
-    height: number
-    date: string
-    date_gmt: string
-    storage_id: string | null
-    description: string | null
-    nsfw: string
-    md5: string
-    storage: string
-    original_filename: string
-    original_exifdata: string | null
-    views: string
-    id_encoded: string
-    filename: string
-    ratio: number
-    size_formatted: string
-    mime: string
-    bits: number
-    channels: string | null
     url: string
-    url_viewer: string
-    thumb: {
-      filename: string
-      name: string
-      width: number
-      height: number
-      ratio: number
-      size: number
-      size_formatted: string
-      mime: string
-      extension: string
-      bits: number
-      channels: string | null
-      url: string
-    }
-    medium: {
-      filename: string
-      name: string
-      width: number
-      height: number
-      ratio: number
-      size: number
-      size_formatted: string
-      mime: string
-      extension: string
-      bits: number
-      channels: string | null
-      url: string
-    }
-    views_label: string
-    display_url: string
-    how_long_ago: string
   }
-  status_txt: string
+}
+
+function getHash(image: Buffer): string {
+  return createHash('md5').update(image).digest('hex')
+}
+
+function getCacheKey(image: Buffer): string {
+  const hash = getHash(image)
+  return `freeimage-host-${hash}`
+}
+
+function getCachedImageUrl(image: Buffer): string | undefined {
+  return getCached(getCacheKey(image))
+}
+
+function setCacheImageUrl(image: Buffer, url: string): void {
+  setCache(getCacheKey(image), url)
 }
 
 export function uploadImage$(image: Buffer): Observable<string | undefined> {
+  const cached = getCachedImageUrl(image)
+  if (cached) return of(cached)
+
   const base64Image = image.toString('base64')
 
   const formData = new FormData()
@@ -86,7 +48,10 @@ export function uploadImage$(image: Buffer): Observable<string | undefined> {
   ).pipe(
     map((response) => {
       if (response.status !== 200) throw new Error(`Failed to upload image.`)
-      return response.data.image.url
+
+      const url = response.data.image.url
+      setCacheImageUrl(image, url)
+      return url
     })
   )
 }
