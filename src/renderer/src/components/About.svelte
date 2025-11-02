@@ -3,11 +3,12 @@
   import exyLogo from '../assets/exy.svg'
   import type { Update } from '../../../main/core/updater/types'
   import { IpcChannel } from '../../../main/ipc.types'
+  import { ipcRenderer } from '../utils'
 
   let update: Update = $state()
 
-  window.electron.ipcRenderer.send(IpcChannel.UpdateAvailable) // Get initial value.
-  window.electron.ipcRenderer.on(IpcChannel.UpdateAvailable, (_, newUpdate: Update) => {
+  ipcRenderer.send(IpcChannel.UpdateAvailable) // Get initial value.
+  ipcRenderer.on(IpcChannel.UpdateAvailable, (_, newUpdate: Update) => {
     update = newUpdate
   })
 </script>

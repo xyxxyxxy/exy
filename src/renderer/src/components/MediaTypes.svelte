@@ -2,7 +2,7 @@
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
   import { ActivityItemType, isActivityItemType } from '../../../main/core/activity/types'
-  import { getItemTypeText } from './utils'
+  import { getItemTypeText, ipcRenderer } from '../utils'
 
   let { config }: { config: ConfigStore } = $props()
 
@@ -24,7 +24,7 @@
   }
 
   function toggleIgnored(value: ActivityItemType): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, value)
+    ipcRenderer.send(IpcChannel.ToggleIgnoredMediaType, value)
   }
 </script>
 

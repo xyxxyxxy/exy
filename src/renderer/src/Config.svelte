@@ -11,19 +11,20 @@
   import ActivityButtons from './components/ActivityButtons.svelte'
   import MediaTypes from './components/MediaTypes.svelte'
   import TmdbAttribution from './components/AttributionTmdb.svelte'
+  import { ipcRenderer } from './utils'
 
   let config: ConfigStore = $state()
   let hasMediaServers: boolean = $state()
   let activities: MediaServerActivityMapping = $state({})
 
-  window.electron.ipcRenderer.send(IpcChannel.Config) // Get initial value.
-  window.electron.ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
+  ipcRenderer.send(IpcChannel.Config) // Get initial value.
+  ipcRenderer.on(IpcChannel.Config, (_, newConfig) => {
     config = newConfig
     hasMediaServers = !!newConfig.mediaServers.length
   })
 
-  window.electron.ipcRenderer.send(IpcChannel.MediaServerActivities) // Get initial value.
-  window.electron.ipcRenderer.on(IpcChannel.MediaServerActivities, (_, newActivities) => {
+  ipcRenderer.send(IpcChannel.MediaServerActivities) // Get initial value.
+  ipcRenderer.on(IpcChannel.MediaServerActivities, (_, newActivities) => {
     activities = newActivities
   })
 </script>

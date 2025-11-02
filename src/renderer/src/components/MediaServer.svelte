@@ -6,6 +6,7 @@
   import type { ActivityBase } from '../../../main/core/activity/types'
   import { isIgnoredType } from '../../../main/core/activity/utils'
   import type { IgnoredMediaItemTypes } from '../../../main/core/stores/config.types'
+  import { ipcRenderer } from '../utils'
 
   let {
     server,
@@ -46,7 +47,7 @@
   }
 
   function toggleActive(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleMediaServerActive, server.id)
+    ipcRenderer.send(IpcChannel.ToggleMediaServerActive, server.id)
   }
 
   function testClick(): void {
@@ -59,18 +60,15 @@
   function test(): void {
     resetTest()
     isBusyTesting = true
-    window.electron.ipcRenderer.send(IpcChannel.TestMediaServer, { ...server })
+    ipcRenderer.send(IpcChannel.TestMediaServer, { ...server })
   }
 
-  window.electron.ipcRenderer.on(
-    IpcChannel.TestMediaServer + server.id,
-    (_, error: ConnectMediaServerError) => {
-      isBusyTesting = false
-      isTested = true
-      testSuccessText = getRandomSuccessText()
-      testError = error
-    }
-  )
+  ipcRenderer.on(IpcChannel.TestMediaServer + server.id, (_, error: ConnectMediaServerError) => {
+    isBusyTesting = false
+    isTested = true
+    testSuccessText = getRandomSuccessText()
+    testError = error
+  })
 
   function resetTest(): void {
     isTested = false
@@ -79,7 +77,7 @@
 
   function disconnect(): void {
     isBusyDisconnecting = true
-    window.electron.ipcRenderer.send(IpcChannel.DisconnectMediaServer, { ...server })
+    ipcRenderer.send(IpcChannel.DisconnectMediaServer, { ...server })
   }
 </script>
 

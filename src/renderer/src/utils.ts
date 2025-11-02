@@ -1,4 +1,9 @@
-import { ActivityItemType } from '../../../main/core/activity/types'
+import type { ElectronAPI } from '@electron-toolkit/preload'
+import { ActivityItemType } from '../../main/core/activity/types'
+
+// For some reason the typings do not work. This is a workaround.
+const electronApi: ElectronAPI = window['electron']
+export const ipcRenderer = electronApi.ipcRenderer
 
 export function getItemTypeText(type: ActivityItemType | 'All'): string {
   if (type === ActivityItemType.LiveRecordings) return 'Live Recordings'

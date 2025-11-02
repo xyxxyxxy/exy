@@ -3,6 +3,7 @@
   import { IpcChannel } from '../../../main/ipc.types'
   import MediaServerError from './MediaServerError.svelte'
   import MediaServerTypeSelect from './MediaServerTypeSelect.svelte'
+  import { ipcRenderer } from '../utils'
 
   interface Props {
     hasMediaServers: boolean
@@ -43,35 +44,32 @@
   function submit(): void {
     isBusy = true
     resetValidation()
-    window.electron.ipcRenderer.send(IpcChannel.ConnectMediaServer, { ...config })
+    ipcRenderer.send(IpcChannel.ConnectMediaServer, { ...config })
   }
 
-  window.electron.ipcRenderer.on(
-    IpcChannel.ConnectMediaServer,
-    (_, error?: ConnectMediaServerError) => {
-      isBusy = false
-      connectionError = error
+  ipcRenderer.on(IpcChannel.ConnectMediaServer, (_, error?: ConnectMediaServerError) => {
+    isBusy = false
+    connectionError = error
 
-      // On error.
-      if (error) {
-        // Default feedback.
-        isInvalidConnection = true
-        isInvalidAuthentication = true
+    // On error.
+    if (error) {
+      // Default feedback.
+      isInvalidConnection = true
+      isInvalidAuthentication = true
 
-        // Specify feedback.
-        if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT', 'ERR_INVALID_URL'].includes(error.code)) {
-          isInvalidAuthentication = null
-        }
-        if (error.status === 401) {
-          isInvalidConnection = null
-        }
-      } else {
-        // Close and reset form on success.
-        isOpen = false
-        reset()
+      // Specify feedback.
+      if (['ECONNREFUSED', 'ENOTFOUND', 'ETIMEDOUT', 'ERR_INVALID_URL'].includes(error.code)) {
+        isInvalidAuthentication = null
       }
+      if (error.status === 401) {
+        isInvalidConnection = null
+      }
+    } else {
+      // Close and reset form on success.
+      isOpen = false
+      reset()
     }
-  )
+  })
 
   function onProtocolChange(): void {
     const defaultPort = config.protocol === 'https' ? 443 : 8096

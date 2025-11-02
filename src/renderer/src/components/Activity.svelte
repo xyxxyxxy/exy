@@ -2,6 +2,7 @@
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
   import { name } from '../../../../package.json'
+  import { ipcRenderer } from '../utils'
 
   interface Props {
     config: ConfigStore
@@ -10,15 +11,15 @@
   let { config }: Props = $props()
 
   function toggleIsPlayStateShown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIsPlayStateShown)
+    ipcRenderer.send(IpcChannel.ToggleIsPlayStateShown)
   }
 
   function toggleIsLogoUsed(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIsLogoUsed)
+    ipcRenderer.send(IpcChannel.ToggleIsLogoUsed)
   }
 
   function toggleIsThemeUsed(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleIsThemeUsed)
+    ipcRenderer.send(IpcChannel.ToggleIsThemeUsed)
   }
 </script>
 

@@ -2,7 +2,7 @@
   import type { ExternalLinkConfig } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
   import { ActivityItemType, ExternalDataType } from '../../../main/core/activity/types'
-  import { getItemTypeText } from './utils'
+  import { getItemTypeText, ipcRenderer } from '../utils'
   import Move from './Move.svelte'
 
   // ID is optional, because it's unset for new buttons.
@@ -20,23 +20,23 @@
   if (!externalLink) reset()
 
   function toggleActive(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleExternalLinkActive, externalLink.id)
+    ipcRenderer.send(IpcChannel.ToggleExternalLinkActive, externalLink.id)
   }
 
   function moveUp(): void {
-    window.electron.ipcRenderer.send(IpcChannel.MoveExternalLinkUp, externalLink.id)
+    ipcRenderer.send(IpcChannel.MoveExternalLinkUp, externalLink.id)
   }
 
   function moveDown(): void {
-    window.electron.ipcRenderer.send(IpcChannel.MoveExternalLinkDown, externalLink.id)
+    ipcRenderer.send(IpcChannel.MoveExternalLinkDown, externalLink.id)
   }
 
   function deleteExternalLink(): void {
-    window.electron.ipcRenderer.send(IpcChannel.DeleteExternalLink, externalLink.id)
+    ipcRenderer.send(IpcChannel.DeleteExternalLink, externalLink.id)
   }
 
   function save(): void {
-    window.electron.ipcRenderer.send(IpcChannel.SaveExternalLink, { ...externalLink })
+    ipcRenderer.send(IpcChannel.SaveExternalLink, { ...externalLink })
     isOpen = false
     if (!externalLink.id) reset() // Reset form after new button is created.
   }

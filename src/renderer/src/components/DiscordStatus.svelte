@@ -1,6 +1,7 @@
 <script lang="ts">
   import { ConnectionStatus } from '../../../main/core/discord/types'
   import { IpcChannel } from '../../../main/ipc.types'
+  import { ipcRenderer } from '../utils'
 
   let isReady: boolean = $state()
   let statusText: string = $state()
@@ -11,8 +12,8 @@
   const successStyle = 'color: var(--pico-ins-color);'
   let statusStyle: string = $state()
 
-  window.electron.ipcRenderer.send(IpcChannel.DiscordStatus) // Get initial value.
-  window.electron.ipcRenderer.on(IpcChannel.DiscordStatus, (_, newStatus: ConnectionStatus) => {
+  ipcRenderer.send(IpcChannel.DiscordStatus) // Get initial value.
+  ipcRenderer.on(IpcChannel.DiscordStatus, (_, newStatus: ConnectionStatus) => {
     isReady = newStatus === ConnectionStatus.Ready
     statusStyle = isReady ? successStyle : errorStyle
 

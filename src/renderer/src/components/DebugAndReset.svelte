@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { ConfigStore } from '../../../main/core/stores/config.types'
   import { IpcChannel } from '../../../main/ipc.types'
+  import { ipcRenderer } from '../utils'
 
   interface Props {
     config: ConfigStore
@@ -9,23 +10,23 @@
   let { config }: Props = $props()
 
   function toggleDebugLogging(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleDebugLogging)
+    ipcRenderer.send(IpcChannel.ToggleDebugLogging)
   }
 
   function openLogFile(): void {
-    window.electron.ipcRenderer.send(IpcChannel.OpenLogFile)
+    ipcRenderer.send(IpcChannel.OpenLogFile)
   }
 
   function resetExternalLinks(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ResetExternalLinks)
+    ipcRenderer.send(IpcChannel.ResetExternalLinks)
   }
 
   function clearCache(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ClearCache)
+    ipcRenderer.send(IpcChannel.ClearCache)
   }
 
   function clearConfig(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ClearConfig)
+    ipcRenderer.send(IpcChannel.ClearConfig)
   }
 </script>
 

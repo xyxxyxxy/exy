@@ -4,6 +4,7 @@
   import About from './About.svelte'
   import DiscordStatus from './DiscordStatus.svelte'
   import { name } from '../../../../package.json'
+  import { ipcRenderer } from '../utils'
 
   interface Props {
     config: ConfigStore
@@ -12,7 +13,7 @@
   let { config }: Props = $props()
 
   function toggleStartup(): void {
-    window.electron.ipcRenderer.send(IpcChannel.ToggleStartup)
+    ipcRenderer.send(IpcChannel.ToggleStartup)
   }
 </script>
 
