@@ -27,6 +27,18 @@
   <ActivityButton />
 
   <h4 id="button-faq">Button FaQ</h4>
+
+  <details>
+    <!-- svelte-ignore a11y_no_redundant_roles -->
+    <summary role="button" class="secondary outline" id="help-predefined-targets"
+      >❔ Where can I see these buttons</summary
+    >
+    <article>
+      The buttons are only shown for others viewing your profile in Discord. Ask a friend or check
+      with a second account if unsure what buttons are added.
+    </article>
+  </details>
+
   <details>
     <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary role="button" class="secondary outline">❔ What buttons are added</summary>
@@ -71,8 +83,9 @@
     >
     <article>
       For the watch link button to work, the provider ID "youtube" must be set to a YouTube video
-      ID. This is usually the case when downloading YouTube videos with
-      [Pinchflat](https://github.com/kieraneglin/pinchflat).
+      ID. The provider ID can only be set by the media-server admin. When downloading videos with
+      <a href="https://github.com/kieraneglin/pinchflat" target="_blank">Pinchflat</a>
+      the YouTube provider ID can be set automatically.
     </article>
   </details>
 </section>

@@ -9,19 +9,38 @@
 - Customize style and media types to show or hide
 - Login with your regular user, no Emby/Jellyfin API key required
 
-# Setup
-
-Follow the instructions in the UI to connect your media-server. Start a stream and see the activity in exy/Discord.
-
 ## Download
 
 Installers can be downloaded from the [release page](https://github.com/xyxxyxxy/exy/releases/latest).
 
-## Requirements
+# Screenshots
 
-Discord client must run on the same machine.
+First time opening exy:
+![setup-1](resources/docs/screenshot-0.jpg)
 
-### Discord settings
+Connect to your media-server:
+
+![setup-2](resources/docs/screenshot-1.jpg)
+
+Customize your activity:
+
+![setup-3](resources/docs/screenshot-2.jpg)
+
+Start a stream and see the activity in exy & Discord:
+
+<img src="resources/docs/example.jpg" alt="example" width="400">
+
+> [!NOTE]
+> Buttons are only visible to other users.
+
+# Setup
+
+Follow the instructions in the UI to connect to your media-server.
+
+> [!NOTE]
+> Discord client must run on the same machine.
+
+## Discord settings
 
 "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
@@ -30,6 +49,8 @@ Can be found in "Discord settings" -> "Activity Privacy".
 # Privacy
 
 Be aware that images shown in Discord activities have to be publicly available. For this [freeimage.host](https://freeimage.host/) is used to upload the preview image of the playing media item.
+
+Other than that exy contacts GitHub on startup to check for updates.
 
 # Development
 

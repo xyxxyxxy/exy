@@ -40,12 +40,7 @@ const configStore = new Store<ConfigStore>({
       store.reset('externalLinks')
     },
     '0.3.0': (store): void => {
-      // Remove unused field 'ignoredLibraryIds' of all media-servers.
-      const servers = store.get('mediaServers')
-      servers.forEach(
-        (server) => delete (server as { ignoredLibraryIds?: Array<string> }).ignoredLibraryIds
-      )
-      store.set('mediaServers', servers)
+      // Existing sources will have the unused field 'ignoredLibraryIds'.
       store.set(ConfigSelector.IgnoredTypes, [])
     },
     '0.2.0': (store): void => {
