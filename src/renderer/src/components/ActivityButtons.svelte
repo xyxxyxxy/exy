@@ -43,17 +43,15 @@
     <!-- svelte-ignore a11y_no_redundant_roles -->
     <summary role="button" class="secondary outline">❔ What buttons are added</summary>
     <article>
+      Up to two buttons are added via the following logic:
       <ol>
         <li>Buttons are selected from top to bottom.</li>
-        <li>The media type of the button must apply to the now playing item.</li>
-        <li>The target must be available.</li>
+        <li>Media type of playing item must match the button media type.</li>
+        <li>The "target" of the button must be available for the playing item.</li>
       </ol>
       <footer>
-        The custom URL target is always available. For <a href="#help-predefined-targets"
-          >predefined targets</a
-        >
-        it depends on the provider data set in the media source.
-        <a href="#help-public-content">here</a>.
+        The custom URL target is always available. Other target availability depends on the data
+        provided by the media-server.
       </footer>
     </article>
   </details>
@@ -70,7 +68,7 @@
         <li>IMDb, TheMovieDb, Trakt for movies</li>
       </ul>
       <footer>
-        The availability depends on the media source. Check the playing item inside Emby/Jellyfin to
+        The availability depends on the media-server. Check the playing item inside Emby/Jellyfin to
         see if the target link is defined.
       </footer>
     </article>
@@ -78,7 +76,7 @@
 
   <details>
     <!-- svelte-ignore a11y_no_redundant_roles -->
-    <summary role="button" class="secondary outline" id="help-public-content"
+    <summary role="button" class="secondary outline"
       >❔ How does the "Watch link" target work</summary
     >
     <article>
