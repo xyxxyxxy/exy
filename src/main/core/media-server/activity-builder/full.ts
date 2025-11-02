@@ -1,10 +1,12 @@
-import { Observable, catchError, map, of, tap } from 'rxjs'
+import { Observable, catchError, from, map, of, switchMap } from 'rxjs'
 import { MediaServerConfig } from '../../stores/config.types'
 import { Activity, ActivityBase, ExternalData, ExternalDataType } from '../../activity/types'
 import { ItemMediaType, ItemType, ValidSession } from '../types'
 import log from 'electron-log'
 import { BaseItemDto, PlayerStateInfo } from '../../openapi/emby'
-import { getTmdbImageUrl$ } from '../../tmdbId'
+import { getImageUrl } from '..'
+import axios from 'axios'
+import { uploadImage$ } from '../../freeimage-host'
 
 const logger = log.scope('builder-full')
 
@@ -37,7 +39,7 @@ export function buildFullActivity$(
   const watchLink = getWatchLink(item)
   if (watchLink) activity.externalData.push({ type: ExternalDataType.WatchLink, url: watchLink })
 
-  return addImage$(activity, session)
+  return addImage$(activity, server, session)
 }
 function mapExternalData(item: BaseItemDto): Array<ExternalData> {
   if (!item.ExternalUrls) return []
@@ -81,17 +83,46 @@ function parseEndTime(item: BaseItemDto, playState: PlayerStateInfo): Date | und
 
 function addImage$(
   activity: Activity,
-  // server: MediaServerConfig,
+  server: MediaServerConfig,
   session: ValidSession
 ): Observable<Activity> {
   if (activity.imageUrl) return of(activity)
 
-  return getExternalImageLink$(session.NowPlayingItem).pipe(
-    tap((url) => (activity.imageUrl = url)),
-    map(() => activity),
-    catchError(() => {
-      logger.warn(`Failed to add image to activity.`)
+  const externalImage = getExternalImageLink(session.NowPlayingItem)
+
+  if (externalImage) {
+    activity.imageUrl = externalImage
+    return of(activity)
+  }
+
+  const sourceImageUrl = getSourceImageUrl(server, session.NowPlayingItem)
+
+  if (!sourceImageUrl) return of(activity)
+
+  // Image size is already reduced via the
+  // media-server image download parameters.
+  return downloadImage$(sourceImageUrl).pipe(
+    switchMap((image) => uploadImage$(image)),
+    map((publicImageUrl) => {
+      activity.imageUrl = publicImageUrl
+      return activity
+    }),
+    // Fallback to activity without image on error.
+    catchError((error) => {
+      logger.warn(`Failed to download/upload image.`, error)
       return of(activity)
+    })
+  )
+}
+
+function downloadImage$(url: string): Observable<Buffer> {
+  return from(
+    axios.get(url, {
+      responseType: 'arraybuffer'
+    })
+  ).pipe(
+    map((response) => {
+      return Buffer.from(response.data, 'binary')
     })
   )
 }
@@ -99,21 +130,14 @@ function addImage$(
 // Images need to be publicly available. Even if the media-server is reachable on the
 // public internet, sending the server address to Discord should be avoided, since
 // everyone seeing the status will also be able to see the media-server domain.
-function getExternalImageLink$(item: BaseItemDto): Observable<string | undefined> {
-  if (!item.ProviderIds) return of(undefined)
+function getExternalImageLink(item: BaseItemDto): string | undefined {
+  if (!item.ProviderIds) return undefined
 
   // YouTube
   const youtubeId = item.ProviderIds.youtube
-  if (youtubeId) return of(`https://img.youtube.com/vi/${youtubeId}/0.jpg`)
+  if (youtubeId) return `https://img.youtube.com/vi/${youtubeId}/0.jpg`
 
-  // TMDB
-  const tmdbId = parseInt(item.ProviderIds.Tmdb)
-  if (tmdbId) return getTmdbImageUrl$(tmdbId, item.Type === 'Movie')
-
-  // TODO For music another service is needed.
-  // TODO Add TVDB for episodes
-
-  return of(undefined)
+  return undefined
 }
 
 function isYouTubeId(id: string): boolean {
@@ -129,4 +153,31 @@ function getWatchLink(item: BaseItemDto): string | null {
   if (youtubeId && isYouTubeId(youtubeId)) return `https://youtube.com/watch?v=${youtubeId}`
 
   return null
+}
+
+function getSourceImageUrl(server: MediaServerConfig, item: BaseItemDto): string | undefined {
+  // Not every item has a primary image,
+  // but if the image is mentioned in the image
+  // tags it can be assumed that the primary image exists.
+  if (item.ImageTags?.Primary && item.Id) return getImageUrl(server, item.Id)
+
+  // From high to low priority.
+  const fallbackIds: Array<string> = [item.AlbumId, item.SeriesId, item.ParentId]
+    // Remove undefined entries.
+    .filter((id): id is string => typeof id === 'string')
+    // Reverse to process in the right order.
+    .reverse()
+
+  const tryNextImage = (): string | undefined => {
+    const id = fallbackIds.pop()
+
+    if (!id) {
+      logger.info(`Failed to get any image for item:`, item)
+      return undefined
+    }
+
+    return getImageUrl(server, id)
+  }
+
+  return tryNextImage()
 }

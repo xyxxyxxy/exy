@@ -33,19 +33,22 @@
       checked={config.isPlayStateShown}
       onclick={toggleIsPlayStateShown}
     />
-    Show <em data-tooltip="Time remaining and pause state">play state</em>
+    Show <em data-tooltip="Time remaining and pause state.">play state</em>
   </label>
 
   <label>
     <input type="checkbox" role="switch" checked={config.isThemeUsed} onclick={toggleIsThemeUsed} />
-    Use <em data-tooltip="Emby or Jellyfin accent colors depending on media source">theme color</em>
+    Use
+    <em data-tooltip="Emby or Jellyfin accent colors, depending on media source.">theme color</em>
     for icons
   </label>
 
   <label>
     <input type="checkbox" role="switch" checked={config.isLogoUsed} onclick={toggleIsLogoUsed} />
     Use
-    <em data-tooltip="Emby, Jellyfin or {name} logo depending on theme color setting">logo</em> instead
-    of play icon
+    <em
+      data-tooltip="Emby/Jellyfin or {name} logo, based on theme color setting. Music always uses the CD icon."
+      >logo</em
+    > instead of play icon
   </label>
 </article>
