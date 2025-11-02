@@ -31,20 +31,23 @@ Start a stream and see the activity in exy & Discord:
 <img src="resources/docs/example.jpg" alt="example" width="400">
 
 > [!NOTE]
-> Buttons are only visible to other users.
+> Buttons are only visible to other users in Discord.
 
 # Setup
 
 Follow the instructions in the UI to connect to your media-server.
 
 > [!NOTE]
-> Discord client must run on the same machine.
+> Discord must run on the same machine.
 
 ## Discord settings
 
 "Display current activity as a status message." needs to be enabled.
 ![discord-settings](resources/docs/discord-setting.png)
 Can be found in "Discord settings" -> "Activity Privacy".
+
+> [!TIP]
+> Activity can be hidden on a per-server basis in Discord.
 
 # Privacy
 
